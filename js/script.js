@@ -876,7 +876,6 @@
 				}
 			}
 
-
 			plugins.rdNavbar.RDNavbar( {
 				anchorNav:    !isNoviBuilder,
 				stickUpClone: (plugins.rdNavbar.attr( "data-stick-up-clone" ) && !isNoviBuilder) ? plugins.rdNavbar.attr( "data-stick-up-clone" ) === 'true' : false,
@@ -884,7 +883,6 @@
 				callbacks:    {
 					onStuck:        function () {
 						var navbarSearch = this.$element.find( '.rd-search input' );
-
 						if ( navbarSearch ) {
 							navbarSearch.val( '' ).trigger( 'propertychange' );
 						}
@@ -895,18 +893,26 @@
 					onUnstuck:      function () {
 						if ( this.$clone === null )
 							return;
-
 						var navbarSearch = this.$clone.find( '.rd-search input' );
-
 						if ( navbarSearch ) {
 							navbarSearch.val( '' ).trigger( 'propertychange' );
 							navbarSearch.trigger( 'blur' );
 						}
-
 					}
 				}
 			} );
 
+			// Transparent navbar on scroll logic
+			var $navbar = plugins.rdNavbar;
+			function toggleNavbarTransparency() {
+				if ($(window).scrollTop() === 0) {
+					$navbar.addClass('rd-navbar--transparent');
+				} else {
+					$navbar.removeClass('rd-navbar--transparent');
+				}
+			}
+			toggleNavbarTransparency();
+			$(window).on('scroll', toggleNavbarTransparency);
 
 			if ( plugins.rdNavbar.attr( "data-body-class" ) ) {
 				document.body.className += ' ' + plugins.rdNavbar.attr( "data-body-class" );
