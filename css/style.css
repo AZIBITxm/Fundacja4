@@ -1,3 +1,37 @@
+/* Wymuszenie koloru czcionki w menu na czarny po scrolowaniu (body.navbar-scrolled) */
+body.navbar-scrolled .rd-navbar .rd-nav-link,
+body.navbar-scrolled .rd-navbar .rd-nav-link:visited,
+body.navbar-scrolled .rd-navbar .rd-nav-link:active {
+  color: #111 !important;
+}
+/* Menu: biała czcionka na górze i po scrolowaniu */
+.rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
+  color: #fff !important;
+}
+
+.rd-navbar.rd-navbar-classic.navbar-scrolled .rd-navbar-nav .rd-nav-link {
+  color: #111 !important;
+}
+/* Cień tekstu w sliderze (za nagłówkami i opisami, bez przycisków) */
+.swiper-slider-classic .swiper-slide-caption h1,
+.swiper-slider-classic .swiper-slide-caption p {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 0px 1px #000;
+}
+
+.swiper-slider-classic .swiper-slide-caption a.button {
+  text-shadow: none !important;
+}
+/* Białe tło menu po scrollu (desktop + mobile) */
+.navbar-scrolled,
+.navbar-scrolled .rd-navbar-main-outer,
+.navbar-scrolled .rd-navbar-main {
+  background: #fff !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.navbar-scrolled .rd-navbar-nav-wrap {
+  background: #fff !important;
+}
 /* Wymuszenie białego tła tylko na wysuwane menu mobilne */
 @media (max-width: 991.98px) {
   .rd-navbar-nav-wrap {
@@ -14,14 +48,14 @@
 }
 /* Wymuszenie przezroczystości menu i tła menu na mobile (wszystkie elementy) */
 @media (max-width: 991.98px) {
-  header.section.page-header,
-  .rd-navbar,
-  .rd-navbar-main-outer,
-  .rd-navbar-main,
-  .rd-navbar-panel,
-  .rd-navbar-nav,
-  .rd-navbar-toggle,
-  .rd-navbar-brand {
+  body:not(.navbar-scrolled) header.section.page-header,
+  body:not(.navbar-scrolled) .rd-navbar,
+  body:not(.navbar-scrolled) .rd-navbar-main-outer,
+  body:not(.navbar-scrolled) .rd-navbar-main,
+  body:not(.navbar-scrolled) .rd-navbar-panel,
+  body:not(.navbar-scrolled) .rd-navbar-nav,
+  body:not(.navbar-scrolled) .rd-navbar-toggle,
+  body:not(.navbar-scrolled) .rd-navbar-brand {
 	background: transparent !important;
 	box-shadow: none !important;
 	opacity: 1 !important;

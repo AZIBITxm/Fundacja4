@@ -1,3 +1,15 @@
+// Białe tło menu po scrollu (desktop + mobile)
+$(function() {
+  function toggleNavbarScrolled() {
+	if (window.scrollY > 10) {
+	  document.body.classList.add('navbar-scrolled');
+	} else {
+	  document.body.classList.remove('navbar-scrolled');
+	}
+  }
+  window.addEventListener('scroll', toggleNavbarScrolled);
+  toggleNavbarScrolled();
+});
 "use strict";
 (function () {
 	// Global variables
