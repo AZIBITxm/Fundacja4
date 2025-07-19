@@ -1,3 +1,25 @@
+/* Slider pełnoekranowy na urządzeniach mobilnych */
+@media (max-width: 767.98px) {
+  .swiper-slider,
+  .swiper-container.swiper-slider {
+	min-height: 100vh !important;
+	height: 100vh !important;
+	max-height: 100vh !important;
+	box-sizing: border-box;
+  }
+  .swiper-slide {
+	min-height: 100vh !important;
+	height: 100vh !important;
+	max-height: 100vh !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  .swiper-slide-caption {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+  }
+}
 /* Wymuszenie koloru czcionki w menu na czarny po scrolowaniu (body.navbar-scrolled) */
 body.navbar-scrolled .rd-navbar .rd-nav-link,
 body.navbar-scrolled .rd-navbar .rd-nav-link:visited,
