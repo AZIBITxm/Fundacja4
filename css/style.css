@@ -1,3 +1,18 @@
+/* Przywrócenie pozycji napisów i przycisku w sliderze dla desktopu */
+@media (min-width: 992px) {
+  .swiper-slide-caption.section-md {
+	padding-top: 120px !important;
+	padding-bottom: 120px !important;
+	top: 0 !important;
+	bottom: auto !important;
+	transform: none !important;
+	position: relative !important;
+  }
+}
+/* Przesunięcie napisów i przycisku w sliderze niżej */
+.swiper-slide-caption.section-md .container {
+  padding-top: 18vh;
+}
 /* Slider pełnoekranowy na urządzeniach mobilnych */
 @media (max-width: 767.98px) {
   .swiper-slider,
