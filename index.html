@@ -125,7 +125,7 @@
           <div class="row row-30 justify-content-center">
             <div class="col-md-7 col-lg-5 col-xl-6 text-lg-left wow fadeInUp">
               <!-- ZAMIANA OBRAZKA NA WIDEO -->
-              <video width="415" height="592" controls>
+              <video class="video-responsive" controls style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 6px 0 rgba(0,0,0,0.15); border: 2px solid #888; width: 100%; max-width: 415px; height: auto; display: block; margin: 0 auto;">
                 <source src="video/1.mp4" type="video/mp4">
                 Twoja przeglądarka nie obsługuje tagu wideo.
               </video>
@@ -171,6 +171,28 @@
           <a class="section section-banner text-center d-none d-xl-block" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" style="background-image: url(images/banner/banner-bg-02-1920x60.jpg); background-image: -webkit-image-set( url(images/banner/banner-bg-02-1920x60.jpg) 1x, url(images/banner/banner-bg-02-3840x120.jpg) 2x )" target="_blank"><img src="images/banner/banner-fg-02-1600x60.png" srcset="images/banner/banner-fg-02-1600x60.png 1x, images/banner/banner-fg-02-3200x120.png 2x" alt="" width="1600" height="310"></a>
         </div>
       </section>
+<style>
+  .video-responsive {
+    width: 100% !important;
+    max-width: 415px;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+  }
+  @media (max-width: 767px) {
+    .video-responsive {
+      max-width: 100vw !important;
+      width: 100vw !important;
+      box-sizing: border-box;
+    }
+    .col-md-7.col-lg-5.col-xl-6.text-lg-left.wow.fadeInUp {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+</style>
 
       <!-- Cta-->
       <section class="section section-fluid bg-default">
