@@ -133,10 +133,60 @@
             <div class="col-lg-7 col-xl-6">
               <div class="row row-30">
                 <div class="col-sm-6 wow fadeInRight">
-                  <article class="box-icon-modern box-icon-modern-custom">
-                    <div>
-                      <h3 class="box-icon-modern-big-title">Jesteśmy dla Ciebie</h3>
-                      <div class="box-icon-modern-decor"></div><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal">kontakt z nami</a>
+                  <article class="box-icon-modern box-icon-modern-custom" style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:100%;min-height:220px;">
+                    <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;">
+                      
+                      <div id="customCalendar" style="margin-bottom:0;margin-top:0;"></div>
+                      <div class="box-icon-modern-text" style="margin-top:8px;">Sprawdź nasze otwarte linie w kalendarzu.</div>
+                      <script>
+                        function renderCalendar(containerId) {
+                          const container = document.getElementById(containerId);
+                          if (!container) return;
+                          const today = new Date();
+                          let year = today.getFullYear();
+                          let month = today.getMonth();
+                          function getMonthName(m) {
+                            return new Date(year, m).toLocaleString('pl-PL', { month: 'long' });
+                          }
+                          function draw() {
+                            let firstDay = new Date(year, month, 1);
+                            let lastDay = new Date(year, month + 1, 0);
+                            let startDay = firstDay.getDay();
+                            if (startDay === 0) startDay = 7; // niedziela na koniec
+                            let daysInMonth = lastDay.getDate();
+                            let html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;max-width:220px;margin-left:auto;margin-right:auto;">'+
+                              '<button id="calPrev" style="background:none;border:none;font-size:16px;">&#8592;</button>'+
+                              '<span style="font-weight:600;font-size:15px;">'+getMonthName(month)+' '+year+'</span>'+
+                              '<button id="calNext" style="background:none;border:none;font-size:16px;">&#8594;</button>'+
+                              '</div>';
+                            html += '<table style="width:100%;max-width:220px;margin:auto;text-align:center;font-size:12px;table-layout:fixed;">';
+                            html += '<thead><tr>';
+                            const days = ['Pn','Wt','Śr','Cz','Pt','Sb','Nd'];
+                            for (let d of days) html += '<th style="padding:1px 0;">'+d+'</th>';
+                            html += '</tr></thead><tbody><tr>';
+                            let dayOfWeek = startDay === 1 ? 1 : 1 - (startDay - 1);
+                            for (let i = 0; i < 42; i++, dayOfWeek++) {
+                              let d = new Date(year, month, dayOfWeek);
+                              let isCurrentMonth = d.getMonth() === month;
+                              let style = 'padding:2px 0;';
+                              let btn = document.querySelector('.button-primary');
+                              let btnColor = btn ? getComputedStyle(btn).backgroundColor : '#0069d9';
+                              if (isCurrentMonth && (d.getDay() === 4 || d.getDay() === 5)) style += 'background:'+btnColor+';color:#fff;font-weight:600;opacity:0.5;border:1.5px solid '+btnColor+';';
+                              if (!isCurrentMonth) style += 'color:#bbb;';
+                              html += '<td style="'+style+'">'+(isCurrentMonth?d.getDate():'')+'</td>';
+                              if ((i+1)%7===0 && i<41) html+='</tr><tr>';
+                            }
+                            html += '</tr></tbody></table>';
+                            container.innerHTML = html;
+                            document.getElementById('calPrev').onclick = function(){ month--; if(month<0){month=11;year--;} draw(); };
+                            document.getElementById('calNext').onclick = function(){ month++; if(month>11){month=0;year++;} draw(); };
+                          }
+                          draw();
+                        }
+                        document.addEventListener('DOMContentLoaded', function(){
+                          renderCalendar('customCalendar');
+                        });
+                      </script>
                     </div>
                   </article>
                 </div>
@@ -145,7 +195,7 @@
                     <div class="box-icon-modern-icon linearicons-phone-in-out"></div>
                     <h5 class="box-icon-modern-title"><a href="#contact-info">ZADZWOŃ<br>DO NAS</a></h5>
                     <div class="box-icon-modern-decor"></div>
-                    <p class="box-icon-modern-text">Porozmawiaj z naszym doradcą. Wybierzemy odpowiednie wsparcie dla Ciebie.</p>
+                    <p class="box-icon-modern-text">Porozmawiaj z naszym doradcą. Pomożemy Ci dobrać odpowiedniego specjalistę. </p>
                   </article>
                 </div>
                 <div class="col-sm-6 wow fadeInRight" data-wow-delay=".2s">
@@ -159,9 +209,9 @@
                 <div class="col-sm-6 wow fadeInRight" data-wow-delay=".3s">
                   <article class="box-icon-modern box-icon-modern-2">
                     <div class="box-icon-modern-icon linearicons-outbox"></div>
-                    <h5 class="box-icon-modern-title"><a href="#">CLOUD<br>DEVELOPMENT</a></h5>
+                    <h5 class="box-icon-modern-title"><a href="#">WYPEŁNIJ<br>ANKIETĘ</a></h5>
                     <div class="box-icon-modern-decor"></div>
-                    <p class="box-icon-modern-text">We can also offer you reliable cloud development solutions.</p>
+                    <p class="box-icon-modern-text">Nasze anonimowe ankiety pomogą Ci lepiej poznać siebie.</p>
                   </article>
                 </div>
               </div>
