@@ -1,3 +1,10 @@
+/* Subtelna czcionka opisowa w sekcji O Nas */
+#about-main-text,
+#about-extra-text {
+  font-weight: 200;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.01em;
+}
 /* Przywrócenie pozycji napisów i przycisku w sliderze dla desktopu */
 @media (min-width: 992px) {
   .swiper-slide-caption.section-md {
