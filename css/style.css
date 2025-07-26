@@ -1,3 +1,13 @@
+/* Animacja dla napisów w .clients-classic po najechaniu myszką */
+.clients-classic span {
+  transition: color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.clients-classic:hover span {
+  color: #fff !important;
+  background: #6689ff !important;
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 6px 24px rgba(102,137,255,0.18);
+}
 /* Subtelna czcionka opisowa w sekcji O Nas */
 #about-main-text,
 #about-extra-text {
