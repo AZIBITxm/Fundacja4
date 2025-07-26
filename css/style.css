@@ -1,12 +1,31 @@
+@media (max-width: 767px) {
+  .row-30 .clients-classic + .clients-classic {
+	border-top: 1px solid #d7d7d7;
+	margin-top: 24px;
+	padding-top: 24px;
+  }
+}
 /* Animacja dla napisów w .clients-classic po najechaniu myszką */
+
+/* Usunięcie tła, cieni, obramowań i efektów z napisów w .clients-classic */
 .clients-classic span {
-  transition: color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  color: #9b9b9b !important;
+  font-weight: 600;
+  transition: none !important;
+  text-shadow: none !important;
 }
 .clients-classic:hover span {
-  color: #fff !important;
-  background: #6689ff !important;
-  transform: scale(1.08) translateY(-4px);
-  box-shadow: 0 6px 24px rgba(102,137,255,0.18);
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  color: #6689ff !important;
+  transform: none !important;
+  text-shadow: none !important;
 }
 /* Subtelna czcionka opisowa w sekcji O Nas */
 #about-main-text,
@@ -10447,7 +10466,7 @@ h2.title-modern > span {
 	margin-left: auto;
 	margin-right: auto;
 	background: transparent;
-	border: 1px solid #e1e1e1;
+	border: none;
 	transition: all .3s ease-in-out;
 	margin-top: 60px !important; /* duży odstęp na desktopie */
 }
@@ -10465,17 +10484,7 @@ h2.title-modern > span {
   }
 }
 
-.clients-classic::before {
-	position: absolute;
-	content: '';
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	border: 1px solid transparent;
-	transition: all .3s ease;
-	will-change: transform;
-}
+
 
 .clients-classic img {
 	width: 100%;
@@ -10484,25 +10493,25 @@ h2.title-modern > span {
 
 @media (min-width: 992px) {
 	.desktop .clients-classic img {
-		will-change: transform;
-		transition: all .3s ease;
+		will-change: auto;
+		transition: none;
 	}
 	.desktop .clients-classic:hover {
-		border-color: #151515;
+		border-color: inherit;
 	}
 	.desktop .clients-classic:hover::before {
-		transform: scale(0.94, 0.9);
-		border-color: #151515;
+		transform: none;
+		border-color: transparent;
 	}
 	.desktop .clients-classic:hover img {
 		opacity: 1;
-		transform: scale(0.9);
+		transform: none;
 	}
 	.desktop .context-dark .clients-classic:hover, .desktop .bg-gray-dark .clients-classic:hover, .desktop .bg-primary .clients-classic:hover {
-		border-color: rgba(255, 255, 255, 0.6);
+		border-color: inherit;
 	}
 	.desktop .context-dark .clients-classic:hover::before, .desktop .bg-gray-dark .clients-classic:hover::before, .desktop .bg-primary .clients-classic:hover::before {
-		border-color: rgba(255, 255, 255, 0.6);
+		border-color: transparent;
 	}
 }
 
