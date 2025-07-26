@@ -10436,9 +10436,23 @@ h2.title-modern > span {
 	max-width: 270px;
 	margin-left: auto;
 	margin-right: auto;
-	background: #ffffff;
+	background: transparent;
 	border: 1px solid #e1e1e1;
 	transition: all .3s ease-in-out;
+	margin-top: 60px !important; /* duży odstęp na desktopie */
+}
+
+.clients-classic span {
+	font-family: 'Poppins', Arial, sans-serif !important; /* jak .counter-amy-title */
+	font-weight: 500 !important;
+	letter-spacing: .1em !important;
+	/* kolor zostaje taki jak był */
+}
+
+@media (max-width: 767px) {
+  .clients-classic {
+	margin-top: 48px !important; /* mniejszy odstęp na mobile */
+  }
 }
 
 .clients-classic::before {
@@ -10455,7 +10469,7 @@ h2.title-modern > span {
 
 .clients-classic img {
 	width: 100%;
-	opacity: .5;
+	opacity: 1;
 }
 
 @media (min-width: 992px) {
@@ -11077,6 +11091,13 @@ h4 + .instafeed {
 
 .row-30 {
 	margin-bottom: -30px;
+	padding-top: 60px !important; /* duży odstęp na desktopie */
+}
+
+@media (max-width: 767px) {
+  .row-30 {
+	padding-top: 30px !important; /* mniejszy odstęp na mobile */
+  }
 }
 
 .row-30:empty {
