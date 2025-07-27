@@ -1,10 +1,4 @@
-@media (max-width: 767px) {
-  .row-30 .clients-classic + .clients-classic {
-	border-top: 1px solid #d7d7d7;
-	margin-top: 24px;
-	padding-top: 24px;
-  }
-}
+
 /* Animacja dla napisów w .clients-classic po najechaniu myszką */
 
 /* Usunięcie tła, cieni, obramowań i efektów z napisów w .clients-classic */
@@ -529,14 +523,19 @@ a[href*='tel'], a[href*='mailto'] {
 	margin-top: 30px;
 }
 
-@media (min-width: 768px) {
-	* + .link-classic {
-		margin-top: 40px;
+@media (min-width: 576px) {
+	.border-2-column > div {
+		border-top: none !important;
+		border-left: none;
+	}
+	.border-2-column > div:not(:first-child) {
+		border-left: 1px solid #e1e1e1;
+	}
+	/* Wymuś separator między 2 i 3 banerem nawet jeśli układ się zmienia */
+	.border-2-column > div:nth-child(3) {
+		border-left: 1px solid #e1e1e1;
 	}
 }
-
-@media (min-width: 992px) {
-	.container + .link-classic {
 		margin-top: 56px;
 	}
 }
@@ -17727,8 +17726,26 @@ h1 + .tabs-line {
 }
 
 .border-2-column > div {
-	padding: 0;
-	border-top: 1px solid #e1e1e1;
+	padding: 1.25em 0;
+	position: relative;
+}
+
+@media (max-width: 991.98px) {
+  .border-2-column > div:not(:first-child)::before {
+	content: "";
+	position: absolute;
+	left: 26px;
+	right: 26px;
+	top: 0;
+	height: 1px;
+	background: #e1e1e1;
+	z-index: 1;
+	display: block;
+  }
+  .border-2-column > div:not(:first-child) {
+	border-top: none;
+  }
+}
 }
 
 .border-2-column > div:nth-child(1) {
