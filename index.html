@@ -147,7 +147,14 @@
               </video>
             </div>
             <div class="col-lg-7 col-xl-6">
-              <div class="row row-30">
+              <div class="row row-50 banners-row-desktop">
+<style>
+  @media (min-width: 768px) {
+    .banners-row-desktop {
+      margin-top: -30px !important;
+    }
+  }
+</style>
                 <div class="col-sm-6 wow fadeInRight">
                   <article class="box-icon-modern box-icon-modern-custom" style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:100%;min-height:220px;">
                     <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;">
@@ -330,7 +337,7 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
               </div>
             </div>
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".1s">
-              <div class="row justify-content-center border-2-column offset-top-xl-26">
+              <div class="row justify-content-center offset-top-xl-26">
                 <div class="col-9 col-sm-6">
                   <div class="counter-amy">
                     <div class="counter-amy-number"><span class="counter" data-speed="1200">5</span>
@@ -347,8 +354,9 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
                 </div>
                 <div class="col-9 col-sm-6">
                   <div class="counter-amy">
-                    <h6 class="counter-amy-title center-mobile space-bottom">JUŻ PONAD</h6>
-                    <div class="counter-amy-number center-mobile"><span class="counter">200</span></div>
+                    <h6 class="counter-amy-title center-mobile space-bottom" style="margin-bottom:0.5em;">JUŻ PONAD</h6>
+                    <div class="desktop-gap" style="display:none;"></div>
+                    <div class="counter-amy-number center-mobile" style="margin-left:-35px;"><span class="counter">200</span></div>
                     <h6 class="counter-amy-title center-mobile">OSÓB SKORZYSTAŁO Z NASZEJ POMOCY</h6>
                   </div>
                 </div>
@@ -402,18 +410,29 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
                 <!-- Tab panes-->
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="tabs-6-1">
-                    <h5 class="font-weight-normal">FREE APPS</h5>
-                    <p>We regularly upload new free apps to our website, which is fully accessible to our clients and subscribers. You can also find out about free apps in our blog.</p>
+                    <h5 class="font-weight-normal">PRZEŁAMUJEMY CYFROWE UZALEŻNIENIA</h5>
+                    <p>Projekt SPOT to kompleksowy program przeciwdziałania cyfrowym uzależnieniom, wykluczeniu i przemocy w szkołach. Łączy neuroedukację, integrację społeczną oraz wsparcie prawne nauczycieli, by stworzyć bezpieczne środowisko rozwoju dla młodzieży. Dowiedz się, jak innowacyjne narzędzia i warsztaty dla uczniów, rodziców i pedagogów zmieniają polską edukację!</p>
                     <div class="group-sm group-middle"><a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Bądźmy w Kontakcie</a><a class="button button-default-outline button-wapasha" href="#">Learn More</a></div>
                   </div>
                   <div class="tab-pane fade" id="tabs-6-2">
-                    <h5 class="font-weight-normal">GET SOCIAL</h5>
-                    <p>Every app we develop has built-in social support that allows you to stay connected to your accounts on Facebook, Instagram, Twitter and other networks.</p>
+                    <h5 class="font-weight-normal">RODZICU NIE JESTEŚ SAM</h5>
+                    <p>Samotne rodzicielstwo to wyzwanie, ale nie musisz przez to przechodzić sam.<br>
+Nasz program pomaga w budowaniu dobrych relacji z dzieckiem i przełamywaniu toksycznych schematów alienacji.<br>
+Walczymy z systemem, który:<br>
+🛑 Narzuca sztuczne "godziny kontaktów" zamiast naturalnych relacji z dziecka z rodzicem<br>
+🛑 Utrudnia uzyskanie opieki na równych warunkach dla obojga rodziców<br>
+🛑 Pozwala na izolowanie dziecka od kochającego rodzica<br>
+Oferujemy:<br>
+✅ Pomoc prawną w podważaniu krzywdzących opinii OZSS i walce o sprawiedliwe kontakty<br>
+✅ Terapię psychologiczną – radzenie sobie z traumą rozstania, nauka komunikacji z drugim rodzicem<br>
+✅ Grupy wsparcia na WhatsApp – codzienna pomoc od rodziców, którzy rozumieją Twoją sytuację<br>
+✅ Warsztaty wychowawcze – jak budować więź mimo ograniczonego kontaktu<br><br>
+Nie pozwól, by patologiczne mechanizmy okradały Twoje dziecko z prawa do obojga rodziców!</p>
                     <div class="group-sm group-middle"><a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">PRZEJDŹ</a><a class="button button-default-outline button-wapasha" href="#">Learn More</a></div>
                   </div>
                   <div class="tab-pane fade" id="tabs-6-3">
-                    <h5 class="font-weight-normal">CUSTOMER SERVICE</h5>
-                    <p>Every customer of RatherApp can get access to our friendly and qualified 24/7 support via chat or phone. Fell free to ask us any question!</p>
+                    <h5 class="font-weight-normal">TECHNOLOGIA DLA ZDROWIA</h5>
+                    <p>W odpowiedzi na narastające problemy zdrowotne młodego pokolenia – od wad postawy po cyberprzemoc – stworzyliśmy interaktywny projekt edukacyjny. W trakcie 60-minutowych sesji w szkołach całej Europy prezentujemy technologie, które aktywnie chronią rozwój fizyczny i psychiczny uczniów, zamiast go niszczyć.</p>
                     <div class="group-sm group-middle"><a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Bądźmy w Kontakcie</a><a class="button button-default-outline button-wapasha" href="#">Learn More</a></div>
                   </div>
                   <div class="tab-pane fade" id="tabs-6-4">
@@ -433,11 +452,11 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
               <div class="owl-carousel owl-style-1" id="projects-carousel" data-items="2" data-stage-padding="0" data-loop="true" data-margin="0" data-mouse-drag="true" data-autoplay="true">
                 <a class="box-device" href="#" style="position:relative;display:block;">
                   <img src="images/banery/s1.png" alt="" width="313" height="580"/>
-                  <div class="banner-caption">Przykładowy tekst dla baneru 1</div>
+                  <div class="banner-caption">PRZEŁAMUJEMY CYFROWE UZALEŻNIENIA</div>
                 </a>
                 <a class="box-device" href="#" style="position:relative;display:block;">
                   <img src="images/banery/s2.png" alt="" width="313" height="580"/>
-                  <div class="banner-caption">Przykładowy tekst dla baneru 2</div>
+                  <div class="banner-caption">RODZICU NIE JESTEŚ SAM</div>
                 </a>
                 <a class="box-device" href="#" style="position:relative;display:block;">
                   <img src="images/banery/s4.png" alt="" width="313" height="580"/>
@@ -483,6 +502,14 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
                   }
                 }
               </style>
+<style>
+  @media (min-width: 768px) {
+    .desktop-gap {
+      display: block !important;
+      height: 1em;
+    }
+  }
+</style>
               <script>
                 document.addEventListener('DOMContentLoaded', function() {
                   // Mapowanie: numer zakładki => indeks slajdu (0-based)
@@ -564,8 +591,12 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
           <!-- Latest Projects-->
       <section class="section section-sm section-fluid bg-default text-center" id="projects">
         <div class="container-fluid">
-          <h2 class="wow fadeInLeft">Nasze Projekty</h2>
-          <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">Zobacz, jak działamy!<br>Poznaj projekty, które są w stanie nie tylko pomóc ludziom potrzebującym wsparcia, ale również zapobiegać pogorszeniu jakości życia tym, którzy nie są świadomi negatywnych konsekwencji wielu swoich zachowań, nawyków i zewnętrznych wpływów, którym codziennie ulegają.</p>
+          <h2 class="wow fadeInLeft">W🌍RLD Market</h2>
+          <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">Tu każdy zakup to więcej niż transakcja – to inwestycja w ideę.<br><br>
+Sprzedajemy książki, muzykę, sztukę i rękodzieło, by finansować projekty zmieniające świat.<br>
+Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować swoją wartość.<br>
+🛒 Sprzedawaj u nas swoje dzieła. Masz okazję sprzedać swoje dzieło, obraz, książkę, muzykę i wspomóc projekty fundacji.<br>
+💬 Masz pytanie lub chcesz coś specjalnego? Napisz do nas!</p>
           <div class="isotope-filters isotope-filters-horizontal">
             <button class="isotope-filters-toggle button button-md button-icon button-icon-right button-default-outline button-wapasha" data-custom-toggle="#isotope-3" data-custom-toggle-hide-on-blur="true" data-custom-toggle-disable-on-blur="true"><span class="icon fa fa-caret-down"></span>Filtruj</button>
             <ul class="isotope-filters-list" id="isotope-3">
