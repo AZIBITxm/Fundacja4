@@ -160,7 +160,25 @@
                     <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;">
                       
                       <div id="customCalendar" style="margin-bottom:0;margin-top:0;"></div>
-                      <a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" style="margin-top:8px;padding:7px 28px;font-size:15px;line-height:1.2;min-width:unset;min-height:unset;">poznaj szczegóły</a>
+                      <a class="button button-white-outline button-ujarak" href="#modalJotform" data-toggle="modal" style="margin-top:8px;padding:7px 28px;font-size:15px;line-height:1.2;min-width:unset;min-height:unset;border:2px solid #222;color:#222;background:transparent;transition:all 0.25s cubic-bezier(.4,0,.2,1);">poznaj szczegóły</a>
+ 
+</style>
+
+      <div class="modal fade" id="modalJotform" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="border-bottom:0;padding-bottom:0;">
+              <!-- Nagłówek usunięty na życzenie użytkownika -->
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size:2rem;line-height:1;">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="padding-top:0;">
+              <iframe src="https://form.jotform.com/252093972951364" width="100%" height="650" frameborder="0" style="border:none;overflow:auto;"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
                       <script>
                         function renderCalendar(containerId) {
                           const container = document.getElementById(containerId);
