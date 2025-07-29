@@ -32,142 +32,82 @@
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
   </head>
   <body>
-    <!-- Language Selection Modal -->
-    <style>
-      #languageModal {
-        position: fixed;
-        top: 0; left: 0; width: 100vw; height: 100vh;
-        background: rgba(255,255,255,0.98);
-        z-index: 99999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0;
-      }
-      #languageModal .logo-modal {
-        max-width: 180px;
-        margin-bottom: 32px;
-      }
-      #languageModal .flags-row {
-        display: flex;
-        gap: 32px;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        padding: 0 12px;
-      }
-      #languageModal .flag-block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
-        width: 90px;
-        min-width: 90px;
-        max-width: 90px;
-        margin-bottom: 12px;
-      }
-      #languageModal .flag-img {
-        width: 90px;
-        height: 62px;
-        background: #eee;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-        overflow: hidden;
-        padding: 0;
-        display: flex;
-        align-items: stretch;
-        justify-content: stretch;
-      }
-      #languageModal .flag-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        margin: 0;
-      }
-      #languageModal .flag-label {
-        margin-top: 8px;
-        font-size: 1.08rem;
-        font-weight: 500;
-        color: #222;
-        text-align: center;
-      }
-      @media (max-width: 600px) {
-        #languageModal .flags-row {
-          gap: 16px;
-        }
-        #languageModal .flag-block {
-          width: 80px;
-          min-width: 80px;
-          max-width: 80px;
-        }
-        #languageModal .flag-img {
-          width: 80px;
-          height: 55px;
-        }
-        #languageModal .logo-modal {
-          max-width: 120px;
-          margin-bottom: 18px;
-        }
-        #languageModal .flag-label {
-          font-size: 0.95rem;
-        }
-      }
-      @media (max-width: 400px) {
-        #languageModal .flags-row {
-          gap: 8px;
-        }
-        #languageModal .flag-block {
-          width: 60px;
-          min-width: 60px;
-          max-width: 60px;
-        }
-        #languageModal .flag-img {
-          width: 60px;
-          height: 40px;
-        }
-        #languageModal .logo-modal {
-          max-width: 80px;
-        }
-        #languageModal .flag-label {
-          font-size: 0.8rem;
-        }
-      }
-    </style>
-    <div id="languageModal">
-      <img src="images/logo/logo.png" alt="Logo" class="logo-modal">
-      <div class="flags-row">
-        <div class="flag-block" onclick="selectLanguage('pl')">
-          <div class="flag-img">
-            <img src="images/flaga/pl.png" alt="Polska">
-          </div>
-          <span class="flag-label">Polska (PL)</span>
+    <!-- Modal startowy z logo i flagami -->
+    <div id="langModal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.7s cubic-bezier(.4,0,.2,1);opacity:1;">
+      <img src="images/logo/logo.png" alt="Logo" style="max-width:360px;width:80vw;height:auto;display:block;margin-bottom:32px;" />
+      <div style="display:flex;flex-direction:row;gap:32px;justify-content:center;align-items:flex-start;border:2.5px solid #bbb;border-radius:18px;padding:32px 36px;background:#fff;box-sizing:border-box;box-shadow:0 4px 18px 0 rgba(0,0,0,0.07);">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="images/flaga/pl.png" alt="PL" id="flagPL" style="max-width:90px;width:18vw;height:auto;cursor:pointer;display:block;" />
+          <div style="font-size:1.08rem;color:#222;margin-top:8px;text-align:center;">PL</div>
         </div>
-        <div class="flag-block" onclick="selectLanguage('en')">
-          <div class="flag-img">
-            <img src="images/flaga/en.png" alt="English">
-          </div>
-          <span class="flag-label">English (EN)</span>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="images/flaga/en.png" alt="EN" id="flagEN" style="max-width:90px;width:18vw;height:auto;cursor:pointer;display:block;" />
+          <div style="font-size:1.08rem;color:#222;margin-top:8px;text-align:center;">EN</div>
         </div>
-        <!-- Dodaj kolejne flagi według potrzeb, kopiując powyższy blok -->
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="images/flaga/de.png" alt="DE" id="flagDE" style="max-width:90px;width:18vw;height:auto;cursor:pointer;display:block;" />
+          <div style="font-size:1.08rem;color:#222;margin-top:8px;text-align:center;">DE</div>
+        </div>
       </div>
     </div>
     <script>
-      function selectLanguage(lang) {
-        if(lang === 'pl') {
-          document.getElementById('languageModal').style.display = 'none';
-        } else if(lang === 'en') {
-          window.location.href = 'index en.html';
+      document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('langModal');
+        // Modal zawsze się pojawia przy ładowaniu strony
+        modal.style.display = 'flex';
+        modal.style.opacity = '1';
+        function fadeOutModal(callback) {
+          modal.style.opacity = '0';
+          setTimeout(function() {
+            modal.style.display = 'none';
+            if (callback) callback();
+          }, 700);
         }
-      }
-      window.addEventListener('DOMContentLoaded', function() {
-        document.body.style.overflow = 'hidden';
-      });
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          document.body.style.overflow = '';
-        }, 1000);
+        document.getElementById('flagPL').onclick = function() {
+          localStorage.setItem('langSelected', 'pl');
+          fadeOutModal();
+          updateLangButton();
+        };
+        document.getElementById('flagEN').onclick = function() {
+          localStorage.setItem('langSelected', 'en');
+          window.location.href = 'index-en.html';
+          // Modal zostanie zamknięty dopiero na stronie index-en.html
+          updateLangButton();
+        };
+        document.getElementById('flagDE').onclick = function() {
+          // na razie nie rób nic
+        };
+        // Dodaj przycisk do menu
+        function updateLangButton() {
+          var lang = localStorage.getItem('langSelected') || 'pl';
+          var flagSrc = {
+            pl: 'images/flaga/pl.png',
+            en: 'images/flaga/en.png',
+            de: 'images/flaga/de.png'
+          };
+          var nav = document.querySelector('.rd-navbar-nav');
+          if (!nav) return;
+          var oldBtn = document.getElementById('langMenuBtn');
+          if (oldBtn) oldBtn.parentNode.removeChild(oldBtn);
+          var li = document.createElement('li');
+          li.className = 'rd-nav-item';
+          li.id = 'langMenuBtn';
+          var btn = document.createElement('a');
+          btn.className = 'rd-nav-link';
+          btn.href = '#';
+          btn.style.display = 'flex';
+          btn.style.alignItems = 'center';
+          btn.style.gap = '8px';
+          btn.innerHTML = '<img src="'+flagSrc[lang]+'" alt="'+lang+'" style="width:28px;height:20px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-right:4px;" />'+lang.toUpperCase();
+          btn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            setTimeout(function(){modal.style.opacity='1';},10);
+          };
+          li.appendChild(btn);
+          nav.appendChild(li);
+        }
+        updateLangButton();
       });
     </script>
     <div class="preloader">
