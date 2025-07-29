@@ -76,8 +76,14 @@ body.navbar-scrolled .rd-navbar .rd-nav-link:active {
   color: #fff !important;
 }
 
+@media (max-width: 991px) {
+  .rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
+	color: #111 !important;
+  }
+}
+
 .rd-navbar.rd-navbar-classic.navbar-scrolled .rd-navbar-nav .rd-nav-link {
-  color: #111 !important;
+  color: #1a1a1a !important;
 }
 /* Cień tekstu w sliderze (za nagłówkami i opisami, bez przycisków) */
 .swiper-slider-classic .swiper-slide-caption h1,
@@ -8488,7 +8494,6 @@ textarea.textarea-lg {
 
 /**
 *
-* Card
 */
 .card-form {
 	background: #ffffff;
@@ -11453,7 +11458,6 @@ html [class*='section-'].section-top-0 {
 }
 
 /*
-*
 * Grid modules
 */
 .grid-demonstration {
