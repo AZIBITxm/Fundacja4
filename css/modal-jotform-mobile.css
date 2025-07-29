@@ -1,0 +1,42 @@
+@media (max-width: 767px) {
+  /* MODAL JOTFORM FULLSCREEN NA MOBILE */
+  #modalJotform .modal-dialog {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    height: 100vh !important;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+  #modalJotform .modal-content {
+    border-radius: 0 !important;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+  #modalJotform .modal-body {
+    flex: 1 1 auto;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+  #modalJotform iframe {
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block;
+  }
+}
