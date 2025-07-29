@@ -250,7 +250,33 @@
                 <div class="col-sm-6 wow fadeInRight" data-wow-delay=".3s">
                   <article class="box-icon-modern box-icon-modern-2">
                     <div class="box-icon-modern-icon linearicons-users"></div>
-                    <h5 class="box-icon-modern-title"><a href="#">GRUPA<br>WSPARCIA</a></h5>
+<h5 class="box-icon-modern-title"><a href="#modalWsparcie" data-toggle="modal">GRUPA<br>WSPARCIA</a></h5>
+<!-- Modal GRUPA WSPARCIA -->
+<div class="modal fade" id="modalWsparcie" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" style="border-radius:16px;overflow:hidden;">
+      <div class="modal-header" style="border-bottom:0;padding-bottom:0;background:#6689ff;color:#fff;">
+        <h4 class="modal-title" style="font-weight:600;font-size:1.35rem;">Prośba o dodanie do grupy wsparcia</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size:2rem;line-height:1;color:#fff;opacity:0.8;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding-top:0;">
+        <form id="supportGroupForm" style="max-width:400px;margin:auto;">
+          <div class="form-group">
+            <label for="wsparcieName" style="font-weight:500;color:#222;">Imię / nick</label>
+            <input type="text" class="form-control" id="wsparcieName" name="wsparcieName" placeholder="Wpisz imię lub nick" style="border-radius:8px;border:2px solid #6689ff;">
+          </div>
+          <div class="form-group">
+            <label for="wsparciePhone" style="font-weight:500;color:#222;">Numer telefonu</label>
+            <input type="text" class="form-control" id="wsparciePhone" name="wsparciePhone" placeholder="Wpisz swój numer" style="border-radius:8px;border:2px solid #6689ff;">
+          </div>
+          <button type="submit" class="button button-primary button-ujarak" style="width:100%;margin-top:18px;font-size:1.1rem;">Wyślij</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
                     <div class="box-icon-modern-decor"></div>
                     <p class="box-icon-modern-text">Dołącz do naszej Grupy wsparci na whatsapp.</p>
                   </article>
@@ -268,6 +294,31 @@
     height: auto !important;
     display: block;
     margin: 0 auto;
+  }
+  /* Modal GRUPA WSPARCIA - responsywny na wszystkie urządzenia */
+  @media (max-width: 991px) {
+    #modalWsparcie .modal-dialog {
+      max-width: 98vw;
+      width: 98vw;
+      margin: 0 auto;
+    }
+    #modalWsparcie .modal-content {
+      min-height: 60vh;
+    }
+    #modalWsparcie iframe {
+      min-height: 400px;
+      height: 60vh;
+      width: 100%;
+    }
+  }
+  @media (min-width: 992px) {
+    #modalWsparcie .modal-dialog {
+      max-width: 800px;
+    }
+    #modalWsparcie iframe {
+      min-height: 500px;
+      height: 650px;
+    }
   }
   @media (max-width: 767px) {
     .video-responsive {
@@ -346,12 +397,17 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
       <section class="section section-sm bg-default">
         <div class="container">
           <div class="row row-30 row-xl-24 justify-content-center align-items-center align-items-lg-start text-left">
-            <div class="col-md-6 col-lg-5 col-xl-4 text-center"><a class="text-img" href="#">
-                <div id="particles-js"></div><span class="counter">10</span></a></div>
+            <div class="col-md-6 col-lg-5 col-xl-4 text-center">
+              <a class="text-img" href="#">
+                <div id="particles-js"></div><span class="counter">10</span>
+              </a>
+            </div>
             <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4">
               <div class="text-width-extra-small offset-top-lg-24 wow fadeInUp">
                 <h3 class="title-decoration-lines-left">Lat Doświadczenia</h3>
-<p class="text-gray-500">Fundacja skupia zespół doświadczonych specjalistów i profesjonalistów, którzy od wielu lat niosą innym wsparcie i dzielą się zdobytą wiedzą. <br>Twoje zaangażowanie również ma moc sprawczą! Każdy gest wsparcia - finansowy, czasowy czy merytoryczny - to cegiełka w budowaniu systemu pomocy, który nie zostawia nikogo samego.</p><a class="button button-secondary button-pipaluk" href="#"><i class="fa fa-piggy-bank" aria-hidden="true" style="margin-right:7px;"></i>Zapraszamy do współpracy</a>
+                <p class="text-gray-500">Fundacja skupia zespół doświadczonych specjalistów i profesjonalistów, którzy od wielu lat niosą innym wsparcie i dzielą się zdobytą wiedzą. <br>Twoje zaangażowanie również ma moc sprawczą! Każdy gest wsparcia - finansowy, czasowy czy merytoryczny - to cegiełka w budowaniu systemu pomocy, który nie zostawia nikogo samego.</p>
+                <!-- Przycisk usunięty z tego miejsca na mobile -->
+                <a class="button button-secondary button-pipaluk d-none d-md-inline-block" href="#modalCta" data-toggle="modal"><i class="fa fa-piggy-bank" aria-hidden="true" style="margin-right:7px;"></i>Zapraszamy do współpracy</a>
               </div>
             </div>
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".1s">
@@ -380,27 +436,32 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
                 </div>
               </div>
             </div>
+            <!-- Przycisk mobilny przeniesiony tutaj -->
+            <div class="w-100 d-block d-md-none"></div>
+            <div class="col-12 text-center d-block d-md-none" style="margin-bottom:18px;">
+              <a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal"><i class="fa fa-piggy-bank" aria-hidden="true" style="margin-right:7px;"></i>Zapraszamy do współpracy</a>
+            </div>
             <div class="col-lg-6 col-xl-12 align-self-center">
               <div class="row border-2-column justify-content-center banners-separator" style="position:relative;z-index:2;">
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" style="position:relative;z-index:2;">
-                  <a class="clients-classic" href="#" style="position:relative;display:block;background:#fff;z-index:2;">
+                  <div class="clients-classic" style="position:relative;display:block;background:#fff;z-index:2;">
                     <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;width:100%;white-space:normal;overflow-wrap:break-word;word-break:break-word;padding:0 12px;line-height:1.35;text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Nowych Patronów</span>
-                  </a>
+                  </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".1s" style="position:relative;z-index:2;">
-                  <a class="clients-classic" href="#" style="position:relative;display:block;background:#fff;z-index:2;">
+                  <div class="clients-classic" style="position:relative;display:block;background:#fff;z-index:2;">
                     <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;width:100%;white-space:normal;overflow-wrap:break-word;word-break:break-word;padding:0 12px;line-height:1.35;text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Foundrusherów</span>
-                  </a>
+                  </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".2s" style="position:relative;z-index:2;">
-                  <a class="clients-classic" href="#" style="position:relative;display:block;background:#fff;z-index:2;">
+                  <div class="clients-classic" style="position:relative;display:block;background:#fff;z-index:2;">
                     <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;width:100%;white-space:normal;overflow-wrap:break-word;word-break:break-word;padding:0 12px;line-height:1.35;text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Psychologów</span>
-                  </a>
+                  </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".3s" style="position:relative;z-index:2;">
-                  <a class="clients-classic" href="#" style="position:relative;display:block;background:#fff;z-index:2;">
-                    <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Wolontariuszy</span>
-                  </a>
+                  <div class="clients-classic" style="position:relative;display:block;background:#fff;z-index:2;">
+                    <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;width:100%;white-space:normal;overflow-wrap:break-word;word-break:break-word;padding:0 12px;line-height:1.35;text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Wolontariuszy</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -911,7 +972,6 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             </div>
             <div class="title-classic-text">
               <p>Jeśli masz pytania, wypełnij formularz kontaktowy, a wkrótce się odezwiemy.</p>
-            <dir>
             </div>
           </article>
           <div class="form-scroll-mobile" style="width:100%;max-width:700px;margin:auto;">
@@ -986,7 +1046,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       <!-- Page Footer-->
       <footer class="section section-fluid footer-minimal context-dark">
         <div class="bg-gray-15">
-          <div class="container-fluid">
+                   <div class="container-fluid">
             <div class="footer-minimal-inset oh">
               <ul class="footer-list-category-2">
                 <li><a href="#">UI Design</a></li>
@@ -1030,7 +1090,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             </div>
             <div class="modal-body">
               <div style="width:100%;max-width:700px;margin:auto;">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdkI5wkOVY2UKeydwGbS23DcpFRFXjENlE25qMEZkomd0zdyg/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                <iframe src="https://form.jotform.com/252054996297370" width="100%" height="900" frameborder="0" style="border:none;overflow:auto;">Ładuję…</iframe>
               </div>
             </div>
           </div>
