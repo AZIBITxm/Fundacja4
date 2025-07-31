@@ -1,3 +1,8 @@
+/* Ciemnoszara ramka dla dużych banerów kontaktowych */
+.box-contacts {
+  border: 1px solid #d8d7d7 !important;
+  border-radius: 12px;
+}
 
 /* Animacja dla napisów w .clients-classic po najechaniu myszką */
 
@@ -1220,6 +1225,7 @@ a[href*='tel'], a[href*='mailto'] {
 	min-height: 310px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.17);
 	transition: all .3s ease;
+ background: #fff;
 }
 
 .box-contacts-body {

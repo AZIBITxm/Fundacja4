@@ -330,28 +330,16 @@
                   <article class="box-icon-modern box-icon-modern-2">
                     <div class="box-icon-modern-icon linearicons-users"></div>
 <h5 class="box-icon-modern-title"><a href="#modalWsparcie" data-toggle="modal">GRUPA<br>WSPARCIA</a></h5>
-<!-- Modal GRUPA WSPARCIA -->
+<!-- Modal GRUPA WSPARCIA (WhatsForm) -->
 <div class="modal fade" id="modalWsparcie" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content" style="border-radius:16px;overflow:hidden;">
-      <div class="modal-header" style="border-bottom:0;padding-bottom:0;background:#6689ff;color:#fff;">
-        <h4 class="modal-title" style="font-weight:600;font-size:1.35rem;">Prośba o dodanie do grupy wsparcia</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size:2rem;line-height:1;color:#fff;opacity:0.8;">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="overflow:hidden;border-radius:0;">
+      <div class="modal-header" style="border-bottom:0;padding-bottom:0;background:none;height:0;min-height:0;padding:0;margin:0;"></div>
+      <div style="width:100%;display:flex;justify-content:center;align-items:center;padding:18px 0 10px 0;background:#fff;">
+        <button type="button" class="button button-primary button-ujarak" data-dismiss="modal" style="min-width:120px;font-size:1.08rem;">Zamknij</button>
       </div>
-      <div class="modal-body" style="padding-top:0;">
-        <form id="supportGroupForm" style="max-width:400px;margin:auto;">
-          <div class="form-group">
-            <label for="wsparcieName" style="font-weight:500;color:#222;">Imię / nick</label>
-            <input type="text" class="form-control" id="wsparcieName" name="wsparcieName" placeholder="Wpisz imię lub nick" style="border-radius:8px;border:2px solid #6689ff;">
-          </div>
-          <div class="form-group">
-            <label for="wsparciePhone" style="font-weight:500;color:#222;">Numer telefonu</label>
-            <input type="text" class="form-control" id="wsparciePhone" name="wsparciePhone" placeholder="Wpisz swój numer" style="border-radius:8px;border:2px solid #6689ff;">
-          </div>
-          <button type="submit" class="button button-primary button-ujarak" style="width:100%;margin-top:18px;font-size:1.1rem;">Wyślij</button>
-        </form>
+      <div class="modal-body" style="padding:0;overflow:hidden;">
+        <iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0" style="border:none;overflow:hidden;display:block;"></iframe>
       </div>
     </div>
   </div>
@@ -374,29 +362,51 @@
     display: block;
     margin: 0 auto;
   }
-  /* Modal GRUPA WSPARCIA - responsywny na wszystkie urządzenia */
-  @media (max-width: 991px) {
+  /* Modal GRUPA WSPARCIA - responsywny na wszystkie urządzenia, bez zaokrąglonych narożników */
+  #modalWsparcie .modal-dialog {
+    max-width: 650px;
+    width: 100%;
+    margin: 30px auto;
+  }
+  #modalWsparcie .modal-content {
+    border-radius: 0 !important;
+    overflow: hidden;
+    padding: 0;
+  }
+  #modalWsparcie .modal-body {
+    padding: 0;
+    overflow: hidden;
+  }
+  #modalWsparcie iframe {
+    width: 100%;
+    height: 600px;
+    min-height: 600px;
+    border: none;
+    overflow: hidden;
+    display: block;
+  }
+  @media (max-width: 767px) {
     #modalWsparcie .modal-dialog {
-      max-width: 98vw;
-      width: 98vw;
-      margin: 0 auto;
+      max-width: 100vw;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
     }
     #modalWsparcie .modal-content {
-      min-height: 60vh;
+      border-radius: 0 !important;
+      min-height: 100vh;
+      height: 100vh;
+    }
+    #modalWsparcie .modal-body {
+      min-height: 100vh;
+      height: 100vh;
+      padding: 0;
     }
     #modalWsparcie iframe {
-      min-height: 400px;
-      height: 60vh;
-      width: 100%;
-    }
-  }
-  @media (min-width: 992px) {
-    #modalWsparcie .modal-dialog {
-      max-width: 800px;
-    }
-    #modalWsparcie iframe {
-      min-height: 500px;
-      height: 650px;
+      min-height: 100vh;
+      height: 100vh;
+      width: 100vw;
     }
   }
   @media (max-width: 767px) {
@@ -1003,7 +1013,15 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       </section>
 
       <!-- Contact information-->
-      <section class="section section-sm bg-default" id="contact-info">
+      <section class="section section-sm bg-gray-15" id="contact-info" style="background:#f5f6fa;">
+       <article class="title-classic">
+            <div class="title-classic-title">
+              <h3 class="contact-title-centered">Skontaktuj się z Nami</h3>
+            </div>
+            
+          </article>
+      
+      
         <div class="container">
           <div class="row row-30 justify-content-center">
             <div class="col-sm-8 col-md-6 col-lg-4">
@@ -1043,13 +1061,10 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       <section class="section section-sm section-last bg-default text-left" id="contacts">
         <div class="container">
           <article class="title-classic">
-            <div class="title-classic-title">
-              <h3>Formularz Kontaktowy</h3>
+            <div class="title-classic-title" style="display:flex;justify-content:center;align-items:center;width:100%;">
+              <h3 style="text-align:center;">Napisz do Nas<br><br></h3>
             </div>
-            <div class="title-classic-text">
-              <p>Jeśli masz pytania, wyślij do Nas wiadomość, a wkrótce się odezwiemy.</p>
-              <br>
-            </div>
+            
           </article>
           <div class="form-scroll-mobile" style="width:100%;max-width:700px;margin:auto;">
             <div class="form-scroll-inner" style="background:#fff;">
