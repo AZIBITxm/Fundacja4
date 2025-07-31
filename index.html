@@ -1052,22 +1052,58 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             </div>
           </article>
           <div class="form-scroll-mobile" style="width:100%;max-width:700px;margin:auto;">
-            <div class="form-scroll-inner">
-              <iframe
-                id="JotFormIFrame-252054996297370"
-                title="Kontakt"
-                onload="window.parent.scrollTo(0,0)"
-                allowtransparency="true"
-                allow="geolocation; microphone; camera; fullscreen; payment"
-                src="https://form.jotform.com/252054996297370"
-                frameborder="0"
-                style="min-width:100%;max-width:100%;height:1500px;border:none;"
-                scrolling="yes"
-              >
-              </iframe>
-              <div style="text-align:center;font-size:1rem;color:#b71c1c;margin-top:8px;">Przewiń w dół, aby zobaczyć cały formularz</div>
-              <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
-              <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-252054996297370']", "https://form.jotform.com/")</script>
+            <div class="form-scroll-inner" style="background:#fff;">
+              <form id="staticForm" action="https://api.staticforms.xyz/submit" method="POST" style="max-width:480px;margin:auto;">
+                <input type="hidden" name="apiKey" value="sf_87f1agn5ja1l48f0l8kd1l10">
+                <input type="hidden" name="replyTo" value="@">
+                <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+                <div class="form-group">
+                  <label for="name">Imię:</label>
+                  <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="message">Wiadomość:</label>
+                  <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+                </div>
+                <div id="staticFormMsg" style="display:none;margin-bottom:12px;font-weight:500;"></div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <div class="g-recaptcha" data-sitekey="6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23"></div>
+                </div>
+                <button type="submit" class="button button-primary button-ujarak" style="width:100%;margin-top:8px;">Wyślij</button>
+                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+              </form>
+              <script>
+                document.getElementById('staticForm').addEventListener('submit', async function(e) {
+                  e.preventDefault();
+                  var form = this;
+                  var msg = document.getElementById('staticFormMsg');
+                  msg.style.display = 'none';
+                  msg.textContent = '';
+                  var formData = new FormData(form);
+                  try {
+                    const response = await fetch(form.action, {
+                      method: 'POST',
+                      body: formData
+                    });
+                    if (response.ok) {
+                      msg.textContent = 'Wiadomość została wysłana!';
+                      msg.style.color = '#388e3c';
+                      form.reset();
+                    } else {
+                      msg.textContent = 'Wystąpił błąd podczas wysyłania.';
+                      msg.style.color = '#b71c1c';
+                    }
+                  } catch (err) {
+                    msg.textContent = 'Wystąpił błąd podczas wysyłania.';
+                    msg.style.color = '#b71c1c';
+                  }
+                  msg.style.display = 'block';
+                });
+              </script>
             </div>
           </div>
           <style>
