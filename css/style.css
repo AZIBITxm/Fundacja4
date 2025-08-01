@@ -70,24 +70,24 @@
 	padding-bottom: 0 !important;
   }
 }
-/* Wymuszenie koloru czcionki w menu na czarny po scrolowaniu (body.navbar-scrolled) */
-body.navbar-scrolled .rd-navbar .rd-nav-link,
-body.navbar-scrolled .rd-navbar .rd-nav-link:visited,
-body.navbar-scrolled .rd-navbar .rd-nav-link:active,
-body.navbar-scrolled .rd-navbar .rd-nav-link:hover,
-body.navbar-scrolled .rd-navbar .rd-nav-link:focus {
-  color: #111 !important;
-  text-shadow: none !important;
-}
-/* Menu: biała czcionka na górze i po scrolowaniu */
+
+/* Kolor czcionki w menu:
+   - domyślnie biały
+   - po scrolowaniu (body.navbar-scrolled) czarny
+   - na mobile zawsze czarny
+*/
 .rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
   color: #fff !important;
 }
-
 @media (max-width: 991px) {
   .rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
 	color: #111 !important;
   }
+}
+/* Wymuszenie koloru czcionki w menu na czarny po scrolowaniu (desktop) */
+body.navbar-scrolled .rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
+  color: #111 !important;
+  text-shadow: none !important;
 }
 
 .rd-navbar.rd-navbar-classic.navbar-scrolled .rd-navbar-nav .rd-nav-link {
