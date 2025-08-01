@@ -1014,13 +1014,24 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
 
       <!-- Contact information-->
       <section class="section section-sm bg-gray-15" id="contact-info" style="background:#f5f6fa;">
-       <article class="title-classic">
-            <div class="title-classic-title">
-              <h3 class="contact-title-centered">Skontaktuj się z Nami</h3>
+<article class="title-classic">
+            <div class="title-classic-title" style="display:flex;justify-content:center;align-items:center;width:100%;">
+              <h3 class="contact-title-desktop-shift" style="text-align:center;">Skontaktuj się z Nami</h3>
             </div>
             
           </article>
-      
+<style>
+  @media (min-width: 992px) {
+    .contact-title-desktop-shift {
+      margin-left: -30px !important;
+    }
+  }
+  @media (max-width: 991px) {
+    .contact-title-desktop-shift {
+      margin-left: 0 !important;
+    }
+  }
+</style>
       
         <div class="container">
           <div class="row row-30 justify-content-center">

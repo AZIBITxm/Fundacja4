@@ -1,3 +1,8 @@
+/* Mniejszy nagłówek w sekcji kontaktowej */
+#contact-info h2 {
+  font-size: 1.45rem;
+  font-weight: 500;
+}
 /* Ciemnoszara ramka dla dużych banerów kontaktowych */
 .box-contacts {
   border: 1px solid #d8d7d7 !important;
