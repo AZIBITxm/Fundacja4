@@ -25,6 +25,35 @@
       }
     </style>
     <style>
+      /* Animacja i efekt hover dla select w banerze 1 */
+      #szybkaKwota, #abonamentKwota {
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transition: box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
+        cursor: pointer;
+      }
+      #szybkaKwota:hover, #szybkaKwota:focus,
+      #abonamentKwota:hover, #abonamentKwota:focus {
+        box-shadow: 0 2px 16px 0 rgba(255,255,255,0.18);
+        transform: scale(1.04);
+        border: none !important;
+        color: #fff;
+      }
+      #szybkaKwota option, #abonamentKwota option {
+        cursor: pointer;
+        transition: background 0.25s, color 0.25s, padding 0.25s;
+        border: none !important;
+      }
+      #szybkaKwota option:hover, #szybkaKwota option:focus,
+      #abonamentKwota option:hover, #abonamentKwota option:focus {
+        background: #6689ff !important;
+        color: #fff !important;
+        padding-right: 28px !important;
+        border: none !important;
+      }
+    </style>
+    <style>
       .rd-nav-link {
         text-shadow: 1px 2px 6px rgba(0,0,0,0.55);
       }
@@ -168,7 +197,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Wsparcie psychologa</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Prowadzimy konsultacje indywidualne, terapie grupowe oraz programy wsparcia dedykowane poszczególnym grupom.</p><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Prowadzimy konsultacje indywidualne, terapie grupowe oraz programy wsparcia dedykowane poszczególnym grupom.</p><a class="button button-primary button-ujarak" href="#services" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -176,7 +205,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Budowanie świadomości</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Program cyfrowych uzależnień, oraz inne programy budujące świadomość i mechanizmy obronne dla zafrożeń dzisiajszej cywilizacji.</p><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Program cyfrowych uzależnień, oraz inne programy budujące świadomość i mechanizmy obronne dla zafrożeń dzisiajszej cywilizacji.</p><a class="button button-primary button-ujarak" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -184,7 +213,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Nie jesteś Sam</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wsparcie dla rodziców samotnie wychowujących dzieci, oraz doświadczających alenacji rodzicielskiej</p><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wsparcie dla rodziców samotnie wychowujących dzieci, oraz doświadczających alenacji rodzicielskiej</p><a class="button button-primary button-ujarak" id="slider3-btn" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -192,7 +221,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0"> Dołącz do nas </h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Organizujemy wydarzenia integracyjne, spotkania tematyczne oraz projekty społeczne, które mają na celu budowanie więzi i wzmacnianie lokalnych społeczności.</p><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Organizujemy wydarzenia integracyjne, spotkania tematyczne oraz projekty społeczne, które mają na celu budowanie więzi i wzmacnianie lokalnych społeczności.</p><a class="button button-primary button-ujarak" href="#modalCta" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -200,7 +229,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Wsparcie dla weteranów</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wspieramy weteranów oraz ich rodziny poprzez dedykowane programy wsparcia, konsultacje oraz działania na rzecz poprawy jakości życia po służbie.</p><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wspieramy weteranów oraz ich rodziny poprzez dedykowane programy wsparcia, konsultacje oraz działania na rzecz poprawy jakości życia po służbie.</p><a class="button button-primary button-ujarak" id="slider4-btn" href="#" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -212,6 +241,56 @@
             <div class="swiper-pagination"></div>
           </div>
         </section>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Obsługa płynnego przewijania dla wszystkich przycisków PRZEJDŹ w sliderze
+            var sliderBtns = document.querySelectorAll('.swiper-slide .button-ujarak');
+            sliderBtns.forEach(function(btn, idx) {
+              btn.addEventListener('click', function(e) {
+                // Slider 3 (indeks 2) - specjalna obsługa
+                if (btn.id === 'slider3-btn') {
+                  e.preventDefault();
+                  var target = document.getElementById('projects');
+                  if (target) {
+                    var y = target.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                  // Wybierz zakładkę 2
+                  var tab2 = document.querySelector('#tabs-6 .nav-link[href="#tabs-6-2"]');
+                  if (tab2) {
+                    setTimeout(function() { tab2.click(); }, 400);
+                  }
+                  return;
+                }
+                // Slider 4 (indeks 3) - wywołanie modala WhatsForm
+                if (btn.id === 'slider4-btn') {
+                  e.preventDefault();
+                  var modal = document.getElementById('modalWsparcie');
+                  if (modal) {
+                    if (typeof window.jQuery === 'function' && window.jQuery(modal).modal) {
+                      window.jQuery(modal).modal('show');
+                    } else {
+                      modal.classList.add('show');
+                      modal.style.display = 'block';
+                      modal.setAttribute('aria-modal', 'true');
+                      modal.removeAttribute('aria-hidden');
+                    }
+                  }
+                  return;
+                }
+                var href = btn.getAttribute('href');
+                if (href && href.startsWith('#') && href.length > 1 && !btn.hasAttribute('data-toggle')) {
+                  var target = document.getElementById(href.substring(1));
+                  if (target) {
+                    e.preventDefault();
+                    var y = target.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  }
+                }
+              });
+            });
+          });
+        </script>
 
       </div>
       <!-- See all services-->
@@ -239,25 +318,61 @@
                     <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;">
                       
                       <div id="customCalendar" style="margin-bottom:0;margin-top:0;"></div>
-<a class="button button-primary button-ujarak" href="#modalJotform" data-toggle="modal" style="margin-top:8px;padding:10px 32px;font-size:1.08rem;line-height:1.2;border:2px solid #6689ff;background:#6689ff;color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(102,137,255,0.08);transition:all 0.25s cubic-bezier(.4,0,.2,1);">umów spotkanie</a>
- 
-</style>
+<a class="button button-primary button-ujarak" href="#modalSpotkanie" data-toggle="modal" style="margin-top:8px;padding:10px 32px;font-size:1.08rem;line-height:1.2;border:2px solid #6689ff;background:#6689ff;color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(102,137,255,0.08);transition:all 0.25s cubic-bezier(.4,0,.2,1);">umów spotkanie</a>
 
-      <div class="modal fade" id="modalJotform" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header" style="border-bottom:0;padding-bottom:0;">
-              <!-- Nagłówek usunięty na życzenie użytkownika -->
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size:2rem;line-height:1;">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body" style="padding-top:0;">
-              <iframe src="https://form.jotform.com/252093972951364" width="100%" height="650" frameborder="0" style="border:none;overflow:auto;"></iframe>
-            </div>
-          </div>
-        </div>
+<!-- Modal UMÓW SPOTKANIE -->
+<div class="modal fade" id="modalSpotkanie" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="overflow:hidden;border-radius:0;">
+      <div class="modal-header" style="border-bottom:0;padding-bottom:0;background:none;height:0;min-height:0;padding:0;margin:0;"></div>
+      <div class="modal-body" style="padding:32px 24px 18px 24px;overflow:hidden;text-align:center;">
+        <h3 style="font-weight:700;color:#6689ff;margin-bottom:18px;font-size:1.35rem;">Dostępność konsultantów</h3>
+        <p style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:18px;">W dniach zaznaczonych w kalendarzu kolorem niebieskim nasi konsultanci są do Państwa dyspozycji w godzinach <br> 17:00 - 19:00</p>
+        <h5 style="font-weight:600;color:#222;margin-bottom:10px;font-size:1.08rem;">Inny termin?</h5>
+        <p style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:18px;">W celu umówienia innej daty prosimy wysłać wiadomość i zaproponować inny termin. Odpowiemy najszybciej jak to możliwe.</p>
+        <button type="button" class="button button-primary button-ujarak" data-dismiss="modal" style="min-width:120px;font-size:1.08rem;">OK</button>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var okBtn = document.querySelector('#modalSpotkanie .button[data-dismiss="modal"]');
+    if (okBtn) {
+      okBtn.addEventListener('click', function() {
+        // Zamknij modal (Bootstrap lub fallback)
+        var modal = document.getElementById('modalSpotkanie');
+        if (window.jQuery && window.jQuery(modal).modal) {
+          window.jQuery(modal).modal('hide');
+        } else {
+          modal.classList.remove('show');
+          modal.style.display = 'none';
+          modal.setAttribute('aria-hidden', 'true');
+          modal.removeAttribute('aria-modal');
+        }
+        // Przewiń do ostatniej sekcji z formularzem kontaktowym
+        var sections = document.querySelectorAll('section');
+        var lastSection = null;
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (sections[i].querySelector('form')) {
+            lastSection = sections[i];
+            break;
+          }
+        }
+        if (!lastSection) {
+          // fallback: sekcja z id contact-info
+          lastSection = document.getElementById('contact-info');
+        }
+        if (lastSection) {
+          setTimeout(function() {
+            var y = lastSection.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }, 350);
+        }
+      });
+    }
+  });
+</script>
       </div>
+    </div>
+  </div>
+</div>
                       <script>
                         function renderCalendar(containerId) {
                           const container = document.getElementById(containerId);
@@ -321,7 +436,7 @@
                 <div class="col-sm-6 wow fadeInRight" data-wow-delay=".2s">
                   <article class="box-icon-modern box-icon-modern-2">
                     <div class="box-icon-modern-icon linearicons-envelope"></div>
-                    <h5 class="box-icon-modern-title"><a href="#modalCta" data-toggle="modal">NAPISZ<br>DO NAS</a></h5>
+<h5 class="box-icon-modern-title"><a href="#modalCta">NAPISZ<br>DO NAS</a></h5>
                     <div class="box-icon-modern-decor"></div>
                     <p class="box-icon-modern-text">Skorzystaj z naszego formularza kontaktowego.</p>
                   </article>
@@ -708,53 +823,7 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
       </section>
 
 
-      <!-- Meet The Team-->
-      <section class="section section-sm section-fluid bg-default" id="team">
-        <div class="container-fluid">
-          <h2>Nasz Zespół</h2>
-          <div class="title-classic-text" style="margin-bottom:18px;">
-            <div style="width:48px;height:4px;background:#6689ff;border-radius:2px;margin:0 auto 18px auto;"></div>
-          </div>
-          <div class="row row-sm row-30 justify-content-center">
-            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">
-              <!-- Team Classic-->
-              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/Postacie/Adam kopia.png" alt="Adam Zanders" width="420" height="424" style="filter:none;"/></a>
-                <div class="team-classic-caption">
-                  <h4 class="team-classic-name"><a href="#">Adam Zanders</a></h4>
-                  <p class="team-classic-status">Prezes Fundacji</p>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".1s">
-              <!-- Team Classic-->
-              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/Postacie/Ania.jpg" alt="Anna Zychowicz" width="420" height="424" style="filter:none;"/></a>
-                <div class="team-classic-caption">
-                  <h4 class="team-classic-name"><a href="#">Anna Zychowicz</a></h4>
-                  <p class="team-classic-status">Współzałożycielka fundacji</p>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".2s">
-              <!-- Team Classic-->
-              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/team-13-420x424.jpg" alt="" width="420" height="424"/></a>
-                <div class="team-classic-caption">
-                  <h4 class="team-classic-name"><a href="#">Krzysztof Obolewski</a></h4>
-                  <p class="team-classic-status">Kancelaria Prawna</p>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".3s">
-              <!-- Team Classic-->
-              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/team-14-420x424.jpg" alt="" width="420" height="424"/></a>
-                <div class="team-classic-caption">
-                  <h4 class="team-classic-name"><a href="#">Ireneusz Ząbek</a></h4>
-                  <p class="team-classic-status">Kancelaria Finansowa</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
           <!-- Latest Projects-->
       <!-- Sekcja ukryta: Latest Projects (W🌍RLD Market) -->
@@ -903,74 +972,189 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
 
       <!-- Pricing-->
       <!-- Sekcja ukryta: Pricing -->
-      <section class="section section-sm section-bottom-70 section-fluid bg-default">
+      <section class="section section-sm section-bottom-70 section-fluid bg-default" id="pricing" style="background:#f5f6fa;">
         <div class="container">
-          <h2>Pricing</h2>
+
           <div class="row row-30 justify-content-center">
             <div class="col-md-6 col-lg-5 col-xl-4">
               <div class="box-pricing box-pricing-black">
                 <div class="box-pricing-body">
-                  <h5 class="box-pricing-title">basic</h5>
-                  <h3 class="box-pricing-price">$500.00</h3>
-                  <div class="box-pricing-time">starting at</div>
-                  <div class="box-pricing-divider">
-                    <div class="divider"></div><span>Basic</span>
-                  </div>
-                  <ul class="box-pricing-list">
-                    <li class="active">Concept development</li>
-                    <li class="active">UI design</li>
-                    <li>Configuration management</li>
-                    <li>Software quality assurance</li>
-                    <li>App integration</li>
-                  </ul>
+                  <h5 class="box-pricing-title">Szybka Wpłata</h5>
+                  <div style="margin-bottom:12px;">
+        <select id="szybkaKwota" name="szybkaKwota" style="padding:4px 12px;font-size:2rem;border-radius:0;border:none;border-bottom:2.5px solid #fff;background:transparent;color:#fff;transition:box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 0 0 #fff;">
+          <option value="5" style="background:#222;color:#fff;text-align:right;padding-right:18px;">5 zł</option>
+          <option value="20" style="background:#222;color:#fff;text-align:right;padding-right:18px;">20 zł</option>
+          <option value="50" style="background:#222;color:#fff;text-align:right;padding-right:18px;">50 zł</option>
+          <option value="100" style="background:#222;color:#fff;text-align:right;padding-right:18px;">100 zł</option>
+          <option value="150" style="background:#222;color:#fff;text-align:right;padding-right:18px;">150 zł</option>
+        </select>
+      </div>
+      <div class="box-pricing-time">Dziękujemy za Wsparcie!</div>
+                <div class="box-pricing-divider">
+        <div class="divider"></div><span>Basic</span>
+      </div>
+      <ul class="box-pricing-list">
+        <li class="active">wybierz dowolną kwotę</li>
+        <li class="active">kliknij w Przejdź do płatności</li>
+        <li class="active">wybierz metodę płatności</li>
+        <li class="active">Zatwierdź operację</li>
+        <li class="active">Na podany adres email dostaniesz potwierdzenie transakcji</li>
+      </ul>
                 </div>
-                <div class="box-pricing-button"><a class="button button-lg button-block button-gray-4" href="https://donate.stripe.com/28EfZg5dwdQd7bT2Zd9bO01" target="_blank" rel="noopener">Get started</a></div>
+<div class="box-pricing-button"><a class="button button-lg button-block button-gray-4" id="szybkaPayBtn" href="#" rel="noopener">PRZEJDŹ DO PŁATNOŚCI</a></div>
+                <!-- brak badge, przywrócone oryginalne tło banera 1 -->
               </div>
             </div>
             <div class="col-md-6 col-lg-5 col-xl-4">
               <div class="box-pricing box-pricing-black box-pricing-popular">
                 <div class="box-pricing-body">
-                  <h5 class="box-pricing-title">Optimal</h5>
-                  <h3 class="box-pricing-price">$800.00</h3>
-                  <div class="box-pricing-time">starting at</div>
-                  <div class="box-pricing-divider">
-                    <div class="divider"></div><span>Optimal</span>
-                  </div>
-                  <ul class="box-pricing-list">
-                    <li class="active">Concept development</li>
-                    <li class="active">UI design</li>
-                    <li class="active">Configuration management</li>
-                    <li class="active">Software quality assurance</li>
-                    <li>App integration</li>
-                  </ul>
+                  <h5 class="box-pricing-title">Abonament</h5>
+                  <div style="margin-bottom:12px;">
+        <select id="abonamentKwota" name="abonamentKwota" style="padding:4px 12px;font-size:2rem;border-radius:0;border:none;border-bottom:2.5px solid #fff;background:transparent;color:#fff;transition:box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 0 0 #fff;">
+          <option value="20" style="background:#222;color:#fff;text-align:right;padding-right:18px;">20 zł</option>
+          <option value="50" style="background:#222;color:#fff;text-align:right;padding-right:18px;">50 zł</option>
+          <option value="100" style="background:#222;color:#fff;text-align:right;padding-right:18px;">100 zł</option>
+          <option value="150" style="background:#222;color:#fff;text-align:right;padding-right:18px;">150 zł</option>
+        </select>
+      </div>
+      <div class="box-pricing-time">Dziękujemy za Wsparcie!</div>
+      <div class="box-pricing-divider">
+        <div class="divider"></div><span>Optimal</span>
+      </div>
+      <ul class="box-pricing-list">
+        <li class="active">wybierz dowolną kwotę</li>
+        <li class="active">kliknij w Przejdź do płatności</li>
+        <li class="active">wybierz metodę płatności</li>
+        <li class="active">Zatwierdź operację</li>
+        <li class="active">Na podany adres email dostaniesz potwierdzenie transakcji</li>
+        <li class="active">W każdej chwili możesz zrezygnować klikając w link w przesłanym do Ciebie mailu.</li>
+      
+      </ul>
                 </div>
-                <div class="box-pricing-button"><a class="button button-lg button-block button-primary" href="https://donate.stripe.com/28EfZg5dwdQd7bT2Zd9bO01" target="_blank" rel="noopener">Get started</a></div>
-                <div class="box-pricing-badge">popular</div>
+                <div class="box-pricing-button"><a class="button button-lg button-block button-primary" id="abonamentPayBtn" href="#" rel="noopener">PRZEJDŹ DO PŁATNOŚCI</a></div>
+                <div class="box-pricing-badge">popularny</div>
               </div>
             </div>
             <div class="col-md-6 col-lg-5 col-xl-4">
               <div class="box-pricing box-pricing-black">
                 <div class="box-pricing-body">
-                  <h5 class="box-pricing-title">Ultimate</h5>
-                  <h3 class="box-pricing-price">$1200.00</h3>
-                  <div class="box-pricing-time">starting at</div>
+                  <h5 class="box-pricing-title">Dowolna kwota</h5>
+                  <h3 class="box-pricing-price">____,__ zł</h3>
+                  <div class="box-pricing-time">DZIĘKUEMY ZA WSPARCIE!</div>
                   <div class="box-pricing-divider">
                     <div class="divider"></div><span>Ultimate</span>
                   </div>
                   <ul class="box-pricing-list">
-                    <li class="active">Concept development</li>
-                    <li class="active">UI design</li>
-                    <li class="active">Configuration management</li>
-                    <li class="active">Software quality assurance</li>
-                    <li class="active">App integration</li>
+                    <li class="active">kliknij w Przejdź do płatności</li>
+                    <li class="active">wpisz dowolną kwotę</li>
+                    <li class="active">wybierz metodę płatności</li>
+                    <li class="active">Zatwierdź operację</li>
+                    <li class="active">Na podany adres email dostaniesz potwierdzenie transakcji</li>
                   </ul>
                 </div>
-                <div class="box-pricing-button"><a class="button button-lg button-block button-gray-4" href="https://donate.stripe.com/28EfZg5dwdQd7bT2Zd9bO01" target="_blank" rel="noopener">Get started</a></div>
+                <div class="box-pricing-button"><a class="button button-lg button-block button-gray-4" id="getStartedUltimateBtn" href="#">Przejdż do płatności</a></div>
               </div>
             </div>
           </div>
         </div>
       </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ultimate banner
+    var ultimateBtn = document.getElementById('getStartedUltimateBtn');
+    if (ultimateBtn) {
+      ultimateBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open('https://buy.stripe.com/fZu8wO6hAcM99k18jx9bO02', '_blank');
+      });
+    }
+
+    // Abonament banner
+    var abonamentBtn = document.getElementById('abonamentPayBtn');
+    var kwotaSelect = document.getElementById('abonamentKwota');
+    if (abonamentBtn && kwotaSelect) {
+      abonamentBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var kwota = kwotaSelect.value;
+        if (kwota === '20') {
+          window.open('https://buy.stripe.com/7sY5kCbBU4fD7bTarF9bO03', '_blank');
+        } else {
+          // nic nie rób
+        }
+      });
+    }
+
+    // Szybka Wpłata banner
+    var szybkaBtn = document.getElementById('szybkaPayBtn');
+    var szybkaKwota = document.getElementById('szybkaKwota');
+    if (szybkaBtn && szybkaKwota) {
+      szybkaBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var kwota = szybkaKwota.value;
+        if (kwota === '5') {
+          window.open('https://donate.stripe.com/28EfZg5dwdQd7bT2Zd9bO01', '_blank');
+        } else if (kwota === '50') {
+          window.open('https://buy.stripe.com/eVq3cu6hA27vao50R59bO00', '_blank');
+        } else {
+          // nic nie rób
+        }
+      });
+    }
+  });
+</script>
+
+
+<!-- Meet The Team-->
+      <section class="section section-sm section-fluid bg-default" id="team">
+        <div class="container-fluid">
+          <h2>Zarząd</h2>
+          <div class="title-classic-text" style="margin-bottom:18px;">
+            <div style="width:48px;height:4px;background:#6689ff;border-radius:2px;margin:0 auto 18px auto;"></div>
+          </div>
+          <div class="row row-sm row-30 justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">
+              <!-- Team Classic-->
+              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/Postacie/Adam kopia.png" alt="Adam Zanders" width="420" height="424" style="filter:none;"/></a>
+                <div class="team-classic-caption">
+                  <h4 class="team-classic-name"><a href="#">Adam Zanders</a></h4>
+                  <p class="team-classic-status">Prezes Fundacji</p>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".1s">
+              <!-- Team Classic-->
+              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/Postacie/Ania.jpg" alt="Anna Zychowicz" width="420" height="424" style="filter:none;"/></a>
+                <div class="team-classic-caption">
+                  <h4 class="team-classic-name"><a href="#">Anna Zychowicz</a></h4>
+                  <p class="team-classic-status">Współzałożycielka fundacji</p>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".2s" style="display:none;">
+              <!-- Team Classic-->
+              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/team-13-420x424.jpg" alt="" width="420" height="424"/></a>
+                <div class="team-classic-caption">
+                  <h4 class="team-classic-name"><a href="#">Krzysztof Obolewski</a></h4>
+                  <p class="team-classic-status">Kancelaria Prawna</p>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".3s" style="display:none;">
+              <!-- Team Classic-->
+              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/team-14-420x424.jpg" alt="" width="420" height="424"/></a>
+                <div class="team-classic-caption">
+                  <h4 class="team-classic-name"><a href="#">Ireneusz Ząbek</a></h4>
+                  <p class="team-classic-status">Kancelaria Finansowa</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
 
       <!-- Latest blog posts-->
       <!-- Sekcja ukryta: Latest blog posts -->

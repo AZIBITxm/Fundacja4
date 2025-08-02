@@ -1,3 +1,31 @@
+/* Animacje i styl prestige dla selecta w banerze 2 */
+#abonamentKwota {
+  padding: 4px 12px;
+  font-size: 2rem;
+  border-radius: 0;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  box-shadow: 0 2px 18px 0 rgba(102,137,255,0.08);
+  transition: box-shadow 0.35s cubic-bezier(.4,0,.2,1), border-color 0.25s cubic-bezier(.4,0,.2,1), background 0.25s cubic-bezier(.4,0,.2,1), color 0.25s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+}
+#abonamentKwota:hover, #abonamentKwota:focus {
+  border-color: #fff;
+  box-shadow: 0 0 12px 2px #fff;
+  background: rgba(102,137,255,0.08);
+  color: #fff;
+  outline: none;
+  transform: scale(1.04);
+  border-bottom: 3px solid #fff;
+}
+#abonamentKwota:active {
+  background: rgba(102,137,255,0.18);
+}
+#abonamentKwota option {
+  background: #222;
+  color: #fff;
+}
 /* Ciemnoszara ramka dla dużych banerów kontaktowych */
 .box-contacts {
   border: 1px solid #d8d7d7 !important;
