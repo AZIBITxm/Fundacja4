@@ -13,52 +13,6 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modal-jotform-mobile.css">
-    <style>
-      /* Duży odstęp przed WSZYSTKIMI banerami .clients-classic na wszystkich rozdzielczościach */
-      .row-30 .clients-classic {
-        margin-top: 60px !important;
-      }
-      @media (max-width: 767px) {
-        .row-30 .clients-classic {
-          margin-top: 48px !important;
-        }
-      }
-    </style>
-    <style>
-      /* Animacja i efekt hover dla select w banerze 1 */
-      #szybkaKwota, #abonamentKwota {
-        border: none !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        transition: box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
-        cursor: pointer;
-      }
-      #szybkaKwota:hover, #szybkaKwota:focus,
-      #abonamentKwota:hover, #abonamentKwota:focus {
-        box-shadow: 0 2px 16px 0 rgba(255,255,255,0.18);
-        transform: scale(1.04);
-        border: none !important;
-        color: #fff;
-      }
-      #szybkaKwota option, #abonamentKwota option {
-        cursor: pointer;
-        transition: background 0.25s, color 0.25s, padding 0.25s;
-        border: none !important;
-      }
-      #szybkaKwota option:hover, #szybkaKwota option:focus,
-      #abonamentKwota option:hover, #abonamentKwota option:focus {
-        background: #6689ff !important;
-        color: #fff !important;
-        padding-right: 28px !important;
-        border: none !important;
-      }
-    </style>
-    <style>
-      .rd-nav-link {
-        text-shadow: 1px 2px 6px rgba(0,0,0,0.55);
-      }
-    </style>
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
   </head>
   <body>
     <!-- Modal startowy z logo i flagami -->
@@ -279,6 +233,40 @@
                   }
                   return;
                 }
+                // Slider "Dołącz do nas" (indeks 3) - przewiń do baneru GRUPA WSPARCIA
+                var parentSlide = btn.closest('.swiper-slide');
+                if (parentSlide) {
+                  var h1 = parentSlide.querySelector('h1');
+                  if (h1 && h1.textContent && h1.textContent.trim().toLowerCase().includes('dołącz do nas')) {
+                    e.preventDefault();
+                    var wsparcieBanner = document.getElementById('openWsparcieModalLink');
+                    if (wsparcieBanner) {
+                      var parent = wsparcieBanner.closest('.box-icon-modern');
+                      if (parent) {
+                        var y = parent.getBoundingClientRect().top + window.pageYOffset - 40;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                      } else {
+                        var y = wsparcieBanner.getBoundingClientRect().top + window.pageYOffset - 40;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                      }
+                      // Po przewinięciu otwórz modal wsparcia
+                      setTimeout(function() {
+                        var modal = document.getElementById('modalWsparcie');
+                        if (modal) {
+                          if (typeof window.jQuery === 'function' && window.jQuery(modal).modal) {
+                            window.jQuery(modal).modal('show');
+                          } else {
+                            modal.classList.add('show');
+                            modal.style.display = 'block';
+                            modal.setAttribute('aria-modal', 'true');
+                            modal.removeAttribute('aria-hidden');
+                          }
+                        }
+                      }, 600);
+                    }
+                    return;
+                  }
+                }
                 var href = btn.getAttribute('href');
                 if (href && href.startsWith('#') && href.length > 1 && !btn.hasAttribute('data-toggle')) {
                   var target = document.getElementById(href.substring(1));
@@ -437,7 +425,34 @@
                 <div class="col-sm-6 wow fadeInRight" data-wow-delay=".2s">
                   <article class="box-icon-modern box-icon-modern-2">
                     <div class="box-icon-modern-icon linearicons-envelope"></div>
-<h5 class="box-icon-modern-title"><a href="#modalCta">NAPISZ<br>DO NAS</a></h5>
+<h5 class="box-icon-modern-title"><a href="#modalCta" id="scrollToContactBtn">NAPISZ<br>DO NAS</a></h5>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var scrollBtn = document.getElementById('scrollToContactBtn');
+    if(scrollBtn) {
+      scrollBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Znajdź ostatnią sekcję z formularzem kontaktowym
+        var sections = document.querySelectorAll('section');
+        var lastSection = null;
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (sections[i].querySelector('form')) {
+            lastSection = sections[i];
+            break;
+          }
+        }
+        if (!lastSection) {
+          // fallback: sekcja z id contact-info
+          lastSection = document.getElementById('contact-info');
+        }
+        if (lastSection) {
+          var y = lastSection.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    }
+  });
+</script>
                     <div class="box-icon-modern-decor"></div>
                     <p class="box-icon-modern-text">Skorzystaj z naszego formularza kontaktowego.</p>
                   </article>
@@ -445,17 +460,95 @@
                 <div class="col-sm-6 wow fadeInRight" data-wow-delay=".3s">
                   <article class="box-icon-modern box-icon-modern-2">
                     <div class="box-icon-modern-icon linearicons-users"></div>
-<h5 class="box-icon-modern-title"><a href="#modalWsparcie" data-toggle="modal">GRUPA<br>WSPARCIA</a></h5>
+<h5 class="box-icon-modern-title"><a href="#modalWsparcie" data-toggle="modal" id="openWsparcieModalLink">GRUPA<br>WSPARCIA</a></h5>
 <!-- Modal GRUPA WSPARCIA (WhatsForm) -->
 <div class="modal fade" id="modalWsparcie" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="overflow:hidden;border-radius:0;">
+    <div class="modal-content" style="overflow:hidden;border-radius:0;max-width:540px;margin:auto;">
       <div class="modal-header" style="border-bottom:0;padding-bottom:0;background:none;height:0;min-height:0;padding:0;margin:0;"></div>
-      <div style="width:100%;display:flex;justify-content:center;align-items:center;padding:18px 0 10px 0;background:#fff;">
-        <button type="button" class="button button-primary button-ujarak" data-dismiss="modal" style="min-width:120px;font-size:1.08rem;">Zamknij</button>
-      </div>
-      <div class="modal-body" style="padding:0;overflow:hidden;">
-        <iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0" style="border:none;overflow:hidden;display:block;"></iframe>
+      <div class="modal-body" style="padding:32px 24px 18px 24px;overflow:hidden;text-align:left;">
+        <h3 style="font-weight:700;color:#6689ff;margin-bottom:18px;font-size:1.35rem;text-align:center;">Dołącz do naszych Informacyjnych grup wsparcia</h3>
+        <p style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:10px;text-align:center;">
+          <b>START 15 września 2025 r.</b><br>
+          <span style="font-size:0.7rem;color:#444;font-weight:400;line-height:1!important;display:block;">Grupy są aktualnie w fazie organizacji<br>będą aktywnie prowadzone od września.</span>
+        </p>
+        <p style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:10px;text-align:center;">
+          <b>Dołączając do grupy otrzymasz.</b><br>
+        
+        <ul style="font-size:0.93rem;line-height:1.7;color:#222;margin-bottom:10px;padding-left:18px;">
+          <li>✅ Bieżące informacje o naszych projektch, spotkaniach i działaniach Fundacji</li>
+          <li>✅ Przestrzeń do dzielenia się swoimi historiami i doświadczeniami</li>
+          <li>✅ Wymianę perspektyw z osobami rozumiejącymi Twoje wyzwania</li>
+          <li>✅ Możliwość uzyskania praktycznych wskazówek od tych, którzy przeszli podobną drogę</li>
+          <li>✅ Szansę wsparcia innych swoją wiedzą, gdy zmagają się z sytuacjami, które Ty już znasz</li>
+        </ul>
+        <div style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:10px;">
+          <br></b><b>Dodatkowo w kluczowych sprawach poruszanych na grupie dostępne będą okresowo:</b>
+          <ul style="margin-top:6px;margin-bottom:10px;padding-left:18px;">
+            <li>🔹 Konsultacje z Radcami prawnymi i Adwokatami</li>
+            <li>🔹 Q&amp;A ze Specjalistami z wybranych dziedzin dotyczących danej grupy.</li>
+            <li>🔹 Sesje wsparcia z psychologami</li>
+            <li>🔹 Spotkania on line z przedstawicielami instytucji państwowych i świata polityki</li>
+          </ul>
+        </div>
+        <div style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:18px;text-align:center;">
+          <br><b>Dołącz już dziś, aby być gotowym na start!</b>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+          <button id="openWsparcieFormBtn" class="button button-primary button-ujarak" style="min-width:180px;font-size:1.08rem;">Przejdź do grupy wsparcia</button>
+          <button type="button" class="button button-gray-4" data-dismiss="modal" style="min-width:120px;font-size:1.08rem;">Zamknij</button>
+        </div>
+        <div id="wsparcieFormContainer" style="margin-top:24px;display:none;">
+          <iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0" style="border:none;overflow:hidden;display:block;margin:0 auto;"></iframe>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Zapamiętaj oryginalną treść modal-body
+            var wsparcieModalLink = document.getElementById('openWsparcieModalLink');
+            var modal = document.getElementById('modalWsparcie');
+            var modalBody = modal ? modal.querySelector('.modal-body') : null;
+            var modalBodyInitial = modalBody ? modalBody.innerHTML : null;
+            if (wsparcieModalLink && modal && modalBody && modalBodyInitial) {
+              wsparcieModalLink.addEventListener('click', function() {
+                // Resetuj modal-body do stanu początkowego
+                setTimeout(function() {
+                  modalBody.innerHTML = modalBodyInitial;
+                  setupWsparcieFormBtn();
+                }, 10);
+              });
+            }
+            // Obsługa przycisku "Przejdź do grupy wsparcia"
+            function setupWsparcieFormBtn() {
+              var openBtn = document.getElementById('openWsparcieFormBtn');
+              var modalBody = document.querySelector('#modalWsparcie .modal-body');
+              if(openBtn && modalBody) {
+                openBtn.addEventListener('click', function() {
+                  modalBody.innerHTML = '<div id="wsparcieFormContainer" style="margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;">'+
+                    '<iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0" style="border:none;overflow:hidden;display:block;margin:0 auto;"></iframe>'+ 
+                    '<button type="button" class="button button-gray-4" data-dismiss="modal" style="min-width:120px;font-size:1.08rem;margin-top:18px;">Zamknij</button>'+ 
+                    '</div>';
+                  var modalDialog = document.querySelector('#modalWsparcie .modal-dialog');
+                  if(modalDialog) {
+                    modalDialog.style.maxWidth = '650px';
+                    modalDialog.style.width = '100%';
+                  }
+                  var modalContent = document.querySelector('#modalWsparcie .modal-content');
+                  if(modalContent) {
+                    modalContent.style.minHeight = 'auto';
+                    modalContent.style.height = 'auto';
+                  }
+                });
+              }
+            }
+            setupWsparcieFormBtn();
+            // Po każdym odświeżeniu modal-body, ponownie podpinaj obsługę przycisku
+            if (modal) {
+              modal.addEventListener('shown.bs.modal', function() {
+                setupWsparcieFormBtn();
+              });
+            }
+          });
+        </script>
       </div>
     </div>
   </div>
@@ -494,14 +587,19 @@
     overflow: hidden;
   }
   #modalWsparcie iframe {
-    width: 100%;
+    width: 96%;
+    max-width: 650px;
     height: 600px;
     min-height: 600px;
     border: none;
     overflow: hidden;
     display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: #fff;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     #modalWsparcie .modal-dialog {
       max-width: 100vw;
       width: 100vw;
@@ -513,16 +611,37 @@
       border-radius: 0 !important;
       min-height: 100vh;
       height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     #modalWsparcie .modal-body {
       min-height: 100vh;
       height: 100vh;
       padding: 0;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    #wsparcieFormContainer {
+      width: 100vw;
+      max-width: 100vw;
+      box-sizing: border-box;
+      padding: 0 !important;
+      margin: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
     #modalWsparcie iframe {
-      min-height: 100vh;
-      height: 100vh;
       width: 100vw;
+      max-width: 100vw;
+      min-width: 0;
+      min-height: 90vh;
+      height: 90vh;
+      margin: 0 !important;
+      margin-left: 0 !important;
+      border-radius: 0;
+      background: #fff;
+      display: block;
+      box-sizing: border-box;
     }
   }
   @media (max-width: 767px) {
@@ -547,6 +666,20 @@
     .counter-amy-title.center-mobile.space-bottom {
       margin-bottom: 18px !important;
     }
+  }
+  /* Zmniejszenie rozmiaru i grubości czcionki dla list punktowanych w modalu wsparcia */
+  #modalWsparcie .modal-body ul {
+    font-size: 0.85rem !important;
+    font-weight: 400 !important;
+    color: #222;
+    margin-bottom: 10px;
+    padding-left: 18px;
+  }
+  #modalWsparcie .modal-body ul li {
+    font-size: 0.85rem !important;
+    font-weight: 400 !important;
+    color: #222;
+    margin-bottom: 2px;
   }
 </style>
 
