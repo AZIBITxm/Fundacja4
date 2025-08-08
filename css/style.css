@@ -1,3 +1,6 @@
+body {
+  padding-bottom: 64px !important;
+}
 /* Animacje i styl prestige dla selecta w banerze 2 */
 #abonamentKwota {
   padding: 4px 12px;

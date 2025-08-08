@@ -12,7 +12,53 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/modal-jotform-mobile.css">
+    <!-- <link rel="stylesheet" href="css/modal-jotform-mobile.css"> -->
+    <style>
+      /* Duży odstęp przed WSZYSTKIMI banerami .clients-classic na wszystkich rozdzielczościach */
+      .row-30 .clients-classic {
+        margin-top: 60px !important;
+      }
+      @media (max-width: 767px) {
+        .row-30 .clients-classic {
+          margin-top: 48px !important;
+        }
+      }
+    </style>
+    <style>
+      /* Animacja i efekt hover dla select w banerze 1 */
+      #szybkaKwota, #abonamentKwota {
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transition: box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
+        cursor: pointer;
+      }
+      #szybkaKwota:hover, #szybkaKwota:focus,
+      #abonamentKwota:hover, #abonamentKwota:focus {
+        box-shadow: 0 2px 16px 0 rgba(255,255,255,0.18);
+        transform: scale(1.04);
+        border: none !important;
+        color: #fff;
+      }
+      #szybkaKwota option, #abonamentKwota option {
+        cursor: pointer;
+        transition: background 0.25s, color 0.25s, padding 0.25s;
+        border: none !important;
+      }
+      #szybkaKwota option:hover, #szybkaKwota option:focus,
+      #abonamentKwota option:hover, #abonamentKwota option:focus {
+        background: #6689ff !important;
+        color: #fff !important;
+        padding-right: 28px !important;
+        border: none !important;
+      }
+    </style>
+    <style>
+      .rd-nav-link {
+        text-shadow: 1px 2px 6px rgba(0,0,0,0.55);
+      }
+    </style>
+    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
   </head>
   <body>
     <!-- Modal startowy z logo i flagami -->
@@ -685,21 +731,59 @@
 
       <!-- Cta-->
       <section class="section section-fluid bg-default">
-      <section class="section section-fluid bg-default" id="about">
-        <div class="parallax-container" data-parallax-img="images/banery/c2.png" style="background-position: center center !important; background-size: cover !important;">
-          <div class="parallax-content section-xl context-dark bg-overlay-68 bg-mobile-overlay">
+      <section class="section section-fluid bg-default" id="about" style="position:relative;overflow:hidden;">
+        <div class="parallax-container" data-parallax-img="images/banery/c2.png" style="background-position: center center !important; background-size: cover !important;position:relative;">
+          <div id="about-frosted-bg" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);background:rgba(30,34,54,0.38);backdrop-filter:blur(12px);"></div>
+          <div class="parallax-content section-xl context-dark bg-overlay-68 bg-mobile-overlay" style="position:relative;z-index:2;">
             <div class="container">
               <div class="row row-30 justify-content-end text-right">
-                <div class="col-sm-7">
+                <div class="col-sm-7" id="about-text-col" style="transition:all 1.2s cubic-bezier(.4,0,.2,1);">
                   <h3 class="wow fadeInLeft">O Nas</h3>
                   <div id="about-main-text">
-                    Budujemy bezpieczną przystań dla tych, którzy czują się zagubieni.<br><br>
-W małych społecznościach lokalnych uczyliśmy się, jak słuchać bez oceniania i jak pomagać w walce z wewnętrznymi demonami. Dziś – z bagażem tych doświadczeń – ruszamy z misją, by nasze projekty objęły całą Polskę i Europę, czerpiąc z doświadczeń jednych dla dobra drugich.
+<b></b><br>
+Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej pasji do niesienia pomocy tym, którzy tego najbardziej potrzebują. W obliczu narastających problemów współczesnego świata – szczególnie wśród najmłodszego pokolenia – założyciele fundacji postanowili połączyć swoje doświadczenia i wiedzę, aby stworzyć bezpieczną przystań dla osób zmagających się z wyzwaniami dzisiejszych czasów.
                   </div>
-                  <div id="about-extra-text" style="max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(.4,0,.2,1);font-size:1.08rem;line-height:1.7;padding-top:0;">
-                    <b>Specjalizujemy się w dwóch głównych obszarach:</b><br>
-po pierwsze, w pomocy młodym ludziom, szczególnie nastolatkom, zagrożonym samotnością w cyfrowym świecie, uzależnieniami od technologii i poczuciem wykluczenia.<br>
-Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi.
+                  <div id="about-extra-text" style="max-height:0;overflow:hidden;transition:max-height 1.2s cubic-bezier(.4,0,.2,1),padding-top 1.2s cubic-bezier(.4,0,.2,1);font-size:1.08rem;line-height:1.7;padding-top:0;">
+<div style="margin-top:18px;text-align:left;">
+  <p><span style="font-size:1.22em;font-weight:700;">Historia</span><br>
+    <span style="font-weight:300;">Data założenia fundacji to 1 września 2022 roku, gdy dwójka doświadczonych specjalistów z różnych dziedzin życia - <b>Prezes Adam Zanders</b> oraz współzałożycielka i psycholog z wieloletnim doświadczeniem w zawodzie <b>Anna Zychowicz</b> - postanowili sformalizować swoją dotychczasową działalność i rozpocząć, jak się później okaże, trzyletnią pracę nad utworzeniem programów pomocowych. Oficjalną rejestrację w Krajowym Rejestrze Sądowym fundacja uzyskała 26 kwietnia 2023 roku, co oznaczało prawny początek jej działalności.<br>
+    Inspiracją do założenia fundacji były osobiste doświadczenia życiowe, w tym zmagania z alienacją rodzicielską oraz wieloletnia praktyka psychologiczna w obszarze pomocy dzieciom, młodzieży i rodzinom. Przez lata założyciele pracowali nad stworzeniem skutecznych programów interwencyjnych, które mogłyby realnie odpowiadać na potrzeby współczesnych odbiorców.</span></p>
+
+  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Początki Działalności</span><br>
+    <span style="font-weight:300;">Od samego początku fundacja skupiała się na pracy u podstaw w małych, lokalnych społecznościach zarówno w Polsce, szczególnie na Pomorzu, jak i w krajach Europy Zachodniej. Te, mające charakter wyłącznie wolontariacki, działania pozwoliły na zrozumienie specyfiki problemów, z jakimi mierzą się współczesne rodziny, oraz wypracowanie skutecznych metod wsparcia dostosowanych do lokalnych potrzeb i kulturowych uwarunkowań.</span></p>
+
+  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Międzynarodowy zespół ekspertów</span><br>
+    <span style="font-weight:300;">Przez 3 lata swojej działalności Fundacja nawiązała współpracę z międzynarodową grupą specjalistów, w skład której wchodzą psychologowie, prawnicy oraz eksperci z różnych dziedzin życia z całej Europy. To interdyscyplinarne podejście pozwala na kompleksowe wspieranie beneficjentów, łącząc wiedzę teoretyczną z praktyką terapeutyczną i doświadczeniem prawniczym.</span></p>
+
+  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Kluczowe projekty i uzasadnienie statystyczne</span></p>
+  <ul style="margin-left:18px;margin-bottom:18px;">
+    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Projekt SPOT – Przełamywanie cyfrowych uzależnień</b><br>
+      <span style="font-weight:300;">W odpowiedzi na dramatyczne dane pokazujące, że w Polsce 21,8% uczniów szkół podstawowych znajduje się w grupie wysokiego ryzyka rozwoju uzależnienia od mediów elektronicznych, a 11,9% nastolatków w wieku 12-17 lat wykazuje problematyczne używanie internetu. Szczególnie niepokojące jest to, że wśród problematycznych użytkowników internetu 28,4% praktykowało samookaleczanie, a 9,2% podejmowało próby samobójcze. Europejskie badania WHO/HBSC z 2022 roku pokazują, że problematyczne używanie mediów społecznościowych wzrosło z 7% w 2018 roku do 11% w 2022 roku, przy czym dziewczęta są bardziej narażone (13% vs 9% u chłopców).</span>
+    </li>
+    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Program „Rodzicu nie jesteś sam” – Wsparcie w alienacji rodzicielskiej</b><br>
+      <span style="font-weight:300;">Program ten odpowiada na potrzeby rodziców doświadczających alienacji rodzicielskiej oraz samotnie wychowujących dzieci. Oferuje kompleksowe wsparcie prawne, psychologiczne oraz grupy wsparcia na WhatsApp, umożliwiając codzienną pomoc od osób, które przeszły przez podobne doświadczenia.</span>
+    </li>
+    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Technologia dla zdrowia</b><br>
+      <span style="font-weight:300;">Projekt edukacyjny skierowany do szkół w całej Europie, mający na celu promocję technologii wspierających zdrowy rozwój fizyczny i psychiczny uczniów. W trakcie sesji prezentowane są między innymi alternatywy dla popularnych technologii mających destrukcyjny wpływ na różne aspekty życia młodych ludzi.</span>
+    </li>
+    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Wsparcie dla weteranów</b><br>
+      <span style="font-weight:300;">Program obejmujący tworzenie aplikacji pomocowej dla żołnierzy i weteranów, wspomagającej radzenie sobie ze stresem, budowanie odporności psychicznej i szybsze przywracanie równowagi emocjonalnej.</span>
+    </li>
+    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Grupy wsparcia na WhatsApp</b><br>
+      <span style="font-weight:300;">Platforma komunikacyjna oferująca natychmiastowe wsparcie dla wszystkich beneficjentów fundacji, działająca 24/7 i zarządzana przez wykwalifikowanych specjalistów.</span>
+    </li>
+  </ul>
+
+
+  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Potrzeba wsparcia inwestorów</span><br>
+    <span style="font-weight:300;">Przy wielu sukcesach i pozytywnym wpływie na życie już ponad 200 osób fundacja stoi przed wyzwaniem skalowania swoich działań. Sukcesywne wprowadzanie stworzonych programów w życie oraz rozszerzenie ich na całą Polskę i Europę wymaga znacznych inwestycji w infrastrukturę, szkolenia specjalistów oraz rozwój technologiczny aplikacji i platform wsparcia.</span></p>
+
+  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Fundacja poszukuje partnerów finansowych, organizacyjnych oraz ekspertów</span>, <span style="font-weight:300;">którzy zechcą wesprzeć jej misję czasem, wiedzą lub środkami finansowymi. Każde wsparcie darczyńców indywidualnych jak i instytucjonalnych ma znaczenie!</span></p>
+
+  <p style="margin-top:18px;">
+    <span style="font-size:1.13em;font-weight:700;">Fundacja World Foundation to więcej niż organizacja pomocowa</span> <span style="font-weight:300;">– to społeczność ludzi, którzy wierzą, że każda osoba zasługuje na wsparcie i zrozumienie w najtrudniejszych momentach życia. Dzięki połączeniu osobistego zaangażowania założycieli, profesjonalizmu międzynarodowego zespołu ekspertów oraz rzetelnego oparcia działań na najnowszych badaniach naukowych, fundacja tworzy skuteczne rozwiązania dla współczesnych wyzwań społecznych.</span>
+  </p>
+</div>
                   </div>
                   <div class="group-sm group-middle group justify-content-end">
                     <a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal">PRZEJDŹ</a>
@@ -709,16 +793,44 @@ Po drugie – w wspieraniu rodziców w radzeniu sobie z wyzwaniami wychowawczymi
                     (function(){
                       var btn = document.getElementById('about-learn-more-btn');
                       var extra = document.getElementById('about-extra-text');
+                      var col = document.getElementById('about-text-col');
+                      var frosted = document.getElementById('about-frosted-bg');
                       var expanded = false;
                       btn.addEventListener('click', function(e){
                         e.preventDefault();
                         expanded = !expanded;
                         if(expanded){
-                          extra.style.maxHeight = extra.scrollHeight + 40 + 'px';
+                          extra.style.maxHeight = extra.scrollHeight + 80 + 'px';
+                          extra.style.paddingTop = '12px';
                           btn.textContent = 'Pokaż mniej';
+                          // Rozszerz pole tekstowe na desktopie
+                          if(window.innerWidth >= 992 && col){
+                            col.classList.remove('col-sm-7');
+                            col.classList.add('col-12','col-lg-11');
+                            col.style.float = 'none';
+                            col.style.marginLeft = 'auto';
+                            col.style.marginRight = 'auto';
+                          }
+                          // Pokaż przyciemnione szkło na całej sekcji
+                          if(frosted){
+                            frosted.style.opacity = '1';
+                          }
                         }else{
                           extra.style.maxHeight = '0';
+                          extra.style.paddingTop = '0';
                           btn.textContent = 'Pokaż więcej';
+                          // Przywróć pierwotną szerokość na desktopie
+                          if(window.innerWidth >= 992 && col){
+                            col.classList.remove('col-12','col-lg-11');
+                            col.classList.add('col-sm-7');
+                            col.style.float = '';
+                            col.style.marginLeft = '';
+                            col.style.marginRight = '';
+                          }
+                          // Ukryj przyciemnione szkło
+                          if(frosted){
+                            frosted.style.opacity = '0';
+                          }
                         }
                       });
                     })();
@@ -1518,20 +1630,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
         </div>
       </footer>
 
-      <div class="modal fade" id="modalCta" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-            </div>
-            <div class="modal-body">
-              <div style="width:100%;max-width:700px;margin:auto;">
-                <iframe src="https://form.jotform.com/252054996297370" width="100%" height="900" frameborder="0" style="border:none;overflow:auto;">Ładuję…</iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Modal Jotform usunięty -->
     </div>
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
@@ -1677,6 +1776,118 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       @media (min-width: 768px) {
         .row-30 .clients-classic {
           margin-top: 2.2em !important; /* ok. 2-3 linie tekstu odstępu nad banerem */
+        }
+      }
+    </style>
+    <!-- Sticky narrow banner at the bottom of the screen -->
+    <div id="sticky-narrow-banner">
+      <div class="banner-marquee-container">
+        <div class="banner-marquee-track">
+          <span class="banner-marquee-text">Jeżeli chcesz wesprzeć naszą fundację kliknij przycisk -&gt;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+      </div>
+      <a class="banner-cta-btn" href="#">Wesprzyj</a>
+    </div>
+    <style>
+      #sticky-narrow-banner {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+        width: 80vw;
+        max-width: 900px;
+        min-width: 260px;
+        height: 40px;
+        z-index: 9999;
+        background: #fff;
+        border: 1px solid #000;
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.18);
+        padding: 0 0 0 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'Poppins', Arial, sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #222;
+        transition: box-shadow 0.2s;
+      }
+      .banner-marquee-container {
+        flex: 1 1 auto;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .banner-marquee-track {
+        white-space: nowrap;
+        display: inline-block;
+        animation: marquee 18s linear infinite;
+      }
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-60%); }
+      }
+      .banner-marquee-text {
+        font-size: 0.98rem;
+        color: #222;
+        padding-left: 12px;
+      }
+      .banner-cta-btn {
+        flex: 0 0 auto;
+        margin: 0 16px 0 12px;
+        padding: 4px 22px;
+        font-size: 1.08rem;
+        min-height: 32px;
+        border-radius: 6px;
+        background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%);
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        box-shadow: 0 6px 0 0 #8a1818, 0 4px 16px 0 rgba(0,0,0,0.13);
+        transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .banner-cta-btn:active {
+        background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%);
+        color: #fff;
+        box-shadow: 0 2px 0 0 #8a1818, 0 1px 4px 0 rgba(0,0,0,0.10);
+        transform: scale(0.97) translateY(2px);
+      }
+      @media (max-width: 767px) {
+        #sticky-narrow-banner {
+          width: 90vw;
+          max-width: 99vw;
+          min-width: 0;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          border-radius: 7px;
+          height: 40px;
+          padding: 0 0 0 0;
+          background: #fff;
+          border: 1px solid #000;
+          box-shadow: 0 2px 10px 0 rgba(0,0,0,0.18);
+        }
+        .banner-marquee-text {
+          font-size: 0.98rem;
+        }
+        .banner-marquee-track {
+          animation-duration: 18s;
+        }
+        .banner-cta-btn {
+          margin: 0 6px 0 -28px;
+          padding: 1px 8px;
+          font-size: 0.93rem;
+          min-height: 22px;
+        }
+        body {
+          padding-bottom: 64px !important;
         }
       }
     </style>
