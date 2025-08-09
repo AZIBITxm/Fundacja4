@@ -1,0 +1,63 @@
+/* CSS for #modalSpotkanie */
+/* Ensure modals are above sticky bottom banner */
+.modal-backdrop {
+  z-index: 10005 !important;
+}
+.modal {
+  z-index: 10010 !important;
+}
+.modal.fade .modal-dialog {
+  z-index: 10010 !important;
+}
+#modalSpotkanie .modal-content {
+  overflow: hidden;
+  border-radius: 0;
+}
+#modalSpotkanie .modal-header {
+  border-bottom: 0;
+  padding: 0;
+  background: none;
+  height: 0;
+  min-height: 0;
+  margin: 0;
+}
+#modalSpotkanie .modal-body {
+  padding: 32px 24px 18px 24px;
+  overflow: hidden;
+  text-align: center;
+}
+#modalSpotkanie .modal-body h3 {
+  font-weight: 700;
+  color: #6689ff;
+  margin-bottom: 18px;
+  font-size: 1.35rem;
+}
+#modalSpotkanie .modal-body h5 {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 10px;
+  font-size: 1.08rem;
+}
+#modalSpotkanie .modal-body p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: #222;
+  margin-bottom: 18px;
+}
+#modalSpotkanie .modal-body .button.button-primary {
+  min-width: 120px;
+  font-size: 1.08rem;
+}
+/* Remove inline overrides on trigger button */
+a[href="#modalSpotkanie"].button.button-primary.button-ujarak {
+  margin-top: 8px;
+  padding: 10px 32px;
+  font-size: 1.08rem;
+  line-height: 1.2;
+  border: 2px solid #6689ff;
+  background: #6689ff;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(102,137,255,0.08);
+  transition: all 0.25s cubic-bezier(.4,0,.2,1);
+}

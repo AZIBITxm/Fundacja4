@@ -12,70 +12,29 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="css/modal-jotform-mobile.css"> -->
-    <style>
-      /* Duży odstęp przed WSZYSTKIMI banerami .clients-classic na wszystkich rozdzielczościach */
-      .row-30 .clients-classic {
-        margin-top: 60px !important;
-      }
-      @media (max-width: 767px) {
-        .row-30 .clients-classic {
-          margin-top: 48px !important;
-        }
-      }
-    </style>
-    <style>
-      /* Animacja i efekt hover dla select w banerze 1 */
-      #szybkaKwota, #abonamentKwota {
-        border: none !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        transition: box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
-        cursor: pointer;
-      }
-      #szybkaKwota:hover, #szybkaKwota:focus,
-      #abonamentKwota:hover, #abonamentKwota:focus {
-        box-shadow: 0 2px 16px 0 rgba(255,255,255,0.18);
-        transform: scale(1.04);
-        border: none !important;
-        color: #fff;
-      }
-      #szybkaKwota option, #abonamentKwota option {
-        cursor: pointer;
-        transition: background 0.25s, color 0.25s, padding 0.25s;
-        border: none !important;
-      }
-      #szybkaKwota option:hover, #szybkaKwota option:focus,
-      #abonamentKwota option:hover, #abonamentKwota option:focus {
-        background: #6689ff !important;
-        color: #fff !important;
-        padding-right: 28px !important;
-        border: none !important;
-      }
-    </style>
-    <style>
-      .rd-nav-link {
-        text-shadow: 1px 2px 6px rgba(0,0,0,0.55);
-      }
-    </style>
-    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
+  <!-- Modals CSS -->
+  <link rel="stylesheet" href="css/modal-lang.css">
+  <link rel="stylesheet" href="css/modal-spotkanie.css">
+  <link rel="stylesheet" href="css/modal-wsparcie-pl.css">
+  <!-- <link rel="stylesheet" href="css/modal-jotform-mobile.css"> -->
+    
   </head>
   <body>
     <!-- Modal startowy z logo i flagami -->
-    <div id="langModal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.7s cubic-bezier(.4,0,.2,1);opacity:1;">
-      <img src="images/logo/logo.png" alt="Logo" style="max-width:360px;width:80vw;height:auto;display:block;margin-bottom:32px;" />
-      <div style="display:flex;flex-direction:row;gap:32px;justify-content:center;align-items:flex-start;border:2.5px solid #bbb;border-radius:18px;padding:32px 36px;background:#fff;box-sizing:border-box;box-shadow:0 4px 18px 0 rgba(0,0,0,0.07);">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <img src="images/flaga/pl.png" alt="PL" id="flagPL" style="max-width:90px;width:18vw;height:auto;cursor:pointer;display:block;" />
-          <div style="font-size:1.08rem;color:#222;margin-top:8px;text-align:center;">PL</div>
+    <div id="langModal">
+      <img src="images/logo/logo.png" alt="Logo" />
+      <div>
+        <div>
+          <img src="images/flaga/pl.png" alt="PL" id="flagPL" />
+          <div>PL</div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <img src="images/flaga/en.png" alt="EN" id="flagEN" style="max-width:90px;width:18vw;height:auto;cursor:pointer;display:block;" />
-          <div style="font-size:1.08rem;color:#222;margin-top:8px;text-align:center;">EN</div>
+        <div>
+          <img src="images/flaga/en.png" alt="EN" id="flagEN" />
+          <div>EN</div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <img src="images/flaga/de.png" alt="DE" id="flagDE" style="max-width:90px;width:18vw;height:auto;cursor:pointer;display:block;" />
-          <div style="font-size:1.08rem;color:#222;margin-top:8px;text-align:center;">DE</div>
+        <div>
+          <img src="images/flaga/de.png" alt="DE" id="flagDE" />
+          <div>DE</div>
         </div>
       </div>
     </div>
@@ -127,7 +86,7 @@
           btn.style.display = 'flex';
           btn.style.alignItems = 'center';
           btn.style.gap = '8px';
-          btn.innerHTML = '<img src="'+flagSrc[lang]+'" alt="'+lang+'" style="width:28px;height:20px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-right:4px;" />'+lang.toUpperCase();
+          btn.innerHTML = '<img src="'+flagSrc[lang]+'" alt="'+lang+'" class="lang-flag" />'+lang.toUpperCase();
           btn.onclick = function(e) {
             e.preventDefault();
             modal.style.display = 'flex';
@@ -160,7 +119,7 @@
                     <!-- RD Navbar Toggle-->
                     <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                     <!-- RD Navbar Brand-->
-                    <div class="rd-navbar-brand"><a class="brand" href="index.html"><img src="images/logo/logo.png" alt="Logo" style="max-height:50px;vertical-align:middle;"/></a></div>
+                    <div class="rd-navbar-brand"><a class="brand" href="index.html"><img src="images/logo/logo.png" alt="Logo"/></a></div>
                   </div>
                   <div class="rd-navbar-main-element">
                     <div class="rd-navbar-nav-wrap">
@@ -334,38 +293,31 @@
           <div class="row row-30 justify-content-center">
             <div class="col-md-7 col-lg-5 col-xl-6 text-lg-left wow fadeInUp">
               <!-- ZAMIANA OBRAZKA NA WIDEO -->
-              <video class="video-responsive" controls style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 6px 0 rgba(0,0,0,0.15); border: 2px solid #888; width: 100%; max-width: 415px; height: auto; display: block; margin: 0 auto;">
+              <video class="video-responsive video-framed" controls>
                 <source src="video/1.mp4" type="video/mp4">
                 Twoja przeglądarka nie obsługuje tagu wideo.
               </video>
             </div>
             <div class="col-lg-7 col-xl-6">
               <div class="row row-50 banners-row-desktop">
-<style>
-  @media (min-width: 768px) {
-    .banners-row-desktop {
-      margin-top: -30px !important;
-    }
-  }
-</style>
                 <div class="col-sm-6 wow fadeInRight">
-                  <article class="box-icon-modern box-icon-modern-custom" style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:100%;min-height:220px;">
-                    <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;">
+                  <article class="box-icon-modern box-icon-modern-custom">
+                    <div class="box-icon-modern-inner">
                       
-                      <div id="customCalendar" style="margin-bottom:0;margin-top:0;"></div>
-<a class="button button-primary button-ujarak" href="#modalSpotkanie" data-toggle="modal" style="margin-top:8px;padding:10px 32px;font-size:1.08rem;line-height:1.2;border:2px solid #6689ff;background:#6689ff;color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(102,137,255,0.08);transition:all 0.25s cubic-bezier(.4,0,.2,1);">umów spotkanie</a>
+                      <div id="customCalendar"></div>
+<a class="button button-primary button-ujarak" href="#modalSpotkanie" data-toggle="modal">umów spotkanie</a>
 
 <!-- Modal UMÓW SPOTKANIE -->
 <div class="modal fade" id="modalSpotkanie" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="overflow:hidden;border-radius:0;">
-      <div class="modal-header" style="border-bottom:0;padding-bottom:0;background:none;height:0;min-height:0;padding:0;margin:0;"></div>
-      <div class="modal-body" style="padding:32px 24px 18px 24px;overflow:hidden;text-align:center;">
-        <h3 style="font-weight:700;color:#6689ff;margin-bottom:18px;font-size:1.35rem;">Dostępność konsultantów</h3>
-        <p style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:18px;">W dniach zaznaczonych w kalendarzu kolorem niebieskim nasi konsultanci są do Państwa dyspozycji w godzinach <br> 17:00 - 19:00</p>
-        <h5 style="font-weight:600;color:#222;margin-bottom:10px;font-size:1.08rem;">Inny termin?</h5>
-        <p style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:18px;">W celu umówienia innej daty prosimy wysłać wiadomość i zaproponować inny termin. Odpowiemy najszybciej jak to możliwe.</p>
-        <button type="button" class="button button-primary button-ujarak" data-dismiss="modal" style="min-width:120px;font-size:1.08rem;">OK</button>
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body">
+        <h3>Dostępność konsultantów</h3>
+        <p>W dniach zaznaczonych w kalendarzu kolorem niebieskim nasi konsultanci są do Państwa dyspozycji w godzinach <br> 17:00 - 19:00</p>
+        <h5>Inny termin?</h5>
+        <p>W celu umówienia innej daty prosimy wysłać wiadomość i zaproponować inny termin. Odpowiemy najszybciej jak to możliwe.</p>
+        <button type="button" class="button button-primary button-ujarak" data-dismiss="modal">OK</button>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var okBtn = document.querySelector('#modalSpotkanie .button[data-dismiss="modal"]');
@@ -424,26 +376,27 @@
                             let startDay = firstDay.getDay();
                             if (startDay === 0) startDay = 7; // niedziela na koniec
                             let daysInMonth = lastDay.getDate();
-                            let html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;max-width:220px;margin-left:auto;margin-right:auto;">'+
-                              '<button id="calPrev" style="background:none;border:none;font-size:16px;">&#8592;</button>'+
-                              '<span style="font-weight:600;font-size:15px;">'+getMonthName(month)+' '+year+'</span>'+
-                              '<button id="calNext" style="background:none;border:none;font-size:16px;">&#8594;</button>'+
+                            let html = '<div class="cal-header">'+
+                              '<button id="calPrev" class="cal-nav-btn">&#8592;</button>'+
+                              '<span class="cal-title">'+getMonthName(month)+' '+year+'</span>'+
+                              '<button id="calNext" class="cal-nav-btn">&#8594;</button>'+
                               '</div>';
-                            html += '<table style="width:100%;max-width:220px;margin:auto;text-align:center;font-size:12px;table-layout:fixed;">';
+                            html += '<table class="cal-table">';
                             html += '<thead><tr>';
                             const days = ['Pn','Wt','Śr','Cz','Pt','Sb','Nd'];
-                            for (let d of days) html += '<th style="padding:1px 0;">'+d+'</th>';
+                            for (let d of days) html += '<th class="cal-th">'+d+'</th>';
                             html += '</tr></thead><tbody><tr>';
                             let dayOfWeek = startDay === 1 ? 1 : 1 - (startDay - 1);
                             for (let i = 0; i < 42; i++, dayOfWeek++) {
                               let d = new Date(year, month, dayOfWeek);
                               let isCurrentMonth = d.getMonth() === month;
-                              let style = 'padding:2px 0;';
+                              let classes = ['cal-td'];
                               let btn = document.querySelector('.button-primary');
                               let btnColor = btn ? getComputedStyle(btn).backgroundColor : '#0069d9';
-                              if (isCurrentMonth && (d.getDay() === 4 || d.getDay() === 5)) style += 'background:'+btnColor+';color:#fff;font-weight:600;opacity:0.5;border:1.5px solid '+btnColor+';';
-                              if (!isCurrentMonth) style += 'color:#bbb;';
-                              html += '<td style="'+style+'">'+(isCurrentMonth?d.getDate():'')+'</td>';
+                              document.documentElement.style.setProperty('--cal-offer-bg', btnColor);
+                              if (isCurrentMonth && (d.getDay() === 4 || d.getDay() === 5)) classes.push('offer');
+                              if (!isCurrentMonth) classes.push('out');
+                              html += '<td class="'+classes.join(' ')+'">'+(isCurrentMonth?d.getDate():'')+'</td>';
                               if ((i+1)%7===0 && i<41) html+='</tr><tr>';
                             }
                             html += '</tr></tbody></table>';
@@ -510,42 +463,42 @@
 <!-- Modal GRUPA WSPARCIA (WhatsForm) -->
 <div class="modal fade" id="modalWsparcie" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="overflow:hidden;border-radius:0;max-width:540px;margin:auto;">
-      <div class="modal-header" style="border-bottom:0;padding-bottom:0;background:none;height:0;min-height:0;padding:0;margin:0;"></div>
-      <div class="modal-body" style="padding:32px 24px 18px 24px;overflow:hidden;text-align:left;">
-        <h3 style="font-weight:700;color:#6689ff;margin-bottom:18px;font-size:1.35rem;text-align:center;">Dołącz do naszych Informacyjnych grup wsparcia</h3>
-        <p style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:10px;text-align:center;">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body">
+        <h3>Dołącz do naszych Informacyjnych grup wsparcia</h3>
+        <p>
           <b>START 15 września 2025 r.</b><br>
-          <span style="font-size:0.7rem;color:#444;font-weight:400;line-height:1!important;display:block;">Grupy są aktualnie w fazie organizacji<br>będą aktywnie prowadzone od września.</span>
+          <span>Grupy są aktualnie w fazie organizacji<br>będą aktywnie prowadzone od września.</span>
         </p>
-        <p style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:10px;text-align:center;">
+        <p>
           <b>Dołączając do grupy otrzymasz.</b><br>
         
-        <ul style="font-size:0.93rem;line-height:1.7;color:#222;margin-bottom:10px;padding-left:18px;">
+        <ul>
           <li>✅ Bieżące informacje o naszych projektch, spotkaniach i działaniach Fundacji</li>
           <li>✅ Przestrzeń do dzielenia się swoimi historiami i doświadczeniami</li>
           <li>✅ Wymianę perspektyw z osobami rozumiejącymi Twoje wyzwania</li>
           <li>✅ Możliwość uzyskania praktycznych wskazówek od tych, którzy przeszli podobną drogę</li>
           <li>✅ Szansę wsparcia innych swoją wiedzą, gdy zmagają się z sytuacjami, które Ty już znasz</li>
         </ul>
-        <div style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:10px;">
+        <div>
           <br></b><b>Dodatkowo w kluczowych sprawach poruszanych na grupie dostępne będą okresowo:</b>
-          <ul style="margin-top:6px;margin-bottom:10px;padding-left:18px;">
+          <ul>
             <li>🔹 Konsultacje z Radcami prawnymi i Adwokatami</li>
             <li>🔹 Q&amp;A ze Specjalistami z wybranych dziedzin dotyczących danej grupy.</li>
             <li>🔹 Sesje wsparcia z psychologami</li>
             <li>🔹 Spotkania on line z przedstawicielami instytucji państwowych i świata polityki</li>
           </ul>
         </div>
-        <div style="font-size:1.08rem;line-height:1.7;color:#222;margin-bottom:18px;text-align:center;">
+        <div>
           <br><b>Dołącz już dziś, aby być gotowym na start!</b>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-          <button id="openWsparcieFormBtn" class="button button-primary button-ujarak" style="min-width:180px;font-size:1.08rem;">Przejdź do grupy wsparcia</button>
-          <button type="button" class="button button-gray-4" data-dismiss="modal" style="min-width:120px;font-size:1.08rem;">Zamknij</button>
+        <div>
+          <button id="openWsparcieFormBtn" class="button button-primary button-ujarak">Przejdź do grupy wsparcia</button>
+          <button type="button" class="button button-gray-4" data-dismiss="modal">Zamknij</button>
         </div>
-        <div id="wsparcieFormContainer" style="margin-top:24px;display:none;">
-          <iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0" style="border:none;overflow:hidden;display:block;margin:0 auto;"></iframe>
+  <div id="wsparcieFormContainer">
+          <iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0"></iframe>
         </div>
         <script>
           document.addEventListener('DOMContentLoaded', function() {
@@ -555,10 +508,11 @@
             var modalBody = modal ? modal.querySelector('.modal-body') : null;
             var modalBodyInitial = modalBody ? modalBody.innerHTML : null;
             if (wsparcieModalLink && modal && modalBody && modalBodyInitial) {
-              wsparcieModalLink.addEventListener('click', function() {
+        wsparcieModalLink.addEventListener('click', function() {
                 // Resetuj modal-body do stanu początkowego
                 setTimeout(function() {
                   modalBody.innerHTML = modalBodyInitial;
+          modal.classList.remove('expanded');
                   setupWsparcieFormBtn();
                 }, 10);
               });
@@ -569,19 +523,13 @@
               var modalBody = document.querySelector('#modalWsparcie .modal-body');
               if(openBtn && modalBody) {
                 openBtn.addEventListener('click', function() {
-                  modalBody.innerHTML = '<div id="wsparcieFormContainer" style="margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;">'+
-                    '<iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0" style="border:none;overflow:hidden;display:block;margin:0 auto;"></iframe>'+ 
-                    '<button type="button" class="button button-gray-4" data-dismiss="modal" style="min-width:120px;font-size:1.08rem;margin-top:18px;">Zamknij</button>'+ 
+                  modalBody.innerHTML = '<div id="wsparcieFormContainer">'+
+                    '<iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0"></iframe>'+ 
+                    '<button type="button" class="button button-gray-4" data-dismiss="modal">Zamknij</button>'+ 
                     '</div>';
-                  var modalDialog = document.querySelector('#modalWsparcie .modal-dialog');
-                  if(modalDialog) {
-                    modalDialog.style.maxWidth = '650px';
-                    modalDialog.style.width = '100%';
-                  }
-                  var modalContent = document.querySelector('#modalWsparcie .modal-content');
-                  if(modalContent) {
-                    modalContent.style.minHeight = 'auto';
-                    modalContent.style.height = 'auto';
+                  var modalRoot = document.getElementById('modalWsparcie');
+                  if (modalRoot) {
+                    modalRoot.classList.add('expanded');
                   }
                 });
               }
@@ -591,6 +539,9 @@
             if (modal) {
               modal.addEventListener('shown.bs.modal', function() {
                 setupWsparcieFormBtn();
+              });
+              modal.addEventListener('hidden.bs.modal', function() {
+                modal.classList.remove('expanded');
               });
             }
           });
@@ -608,185 +559,65 @@
           </div>
 
         </div>
-      </section>
-<style>
-  .video-responsive {
-    width: 100% !important;
-    max-width: 415px;
-    height: auto !important;
-    display: block;
-    margin: 0 auto;
-  }
-  /* Modal GRUPA WSPARCIA - responsywny na wszystkie urządzenia, bez zaokrąglonych narożników */
-  #modalWsparcie .modal-dialog {
-    max-width: 650px;
-    width: 100%;
-    margin: 30px auto;
-  }
-  #modalWsparcie .modal-content {
-    border-radius: 0 !important;
-    overflow: hidden;
-    padding: 0;
-  }
-  #modalWsparcie .modal-body {
-    padding: 0;
-    overflow: hidden;
-  }
-  #modalWsparcie iframe {
-    width: 96%;
-    max-width: 650px;
-    height: 600px;
-    min-height: 600px;
-    border: none;
-    overflow: hidden;
-    display: block;
-    margin: 0 auto;
-    box-sizing: border-box;
-    border-radius: 8px;
-    background: #fff;
-  }
-  @media (max-width: 991px) {
-    #modalWsparcie .modal-dialog {
-      max-width: 100vw;
-      width: 100vw;
-      height: 100vh;
-      margin: 0;
-      padding: 0;
-    }
-    #modalWsparcie .modal-content {
-      border-radius: 0 !important;
-      min-height: 100vh;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    #modalWsparcie .modal-body {
-      min-height: 100vh;
-      height: 100vh;
-      padding: 0;
-      overflow-y: auto !important;
-      -webkit-overflow-scrolling: touch;
-    }
-    #wsparcieFormContainer {
-      width: 100vw;
-      max-width: 100vw;
-      box-sizing: border-box;
-      padding: 0 !important;
-      margin: 0 !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-    #modalWsparcie iframe {
-      width: 100vw;
-      max-width: 100vw;
-      min-width: 0;
-      min-height: 90vh;
-      height: 90vh;
-      margin: 0 !important;
-      margin-left: 0 !important;
-      border-radius: 0;
-      background: #fff;
-      display: block;
-      box-sizing: border-box;
-    }
-  }
-  @media (max-width: 767px) {
-    .video-responsive {
-      max-width: 100vw !important;
-      width: 100vw !important;
-      box-sizing: border-box;
-    }
-    .col-md-7.col-lg-5.col-xl-6.text-lg-left.wow.fadeInUp {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-    .counter-amy-title.center-mobile, .counter-amy-number.center-mobile {
-      text-align: center !important;
-      width: 100%;
-      display: block;
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-    .counter-amy-title.center-mobile.space-bottom {
-      margin-bottom: 18px !important;
-    }
-  }
-  /* Zmniejszenie rozmiaru i grubości czcionki dla list punktowanych w modalu wsparcia */
-  #modalWsparcie .modal-body ul {
-    font-size: 0.85rem !important;
-    font-weight: 400 !important;
-    color: #222;
-    margin-bottom: 10px;
-    padding-left: 18px;
-  }
-  #modalWsparcie .modal-body ul li {
-    font-size: 0.85rem !important;
-    font-weight: 400 !important;
-    color: #222;
-    margin-bottom: 2px;
-  }
-</style>
+          </section>
 
-      <!-- Cta-->
+          <!-- Cta-->
       <section class="section section-fluid bg-default">
-      <section class="section section-fluid bg-default" id="about" style="position:relative;overflow:hidden;">
-        <div class="parallax-container" data-parallax-img="images/banery/c2.png" style="background-position: center center !important; background-size: cover !important;position:relative;">
-          <div id="about-frosted-bg" style="position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);background:rgba(30,34,54,0.38);backdrop-filter:blur(12px);"></div>
-          <div class="parallax-content section-xl context-dark bg-overlay-68 bg-mobile-overlay" style="position:relative;z-index:2;">
+      <section class="section section-fluid bg-default" id="about">
+        <div class="parallax-container" data-parallax-img="images/banery/c2.png">
+          <div id="about-frosted-bg"></div>
+          <div class="parallax-content section-xl context-dark bg-overlay-68 bg-mobile-overlay">
             <div class="container">
               <div class="row row-30 justify-content-end text-right">
-                <div class="col-sm-7" id="about-text-col" style="transition:all 1.2s cubic-bezier(.4,0,.2,1);">
+                <div class="col-sm-7" id="about-text-col">
                   <h3 class="wow fadeInLeft">O Nas</h3>
                   <div id="about-main-text">
 <b></b><br>
 Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej pasji do niesienia pomocy tym, którzy tego najbardziej potrzebują. W obliczu narastających problemów współczesnego świata – szczególnie wśród najmłodszego pokolenia – założyciele fundacji postanowili połączyć swoje doświadczenia i wiedzę, aby stworzyć bezpieczną przystań dla osób zmagających się z wyzwaniami dzisiejszych czasów.
                   </div>
-                  <div id="about-extra-text" style="max-height:0;overflow:hidden;transition:max-height 1.2s cubic-bezier(.4,0,.2,1),padding-top 1.2s cubic-bezier(.4,0,.2,1);font-size:1.08rem;line-height:1.7;padding-top:0;">
-<div style="margin-top:18px;text-align:left;">
-  <p><span style="font-size:1.22em;font-weight:700;">Historia</span><br>
-    <span style="font-weight:300;">Data założenia fundacji to 1 września 2022 roku, gdy dwójka doświadczonych specjalistów z różnych dziedzin życia - <b>Prezes Adam Zanders</b> oraz współzałożycielka i psycholog z wieloletnim doświadczeniem w zawodzie <b>Anna Zychowicz</b> - postanowili sformalizować swoją dotychczasową działalność i rozpocząć, jak się później okaże, trzyletnią pracę nad utworzeniem programów pomocowych. Oficjalną rejestrację w Krajowym Rejestrze Sądowym fundacja uzyskała 26 kwietnia 2023 roku, co oznaczało prawny początek jej działalności.<br>
+                  <div id="about-extra-text">
+<div class="about-extra-inner">
+  <p><span class="about-subtitle">Historia</span><br>
+    <span class="fw-300">Data założenia fundacji to 1 września 2022 roku, gdy dwójka doświadczonych specjalistów z różnych dziedzin życia - <b>Prezes Adam Zanders</b> oraz współzałożycielka i psycholog z wieloletnim doświadczeniem w zawodzie <b>Anna Zychowicz</b> - postanowili sformalizować swoją dotychczasową działalność i rozpocząć, jak się później okaże, trzyletnią pracę nad utworzeniem programów pomocowych. Oficjalną rejestrację w Krajowym Rejestrze Sądowym fundacja uzyskała 26 kwietnia 2023 roku, co oznaczało prawny początek jej działalności.<br>
     Inspiracją do założenia fundacji były osobiste doświadczenia życiowe, w tym zmagania z alienacją rodzicielską oraz wieloletnia praktyka psychologiczna w obszarze pomocy dzieciom, młodzieży i rodzinom. Przez lata założyciele pracowali nad stworzeniem skutecznych programów interwencyjnych, które mogłyby realnie odpowiadać na potrzeby współczesnych odbiorców.</span></p>
 
-  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Początki Działalności</span><br>
-    <span style="font-weight:300;">Od samego początku fundacja skupiała się na pracy u podstaw w małych, lokalnych społecznościach zarówno w Polsce, szczególnie na Pomorzu, jak i w krajach Europy Zachodniej. Te, mające charakter wyłącznie wolontariacki, działania pozwoliły na zrozumienie specyfiki problemów, z jakimi mierzą się współczesne rodziny, oraz wypracowanie skutecznych metod wsparcia dostosowanych do lokalnych potrzeb i kulturowych uwarunkowań.</span></p>
+  <p class="mb-18"><span class="about-subtitle">Początki Działalności</span><br>
+    <span class="fw-300">Od samego początku fundacja skupiała się na pracy u podstaw w małych, lokalnych społecznościach zarówno w Polsce, szczególnie na Pomorzu, jak i w krajach Europy Zachodniej. Te, mające charakter wyłącznie wolontariacki, działania pozwoliły na zrozumienie specyfiki problemów, z jakimi mierzą się współczesne rodziny, oraz wypracowanie skutecznych metod wsparcia dostosowanych do lokalnych potrzeb i kulturowych uwarunkowań.</span></p>
 
-  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Międzynarodowy zespół ekspertów</span><br>
-    <span style="font-weight:300;">Przez 3 lata swojej działalności Fundacja nawiązała współpracę z międzynarodową grupą specjalistów, w skład której wchodzą psychologowie, prawnicy oraz eksperci z różnych dziedzin życia z całej Europy. To interdyscyplinarne podejście pozwala na kompleksowe wspieranie beneficjentów, łącząc wiedzę teoretyczną z praktyką terapeutyczną i doświadczeniem prawniczym.</span></p>
+  <p class="mb-18"><span class="about-subtitle">Międzynarodowy zespół ekspertów</span><br>
+    <span class="fw-300">Przez 3 lata swojej działalności Fundacja nawiązała współpracę z międzynarodową grupą specjalistów, w skład której wchodzą psychologowie, prawnicy oraz eksperci z różnych dziedzin życia z całej Europy. To interdyscyplinarne podejście pozwala na kompleksowe wspieranie beneficjentów, łącząc wiedzę teoretyczną z praktyką terapeutyczną i doświadczeniem prawniczym.</span></p>
 
-  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Kluczowe projekty i uzasadnienie statystyczne</span></p>
-  <ul style="margin-left:18px;margin-bottom:18px;">
-    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Projekt SPOT – Przełamywanie cyfrowych uzależnień</b><br>
-      <span style="font-weight:300;">W odpowiedzi na dramatyczne dane pokazujące, że w Polsce 21,8% uczniów szkół podstawowych znajduje się w grupie wysokiego ryzyka rozwoju uzależnienia od mediów elektronicznych, a 11,9% nastolatków w wieku 12-17 lat wykazuje problematyczne używanie internetu. Szczególnie niepokojące jest to, że wśród problematycznych użytkowników internetu 28,4% praktykowało samookaleczanie, a 9,2% podejmowało próby samobójcze. Europejskie badania WHO/HBSC z 2022 roku pokazują, że problematyczne używanie mediów społecznościowych wzrosło z 7% w 2018 roku do 11% w 2022 roku, przy czym dziewczęta są bardziej narażone (13% vs 9% u chłopców).</span>
+  <p class="mb-18"><span class="about-subtitle">Kluczowe projekty i uzasadnienie statystyczne</span></p>
+  <ul class="about-list">
+    <li><span class="bullet-dot">&#9679;</span><b>Projekt SPOT – Przełamywanie cyfrowych uzależnień</b><br>
+      <span class="fw-300">W odpowiedzi na dramatyczne dane pokazujące, że w Polsce 21,8% uczniów szkół podstawowych znajduje się w grupie wysokiego ryzyka rozwoju uzależnienia od mediów elektronicznych, a 11,9% nastolatków w wieku 12-17 lat wykazuje problematyczne używanie internetu. Szczególnie niepokojące jest to, że wśród problematycznych użytkowników internetu 28,4% praktykowało samookaleczanie, a 9,2% podejmowało próby samobójcze. Europejskie badania WHO/HBSC z 2022 roku pokazują, że problematyczne używanie mediów społecznościowych wzrosło z 7% w 2018 roku do 11% w 2022 roku, przy czym dziewczęta są bardziej narażone (13% vs 9% u chłopców).</span>
     </li>
-    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Program „Rodzicu nie jesteś sam” – Wsparcie w alienacji rodzicielskiej</b><br>
-      <span style="font-weight:300;">Program ten odpowiada na potrzeby rodziców doświadczających alienacji rodzicielskiej oraz samotnie wychowujących dzieci. Oferuje kompleksowe wsparcie prawne, psychologiczne oraz grupy wsparcia na WhatsApp, umożliwiając codzienną pomoc od osób, które przeszły przez podobne doświadczenia.</span>
+    <li><span class="bullet-dot">&#9679;</span><b>Program „Rodzicu nie jesteś sam” – Wsparcie w alienacji rodzicielskiej</b><br>
+      <span class="fw-300">Program ten odpowiada na potrzeby rodziców doświadczających alienacji rodzicielskiej oraz samotnie wychowujących dzieci. Oferuje kompleksowe wsparcie prawne, psychologiczne oraz grupy wsparcia na WhatsApp, umożliwiając codzienną pomoc od osób, które przeszły przez podobne doświadczenia.</span>
     </li>
-    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Technologia dla zdrowia</b><br>
-      <span style="font-weight:300;">Projekt edukacyjny skierowany do szkół w całej Europie, mający na celu promocję technologii wspierających zdrowy rozwój fizyczny i psychiczny uczniów. W trakcie sesji prezentowane są między innymi alternatywy dla popularnych technologii mających destrukcyjny wpływ na różne aspekty życia młodych ludzi.</span>
+    <li><span class="bullet-dot">&#9679;</span><b>Technologia dla zdrowia</b><br>
+      <span class="fw-300">Projekt edukacyjny skierowany do szkół w całej Europie, mający na celu promocję technologii wspierających zdrowy rozwój fizyczny i psychiczny uczniów. W trakcie sesji prezentowane są między innymi alternatywy dla popularnych technologii mających destrukcyjny wpływ na różne aspekty życia młodych ludzi.</span>
     </li>
-    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Wsparcie dla weteranów</b><br>
-      <span style="font-weight:300;">Program obejmujący tworzenie aplikacji pomocowej dla żołnierzy i weteranów, wspomagającej radzenie sobie ze stresem, budowanie odporności psychicznej i szybsze przywracanie równowagi emocjonalnej.</span>
+    <li><span class="bullet-dot">&#9679;</span><b>Wsparcie dla weteranów</b><br>
+      <span class="fw-300">Program obejmujący tworzenie aplikacji pomocowej dla żołnierzy i weteranów, wspomagającej radzenie sobie ze stresem, budowanie odporności psychicznej i szybsze przywracanie równowagi emocjonalnej.</span>
     </li>
-    <li><span style="font-size:1.2em;color:#6689ff;margin-right:7px;">&#9679;</span><b>Grupy wsparcia na WhatsApp</b><br>
-      <span style="font-weight:300;">Platforma komunikacyjna oferująca natychmiastowe wsparcie dla wszystkich beneficjentów fundacji, działająca 24/7 i zarządzana przez wykwalifikowanych specjalistów.</span>
+    <li><span class="bullet-dot">&#9679;</span><b>Grupy wsparcia na WhatsApp</b><br>
+      <span class="fw-300">Platforma komunikacyjna oferująca natychmiastowe wsparcie dla wszystkich beneficjentów fundacji, działająca 24/7 i zarządzana przez wykwalifikowanych specjalistów.</span>
     </li>
   </ul>
 
 
-  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Potrzeba wsparcia inwestorów</span><br>
-    <span style="font-weight:300;">Przy wielu sukcesach i pozytywnym wpływie na życie już ponad 200 osób fundacja stoi przed wyzwaniem skalowania swoich działań. Sukcesywne wprowadzanie stworzonych programów w życie oraz rozszerzenie ich na całą Polskę i Europę wymaga znacznych inwestycji w infrastrukturę, szkolenia specjalistów oraz rozwój technologiczny aplikacji i platform wsparcia.</span></p>
+  <p class="mb-18"><span class="about-subtitle">Potrzeba wsparcia inwestorów</span><br>
+    <span class="fw-300">Przy wielu sukcesach i pozytywnym wpływie na życie już ponad 200 osób fundacja stoi przed wyzwaniem skalowania swoich działań. Sukcesywne wprowadzanie stworzonych programów w życie oraz rozszerzenie ich na całą Polskę i Europę wymaga znacznych inwestycji w infrastrukturę, szkolenia specjalistów oraz rozwój technologiczny aplikacji i platform wsparcia.</span></p>
 
-  <p style="margin-top:18px;"><span style="font-size:1.22em;font-weight:700;">Fundacja poszukuje partnerów finansowych, organizacyjnych oraz ekspertów</span>, <span style="font-weight:300;">którzy zechcą wesprzeć jej misję czasem, wiedzą lub środkami finansowymi. Każde wsparcie darczyńców indywidualnych jak i instytucjonalnych ma znaczenie!</span></p>
+  <p class="mb-18"><span class="about-subtitle">Fundacja poszukuje partnerów finansowych, organizacyjnych oraz ekspertów</span>, <span class="fw-300">którzy zechcą wesprzeć jej misję czasem, wiedzą lub środkami finansowymi. Każde wsparcie darczyńców indywidualnych jak i instytucjonalnych ma znaczenie!</span></p>
 
-  <p style="margin-top:18px;">
-    <span style="font-size:1.13em;font-weight:700;">Fundacja World Foundation to więcej niż organizacja pomocowa</span> <span style="font-weight:300;">– to społeczność ludzi, którzy wierzą, że każda osoba zasługuje na wsparcie i zrozumienie w najtrudniejszych momentach życia. Dzięki połączeniu osobistego zaangażowania założycieli, profesjonalizmu międzynarodowego zespołu ekspertów oraz rzetelnego oparcia działań na najnowszych badaniach naukowych, fundacja tworzy skuteczne rozwiązania dla współczesnych wyzwań społecznych.</span>
+  <p class="mb-18">
+    <span class="about-subtitle-sm">Fundacja World Foundation to więcej niż organizacja pomocowa</span> <span class="fw-300">– to społeczność ludzi, którzy wierzą, że każda osoba zasługuje na wsparcie i zrozumienie w najtrudniejszych momentach życia. Dzięki połączeniu osobistego zaangażowania założycieli, profesjonalizmu międzynarodowego zespołu ekspertów oraz rzetelnego oparcia działań na najnowszych badaniach naukowych, fundacja tworzy skuteczne rozwiązania dla współczesnych wyzwań społecznych.</span>
   </p>
 </div>
                   </div>
                   <div class="group-sm group-middle group justify-content-end">
-                    <a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal">PRZEJDŹ</a>
                     <a class="button button-white-outline button-ujarak" href="#" id="about-learn-more-btn">Pokaż więcej</a>
                   </div>
                   <script>
@@ -855,10 +686,10 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
             </div>
             <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4">
               <div class="text-width-extra-small offset-top-lg-24 wow fadeInUp">
-                <h3 class="title-decoration-lines-left">Lat Doświadczenia</h3>
+                <h3 class="title-decoration-lines-left">Lat Indywidualnych Doświadczeń</h3>
                 <p class="text-gray-500">Fundacja skupia zespół doświadczonych specjalistów i profesjonalistów, którzy od wielu lat niosą innym wsparcie i dzielą się zdobytą wiedzą. <br>Twoje zaangażowanie również ma moc sprawczą! Każdy gest wsparcia - finansowy, czasowy czy merytoryczny - to cegiełka w budowaniu systemu pomocy, który nie zostawia nikogo samego.</p>
                 <!-- Przycisk usunięty z tego miejsca na mobile -->
-                <a class="button button-secondary button-pipaluk d-none d-md-inline-block" href="#modalCta" data-toggle="modal"><i class="fa fa-piggy-bank" aria-hidden="true" style="margin-right:7px;"></i>Zapraszamy do współpracy</a>
+                <a class="button button-secondary button-pipaluk d-none d-md-inline-block" href="#modalCta" data-toggle="modal"><i class="fa fa-piggy-bank" aria-hidden="true"></i>Zapraszamy do współpracy</a>
               </div>
             </div>
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".1s">
@@ -879,9 +710,9 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
                 </div>
                 <div class="col-9 col-sm-6">
                   <div class="counter-amy">
-                    <h6 class="counter-amy-title center-mobile space-bottom" style="margin-bottom:0.5em;">JUŻ PONAD</h6>
-                    <div class="desktop-gap" style="display:none;"></div>
-                    <div class="counter-amy-number center-mobile" style="margin-left:-35px;"><span class="counter">200</span></div>
+                    <h6 class="counter-amy-title center-mobile space-bottom">JUŻ PONAD</h6>
+                    <div class="desktop-gap"></div>
+                    <div class="counter-amy-number center-mobile"><span class="counter">200</span></div>
                     <h6 class="counter-amy-title center-mobile">OSÓB SKORZYSTAŁO Z NASZEJ POMOCY</h6>
                   </div>
                 </div>
@@ -889,29 +720,29 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
             </div>
             <!-- Przycisk mobilny przeniesiony tutaj -->
             <div class="w-100 d-block d-md-none"></div>
-            <div class="col-12 text-center d-block d-md-none" style="margin-bottom:18px;">
-              <a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal"><i class="fa fa-piggy-bank" aria-hidden="true" style="margin-right:7px;"></i>Zapraszamy do współpracy</a>
+            <div class="col-12 text-center d-block d-md-none cta-mobile-wrap">
+              <a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal"><i class="fa fa-piggy-bank" aria-hidden="true"></i>Zapraszamy do współpracy</a>
             </div>
             <div class="col-lg-6 col-xl-12 align-self-center">
-              <div class="row border-2-column justify-content-center banners-separator" style="position:relative;z-index:2;">
-                <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" style="position:relative;z-index:2;">
-                  <div class="clients-classic" style="position:relative;display:block;background:#fff;z-index:2;">
-                    <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;width:100%;white-space:normal;overflow-wrap:break-word;word-break:break-word;padding:0 12px;line-height:1.35;text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Nowych Patronów</span>
+              <div class="row border-2-column justify-content-center banners-separator">
+                <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft">
+                  <div class="clients-classic">
+                    <span class="clients-caption">Nowych Patronów</span>
                   </div>
                 </div>
-                <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".1s" style="position:relative;z-index:2;">
-                  <div class="clients-classic" style="position:relative;display:block;background:#fff;z-index:2;">
-                    <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;width:100%;white-space:normal;overflow-wrap:break-word;word-break:break-word;padding:0 12px;line-height:1.35;text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Foundrusherów</span>
+                <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".1s">
+                  <div class="clients-classic">
+                    <span class="clients-caption">Foundrusherów</span>
                   </div>
                 </div>
-                <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".2s" style="position:relative;z-index:2;">
-                  <div class="clients-classic" style="position:relative;display:block;background:#fff;z-index:2;">
-                    <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;width:100%;white-space:normal;overflow-wrap:break-word;word-break:break-word;padding:0 12px;line-height:1.35;text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Psychologów</span>
+                <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".2s">
+                  <div class="clients-classic">
+                    <span class="clients-caption">Psychologów</span>
                   </div>
                 </div>
-                <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".3s" style="position:relative;z-index:2;">
-                  <div class="clients-classic" style="position:relative;display:block;background:#fff;z-index:2;">
-                    <span style="position:absolute;left:0;right:0;bottom:0;height:40px;display:flex;align-items:center;justify-content:center;color:#6689ff;font-weight:600;font-size:1.25rem;border-radius:0 0 12px 12px;letter-spacing:2px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:center;width:100%;white-space:normal;overflow-wrap:break-word;word-break:break-word;padding:0 12px;line-height:1.35;text-transform:uppercase;font-family:'Teko',Arial,sans-serif;z-index:2;">Wolontariuszy</span>
+                <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".3s">
+                  <div class="clients-classic">
+                    <span class="clients-caption">Wolontariuszy</span>
                   </div>
                 </div>
               </div>
@@ -980,62 +811,24 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
             </div>
             <div class="col-lg-6 text-center wow fadeInUp" data-wow-delay=".1s">
               <div class="owl-carousel owl-style-1" id="projects-carousel" data-items="2" data-stage-padding="0" data-loop="true" data-margin="0" data-mouse-drag="true" data-autoplay="true">
-                <a class="box-device" href="#" style="position:relative;display:block;">
+                <a class="box-device" href="#">
                   <img src="images/banery/s1.png" alt="" width="313" height="580"/>
                   <div class="banner-caption">PRZEŁAMUJEMY CYFROWE UZALEŻNIENIA</div>
                 </a>
-                <a class="box-device" href="#" style="position:relative;display:block;">
+                <a class="box-device" href="#">
                   <img src="images/banery/s2.png" alt="" width="313" height="580"/>
                   <div class="banner-caption">RODZICU NIE JESTEŚ SAM</div>
                 </a>
-                <a class="box-device" href="#" style="position:relative;display:block;">
+                <a class="box-device" href="#">
                   <img src="images/banery/s4.png" alt="" width="313" height="580"/>
                   <div class="banner-caption">TECHNOLOGIA DLA ZDROWIA</div>
                 </a>
-                <a class="box-device" href="#" style="position:relative;display:block;">
+                <a class="box-device" href="#">
                   <img src="images/banery/s3.png" alt="" width="313" height="580"/>
                   <div class="banner-caption">Wsparcie dla Weteranów</div>
                 </a>
               </div>
-              <style>
-                .banner-caption {
-                  position: absolute;
-                  left: 0;
-                  right: 0;
-                  bottom: 0;
-                  height: 20%;
-                  min-height: 60px;
-                  background: rgba(0,0,0,0.68);
-                  color: #fff;
-                  display: flex;
-                  align-items: center;
-                  justify-content: flex-start;
-                  padding: 18px 20px 12px 20px;
-                  font-size: 1.08rem;
-                  font-weight: 500;
-                  line-height: 1.35;
-                  border-radius: 0 0 12px 12px;
-                  z-index: 2;
-                  box-sizing: border-box;
-                  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
-                  pointer-events: none;
-                }
-                @media (max-width: 767px) {
-                  .banner-caption {
-                    font-size: 0.85rem;
-                    font-weight: 400;
-                    padding: 10px 8px 8px 8px;
-                  }
-                }
-              </style>
-<style>
-  @media (min-width: 768px) {
-    .desktop-gap {
-      display: block !important;
-      height: 1em;
-    }
-  }
-</style>
+              
               <script>
                 document.addEventListener('DOMContentLoaded', function() {
                   // Mapowanie: numer zakładki => indeks slajdu (0-based)
@@ -1073,7 +866,7 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
 
           <!-- Latest Projects-->
       <!-- Sekcja ukryta: Latest Projects (W🌍RLD Market) -->
-      <section class="section section-sm section-fluid bg-default text-center" id="projects" style="display:none;">
+  <section class="section section-sm section-fluid bg-default text-center is-hidden" id="projects">
         <div class="container-fluid">
           <h2 class="wow fadeInLeft">W🌍RLD Market</h2>
           <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">Tu każdy zakup to więcej niż transakcja – to inwestycja w ideę.<br><br>
@@ -1163,7 +956,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
 
       <!-- What people Say-->
       <!-- Sekcja ukryta: What people Say -->
-      <section class="section section-sm section-bottom-70 section-fluid bg-default" style="display:none;">
+  <section class="section section-sm section-bottom-70 section-fluid bg-default is-hidden">
         <div class="container-fluid">
           <h2>What people Say</h2>
           <div class="row row-50 row-sm">
@@ -1218,7 +1011,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
 
       <!-- Pricing-->
       <!-- Sekcja ukryta: Pricing -->
-      <section class="section section-sm section-bottom-70 section-fluid bg-default" id="pricing" style="background:#f5f6fa;">
+  <section class="section section-sm section-bottom-70 section-fluid bg-default" id="pricing">
         <div class="container">
 
           <div class="row row-30 justify-content-center">
@@ -1226,13 +1019,13 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
               <div class="box-pricing box-pricing-black">
                 <div class="box-pricing-body">
                   <h5 class="box-pricing-title">Szybka Wpłata</h5>
-                  <div style="margin-bottom:12px;">
-        <select id="szybkaKwota" name="szybkaKwota" style="padding:4px 12px;font-size:2rem;border-radius:0;border:none;border-bottom:2.5px solid #fff;background:transparent;color:#fff;transition:box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 0 0 #fff;">
-          <option value="5" style="background:#222;color:#fff;text-align:right;padding-right:18px;">5 zł</option>
-          <option value="20" style="background:#222;color:#fff;text-align:right;padding-right:18px;">20 zł</option>
-          <option value="50" style="background:#222;color:#fff;text-align:right;padding-right:18px;">50 zł</option>
-          <option value="100" style="background:#222;color:#fff;text-align:right;padding-right:18px;">100 zł</option>
-          <option value="150" style="background:#222;color:#fff;text-align:right;padding-right:18px;">150 zł</option>
+                  <div class="mb-12">
+        <select id="szybkaKwota" name="szybkaKwota">
+          <option value="5">5 zł</option>
+          <option value="20">20 zł</option>
+          <option value="50">50 zł</option>
+          <option value="100">100 zł</option>
+          <option value="150">150 zł</option>
         </select>
       </div>
       <div class="box-pricing-time">Dziękujemy za Wsparcie!</div>
@@ -1255,12 +1048,12 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
               <div class="box-pricing box-pricing-black box-pricing-popular">
                 <div class="box-pricing-body">
                   <h5 class="box-pricing-title">Abonament</h5>
-                  <div style="margin-bottom:12px;">
-        <select id="abonamentKwota" name="abonamentKwota" style="padding:4px 12px;font-size:2rem;border-radius:0;border:none;border-bottom:2.5px solid #fff;background:transparent;color:#fff;transition:box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 0 0 #fff;">
-          <option value="20" style="background:#222;color:#fff;text-align:right;padding-right:18px;">20 zł</option>
-          <option value="50" style="background:#222;color:#fff;text-align:right;padding-right:18px;">50 zł</option>
-          <option value="100" style="background:#222;color:#fff;text-align:right;padding-right:18px;">100 zł</option>
-          <option value="150" style="background:#222;color:#fff;text-align:right;padding-right:18px;">150 zł</option>
+                  <div class="mb-12">
+        <select id="abonamentKwota" name="abonamentKwota">
+          <option value="20">20 zł</option>
+          <option value="50">50 zł</option>
+          <option value="100">100 zł</option>
+          <option value="150">150 zł</option>
         </select>
       </div>
       <div class="box-pricing-time">Dziękujemy za Wsparcie!</div>
@@ -1354,13 +1147,13 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       <section class="section section-sm section-fluid bg-default" id="team">
         <div class="container-fluid">
           <h2>Zarząd</h2>
-          <div class="title-classic-text" style="margin-bottom:18px;">
-            <div style="width:48px;height:4px;background:#6689ff;border-radius:2px;margin:0 auto 18px auto;"></div>
+          <div class="title-classic-text mb-18">
+            <div class="decor-bar"></div>
           </div>
           <div class="row row-sm row-30 justify-content-center">
             <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">
               <!-- Team Classic-->
-              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/Postacie/Adam kopia.png" alt="Adam Zanders" width="420" height="424" style="filter:none;"/></a>
+              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img class="no-filter" src="images/Postacie/Adam kopia.png" alt="Adam Zanders" width="420" height="424"/></a>
                 <div class="team-classic-caption">
                   <h4 class="team-classic-name"><a href="#">Adam Zanders</a></h4>
                   <p class="team-classic-status">Prezes Fundacji</p>
@@ -1369,14 +1162,14 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             </div>
             <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".1s">
               <!-- Team Classic-->
-              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/Postacie/Ania.jpg" alt="Anna Zychowicz" width="420" height="424" style="filter:none;"/></a>
+              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img class="no-filter" src="images/Postacie/Ania.jpg" alt="Anna Zychowicz" width="420" height="424"/></a>
                 <div class="team-classic-caption">
                   <h4 class="team-classic-name"><a href="#">Anna Zychowicz</a></h4>
                   <p class="team-classic-status">Współzałożycielka fundacji</p>
                 </div>
               </article>
             </div>
-            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".2s" style="display:none;">
+            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight is-hidden" data-wow-delay=".2s">
               <!-- Team Classic-->
               <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/team-13-420x424.jpg" alt="" width="420" height="424"/></a>
                 <div class="team-classic-caption">
@@ -1385,7 +1178,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 </div>
               </article>
             </div>
-            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".3s" style="display:none;">
+            <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight is-hidden" data-wow-delay=".3s">
               <!-- Team Classic-->
               <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img src="images/team-14-420x424.jpg" alt="" width="420" height="424"/></a>
                 <div class="team-classic-caption">
@@ -1404,7 +1197,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
 
       <!-- Latest blog posts-->
       <!-- Sekcja ukryta: Latest blog posts -->
-      <section class="section section-sm bg-default" id="news" style="display:none;">
+  <section class="section section-sm bg-default is-hidden" id="news">
         <div class="container">
           <h2>Latest blog posts</h2>
           <div class="row row-45">
@@ -1443,10 +1236,10 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       </section>
 
       <!-- Contact information-->
-      <section class="section section-sm bg-gray-15" id="contact-info" style="background:#f5f6fa;">
+  <section class="section section-sm bg-gray-15" id="contact-info">
 <article class="title-classic">
-            <div class="title-classic-title" style="display:flex;justify-content:center;align-items:center;width:100%;">
-              <h3 class="contact-title-desktop-shift" style="text-align:center;">Skontaktuj się z Nami</h3>
+            <div class="title-classic-title">
+              <h3 class="contact-title-desktop-shift text-center">Skontaktuj się z Nami</h3>
             </div>
             
           </article>
@@ -1470,8 +1263,8 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 <div class="box-contacts-body">
                   <div class="box-contacts-icon fl-bigmug-line-cellphone55"></div>
                   <div class="box-contacts-decor"></div>
-                  <p class="box-contacts-link"><img src="images/flaga/pl.png" alt="PL" style="height:16px; width:auto; margin-right:4px; vertical-align:middle;"/><a href="tel:#">+48 519 830 226</a></p>
-                  <p class="box-contacts-link"><img src="images/flaga/de.png" alt="DE" style="height:16px; width:auto; margin-right:4px; vertical-align:middle;"/><a href="tel:#">+49 1521 9459413</a></p>
+                  <p class="box-contacts-link"><img class="flag-icon" src="images/flaga/pl.png" alt="PL"/><a href="tel:#">+48 519 830 226</a></p>
+                  <p class="box-contacts-link"><img class="flag-icon" src="images/flaga/de.png" alt="DE"/><a href="tel:#">+49 1521 9459413</a></p>
                 </div>
               </article>
             </div>
@@ -1502,17 +1295,17 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       <section class="section section-sm section-last bg-default text-left" id="contacts">
         <div class="container">
           <article class="title-classic">
-            <div class="title-classic-title" style="display:flex;justify-content:center;align-items:center;width:100%;">
-              <h3 style="text-align:center;">Napisz do Nas<br><br></h3>
+            <div class="title-classic-title">
+              <h3 class="text-center">Napisz do Nas<br><br></h3>
             </div>
             
           </article>
-          <div class="form-scroll-mobile" style="width:100%;max-width:700px;margin:auto;">
-            <div class="form-scroll-inner" style="background:#fff;">
-              <form id="staticForm" action="https://api.staticforms.xyz/submit" method="POST" style="max-width:480px;margin:auto;">
+          <div class="form-scroll-mobile">
+            <div class="form-scroll-inner">
+              <form id="staticForm" action="https://api.staticforms.xyz/submit" method="POST">
                 <input type="hidden" name="apiKey" value="sf_87f1agn5ja1l48f0l8kd1l10">
                 <input type="hidden" name="replyTo" value="@">
-                <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="text" name="honeypot" class="hidden-control" tabindex="-1" autocomplete="off">
                 <div class="form-group">
                   <label for="name">Imię:</label>
                   <input type="text" id="name" name="name" class="form-control" required>
@@ -1525,11 +1318,11 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                   <label for="message">Wiadomość:</label>
                   <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
                 </div>
-                <div id="staticFormMsg" style="display:none;margin-bottom:12px;font-weight:500;"></div>
-                <div class="form-group" style="margin-bottom:16px;">
+                <div id="staticFormMsg"></div>
+                <div class="form-group">
                   <div class="g-recaptcha" data-sitekey="6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23"></div>
                 </div>
-                <button type="submit" class="button button-primary button-ujarak" style="width:100%;margin-top:8px;">Wyślij</button>
+                <button type="submit" class="button button-primary button-ujarak">Wyślij</button>
                 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
               </form>
               <script>
@@ -1761,24 +1554,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
     </style>
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
-    <!-- coded by Himic-->
-    <style>
-      @media (max-width: 767px) {
-        .row-30 .clients-classic {
-          margin-bottom: 1.8em !important; /* ok. 2 linie tekstu odstępu */
-          margin-top: 2.2em !important; /* ok. 2-3 linie tekstu odstępu nad banerem */
-        }
-        .row-30 .col-sm-6:last-child .clients-classic {
-          margin-bottom: 0 !important;
-        }
-      }
-      /* Desktop i tablet: większy odstęp nad banerami */
-      @media (min-width: 768px) {
-        .row-30 .clients-classic {
-          margin-top: 2.2em !important; /* ok. 2-3 linie tekstu odstępu nad banerem */
-        }
-      }
-    </style>
+  <!-- coded by Himic-->
     <!-- Sticky narrow banner at the bottom of the screen -->
     <div id="sticky-narrow-banner">
       <div class="banner-marquee-container">
@@ -1788,108 +1564,6 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       </div>
       <a class="banner-cta-btn" href="#">Wesprzyj</a>
     </div>
-    <style>
-      #sticky-narrow-banner {
-        position: fixed;
-        left: 50%;
-        bottom: 24px;
-        transform: translateX(-50%);
-        width: 80vw;
-        max-width: 900px;
-        min-width: 260px;
-        height: 40px;
-        z-index: 9999;
-        background: #fff;
-        border: 1px solid #000;
-        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.18);
-        padding: 0 0 0 0;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-family: 'Poppins', Arial, sans-serif;
-        font-size: 1rem;
-        font-weight: 500;
-        color: #222;
-        transition: box-shadow 0.2s;
-      }
-      .banner-marquee-container {
-        flex: 1 1 auto;
-        overflow: hidden;
-        height: 100%;
-        display: flex;
-        align-items: center;
-      }
-      .banner-marquee-track {
-        white-space: nowrap;
-        display: inline-block;
-        animation: marquee 18s linear infinite;
-      }
-      @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-60%); }
-      }
-      .banner-marquee-text {
-        font-size: 0.98rem;
-        color: #222;
-        padding-left: 12px;
-      }
-      .banner-cta-btn {
-        flex: 0 0 auto;
-        margin: 0 16px 0 12px;
-        padding: 4px 22px;
-        font-size: 1.08rem;
-        min-height: 32px;
-        border-radius: 6px;
-        background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%);
-        color: #fff;
-        font-weight: 700;
-        border: none;
-        box-shadow: 0 6px 0 0 #8a1818, 0 4px 16px 0 rgba(0,0,0,0.13);
-        transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-      .banner-cta-btn:active {
-        background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%);
-        color: #fff;
-        box-shadow: 0 2px 0 0 #8a1818, 0 1px 4px 0 rgba(0,0,0,0.10);
-        transform: scale(0.97) translateY(2px);
-      }
-      @media (max-width: 767px) {
-        #sticky-narrow-banner {
-          width: 90vw;
-          max-width: 99vw;
-          min-width: 0;
-          bottom: 10px;
-          left: 50%;
-          transform: translateX(-50%);
-          border-radius: 7px;
-          height: 40px;
-          padding: 0 0 0 0;
-          background: #fff;
-          border: 1px solid #000;
-          box-shadow: 0 2px 10px 0 rgba(0,0,0,0.18);
-        }
-        .banner-marquee-text {
-          font-size: 0.98rem;
-        }
-        .banner-marquee-track {
-          animation-duration: 18s;
-        }
-        .banner-cta-btn {
-          margin: 0 6px 0 -28px;
-          padding: 1px 8px;
-          font-size: 0.93rem;
-          min-height: 22px;
-        }
-        body {
-          padding-bottom: 64px !important;
-        }
-      }
-    </style>
+    
   </body>
 </html>
