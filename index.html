@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/modal-lang.css">
   <link rel="stylesheet" href="css/modal-spotkanie.css">
   <link rel="stylesheet" href="css/modal-wsparcie-pl.css">
+  <link rel="stylesheet" href="css/modal-wsparcie-banner.css">
   <!-- <link rel="stylesheet" href="css/modal-jotform-mobile.css"> -->
     
   </head>
@@ -320,6 +321,40 @@
         <button type="button" class="button button-primary button-ujarak" data-dismiss="modal">OK</button>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Kopiowanie numeru konta w sekcji "Wsparcie"
+    var copyBtn = document.querySelector('.support-lead .copy-acct');
+    var acctEl = document.getElementById('fundacja-acct');
+    function setCopiedState(ok){
+      if (!copyBtn) return;
+      var prev = copyBtn.innerHTML;
+      copyBtn.dataset.prev = prev;
+      copyBtn.classList.add('copied');
+      copyBtn.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i><span>'+ (ok ? 'Skopiowano' : 'Błąd') +'</span>';
+      setTimeout(function(){
+        copyBtn.classList.remove('copied');
+        if (copyBtn.dataset.prev) copyBtn.innerHTML = copyBtn.dataset.prev;
+      }, 1600);
+    }
+    if (copyBtn && acctEl) {
+      copyBtn.addEventListener('click', function(){
+        var text = (acctEl.innerText || '').replace(/\s+/g,' ').trim();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function(){ setCopiedState(true); }).catch(function(){ setCopiedState(false); });
+        } else {
+          // Fallback
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          try { var ok = document.execCommand('copy'); setCopiedState(!!ok); }
+          catch(e){ setCopiedState(false); }
+          finally { document.body.removeChild(ta); }
+        }
+      });
+    }
     var okBtn = document.querySelector('#modalSpotkanie .button[data-dismiss="modal"]');
     if (okBtn) {
       okBtn.addEventListener('click', function() {
@@ -1013,6 +1048,33 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       <!-- Sekcja ukryta: Pricing -->
   <section class="section section-sm section-bottom-70 section-fluid bg-default" id="pricing">
         <div class="container">
+          <div class="support-lead wow fadeInUp" aria-label="Informacja o formach wsparcia">
+            <p>
+              <span class="hl">Dziękujemy, że jesteś z nami. <br> Nawet symboliczna wpłata niesie realną pomoc.</span><br><br>
+              Wybierz dowolną formę wsparcia z poniższych opcji.<br>
+              <small class="note-soft"><i class="fa fa-info-circle" aria-hidden="true"></i>Możesz wpłacić dowolny datek na podane konto Fundacji:</small>
+            </p>
+            <div class="divider divider-35"></div>
+            <p class="support-bank">
+              <span class="bank-line"><i class="fa fa-university" aria-hidden="true"></i> Przelew tradycyjny:
+                <span class="chip-ghost" aria-label="mBank">
+                  <img src="images/logo/mbank.jpg" alt="mBank" style="height:18px; width:auto; vertical-align:middle; border-radius:3px;"/>
+                </span>
+              </span><br>
+              <span class="acct-line"><i class="fa fa-hashtag" aria-hidden="true"></i> Numer konta: <span id="fundacja-acct" class="acct-number hl">78 1140 2118 0000 7637 0700 1001</span>
+                <button class="copy-acct" type="button" aria-label="Kopiuj numer konta"><i class="fa fa-copy" aria-hidden="true"></i><span>Kopiuj</span></button>
+              </span>
+            </p>
+            <div class="divider divider-35"></div>
+            <p class="support-note">
+              <small class="note-soft"><i class="fa fa-info-circle" aria-hidden="true"></i>lub skorzystać z poniższych szablonów. <br>Dostępne formy płatności między innymi to:</small>
+            </p>
+            <p class="support-methods">
+              <span class="pill"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Karty Płatnicze</span></span>
+              <span class="pill"><i class="fa fa-google" aria-hidden="true"></i><span>Google Pay</span></span>
+              <span class="pill"><i class="fa fa-apple" aria-hidden="true"></i><span>Apple Pay</span><span class="dot pulse" aria-hidden="true"></span></span>
+            </p>
+          </div>
 
           <div class="row row-30 justify-content-center">
             <div class="col-md-6 col-lg-5 col-xl-4">
@@ -1562,8 +1624,74 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
           <span class="banner-marquee-text">Jeżeli chcesz wesprzeć naszą fundację kliknij przycisk -&gt;&nbsp;&nbsp;&nbsp;</span>
         </div>
       </div>
-      <a class="banner-cta-btn" href="#">Wesprzyj</a>
+      <a class="banner-cta-btn" href="#modalWsparcieCTA" data-toggle="modal">Wesprzyj</a>
     </div>
+    
+    <!-- Modal: Wsparcie (CTA z banera) -->
+  <div class="modal fade" id="modalWsparcieCTA" tabindex="-1" role="dialog" aria-hidden="true" lang="pl">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header"></div>
+          <div class="modal-body">
+            <h3>Dziękujemy za Twoje wsparcie.</h3>
+            <p>Wybierz formę wsparcia:</p>
+            <div class="support-select-wrap">
+              <label for="supportType" class="sr-only">Wybierz formę wsparcia</label>
+              <select id="supportType" class="form-control" aria-label="Wybierz formę wsparcia">
+                <option value="" selected disabled>Wybierz formę wsparcia</option>
+                <option value="finansowe">FINANSOWE</option>
+                <option value="wolontariat">WOLONTARIAT</option>
+                <option value="wspolpraca">WSPÓŁPRACA</option>
+              </select>
+            </div>
+            <div class="support-actions">
+              <button id="supportProceedBtn" class="button button-primary button-ujarak" disabled>PRZEJDŹ</button>
+              <button type="button" class="button button-gray-4" data-dismiss="modal">ZAMKNIJ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var select = document.getElementById('supportType');
+        var goBtn = document.getElementById('supportProceedBtn');
+        var modalEl = document.getElementById('modalWsparcieCTA');
+        if (select && goBtn) {
+          select.addEventListener('change', function() {
+            goBtn.disabled = !select.value;
+          });
+          goBtn.addEventListener('click', function() {
+            if (goBtn.disabled) return;
+            // Kierunki (niewymagane przez zadanie, ale pomocne):
+            var targetId = null;
+            if (select.value === 'finansowe') targetId = 'pricing';
+            else if (select.value === 'wolontariat') targetId = 'contacts';
+            else if (select.value === 'wspolpraca') targetId = 'experience';
+
+            // Zamknij modal (Bootstrap lub fallback)
+            if (window.jQuery && window.jQuery(modalEl).modal) {
+              window.jQuery(modalEl).modal('hide');
+            } else if (modalEl) {
+              modalEl.classList.remove('show');
+              modalEl.style.display = 'none';
+              modalEl.setAttribute('aria-hidden', 'true');
+              modalEl.removeAttribute('aria-modal');
+            }
+
+            if (targetId) {
+              setTimeout(function() {
+                var target = document.getElementById(targetId);
+                if (target) {
+                  var y = target.getBoundingClientRect().top + window.pageYOffset;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }, 300);
+            }
+          });
+        }
+      });
+    </script>
     
   </body>
 </html>

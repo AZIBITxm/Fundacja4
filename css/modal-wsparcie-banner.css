@@ -1,0 +1,52 @@
+/* Modal wsparcia wywoływany z wąskiego banera (#modalWsparcieCTA)
+   Design spójny z istniejącymi modalami (bootstrap + motyw), klimat strony. */
+
+/* Zawsze nad dolnym banerem */
+.modal-backdrop { z-index: 10005 !important; }
+#modalWsparcieCTA { z-index: 10010 !important; }
+#modalWsparcieCTA .modal-dialog { max-width: 560px; width: 100%; margin: 28px auto; }
+#modalWsparcieCTA .modal-content { border-radius: 10px; overflow: hidden; }
+#modalWsparcieCTA .modal-header { border: 0; height: 0; padding: 0; }
+#modalWsparcieCTA .modal-body { padding: 28px 28px 22px 28px; }
+
+#modalWsparcieCTA h3 { 
+  font-weight: 700; color: #2c3e50; text-align: center; font-size: 1.35rem; margin-bottom: 10px;
+}
+#modalWsparcieCTA p { 
+  text-align: center; color: #333; font-size: 1.03rem; margin-bottom: 16px;
+}
+
+/* Select z lekkim prestiżowym efektem */
+#modalWsparcieCTA .support-select-wrap { display: flex; justify-content: center; margin-bottom: 16px; }
+#modalWsparcieCTA select.form-control { 
+  max-width: 360px; width: 100%; border-radius: 8px; border: 1px solid #d0d5dd; padding: 10px 12px; font-size: 1rem;
+  background: #fff; box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+}
+#modalWsparcieCTA select.form-control:focus { border-color: #94b7ff; box-shadow: 0 0 0 3px rgba(102,137,255,0.18); outline: none; }
+
+/* Przyciski */
+#modalWsparcieCTA .support-actions { display: flex; gap: 10px; justify-content: center; margin-top: 8px; }
+#modalWsparcieCTA .support-actions .button { margin: 0; }
+#modalWsparcieCTA #supportProceedBtn[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+/* Styl przycisku ZAMKNIJ identyczny jak w modal-wsparcie-pl.css */
+#modalWsparcieCTA [data-dismiss="modal"] {
+  background: #dc3545 !important; /* czerwony */
+  border-color: #dc3545 !important;
+  color: #fff !important;
+  min-width: 120px;
+  font-size: 1.08rem;
+}
+#modalWsparcieCTA [data-dismiss="modal"]:hover,
+#modalWsparcieCTA [data-dismiss="modal"]:focus {
+  background: #c82333 !important;
+  border-color: #bd2130 !important;
+  color: #fff !important;
+}
+
+/* Mobile full-screen-ish */
+@media (max-width: 575px) {
+  #modalWsparcieCTA .modal-dialog { margin: 0; max-width: 100vw; width: 100vw; height: auto; }
+  #modalWsparcieCTA .modal-content { border-radius: 0; }
+  #modalWsparcieCTA .modal-body { padding: 24px 16px 18px 16px; }
+}
