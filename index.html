@@ -1689,6 +1689,17 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
     </div>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // Wesprzyj button: enable idle animation and restart it on click
+        var ctaBtn = document.querySelector('#sticky-narrow-banner .banner-cta-btn');
+        if (ctaBtn) {
+          ctaBtn.classList.add('cta-animated');
+          ctaBtn.addEventListener('click', function() {
+            // restart CSS animation by toggling the class with a reflow
+            ctaBtn.classList.remove('cta-animated');
+            void ctaBtn.offsetWidth; // force reflow
+            setTimeout(function(){ ctaBtn.classList.add('cta-animated'); }, 400);
+          });
+        }
         var select = document.getElementById('supportType');
         var goBtn = document.getElementById('supportProceedBtn');
         var modalEl = document.getElementById('modalWsparcieCTA');
