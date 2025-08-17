@@ -1,3 +1,71 @@
+/* ========================= */
+/* Modal buttons: unify look */
+/* ========================= */
+/* Bazowy styl jak .copy-acct: kształt, padding, cień, animacje */
+.modal .button,
+.modal a.button,
+.modal button.button,
+.modal button[type="button"],
+.modal button[type="submit"],
+.modal .btn {
+	border: 0;
+	border-radius: .45rem;
+	padding: .5rem 1rem;
+	font-size: 1rem;
+	font-weight: 600;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: .4rem;
+	cursor: pointer;
+	text-decoration: none;
+	transition: transform .12s ease, box-shadow .15s ease, filter .2s ease, background .25s cubic-bezier(.4,0,.2,1), color .25s cubic-bezier(.4,0,.2,1);
+	box-shadow: 0 2px 0 0 rgba(0,0,0,.15), 0 4px 12px rgba(67,56,202,.25);
+}
+/* CTA w modalach: jak copy, ale nie dotykaj Zamknij */
+.modal .button:not([data-dismiss="modal"]),
+.modal a.button:not([data-dismiss="modal"]),
+.modal button.button:not([data-dismiss="modal"]),
+.modal button[type="button"]:not([data-dismiss="modal"]) {
+	background: linear-gradient(180deg,#4f46e5,#4338ca);
+	color: #fff;
+}
+.modal .button:not([data-dismiss="modal"]):hover,
+.modal a.button:not([data-dismiss="modal"]):hover,
+.modal button.button:not([data-dismiss="modal"]):hover,
+.modal button[type="button"]:not([data-dismiss="modal"]):hover {
+	transform: translateY(-1px);
+	box-shadow: 0 3px 0 0 rgba(0,0,0,.14), 0 6px 16px rgba(67,56,202,.30);
+}
+.modal .button:not([data-dismiss="modal"]):active,
+.modal a.button:not([data-dismiss="modal"]):active,
+.modal button.button:not([data-dismiss="modal"]):active,
+.modal button[type="button"]:not([data-dismiss="modal"]):active {
+	transform: translateY(0);
+	box-shadow: 0 1px 0 0 rgba(0,0,0,.18), 0 2px 8px rgba(67,56,202,.25);
+}
+/* Przyciski Zamknij: zachowaj czerwony kolor, ale adoptuj kształt/cień/padding */
+.modal [data-dismiss="modal"],
+.modal .btn-close,
+.modal button.close {
+	background: #dc3545 !important;
+	border-color: #dc3545 !important;
+	color: #fff !important;
+	border-radius: .45rem;
+	padding: .5rem 1rem;
+	font-weight: 600;
+	box-shadow: 0 2px 0 0 rgba(0,0,0,.15), 0 6px 18px rgba(220,53,69,.35);
+}
+.modal [data-dismiss="modal"]:hover,
+.modal .btn-close:hover,
+.modal button.close:hover,
+.modal [data-dismiss="modal"]:focus,
+.modal .btn-close:focus,
+.modal button.close:focus {
+	background: #c82333 !important;
+	border-color: #bd2130 !important;
+	color: #fff !important;
+}
 /* Support methods: wymuszenie nowej linii dla notki nad etykietą */
 .support-lead .support-methods .note-soft {
 	display: block;
@@ -331,6 +399,9 @@ html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
 .mb-12 { margin-bottom: 12px; }
 .mb-18 { margin-bottom: 18px; }
 .cta-mobile-wrap { margin-bottom: 18px; }
+/* BR only on mobile */
+br.br-mobile-only { display: inline; }
+@media (min-width: 768px) { br.br-mobile-only { display: none; } }
 
 /* Pricing section bg */
 #pricing { background: #f5f6fa; }
@@ -366,6 +437,23 @@ html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
 @keyframes pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.35); } 70% { box-shadow: 0 0 0 8px rgba(34,197,94,.0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
 .support-lead .note-soft { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 8px 10px; background: linear-gradient(180deg, rgba(102,137,255,.06), rgba(102,137,255,.03)); border: 1px dashed rgba(102,137,255,.35); border-radius: 8px; color: #334155; }
 .support-lead .note-soft i.fa { color: #3b82f6; margin-right: 6px; }
+/* Kolorystyczna animacja notek wsparcia (pastelowy cykl + lekki glow) */
+.support-lead .note-color {
+	animation: noteColorWave 6s ease-in-out infinite;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(102,137,255,.35);
+}
+@keyframes noteColorWave {
+	0%   { background: linear-gradient(180deg, rgba(102,137,255,.08), rgba(102,137,255,.04)); border-color: rgba(102,137,255,.45); box-shadow: 0 0 0 rgba(0,0,0,0); }
+	25%  { background: linear-gradient(180deg, rgba(59,130,246,.08), rgba(59,130,246,.04)); border-color: rgba(59,130,246,.45); box-shadow: 0 6px 18px rgba(59,130,246,.10); }
+	50%  { background: linear-gradient(180deg, rgba(34,197,94,.08), rgba(34,197,94,.04)); border-color: rgba(34,197,94,.45); box-shadow: 0 6px 18px rgba(34,197,94,.10); }
+	75%  { background: linear-gradient(180deg, rgba(234,179,8,.10), rgba(234,179,8,.05)); border-color: rgba(234,179,8,.50); box-shadow: 0 6px 18px rgba(234,179,8,.12); }
+	100% { background: linear-gradient(180deg, rgba(102,137,255,.08), rgba(102,137,255,.04)); border-color: rgba(102,137,255,.45); box-shadow: 0 0 0 rgba(0,0,0,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.support-lead .note-color { animation: none !important; }
+}
 @media (prefers-reduced-motion: reduce) {
 	.support-lead .hl::after, .support-lead .dot.pulse { animation: none !important; }
 }
@@ -393,11 +481,60 @@ html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
 	.support-lead .support-bank { text-align: center; }
 	.support-lead .support-bank .bank-line { display: inline-block; }
 	.support-lead .support-bank .acct-line { justify-content: center; }
+	/* Mobile: numer konta w nowej linii po "Konto:" */
+	.support-lead .support-bank .acct-line .acct-number { display: block; width: 100%; margin-top: 4px; }
+	/* Mobile: większa przerwa między numerem a przyciskiem kopiuj */
+	.support-lead .support-bank .acct-line { row-gap: 12px; }
+	.support-lead .support-bank .copy-acct { margin-top: 6px; }
 	.support-lead .support-methods { justify-content: center; }
 }
 /* Globalne wyśrodkowanie poziome sekcji Wsparcie (desktop + mobile) */
 #pricing .support-lead { text-align: center; }
 #pricing .support-lead .support-bank { text-align: center; }
+
+/* ========================= */
+/* Support: down arrows UI   */
+/* ========================= */
+.support-arrows { display:flex; align-items:center; justify-content:center; gap: 12px; margin: 6px 0 14px; pointer-events: none; transform: translateY(1em); }
+.support-arrows .arrow { display:inline-flex; align-items:center; justify-content:center; width: 38px; height: 38px; border-radius: 999px; color: #1e3a8a; background: transparent; box-shadow: none; border: 0; animation: arrowFloat 1.8s ease-in-out infinite; }
+.support-arrows .arrow svg { width: 20px; height: 20px; display:block; }
+.support-arrows .arrow-2 { animation-delay: .18s; }
+.support-arrows .arrow-3 { animation-delay: .36s; }
+@keyframes arrowFloat { 0% { transform: translateY(-2px); opacity: .65; } 30% { opacity: 1; } 50% { transform: translateY(4px); } 70% { opacity: .85; } 100% { transform: translateY(-2px); opacity: .65; } }
+@media (max-width: 767.98px) {
+	.support-arrows { gap: 4px; margin-top: 4px; margin-bottom: 8px; }
+		.support-arrows .arrow { width: 34px; height: 34px; }
+		.support-arrows .arrow svg { width: 18px; height: 18px; }
+	/* Mobile: pokazuj tylko jedną strzałkę */
+	.support-arrows .arrow-2,
+	.support-arrows .arrow-3 { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.support-arrows .arrow { animation: none !important; }
+}
+/* Desktop: rozstaw strzałki nad 3 banerami */
+@media (min-width: 1200px) {
+	/* Pozwól elementom wewnątrz .support-lead wyjść poza jej max-width */
+	.support-lead { overflow: visible; }
+	/* Rozszerz strzałki do szerokości kontenera (Bootstrap xl = 1140px) i wyśrodkuj */
+	.support-arrows {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		align-items: center;
+		padding: 0 15px;
+		width: 1140px;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%, 1em);
+	}
+	.support-arrows .arrow { margin: 0 auto; }
+}
+
+/* Podniesienie w górę pierwszego wiersza banerów po sekcji .support-lead */
+.support-lead + .row.row-30.justify-content-center { margin-top: -12px; }
+@media (max-width: 767.98px) {
+	.support-lead + .row.row-30.justify-content-center { margin-top: -8px; }
+}
 #pricing .support-lead .support-bank .acct-line { justify-content: center; }
 #pricing .support-lead .support-methods { justify-content: center; margin-top: 12px; }
 /* Selects: szybkaKwota + abonamentKwota (shared) */
@@ -478,6 +615,8 @@ html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
 /* Head UI helpers */
 .lang-flag { width:28px; height:20px; border-radius:4px; box-shadow:0 2px 8px rgba(0,0,0,0.08); margin-right:4px; }
 .title-classic-title h3 { text-align: center; }
+/* Center title for pricing (PC + tablet) */
+#pricing .title-classic .title-classic-title { display:flex; justify-content:center; align-items:center; width:100%; }
 /* Header nachodzi na slider Swiper */
 header.section.page-header {
   position: absolute;

@@ -321,40 +321,47 @@
         <button type="button" class="button button-primary button-ujarak" data-dismiss="modal">OK</button>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Kopiowanie numeru konta w sekcji "Wsparcie"
-    var copyBtn = document.querySelector('.support-lead .copy-acct');
-    var acctEl = document.getElementById('fundacja-acct');
-    function setCopiedState(ok){
-      if (!copyBtn) return;
-      var prev = copyBtn.innerHTML;
-      copyBtn.dataset.prev = prev;
-      copyBtn.classList.add('copied');
-      copyBtn.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i><span>'+ (ok ? 'Skopiowano' : 'Błąd') +'</span>';
+    // Kopiowanie wartości (konto/adres) w sekcji "Wsparcie"
+    function setCopiedState(btn, ok){
+      if (!btn) return;
+      var prev = btn.innerHTML;
+      btn.dataset.prev = prev;
+      btn.classList.add('copied');
+      btn.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i><span>'+ (ok ? 'Skopiowano' : 'Błąd') +'</span>';
       setTimeout(function(){
-        copyBtn.classList.remove('copied');
-        if (copyBtn.dataset.prev) copyBtn.innerHTML = copyBtn.dataset.prev;
+        btn.classList.remove('copied');
+        if (btn.dataset.prev) btn.innerHTML = btn.dataset.prev;
       }, 1600);
     }
-    if (copyBtn && acctEl) {
-      copyBtn.addEventListener('click', function(){
-        var text = (acctEl.innerText || '').replace(/\s+/g,' ').trim();
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(function(){ setCopiedState(true); }).catch(function(){ setCopiedState(false); });
-        } else {
-          // Fallback
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.focus();
-          ta.select();
-          try { var ok = document.execCommand('copy'); setCopiedState(!!ok); }
-          catch(e){ setCopiedState(false); }
-          finally { document.body.removeChild(ta); }
-        }
+    document.querySelectorAll('.support-lead .copy-acct[data-copy-target]')
+      .forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var sel = btn.getAttribute('data-copy-target');
+          var target = sel ? document.querySelector(sel) : null;
+          var text = target ? (target.innerText || target.textContent || '') : '';
+          text = (text || '').replace(/\s+/g,' ').trim();
+          if (!text) { setCopiedState(btn, false); return; }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text)
+              .then(function(){ setCopiedState(btn, true); })
+              .catch(function(){ setCopiedState(btn, false); });
+          } else {
+            // Fallback
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); }
+            catch(e){ ok = false; }
+            document.body.removeChild(ta);
+            setCopiedState(btn, !!ok);
+          }
+        });
       });
-    }
     var okBtn = document.querySelector('#modalSpotkanie .button[data-dismiss="modal"]');
     if (okBtn) {
       okBtn.addEventListener('click', function() {
@@ -1048,11 +1055,19 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       <!-- Sekcja ukryta: Pricing -->
   <section class="section section-sm section-bottom-70 section-fluid bg-default" id="pricing">
         <div class="container">
+          <article class="title-classic">
+            <div class="title-classic-title">
+              <h3 class="text-center">Wsparcie Finansowe Fundacji</h3>
+            </div>
+          </article>
+          <div class="title-classic-text mb-18">
+            <div class="decor-bar"></div>
+          </div>
           <div class="support-lead wow fadeInUp" aria-label="Informacja o formach wsparcia">
             <p>
-              <span class="hl">Dziękujemy, że jesteś z nami. <br> Nawet symboliczna wpłata niesie realną pomoc.</span><br><br>
-              Wybierz dowolną formę wsparcia z poniższych opcji.<br>
-              <small class="note-soft"><i class="fa fa-info-circle" aria-hidden="true"></i>Możesz wpłacić dowolny datek na podane konto Fundacji:</small>
+              <span class="hl"><br>Dziękujemy, że jesteś z nami. <br> Nawet symboliczna wpłata niesie realną pomoc.</span><br><br>
+              Wybierz dowolną formę wsparcia z poniższych opcji.<br><br>
+              <small class="note-soft note-color"><i class="fa fa-info-circle" aria-hidden="true"></i>Możesz wpłacić dowolny datek na podane konto Fundacji:</small>
             </p>
             <div class="divider divider-35"></div>
             <p class="support-bank">
@@ -1061,18 +1076,38 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                   <img src="images/logo/mbank.jpg" alt="mBank" style="height:18px; width:auto; vertical-align:middle; border-radius:3px;"/>
                 </span>
               </span><br>
-              <span class="acct-line"><i class="fa fa-hashtag" aria-hidden="true"></i> Numer konta: <span id="fundacja-acct" class="acct-number hl">78 1140 2118 0000 7637 0700 1001</span>
-                <button class="copy-acct" type="button" aria-label="Kopiuj numer konta"><i class="fa fa-copy" aria-hidden="true"></i><span>Kopiuj</span></button>
+              <span class="acct-line"><i class="fa fa-hashtag" aria-hidden="true"></i> Konto:<br class="br-mobile-only"> <span id="fundacja-acct" class="acct-number hl">78 1140 2118 0000 7637 0700 1001</span>
+                <button class="copy-acct" type="button" aria-label="Kopiuj numer konta" data-copy-target="#fundacja-acct"><i class="fa fa-copy" aria-hidden="true"></i><span>Kopiuj</span></button>
+              </span>
+              <br><br>
+              <span class="acct-line"><i class="fa fa-map-marker" aria-hidden="true"></i> Adres:<br class="br-mobile-only"> <span id="fundacja-address" class="acct-number hl">WorldFoundation, ul. Przykładowa 1, 00-001 Warszawa</span>
+                <button class="copy-acct" type="button" aria-label="Kopiuj adres fundacji" data-copy-target="#fundacja-address"><i class="fa fa-copy" aria-hidden="true"></i><span>Kopiuj</span></button>
               </span>
             </p>
             <div class="divider divider-35"></div>
             <p class="support-note">
-              <small class="note-soft"><i class="fa fa-info-circle" aria-hidden="true"></i>lub skorzystać z poniższych szablonów. <br>Dostępne formy płatności między innymi to:</small>
+              <small class="note-soft note-color"><i class="fa fa-info-circle" aria-hidden="true"></i>lub skorzystać z poniższych szablonów.</small>
             </p>
+            <!-- Down arrows indicator: 3 on desktop, 1 on mobile -->
+            <div class="support-arrows" aria-hidden="true">
+              <span class="arrow arrow-1">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                  <polyline points="4,8 12,16 20,8" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="arrow arrow-2">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                  <polyline points="4,8 12,16 20,8" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="arrow arrow-3">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                  <polyline points="4,8 12,16 20,8" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
             <p class="support-methods">
-              <span class="pill"><i class="fa fa-credit-card" aria-hidden="true"></i><span>Karty Płatnicze</span></span>
-              <span class="pill"><i class="fa fa-google" aria-hidden="true"></i><span>Google Pay</span></span>
-              <span class="pill"><i class="fa fa-apple" aria-hidden="true"></i><span>Apple Pay</span><span class="dot pulse" aria-hidden="true"></span></span>
+              
             </p>
           </div>
 
