@@ -27,7 +27,8 @@
 .modal a.button:not([data-dismiss="modal"]),
 .modal button.button:not([data-dismiss="modal"]),
 .modal button[type="button"]:not([data-dismiss="modal"]) {
-	background: linear-gradient(180deg,#4f46e5,#4338ca);
+	background-color: #6689ff; /* match .button-primary */
+	border-color: #6689ff;
 	color: #fff;
 }
 .modal .button:not([data-dismiss="modal"]):hover,
@@ -36,6 +37,9 @@
 .modal button[type="button"]:not([data-dismiss="modal"]):hover {
 	transform: translateY(-1px);
 	box-shadow: 0 3px 0 0 rgba(0,0,0,.14), 0 6px 16px rgba(67,56,202,.30);
+	background-color: #151515; /* match .button-primary:hover */
+	border-color: #151515;
+	color: #fff;
 }
 .modal .button:not([data-dismiss="modal"]):active,
 .modal a.button:not([data-dismiss="modal"]):active,
@@ -43,6 +47,9 @@
 .modal button[type="button"]:not([data-dismiss="modal"]):active {
 	transform: translateY(0);
 	box-shadow: 0 1px 0 0 rgba(0,0,0,.18), 0 2px 8px rgba(67,56,202,.25);
+	background-color: #151515; /* match .button-primary:active */
+	border-color: #151515;
+	color: #fff;
 }
 /* Przyciski Zamknij: zachowaj czerwony kolor, ale adoptuj kształt/cień/padding */
 .modal [data-dismiss="modal"],
@@ -403,8 +410,11 @@ html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
 br.br-mobile-only { display: inline; }
 @media (min-width: 768px) { br.br-mobile-only { display: none; } }
 
-/* Pricing section bg */
-#pricing { background: #f5f6fa; }
+/* Pricing section bg + optical overlap illusion (inner top shadow) */
+#pricing { background: #f5f6fa; position: relative; box-shadow: inset 0 18px 26px -18px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -18px 26px -18px rgba(0,0,0,0.28), inset 0 -1px 0 rgba(255,255,255,0.6); }
+@media (max-width: 767.98px) {
+	#pricing { box-shadow: inset 0 12px 20px -14px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -12px 20px -14px rgba(0,0,0,0.26), inset 0 -1px 0 rgba(255,255,255,0.55); }
+}
 
 /* Informacja u góry sekcji Wsparcie: ozdobniki per-fraza (bez banera) */
 .support-lead { max-width: 980px; margin: 0 auto 22px auto; padding: 0 6px; color:#1a1a1a; }

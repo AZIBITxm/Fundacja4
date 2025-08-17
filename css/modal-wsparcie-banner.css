@@ -21,6 +21,7 @@
 #modalWsparcieCTA select.form-control { 
   max-width: 360px; width: 100%; border-radius: 8px; border: 1px solid #d0d5dd; padding: 10px 12px; font-size: 1rem;
   background: #fff; box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+  min-height: 46px; line-height: 1.4; /* lepsza pionowa czytelność */
 }
 #modalWsparcieCTA select.form-control:focus { border-color: #94b7ff; box-shadow: 0 0 0 3px rgba(102,137,255,0.18); outline: none; }
 
@@ -31,7 +32,7 @@
 
 /* Styl przycisku ZAMKNIJ identyczny jak w modal-wsparcie-pl.css */
 #modalWsparcieCTA [data-dismiss="modal"] {
-  background: #dc3545 !important; /* czerwony */
+  background: #ec1228 !important; /* czerwony */
   border-color: #dc3545 !important;
   color: #fff !important;
   min-width: 120px;
