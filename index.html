@@ -158,7 +158,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Wsparcie psychologa</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Prowadzimy konsultacje indywidualne, terapie grupowe oraz programy wsparcia dedykowane poszczególnym grupom.</p><a class="button button-primary button-ujarak" href="#services" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Prowadzimy konsultacje indywidualne, terapie grupowe oraz programy wsparcia dedykowane poszczególnym grupom.</p><a class="button button-primary button-ujarak scroll-to" href="#services" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -190,7 +190,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Wsparcie dla weteranów</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wspieramy weteranów oraz ich rodziny poprzez dedykowane programy wsparcia, konsultacje oraz działania na rzecz poprawy jakości życia po służbie.</p><a class="button button-primary button-ujarak" id="slider4-btn" href="#" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wspieramy weteranów oraz ich rodziny poprzez dedykowane programy wsparcia, konsultacje oraz działania na rzecz poprawy jakości życia po służbie.</p><a class="button button-primary button-ujarak" id="slider4-btn" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -208,6 +208,45 @@
             var sliderBtns = document.querySelectorAll('.swiper-slide .button-ujarak');
             sliderBtns.forEach(function(btn, idx) {
               btn.addEventListener('click', function(e) {
+                // Prevent default for all buttons
+                e.preventDefault();
+                
+                // Get target from href
+                var targetId = btn.getAttribute('href');
+                var target = document.querySelector(targetId);
+                
+                if (target) {
+                  var y = target.getBoundingClientRect().top + window.pageYOffset;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+
+                // Slider 4 - obsługa dla weteranów
+                if (btn.id === 'slider4-btn') {
+                  e.preventDefault(); // Zapobiegamy domyślnej akcji i otwieraniu modala
+                  var target = document.querySelector('#projects');
+                  if (target) {
+                    // Obliczamy pozycję z uwzględnieniem wysokości nagłówka mobilnego
+                    var headerOffset = window.innerWidth < 992 ? 60 : 0; // Dostosuj wartość 60 jeśli potrzeba
+                    var elementPosition = target.getBoundingClientRect().top;
+                    var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    // Przewijamy do sekcji
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth"
+                    });
+
+                    // Przełączamy zakładkę
+                    var tab4 = document.querySelector('#tabs-6 .nav-link[href="#tabs-6-4"]');
+                    if (tab4) {
+                      setTimeout(function() {
+                        tab4.click();
+                      }, 800);
+                    }
+                  }
+                  return; // Przerywamy dalsze wykonywanie
+                }
+
                 // Slider 3 (indeks 2) - specjalna obsługa
                 if (btn.id === 'slider3-btn') {
                   e.preventDefault();
@@ -740,7 +779,7 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
                   <div class="counter-amy">
                     <div class="counter-amy-number"><span class="counter" data-speed="1200">4</span>
                     </div>
-                    <h6 class="counter-amy-title">Aktywne Projekty</h6>
+                      <h6 class="counter-amy-title">Projekty</h6>
                   </div>
                 </div>
                 <div class="col-9 col-sm-6">
@@ -1389,11 +1428,11 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       </section>
 
       <!-- Contact Form-->
-      <section class="section section-sm section-last bg-default text-left" id="contacts">
+      <section class="section section-sm section-last bg-default" id="contacts">
         <div class="container">
           <article class="title-classic">
             <div class="title-classic-title">
-              <h3 class="text-center">Napisz do Nas<br><br></h3>
+              <h3>Napisz do Nas<br><br></h3>
             </div>
             
           </article>
