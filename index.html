@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
+    <script>
+      // Inicjalizacja Osano zostanie wykonana po wyborze języka polskiego
+      window.initializeOsano = function() {
+        if (!document.getElementById('osano-script')) {
+          var script = document.createElement('script');
+          script.id = 'osano-script';
+          script.src = 'https://cmp.osano.com/8ox4hwnlJL/851822d7-970b-42c0-8e2a-26ef258aaff1/osano.js';
+          document.head.appendChild(script);
+        }
+      }
+    </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8MRQMWWVJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8MRQMWWVJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-R8MRQMWWVJ');
-</script>
+      gtag('config', 'G-R8MRQMWWVJ');
+    </script>
 
     <title>WorldFoundation</title>
     <meta name="format-detection" content="telephone=no">
@@ -65,7 +76,10 @@
         }
         document.getElementById('flagPL').onclick = function() {
           localStorage.setItem('langSelected', 'pl');
-          fadeOutModal();
+          fadeOutModal(function() {
+            // Inicjalizuj Osano po zamknięciu modalu
+            window.initializeOsano();
+          });
           updateLangButton();
         };
         document.getElementById('flagEN').onclick = function() {
