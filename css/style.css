@@ -605,7 +605,18 @@ br.br-mobile-only { display: inline; }
 }
 .banner-cta-btn:active { background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%); color: #fff; box-shadow: 0 2px 0 0 #8a1818, 0 1px 4px 0 rgba(0,0,0,0.10); transform: scale(0.97) translateY(2px); }
 @media (max-width: 767px) {
-	#sticky-narrow-banner { width: 90vw; max-width: 99vw; min-width: 0; bottom: 10px; border-radius: 7px; height: 40px; }
+	/* Na urządzeniach mobilnych ustaw baner wsparcia na 3/4 szerokości i przyklej do prawej */
+	#sticky-narrow-banner {
+		width: 75vw;
+		max-width: 99vw;
+		min-width: 0;
+		bottom: 10px;
+		right: 0;
+		left: auto;
+		transform: none;
+		border-radius: 7px 0 0 7px;
+		height: 40px;
+	}
 	.banner-marquee-track { animation-duration: 18s; }
 	.banner-cta-btn { margin: 0 6px 0 -28px; padding: 1px 8px; font-size: 0.93rem; min-height: 22px; }
 	body { padding-bottom: 64px !important; }

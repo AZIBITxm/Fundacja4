@@ -51,3 +51,23 @@
   #modalWsparcieCTA .modal-content { border-radius: 0; }
   #modalWsparcieCTA .modal-body { padding: 24px 16px 18px 16px; }
 }
+
+/* Support banner: na mobilnych urządzeniach ustaw szerokość 3/4 ekranu i przyklej do prawej */
+.support-banner {
+  position: fixed;
+  right: 0; /* przyklej do prawej krawędzi */
+  bottom: 12px;
+  z-index: 10000;
+  width: 75vw; /* 3/4 szerokości ekranu */
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: 8px 0 0 8px; /* zaokrąglone tylko z lewej strony, przy prawej krawędzi */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Dodatkowe dopasowania dla bardzo małych ekranów */
+@media (max-width: 420px) {
+  .support-banner { width: 85vw; bottom: 8px; padding: 10px 12px; }
+}
