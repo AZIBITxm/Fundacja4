@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/custom.css">
   <!-- Modals CSS -->
   <link rel="stylesheet" href="css/modal-lang.css">
   <link rel="stylesheet" href="css/modal-spotkanie.css">
@@ -1419,8 +1418,8 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 <div class="box-contacts-body">
                   <div class="box-contacts-icon fl-bigmug-line-cellphone55"></div>
                   <div class="box-contacts-decor"></div>
-                  <p class="box-contacts-link"><img class="flag-icon" src="images/flaga/pl.png" alt="PL"/><a href="tel:#">+48 519 830 226</a></p>
-                  <p class="box-contacts-link"><img class="flag-icon" src="images/flaga/de.png" alt="DE"/><a href="tel:#">+49 1521 9459413</a></p>
+                  <p class="box-contacts-link"><img class="flag-icon" src="images/flaga/pl.png" alt="PL"/><a href="tel:+48519830226">+48 519 830 226</a></p>
+                  <p class="box-contacts-link"><img class="flag-icon" src="images/flaga/de.png" alt="DE"/><a href="tel:+4915212403091">+49 15212403091</a></p>
                 </div>
               </article>
             </div>
@@ -1438,7 +1437,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 <div class="box-contacts-body">
                   <div class="box-contacts-icon fl-bigmug-line-email64"></div>
                   <div class="box-contacts-decor"></div>
-                  <p class="box-contacts-link"><a href="mailto:#">info@worldfoundation.eu</a></p>
+                  <p class="box-contacts-link"><a href="mailto:info@worldfoundation.eu">info@worldfoundation.eu</a></p>
                   
                 </div>
               </article>
@@ -1555,42 +1554,63 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             margin-right: 8px;
         }
       </style>
-      <!-- Page Footer-->
-      <footer class="section section-fluid footer-minimal context-dark">
-        <div class="bg-gray-15">
-                   <div class="container-fluid">
-            <div class="footer-minimal-inset oh">
-              <ul class="footer-list-category-2">
-                <li><a href="#">UI Design</a></li>
-                <li><a href="#">Windows/Mac OS Apps</a></li>
-                <li><a href="#">Android/iOS Apps</a></li>
-                <li><a href="#">Cloud Solutions</a></li>
-                <li><a href="#">Customer Support</a></li>
+      <!-- Page Footer (polska, kompletna wersja) -->
+      <style>
+        /* Inline footer styles to ensure they apply immediately */
+        .wf-footer { background:#121212; color:#9a9a9a; padding:40px 0; }
+        .wf-footer a { color:#9a9a9a; text-decoration:none; }
+        .wf-footer a:hover { color:#fff; }
+  .wf-footer .footer-about { font-family: "Poppins", Arial, sans-serif; font-size:0.88rem; color:#bdbdbd; font-weight:300; }
+        .wf-footer .footer-quick a { display:block; margin:6px 0; font-size:0.92rem; color:#9a9a9a; }
+        .wf-footer .footer-legal a { display:block; margin:6px 0; font-size:0.92rem; color:#9a9a9a; }
+        .wf-footer .footer-social a { margin-right:8px; color:#9a9a9a; }
+        .wf-footer .footer-copyright { color:#8f8f8f; font-size:0.9rem; }
+        .wf-footer .footer-subscribe input { width:100%; padding:8px; margin-bottom:8px; border-radius:4px; border:1px solid #333; background:#1a1a1a; color:#fff; }
+        .wf-footer .footer-subscribe button { width:100%; }
+        @media (max-width:767px) { .wf-footer { padding:20px 12px; } .wf-footer .footer-about { font-size:0.9rem; } }
+      </style>
+      <footer class="wf-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h5 style="color:#fff;margin-bottom:10px;">O nas</h5>
+              <p class="footer-about">Fundacja WorldFoundation wspiera rodziny i osoby potrzebujące: pomoc psychologiczna, grupy wsparcia, projekty edukacyjne i prawne.</p>
+              <ul class="list-unstyled" style="margin-top:10px;color:#bdbdbd;">
+                <li><i class="fa fa-map-marker" aria-hidden="true" style="width:18px;"></i> <strong>Adres:</strong> ul. Staromiejska 17e, 84-300 Lębork, Polska</li>
+                 <li><i class="fa fa-map-marker" aria-hidden="true" style="width:18px;"></i> <strong>Adres:</strong> Medardstr. 120, 54294 Trier, Niemcy</li>
+                <li><img src="images/flaga/pl.png" alt="PL" style="height:14px;vertical-align:middle;margin-right:8px;"/> <a href="tel:+48519830226">+48 519 830 226</a></li>
+                <li><img src="images/flaga/de.png" alt="DE" style="height:14px;vertical-align:middle;margin-right:8px;"/> <a href="tel:+4915212403091">+49 15212403091</a></li>
+                <li><i class="fa fa-envelope" aria-hidden="true" style="width:18px;"></i> <strong>Email:</strong> <a href="mailto:info@worldfoundation.eu">info@worldfoundation.eu</a></li>
               </ul>
             </div>
-            <div class="footer-minimal-bottom-panel text-sm-left">
-              <div class="row row-10 align-items-md-center">
-                <div class="col-sm-6 col-md-4 text-sm-right text-md-center">
-                  <div>
-                    <ul class="list-inline list-inline-sm footer-social-list-2">
-                      <li><a class="icon fa fa-facebook" href="#"></a></li>
-                      <li><a class="icon fa fa-twitter" href="#"></a></li>
-                      <li><a class="icon fa fa-google-plus" href="#"></a></li>
-                      <li><a class="icon fa fa-instagram" href="#"></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-md-4 order-sm-first">
-                  <!-- Rights-->
-                  <p class="rights">
-                    <span>&copy;&nbsp;</span><span class="copyright-year"></span> <span>WorldFoundation</span>
-                    <span class="mx-2">|</span>
-                    <a href="polityka-prywatnosci.html" class="privacy-link">Polityka Prywatności</a>
-                  </p>
-                </div>
-                <div class="col-sm-6 col-md-4 text-md-right"><span>All rights reserved.</span> <span>Design&nbsp;by&nbsp;<a href="https://www.templatemonster.com">TemplateMonster</a></span>
-                </div>
-              </div>
+            <div class="col-md-4 footer-quick">
+              <h5 style="color:#fff;margin-bottom:10px;">Szybkie linki</h5>
+              <a href="#about">O nas</a>
+              <a href="#projects">Projekty</a>
+              <a href="#services">Usługi</a>
+              <a href="#contact-info">Kontakt</a>
+              <a href="#modalWsparcieCTA" data-toggle="modal">Wesprzyj</a>
+            </div>
+            <div class="col-md-4 footer-legal">
+              <h5 style="color:#fff;margin-bottom:10px;">Dokumenty</h5>
+              <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+              <a href="polityka-prywatnosci.html#pliki-cookies">Polityka cookies</a>
+              <a href="regulamin.html">Regulamin</a>
+              <a href="doc/STATUT WorldFoundation aktualny - cyfrowy.pdf" target="_blank" rel="noopener">Statut</a>
+            </div>
+          </div>
+
+          <hr style="border-color:#2a2a2a;margin:18px 0;">
+
+          <div class="row align-items-center">
+            <div class="col-md-6 footer-social">
+              <a class="icon fa fa-facebook" href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook"></a>
+              <a class="icon fa fa-twitter" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"></a>
+              <a class="icon fa fa-instagram" href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"></a>
+              <a class="icon fa fa-youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"></a>
+            </div>
+            <div class="col-md-6 text-md-right">
+              <p class="footer-copyright mb-0">&copy; <span class="copyright-year"></span> WorldFoundation | Wszelkie prawa zastrzeżone.</p>
             </div>
           </div>
         </div>
