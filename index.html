@@ -1484,10 +1484,31 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 </div>
                 <div id="staticFormMsg"></div>
                 <div class="form-group">
-                  <div class="g-recaptcha" data-sitekey="6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23"></div>
+                  <div class="g-recaptcha"></div>
                 </div>
                 <button type="submit" class="button button-primary button-ujarak">Wyślij</button>
-                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+                <script>
+                  var coopRecaptchaWidgetId;
+                  
+                  function onRecaptchaLoad() {
+                    // Renderuj reCAPTCHA w formularzu kontaktowym (głównym)
+                    var mainRecaptcha = document.querySelector('#contacts .g-recaptcha');
+                    if (mainRecaptcha) {
+                      grecaptcha.render(mainRecaptcha, {
+                        'sitekey': '6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23'
+                      });
+                    }
+                    
+                    // Renderuj reCAPTCHA w modalu współpracy
+                    var coopRecaptchaContainer = document.querySelector('#coop-recaptcha .g-recaptcha');
+                    if (coopRecaptchaContainer) {
+                      coopRecaptchaWidgetId = grecaptcha.render(coopRecaptchaContainer, {
+                        'sitekey': '6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23'
+                      });
+                    }
+                  }
+                </script>
               </form>
               <script>
                 document.getElementById('staticForm').addEventListener('submit', async function(e) {
@@ -1836,7 +1857,9 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
               </div>
               
               <div class="form-wrap">
-                <div class="g-recaptcha" data-sitekey="6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23" id="coop-recaptcha"></div>
+                <div id="coop-recaptcha">
+                  <div class="g-recaptcha"></div>
+                </div>
               </div>
               
               <div class="cooperation-actions">
@@ -1856,9 +1879,24 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
           cooperationForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Sprawdź reCAPTCHA w modalu
-            var recaptchaResponse = grecaptcha.getResponse();
-            if (!recaptchaResponse) {
+            // Sprawdź reCAPTCHA w modalu - używamy ID konkretnej instancji
+            var recaptchaResponse = '';
+            
+            console.log('Sprawdzanie reCAPTCHA. Widget ID:', coopRecaptchaWidgetId);
+            
+            if (typeof coopRecaptchaWidgetId !== 'undefined' && coopRecaptchaWidgetId !== null) {
+              recaptchaResponse = grecaptcha.getResponse(coopRecaptchaWidgetId);
+              console.log('Response z konkretnego widgetu:', recaptchaResponse);
+            } else {
+              // Fallback - spróbuj znaleźć odpowiedź z modala
+              var recaptchaElement = document.querySelector('#coop-recaptcha .g-recaptcha');
+              if (recaptchaElement) {
+                recaptchaResponse = grecaptcha.getResponse();
+                console.log('Response z fallback:', recaptchaResponse);
+              }
+            }
+            
+            if (!recaptchaResponse || recaptchaResponse.length === 0) {
               alert('Proszę potwierdzić, że nie jesteś robotem (reCAPTCHA)');
               return;
             }
@@ -1927,7 +1965,11 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 
                 // Resetuj formularz
                 document.getElementById('cooperationForm').reset();
-                grecaptcha.reset();
+                if (typeof coopRecaptchaWidgetId !== 'undefined' && coopRecaptchaWidgetId !== null) {
+                  grecaptcha.reset(coopRecaptchaWidgetId);
+                } else {
+                  grecaptcha.reset();
+                }
                 
                 // Zamknij modal
                 var modal = document.getElementById('modalCta');
