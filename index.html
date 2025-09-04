@@ -378,13 +378,20 @@
 <div class="modal fade" id="modalSpotkanie" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header"></div>
+      <div class="modal-header">
+        <h4 class="modal-title">Dostępność konsultantów</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="modal-body">
-        <h3>Dostępność konsultantów</h3>
         <p>W dniach zaznaczonych w kalendarzu kolorem niebieskim nasi konsultanci są do Państwa dyspozycji w godzinach <br> 17:00 - 19:00</p>
         <h5>Inny termin?</h5>
         <p>W celu umówienia innej daty prosimy wysłać wiadomość i zaproponować inny termin. Odpowiemy najszybciej jak to możliwe.</p>
-        <button type="button" class="button button-primary button-ujarak" data-dismiss="modal">OK</button>
+        
+        <div class="spotkanie-actions">
+          <button type="button" class="button button-primary" data-dismiss="modal">OK</button>
+        </div>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Kopiowanie wartości (konto/adres) w sekcji "Wsparcie"
@@ -1577,7 +1584,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                   // Przywróć przycisk do normalnego stanu
                   var submitBtn = document.querySelector('#modalCta .button-primary');
                   if (submitBtn) {
-                    submitBtn.textContent = 'OK';
+                    submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
                     submitBtn.disabled = false;
                   }
                 });
@@ -1846,7 +1853,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"></h4>
+            <h4 class="modal-title">Współpraca z WorldFoundation</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -1901,7 +1908,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
               </div>
               
               <div class="cooperation-actions">
-                <button type="submit" class="button button-primary button-ujarak">OK</button>
+                <button type="submit" class="button button-primary button-ujarak">WYŚLIJ ZGŁOSZENIE</button>
               </div>
             </form>
           </div>
@@ -2050,7 +2057,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             // Resetuj button do oryginalnego stanu
             var submitBtn = cooperationForm.querySelector('button[type="submit"]');
             if (submitBtn) {
-              submitBtn.textContent = 'OK';
+              submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
               submitBtn.disabled = false;
               submitBtn.classList.remove('loading', 'disabled');
             }
@@ -2230,6 +2237,9 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
         // Animacja dla przycisków "Zapraszamy do współpracy"
         var coopButtons = document.querySelectorAll('a[href="#modalCta"]');
         coopButtons.forEach(function(btn) {
+          // Pomiń element "NAPISZ DO NAS" - nie powinien mieć animacji
+          if (btn.id === 'scrollToContactBtn') return;
+          
           // Dodaj klasę animacji
           btn.classList.add('coop-btn-animated');
           

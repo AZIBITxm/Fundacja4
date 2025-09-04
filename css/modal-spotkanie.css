@@ -14,39 +14,83 @@
   border-radius: 0;
 }
 #modalSpotkanie .modal-header {
-  border-bottom: 0;
-  padding: 0;
-  background: none;
-  height: 0;
-  min-height: 0;
+  background: linear-gradient(135deg, #6689ff 0%, #5577ee 100%);
+  color: white;
+  border-bottom: none;
+  padding: 20px 25px;
+}
+
+#modalSpotkanie .modal-title {
+  font-size: 24px;
+  font-weight: 700;
   margin: 0;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+#modalSpotkanie .close {
+  color: white;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+#modalSpotkanie .close:hover {
+  color: #ffebee;
+  opacity: 1;
 }
 #modalSpotkanie .modal-body {
-  padding: 32px 24px 18px 24px;
-  overflow: hidden;
+  padding: 30px;
+  background: #fafafa;
   text-align: center;
 }
-#modalSpotkanie .modal-body h3 {
-  font-weight: 700;
-  color: #6689ff;
-  margin-bottom: 18px;
-  font-size: 1.35rem;
-}
+
 #modalSpotkanie .modal-body h5 {
   font-weight: 600;
   color: #222;
   margin-bottom: 10px;
   font-size: 1.08rem;
 }
+
 #modalSpotkanie .modal-body p {
-  font-size: 1.08rem;
-  line-height: 1.7;
-  color: #222;
+  font-size: 16px;
+  color: #555;
   margin-bottom: 18px;
+  line-height: 1.6;
 }
-#modalSpotkanie .modal-body .button.button-primary {
-  min-width: 120px;
-  font-size: 1.08rem;
+
+#modalSpotkanie .spotkanie-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: center;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+#modalSpotkanie .button {
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+#modalSpotkanie .button-primary {
+  background: linear-gradient(135deg, #6689ff 0%, #5577ee 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 137, 255, 0.3);
+}
+
+#modalSpotkanie .button-primary:hover {
+  background: linear-gradient(135deg, #5577ee 0%, #4466dd 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 137, 255, 0.4);
 }
 /* Remove inline overrides on trigger button */
 a[href="#modalSpotkanie"].button.button-primary.button-ujarak {
@@ -60,4 +104,24 @@ a[href="#modalSpotkanie"].button.button-primary.button-ujarak {
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(102,137,255,0.08);
   transition: all 0.25s cubic-bezier(.4,0,.2,1);
+}
+
+/* Przycisk OK powinien być niebieski, nie czerwony (nadpisanie ogólnych stylów) */
+#modalSpotkanie .button.button-primary[data-dismiss="modal"] {
+  background: linear-gradient(135deg, #6689ff 0%, #5577ee 100%) !important;
+  border-color: #6689ff !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 14px 30px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 14px !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 12px rgba(102, 137, 255, 0.3) !important;
+}
+
+#modalSpotkanie .button.button-primary[data-dismiss="modal"]:hover {
+  background: linear-gradient(135deg, #5577ee 0%, #4466dd 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(102, 137, 255, 0.4) !important;
 }
