@@ -1500,7 +1500,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                       });
                     }
                     
-                    // Renderuj reCAPTCHA w modalu współpracy
+                    // Renderuj reCAPTCHA w modalu współpracy (widoczna dla użytkownika)
                     var coopRecaptchaContainer = document.querySelector('#coop-recaptcha .g-recaptcha');
                     if (coopRecaptchaContainer) {
                       coopRecaptchaWidgetId = grecaptcha.render(coopRecaptchaContainer, {
@@ -1536,6 +1536,60 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                     msg.style.color = '#b71c1c';
                   }
                   msg.style.display = 'block';
+                });
+              </script>
+              
+              <!-- Handler dla ukrytego formularza w modalu -->
+              <script>
+                document.getElementById('hiddenStaticForm').addEventListener('submit', async function(e) {
+                  e.preventDefault();
+                  var form = this;
+                  var formData = new FormData(form);
+                  
+                  try {
+                    const response = await fetch(form.action, {
+                      method: 'POST',
+                      body: formData
+                    });
+                    if (response.ok) {
+                      // Sukces - pokaż komunikat i zamknij modal
+                      alert('Dziękujemy! Twoja wiadomość została wysłana.');
+                      
+                      // Resetuj oba formularze
+                      document.getElementById('cooperationForm').reset();
+                      form.reset();
+                      
+                      // Resetuj reCAPTCHA
+                      if (typeof coopRecaptchaWidgetId !== 'undefined' && coopRecaptchaWidgetId !== null) {
+                        grecaptcha.reset(coopRecaptchaWidgetId);
+                      }
+                      
+                      // Zamknij modal
+                      var modal = document.getElementById('modalCta');
+                      if (window.jQuery && window.jQuery(modal).modal) {
+                        window.jQuery(modal).modal('hide');
+                      } else if (modal) {
+                        modal.classList.remove('show');
+                        modal.style.display = 'none';
+                        modal.setAttribute('aria-hidden', 'true');
+                        modal.removeAttribute('aria-modal');
+                        document.body.classList.remove('modal-open');
+                        var backdrop = document.querySelector('.modal-backdrop');
+                        if (backdrop) backdrop.remove();
+                      }
+                    } else {
+                      alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+                    }
+                  } catch (err) {
+                    alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+                  }
+                  
+                  // Przywróć przycisk do normalnego stanu
+                  var submitBtn = document.querySelector('#modalCta .button-primary');
+                  if (submitBtn) {
+                    submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
+                    submitBtn.disabled = false;
+                  }
                 });
               </script>
             </div>
@@ -1866,6 +1920,17 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 <button type="submit" class="button button-primary button-ujarak">WYŚLIJ ZGŁOSZENIE</button>
               </div>
             </form>
+            
+            <!-- Ukryty formularz StaticForms do wysyłania -->
+            <form action="https://api.staticforms.xyz/submit" method="post" id="hiddenStaticForm" style="display: none;">
+              <input type="hidden" name="apiKey" value="sf_87f1agn5ja1l48f0l8kd1l10">
+              <input type="hidden" name="replyTo" value="@">
+              <input type="text" name="honeypot" class="hidden-control" tabindex="-1" autocomplete="off">
+              <input type="text" id="hidden-name" name="name" required>
+              <input type="email" id="hidden-email" name="email" required>
+              <textarea id="hidden-message" name="message" rows="4" required></textarea>
+              <button type="submit" id="hidden-submit-btn">Wyślij</button>
+            </form>
           </div>
         </div>
       </div>
@@ -1932,71 +1997,30 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             }
             
             // Pokaż stan ładowania
-            var submitBtn = document.querySelector('#modalCta .btn-primary');
+            var submitBtn = document.querySelector('#modalCta .button-primary');
             var originalText = submitBtn.textContent;
             submitBtn.textContent = 'Wysyłanie...';
             submitBtn.disabled = true;
             
-            // Przygotuj dane do wysłania
-            var formData = new FormData();
-            formData.append('name', subject);
-            formData.append('email', email);
-            formData.append('message', messageContent);
-            formData.append('g-recaptcha-response', recaptchaResponse);
+            // Skopiuj dane do ukrytego formularza
+            document.getElementById('hidden-name').value = subject;
+            document.getElementById('hidden-email').value = email;
+            document.getElementById('hidden-message').value = messageContent;
             
-            // Wyślij formularz bezpośrednio z modala
-            fetch('https://api.staticforms.xyz/submit', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                name: subject,
-                email: email,
-                message: messageContent,
-                'g-recaptcha-response': recaptchaResponse,
-                accessKey: 'sf_87f1agn5ja1l48f0l8kd1l10'
-              })
-            })
-            .then(response => response.json())
-            .then(data => {
-              if (data.success) {
-                alert('Dziękujemy! Twoja wiadomość została wysłana.');
-                
-                // Resetuj formularz
-                document.getElementById('cooperationForm').reset();
-                if (typeof coopRecaptchaWidgetId !== 'undefined' && coopRecaptchaWidgetId !== null) {
-                  grecaptcha.reset(coopRecaptchaWidgetId);
-                } else {
-                  grecaptcha.reset();
-                }
-                
-                // Zamknij modal
-                var modal = document.getElementById('modalCta');
-                if (window.jQuery && window.jQuery(modal).modal) {
-                  window.jQuery(modal).modal('hide');
-                } else if (modal) {
-                  modal.classList.remove('show');
-                  modal.style.display = 'none';
-                  modal.setAttribute('aria-hidden', 'true');
-                  modal.removeAttribute('aria-modal');
-                  document.body.classList.remove('modal-open');
-                  var backdrop = document.querySelector('.modal-backdrop');
-                  if (backdrop) backdrop.remove();
-                }
-              } else {
-                alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
-              }
-            })
-            .catch(error => {
-              console.error('Error:', error);
-              alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
-            })
-            .finally(() => {
-              // Przywróć przycisk do normalnego stanu
-              submitBtn.textContent = originalText;
-              submitBtn.disabled = false;
-            });
+            // Dodaj ukryte pole z tokenem reCAPTCHA do ukrytego formularza
+            var hiddenRecaptchaInput = document.querySelector('#hiddenStaticForm input[name="g-recaptcha-response"]');
+            if (!hiddenRecaptchaInput) {
+              hiddenRecaptchaInput = document.createElement('input');
+              hiddenRecaptchaInput.type = 'hidden';
+              hiddenRecaptchaInput.name = 'g-recaptcha-response';
+              document.getElementById('hiddenStaticForm').appendChild(hiddenRecaptchaInput);
+            }
+            hiddenRecaptchaInput.value = recaptchaResponse;
+            
+            // Automatycznie wyślij ukryty formularz
+            setTimeout(function() {
+              document.getElementById('hidden-submit-btn').click();
+            }, 200);
           });
         }
 
