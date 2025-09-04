@@ -3,13 +3,14 @@
   <head>
     <style>
       @media (max-width: 1024px) {
-        .wesprzyj-banner {
-          width: calc(100vw - 90px) !important;
-          left: 0 !important;
-          right: auto !important;
-        }
         .osano-cm-widget, .osano-cm-dialog {
-          right: 0 !important;
+          width: 32px !important;
+          height: 32px !important;
+          font-size: 22px !important;
+          top: 12px !important;
+          right: 12px !important;
+          left: auto !important;
+          bottom: auto !important;
         }
       }
     </style>
@@ -1848,4 +1849,16 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
     </script>
     
   </body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  setTimeout(function() {
+    var osanoIcon = document.querySelector('.osano-cm-widget, .osano-cm-dialog');
+    if (osanoIcon) {
+      osanoIcon.style.width = "16px";
+      osanoIcon.style.height = "16px";
+      osanoIcon.style.fontSize = "11px";
+    }
+  }, 1500);
+});
+</script>
 </html>
