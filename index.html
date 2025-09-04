@@ -1489,21 +1489,11 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 <button type="submit" class="button button-primary button-ujarak">Wyślij</button>
                 <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
                 <script>
-                  var coopRecaptchaWidgetId;
-                  
                   function onRecaptchaLoad() {
                     // Renderuj reCAPTCHA w formularzu kontaktowym (głównym)
                     var mainRecaptcha = document.querySelector('#contacts .g-recaptcha');
                     if (mainRecaptcha) {
                       grecaptcha.render(mainRecaptcha, {
-                        'sitekey': '6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23'
-                      });
-                    }
-                    
-                    // Renderuj reCAPTCHA w modalu współpracy (widoczna dla użytkownika)
-                    var coopRecaptchaContainer = document.querySelector('#coop-recaptcha .g-recaptcha');
-                    if (coopRecaptchaContainer) {
-                      coopRecaptchaWidgetId = grecaptcha.render(coopRecaptchaContainer, {
                         'sitekey': '6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23'
                       });
                     }
@@ -1910,27 +1900,28 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 <label class="form-label" for="coop-message">Dodatkowe informacje</label>
               </div>
               
-              <div class="form-wrap">
-                <div id="coop-recaptcha">
-                  <div class="g-recaptcha"></div>
-                </div>
-              </div>
-              
               <div class="cooperation-actions">
                 <button type="submit" class="button button-primary button-ujarak">WYŚLIJ ZGŁOSZENIE</button>
               </div>
             </form>
-            
-            <!-- Ukryty formularz StaticForms do wysyłania -->
-            <form action="https://api.staticforms.xyz/submit" method="post" id="hiddenStaticForm" style="display: none;">
-              <input type="hidden" name="apiKey" value="sf_87f1agn5ja1l48f0l8kd1l10">
-              <input type="hidden" name="replyTo" value="@">
-              <input type="text" name="honeypot" class="hidden-control" tabindex="-1" autocomplete="off">
-              <input type="text" id="hidden-name" name="name" required>
-              <input type="email" id="hidden-email" name="email" required>
-              <textarea id="hidden-message" name="message" rows="4" required></textarea>
-              <button type="submit" id="hidden-submit-btn">Wyślij</button>
-            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Formularz wysyłania (iframe StaticForms) -->
+    <div class="modal fade" id="modalSendForm" tabindex="-1" role="dialog" aria-hidden="true" lang="pl">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Finalizacja zgłoszenia</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Potwierdź, że nie jesteś robotem i wyślij zgłoszenie.</p>
+            <iframe id="staticFormIframe" src="static-form.html" width="100%" height="300" frameborder="0"></iframe>
           </div>
         </div>
       </div>
@@ -1943,28 +1934,6 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
         if (cooperationForm) {
           cooperationForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Sprawdź reCAPTCHA w modalu - używamy ID konkretnej instancji
-            var recaptchaResponse = '';
-            
-            console.log('Sprawdzanie reCAPTCHA. Widget ID:', coopRecaptchaWidgetId);
-            
-            if (typeof coopRecaptchaWidgetId !== 'undefined' && coopRecaptchaWidgetId !== null) {
-              recaptchaResponse = grecaptcha.getResponse(coopRecaptchaWidgetId);
-              console.log('Response z konkretnego widgetu:', recaptchaResponse);
-            } else {
-              // Fallback - spróbuj znaleźć odpowiedź z modala
-              var recaptchaElement = document.querySelector('#coop-recaptcha .g-recaptcha');
-              if (recaptchaElement) {
-                recaptchaResponse = grecaptcha.getResponse();
-                console.log('Response z fallback:', recaptchaResponse);
-              }
-            }
-            
-            if (!recaptchaResponse || recaptchaResponse.length === 0) {
-              alert('Proszę potwierdzić, że nie jesteś robotem (reCAPTCHA)');
-              return;
-            }
             
             // Pobierz wartości z formularza
             var cooperationType = document.getElementById('coop-type').value;
@@ -1996,33 +1965,82 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
               messageContent += 'Wiadomość od użytkownika:\n' + message;
             }
             
-            // Pokaż stan ładowania
-            var submitBtn = document.querySelector('#modalCta .button-primary');
-            var originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Wysyłanie...';
-            submitBtn.disabled = true;
+            // Zapisz dane do window dla iframe
+            window.cooperationData = {
+              name: subject,
+              email: email,
+              message: messageContent
+            };
             
-            // Skopiuj dane do ukrytego formularza
-            document.getElementById('hidden-name').value = subject;
-            document.getElementById('hidden-email').value = email;
-            document.getElementById('hidden-message').value = messageContent;
-            
-            // Dodaj ukryte pole z tokenem reCAPTCHA do ukrytego formularza
-            var hiddenRecaptchaInput = document.querySelector('#hiddenStaticForm input[name="g-recaptcha-response"]');
-            if (!hiddenRecaptchaInput) {
-              hiddenRecaptchaInput = document.createElement('input');
-              hiddenRecaptchaInput.type = 'hidden';
-              hiddenRecaptchaInput.name = 'g-recaptcha-response';
-              document.getElementById('hiddenStaticForm').appendChild(hiddenRecaptchaInput);
+            // Zamknij modal współpracy
+            var cooperationModal = document.getElementById('modalCta');
+            if (window.jQuery && window.jQuery(cooperationModal).modal) {
+              window.jQuery(cooperationModal).modal('hide');
+            } else if (cooperationModal) {
+              cooperationModal.classList.remove('show');
+              cooperationModal.style.display = 'none';
+              cooperationModal.setAttribute('aria-hidden', 'true');
+              cooperationModal.removeAttribute('aria-modal');
+              document.body.classList.remove('modal-open');
+              var backdrop = document.querySelector('.modal-backdrop');
+              if (backdrop) backdrop.remove();
             }
-            hiddenRecaptchaInput.value = recaptchaResponse;
             
-            // Automatycznie wyślij ukryty formularz
+            // Otwórz modal z formularzem wysyłania po krótkiej chwili
             setTimeout(function() {
-              document.getElementById('hidden-submit-btn').click();
-            }, 200);
+              var sendModal = document.getElementById('modalSendForm');
+              if (window.jQuery && window.jQuery(sendModal).modal) {
+                window.jQuery(sendModal).modal('show');
+              } else if (sendModal) {
+                sendModal.classList.add('show');
+                sendModal.style.display = 'block';
+                sendModal.setAttribute('aria-modal', 'true');
+                sendModal.removeAttribute('aria-hidden');
+                document.body.classList.add('modal-open');
+                
+                // Dodaj backdrop
+                var backdrop = document.createElement('div');
+                backdrop.className = 'modal-backdrop fade show';
+                document.body.appendChild(backdrop);
+              }
+              
+              // Wyślij dane do iframe po załadowaniu
+              setTimeout(function() {
+                var iframe = document.getElementById('staticFormIframe');
+                if (iframe && iframe.contentWindow && window.cooperationData) {
+                  iframe.contentWindow.postMessage({
+                    type: 'fillForm',
+                    name: window.cooperationData.name,
+                    email: window.cooperationData.email,
+                    message: window.cooperationData.message
+                  }, '*');
+                }
+              }, 1000);
+            }, 500);
           });
         }
+        
+        // Handler dla wiadomości z iframe
+        window.addEventListener('message', function(event) {
+          if (event.data.type === 'formSuccess') {
+            // Reset formularza współpracy
+            document.getElementById('cooperationForm').reset();
+          } else if (event.data.type === 'closeModal') {
+            // Zamknij modal wysyłania
+            var sendModal = document.getElementById('modalSendForm');
+            if (window.jQuery && window.jQuery(sendModal).modal) {
+              window.jQuery(sendModal).modal('hide');
+            } else if (sendModal) {
+              sendModal.classList.remove('show');
+              sendModal.style.display = 'none';
+              sendModal.setAttribute('aria-hidden', 'true');
+              sendModal.removeAttribute('aria-modal');
+              document.body.classList.remove('modal-open');
+              var backdrop = document.querySelector('.modal-backdrop');
+              if (backdrop) backdrop.remove();
+            }
+          }
+        });
 
         // Wesprzyj button: enable idle animation and restart it on click
         var ctaBtn = document.querySelector('#sticky-narrow-banner .banner-cta-btn');

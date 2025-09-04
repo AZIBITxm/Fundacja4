@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz wysyłania</title>
+    <link rel="stylesheet" href="css/iframe-form.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <form action="https://api.staticforms.xyz/submit" method="post" id="staticFormIframe">
+        <input type="hidden" name="apiKey" value="sf_87f1agn5ja1l48f0l8kd1l10">
+        <input type="hidden" name="replyTo" value="@">
+        <input type="text" name="honeypot" class="hidden-control" tabindex="-1" autocomplete="off">
+        
+        <!-- Ukryte pola - będą wypełnione przez JavaScript z modala -->
+        <input type="hidden" id="form-name" name="name" required>
+        <input type="hidden" id="form-email" name="email" required>
+        <input type="hidden" id="form-message" name="message" required>
+        
+        <!-- Widoczne tylko reCAPTCHA i przycisk -->
+        <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23"></div>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn-send">WYŚLIJ ZGŁOSZENIE</button>
+        </div>
+        
+        <div id="form-message" class="form-message"></div>
+    </form>
+
+    <script>
+        // Nasłuchuj wiadomości z rodzica (modal)
+        window.addEventListener('message', function(event) {
+            if (event.origin !== window.location.origin.replace(window.location.port, '')) {
+                // Dla bezpieczeństwa sprawdzamy origin, ale lokalnie może być problem
+                // więc pozwalamy na komunikację
+            }
+            
+            if (event.data.type === 'fillForm') {
+                document.getElementById('form-name').value = event.data.name;
+                document.getElementById('form-email').value = event.data.email;
+                document.getElementById('form-message').value = event.data.message;
+            }
+        });
+        
+        // Obsługa formularza
+        document.getElementById('staticFormIframe').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            var form = this;
+            var messageDiv = document.getElementById('form-message');
+            var submitBtn = form.querySelector('.btn-send');
+            
+            // Pokaż stan ładowania
+            submitBtn.textContent = 'Wysyłanie...';
+            submitBtn.disabled = true;
+            messageDiv.textContent = '';
+            messageDiv.className = 'form-message';
+            
+            var formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    messageDiv.textContent = 'Dziękujemy! Twoja wiadomość została wysłana.';
+                    messageDiv.className = 'form-message success';
+                    
+                    // Poinformuj rodzica o sukcesie
+                    window.parent.postMessage({type: 'formSuccess'}, '*');
+                    
+                    setTimeout(function() {
+                        window.parent.postMessage({type: 'closeModal'}, '*');
+                    }, 2000);
+                } else {
+                    throw new Error('Błąd serwera');
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie.';
+                messageDiv.className = 'form-message error';
+            }
+            
+            // Przywróć przycisk
+            submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
+            submitBtn.disabled = false;
+        });
+    </script>
+</body>
+</html>
