@@ -20957,3 +20957,29 @@ disabled look for disabled choices in the results dropdown
 		filter: none !important;
 	}
 }
+
+/* ========================= */
+/* Animacja przycisków współpracy */
+/* ========================= */
+@keyframes coop-btn-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 0 0 rgba(0,0,0,.15), 0 4px 12px rgba(67,56,202,.25);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 3px 0 0 rgba(0,0,0,.14), 0 6px 16px rgba(67,56,202,.35);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 0 0 rgba(0,0,0,.15), 0 4px 12px rgba(67,56,202,.25);
+  }
+}
+
+.coop-btn-animated {
+  animation: coop-btn-pulse 2.5s ease-in-out infinite;
+}
+
+.coop-btn-animated:hover {
+  animation-play-state: paused;
+}

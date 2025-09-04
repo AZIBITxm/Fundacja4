@@ -836,22 +836,22 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
               <div class="row border-2-column justify-content-center banners-separator">
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft">
                   <div class="clients-classic">
-                    <span class="clients-caption"></span>
+                    <span class="clients-caption">Nowych Patronów</span>
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".1s">
                   <div class="clients-classic">
-                    <span class="clients-caption"></span>
+                    <span class="clients-caption">Foundrusherów</span>
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".2s">
                   <div class="clients-classic">
-                    <span class="clients-caption"></span>
+                    <span class="clients-caption">Psychologów</span>
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".3s">
                   <div class="clients-classic">
-                    <span class="clients-caption"></span>
+                    <span class="clients-caption">Wolontariuszy</span>
                   </div>
                 </div>
               </div>
@@ -1577,7 +1577,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                   // Przywróć przycisk do normalnego stanu
                   var submitBtn = document.querySelector('#modalCta .button-primary');
                   if (submitBtn) {
-                    submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
+                    submitBtn.textContent = 'OK';
                     submitBtn.disabled = false;
                   }
                 });
@@ -1846,7 +1846,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Współpraca z WorldFoundation</h4>
+            <h4 class="modal-title"></h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -1901,7 +1901,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
               </div>
               
               <div class="cooperation-actions">
-                <button type="submit" class="button button-primary button-ujarak">WYŚLIJ ZGŁOSZENIE</button>
+                <button type="submit" class="button button-primary button-ujarak">OK</button>
               </div>
             </form>
           </div>
@@ -2050,7 +2050,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             // Resetuj button do oryginalnego stanu
             var submitBtn = cooperationForm.querySelector('button[type="submit"]');
             if (submitBtn) {
-              submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
+              submitBtn.textContent = 'OK';
               submitBtn.disabled = false;
               submitBtn.classList.remove('loading', 'disabled');
             }
@@ -2226,6 +2226,31 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             setTimeout(function(){ ctaBtn.classList.add('cta-animated'); }, 400);
           });
         }
+        
+        // Animacja dla przycisków "Zapraszamy do współpracy"
+        var coopButtons = document.querySelectorAll('a[href="#modalCta"]');
+        coopButtons.forEach(function(btn) {
+          // Dodaj klasę animacji
+          btn.classList.add('coop-btn-animated');
+          
+          // Zatrzymaj animację na czas kliknięcia
+          btn.addEventListener('click', function() {
+            btn.classList.remove('coop-btn-animated');
+            void btn.offsetWidth; // force reflow
+            setTimeout(function() {
+              btn.classList.add('coop-btn-animated');
+            }, 500);
+          });
+          
+          // Opcjonalnie: zatrzymaj animację na czas focus dla dostępności
+          btn.addEventListener('focus', function() {
+            btn.style.animationPlayState = 'paused';
+          });
+          
+          btn.addEventListener('blur', function() {
+            btn.style.animationPlayState = 'running';
+          });
+        });
         var select = document.getElementById('supportType');
         var goBtn = document.getElementById('supportProceedBtn');
         var modalEl = document.getElementById('modalWsparcieCTA');

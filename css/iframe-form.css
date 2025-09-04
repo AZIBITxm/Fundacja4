@@ -1,7 +1,7 @@
 /* CSS dla formularza w iframe */
 body {
     margin: 0;
-    padding: 20px;
+    padding: 15px;
     font-family: Arial, sans-serif;
     background: #f8f9fa;
     opacity: 0;
@@ -13,7 +13,7 @@ body.loaded {
 }
 
 #staticFormIframe {
-    max-width: 100%;
+    max-width: 400px;
     margin: 0 auto;
 }
 
