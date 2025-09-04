@@ -4,13 +4,7 @@
     <style>
       @media (max-width: 1024px) {
         .osano-cm-widget, .osano-cm-dialog {
-          width: 32px !important;
-          height: 32px !important;
-          font-size: 22px !important;
-          top: 12px !important;
-          right: 12px !important;
-          left: auto !important;
-          bottom: auto !important;
+          display: none !important;
         }
       }
     </style>
@@ -45,6 +39,7 @@
   <link rel="stylesheet" href="css/modal-spotkanie.css">
   <link rel="stylesheet" href="css/modal-wsparcie-pl.css">
   <link rel="stylesheet" href="css/modal-wsparcie-banner.css">
+  <link rel="stylesheet" href="css/modal-cooperation.css">
   <!-- <link rel="stylesheet" href="css/modal-jotform-mobile.css"> -->
     
   </head>
@@ -433,6 +428,7 @@
           }
         });
       });
+
     var okBtn = document.querySelector('#modalSpotkanie .button[data-dismiss="modal"]');
     if (okBtn) {
       okBtn.addEventListener('click', function() {
@@ -1562,42 +1558,24 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
         .privacy-link:hover {
             color: #6689ff;
         }
-        .mx-2 {
-            margin-left: 8px;
-            margin-right: 8px;
-        }
       </style>
       <!-- Page Footer (polska, kompletna wersja) -->
-      <style>
-        /* Inline footer styles to ensure they apply immediately */
-        .wf-footer { background:#121212; color:#9a9a9a; padding:40px 0; }
-        .wf-footer a { color:#9a9a9a; text-decoration:none; }
-        .wf-footer a:hover { color:#fff; }
-  .wf-footer .footer-about { font-family: "Poppins", Arial, sans-serif; font-size:0.88rem; color:#bdbdbd; font-weight:300; }
-        .wf-footer .footer-quick a { display:block; margin:6px 0; font-size:0.92rem; color:#9a9a9a; }
-        .wf-footer .footer-legal a { display:block; margin:6px 0; font-size:0.92rem; color:#9a9a9a; }
-        .wf-footer .footer-social a { margin-right:8px; color:#9a9a9a; }
-        .wf-footer .footer-copyright { color:#8f8f8f; font-size:0.9rem; }
-        .wf-footer .footer-subscribe input { width:100%; padding:8px; margin-bottom:8px; border-radius:4px; border:1px solid #333; background:#1a1a1a; color:#fff; }
-        .wf-footer .footer-subscribe button { width:100%; }
-        @media (max-width:767px) { .wf-footer { padding:20px 12px; } .wf-footer .footer-about { font-size:0.9rem; } }
-      </style>
       <footer class="wf-footer">
         <div class="container">
           <div class="row">
             <div class="col-md-4">
-              <h5 style="color:#fff;margin-bottom:10px;">O nas</h5>
+              <h5>O nas</h5>
               <p class="footer-about">Fundacja WorldFoundation wspiera rodziny i osoby potrzebujące: pomoc psychologiczna, grupy wsparcia, projekty edukacyjne i prawne.</p>
-              <ul class="list-unstyled" style="margin-top:10px;color:#bdbdbd;">
-                <li><i class="fa fa-map-marker" aria-hidden="true" style="width:18px;"></i> <strong>Adres:</strong> ul. Staromiejska 17e, 84-300 Lębork, Polska</li>
-                 <li><i class="fa fa-map-marker" aria-hidden="true" style="width:18px;"></i> <strong>Adres:</strong> Medardstr. 120, 54294 Trier, Niemcy</li>
-                <li><img src="images/flaga/pl.png" alt="PL" style="height:14px;vertical-align:middle;margin-right:8px;"/> <a href="tel:+48519830226">+48 519 830 226</a></li>
-                <li><img src="images/flaga/de.png" alt="DE" style="height:14px;vertical-align:middle;margin-right:8px;"/> <a href="tel:+4915212403091">+49 15212403091</a></li>
-                <li><i class="fa fa-envelope" aria-hidden="true" style="width:18px;"></i> <strong>Email:</strong> <a href="mailto:info@worldfoundation.eu">info@worldfoundation.eu</a></li>
+              <ul class="list-unstyled">
+                <li><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Adres:</strong> ul. Staromiejska 17e, 84-300 Lębork, Polska</li>
+                 <li><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Adres:</strong> Medardstr. 120, 54294 Trier, Niemcy</li>
+                <li><img src="images/flaga/pl.png" alt="PL"/> <a href="tel:+48519830226">+48 519 830 226</a></li>
+                <li><img src="images/flaga/de.png" alt="DE"/> <a href="tel:+4915212403091">+49 15212403091</a></li>
+                <li><i class="fa fa-envelope" aria-hidden="true"></i> <strong>Email:</strong> <a href="mailto:info@worldfoundation.eu">info@worldfoundation.eu</a></li>
               </ul>
             </div>
             <div class="col-md-4 footer-quick">
-              <h5 style="color:#fff;margin-bottom:10px;">Szybkie linki</h5>
+              <h5>Szybkie linki</h5>
               <a href="#about">O nas</a>
               <a href="#projects">Projekty</a>
               <a href="#services">Usługi</a>
@@ -1605,15 +1583,16 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
               <a href="#modalWsparcieCTA" data-toggle="modal">Wesprzyj</a>
             </div>
             <div class="col-md-4 footer-legal">
-              <h5 style="color:#fff;margin-bottom:10px;">Dokumenty</h5>
+              <h5>Dokumenty</h5>
               <a href="polityka-prywatnosci.html">Polityka prywatności</a>
               <a href="polityka-prywatnosci.html#pliki-cookies">Polityka cookies</a>
               <a href="regulamin.html">Regulamin</a>
               <a href="doc/STATUT WorldFoundation aktualny - cyfrowy.pdf" target="_blank" rel="noopener">Statut</a>
+              <a href="#" onclick="if(window.Osano) Osano.cm.showDrawer(); return false;">Ustawienia cookies</a>
             </div>
           </div>
 
-          <hr style="border-color:#2a2a2a;margin:18px 0;">
+          <hr>
 
           <div class="row align-items-center">
             <div class="col-md-6 footer-social">
@@ -1796,8 +1775,189 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
         </div>
       </div>
     </div>
+
+    <!-- Modal: Współpraca -->
+    <div class="modal fade" id="modalCta" tabindex="-1" role="dialog" aria-hidden="true" lang="pl">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Współpraca z WorldFoundation</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Dziękujemy za zainteresowanie współpracą z naszą fundacją. Wybierz rodzaj współpracy, a następnie wypełnij formularz.</p>
+            
+            <form id="cooperationForm">
+              <div class="form-wrap">
+                <select id="coop-type" class="form-control" name="cooperation_type" required>
+                  <option value="">Wybierz rodzaj współpracy</option>
+                  <option value="patroni">Patroni</option>
+                  <option value="fundraising">Fundraising</option>
+                  <option value="psychologowie">Psychologowie</option>
+                  <option value="wolontariusze">Wolontariusze</option>
+                  <option value="partnerzy-biznesowi">Partnerzy biznesowi</option>
+                  <option value="media">Współpraca medialna</option>
+                </select>
+                <label for="coop-type" class="form-label">Rodzaj współpracy *</label>
+              </div>
+
+              <div id="cooperation-description" class="cooperation-description" style="display: none;">
+                <div class="description-content">
+                  <h5 class="description-title"></h5>
+                  <p class="description-text"></p>
+                </div>
+              </div>
+              
+              <div class="form-wrap">
+                <input class="form-input" id="coop-name" type="text" name="name" required>
+                <label class="form-label" for="coop-name">Imię / Nazwa organizacji *</label>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-wrap">
+                    <input class="form-input" id="coop-email" type="email" name="email" required>
+                    <label class="form-label" for="coop-email">Adres email *</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-wrap">
+                    <input class="form-input" id="coop-phone" type="tel" name="phone">
+                    <label class="form-label" for="coop-phone">Numer telefonu</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-wrap">
+                <textarea class="form-input" id="coop-message" name="message" rows="4" placeholder="Opisz swoją propozycję współpracy, doświadczenie lub pytania..."></textarea>
+                <label class="form-label" for="coop-message">Dodatkowe informacje</label>
+              </div>
+              
+              <div class="form-wrap">
+                <div class="g-recaptcha" data-sitekey="6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23" id="coop-recaptcha"></div>
+              </div>
+              
+              <div class="cooperation-actions">
+                <button type="submit" class="button button-primary button-ujarak">WYŚLIJ ZGŁOSZENIE</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // Cooperation form handler
+        var cooperationForm = document.getElementById('cooperationForm');
+        if (cooperationForm) {
+          cooperationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Sprawdź reCAPTCHA w modalu
+            var recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+              alert('Proszę potwierdzić, że nie jesteś robotem (reCAPTCHA)');
+              return;
+            }
+            
+            // Pobierz wartości z formularza
+            var cooperationType = document.getElementById('coop-type').value;
+            var name = document.getElementById('coop-name').value;
+            var email = document.getElementById('coop-email').value;
+            var phone = document.getElementById('coop-phone').value;
+            var message = document.getElementById('coop-message').value;
+            
+            // Sprawdź czy wszystkie wymagane pola są wypełnione
+            if (!cooperationType || !name || !email) {
+              alert('Proszę wypełnić wszystkie wymagane pola oznaczone gwiazdką (*)');
+              return;
+            }
+            
+            // Wygeneruj tytuł wiadomości
+            var subject = cooperationType + ' - ' + name;
+            
+            // Wygeneruj treść wiadomości
+            var contactInfo = 'Dane kontaktowe:\n';
+            contactInfo += 'Imię i nazwisko / Nazwa organizacji: ' + name + '\n';
+            contactInfo += 'Email: ' + email + '\n';
+            if (phone) {
+              contactInfo += 'Telefon: ' + phone + '\n';
+            }
+            contactInfo += 'Rodzaj współpracy: ' + cooperationType + '\n\n';
+            
+            var messageContent = contactInfo;
+            if (message) {
+              messageContent += 'Wiadomość od użytkownika:\n' + message;
+            }
+            
+            // Pokaż stan ładowania
+            var submitBtn = document.querySelector('#modalCta .btn-primary');
+            var originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Wysyłanie...';
+            submitBtn.disabled = true;
+            
+            // Przygotuj dane do wysłania
+            var formData = new FormData();
+            formData.append('name', subject);
+            formData.append('email', email);
+            formData.append('message', messageContent);
+            formData.append('g-recaptcha-response', recaptchaResponse);
+            
+            // Wyślij formularz bezpośrednio z modala
+            fetch('https://api.staticforms.xyz/submit', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                name: subject,
+                email: email,
+                message: messageContent,
+                'g-recaptcha-response': recaptchaResponse,
+                accessKey: 'sf_87f1agn5ja1l48f0l8kd1l10'
+              })
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert('Dziękujemy! Twoja wiadomość została wysłana.');
+                
+                // Resetuj formularz
+                document.getElementById('cooperationForm').reset();
+                grecaptcha.reset();
+                
+                // Zamknij modal
+                var modal = document.getElementById('modalCta');
+                if (window.jQuery && window.jQuery(modal).modal) {
+                  window.jQuery(modal).modal('hide');
+                } else if (modal) {
+                  modal.classList.remove('show');
+                  modal.style.display = 'none';
+                  modal.setAttribute('aria-hidden', 'true');
+                  modal.removeAttribute('aria-modal');
+                  document.body.classList.remove('modal-open');
+                  var backdrop = document.querySelector('.modal-backdrop');
+                  if (backdrop) backdrop.remove();
+                }
+              } else {
+                alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+            })
+            .finally(() => {
+              // Przywróć przycisk do normalnego stanu
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+            });
+          });
+        }
+
         // Wesprzyj button: enable idle animation and restart it on click
         var ctaBtn = document.querySelector('#sticky-narrow-banner .banner-cta-btn');
         if (ctaBtn) {
@@ -1845,20 +2005,55 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             }
           });
         }
+
+        // Cooperation form handler
+        var cooperationTypeSelect = document.getElementById('coop-type');
+        var cooperationDescription = document.getElementById('cooperation-description');
+        var descriptionTitle = document.querySelector('.description-title');
+        var descriptionText = document.querySelector('.description-text');
+
+        var cooperationDescriptions = {
+          'patroni': {
+            title: 'Patroni WorldFoundation',
+            text: 'Zostań patronem naszej fundacji i wspierj nasze działania poprzez długoterminową współpracę. Patroni otrzymują regularne raporty z naszych działań, mogą uczestniczyć w spotkaniach organizacyjnych oraz mają wpływ na kierunki rozwoju fundacji.'
+          },
+          'fundraising': {
+            title: 'Fundraising i pozyskiwanie środków',
+            text: 'Pomóż nam w pozyskiwaniu funduszy na realizację naszych projektów społecznych. Poszukujemy osób z doświadczeniem w fundraisingu, pisaniu wniosków grantowych oraz organizacji akcji charytatywnych.'
+          },
+          'psychologowie': {
+            title: 'Psychologowie i terapeuci',
+            text: 'Poszukujemy wykwalifikowanych psychologów, terapeutów i psychiatrów gotowych do udzielania wsparcia w ramach 1 godzinnego dyżuru telefonicznego minimum raz w miesiącu lub większym wymiarze czasowym ustalanym indywidualnie. W ramach współpracy otrzymujecie Państwo reklamę na naszej stronie internetowej oraz certyfikat wolontariusza wspierającego działania charytatywne. Dodatkowo, w przypadku wzajemnego zainteresowania kontynuacji terapii po zakończeniu bezpłatnej konsultacji, możliwe jest nawiązanie bezpośredniej współpracy terapeutycznej poza strukturami fundacji, zgodnie z obowiązującymi standardami etycznymi i zawodowymi.'
+          },
+          'wolontariusze': {
+            title: 'Wolontariusze',
+            text: 'Dołącz do naszego zespołu wolontariuszy! Organizujemy wydarzenia integracyjne, spotkania tematyczne oraz projekty społeczne. Potrzebujemy pomocy w organizacji wydarzeń, promocji, wsparciu technicznym i wielu innych obszarach.'
+          },
+          'partnerzy-biznesowi': {
+            title: 'Partnerzy biznesowi',
+            text: 'Zapraszamy do współpracy firmy i przedsiębiorców, którzy chcą wspierać nasze działania społeczne. Oferujemy różne formy partnerstwa: sponsoring wydarzeń, wsparcie rzeczowe, CSR oraz współorganizację projektów społecznych.'
+          },
+          'media': {
+            title: 'Współpraca medialna',
+            text: 'Poszukujemy partnerów medialnych do promocji naszych działań i wydarzeń. Chętnie nawiążemy współpracę z blogerami, influencerami, redakcjami oraz twórcami treści, którzy zechcą wesprzeć nasze działania i programy społeczne.'
+          }
+        };
+
+        if (cooperationTypeSelect) {
+          cooperationTypeSelect.addEventListener('change', function() {
+            var selectedType = this.value;
+            
+            if (selectedType && cooperationDescriptions[selectedType]) {
+              descriptionTitle.textContent = cooperationDescriptions[selectedType].title;
+              descriptionText.textContent = cooperationDescriptions[selectedType].text;
+              cooperationDescription.style.display = 'block';
+            } else {
+              cooperationDescription.style.display = 'none';
+            }
+          });
+        }
       });
     </script>
     
   </body>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  setTimeout(function() {
-    var osanoIcon = document.querySelector('.osano-cm-widget, .osano-cm-dialog');
-    if (osanoIcon) {
-      osanoIcon.style.width = "16px";
-      osanoIcon.style.height = "16px";
-      osanoIcon.style.fontSize = "11px";
-    }
-  }, 1500);
-});
-</script>
 </html>

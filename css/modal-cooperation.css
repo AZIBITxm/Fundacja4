@@ -1,0 +1,325 @@
+/* Modal Cooperation Styles */
+#modalCta .modal-dialog {
+  max-width: 700px;
+}
+
+#modalCta .modal-header {
+  background: linear-gradient(135deg, #6689ff 0%, #5577ee 100%);
+  color: white;
+  border-bottom: none;
+  padding: 20px 25px;
+}
+
+#modalCta .modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+#modalCta .close {
+  color: white;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+#modalCta .close:hover {
+  color: #ffebee;
+  opacity: 1;
+}
+
+#modalCta .modal-body {
+  padding: 30px;
+  background: #fafafa;
+}
+
+#modalCta .modal-body p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+#modalCta .form-wrap {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+#modalCta .form-label {
+  font-weight: 600;
+  color: #6689ff;
+  margin-bottom: 8px;
+  display: block;
+  font-size: 14px;
+}
+
+/* Default floating labels for inputs */
+#modalCta .form-wrap .form-label {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  background: #fafafa;
+  padding: 0 4px;
+  z-index: 2;
+  line-height: 1;
+  display: inline-block;
+  width: auto;
+}
+
+/* All labels should use floating style - remove overrides */
+
+#modalCta .form-input,
+#modalCta .form-control {
+  width: 100%;
+  padding: 15px 18px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+  position: relative;
+  z-index: 1;
+}
+
+#modalCta .form-input:focus,
+#modalCta .form-control:focus {
+  outline: none;
+  border-color: #6689ff;
+  box-shadow: 0 0 0 3px rgba(102, 137, 255, 0.1);
+}
+
+#modalCta .form-input:not(:placeholder-shown) + .form-label,
+#modalCta .form-input:focus + .form-label,
+#modalCta .form-control:focus + .form-label {
+  color: #6689ff;
+}
+
+#modalCta select.form-control {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 15px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 45px;
+  appearance: none;
+  cursor: pointer;
+  height: auto;
+  min-height: 50px;
+  line-height: 1.4;
+}
+
+#modalCta textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+#modalCta .cooperation-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+  justify-content: center;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+#modalCta .button {
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+#modalCta .button-primary {
+  background: linear-gradient(135deg, #6689ff 0%, #5577ee 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 137, 255, 0.3);
+}
+
+#modalCta .button-primary:hover {
+  background: linear-gradient(135deg, #5577ee 0%, #4466dd 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 137, 255, 0.4);
+}
+
+#modalCta .button-gray-4 {
+  background: #f5f5f5;
+  color: #666;
+  border: 2px solid #ddd;
+}
+
+#modalCta .button-gray-4:hover {
+  background: #e0e0e0;
+  color: #333;
+  border-color: #bbb;
+}
+
+/* Cooperation Description Styles */
+#modalCta .cooperation-description {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px solid #6689ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  animation: fadeInDown 0.4s ease-out;
+}
+
+#modalCta .description-title {
+  color: #6689ff;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+#modalCta .description-text {
+  color: #495057;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer Styles - moved from inline */
+.wf-footer { 
+  background:#121212; 
+  color:#9a9a9a; 
+  padding:40px 0; 
+}
+
+.wf-footer a { 
+  color:#9a9a9a; 
+  text-decoration:none; 
+}
+
+.wf-footer a:hover { 
+  color:#fff; 
+}
+
+.wf-footer .footer-about { 
+  font-family: "Poppins", Arial, sans-serif; 
+  font-size:0.88rem; 
+  color:#bdbdbd; 
+  font-weight:300; 
+}
+
+.wf-footer .footer-quick a { 
+  display:block; 
+  margin:6px 0; 
+  font-size:0.92rem; 
+  color:#9a9a9a; 
+}
+
+.wf-footer .footer-legal a { 
+  display:block; 
+  margin:6px 0; 
+  font-size:0.92rem; 
+  color:#9a9a9a; 
+}
+
+.wf-footer .footer-social a { 
+  margin-right:8px; 
+  color:#9a9a9a; 
+}
+
+.wf-footer .footer-copyright { 
+  color:#8f8f8f; 
+  font-size:0.9rem; 
+}
+
+.wf-footer .footer-subscribe input { 
+  width:100%; 
+  padding:8px; 
+  margin-bottom:8px; 
+  border-radius:4px; 
+  border:1px solid #333; 
+  background:#1a1a1a; 
+  color:#fff; 
+}
+
+.wf-footer .footer-subscribe button { 
+  width:100%; 
+}
+
+.wf-footer h5 {
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.wf-footer .list-unstyled {
+  margin-top:10px;
+  color:#bdbdbd;
+}
+
+.wf-footer .fa-map-marker,
+.wf-footer .fa-envelope {
+  width:18px;
+}
+
+.wf-footer img[alt="PL"],
+.wf-footer img[alt="DE"] {
+  height:14px;
+  vertical-align:middle;
+  margin-right:8px;
+}
+
+.wf-footer hr {
+  border-color:#2a2a2a;
+  margin:18px 0;
+}
+
+.mx-2 {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #modalCta .modal-dialog {
+    margin: 10px;
+    max-width: none;
+  }
+  
+  #modalCta .modal-header,
+  #modalCta .modal-body {
+    padding: 20px;
+  }
+  
+  #modalCta .cooperation-actions {
+    flex-direction: column;
+  }
+  
+  #modalCta .button {
+    width: 100%;
+  }
+  
+  /* Zwiększone przerwy między polami na mobile */
+  #modalCta .form-wrap {
+    margin-bottom: 35px;
+  }
+  
+  .wf-footer { 
+    padding:20px 12px; 
+  } 
+  
+  .wf-footer .footer-about { 
+    font-size:0.9rem; 
+  }
+}
