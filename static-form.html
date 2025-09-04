@@ -31,6 +31,30 @@
     </form>
 
     <script>
+        // Resetuj formularz przy każdym załadowaniu strony
+        window.addEventListener('load', function() {
+            // Dodaj klasę loaded dla płynnego fade-in
+            document.body.classList.add('loaded');
+            
+            var form = document.getElementById('staticFormIframe');
+            if (form) {
+                form.reset();
+            }
+            
+            var messageDiv = document.getElementById('form-message');
+            if (messageDiv) {
+                messageDiv.textContent = '';
+                messageDiv.className = 'form-message';
+            }
+            
+            // Resetuj przycisk
+            var submitBtn = form ? form.querySelector('.btn-send') : null;
+            if (submitBtn) {
+                submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
+                submitBtn.disabled = false;
+            }
+        });
+        
         // Nasłuchuj wiadomości z rodzica (modal)
         window.addEventListener('message', function(event) {
             if (event.origin !== window.location.origin.replace(window.location.port, '')) {
@@ -39,9 +63,16 @@
             }
             
             if (event.data.type === 'fillForm') {
-                document.getElementById('form-name').value = event.data.name;
-                document.getElementById('form-email').value = event.data.email;
-                document.getElementById('form-message').value = event.data.message;
+                // Sprawdź czy formularz istnieje przed wypełnieniem
+                var nameField = document.getElementById('form-name');
+                var emailField = document.getElementById('form-email');
+                var messageField = document.getElementById('form-message');
+                
+                if (nameField && emailField && messageField) {
+                    nameField.value = event.data.name || '';
+                    emailField.value = event.data.email || '';
+                    messageField.value = event.data.message || '';
+                }
             }
         });
         

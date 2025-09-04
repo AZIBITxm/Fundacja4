@@ -836,22 +836,22 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
               <div class="row border-2-column justify-content-center banners-separator">
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft">
                   <div class="clients-classic">
-                    <span class="clients-caption">Nowych Patronów</span>
+                    <span class="clients-caption"></span>
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".1s">
                   <div class="clients-classic">
-                    <span class="clients-caption">Foundrusherów</span>
+                    <span class="clients-caption"></span>
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".2s">
                   <div class="clients-classic">
-                    <span class="clients-caption">Psychologów</span>
+                    <span class="clients-caption"></span>
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".3s">
                   <div class="clients-classic">
-                    <span class="clients-caption">Wolontariuszy</span>
+                    <span class="clients-caption"></span>
                   </div>
                 </div>
               </div>
@@ -1929,6 +1929,151 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // Obsługa zamykania modala z formularzem - resetuj iframe
+        var sendModal = document.getElementById('modalSendForm');
+        if (sendModal) {
+          // Event listener dla przycisku zamknij (X)
+          var closeBtn = sendModal.querySelector('.close');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+              resetIframe();
+            });
+          }
+          
+          // Event listener dla Bootstrap modal hide
+          if (window.jQuery) {
+            window.jQuery(sendModal).on('hidden.bs.modal', function() {
+              resetIframe();
+            });
+          }
+        }
+        
+        // Obsługa zamykania modala współpracy - resetuj formularz
+        var cooperationModal = document.getElementById('modalCta');
+        if (cooperationModal) {
+          // Event listener dla przycisku zamknij (X)
+          var coopCloseBtn = cooperationModal.querySelector('.close');
+          if (coopCloseBtn) {
+            coopCloseBtn.addEventListener('click', function() {
+              resetCooperationModal();
+            });
+          }
+          
+          // Event listener dla przycisku data-dismiss
+          var dismissBtns = cooperationModal.querySelectorAll('[data-dismiss="modal"]');
+          dismissBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              resetCooperationModal();
+            });
+          });
+          
+          // Event listener dla Bootstrap modal hide
+          if (window.jQuery) {
+            window.jQuery(cooperationModal).on('hidden.bs.modal', function() {
+              resetCooperationModal();
+            });
+            
+            // Resetuj modal także przy otwieraniu (na wszelki wypadek)
+            window.jQuery(cooperationModal).on('show.bs.modal', function() {
+              setTimeout(function() {
+                resetCooperationModal();
+              }, 100);
+            });
+          }
+          
+          // Event listener dla kliknięcia poza modalem (backdrop)
+          cooperationModal.addEventListener('click', function(e) {
+            if (e.target === cooperationModal) {
+              resetCooperationModal();
+            }
+          });
+        }
+        
+        // Obsługa otwierania modala współpracy z linków
+        var modalTriggers = document.querySelectorAll('a[href="#modalCta"], [data-target="#modalCta"]');
+        modalTriggers.forEach(function(trigger) {
+          trigger.addEventListener('click', function() {
+            setTimeout(function() {
+              resetCooperationModal();
+            }, 200); // Delay żeby modal zdążył się otworzyć
+          });
+        });
+        
+        function resetCooperationModal() {
+          // Resetuj formularz współpracy
+          var cooperationForm = document.getElementById('cooperationForm');
+          if (cooperationForm) {
+            cooperationForm.reset();
+            
+            // Ukryj opis współpracy
+            var cooperationDescription = document.getElementById('cooperation-description');
+            if (cooperationDescription) {
+              cooperationDescription.style.display = 'none';
+            }
+            
+            // Resetuj select do domyślnej wartości
+            var cooperationTypeSelect = document.getElementById('coop-type');
+            if (cooperationTypeSelect) {
+              cooperationTypeSelect.selectedIndex = 0;
+              cooperationTypeSelect.value = '';
+            }
+            
+            // Wyczyść wszystkie pola input i textarea
+            var inputs = cooperationForm.querySelectorAll('input, textarea, select');
+            inputs.forEach(function(input) {
+              if (input.type !== 'submit' && input.type !== 'button') {
+                input.value = '';
+                input.blur(); // Usuń focus
+                
+                // Usuń klasy CSS związane ze stanem wypełnienia
+                input.classList.remove('form-input-filled', 'is-valid', 'is-invalid');
+                
+                // Resetuj floating labels - usuń focus i filled states
+                if (input.nextElementSibling && input.nextElementSibling.classList.contains('form-label')) {
+                  input.nextElementSibling.classList.remove('form-label-focused', 'form-label-filled');
+                }
+              }
+            });
+            
+            // Resetuj wszystkie form-wrap containers
+            var formWraps = cooperationForm.querySelectorAll('.form-wrap');
+            formWraps.forEach(function(wrap) {
+              wrap.classList.remove('form-wrap-filled', 'form-wrap-focused', 'has-value');
+            });
+            
+            // Resetuj validation messages jeśli istnieją
+            var validationMessages = cooperationForm.querySelectorAll('.validation-message, .invalid-feedback, .valid-feedback');
+            validationMessages.forEach(function(msg) {
+              msg.remove();
+            });
+            
+            // Resetuj button do oryginalnego stanu
+            var submitBtn = cooperationForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+              submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('loading', 'disabled');
+            }
+            
+            console.log('Modal współpracy został zresetowany');
+          }
+        }
+        
+        function resetIframe() {
+          var iframe = document.getElementById('staticFormIframe');
+          if (iframe) {
+            // Wyczyść dane współpracy
+            window.cooperationData = null;
+            
+            // Odśwież iframe
+            var currentSrc = iframe.src;
+            iframe.src = '';
+            setTimeout(function() {
+              iframe.src = currentSrc;
+            }, 100);
+          }
+        }
+        
         // Cooperation form handler
         var cooperationForm = document.getElementById('cooperationForm');
         if (cooperationForm) {
@@ -1988,6 +2133,16 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             
             // Otwórz modal z formularzem wysyłania po krótkiej chwili
             setTimeout(function() {
+              // Odśwież iframe przed otwarciem modala
+              var iframe = document.getElementById('staticFormIframe');
+              if (iframe) {
+                var currentSrc = iframe.src;
+                iframe.src = ''; // Wyczyść src
+                setTimeout(function() {
+                  iframe.src = currentSrc; // Przywróć src - to spowoduje odświeżenie
+                }, 100);
+              }
+              
               var sendModal = document.getElementById('modalSendForm');
               if (window.jQuery && window.jQuery(sendModal).modal) {
                 window.jQuery(sendModal).modal('show');
@@ -2004,7 +2159,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 document.body.appendChild(backdrop);
               }
               
-              // Wyślij dane do iframe po załadowaniu
+              // Wyślij dane do iframe po załadowaniu (dłuższy timeout bo iframe się odświeża)
               setTimeout(function() {
                 var iframe = document.getElementById('staticFormIframe');
                 if (iframe && iframe.contentWindow && window.cooperationData) {
@@ -2015,7 +2170,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                     message: window.cooperationData.message
                   }, '*');
                 }
-              }, 1000);
+              }, 2000); // Zwiększony timeout żeby iframe zdążył się załadować
             }, 500);
           });
         }
@@ -2041,6 +2196,24 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             }
           }
         });
+        
+        // Dodatkowa obsługa iframe - nasłuchuj załadowania iframe
+        var iframe = document.getElementById('staticFormIframe');
+        if (iframe) {
+          iframe.addEventListener('load', function() {
+            // Wyślij dane do iframe po jego załadowaniu
+            setTimeout(function() {
+              if (iframe.contentWindow && window.cooperationData) {
+                iframe.contentWindow.postMessage({
+                  type: 'fillForm',
+                  name: window.cooperationData.name,
+                  email: window.cooperationData.email,
+                  message: window.cooperationData.message
+                }, '*');
+              }
+            }, 500);
+          });
+        }
 
         // Wesprzyj button: enable idle animation and restart it on click
         var ctaBtn = document.querySelector('#sticky-narrow-banner .banner-cta-btn');

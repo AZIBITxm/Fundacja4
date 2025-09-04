@@ -4,6 +4,12 @@ body {
     padding: 20px;
     font-family: Arial, sans-serif;
     background: #f8f9fa;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 #staticFormIframe {
