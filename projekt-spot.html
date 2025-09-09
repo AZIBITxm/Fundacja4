@@ -1690,24 +1690,34 @@ Data: ${new Date().toLocaleString('pl-PL')}
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Wysyłanie...';
     
-    // Prepare form data
-    const formData = new FormData(form);
+    // First verify reCAPTCHA
+    const recaptchaData = new FormData();
+    recaptchaData.append('g-recaptcha-response', recaptchaResponse);
     
-    // Send form via AJAX
-    fetch('bat/rd-mailform.php', {
+    fetch('bat/reCaptcha.php', {
       method: 'POST',
-      body: formData
+      body: recaptchaData
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+    .then(response => response.text())
+    .then(recaptchaResult => {
+      if (recaptchaResult.trim() === 'CPT000') {
+        // reCAPTCHA verified, now send the form
+        const formData = new FormData(form);
+        
+        return fetch('bat/rd-mailform.php', {
+          method: 'POST',
+          body: formData
+        });
+      } else {
+        throw new Error('reCAPTCHA verification failed: ' + recaptchaResult);
       }
-      return response.text();
     })
+    .then(response => response.text())
     .then(data => {
-      // Check if the response indicates success
-      if (data.includes('success') || data.includes('Message sent') || data.includes('OK')) {
-        // Show success message
+      // Check PHP response codes
+      const result = data.trim();
+      if (result === 'MF000') {
+        // Success
         const successMessage = document.createElement('div');
         successMessage.className = 'alert alert-success';
         successMessage.innerHTML = `
@@ -1722,17 +1732,36 @@ Data: ${new Date().toLocaleString('pl-PL')}
         // Scroll to success message
         successMessage.scrollIntoView({ behavior: 'smooth' });
         
-        // Optional: Reload page after 5 seconds
+        // Reload page after 5 seconds
         setTimeout(() => {
           window.location.reload();
         }, 5000);
       } else {
-        throw new Error('Server response indicates failure');
+        // Handle specific error codes
+        let errorMessage = 'Wystąpił błąd podczas wysyłania wiadomości.';
+        switch(result) {
+          case 'MF001':
+            errorMessage = 'Błąd konfiguracji e-mail.';
+            break;
+          case 'MF002':
+            errorMessage = 'Wysyłanie z tego adresu IP jest zablokowane.';
+            break;
+          case 'MF004':
+            errorMessage = 'Nieprawidłowy typ formularza.';
+            break;
+          case 'MF254':
+            errorMessage = 'Błąd serwera poczty.';
+            break;
+          case 'MF255':
+            errorMessage = 'Ogólny błąd serwera.';
+            break;
+        }
+        throw new Error(errorMessage + ' (Kod: ' + result + ')');
       }
     })
     .catch(error => {
       console.error('Error:', error);
-      alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+      alert(error.message || 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
       
       // Reset button state - form remains visible
       submitBtn.disabled = false;
