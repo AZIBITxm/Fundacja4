@@ -1152,29 +1152,29 @@
                 Masz pytania o projekt? Chcesz się zaangażować? Napisz do nas!
               </p>
               
-              <form class="rd-form rd-form-variant-2 rd-mailform" id="spotContactForm" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+              <form class="rd-form rd-form-variant-2" id="spotContactForm" data-form-output="form-output-global" data-form-type="contact">
                 <div class="row row-14 gutters-14">
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-your-name-2" type="text" name="name" data-constraints="@Required">
+                      <input class="form-input" id="contact-your-name-2" type="text" name="name" required>
                       <label class="form-label" for="contact-your-name-2">Imię i nazwisko</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-email-2" type="email" name="email" data-constraints="@Email @Required">
+                      <input class="form-input" id="contact-email-2" type="email" name="email" required>
                       <label class="form-label" for="contact-email-2">E-mail</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-phone-2" type="text" name="phone" data-constraints="@Numeric">
+                      <input class="form-input" id="contact-phone-2" type="text" name="phone">
                       <label class="form-label" for="contact-phone-2">Telefon</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <select class="form-input" id="contact-temat-2" name="temat" data-constraints="@Required">
+                      <select class="form-input" id="contact-temat-2" name="temat" required>
                         <option value="" disabled selected>Wybierz temat</option>
                         <option value="Wsparcie finansowe - Projekt SPOT">Wsparcie finansowe</option>
                         <option value="Abonament miesięczny - Projekt SPOT">Abonament miesięczny + bonusy</option>
@@ -1189,38 +1189,38 @@
                   </div>
                   <div class="col-12">
                     <div class="form-wrap">
-                      <textarea class="form-input textarea-lg" id="contact-message-2" name="message" data-constraints="@Required"></textarea>
+                      <textarea class="form-input textarea-lg" id="contact-message-2" name="message" required></textarea>
                       <label class="form-label" for="contact-message-2">Wiadomość</label>
                     </div>
                   </div>
                 </div>
                 
-                <!-- Hidden field for composed message -->
-                <input type="hidden" name="composed-message" id="composed-message">
-                
-                <!-- Hidden field to identify project -->
-                <input type="hidden" name="projekt" value="Projekt SPOT - Przeciwdziałanie Cyfrowym Uzależnieniom">
-                
                 <!-- Button to prepare and show captcha -->
-                <button type="button" class="button button-primary button-pipaluk" id="prepare-form-btn">Przygotuj do wysłania</button>
-                
-                <!-- Captcha section (initially hidden) -->
-                <div id="captcha-section" style="display: none; margin-top: 20px;">
-                  <div class="alert alert-info">
-                    <h5>Formularz przygotowany do wysłania</h5>
-                    <p>Aby wysłać wiadomość, potwierdź że nie jesteś robotem:</p>
-                  </div>
-                  <div class="form-wrap text-center">
-                    <div class="g-recaptcha" data-sitekey="6LfZlSETAAAAAC5VW4R4tQP8Am_to4bM3dddxkEt" data-callback="enableSubmitBtn"></div>
-                  </div>
-                  <button type="submit" class="button button-success button-pipaluk" id="final-submit-btn" disabled>Wyślij wiadomość</button>
-                </div>
+                <button type="submit" class="button button-primary button-pipaluk">WYŚLIJ ZGŁOSZENIE</button>
               </form>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Modal: Formularz wysyłania (iframe StaticForms) dla SPOT -->
+    <div class="modal fade" id="modalSendFormSpot" tabindex="-1" role="dialog" aria-hidden="true" lang="pl">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Finalizacja zgłoszenia - Projekt SPOT</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Potwierdź, że nie jesteś robotem i wyślij zgłoszenie w sprawie Projektu SPOT.</p>
+            <iframe id="staticFormIframeSpot" src="static-form.html" width="100%" height="300" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="section footer-corporate context-dark">
@@ -1627,159 +1627,143 @@ function setupHeroAnimations() {
   });
 }
 
-// SPOT Contact Form with reCAPTCHA
+// SPOT Contact Form with StaticForms
 document.addEventListener('DOMContentLoaded', function() {
-  const prepareBtn = document.getElementById('prepare-form-btn');
-  const captchaSection = document.getElementById('captcha-section');
-  const submitBtn = document.getElementById('final-submit-btn');
   const form = document.getElementById('spotContactForm');
   
-  prepareBtn.addEventListener('click', function() {
-    // Validate form first
-    const name = document.getElementById('contact-your-name-2').value;
-    const email = document.getElementById('contact-email-2').value;
-    const temat = document.getElementById('contact-temat-2').value;
-    const message = document.getElementById('contact-message-2').value;
-    
-    if (!name || !email || !temat || !message) {
-      alert('Proszę wypełnić wszystkie wymagane pola.');
-      return;
-    }
-    
-    // Compose message from form fields
-    const phone = document.getElementById('contact-phone-2').value;
-    const composedMessage = `
-Formularz kontaktowy - Projekt SPOT
-
-Imię i nazwisko: ${name}
-E-mail: ${email}
-Telefon: ${phone || 'Nie podano'}
-Temat: ${temat}
-
-Wiadomość:
-${message}
-
----
-Wysłano ze strony: ${window.location.href}
-Data: ${new Date().toLocaleString('pl-PL')}
-    `;
-    
-    // Set composed message
-    document.getElementById('composed-message').value = composedMessage;
-    
-    // Hide prepare button and show captcha
-    prepareBtn.style.display = 'none';
-    captchaSection.style.display = 'block';
-    
-    // Scroll to captcha
-    captchaSection.scrollIntoView({ behavior: 'smooth' });
-  });
-
-  // Handle form submission
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Check if reCAPTCHA is completed
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-      alert('Proszę potwierdzić reCAPTCHA.');
-      return;
-    }
-    
-    // Show loading state
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Wysyłanie...';
-    
-    // First verify reCAPTCHA
-    const recaptchaData = new FormData();
-    recaptchaData.append('g-recaptcha-response', recaptchaResponse);
-    
-    fetch('bat/reCaptcha.php', {
-      method: 'POST',
-      body: recaptchaData
-    })
-    .then(response => response.text())
-    .then(recaptchaResult => {
-      if (recaptchaResult.trim() === 'CPT000') {
-        // reCAPTCHA verified, now send the form
-        const formData = new FormData(form);
-        
-        return fetch('bat/rd-mailform.php', {
-          method: 'POST',
-          body: formData
-        });
-      } else {
-        throw new Error('reCAPTCHA verification failed: ' + recaptchaResult);
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Pobierz wartości z formularza
+      const name = document.getElementById('contact-your-name-2').value;
+      const email = document.getElementById('contact-email-2').value;
+      const phone = document.getElementById('contact-phone-2').value;
+      const temat = document.getElementById('contact-temat-2').value;
+      const message = document.getElementById('contact-message-2').value;
+      
+      // Sprawdź czy wszystkie wymagane pola są wypełnione
+      if (!name || !email || !temat || !message) {
+        alert('Proszę wypełnić wszystkie wymagane pola.');
+        return;
       }
-    })
-    .then(response => response.text())
-    .then(data => {
-      // Check PHP response codes
-      const result = data.trim();
-      if (result === 'MF000') {
-        // Success
-        const successMessage = document.createElement('div');
-        successMessage.className = 'alert alert-success';
-        successMessage.innerHTML = `
-          <h5><i class="fa fa-check-circle"></i> Wiadomość wysłana pomyślnie!</h5>
-          <p>Dziękujemy za kontakt w sprawie Projektu SPOT. Odpowiemy na Twoją wiadomość w ciągu 24 godzin.</p>
-        `;
+      
+      // Wygeneruj tytuł wiadomości
+      const subject = 'Projekt SPOT - ' + temat + ' - ' + name;
+      
+      // Wygeneruj treść wiadomości
+      let contactInfo = 'Formularz kontaktowy - Projekt SPOT\n\n';
+      contactInfo += 'Dane kontaktowe:\n';
+      contactInfo += 'Imię i nazwisko: ' + name + '\n';
+      contactInfo += 'Email: ' + email + '\n';
+      if (phone) {
+        contactInfo += 'Telefon: ' + phone + '\n';
+      }
+      contactInfo += 'Temat: ' + temat + '\n\n';
+      
+      const messageContent = contactInfo + 'Wiadomość:\n' + message + '\n\n---\nWysłano ze strony: ' + window.location.href + '\nData: ' + new Date().toLocaleString('pl-PL');
+      
+      // Zapisz dane do window dla iframe
+      window.spotContactData = {
+        name: subject,
+        email: email,
+        message: messageContent
+      };
+      
+      // Otwórz modal z formularzem wysyłania
+      const sendModal = document.getElementById('modalSendFormSpot');
+      if (window.jQuery && window.jQuery(sendModal).modal) {
+        window.jQuery(sendModal).modal('show');
+      } else if (sendModal) {
+        sendModal.classList.add('show');
+        sendModal.style.display = 'block';
+        sendModal.setAttribute('aria-modal', 'true');
+        sendModal.removeAttribute('aria-hidden');
+        document.body.classList.add('modal-open');
         
-        // Hide form and show success message
-        form.style.display = 'none';
-        form.parentNode.appendChild(successMessage);
-        
-        // Scroll to success message
+        // Dodaj backdrop
+        const backdrop = document.createElement('div');
+        backdrop.className = 'modal-backdrop fade show';
+        document.body.appendChild(backdrop);
+      }
+      
+      // Odśwież iframe
+      const iframe = document.getElementById('staticFormIframeSpot');
+      if (iframe) {
+        const currentSrc = iframe.src;
+        iframe.src = '';
+        setTimeout(function() {
+          iframe.src = currentSrc;
+        }, 100);
+      }
+      
+      // Wyślij dane do iframe po załadowaniu
+      setTimeout(function() {
+        const iframe = document.getElementById('staticFormIframeSpot');
+        if (iframe && iframe.contentWindow && window.spotContactData) {
+          iframe.contentWindow.postMessage({
+            type: 'fillForm',
+            name: window.spotContactData.name,
+            email: window.spotContactData.email,
+            message: window.spotContactData.message
+          }, '*');
+        }
+      }, 2000);
+    });
+  }
+  
+  // Handler dla wiadomości z iframe
+  window.addEventListener('message', function(event) {
+    if (event.data.type === 'formSuccess') {
+      // Formularz został wysłany pomyślnie
+      console.log('Formularz SPOT wysłany pomyślnie');
+    } else if (event.data.type === 'closeModal') {
+      // Zamknij modal i zresetuj formularz
+      const sendModal = document.getElementById('modalSendFormSpot');
+      if (window.jQuery && window.jQuery(sendModal).modal) {
+        window.jQuery(sendModal).modal('hide');
+      } else if (sendModal) {
+        sendModal.classList.remove('show');
+        sendModal.style.display = 'none';
+        sendModal.setAttribute('aria-hidden', 'true');
+        sendModal.removeAttribute('aria-modal');
+        document.body.classList.remove('modal-open');
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) backdrop.remove();
+      }
+      
+      // Resetuj formularz główny
+      const form = document.getElementById('spotContactForm');
+      if (form) {
+        form.reset();
+        // Usuń klasy active z form-wrap jeśli istnieją
+        const formWraps = form.querySelectorAll('.form-wrap');
+        formWraps.forEach(wrap => wrap.classList.remove('form-wrap-validation'));
+      }
+      
+      // Pokaż komunikat sukcesu
+      const successMessage = document.createElement('div');
+      successMessage.className = 'alert alert-success';
+      successMessage.innerHTML = `
+        <h5><i class="fa fa-check-circle"></i> Wiadomość wysłana pomyślnie!</h5>
+        <p>Dziękujemy za kontakt w sprawie Projektu SPOT. Odpowiemy na Twoją wiadomość w ciągu 24 godzin.</p>
+      `;
+      
+      const contactSection = document.querySelector('#kontakt .contact-form-project');
+      if (contactSection) {
+        contactSection.appendChild(successMessage);
         successMessage.scrollIntoView({ behavior: 'smooth' });
         
-        // Reload page after 5 seconds
+        // Usuń komunikat po 5 sekundach
         setTimeout(() => {
-          window.location.reload();
+          if (successMessage.parentNode) {
+            successMessage.remove();
+          }
         }, 5000);
-      } else {
-        // Handle specific error codes
-        let errorMessage = 'Wystąpił błąd podczas wysyłania wiadomości.';
-        switch(result) {
-          case 'MF001':
-            errorMessage = 'Błąd konfiguracji e-mail.';
-            break;
-          case 'MF002':
-            errorMessage = 'Wysyłanie z tego adresu IP jest zablokowane.';
-            break;
-          case 'MF004':
-            errorMessage = 'Nieprawidłowy typ formularza.';
-            break;
-          case 'MF254':
-            errorMessage = 'Błąd serwera poczty.';
-            break;
-          case 'MF255':
-            errorMessage = 'Ogólny błąd serwera.';
-            break;
-        }
-        throw new Error(errorMessage + ' (Kod: ' + result + ')');
       }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert(error.message || 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
-      
-      // Reset button state - form remains visible
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Wyślij wiadomość';
-      
-      // Reset reCAPTCHA
-      if (typeof grecaptcha !== 'undefined') {
-        grecaptcha.reset();
-        submitBtn.disabled = true; // Disable again until reCAPTCHA is completed
-      }
-    });
+    }
   });
 });
-
-// reCAPTCHA callback
-function enableSubmitBtn() {
-  document.getElementById('final-submit-btn').disabled = false;
-}
 </script>
 
 <!-- reCAPTCHA API -->
