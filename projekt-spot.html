@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="pl">
+<head>
+  <title>Projekt SPOT - Przeciwdziałanie Cyfrowym Uzależnieniom | World Foundation</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <!-- Stylesheets-->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modal-wsparcie-pl.css">
+  <style>
+  /* Kolory banerów dla Szczegółowy Opis Działań */
+  .activity-banner-1 { background: #e3f2fd !important; }
+  .activity-banner-2 { background: #e8f5e9 !important; }
+  .activity-banner-3 { background: #fffde7 !important; }
+  .activity-banner-4 { background: #f3e5f5 !important; }
+    /* Fix dla nakładania się elementów */
+    .rd-navbar-static .rd-navbar-main-outer {
+      padding-top: 0;
+    }
+    
+    .project-hero {
+      background: linear-gradient(135deg, rgba(41, 128, 185, 0.9), rgba(142, 68, 173, 0.9)), url('images/banery/s1.png');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 0 80px; /* Zmniejszony padding-top */
+      color: white;
+      position: relative;
+      margin-top: 0; /* Usunięty margines */
+    }
+    
+    .breadcrumb-custom {
+      background: transparent;
+      padding: 20px 0;
+      margin-bottom: 0;
+    }
+    
+    .breadcrumb-custom .breadcrumb {
+      background: transparent;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .breadcrumb-custom a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+    }
+    
+    .breadcrumb-custom .active {
+      color: white;
+      font-weight: 600;
+    }
+    
+    /* Professional Progress Circles */
+    .progress-circle-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 0 auto 20px;
+      width: 120px;
+      height: 120px;
+    }
+    
+    .progress-circle-svg {
+      transform: rotate(-90deg);
+      width: 120px;
+      height: 120px;
+    }
+    
+    .progress-circle-bg {
+      opacity: 0.3;
+    }
+    
+    .progress-circle-fill {
+      stroke-dasharray: 314.16; /* 2 * π * 50 */
+      stroke-dashoffset: 314.16;
+      transition: stroke-dashoffset 2s ease-in-out;
+    }
+    
+    .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-weight: bold;
+      z-index: 10;
+    }
+    
+    .progress-percentage {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #333;
+      line-height: 1;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .progress-circle-wrapper {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .progress-circle-svg {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .progress-percentage {
+        font-size: 1.4rem;
+      }
+    }
+    
+    /* Action buttons sidebar styling and animations */
+    .action-sidebar {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+    
+    .action-sidebar::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+      50% { transform: translate(-50%, -50%) rotate(180deg); }
+    }
+    
+    .action-sidebar .content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .action-sidebar h3,
+    .action-sidebar p,
+    .action-sidebar .small,
+    .action-sidebar .button,
+    .action-sidebar a,
+    .action-sidebar .action-button {
+      color: #fff !important;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    /* Button slide-in animation */
+    .action-button {
+      opacity: 0;
+      transform: translateX(50px);
+      animation: slideInRight 0.6s ease-out forwards;
+      margin-bottom: 0.75rem;
+    }
+    
+    .action-button:nth-child(1) { animation-delay: 0.1s; }
+    .action-button:nth-child(2) { animation-delay: 0.2s; }
+    .action-button:nth-child(3) { animation-delay: 0.3s; }
+    .action-button:nth-child(4) { animation-delay: 0.4s; }
+    .action-button:nth-child(5) { animation-delay: 0.5s; }
+    .action-button:nth-child(6) { animation-delay: 0.6s; }
+    
+    @keyframes slideInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Button hover effects */
+    .action-button .button {
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+    
+    .action-button .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      border-color: rgba(255,255,255,0.4);
+    }
+    
+    /* Better spacing for activity banners */
+    .bg-white p {
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    
+    .bg-white ul.list-unstyled li {
+      line-height: 1.4;
+      margin-bottom: 0.25rem;
+      padding: 0.15rem 0;
+    }
+    
+    .bg-white h5 {
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    
+    .funding-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+    
+    .funding-stat {
+      text-align: center;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+    
+    .funding-amount {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2980b9;
+    }
+    
+    .funding-desc {
+      color: #6c757d;
+      margin-top: 5px;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #2980b9;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 40px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #2980b9;
+    }
+    
+    .contact-form-project {
+      background: #f8f9fa;
+      padding: 40px;
+      border-radius: 15px;
+      margin-top: 40px;
+    }
+    
+    @media (max-width: 768px) {
+      .project-hero {
+        padding: 80px 0 50px;
+        text-align: center;
+      }
+      
+      .project-hero .display-4 {
+        font-size: 2rem;
+      }
+      
+      .project-hero .h3 {
+        font-size: 1.5rem;
+      }
+      
+      .progress-circle {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .progress-percentage {
+        font-size: 2rem;
+      }
+      
+      .funding-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-form-project {
+        padding: 20px;
+      }
+      
+      .d-flex.gap-3 {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .d-flex.gap-3 .button {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+      }
+    }
+    
+    .donor-box-placeholder {
+      background: #e3f2fd;
+      border: 2px dashed #2196f3;
+      padding: 40px;
+      text-align: center;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .impact-stat {
+      text-align: center;
+      padding: 30px 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .impact-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #2980b9;
+      line-height: 1;
+    }
+    
+    .impact-label {
+      margin-top: 10px;
+      color: #6c757d;
+      font-weight: 500;
+    }
+    
+    /* Styles for Preparatory Work Section */
+    .fa-bullseye { color: #2980b9; }
+    .fa-users { color: #17a2b8; }
+    .fa-book { color: #ffc107; }
+    .fa-handshake { color: #28a745; }
+    .fa-tasks { color: #dc3545; }
+    .fa-list-alt { color: #6c757d; }
+    .fa-calendar { color: #8e44ad; }
+    .fa-image { color: #e67e22; }
+    .fa-mobile { color: #2980b9; }
+    .fa-chart-line { color: #17a2b8; }
+    .fa-users, .fa-bullseye, .fa-book, .fa-handshake, .fa-tasks, .fa-list-alt, .fa-calendar, .fa-image, .fa-mobile, .fa-chart-line {
+      margin-right: 0.5em;
+      vertical-align: middle;
+    }
+    .rounded-lg {
+      border-radius: 15px !important;
+    }
+    
+    .shadow-sm {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
+    }
+    
+    .flex-shrink-0 {
+      flex-shrink: 0;
+    }
+    
+    .flex-grow-1 {
+      flex-grow: 1;
+    }
+    
+    .me-3 {
+      margin-right: 1rem;
+    }
+    
+    .d-grid {
+      display: grid;
+    }
+    
+    .gap-2 {
+      gap: 0.5rem;
+    }
+    
+    .btn-sm {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+      border-radius: 0.375rem;
+    }
+    
+    .btn-light {
+      background-color: #f8f9fa;
+      border-color: #f8f9fa;
+      color: #212529;
+    }
+    
+    .btn-outline-light {
+      color: #f8f9fa;
+      border-color: #f8f9fa;
+      background-color: transparent;
+    }
+    
+    .btn-outline-light:hover {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    
+    .text-success {
+      color: #28a745 !important;
+    }
+    
+    .text-warning {
+      color: #ffc107 !important;
+    }
+    
+    .text-info {
+      color: #17a2b8 !important;
+    }
+    
+    .text-danger {
+      color: #dc3545 !important;
+    }
+    
+    .bg-success {
+      background-color: #28a745 !important;
+    }
+    
+    .bg-warning {
+      background-color: #ffc107 !important;
+    }
+    
+    .bg-info {
+      background-color: #17a2b8 !important;
+    }
+    
+    .progress {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    @media (max-width: 768px) {
+      .d-grid.gap-2 .btn {
+        margin-bottom: 0.5rem;
+      }
+      
+      .flex-shrink-0 .rounded-circle {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      
+      .rounded-lg {
+        border-radius: 10px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <div class="preloader-body">
+      <div class="cssload-container"><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- Page Header-->
+    <header class="section page-header">
+      <!-- RD Navbar-->
+      <div class="rd-navbar-wrap">
+        <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+          <div class="rd-navbar-main-outer">
+            <div class="rd-navbar-main">
+              <!-- RD Navbar Panel-->
+              <div class="rd-navbar-panel">
+                <!-- RD Navbar Toggle-->
+                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                <!-- RD Navbar Brand-->
+                <div class="rd-navbar-brand"><a class="brand" href="index.html"><img src="images/logo/logo.png" alt="Logo"/></a></div>
+              </div>
+              <div class="rd-navbar-main-element">
+                <div class="rd-navbar-nav-wrap">
+                  <!-- RD Navbar Share-->
+                  <div class="rd-navbar-share fl-bigmug-line-share27" data-rd-navbar-toggle=".rd-navbar-share-list">
+                    <ul class="list-inline rd-navbar-share-list">
+                      <li class="rd-navbar-share-list-item"><a class="icon fa fa-facebook" href="#"></a></li>
+                      <li class="rd-navbar-share-list-item"><a class="icon fa fa-twitter" href="#"></a></li>
+                      <li class="rd-navbar-share-list-item"><a class="icon fa fa-google-plus" href="#"></a></li>
+                      <li class="rd-navbar-share-list-item"><a class="icon fa fa-instagram" href="#"></a></li>
+                    </ul>
+                  </div>
+                  <ul class="rd-navbar-nav">
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.html#home">Home</a></li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.html#services">Pomoc psychologa</a></li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.html#about">O Nas</a></li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.html#experience">Współpraca</a></li>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html#projects">Projekty</a></li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.html#pricing">Wsparcie</a></li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.html#team">Zespół</a></li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.html#contact-info">Kontakt</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 mb-3">
+          </div>
+          <div class="col-lg-8">
+            <div class="hero-content-animated">
+              <h1 class="display-4 font-weight-bold mb-4 hero-title" style="color: #fff;">Projekt SPOT</h1>
+              <div class="hero-separator"></div>
+              <h2 class="h3 mb-4 hero-subtitle" style="color: #fff;">Przeciwdziałanie Cyfrowym Uzależnieniom w Szkołach</h2>
+              <p class="mb-4 hero-description" style="font-size: 1rem; color: #fff; line-height: 1.6;">
+                  Kompleksowy program neuroedukacyjny, który łączy nowoczesne narzędzia z praktycznym wsparciem dla uczniów, rodziców i nauczycieli w walce z cyfrowymi uzależnieniami i wykluczeniem społecznym.
+              </p>
+              <div class="d-flex flex-column gap-3 hero-buttons">
+                <a href="#wsparcie" class="button button-primary button-ujarak w-100 hero-btn-primary">Wesprzyj projekt</a>
+                <a href="#detale" class="button button-white-outline button-ujarak w-100 hero-btn-secondary">Poznaj szczegóły</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center mt-4 mt-lg-0">
+            <img src="images/banery/s1.png" alt="Projekt SPOT" class="img-fluid rounded shadow-lg" style="max-width: 300px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Financing Section -->
+    <section class="section section-sm bg-default" id="wsparcie">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mb-4">Wsparcie Projektu SPOT</h2>
+            <p class="text-gray-500 mb-5">Twoje wsparcie pomaga nam docierać do kolejnych szkół i chronić młodych ludzi przed cyfrowymi zagrożeniami.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- Progress Circle -->
+            <div class="progress-circle-wrapper" data-percentage="0" style="margin: 0 auto 10px;">
+              <svg class="progress-circle-svg" width="200" height="200" viewBox="0 0 200 200">
+                <circle class="progress-circle-bg" cx="100" cy="100" r="90" fill="none" stroke="#e9ecef" stroke-width="8"/>
+                <circle class="progress-circle-fill" cx="100" cy="100" r="90" fill="none" stroke="#28a745" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+              <div class="progress-text">
+                <div class="progress-percentage">0%</div>
+              </div>
+            </div>
+            <div class="text-center mb-4">
+              <small class="text-muted">cel osiągnięty</small>
+            </div>
+
+            <div class="funding-stats">
+              <div class="funding-stat">
+                <div class="funding-amount">0 zł</div>
+                <div class="funding-desc">zebrano</div>
+              </div>
+              <div class="funding-stat">
+                <div class="funding-amount">360,000 zł</div>
+                <div class="funding-desc">potrzebujemy</div>
+              </div>
+              <div class="funding-stat">
+                <div class="funding-amount">360,000 zł</div>
+                <div class="funding-desc">zostało do zebrania</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <!-- DonorBox Integration Placeholder -->
+            <div class="donor-box-placeholder">
+              <h4 class="mb-3"><i class="fa fa-bullseye me-2"></i>Wsparcie Projektu SPOT</h4>
+              <p class="mb-4">Pomóż nam wprowadzić program do polskich szkół:</p>
+              <ul class="list-unstyled text-left">
+                <li>✅ <strong>Jednorazowe wsparcie</strong> - każda kwota pomaga</li>
+                <li>✅ <strong>Abonament miesięczny</strong> - stałe wsparcie projektu</li>
+                <li>🎁 <strong>Bonusy dla abonentów:</strong></li>
+                <li>&nbsp;&nbsp;&nbsp;📧 Miesięczny newsletter z postępami</li>
+                <li>&nbsp;&nbsp;&nbsp;📚 Dostęp do materiałów edukacyjnych</li>
+                <li>&nbsp;&nbsp;&nbsp;🎯 Dedykowane webinary o cyberbezpieczeństwie</li>
+                <li>&nbsp;&nbsp;&nbsp;📄 Raporty z wdrożeń w szkołach</li>
+                <li>&nbsp;&nbsp;&nbsp;🤝 Zaproszenia na spotkania z zespołem</li>
+              </ul>
+              <div class="mt-4">
+                  <div class="d-flex flex-column justify-content-center align-items-center banner-buttons-container">
+                    <button class="button button-primary button-ujarak banner-btn">Wesprzyj jednorazowo</button>
+                    <button class="button button-secondary button-ujarak banner-btn">Miesięczny abonament</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separator -->
+    <div class="section-separator">
+      <div class="container">
+        <div class="separator-line"></div>
+      </div>
+    </div>
+
+    <!-- Project Vision -->
+    <section class="section section-sm bg-gray-1">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-8 text-center">
+            <h2>Nasza Wizja Projektu</h2>
+            <p class="text-gray-500">Planujemy wprowadzić innowacyjny program do polskich szkół</p>
+          </div>
+        </div>
+
+        <div class="impact-stats">
+          <div class="impact-stat">
+            <div class="impact-number" data-target="50">0</div>
+            <div class="impact-label">Szkół w programie</div>
+          </div>
+          <div class="impact-stat">
+            <div class="impact-number" data-target="3000">0</div>
+            <div class="impact-label">Uczniów zostanie przeszkolonych</div>
+          </div>
+          <div class="impact-stat">
+            <div class="impact-number" data-target="250">0</div>
+            <div class="impact-label">Nauczycieli otrzyma wsparcie</div>
+          </div>
+          <div class="impact-stat">
+            <div class="impact-number" data-target="1500">0</div>
+            <div class="impact-label">Rodziców weźmie udział</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="section section-sm bg-default" id="detale">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2 class="mb-4">Szczegóły Projektu SPOT</h2>
+            
+            <div class="mb-5">
+              <h3 class="h4 mb-3"><i class="fa fa-bullseye me-2"></i>Główne Cele</h3>
+              <ul class="list-styled">
+                <li><strong>Przeciwdziałanie cyfrowym uzależnieniom</strong> - Edukowujemy o zagrożeniach nadmiernego korzystania z technologii</li>
+                <li><strong>Zapobieganie wykluczeniu społecznemu</strong> - Budujemy więzi międzyludzkie i umiejętności społeczne</li>
+                <li><strong>Przeciwdziałanie przemocy</strong> - Uczymy rozpoznawania i przeciwdziałania cyberprzemocy</li>
+                <li><strong>Wsparcie systemu edukacji</strong> - Dostarczamy narzędzia i wiedzę nauczycielom</li>
+              </ul>
+            </div>
+
+            <div class="mb-5">
+              <h3 class="h4 mb-3"><i class="fa fa-users me-2"></i>Grupy Docelowe</h3>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <div class="p-3 bg-light rounded">
+                    <h5 class="h6 font-weight-bold">Uczniowie</h5>
+                    <p class="small mb-0">Warsztaty edukacyjne, treningi umiejętności, wsparcie indywidualne</p>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="p-3 bg-light rounded">
+                    <h5 class="h6 font-weight-bold">Rodzice</h5>
+                    <p class="small mb-0">Szkolenia, grupy wsparcia, materiały edukacyjne</p>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="p-3 bg-light rounded">
+                    <h5 class="h6 font-weight-bold">Nauczyciele</h5>
+                    <p class="small mb-0">Profesjonalne szkolenia, wsparcie prawne, narzędzia pracy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <h3 class="h4 mb-3"><i class="fa fa-book me-2"></i>Komponenty Programu</h3>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <h5 class="h6 font-weight-bold">Neuroedukacja</h5>
+                  <p>Warsztaty oparte na najnowszych badaniach neurobiologii uzależnień</p>
+                </div>
+                <div class="timeline-item">
+                  <h5 class="h6 font-weight-bold">Integracja Społeczna</h5>
+                  <p>Działania budujące więzi międzyludzkie i przeciwdziałające izolacji</p>
+                </div>
+                <div class="timeline-item">
+                  <h5 class="h6 font-weight-bold">Wsparcie Prawne</h5>
+                  <p>Pomoc prawna dla nauczycieli w trudnych sytuacjach</p>
+                </div>
+                <div class="timeline-item">
+                  <h5 class="h6 font-weight-bold">Monitoring i Ewaluacja</h5>
+                  <p>Systematyczne badanie skuteczności i doskonalenie metod</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <!-- Action Buttons Sidebar -->
+            <div class="sticky-top" style="top: 20px; z-index: 10;">
+              <div class="action-sidebar p-4 mb-4">
+                <div class="content">
+                  <h3 class="h4 mb-3 text-center">Razem Wprowadźmy Projekt SPOT do Szkół</h3>
+                  <p class="mb-4 small text-center">Twoje wsparcie pomoże nam stworzyć pierwszy w Polsce kompleksowy program przeciwdziałania cyfrowym uzależnieniom</p>
+                  
+                  <div>
+                    <div class="action-button">
+                      <a href="#wsparcie" class="button button-primary button-ujarak w-100">
+                        💰 Wesprzyj finansowo
+                      </a>
+                    </div>
+                    <div class="action-button">
+                      <a href="#kontakt" class="button button-secondary button-ujarak w-100">
+                          🤝 Dołącz do projektu
+                      </a>
+                    </div>
+                    <div class="action-button">
+                      <a href="#" class="button button-default-outline button-wapasha w-100">
+                        📋 Pobierz materiały
+                      </a>
+                    </div>
+                    <div class="action-button">
+                      <a href="#" class="button button-default-outline button-wapasha w-100">
+                        📱 Udostępnij projekt
+                      </a>
+                    </div>
+                    <div class="action-button">
+                      <a href="#" class="button button-default-outline button-wapasha w-100">
+                        📧 Newsletter + bonusy
+                      </a>
+                    </div>
+                    <div class="action-button">
+                      <a href="#" class="button button-default-outline button-wapasha w-100">
+                        🌐 Strona partnerów
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separator -->
+    <div class="section-separator">
+      <div class="container">
+        <div class="separator-line"></div>
+      </div>
+    </div>
+
+    <!-- Preparatory Work Section -->
+    <section class="section section-lg bg-gray-1" id="prace-przygotowawcze">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-10 text-center">
+            <h2 class="mb-4" style="font-size: 1.7rem;">🚀 Prace Przygotowawcze w Toku</h2>
+            <p class="lead text-gray-500 mb-5">
+              Zanim wprowadzimy Projekt SPOT do polskich szkół, intensywnie pracujemy nad przygotowaniem wszystkich komponentów programu. 
+              Zobacz, na jakim etapie jesteśmy i co już udało nam się osiągnąć.
+            </p>
+          </div>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="row mb-5">
+          <div class="col-lg-12">
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+              <h3 class="h4 mb-4 text-center"><i class="fa fa-tasks me-2"></i>Postęp Prac Przygotowawczych</h3>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <div class="text-center">
+                    <div class="progress-circle-wrapper" data-percentage="100">
+                      <svg class="progress-circle-svg" width="120" height="120" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="50" fill="none" stroke="#e9ecef" stroke-width="8"/>
+                        <circle class="progress-circle-fill" cx="60" cy="60" r="50" fill="none" stroke="#28a745" stroke-width="8" stroke-linecap="round"/>
+                      </svg>
+                      <div class="progress-text">
+                        <div class="progress-percentage">0%</div>
+                      </div>
+                    </div>
+                    <h6 class="mb-2">Badania i Analizy</h6>
+                    <small class="text-muted">Analiza potrzeb w szkołach</small>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <div class="text-center">
+                    <div class="progress-circle-wrapper" data-percentage="50">
+                      <svg class="progress-circle-svg" width="120" height="120" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="50" fill="none" stroke="#e9ecef" stroke-width="8"/>
+                        <circle class="progress-circle-fill" cx="60" cy="60" r="50" fill="none" stroke="#ffc107" stroke-width="8" stroke-linecap="round"/>
+                      </svg>
+                      <div class="progress-text">
+                        <div class="progress-percentage">0%</div>
+                      </div>
+                    </div>
+                    <h6 class="mb-2">Konsultacje Eksperckie</h6>
+                    <small class="text-muted">Spotkania z psychologami i rekrutacja</small>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <div class="text-center">
+                    <div class="progress-circle-wrapper" data-percentage="40">
+                      <svg class="progress-circle-svg" width="120" height="120" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="50" fill="none" stroke="#e9ecef" stroke-width="8"/>
+                        <circle class="progress-circle-fill" cx="60" cy="60" r="50" fill="none" stroke="#17a2b8" stroke-width="8" stroke-linecap="round"/>
+                      </svg>
+                      <div class="progress-text">
+                        <div class="progress-percentage">0%</div>
+                      </div>
+                    </div>
+                    <h6 class="mb-2">Materiały Edukacyjne</h6>
+                    <small class="text-muted">Tworzenie koncepcji</small>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <div class="text-center">
+                    <div class="progress-circle-wrapper" data-percentage="20">
+                      <svg class="progress-circle-svg" width="120" height="120" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="50" fill="none" stroke="#e9ecef" stroke-width="8"/>
+                        <circle class="progress-circle-fill" cx="60" cy="60" r="50" fill="none" stroke="#dc3545" stroke-width="8" stroke-linecap="round"/>
+                      </svg>
+                      <div class="progress-text">
+                        <div class="progress-percentage">0%</div>
+                      </div>
+                    </div>
+                    <h6 class="mb-2">Aplikacja Mobilna</h6>
+                    <small class="text-muted">Projekt interfejsu</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Activities -->
+        <div class="row">
+          <div class="col-lg-8">
+            <h3 class="h4 mb-4"><i class="fa fa-list-alt me-2"></i>Szczegółowy Opis Działań</h3>
+            
+            <!-- Activity 1 -->
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+              <div class="d-flex align-items-start">
+                <div class="flex-shrink-0 me-3">
+                  <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                    <i class="fa fa-search"></i>
+                  </div>
+                </div>
+                <div class="flex-grow-1">
+                  <h5 class="mb-2">Badania i Analizy Potrzeb (ukończone)</h5>
+                  <p class="mb-3">Oparliśmy się na badaniach renomowanych instytutów i organizacji światowych dotyczących cyfrowych uzależnień.</p>
+                  <ul class="list-unstyled small">
+                    <li>✅ Analiza raportów WHO i UNICEF na temat cyfrowych uzależnień</li>
+                    <li>✅ Przegląd badań American Academy of Pediatrics</li>
+                    <li>✅ Studium raportów Common Sense Media i Pew Research Center</li>
+                    <li>✅ Kompilacja najlepszych praktyk z programów międzynarodowych</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity 2 -->
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+              <div class="d-flex align-items-start">
+                <div class="flex-shrink-0 me-3">
+                  <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                    <i class="fa fa-users"></i>
+                  </div>
+                </div>
+                <div class="flex-grow-1">
+                  <h5 class="mb-2">Rekrutacja i szkolenie kadry (potrzebne wsparcie finansowe)</h5>
+                  <p class="mb-3">Kompletujemy kadrę specjalistów, którzy będą prowadzić warsztaty edukacyjne dla uczniów, rodziców i nauczycieli.</p>
+                  <ul class="list-unstyled small">
+                    <li>🔄 Szkolenia i certyfikacja kadry</li>
+                    <li>🔄 Organizacja i przeprowadzanie warsztatów w szkołach</li>
+                    <li>📅 Stałe doskonalenie i ewaluacja zespołu</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity 3 -->
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+              <div class="d-flex align-items-start">
+                <div class="flex-shrink-0 me-3">
+                  <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                    <i class="fa fa-book"></i>
+                  </div>
+                </div>
+                <div class="flex-grow-1">
+                  <h5 class="mb-2">Tworzenie Materiałów Edukacyjnych (w trakcie, niezbędne wsparcie finansowe)</h5>
+                  <p class="mb-3">Opracowujemy innowacyjne materiały dostosowane do różnych grup wiekowych.</p>
+                  <ul class="list-unstyled small">
+                    <li>✅ Koncepcja programu nauczania</li>
+                    <li>✅ Scenariusze 5 pierwszych warsztatów</li>
+                    <li>🔄 Materiały dla rodziców (w przygotowaniu)</li>
+                    <li>📅 Materiały dla nauczycieli - grudzień 2025</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity 4 -->
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+              <div class="d-flex align-items-start">
+                <div class="flex-shrink-0 me-3">
+                  <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background-color: #007bff !important; z-index: 10; position: relative; display: flex !important; align-items: center !important; justify-content: center !important;">
+                    <i class="fa fa-mobile" style="color: white; font-size: 20px; text-align: center; line-height: 1;"></i>
+                  </div>
+                </div>
+                <div class="flex-grow-1">
+                  <h5 class="mb-2">Aplikacja Mobilna SPOT (w przygotowaniu, potrzebne wsparcie finansowe)</h5>
+                  <p class="mb-3">Projektujemy interaktywną aplikację wspierającą proces edukacji i samomonitoringu.</p>
+                  <ul class="list-unstyled small">
+                    <li>✅ Analiza wymagań funkcjonalnych</li>
+                    <li>🔄 Projektowanie interfejsu użytkownika</li>
+                    <li>📅 Prototyp - styczeń 2026</li>
+                    <li>📅 Testy beta - marzec 2026</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="col-lg-4">
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+              <h4 class="h5 mb-3"><i class="fa fa-calendar me-2"></i>Najbliższe Kamienie Milowe</h4>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <strong>Październik 2025</strong>
+                  <p class="small mb-2">Finalizacja badań terenowych</p>
+                </div>
+                <div class="timeline-item">
+                  <strong>Listopad 2025</strong>
+                  <p class="small mb-2">Panel ekspercki i konsultacje</p>
+                </div>
+                <div class="timeline-item">
+                  <strong>Grudzień 2025</strong>
+                  <p class="small mb-2">Przygotowanie materiałów dydaktycznych i pomocniczych</p>
+                </div>
+                <div class="timeline-item">
+                  <strong>Styczeń 2026</strong>
+                  <p class="small mb-2">Prototyp aplikacji mobilnej</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+              <h4 class="h5 mb-3"><i class="fa fa-bullseye me-2"></i>Cele na Najbliższe Miesiące</h4>
+              <ul class="list-unstyled small">
+                <li class="mb-2">🎯 Zebranie 360,000 zł na rozwój projektu</li>
+                <li class="mb-2">🤝 Nawiązanie partnerstwa z 5 szkołami pilotażowymi</li>
+                <li class="mb-2">👥 Rekrutacja 20 wolontariuszy</li>
+                <li class="mb-2">📚 Opracowanie 50 scenariuszy zajęć</li>
+                <li class="mb-2">🏆 Uzyskanie patronatu MEN (w trakcie)</li>
+              </ul>
+            </div>
+
+            <div class="bg-primary text-white p-4 rounded-lg">
+                <h4 class="h5 mb-3" style="color: #111;"><i class="fa fa-users me-2"></i>Dołącz do Nas!</h4>
+              <p class="small mb-3" style="color: #111;">Potrzebujemy Twojego wsparcia, aby projekt mógł się rozwijać:</p>
+              <div class="d-grid gap-2">
+                  <div class="action-button">
+                      <a href="#wsparcie" class="button button-primary button-ujarak w-100 pulse-anim" style="box-shadow: 0 0 16px #FFD600;">💰 Wesprzyj finansowo</a>
+                  </div>
+                  <div class="action-button">
+                      <a href="#kontakt" class="button button-secondary button-ujarak w-100 bounce-anim" style="background: #fff; color: #007bff; box-shadow: 0 0 16px #007bff;">🤝 Dołącz do projektu</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <h3 class="h4 mb-4 text-center"><i class="fa fa-image me-2"></i>Galeria z Prac Przygotowawczych</h3>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="images/fullwidth-gallery-1-420x350.jpg" alt="Spotkania z ekspertami">
+                <div class="gallery-overlay">
+                  <h5>Spotkania z ekspertami</h5>
+                  <p>Konsultacje z psychologami i pedagogami w sprawie metodologii programu</p>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="images/fullwidth-gallery-2-420x350.jpg" alt="Badania i analizy">
+                <div class="gallery-overlay">
+                  <h5>Badania terenowe</h5>
+                  <p>Analiza potrzeb w polskich szkołach - wywiady z dyrektorami i nauczycielami</p>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="images/fullwidth-gallery-3-420x350.jpg" alt="Rozmowy z dyrektorami">
+                <div class="gallery-overlay">
+                  <h5>Prezentacje w szkołach</h5>
+                  <p>Przedstawianie koncepcji projektu w placówkach edukacyjnych</p>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="images/fullwidth-gallery-4-420x350.jpg" alt="Projektowanie materiałów">
+                <div class="gallery-overlay">
+                  <h5>Tworzenie materiałów</h5>
+                  <p>Prace nad scenariuszami zajęć i materiałami edukacyjnymi</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Innovative Solutions Section -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <h3 class="h4 mb-4 text-center">💡 Innowacyjne Rozwiązania</h3>
+            <div class="row justify-content-center">
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="box-icon-modern text-center">
+                  <div class="box-icon-modern-icon linearicons-laptop-phone"></div>
+                  <h5 class="box-icon-modern-title">Aplikacja Mobilna</h5>
+                  <p>Interaktywne narzędzie do samomonitoringu i edukacji</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="box-icon-modern text-center">
+                  <div class="box-icon-modern-icon linearicons-users2"></div>
+                  <h5 class="box-icon-modern-title">Grupy Wsparcia Online</h5>
+                  <p>Bezpieczne przestrzenie wymiany doświadczeń</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="box-icon-modern text-center">
+                  <div class="box-icon-modern-icon linearicons-graduation-hat"></div>
+                  <h5 class="box-icon-modern-title">E-learning dla Pedagów</h5>
+                  <p>Platforma szkoleniowa dostępna 24/7</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="box-icon-modern text-center">
+                  <div class="box-icon-modern-icon linearicons-chart-bars"></div>
+                  <h5 class="box-icon-modern-title">System Analityczny</h5>
+                  <p>Narzędzia do monitorowania postępów</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 mb-3">
+              <a href="#wsparcie" class="button button-primary button-ujarak w-100">
+                📈 Śledź nasze postępy
+              </a>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+              <a href="#kontakt" class="button button-secondary button-ujarak w-100">
+                📧 Newsletter z aktualizacjami
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separator -->
+    <div class="section-separator">
+      <div class="container">
+        <div class="separator-line"></div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <section class="section section-sm bg-gray-1" id="kontakt">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="contact-form-project">
+              <h2 class="text-center mb-4">Skontaktuj się w sprawie Projektu SPOT</h2>
+              <p class="text-center text-gray-500 mb-4">
+                Masz pytania o projekt? Chcesz się zaangażować? Napisz do nas!
+              </p>
+              
+              <form class="rd-form rd-form-variant-2 rd-mailform" id="spotContactForm" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                <div class="row row-14 gutters-14">
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <input class="form-input" id="contact-your-name-2" type="text" name="name" data-constraints="@Required">
+                      <label class="form-label" for="contact-your-name-2">Imię i nazwisko</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <input class="form-input" id="contact-email-2" type="email" name="email" data-constraints="@Email @Required">
+                      <label class="form-label" for="contact-email-2">E-mail</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <input class="form-input" id="contact-phone-2" type="text" name="phone" data-constraints="@Numeric">
+                      <label class="form-label" for="contact-phone-2">Telefon</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <select class="form-input" id="contact-temat-2" name="temat" data-constraints="@Required">
+                        <option value="" disabled selected>Wybierz temat</option>
+                        <option value="Wsparcie finansowe - Projekt SPOT">Wsparcie finansowe</option>
+                        <option value="Abonament miesięczny - Projekt SPOT">Abonament miesięczny + bonusy</option>
+                        <option value="Wolontariat - Projekt SPOT">Chcę zostać wolontariuszem</option>
+                        <option value="Partnerstwo - Projekt SPOT">Propozycja partnerstwa</option>
+                        <option value="Implementacja w szkole - Projekt SPOT">Chcę wdrożyć w mojej szkole</option>
+                        <option value="Media - Projekt SPOT">Kontakt medialny</option>
+                        <option value="Inne - Projekt SPOT">Inne pytanie</option>
+                      </select>
+                      <label class="form-label" for="contact-temat-2">Temat</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-wrap">
+                      <textarea class="form-input textarea-lg" id="contact-message-2" name="message" data-constraints="@Required"></textarea>
+                      <label class="form-label" for="contact-message-2">Wiadomość</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Hidden field for composed message -->
+                <input type="hidden" name="composed-message" id="composed-message">
+                
+                <!-- Hidden field to identify project -->
+                <input type="hidden" name="projekt" value="Projekt SPOT - Przeciwdziałanie Cyfrowym Uzależnieniom">
+                
+                <!-- Button to prepare and show captcha -->
+                <button type="button" class="button button-primary button-pipaluk" id="prepare-form-btn">Przygotuj do wysłania</button>
+                
+                <!-- Captcha section (initially hidden) -->
+                <div id="captcha-section" style="display: none; margin-top: 20px;">
+                  <div class="alert alert-info">
+                    <h5>Formularz przygotowany do wysłania</h5>
+                    <p>Aby wysłać wiadomość, potwierdź że nie jesteś robotem:</p>
+                  </div>
+                  <div class="form-wrap text-center">
+                    <div class="g-recaptcha" data-sitekey="6LfZlSETAAAAAC5VW4R4tQP8Am_to4bM3dddxkEt" data-callback="enableSubmitBtn"></div>
+                  </div>
+                  <button type="submit" class="button button-success button-pipaluk" id="final-submit-btn" disabled>Wyślij wiadomość</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wf-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>O nas</h5>
+            <p class="footer-about">Fundacja WorldFoundation wspiera rodziny i osoby potrzebujące: pomoc psychologiczna, grupy wsparcia, projekty edukacyjne i prawne.</p>
+            <ul class="list-unstyled">
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Adres:</strong> ul. Staromiejska 17e, 84-300 Lębork, Polska</li>
+               <li><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Adres:</strong> Medardstr. 120, 54294 Trier, Niemcy</li>
+              <li><img src="images/flaga/pl.png" alt="PL"/> <a href="tel:+48519830226">+48 519 830 226</a></li>
+              <li><img src="images/flaga/de.png" alt="DE"/> <a href="tel:+4915212403091">+49 15212403091</a></li>
+              <li><i class="fa fa-envelope" aria-hidden="true"></i> <strong>Email:</strong> <a href="mailto:info@worldfoundation.eu">info@worldfoundation.eu</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 footer-quick">
+            <h5>Szybkie linki</h5>
+            <a href="index.html#about">O nas</a>
+            <a href="index.html#projects">Projekty</a>
+            <a href="index.html#services">Usługi</a>
+            <a href="index.html#contact-info">Kontakt</a>
+            <a href="#wsparcie">Wesprzyj</a>
+          </div>
+          <div class="col-md-4 footer-legal">
+            <h5>Dokumenty</h5>
+            <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+            <a href="polityka-prywatnosci.html#pliki-cookies">Polityka cookies</a>
+            <a href="regulamin.html">Regulamin</a>
+            <a href="doc/STATUT WorldFoundation aktualny - cyfrowy.pdf" target="_blank" rel="noopener">Statut</a>
+            <a href="#" onclick="if(window.Osano) Osano.cm.showDrawer(); return false;">Ustawienia cookies</a>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+          <div class="col-md-6 footer-social">
+            <a class="icon fa fa-facebook" href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook"></a>
+            <a class="icon fa fa-twitter" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"></a>
+            <a class="icon fa fa-instagram" href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"></a>
+            <a class="icon fa fa-youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"></a>
+          </div>
+          <div class="col-md-6 text-md-right">
+            <p class="footer-copyright mb-0">&copy; <span class="copyright-year"></span> WorldFoundation | Wszelkie prawa zastrzeżone.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Global Mailform Output-->
+  <div class="snackbars" id="form-output-global"></div>
+  
+  <!-- Javascript-->
+  <script src="js/core.min.js"></script>
+  <script src="js/script.js"></script>
+  
+  <!-- Smooth scrolling script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+      
+      // Professional Progress Circle Animation
+      function animateProgressCircle(wrapper) {
+        const percentage = parseInt(wrapper.dataset.percentage);
+        const circle = wrapper.querySelector('.progress-circle-fill');
+        const percentageText = wrapper.querySelector('.progress-percentage');
+        const circumference = 314.16; // 2 * π * 50
+        const offset = circumference - (percentage / 100) * circumference;
+        
+        // Animate the circle
+        setTimeout(() => {
+          circle.style.strokeDashoffset = offset;
+        }, 100);
+        
+        // Animate the counter
+        let currentPercentage = 0;
+        const duration = 2000; // 2 seconds
+        const increment = percentage / (duration / 16); // 60fps
+        
+        const counter = setInterval(() => {
+          currentPercentage += increment;
+          if (currentPercentage >= percentage) {
+            currentPercentage = percentage;
+            clearInterval(counter);
+          }
+          percentageText.textContent = Math.round(currentPercentage) + '%';
+        }, 16);
+      }
+      
+      // Intersection Observer for progress circles
+      const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add slight delay for better visual effect
+            setTimeout(() => {
+              animateProgressCircle(entry.target);
+            }, 200);
+            // Unobserve after animation to prevent re-triggering
+            progressObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.5,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      // Observe all progress circle wrappers
+      document.querySelectorAll('.progress-circle-wrapper').forEach(wrapper => {
+        progressObserver.observe(wrapper);
+      });
+      
+      // Copyright year
+      const yearElement = document.querySelector('.copyright-year');
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
+</body>
+<style>
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 16px #FFD600; }
+  50% { transform: scale(1.07); box-shadow: 0 0 32px #FFD600; }
+  100% { transform: scale(1); box-shadow: 0 0 16px #FFD600; }
+}
+.pulse-anim {
+  animation: pulse 1.5s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  20% { transform: translateY(-8px); }
+  40% { transform: translateY(0); }
+  60% { transform: translateY(-4px); }
+  80% { transform: translateY(0); }
+}
+.bounce-anim {
+  animation: bounce 1.8s infinite;
+}
+
+.banner-btn {
+  width: 100%;
+  max-width: 320px;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  height: 50px;
+  line-height: 1.2;
+}
+.banner-buttons-container .banner-btn + .banner-btn {
+  margin-top: 10px;
+}
+@media (min-width: 768px) {
+  .banner-btn {
+    max-width: 280px;
+  }
+}
+
+/* Hero Section Animations and Effects */
+.hero-content-animated {
+  position: relative;
+}
+
+.hero-title {
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.hero-subtitle {
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+}
+
+.hero-description {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  backdrop-filter: blur(2px);
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-separator {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #FFD600, #FF6B35);
+  margin: 1rem 0;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(255,214,0,0.3);
+  animation: pulse-glow 2s infinite;
+}
+
+.hero-btn-primary {
+  box-shadow: 0 4px 15px rgba(255,214,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,214,0,0.4);
+}
+
+.hero-btn-secondary {
+  box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.hero-btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.2);
+}
+
+.hero-buttons .button {
+  max-width: 320px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero-buttons .button {
+    max-width: 280px;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(255,214,0,0.3);
+  }
+  50% { 
+    opacity: 0.8;
+    box-shadow: 0 2px 16px rgba(255,214,0,0.6);
+  }
+}
+
+/* Section Separators */
+.section-separator {
+  padding: 2rem 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,214,0,0.1) 50%, transparent 100%);
+}
+
+.separator-line {
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #FFD600 20%, #FF6B35 50%, #667eea 80%, transparent 100%);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.separator-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: separator-shine 3s infinite;
+}
+
+@keyframes separator-shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* SPOT Contact Form Styles */
+#captcha-section {
+  border: 2px solid #28a745;
+  border-radius: 8px;
+  padding: 20px;
+  background: #f8f9fa;
+  margin-top: 20px;
+}
+
+#captcha-section .alert-info {
+  background: #d1ecf1;
+  border: 1px solid #bee5eb;
+  color: #0c5460;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+#captcha-section .g-recaptcha {
+  margin: 15px 0;
+}
+
+#final-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-success {
+  background: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.button-success:hover:not(:disabled) {
+  background: #218838;
+  border-color: #1e7e34;
+}
+</style>
+
+<script>
+// Animation for impact numbers in "Nasza Wizja Projektu"
+function animateCounter(element, target, duration = 2000) {
+  let start = 0;
+  const increment = target / (duration / 16);
+  
+  function updateCounter() {
+    start += increment;
+    if (start < target) {
+      element.textContent = Math.floor(start).toLocaleString();
+      requestAnimationFrame(updateCounter);
+    } else {
+      element.textContent = target.toLocaleString();
+    }
+  }
+  
+  updateCounter();
+}
+
+// Intersection Observer for impact stats animation
+function setupImpactStatsAnimation() {
+  const impactNumbers = document.querySelectorAll('.impact-number[data-target]');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.classList.add('animated');
+        const target = parseInt(entry.target.dataset.target);
+        animateCounter(entry.target, target);
+      }
+    });
+  }, {
+    threshold: 0.5
+  });
+
+  impactNumbers.forEach(number => observer.observe(number));
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  setupImpactStatsAnimation();
+  setupHeroAnimations();
+});
+
+// Hero section animations
+function setupHeroAnimations() {
+  const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-description, .hero-buttons, .hero-separator');
+  
+  heroElements.forEach((element, index) => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    
+    setTimeout(() => {
+      element.style.transition = 'all 0.8s ease-out';
+      element.style.opacity = '1';
+      element.style.transform = 'translateY(0)';
+    }, index * 200);
+  });
+}
+
+// SPOT Contact Form with reCAPTCHA
+document.addEventListener('DOMContentLoaded', function() {
+  const prepareBtn = document.getElementById('prepare-form-btn');
+  const captchaSection = document.getElementById('captcha-section');
+  const submitBtn = document.getElementById('final-submit-btn');
+  const form = document.getElementById('spotContactForm');
+  
+  prepareBtn.addEventListener('click', function() {
+    // Validate form first
+    const name = document.getElementById('contact-your-name-2').value;
+    const email = document.getElementById('contact-email-2').value;
+    const temat = document.getElementById('contact-temat-2').value;
+    const message = document.getElementById('contact-message-2').value;
+    
+    if (!name || !email || !temat || !message) {
+      alert('Proszę wypełnić wszystkie wymagane pola.');
+      return;
+    }
+    
+    // Compose message from form fields
+    const phone = document.getElementById('contact-phone-2').value;
+    const composedMessage = `
+Formularz kontaktowy - Projekt SPOT
+
+Imię i nazwisko: ${name}
+E-mail: ${email}
+Telefon: ${phone || 'Nie podano'}
+Temat: ${temat}
+
+Wiadomość:
+${message}
+
+---
+Wysłano ze strony: ${window.location.href}
+Data: ${new Date().toLocaleString('pl-PL')}
+    `;
+    
+    // Set composed message
+    document.getElementById('composed-message').value = composedMessage;
+    
+    // Hide prepare button and show captcha
+    prepareBtn.style.display = 'none';
+    captchaSection.style.display = 'block';
+    
+    // Scroll to captcha
+    captchaSection.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// reCAPTCHA callback
+function enableSubmitBtn() {
+  document.getElementById('final-submit-btn').disabled = false;
+}
+</script>
+
+<!-- reCAPTCHA API -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</html>

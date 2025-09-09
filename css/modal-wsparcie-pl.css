@@ -9,23 +9,46 @@
 .modal.fade .modal-dialog {
   z-index: 10010 !important;
 }
+#modalWsparcie .modal-dialog {
+  max-width: 700px;
+}
+
 #modalWsparcie .modal-content {
   border-radius: 0 !important;
   overflow: hidden;
   padding: 0;
 }
 #modalWsparcie .modal-header {
-  border-bottom: 0;
-  padding: 0;
-  height: 0;
-  min-height: 0;
-  margin: 0;
-  background: none;
+  background: linear-gradient(135deg, #6689ff 0%, #5577ee 100%);
+  color: white;
+  border-bottom: none;
+  padding: 20px 25px;
 }
+
+#modalWsparcie .modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+#modalWsparcie .close {
+  color: white;
+  opacity: 1;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+#modalWsparcie .close:hover {
+  color: #ffebee;
+  opacity: 1;
+}
+
 #modalWsparcie .modal-body {
-  padding: 32px 36px 18px 36px; /* większe marginesy boczne dla tekstu */
-  overflow: hidden;
-  text-align: left;
+  padding: 30px;
+  background: #fafafa;
 }
 /* W trybie z formularzem (expanded) usuwamy boczny padding, by iframe miał pełną szerokość */
 #modalWsparcie.expanded .modal-body {
@@ -81,29 +104,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px; /* lekko większy odstęp między przyciskami */
-  margin-top: 20px; /* większy odstęp nad przyciskami */
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
 }
-#modalWsparcie .modal-body > div:nth-of-type(3) .button {
-  margin: 0; /* usuń ewentualne marginesy przycisków z motywu */
+
+#modalWsparcie .button {
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin: 0;
 }
-#modalWsparcie [data-dismiss="modal"] {
-  background: #dc3545 !important; /* czerwony */
-  border-color: #dc3545 !important;
-  color: #fff !important;
+
+#modalWsparcie .button-primary {
+  background: linear-gradient(135deg, #6689ff 0%, #5577ee 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 137, 255, 0.3);
 }
-#modalWsparcie [data-dismiss="modal"]:hover,
-#modalWsparcie [data-dismiss="modal"]:focus {
-  background: #c82333 !important;
-  border-color: #bd2130 !important;
-  color: #fff !important;
+
+#modalWsparcie .button-primary:hover {
+  background: linear-gradient(135deg, #5577ee 0%, #4466dd 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 137, 255, 0.4);
+}
+
+#modalWsparcie .button-gray-4 {
+  background: #f5f5f5;
+  color: #666;
+  border: 2px solid #ddd;
+}
+
+#modalWsparcie .button-gray-4:hover {
+  background: #e0e0e0;
+  color: #333;
+  border-color: #bbb;
 }
 #modalWsparcie #openWsparcieFormBtn {
   min-width: 180px;
-  font-size: 1.08rem;
-}
-#modalWsparcie [data-dismiss="modal"] {
-  min-width: 120px;
   font-size: 1.08rem;
 }
 #modalWsparcie #wsparcieFormContainer {
@@ -131,16 +175,7 @@
   border-radius: 8px;
   background: #fff;
 }
-#modalWsparcie .modal-dialog {
-  max-width: 540px;
-  width: 100%;
-  margin: 30px auto;
-}
-/* Expanded state after loading the form */
-#modalWsparcie.expanded .modal-dialog {
-  max-width: 650px;
-  width: 100%;
-}
+/* Usunieto ustawienia szerokosci - uzywamy domyslnej szerokosci Bootstrap */
 #modalWsparcie.expanded .modal-content {
   min-height: auto;
   height: auto;

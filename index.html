@@ -580,9 +580,13 @@
 <div class="modal fade" id="modalWsparcie" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header"></div>
+      <div class="modal-header">
+        <h4 class="modal-title">Dołącz do naszych Informacyjnych grup wsparcia</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="modal-body">
-        <h3>Dołącz do naszych Informacyjnych grup wsparcia</h3>
         <p>
           <b>START 15 września 2025 r.</b><br>
           <span>Grupy są aktualnie w fazie organizacji<br>będą aktywnie prowadzone od września.</span>
@@ -611,7 +615,6 @@
         </div>
         <div>
           <button id="openWsparcieFormBtn" class="button button-primary button-ujarak">Przejdź do grupy wsparcia</button>
-          <button type="button" class="button button-gray-4" data-dismiss="modal">Zamknij</button>
         </div>
   <div id="wsparcieFormContainer">
           <iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0"></iframe>
@@ -641,7 +644,6 @@
                 openBtn.addEventListener('click', function() {
                   modalBody.innerHTML = '<div id="wsparcieFormContainer">'+
                     '<iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0"></iframe>'+ 
-                    '<button type="button" class="button button-gray-4" data-dismiss="modal">Zamknij</button>'+ 
                     '</div>';
                   var modalRoot = document.getElementById('modalWsparcie');
                   if (modalRoot) {
@@ -888,7 +890,10 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
                   <div class="tab-pane fade show active" id="tabs-6-1">
                     <h5 class="font-weight-normal">PRZEŁAMUJEMY CYFROWE UZALEŻNIENIA</h5>
                     <p>Projekt SPOT to kompleksowy program przeciwdziałania cyfrowym uzależnieniom, wykluczeniu i przemocy w szkołach. Łączy neuroedukację, integrację społeczną oraz wsparcie prawne nauczycieli, by stworzyć bezpieczne środowisko rozwoju dla młodzieży. Dowiedz się, jak innowacyjne narzędzia i warsztaty dla uczniów, rodziców i pedagogów zmieniają polską edukację!</p>
-                    <div class="group-sm group-middle"><a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Bądźmy w Kontakcie</a><a class="button button-default-outline button-wapasha" href="#">Dowiedz się więcej</a></div>
+                    <div class="group-sm group-middle">
+                      <a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Wesprzyj projekt</a>
+                      <a class="button button-default-outline button-wapasha" href="projekt-spot.html">Poznaj szczegóły</a>
+                    </div>
                   </div>
                   <div class="tab-pane fade" id="tabs-6-2">
                     <h5 class="font-weight-normal">RODZICU NIE JESTEŚ SAM</h5>
@@ -904,12 +909,18 @@ Oferujemy:<br>
 ✅ Grupy wsparcia na WhatsApp – codzienna pomoc od rodziców, którzy rozumieją Twoją sytuację<br>
 ✅ Warsztaty wychowawcze – jak budować więź mimo ograniczonego kontaktu<br><br>
 Nie pozwól, by patologiczne mechanizmy okradały Twoje dziecko z prawa do obojga rodziców!</p>
-                    <div class="group-sm group-middle"><a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Bądźmy w Kontakcie</a><a class="button button-default-outline button-wapasha" href="#">Dowiedz się więcej</a></div>
+                    <div class="group-sm group-middle">
+                      <a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Wesprzyj projekt</a>
+                      <a class="button button-default-outline button-wapasha" href="#">Poznaj szczegóły</a>
+                    </div>
                   </div>
                   <div class="tab-pane fade" id="tabs-6-3">
                     <h5 class="font-weight-normal">TECHNOLOGIA DLA ZDROWIA</h5>
                     <p>W odpowiedzi na narastające problemy zdrowotne młodego pokolenia – od wad postawy po cyberprzemoc – stworzyliśmy interaktywny projekt edukacyjny. W trakcie 60-minutowych sesji w szkołach całej Europy prezentujemy technologie, które aktywnie chronią rozwój fizyczny i psychiczny uczniów, zamiast go niszczyć.</p>
-                    <div class="group-sm group-middle"><a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Bądźmy w Kontakcie</a><a class="button button-default-outline button-wapasha" href="#">Dowiedz się więcej</a></div>
+                    <div class="group-sm group-middle">
+                      <a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Wesprzyj projekt</a>
+                      <a class="button button-default-outline button-wapasha" href="#">Poznaj szczegóły</a>
+                    </div>
                   </div>
                   <div class="tab-pane fade" id="tabs-6-4">
                     <h5 class="font-weight-normal">WSPARCIE DLA WETERANÓW</h5>
@@ -920,7 +931,10 @@ Nie pozwól, by patologiczne mechanizmy okradały Twoje dziecko z prawa do obojg
 ✅budować odporność psychiczną<br>
 Nie komplikujemy. Działamy.<br>
 Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego zespołu.</p>
-                    <div class="group-sm group-middle"><a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Bądźmy w Kontakcie</a><a class="button button-default-outline button-wapasha" href="#">Dowiedz się więcej</a></div>
+                    <div class="group-sm group-middle">
+                      <a class="button button-secondary button-pipaluk" href="#modalCta" data-toggle="modal">Wesprzyj projekt</a>
+                      <a class="button button-default-outline button-wapasha" href="#">Poznaj szczegóły</a>
+                    </div>
                   </div>
                 </div>
               </div>
