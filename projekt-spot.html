@@ -1698,35 +1698,51 @@ Data: ${new Date().toLocaleString('pl-PL')}
       method: 'POST',
       body: formData
     })
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.text();
+    })
     .then(data => {
-      // Show success message
-      const successMessage = document.createElement('div');
-      successMessage.className = 'alert alert-success';
-      successMessage.innerHTML = `
-        <h5><i class="fa fa-check-circle"></i> Wiadomość wysłana pomyślnie!</h5>
-        <p>Dziękujemy za kontakt w sprawie Projektu SPOT. Odpowiemy na Twoją wiadomość w ciągu 24 godzin.</p>
-      `;
-      
-      // Replace form with success message
-      form.parentNode.innerHTML = '';
-      form.parentNode.appendChild(successMessage);
-      
-      // Scroll to success message
-      successMessage.scrollIntoView({ behavior: 'smooth' });
-      
-      // Optional: Reload page after 5 seconds
-      setTimeout(() => {
-        window.location.reload();
-      }, 5000);
+      // Check if the response indicates success
+      if (data.includes('success') || data.includes('Message sent') || data.includes('OK')) {
+        // Show success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'alert alert-success';
+        successMessage.innerHTML = `
+          <h5><i class="fa fa-check-circle"></i> Wiadomość wysłana pomyślnie!</h5>
+          <p>Dziękujemy za kontakt w sprawie Projektu SPOT. Odpowiemy na Twoją wiadomość w ciągu 24 godzin.</p>
+        `;
+        
+        // Hide form and show success message
+        form.style.display = 'none';
+        form.parentNode.appendChild(successMessage);
+        
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+        
+        // Optional: Reload page after 5 seconds
+        setTimeout(() => {
+          window.location.reload();
+        }, 5000);
+      } else {
+        throw new Error('Server response indicates failure');
+      }
     })
     .catch(error => {
       console.error('Error:', error);
       alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
       
-      // Reset button state
+      // Reset button state - form remains visible
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Wyślij wiadomość';
+      
+      // Reset reCAPTCHA
+      if (typeof grecaptcha !== 'undefined') {
+        grecaptcha.reset();
+        submitBtn.disabled = true; // Disable again until reCAPTCHA is completed
+      }
     });
   });
 });
