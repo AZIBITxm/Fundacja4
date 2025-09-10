@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/modal-wsparcie-pl.css">
+  <link rel="stylesheet" href="css/modal-donor-spot.css">
   <style>
   /* Kolory banerów dla Szczegółowy Opis Działań */
   .activity-banner-1 { background: #e3f2fd !important; }
@@ -265,12 +266,79 @@
       background: linear-gradient(transparent, rgba(0,0,0,0.8));
       color: white;
       padding: 20px;
-      transform: translateY(100%);
+      transform: translateY(calc(100% - 60px));
       transition: transform 0.3s ease;
+    }
+    
+    .gallery-overlay h5 {
+      color: white !important;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      margin-bottom: 8px;
+    }
+    
+    .gallery-overlay p {
+      color: white !important;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      margin-bottom: 0;
     }
     
     .gallery-item:hover .gallery-overlay {
       transform: translateY(0);
+    }
+    
+    /* Mobile and tablet - always show overlay with same style */
+    @media (max-width: 1024px) {
+      .gallery-overlay {
+        transform: translateY(0) !important;
+      }
+    }
+    
+    /* Preparing overlay for banners 2 and 3 */
+    .gallery-item-preparing {
+      position: relative;
+      min-height: 200px;
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(155, 89, 182, 0.3));
+    }
+    
+    .gallery-item-preparing::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(155, 89, 182, 0.3));
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .preparing-overlay {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.4);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      z-index: 1;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    /* Ustawienia dla mobilnej i tabletu */
+    @media (max-width: 1024px) {
+      .preparing-overlay {
+        top: 30%;
+        font-size: 1.3rem;
+      }
+    }
+    
+    /* Na hover chowanie napisu tylko na desktop */
+    @media (min-width: 1025px) {
+      .gallery-item-preparing:hover .preparing-overlay {
+        opacity: 0;
+      }
     }
     
     .timeline {
@@ -370,9 +438,9 @@
     }
     
     .impact-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       margin: 40px 0;
     }
     
@@ -597,41 +665,32 @@
     <!-- Financing Section -->
     <section class="section section-sm bg-default" id="wsparcie">
       <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
           <div class="col-lg-8 text-center">
-            <h2 class="mb-4">Wsparcie Projektu SPOT</h2>
-            <p class="text-gray-500 mb-5">Twoje wsparcie pomaga nam docierać do kolejnych szkół i chronić młodych ludzi przed cyfrowymi zagrożeniami.</p>
+            <h2>Nasza Wizja Projektu</h2>
+            <p class="text-gray-500">Planujemy wprowadzić innowacyjny program do polskich szkół</p>
           </div>
         </div>
 
         <div class="row">
           <div class="col-lg-6">
-            <!-- Progress Circle -->
-            <div class="progress-circle-wrapper" data-percentage="0" style="margin: 0 auto 10px;">
-              <svg class="progress-circle-svg" width="200" height="200" viewBox="0 0 200 200">
-                <circle class="progress-circle-bg" cx="100" cy="100" r="90" fill="none" stroke="#e9ecef" stroke-width="8"/>
-                <circle class="progress-circle-fill" cx="100" cy="100" r="90" fill="none" stroke="#28a745" stroke-width="8" stroke-linecap="round"/>
-              </svg>
-              <div class="progress-text">
-                <div class="progress-percentage">0%</div>
+            <!-- Vision Stats -->
+            <div class="impact-stats">
+              <div class="impact-stat">
+                <div class="impact-number" data-target="50">0</div>
+                <div class="impact-label">Szkół w programie</div>
               </div>
-            </div>
-            <div class="text-center mb-4">
-              <small class="text-muted">cel osiągnięty</small>
-            </div>
-
-            <div class="funding-stats">
-              <div class="funding-stat">
-                <div class="funding-amount">0 zł</div>
-                <div class="funding-desc">zebrano</div>
+              <div class="impact-stat">
+                <div class="impact-number" data-target="3000">0</div>
+                <div class="impact-label">Uczniów zostanie przeszkolonych</div>
               </div>
-              <div class="funding-stat">
-                <div class="funding-amount">360,000 zł</div>
-                <div class="funding-desc">potrzebujemy</div>
+              <div class="impact-stat">
+                <div class="impact-number" data-target="250">0</div>
+                <div class="impact-label">Nauczycieli otrzyma wsparcie</div>
               </div>
-              <div class="funding-stat">
-                <div class="funding-amount">360,000 zł</div>
-                <div class="funding-desc">zostało do zebrania</div>
+              <div class="impact-stat">
+                <div class="impact-number" data-target="1500">0</div>
+                <div class="impact-label">Rodziców weźmie udział</div>
               </div>
             </div>
           </div>
@@ -639,8 +698,15 @@
           <div class="col-lg-6">
             <!-- DonorBox Integration Placeholder -->
             <div class="donor-box-placeholder">
-              <h4 class="mb-3"><i class="fa fa-bullseye me-2"></i>Wsparcie Projektu SPOT</h4>
-              <p class="mb-4">Pomóż nam wprowadzić program do polskich szkół:</p>
+              <h4 class="mb-3 text-center"><i class="fa fa-bullseye me-2"></i>Wsparcie Projektu SPOT</h4>
+              
+              <!-- Donorbox meter widget -->
+              <div class="donation-meter-container text-center mb-4">
+                <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+                <iframe height="93px" width="100%" src="https://donorbox.org/embed/projekt-spot-przeciwdzialanie-cyfrowym-uzaleznieniom-2?donation_meter_color=%23128aed&only_donation_meter=true&preview=true" style="max-width: 332px; min-width: 250px; min-height: 90px; max-height: none !important;" seamless="seamless" name="donorbox" frameborder="0" scrolling="no"></iframe>
+              </div>
+              
+              <p class="mb-4 text-center">Pomóż nam wprowadzić program do polskich szkół:</p>
               <ul class="list-unstyled text-left">
                 <li>✅ <strong>Jednorazowe wsparcie</strong> - każda kwota pomaga</li>
                 <li>✅ <strong>Abonament miesięczny</strong> - stałe wsparcie projektu</li>
@@ -653,7 +719,7 @@
               </ul>
               <div class="mt-4">
                   <div class="d-flex flex-column justify-content-center align-items-center banner-buttons-container">
-                    <button class="button button-primary button-ujarak banner-btn">Wesprzyj jednorazowo</button>
+                    <button class="button button-primary button-ujarak banner-btn" data-toggle="modal" data-target="#donorSPOTModal">Wesprzyj jednorazowo</button>
                     <button class="button button-secondary button-ujarak banner-btn">Miesięczny abonament</button>
                   </div>
               </div>
@@ -670,39 +736,8 @@
       </div>
     </div>
 
-    <!-- Project Vision -->
-    <section class="section section-sm bg-gray-1">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-lg-8 text-center">
-            <h2>Nasza Wizja Projektu</h2>
-            <p class="text-gray-500">Planujemy wprowadzić innowacyjny program do polskich szkół</p>
-          </div>
-        </div>
-
-        <div class="impact-stats">
-          <div class="impact-stat">
-            <div class="impact-number" data-target="50">0</div>
-            <div class="impact-label">Szkół w programie</div>
-          </div>
-          <div class="impact-stat">
-            <div class="impact-number" data-target="3000">0</div>
-            <div class="impact-label">Uczniów zostanie przeszkolonych</div>
-          </div>
-          <div class="impact-stat">
-            <div class="impact-number" data-target="250">0</div>
-            <div class="impact-label">Nauczycieli otrzyma wsparcie</div>
-          </div>
-          <div class="impact-stat">
-            <div class="impact-number" data-target="1500">0</div>
-            <div class="impact-label">Rodziców weźmie udział</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Project Details -->
-    <section class="section section-sm bg-default" id="detale">
+    <section class="section section-sm bg-gray-1" id="detale">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
@@ -1049,28 +1084,28 @@
             <h3 class="h4 mb-4 text-center"><i class="fa fa-image me-2"></i>Galeria z Prac Przygotowawczych</h3>
             <div class="gallery-grid">
               <div class="gallery-item">
-                <img src="images/fullwidth-gallery-1-420x350.jpg" alt="Spotkania z ekspertami">
+                <img src="images/Postacie/spotkanie.png" alt="Spotkania z ekspertami" style="width: 100%; max-width: 420px; height: auto;">
                 <div class="gallery-overlay">
                   <h5>Spotkania z ekspertami</h5>
                   <p>Konsultacje z psychologami i pedagogami w sprawie metodologii programu</p>
                 </div>
               </div>
-              <div class="gallery-item">
-                <img src="images/fullwidth-gallery-2-420x350.jpg" alt="Badania i analizy">
+              <div class="gallery-item gallery-item-preparing">
+                <div class="preparing-overlay">W przygotowaniu</div>
                 <div class="gallery-overlay">
-                  <h5>Badania terenowe</h5>
-                  <p>Analiza potrzeb w polskich szkołach - wywiady z dyrektorami i nauczycielami</p>
+                  <h5 style="color:#111 !important; text-shadow: 0 2px 8px #fff, 0 1px 0 #eee;">Badania terenowe</h5>
+                  <p style="color:#111 !important; text-shadow: 0 2px 8px #fff, 0 1px 0 #eee;">Analiza potrzeb w polskich szkołach - wywiady z dyrektorami i nauczycielami</p>
+                </div>
+              </div>
+              <div class="gallery-item gallery-item-preparing">
+                <div class="preparing-overlay">W przygotowaniu</div>
+                <div class="gallery-overlay">
+                  <h5 style="color:#111 !important; text-shadow: 0 2px 8px #fff, 0 1px 0 #eee;">Prezentacje w szkołach</h5>
+                  <p style="color:#111 !important; text-shadow: 0 2px 8px #fff, 0 1px 0 #eee;">Przedstawianie koncepcji projektu w placówkach edukacyjnych</p>
                 </div>
               </div>
               <div class="gallery-item">
-                <img src="images/fullwidth-gallery-3-420x350.jpg" alt="Rozmowy z dyrektorami">
-                <div class="gallery-overlay">
-                  <h5>Prezentacje w szkołach</h5>
-                  <p>Przedstawianie koncepcji projektu w placówkach edukacyjnych</p>
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img src="images/fullwidth-gallery-4-420x350.jpg" alt="Projektowanie materiałów">
+                <img src="images/Postacie/materiay.png" alt="Projektowanie materiałów" style="width: 100%; max-width: 420px; height: auto;">
                 <div class="gallery-overlay">
                   <h5>Tworzenie materiałów</h5>
                   <p>Prace nad scenariuszami zajęć i materiałami edukacyjnymi</p>
@@ -1117,20 +1152,6 @@
           </div>
         </div>
 
-        <div class="text-center mt-5">
-          <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4 mb-3">
-              <a href="#wsparcie" class="button button-primary button-ujarak w-100">
-                📈 Śledź nasze postępy
-              </a>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-3">
-              <a href="#kontakt" class="button button-secondary button-ujarak w-100">
-                📧 Newsletter z aktualizacjami
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1768,4 +1789,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- reCAPTCHA API -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Modal donor-SPOT -->
+<div class="modal fade" id="donorSPOTModal" tabindex="-1" aria-labelledby="donorSPOTModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="donorSPOTModalLabel">Wesprzyj Projekt SPOT</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+        <iframe src="https://donorbox.org/embed/projekt-spot-przeciwdzialanie-cyfrowym-uzaleznieniom-2?" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style="max-width: 500px; min-width: 250px; max-height:none!important" allow="payment"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 </html>

@@ -1,0 +1,42 @@
+/* Modal donor-SPOT */
+#donorSPOTModal .modal-dialog {
+  max-width: 600px;
+}
+
+#donorSPOTModal .modal-content {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#donorSPOTModal .modal-header {
+  background: white;
+  color: #333;
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 10px 10px 0 0;
+}
+
+#donorSPOTModal .modal-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+#donorSPOTModal .close {
+  color: #666;
+  opacity: 0.8;
+  font-size: 1.5rem;
+}
+
+#donorSPOTModal .close:hover {
+  opacity: 1;
+  color: #333;
+}
+
+#donorSPOTModal .modal-body {
+  padding: 20px;
+}
+
+#donorSPOTModal iframe {
+  border-radius: 8px;
+}
