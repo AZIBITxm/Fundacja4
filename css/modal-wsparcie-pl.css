@@ -232,3 +232,16 @@
     padding: 28px 28px 18px 28px;
   }
 }
+
+/* Mobile and tablet modal positioning adjustments */
+@media (max-width: 768px) {
+  #modalWsparcie .modal-dialog {
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  #modalWsparcie .modal-dialog {
+    margin-top: 30px !important;
+  }
+}

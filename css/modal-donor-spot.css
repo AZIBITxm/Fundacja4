@@ -1,6 +1,7 @@
 /* Modal donor-SPOT */
 #donorSPOTModal .modal-dialog {
-  max-width: 600px;
+  max-width: 550px;
+  margin: 30px auto;
 }
 
 #donorSPOTModal .modal-content {
@@ -35,8 +36,27 @@
 
 #donorSPOTModal .modal-body {
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #donorSPOTModal iframe {
   border-radius: 8px;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto;
+}
+
+/* Mobile and tablet modal positioning adjustments */
+@media (max-width: 768px) {
+  #donorSPOTModal .modal-dialog {
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  #donorSPOTModal .modal-dialog {
+    margin-top: 30px !important;
+  }
 }

@@ -369,3 +369,16 @@
 .coop-btn-animated:hover {
   animation-play-state: paused;
 }
+
+/* Mobile and tablet modal positioning adjustments */
+@media (max-width: 768px) {
+  #modalCta .modal-dialog {
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  #modalCta .modal-dialog {
+    margin-top: 30px !important;
+  }
+}

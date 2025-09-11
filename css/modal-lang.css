@@ -53,3 +53,16 @@
   margin-top: 8px;
   text-align: center;
 }
+
+/* Mobile and tablet modal positioning adjustments */
+@media (max-width: 768px) {
+  #langModal {
+    top: 20px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  #langModal {
+    top: 20px !important;
+  }
+}
