@@ -1,7 +1,10 @@
 /* CSS for language selection overlay modal (#langModal) */
 #langModal {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100vw;
   height: 100vh;
   z-index: 10020;
@@ -50,19 +53,19 @@
 #langModal > div > div > div {
   font-size: 1.08rem;
   color: #222;
-  margin-top: 8px;
+  margin-top: 0;
   text-align: center;
 }
 
 /* Mobile and tablet modal positioning adjustments */
 @media (max-width: 768px) {
   #langModal {
-    top: 20px !important;
+    top: 0 !important;
   }
 }
 
 @media (max-width: 991px) {
   #langModal {
-    top: 20px !important;
+    top: 0 !important;
   }
 }
