@@ -21,6 +21,43 @@
   .activity-banner-3 { background: #E6DAC8 !important; }
   .activity-banner-4 { background: #DFCFB8 !important; }
   
+  /* Hover efekty dla kart strategii */
+  .activity-banner-1:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(212, 165, 116, 0.2) !important;
+  }
+  .activity-banner-2:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(212, 165, 116, 0.2) !important;
+  }
+  .activity-banner-3:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 12px 30px rgba(212, 165, 116, 0.25) !important;
+  }
+  
+  /* Hover efekty dla kart "Kto może skorzystać" */
+  .card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(212, 165, 116, 0.15) !important;
+    border-color: rgba(212, 165, 116, 0.4) !important;
+  }
+  
+  /* Animacje dla tła banerów */
+  @keyframes float-slow {
+    0% { transform: translateX(-100%) translateY(20px) rotate(0deg); }
+    100% { transform: translateX(100vw) translateY(-20px) rotate(360deg); }
+  }
+  
+  @keyframes float-medium {
+    0% { transform: translateX(100%) translateY(-15px) rotate(360deg); }
+    100% { transform: translateX(-100vw) translateY(15px) rotate(0deg); }
+  }
+  
+  @keyframes float-fast {
+    0% { transform: translateX(-50%) translateY(10px) rotate(0deg); }
+    100% { transform: translateX(150vw) translateY(-30px) rotate(720deg); }
+  }
+  
     /* Fix dla nakładania się elementów */
     .rd-navbar-static .rd-navbar-main-outer {
       padding-top: 0;
@@ -556,25 +593,40 @@
       left: 15px;
       top: 0;
       bottom: 0;
-      width: 2px;
-      background: #8B7D6B;
+      width: 3px;
+      background: linear-gradient(180deg, #d4a574 0%, #b89661 100%);
+      border-radius: 2px;
+      box-shadow: 0 0 10px rgba(212, 165, 116, 0.3);
     }
     
     .timeline-item {
       position: relative;
-      margin-bottom: 30px;
-      padding-left: 40px;
+      margin-bottom: 35px;
+      padding-left: 45px;
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+      transform: translateX(8px);
     }
     
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -8px;
-      top: 5px;
-      width: 16px;
-      height: 16px;
+      left: -10px;
+      top: 8px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: #8B7D6B;
+      background: linear-gradient(135deg, #d4a574 0%, #b89661 100%);
+      box-shadow: 0 4px 12px rgba(212, 165, 116, 0.4);
+      border: 3px solid white;
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-item:hover::before {
+      transform: scale(1.2);
+      box-shadow: 0 6px 20px rgba(212, 165, 116, 0.6);
     }
     
     .impact-stats {
@@ -735,6 +787,121 @@
       border: 2px solid rgba(255,255,255,0.8);
       backdrop-filter: blur(5px);
     }
+
+    /* Style dla rozbudowanej sekcji "Z czym walczymy" */
+    .problem-item {
+      background: #ffffff;
+      border: 1px solid #e9ecef;
+      border-left: 4px solid #d4a574;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 1rem 1.5rem !important; /* Zmniejszony padding z p-4 (1.5rem) do 1rem */
+    }
+    
+    .problem-item:hover {
+      border-left-color: #b8935a;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    
+    .problem-item h5 {
+      margin-bottom: 0 !important; /* Usunięcie marginesu dolnego z nagłówków */
+    }
+    
+    .stats-box {
+      border: 2px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+    
+    .comparison-box {
+      border-left: 4px solid #17a2b8;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: #dc3545;
+      border-radius: 50%;
+    }
+    
+    .effects-grid h6 {
+      border-bottom: 2px solid #ffc107;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .alert h5 {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .list-styled li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    /* Style dla interaktywnych nagłówków */
+    .collapsible-header {
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    
+    .collapsible-header:hover {
+      background-color: rgba(212, 165, 116, 0.1);
+      border-radius: 8px;
+      padding: 4px 8px; /* Zmniejszony padding o połowę */
+      margin: -4px -8px; /* Zmniejszony margin o połowę */
+    }
+    
+    .collapse-icon {
+      transition: transform 0.3s ease, color 0.3s ease;
+      font-weight: bold;
+    }
+    
+    .collapsible-header:hover .collapse-icon {
+      color: #d4a574;
+      transform: scale(1.1);
+    }
+
+    /* Responsywność dla tabletów i telefonów */
+    @media (max-width: 768px) {
+      .problem-item {
+        margin-bottom: 20px;
+      }
+      
+      .stats-box h3 {
+        font-size: 2rem;
+      }
+      
+      .comparison-box {
+        margin-top: 15px;
+      }
+      
+      .effects-grid .row > div {
+        margin-bottom: 15px;
+      }
+      
+      /* Reset margin for mobile devices */
+      .sticky-top {
+        margin-top: 0 !important;
+      }
+    }
+    
+    /* Desktop view alignment */
+    @media (min-width: 992px) {
+      .sticky-top {
+        margin-top: 120px !important;
+      }
+    }
   </style>
 </head>
 
@@ -831,42 +998,12 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-lg-7">
-            <!-- Interactive Statistics -->
-            <div class="stats-container mb-5">
-              <div class="row">
-                <div class="col-md-3 col-6 mb-3">
-                  <div class="stat-item">
-                    <span class="stat-number" data-target="750">0</span>
-                    <div class="stat-label">Rodzin otrzymało pomoc</div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-6 mb-3">
-                  <div class="stat-item">
-                    <span class="stat-number" data-target="2500">0</span>
-                    <div class="stat-label">Konsultacji prawnych</div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-6 mb-3">
-                  <div class="stat-item">
-                    <span class="stat-number" data-target="1800">0</span>
-                    <div class="stat-label">Sesji terapeutycznych</div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-6 mb-3">
-                  <div class="stat-item">
-                    <span class="stat-number" data-target="120">0</span>
-                    <div class="stat-label">Aktywnych grup wsparcia</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+        <div class="row align-items-start">
+          <div class="col-lg-7" style="padding-top: 0;">
             <!-- Problem Areas -->
-            <div class="row">
+            <div class="row" style="min-height: 600px;">
               <div class="col-md-6 mb-4">
-                <div class="interactive-card" onclick="highlightCard(this)">
+                <div class="interactive-card h-100 d-flex flex-column" onclick="highlightCard(this)" style="margin-top: 0;">
                   <div class="d-flex align-items-center mb-3">
                     <div class="icon-circle bg-danger text-white me-3" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                       🚫
@@ -876,17 +1013,18 @@
                       <small class="text-muted">Co blokuje rodziny</small>
                     </div>
                   </div>
-                  <ul class="list-unstyled mb-0">
-                    <li class="mb-2">❌ Sztuczne "godziny kontaktów"</li>
-                    <li class="mb-2">❌ Nierówne traktowanie rodziców</li>
-                    <li class="mb-2">❌ Krzywdzące opinie OZSS</li>
-                    <li class="mb-0">❌ Izolacja dziecka od rodzica</li>
+                  <ul class="list-unstyled mb-0" style="text-align: left;">
+                    <li class="mb-2">❌ <strong>OZSS - 210 dni oczekiwania</strong> na opinię psychologiczną</li>
+                    <li class="mb-2">❌ <strong>Brak opieki naprzemiennej</strong> jako standardu prawnego</li>
+                    <li class="mb-2">❌ <strong>Chaos alimentacyjny</strong> - wycofane tablice ministerialnych</li>
+                    <li class="mb-2">❌ <strong>Alienacja rodzicielska</strong> - przemoc emocjonalna wobec dzieci</li>
+                    <li class="mb-0">❌ <strong>75 000 dzieci rocznie</strong> dotkniętych rozstaniami</li>
                   </ul>
                 </div>
               </div>
 
               <div class="col-md-6 mb-4">
-                <div class="interactive-card" onclick="highlightCard(this)">
+                <div class="interactive-card h-100 d-flex flex-column" onclick="highlightCard(this)" style="margin-top: 0;">
                   <div class="d-flex align-items-center mb-3">
                     <div class="icon-circle bg-success text-white me-3" style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                       ✅
@@ -896,11 +1034,12 @@
                       <small class="text-muted">Jak pomagamy</small>
                     </div>
                   </div>
-                  <ul class="list-unstyled mb-0">
-                    <li class="mb-2">✅ Pomoc prawna i reprezentacja</li>
-                    <li class="mb-2">✅ Terapia indywidualna i rodzinna</li>
-                    <li class="mb-2">✅ Grupy wsparcia 24/7</li>
-                    <li class="mb-0">✅ Warsztaty budowania więzi</li>
+                  <ul class="list-unstyled mb-0" style="text-align: left;">
+                    <li class="mb-2">✅ <strong>Program "Spokojne Rodzicielstwo"</strong> - bezpośrednie wsparcie</li>
+                    <li class="mb-2">✅ <strong>Reforma OZSS</strong> - działania legislacyjne</li>
+                    <li class="mb-2">✅ <strong>"Tablice Alimentacyjne 360°"</strong> - sprawiedliwy system</li>
+                    <li class="mb-2">✅ <strong>Ustawa o opiece naprzemiennej</strong> jako standard</li>
+                    <li class="mb-0">✅ <strong>2,2 mln PLN</strong> budżetu strategicznego na 3 lata</li>
                   </ul>
                 </div>
               </div>
@@ -909,27 +1048,21 @@
 
           <div class="col-lg-5">
             <!-- Enhanced Support Information -->
-            <div class="donor-box-placeholder">
-              <h4 class="mb-3 text-center"><i class="fa fa-heart me-2"></i>Otrzymaj Kompleksowe Wsparcie</h4>
-              
-              <div class="testimonials-carousel mb-4">
-                <div class="testimonial-slide">
-                  <div class="testimonial-avatar">A</div>
-                  <p class="mb-3 font-italic">"Program uratował moją relację z córką. Po roku walki w sądzie, dzięki wsparciu prawnika udało mi się uzyskać wspólną opiekę."</p>
-                  <strong>Anna, 34 lata</strong>
-                </div>
-              </div>
+            <div class="donor-box-placeholder h-100 d-flex flex-column" style="min-height: 600px; margin-top: 0;">
+              <h4 class="mb-3 text-center" style="margin-top: 0;"><i class="fa fa-heart me-2"></i>Otrzymaj Kompleksowe Wsparcie</h4>
               
               <p class="mb-4 text-center">Nie musisz przechodzić przez to sam. Oferujemy:</p>
-              <div class="accordion-interactive">
+              <div class="accordion-interactive flex-grow-1">
                 <div class="accordion-item">
                   <div class="accordion-header" onclick="toggleAccordion(this)">
                     <strong>💼 Pomoc Prawna</strong>
                   </div>
                   <div class="accordion-content">
-                    <p class="mb-2">• Podważanie krzywdzących opinii OZSS</p>
-                    <p class="mb-2">• Reprezentacja w sądzie</p>
-                    <p class="mb-0">• Konsultacje prawne 24/7</p>
+                    <p class="mb-2">• <strong>Analiza opinii OZSS</strong> - identyfikacja błędów metodologicznych</p>
+                    <p class="mb-2">• <strong>Strategia procesowa</strong> - przygotowanie zarzutów do opinii</p>
+                    <p class="mb-2">• <strong>Reprezentacja sądowa</strong> - doświadczeni prawnicy</p>
+                    <p class="mb-2">• <strong>Opieka naprzemienna</strong> - wnioski i argumentacja</p>
+                    <p class="mb-0">• <strong>System alimentacyjny</strong> - sprawiedliwe ustalenia</p>
                   </div>
                 </div>
                 
@@ -958,13 +1091,75 @@
               
               <div class="mt-4">
                   <div class="d-flex flex-column justify-content-center align-items-center banner-buttons-container">
-                    <a href="#kontakt" class="button button-primary button-ujarak w-100 pulse-anim mb-3" style="box-shadow: 0 0 16px #8B7D6B;">
+                    <a href="#kontakt" class="button button-primary button-ujarak w-100 pulse-anim mb-1" style="box-shadow: 0 0 16px #8B7D6B;">
                       📞 Skontaktuj się z nami
                     </a>
                     <a href="#program-details" class="button button-outline button-ujarak w-100">
                       📋 Szczegóły programu
                     </a>
                   </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kto może skorzystać Section -->
+    <section class="section bg-default" id="kto-moze-skorzystac" style="background: linear-gradient(180deg, rgba(139, 125, 107, 0.1) 0%, rgba(121, 109, 94, 0.05) 100%); position: relative; padding: 30px 0; overflow: hidden;">
+      <!-- Animated Background -->
+      <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;">
+        <div class="floating-particles" style="position: absolute; width: 100%; height: 100%; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22rgba(212,165,116,0.3)%22/><circle cx=%2280%22 cy=%2230%22 r=%220.8%22 fill=%22rgba(212,165,116,0.2)%22/><circle cx=%2240%22 cy=%2270%22 r=%221.2%22 fill=%22rgba(212,165,116,0.25)%22/><circle cx=%2290%22 cy=%2280%22 r=%220.6%22 fill=%22rgba(212,165,116,0.2)%22/><circle cx=%2210%22 cy=%2260%22 r=%221%22 fill=%22rgba(212,165,116,0.3)%22/><circle cx=%2265%22 cy=%2245%22 r=%220.9%22 fill=%22rgba(212,165,116,0.2)%22/></svg>'); animation: float-slow 25s infinite linear;"></div>
+        <div class="floating-particles" style="position: absolute; width: 100%; height: 100%; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2230%22 cy=%2250%22 r=%220.7%22 fill=%22rgba(212,165,116,0.2)%22/><circle cx=%2270%22 cy=%2220%22 r=%221.1%22 fill=%22rgba(212,165,116,0.25)%22/><circle cx=%2250%22 cy=%2280%22 r=%220.8%22 fill=%22rgba(212,165,116,0.3)%22/><circle cx=%2285%22 cy=%2260%22 r=%220.9%22 fill=%22rgba(212,165,116,0.2)%22/><circle cx=%2215%22 cy=%2285%22 r=%221%22 fill=%22rgba(212,165,116,0.25)%22/></svg>'); animation: float-medium 20s infinite linear reverse;"></div>
+        <div class="floating-particles" style="position: absolute; width: 100%; height: 100%; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2260%22 cy=%2215%22 r=%220.6%22 fill=%22rgba(212,165,116,0.2)%22/><circle cx=%2225%22 cy=%2275%22 r=%221.3%22 fill=%22rgba(212,165,116,0.3)%22/><circle cx=%2275%22 cy=%2255%22 r=%220.8%22 fill=%22rgba(212,165,116,0.25)%22/><circle cx=%225%22 cy=%2235%22 r=%220.9%22 fill=%22rgba(212,165,116,0.2)%22/><circle cx=%2295%22 cy=%2290%22 r=%220.7%22 fill=%22rgba(212,165,116,0.3)%22/></svg>'); animation: float-fast 15s infinite linear;"></div>
+      </div>
+      <div class="container" style="position: relative; z-index: 2;">
+        <div class="row">
+          <div class="col-lg-10">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 mb-3">
+                <div class="card" style="border: 1px solid rgba(212, 165, 116, 0.2); border-radius: 8px; transition: all 0.3s ease; height: 80px;">
+                  <div class="card-body p-2 d-flex align-items-center justify-content-center">
+                    <div class="me-2" style="font-size: 1.2rem;">👤</div>
+                    <div class="text-center">
+                      <h6 class="font-weight-bold mb-0" style="font-size: 0.8rem; line-height: 1.2;">Samotni rodzice</h6>
+                      <small class="text-muted" style="font-size: 0.7rem;">osoby wychowujące dzieci w pojedynkę</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 mb-3">
+                <div class="card" style="border: 1px solid rgba(212, 165, 116, 0.2); border-radius: 8px; transition: all 0.3s ease; height: 80px;">
+                  <div class="card-body p-2 d-flex align-items-center justify-content-center">
+                    <div class="me-2" style="font-size: 1.2rem;">💔</div>
+                    <div class="text-center">
+                      <h6 class="font-weight-bold mb-0" style="font-size: 0.8rem; line-height: 1.2;">Rodzice po rozwodzie</h6>
+                      <small class="text-muted" style="font-size: 0.7rem;">osoby walczące o kontakt z dzieckiem</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 mb-3">
+                <div class="card" style="border: 1px solid rgba(212, 165, 116, 0.2); border-radius: 8px; transition: all 0.3s ease; height: 80px;">
+                  <div class="card-body p-2 d-flex align-items-center justify-content-center">
+                    <div class="me-2" style="font-size: 1.2rem;">⚖️</div>
+                    <div class="text-center">
+                      <h6 class="font-weight-bold mb-0" style="font-size: 0.8rem; line-height: 1.2;">Rodzice w sporach prawnych</h6>
+                      <small class="text-muted" style="font-size: 0.7rem;">osoby w trakcie postępowań sądowych</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 mb-3">
+                <div class="card" style="border: 1px solid rgba(212, 165, 116, 0.2); border-radius: 8px; transition: all 0.3s ease; height: 80px;">
+                  <div class="card-body p-2 d-flex align-items-center justify-content-center">
+                    <div class="me-2" style="font-size: 1.2rem;">🚫</div>
+                    <div class="text-center">
+                      <h6 class="font-weight-bold mb-0" style="font-size: 0.8rem; line-height: 1.2;">Rodzice doświadczający alienacji</h6>
+                      <small class="text-muted" style="font-size: 0.7rem;">gdy dziecko jest odcinane od rodzica</small>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -989,7 +1184,7 @@
             <div class="col-lg-6">
               <div class="timeline-item-interactive">
                 <div class="timeline-content-left">
-                  <div class="interactive-card">
+                  <div class="interactive-card" style="background: linear-gradient(135deg, rgba(52, 144, 220, 0.1) 0%, rgba(52, 144, 220, 0.05) 100%); border-left: 4px solid rgba(52, 144, 220, 0.6); border-radius: 0;">
                     <h4 class="mb-3"><i class="fa fa-search me-2 text-primary"></i>Faza 1: Diagnoza i Analiza</h4>
                     <p class="mb-3">Szczegółowa analiza sytuacji prawnej i emocjonalnej rodziny</p>
                     <ul class="list-unstyled">
@@ -1011,7 +1206,7 @@
             <div class="col-lg-6">
               <div class="timeline-item-interactive">
                 <div class="timeline-content-right">
-                  <div class="interactive-card">
+                  <div class="interactive-card" style="background: linear-gradient(135deg, rgba(222, 184, 135, 0.1) 0%, rgba(222, 184, 135, 0.05) 100%); border-left: 4px solid rgba(222, 184, 135, 0.6); border-radius: 0;">
                     <h4 class="mb-3"><i class="fa fa-lightbulb me-2 text-warning"></i>Faza 2: Strategia Działania</h4>
                     <p class="mb-3">Opracowanie spersonalizowanego planu wsparcia</p>
                     <ul class="list-unstyled">
@@ -1035,7 +1230,7 @@
             <div class="col-lg-6">
               <div class="timeline-item-interactive">
                 <div class="timeline-content-left">
-                  <div class="interactive-card">
+                  <div class="interactive-card" style="background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(40, 167, 69, 0.05) 100%); border-left: 4px solid rgba(40, 167, 69, 0.6); border-radius: 0;">
                     <h4 class="mb-3"><i class="fa fa-tools me-2 text-success"></i>Faza 3: Wdrażanie Wsparcia</h4>
                     <p class="mb-3">Aktywne działania na wszystkich frontach</p>
                     <ul class="list-unstyled">
@@ -1057,8 +1252,8 @@
             <div class="col-lg-6">
               <div class="timeline-item-interactive">
                 <div class="timeline-content-right">
-                  <div class="interactive-card">
-                    <h4 class="mb-3"><i class="fa fa-trophy me-2 text-primary"></i>Faza 4: Stabilizacja i Rozwój</h4>
+                  <div class="interactive-card" style="background: linear-gradient(135deg, rgba(111, 66, 193, 0.1) 0%, rgba(111, 66, 193, 0.05) 100%); border-left: 4px solid rgba(111, 66, 193, 0.6); border-radius: 0;">
+                    <h4 class="mb-3"><i class="fa fa-trophy me-2" style="color: rgba(111, 66, 193, 0.8);"></i>Faza 4: Stabilizacja i Rozwój</h4>
                     <p class="mb-3">Utrzymanie pozytywnych zmian i dalszy rozwój</p>
                     <ul class="list-unstyled">
                       <li class="mb-2">🎉 Odzyskanie kontaktu z dzieckiem</li>
@@ -1095,11 +1290,11 @@
             <div class="interactive-card text-center h-100" onclick="highlightCard(this)">
               <div class="mb-4">
                 <div class="icon-circle bg-primary text-white mx-auto" style="width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-                  ⚖️
+                  🧠
                 </div>
               </div>
-              <h5 class="font-weight-bold mb-3">Pomoc Prawna</h5>
-              <p class="text-muted mb-3">Profesjonalna reprezentacja w sądach, podważanie krzywdzących opinii OZSS</p>
+              <h5 class="font-weight-bold mb-3">Pomoc Psychologiczna i Prawna</h5>
+              <p class="text-muted mb-3">Kompleksowe wsparcie dla dzieci i rodziców doświadczających alienacji rodzicielskiej, obejmujące cykliczne konsultacje prawne oraz terapię psychologiczną</p>
               <div class="progress-bar-animated">
                 <div class="progress-fill" data-width="92"></div>
               </div>
@@ -1111,11 +1306,11 @@
             <div class="interactive-card text-center h-100" onclick="highlightCard(this)">
               <div class="mb-4">
                 <div class="icon-circle bg-success text-white mx-auto" style="width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-                  🧠
+                  📚
                 </div>
               </div>
-              <h5 class="font-weight-bold mb-3">Terapia Psychologiczna</h5>
-              <p class="text-muted mb-3">Indywidualne i rodzinne sesje terapeutyczne, radzenie sobie z traumą</p>
+              <h5 class="font-weight-bold mb-3">Materiały Edukacyjne</h5>
+              <p class="text-muted mb-3">Tworzenie poradników i materiałów pomocowych uświadamiających rodziców i dzieci o ich prawach oraz możliwościach skutecznego działania w systemie prawnym</p>
               <div class="progress-bar-animated">
                 <div class="progress-fill" data-width="88"></div>
               </div>
@@ -1131,7 +1326,7 @@
                 </div>
               </div>
               <h5 class="font-weight-bold mb-3">Grupy Wsparcia</h5>
-              <p class="text-muted mb-3">Społeczność rodziców na WhatsApp i spotkania lokalne</p>
+              <p class="text-muted mb-3">Tworzenie społeczności wzajemnego wsparcia, gdzie rodzice dzielą się doświadczeniami, czerpią siłę od innych i mogą zasięgnąć cennych porad w trudnych momentach</p>
               <div class="progress-bar-animated">
                 <div class="progress-fill" data-width="95"></div>
               </div>
@@ -1143,15 +1338,15 @@
             <div class="interactive-card text-center h-100" onclick="highlightCard(this)">
               <div class="mb-4">
                 <div class="icon-circle bg-warning text-white mx-auto" style="width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-                  🎓
+                  ⚖️
                 </div>
               </div>
-              <h5 class="font-weight-bold mb-3">Warsztaty Edukacyjne</h5>
-              <p class="text-muted mb-3">Praktyczne umiejętności budowania więzi z dzieckiem</p>
+              <h5 class="font-weight-bold mb-3">Reforma Prawa Rodzinnego</h5>
+              <p class="text-muted mb-3">Aktywna współpraca z instytucjami rządowymi w celu reformy prawa rodzinnego, szczególnie w zakresie opieki naprzemiennej, sprawiedliwego systemu alimentacyjnego oraz poprawy standardów orzecznictwa OZSS</p>
               <div class="progress-bar-animated">
                 <div class="progress-fill" data-width="90"></div>
               </div>
-              <small class="text-success font-weight-bold">90% poprawy relacji</small>
+              <small class="text-success font-weight-bold">Aktywne działania reformatorskie</small>
             </div>
           </div>
         </div>
@@ -1161,52 +1356,172 @@
     <!-- Program Details -->
     <section class="section section-sm bg-gray-1" id="detale">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
+        <div class="row mb-5">
+          <div class="col-lg-12">
             <h2 class="mb-4">O Programie "Rodzicu Nie Jesteś Sam"</h2>
-            
+          </div>
+        </div>
+        
+        <div class="row mb-5">
+          <div class="col-lg-8">
             <div class="mb-5">
               <h3 class="h4 mb-3"><i class="fa fa-users me-4"></i>Z czym walczymy</h3>
-              <ul class="list-styled">
-                <li><strong>Sztuczne "godziny kontaktów"</strong> – System narzuca ograniczenia zamiast wspierać naturalne relacje rodzic-dziecko.</li>
-                <li><strong>Nierówne traktowanie rodziców</strong> – Utrudnianie uzyskania opieki na równych warunkach dla obojga rodziców.</li>
-                <li><strong>Izolacja dziecka</strong> – Pozwalanie na odcinanie dziecka od kochającego rodzica.</li>
-                <li><strong>Krzywdzące opinie OZSS</strong> – Niesprawiedliwe oceny wpływające na orzeczenia sądowe.</li>
-              </ul>
-            </div>
-
-            <div class="mb-5">
-              <h3 class="h4 mb-3"><i class="fa fa-heart me-2"></i>Co oferujemy</h3>
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <div class="p-3 bg-light rounded">
-                    <h5 class="h6 font-weight-bold"><i class="fa fa-gavel me-2"></i>Pomoc Prawna</h5>
-                    <p class="small mb-0">Podważanie krzywdzących opinii OZSS, walka o sprawiedliwe kontakty, reprezentacja w sądzie</p>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <div class="p-3 bg-light rounded">
-                    <h5 class="h6 font-weight-bold"><i class="fa fa-comments me-2"></i>Terapia Psychologiczna</h5>
-                    <p class="small mb-0">Radzenie sobie z traumą, nauka komunikacji z drugim rodzicem, wsparcie emocjonalne</p>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <div class="p-3 bg-light rounded">
-                    <h5 class="h6 font-weight-bold"><i class="fa fa-users me-2"></i>Grupy Wsparcia</h5>
-                    <p class="small mb-0">WhatsApp, spotkania lokalne, wymiana doświadczeń z innymi rodzicami</p>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <div class="p-3 bg-light rounded">
-                    <h5 class="h6 font-weight-bold"><i class="fa fa-graduation-cap me-2"></i>Warsztaty Wychowawcze</h5>
-                    <p class="small mb-0">Jak budować więź mimo ograniczonego kontaktu, efektywne rodzicielstwo</p>
-                  </div>
-                </div>
+              
+              <!-- Skala problemu -->
+              <div class="alert alert-warning mb-4">
+                <h5><i class="fa fa-exclamation-triangle me-2"></i>Skala problemu w liczbach</h5>
+                <p class="mb-0">W Polsce <strong>około 75 000 dzieci rocznie</strong> doświadcza rozpadu związku swoich rodziców (rozwody, separacje, rozstania). To nie są tylko statystyki – to miliony indywidualnych historii dzieci stających w obliczu traumy i głębokich zaburzeń emocjonalnych.</p>
               </div>
+
+              <!-- Szczegółowe problemy -->
+              <div class="row">
+                <div class="col-12">
+                  <div class="problem-item mb-2 border rounded">
+                    <h5 class="text-primary mb-3 collapsible-header" onclick="toggleCollapse(this)" style="cursor: pointer;"><i class="fa fa-clock-o me-2"></i>Kryzys Systemu Opiniowania Sądowego (OZSS)<span class="collapse-icon" style="float: right; font-size: 18px;">+</span></h5>
+                    <div class="collapsible-content" style="display: none;">
+                      <ul class="list-styled mb-3">
+                        <li><strong>Paraliżujące opóźnienia:</strong> Średni czas oczekiwania na opinię psychologiczną wynosi <strong>210 dni</strong> (dane z 2024 r.). Terminy przekraczające rok nie są zjawiskiem incydentalnym.</li>
+                        <li><strong>Niska jakość opinii:</strong> Powszechna krytyka za stronniczość, pobieżność oraz ignorowanie kluczowych dowodów (nagrania audio/wideo).</li>
+                        <li><strong>Brak standardów:</strong> Brak centralnie finansowanych szkoleń i systematycznej superwizji prowadzi do braku jednolitych standardów metodologicznych w kraju.</li>
+                        <li><strong>Powolna reakcja rządowa:</strong> Gotowy projekt reformy ma trafić do prac legislacyjnych dopiero w III kwartale 2025 roku.</li>
+                      </ul>
+                      <div class="alert alert-danger">
+                        <strong>Skutek:</strong> W czasie oczekiwania utrwalają się negatywne postawy rodzicielskie, a dziecko jest dłużej poddawane szkodliwym manipulacjom.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="problem-item mb-2 border rounded">
+                    <h5 class="text-primary mb-3 collapsible-header" onclick="toggleCollapse(this)" style="cursor: pointer;"><i class="fa fa-balance-scale me-2"></i>Próżnia Prawna w Opiece Naprzemiennej<span class="collapse-icon" style="float: right; font-size: 18px;">+</span></h5>
+                    <div class="collapsible-content" style="display: none;">
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <h6>🇵🇱 POLSKA:</h6>
+                          <ul class="list-styled">
+                            <li>Brak definicji prawnej w Kodeksie Rodzinnym</li>
+                            <li>Opieka naprzemienna jako wyjątek, nie reguła</li>
+                            <li>Uzależnienie od zgody rodziców (nierealne w konflikcie)</li>
+                            <li>Tylko ~4000 wniosków ojców rocznie o opiekę</li>
+                          </ul>
+                        </div>
+                        <div class="col-md-6">
+                          <h6>🇪🇺 EUROPA:</h6>
+                          <ul class="list-styled text-success">
+                            <li><strong>Belgia, Szwecja:</strong> ponad 30% dzieci</li>
+                            <li><strong>Holandia, Dania:</strong> 20-30% dzieci</li>
+                            <li>Opieka naprzemienna jako standard</li>
+                            <li>Lepszy dobrostan psychiczny dzieci</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="alert alert-info">
+                        <strong>Badania naukowe:</strong> Metaanalizy międzynarodowych badań jednoznacznie wskazują, że dzieci w opiece naprzemiennej wykazują lepszy dobrostan psychiczny, mniej zaburzeń emocjonalnych i lepsze wyniki w nauce – niezależnie od poziomu konfliktu między rodzicami.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="problem-item mb-2 border rounded">
+                    <h5 class="text-primary mb-3 collapsible-header" onclick="toggleCollapse(this)" style="cursor: pointer;"><i class="fa fa-money me-2"></i>Chaos w Systemie Alimentacyjnym<span class="collapse-icon" style="float: right; font-size: 18px;">+</span></h5>
+                    <div class="collapsible-content" style="display: none;">
+                      <div class="timeline-item mb-3">
+                        <h6 class="text-danger">🔥 Lipiec 2025 - Spektakularne fiasko:</h6>
+                        <ul class="list-styled">
+                          <li>Ministerstwo Sprawiedliwości przedstawiło niewiążące tabele alimentacyjne</li>
+                          <li>Po fali miażdżącej krytyki zostały wycofane</li>
+                          <li><strong>Główne wady:</strong> oparcie wyliczeń na dochodzie brutto prowadziło do absurdalnych wyników</li>
+                          <li>W skrajnych przypadkach suma alimentów przewyższała dochód netto rodzica zobowiązanego</li>
+                          <li>Całkowite ignorowanie specyfiki opieki naprzemiennej</li>
+                        </ul>
+                      </div>
+                      <div class="comparison-box p-3 bg-light rounded">
+                        <h6>📊 Porównanie z systemami europejskimi:</h6>
+                        <p><strong>🇩🇪 Niemiecka "Düsseldorfer Tabelle":</strong></p>
+                        <ul class="small">
+                          <li>Corocznie aktualizowana</li>
+                          <li>Oparta na dochodzie netto</li>
+                          <li>Uwzględnia wiek dziecka i precyzyjne odliczenia</li>
+                          <li>Uznany standard dla sądów</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="problem-item mb-2 border rounded">
+                    <h5 class="text-primary mb-3 collapsible-header" onclick="toggleCollapse(this)" style="cursor: pointer;"><i class="fa fa-heart-broken me-2"></i>Alienacja Rodzicielska - Przemoc Emocjonalna<span class="collapse-icon" style="float: right; font-size: 18px;">+</span></h5>
+                    <div class="collapsible-content" style="display: none;">
+                      <div class="row mb-3">
+                        <div class="col-md-8">
+                          <h6>Definicja i zachowania:</h6>
+                          <ul class="list-styled">
+                            <li>Systematyczne oczernianie drugiego rodzica</li>
+                            <li>Utrudnianie lub uniemożliwianie kontaktu</li>
+                            <li>Wciąganie dziecka w konflikt lojalności</li>
+                            <li>Manipulowanie uczuciami i postawami dziecka</li>
+                            <li>Cel: osłabienie lub całkowite zniszczenie więzi z drugim rodzicem</li>
+                          </ul>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="stats-box text-center p-3 bg-danger text-white rounded">
+                            <h3 class="h1 mb-0">75 000</h3>
+                            <p class="small mb-0">dzieci rocznie doświadcza rozpadu związku rodziców</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="effects-grid">
+                        <h6>🔬 Skutki dla dzieci (badania 2025):</h6>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <h6 class="text-warning">Krótkoterminowe:</h6>
+                            <ul class="small">
+                              <li>Podwyższony poziom lęku i niepokoju</li>
+                              <li>Problemy zdrowotne</li>
+                              <li>Trudności behawioralne</li>
+                              <li>Konflikt lojalności</li>
+                            </ul>
+                          </div>
+                          <div class="col-md-6">
+                            <h6 class="text-danger">Długoterminowe:</h6>
+                            <ul class="small">
+                              <li>Depresja i zaburzenia lękowe</li>
+                              <li>Zaburzenia osobowości</li>
+                              <li>Problemy z budowaniem tożsamości</li>
+                              <li>Trudności w relacjach w dorosłym życiu</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="problem-item mb-2 border rounded">
+                    <h5 class="text-primary mb-3 collapsible-header" onclick="toggleCollapse(this)" style="cursor: pointer;"><i class="fa fa-gavel me-2"></i>Przewlekłość Postępowań Sądowych<span class="collapse-icon" style="float: right; font-size: 18px;">+</span></h5>
+                    <div class="collapsible-content" style="display: none;">
+                      <div class="process-timeline">
+                        <ul class="list-styled">
+                          <li><strong>Długotrwałe procesy</strong> - często trwające lata zamiast miesięcy</li>
+                          <li><strong>Frustracja rodziców</strong> - poczucie bezradności wobec systemu</li>
+                          <li><strong>Wyczerpanie emocjonalne</strong> - wpływające na całą rodzinę</li>
+                          <li><strong>Eskalacja konfliktów</strong> - zamiast ich rozwiązywania</li>
+                          <li><strong>Toksyczne środowisko</strong> - szkodzące rozwojowi dzieci</li>
+                        </ul>
+                      </div>
+                      <div class="alert alert-warning">
+                        <strong>Efekt domina:</strong> Opóźnienia w jednym elemencie systemu (np. OZSS) powodują kaskadę problemów w całym procesie sądowym, przedłużając cierpienie dzieci i rodzin.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Podsumowanie systemowe -->
+                  <div class="p-4 text-dark">
+                    <h5 class="mb-3"><i class="fa fa-lightbulb-o me-2"></i>Systemowa diagnoza</h5>
+                    <p class="mb-0">Te dysfunkcje nie są odrębnymi problemami - tworzą one <strong>destrukcyjny ekosystem</strong>, w którym każdy element wzmacnia problemy pozostałych. Dziecko, zamiast być chronione przez system, staje się jego ofiarą. <strong>Potrzebujemy kompleksowej zmiany systemowej, nie punktowych napraw.</strong></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
+          
           <div class="col-lg-4">
             <!-- Action Buttons Sidebar -->
             <div class="sticky-top" style="top: 20px; z-index: 10;">
@@ -1235,6 +1550,138 @@
                     <a href="#wsparcie-finansowe" class="button button-white-outline button-ujarak w-100">💰 Wesprzyj program</a>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separator Line -->
+    <hr style="border: none; height: 1px; background-color: #d4a574; margin: 10px auto; width: 80%; opacity: 0.6;">
+
+    <!-- Dwufilarowa Strategia Section -->
+    <section class="section section-sm bg-default">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 class="text-center mb-5">Zintegrowana Strategia: Dwa Filary, Jeden Cel</h2>
+            <p class="text-center text-muted mb-5">Nasz program opiera się na synergii dwóch komplementarnych filarów, które razem tworzą kompleksową strategię zmiany.</p>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Filar I -->
+          <div class="col-lg-6 mb-4">
+            <div class="interactive-card">
+              <div class="text-center mb-4">
+                <div class="icon-circle bg-primary text-white mx-auto mb-3" style="width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 8px 20px rgba(52, 144, 220, 0.3);">
+                  🤝
+                </div>
+                <h3 class="h4 font-weight-bold">FILAR I: "Spokojne Rodzicielstwo"</h3>
+                <p class="text-muted">Bezpośrednie wsparcie dla rodzin</p>
+              </div>
+              
+              <div class="accordion-interactive">
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>🎯 Moduł dla Rodziców</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-2">• <strong>Prawna Nawigacja</strong> - jak skutecznie poruszać się w systemie</li>
+                      <li class="mb-2">• <strong>Przeciwdziałanie Alienacji</strong> - identyfikacja i przeciwdziałanie manipulacjom</li>
+                      <li class="mb-0">• <strong>Komunikacja</strong> - budowanie zdrowej relacji z dzieckiem</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>👶 Moduł dla Dzieci</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-2">• <strong>Terapia grupowa</strong> - bezpieczna przestrzeń dla dzieci</li>
+                      <li class="mb-0">• <strong>Budowanie tożsamości</strong> - odbudowa poczucia własnej wartości</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>👨‍⚖️ Moduł dla Profesjonalistów</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-2">• <strong>Diagnostyka alienacji</strong> - szkolenia dla prawników, psychologów</li>
+                      <li class="mb-0">• <strong>Taktyka procesowa</strong> - skuteczne podważanie wadliwych opinii OZSS</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Filar II -->
+          <div class="col-lg-6 mb-4">
+            <div class="interactive-card">
+              <div class="text-center mb-4">
+                <div class="icon-circle bg-success text-white mx-auto mb-3" style="width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);">
+                  ⚖️
+                </div>
+                <h3 class="h4 font-weight-bold">FILAR II: "Rodzice = Dziecko"</h3>
+                <p class="text-muted">Rzecznictwo na rzecz zmian systemowych</p>
+              </div>
+              
+              <div class="accordion-interactive">
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>📋 Cel Legislacyjny 1</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <div class="mb-0">
+                      <p class="mb-2"><strong>Ustanowienie Opieki Naprzemiennej jako Standardu</strong></p>
+                      <p class="small text-muted mb-0">Opracowanie projektu nowelizacji Kodeksu rodzinnego wprowadzającego opiekę naprzemienną jako domyślne rozwiązanie.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>💰 Cel Legislacyjny 2</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <div class="mb-0">
+                      <p class="mb-2"><strong>"Tablice Alimentacyjne 360°"</strong></p>
+                      <p class="small text-muted mb-0">Autorski, sprawiedliwy model tabeli alimentacyjnych oparty na dochodzie netto, zintegrowany z opieką naprzemienną.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>🏛️ Cel Legislacyjny 3</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <div class="mb-0">
+                      <p class="mb-2"><strong>Kompleksowa Reforma OZSS</strong></p>
+                      <p class="small text-muted mb-0">Przełamanie monopolu OZSS, transparentny system certyfikacji, obowiązkowe szkolenia i superwizje.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mt-5">
+          <div class="col-lg-12">
+            <div class="card activity-banner-3" style="border-radius: 15px; border: 1px solid rgba(212, 165, 116, 0.3); transition: all 0.3s ease; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+              <div class="card-body p-4 text-center">
+                <h4 class="font-weight-bold mb-3" style="color: #d4a574;">💡 Synergia i Samowzmacniający się Cykl</h4>
+                <p class="mb-0" style="line-height: 1.6;">Działania w Filarze I dostarczają nam cennych danych i autentycznych studiów przypadku, które wzmacniają nasze działania rzecznicze w Filarze II. Z kolei sukcesy legislacyjne tworzą lepsze warunki prawne dla efektywności interwencji w Filarze I. <strong style="color: #b89661;">Budżet strategiczny: 2,2 mln PLN na lata 2025-2027.</strong></p>
               </div>
             </div>
           </div>
@@ -1268,18 +1715,126 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Kto może skorzystać section -->
-        <div class="row justify-content-center mt-5">
-          <div class="col-lg-8 text-center">
-            <h3 class="h4 mb-4"><i class="fa fa-handshake me-4"></i>Kto może skorzystać</h3>
-            <ul class="list-styled text-left" style="max-width: 600px; margin: 0 auto;">
-              <li><strong>Samotni rodzice</strong> – osoby wychowujące dzieci w pojedynkę</li>
-              <li><strong>Rodzice po rozwodzie</strong> – osoby walczące o kontakt z dzieckiem</li>
-              <li><strong>Rodzice w sporach prawnych</strong> – osoby w trakcie postępowań sądowych</li>
-              <li><strong>Rodzice doświadczający alienacji</strong> – gdy dziecko jest odcinane od rodzica</li>
-              <li><strong>Rodzice potrzebujący wsparcia</strong> – osoby szukające pomocy w trudnej sytuacji</li>
-            </ul>
+    <!-- Kluczowe Dane i Statystyki -->
+    <section class="section section-sm bg-gray-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 class="text-center mb-5">📊 Diagnoza Sytuacji: Fakty i Liczby</h2>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="card activity-banner-4 mb-4">
+              <div class="card-body p-4">
+                <h3 class="h4 font-weight-bold mb-4">🇵🇱 Skala Problemu w Polsce</h3>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="stat-box text-center p-3 bg-light rounded">
+                      <h4 class="text-danger font-weight-bold mb-1">75 000</h4>
+                      <p class="small mb-0">dzieci rocznie dotkniętych rozstaniami rodzicielskimi</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="stat-box text-center p-3 bg-light rounded">
+                      <h4 class="text-warning font-weight-bold mb-1">210 dni</h4>
+                      <p class="small mb-0">średni czas oczekiwania na opinię OZSS</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="stat-box text-center p-3 bg-light rounded">
+                      <h4 class="text-info font-weight-bold mb-1">4 000</h4>
+                      <p class="small mb-0">wniosków ojców o opiekę rocznie (tylko 5% rodzin)</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="stat-box text-center p-3 bg-light rounded">
+                      <h4 class="text-success font-weight-bold mb-1">95%</h4>
+                      <p class="small mb-0">uwzględniania wniosków o opiekę przez sądy</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card activity-banner-1 mb-4">
+              <div class="card-body p-4">
+                <h3 class="h4 font-weight-bold mb-4">🌍 Porównanie z Europą</h3>
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <div class="comparison-box text-center p-3">
+                      <h5 class="font-weight-bold text-success">Belgia & Szwecja</h5>
+                      <h4 class="text-success mb-1">30%+</h4>
+                      <p class="small mb-0">dzieci w opiece naprzemiennej</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="comparison-box text-center p-3">
+                      <h5 class="font-weight-bold text-primary">Holandia & Dania</h5>
+                      <h4 class="text-primary mb-1">20-30%</h4>
+                      <p class="small mb-0">dzieci w opiece naprzemiennej</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="comparison-box text-center p-3">
+                      <h5 class="font-weight-bold text-danger">Polska</h5>
+                      <h4 class="text-danger mb-1">&lt;5%</h4>
+                      <p class="small mb-0">dzieci w opiece naprzemiennej</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="card activity-banner-2 h-100">
+              <div class="card-body p-4">
+                <h3 class="h4 font-weight-bold mb-4">⚠️ Kluczowe Problemy</h3>
+                <ul class="list-unstyled">
+                  <li class="mb-3">
+                    <div class="d-flex">
+                      <span class="text-danger me-2">🏛️</span>
+                      <div>
+                        <strong>Monopol OZSS</strong>
+                        <p class="small text-muted mb-0">Brak transparentnego systemu certyfikacji dla prywatnych ośrodków diagnostycznych</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-3">
+                    <div class="d-flex">
+                      <span class="text-warning me-2">💰</span>
+                      <div>
+                        <strong>Chaos Alimentacyjny</strong>
+                        <p class="small text-muted mb-0">Fiasko i wycofanie tabel ministerialnych z 2025 roku</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-3">
+                    <div class="d-flex">
+                      <span class="text-info me-2">⚖️</span>
+                      <div>
+                        <strong>Brak Standardów</strong>
+                        <p class="small text-muted mb-0">Opieka naprzemienna nie jest zdefiniowana prawnie jako standard</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-0">
+                    <div class="d-flex">
+                      <span class="text-danger me-2">😢</span>
+                      <div>
+                        <strong>Alienacja Rodzicielska</strong>
+                        <p class="small text-muted mb-0">Przemoc emocjonalna wobec dzieci pozostaje nierozpoznana</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1346,42 +1901,109 @@
               </div>
             </div>
 
-            <!-- Investment Areas -->
-            <div class="interactive-card">
-              <h3 class="h4 mb-4"><i class="fa fa-bullseye me-2"></i>Obszary Inwestycji</h3>
-              
-              <div class="accordion-interactive">
+            <!-- Strategic Budget 2025-2027 -->
+            <div class="interactive-card mb-4">
+              <h3 class="h4 mb-4"><i class="fa fa-chart-bar me-2"></i>Budżet Strategiczny 2025-2027</h3>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <div class="stat-box text-center p-4 bg-light rounded">
+                    <h4 class="text-primary font-weight-bold mb-1">2,2 mln PLN</h4>
+                    <p class="small mb-2 font-weight-bold">Całkowity budżet na 3 lata</p>
+                    <div class="small text-muted">
+                      <div>2025: 651 090 PLN</div>
+                      <div>2026: 812 900 PLN</div>
+                      <div>2027: 764 500 PLN</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="stat-box text-center p-4 bg-light rounded">
+                    <h4 class="text-success font-weight-bold mb-1">1,06 mln PLN</h4>
+                    <p class="small mb-2 font-weight-bold">FILAR I: "Spokojne Rodzicielstwo"</p>
+                    <div class="small text-muted">Bezpośrednie wsparcie rodzin</div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="stat-box text-center p-4 bg-light rounded">
+                    <h4 class="text-warning font-weight-bold mb-1">759 tys. PLN</h4>
+                    <p class="small mb-2 font-weight-bold">FILAR II: "Rodzice = Dziecko"</p>
+                    <div class="small text-muted">Rzecznictwo i zmiany systemowe</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-lg-12">
+                  <div class="p-3 bg-info text-white rounded text-center">
+                    <h5 class="mb-2">📈 Strategiczne Kamienie Milowe</h5>
+                    <div class="row text-center">
+                      <div class="col-md-4">
+                        <strong>Q4 2025</strong><br>
+                        <small>Program pilotażowy</small>
+                      </div>
+                      <div class="col-md-4">
+                        <strong>Q2 2026</strong><br>
+                        <small>Złożenie ustaw w Sejmie</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <!-- Financial Goals -->
+                
                 <div class="accordion-item">
                   <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>👥 Zespół Specjalistów (45% budżetu)</strong>
+                    <strong>Usunięte</strong>
                   </div>
                   <div class="accordion-content">
                     <ul class="list-unstyled mb-0">
-                      <li class="mb-2">⚖️ Prawnicy specjalizujący się w prawie rodzinnym</li>
-                      <li class="mb-2">🧠 Psycholodzy i terapeuci rodzinni</li>
-                      <li class="mb-2">👨‍💼 Koordynatorzy grup wsparcia</li>
-                      <li class="mb-0">📞 Zespół wsparcia technicznego 24/7</li>
+                      <li class="mb-2">� Analityk prawny - ekspertyzy i porównania międzynarodowe</li>
+                      <li class="mb-2">⚖️ Prawnik specjalista - opracowanie projektów ustaw</li>
+                      <li class="mb-2">🗣️ Rzecznik organizacji - lobbying i kampanie</li>
+                      <li class="mb-0">📑 Koszty ekspertyz zewnętrznych (115 000 PLN)</li>
                     </ul>
                   </div>
                 </div>
                 
                 <div class="accordion-item">
                   <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>🏢 Infrastruktura i Technologia (25% budżetu)</strong>
+                    <strong>Usunięte</strong>
                   </div>
                   <div class="accordion-content">
                     <ul class="list-unstyled mb-0">
-                      <li class="mb-2">💻 Platforma do sesji online</li>
-                      <li class="mb-2">📱 Aplikacja mobilna do grup wsparcia</li>
-                      <li class="mb-2">🏠 Centra lokalne w większych miastach</li>
-                      <li class="mb-0">🔒 Systemy bezpieczeństwa danych</li>
+                      <li class="mb-2">📚 Warsztaty i szkolenia dla rodziców i specjalistów (276 000 PLN)</li>
+                      <li class="mb-2">👶 Terapia i wsparcie dla dzieci (180 000 PLN)</li>
+                      <li class="mb-2">🗳️ Kampanie komunikacyjne i rzecznictwo (200 000 PLN)</li>
+                      <li class="mb-0">📊 Raporty i badania naukowe (84 000 PLN)</li>
                     </ul>
                   </div>
                 </div>
                 
                 <div class="accordion-item">
                   <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>📚 Edukacja i Materiały (20% budżetu)</strong>
+                    <strong>Usunięte</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-2">�️ Platforma e-learningowa (120 000 PLN)</li>
+                      <li class="mb-2">🏢 Koszty operacyjne i administracyjne (210 000 PLN)</li>
+                      <li class="mb-0">� Rezerwa na nieprzewidziane wydatki (202 590 PLN)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+                      <li class="mb-2">Usunięte</li>
+                      <li class="mb-0">Usunięte</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>Usunięte</strong>
                   </div>
                   <div class="accordion-content">
                     <ul class="list-unstyled mb-0">
@@ -1395,7 +2017,7 @@
                 
                 <div class="accordion-item">
                   <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>📈 Rozwój i Innowacje (10% budżetu)</strong>
+                    <strong>Usunięte</strong>
                   </div>
                   <div class="accordion-content">
                     <ul class="list-unstyled mb-0">
@@ -1422,6 +2044,52 @@
                 <div class="progress-fill" data-width="68" style="background: white;"></div>
               </div>
               <p class="text-center">68% celu osiągnięte</p>
+            </div>
+
+            <!-- System Ewaluacji i KPIs -->
+            <div class="interactive-card mb-4">
+              <h4 class="mb-3"><i class="fa fa-chart-line me-2"></i>System Ewaluacji - Kluczowe Wskaźniki Sukcesu (KPIs)</h4>
+              <div class="accordion-interactive">
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>📊 FILAR I - Wskaźniki Bezpośredniego Wpływu</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-2">💝 <strong>Odbudowa więzi rodzicielskich</strong><br><small class="text-muted">Procent rodziców deklarujących poprawę relacji z dzieckiem po udziale w programie</small></li>
+                      <li class="mb-2">😊 <strong>Poprawa dobrostanu dzieci</strong><br><small class="text-muted">Spadek wskaźników lęku i depresji u dzieci objętych wsparciem (kwestionariusze R-CMAS)</small></li>
+                      <li class="mb-0">🎓 <strong>Wzrost kompetencji profesjonalistów</strong><br><small class="text-muted">100% przeszkolonych specjalistów wdraża nowe protokoły interwencji w sprawach alienacji</small></li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>⚖️ FILAR II - Wskaźniki Zmian Systemowych</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-2">📋 <strong>Reforma opieki naprzemiennej</strong><br><small class="text-muted">Cel: Uchwalenie ustawy wprowadzającej opiekę naprzemienną jako standard do 2027 r.</small></li>
+                      <li class="mb-2">💰 <strong>System alimentacyjny "360°"</strong><br><small class="text-muted">Cel: Wdrożenie sprawiedliwych Tablic Alimentacyjnych opartych na dochodzie netto</small></li>
+                      <li class="mb-0">📈 <strong>Zmiana dyskursu publicznego</strong><br><small class="text-muted">Cel: 50% wzrost pozytywnych wzmianek o alienacji rodzicielskiej w mediach</small></li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <strong>🔍 Metody Ewaluacji</strong>
+                  </div>
+                  <div class="accordion-content">
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-2">📋 <strong>Ankiety pre- i post-programowe</strong> - walidowane narzędzia pomiarowe</li>
+                      <li class="mb-2">👥 <strong>Regularne superwizje</strong> - comiesięczne sesje z zewnętrznymi ekspertami</li>
+                      <li class="mb-2">📊 <strong>Monitoring mediów</strong> - analiza zmian w dyskursie publicznym</li>
+                      <li class="mb-0">📄 <strong>Roczne raporty</strong> - transparentne sprawozdania z postępów i finansów</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Transparency Report -->
@@ -1769,6 +2437,39 @@
 
     // Initialize all interactive features
     addPulseAnimation();
+
+    // Function to toggle collapse/expand for problem banners
+    function toggleCollapse(headerElement) {
+      const content = headerElement.nextElementSibling;
+      const icon = headerElement.querySelector('.collapse-icon');
+      
+      if (content.style.display === 'none' || content.style.display === '') {
+        // Expand
+        content.style.display = 'block';
+        icon.textContent = '−';
+        // Add smooth animation
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(-10px)';
+        setTimeout(() => {
+          content.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          content.style.opacity = '1';
+          content.style.transform = 'translateY(0)';
+        }, 10);
+      } else {
+        // Collapse
+        content.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(-10px)';
+        setTimeout(() => {
+          content.style.display = 'none';
+          content.style.transition = '';
+        }, 300);
+        icon.textContent = '+';
+      }
+    }
+
+    // Make toggleCollapse function globally available
+    window.toggleCollapse = toggleCollapse;
   </script>
 
   <style>
