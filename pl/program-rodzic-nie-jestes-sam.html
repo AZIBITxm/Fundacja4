@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/modal-wsparcie-pl.css">
   <link rel="stylesheet" href="../css/modal-donor-spot.css">
+  <link rel="stylesheet" href="../css/modal-cooperation.css">
   <style>
   /* Kolory banerów dla Szczegółowy Opis Działań */
   .activity-banner-1 { background: #F4F0E8 !important; }
@@ -1051,7 +1052,6 @@
             <div class="donor-box-placeholder h-100 d-flex flex-column" style="min-height: 600px; margin-top: 0;">
               <h4 class="mb-3 text-center" style="margin-top: 0;"><i class="fa fa-heart me-2"></i>Otrzymaj Kompleksowe Wsparcie</h4>
               
-              <p class="mb-4 text-center">Nie musisz przechodzić przez to sam. Oferujemy:</p>
               <div class="accordion-interactive flex-grow-1">
                 <div class="accordion-item">
                   <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -1091,7 +1091,10 @@
               
               <div class="mt-4">
                   <div class="d-flex flex-column justify-content-center align-items-center banner-buttons-container">
-                    <a href="#kontakt" class="button button-primary button-ujarak w-100 pulse-anim mb-1" style="box-shadow: 0 0 16px #8B7D6B;">
+                    <a href="#wsparcie-finansowe" class="button button-primary button-ujarak w-100 pulse-anim" style="box-shadow: 0 0 16px #8B7D6B; margin-bottom: -8px;">
+                      💰 Wesprzyj finansowo
+                    </a>
+                    <a href="#potrzebujesz-pomocy" class="button button-outline button-ujarak w-100" onclick="scrollToSection('potrzebujesz-pomocy')" style="margin-bottom: -8px;">
                       📞 Skontaktuj się z nami
                     </a>
                     <a href="#program-details" class="button button-outline button-ujarak w-100">
@@ -1295,10 +1298,6 @@
               </div>
               <h5 class="font-weight-bold mb-3">Pomoc Psychologiczna i Prawna</h5>
               <p class="text-muted mb-3">Kompleksowe wsparcie dla dzieci i rodziców doświadczających alienacji rodzicielskiej, obejmujące cykliczne konsultacje prawne oraz terapię psychologiczną</p>
-              <div class="progress-bar-animated">
-                <div class="progress-fill" data-width="92"></div>
-              </div>
-              <small class="text-success font-weight-bold">92% wygranych spraw</small>
             </div>
           </div>
 
@@ -1311,10 +1310,6 @@
               </div>
               <h5 class="font-weight-bold mb-3">Materiały Edukacyjne</h5>
               <p class="text-muted mb-3">Tworzenie poradników i materiałów pomocowych uświadamiających rodziców i dzieci o ich prawach oraz możliwościach skutecznego działania w systemie prawnym</p>
-              <div class="progress-bar-animated">
-                <div class="progress-fill" data-width="88"></div>
-              </div>
-              <small class="text-success font-weight-bold">88% poprawy well-being</small>
             </div>
           </div>
 
@@ -1327,10 +1322,6 @@
               </div>
               <h5 class="font-weight-bold mb-3">Grupy Wsparcia</h5>
               <p class="text-muted mb-3">Tworzenie społeczności wzajemnego wsparcia, gdzie rodzice dzielą się doświadczeniami, czerpią siłę od innych i mogą zasięgnąć cennych porad w trudnych momentach</p>
-              <div class="progress-bar-animated">
-                <div class="progress-fill" data-width="95"></div>
-              </div>
-              <small class="text-success font-weight-bold">95% aktywności uczestników</small>
             </div>
           </div>
 
@@ -1343,10 +1334,6 @@
               </div>
               <h5 class="font-weight-bold mb-3">Reforma Prawa Rodzinnego</h5>
               <p class="text-muted mb-3">Aktywna współpraca z instytucjami rządowymi w celu reformy prawa rodzinnego, szczególnie w zakresie opieki naprzemiennej, sprawiedliwego systemu alimentacyjnego oraz poprawy standardów orzecznictwa OZSS</p>
-              <div class="progress-bar-animated">
-                <div class="progress-fill" data-width="90"></div>
-              </div>
-              <small class="text-success font-weight-bold">Aktywne działania reformatorskie</small>
             </div>
           </div>
         </div>
@@ -1522,7 +1509,7 @@
             </div>
           </div>
           
-          <div class="col-lg-4">
+          <div class="col-lg-4" id="potrzebujesz-pomocy">
             <!-- Action Buttons Sidebar -->
             <div class="sticky-top" style="top: 20px; z-index: 10;">
               <div class="action-sidebar p-4 mb-4">
@@ -1531,11 +1518,15 @@
                   <p class="mb-4 small text-center">Nie wahaj się skontaktować z nami. Każda sytuacja jest ważna i zasługuje na profesjonalne wsparcie.</p>
                   
                   <div class="action-button">
-                    <a href="tel:+48123456789" class="button button-white-outline button-ujarak w-100">📞 Zadzwoń teraz</a>
+                    <a href="#wsparcie-finansowe" class="button button-primary button-ujarak w-100">💰Wesprzyj finansowo</a>
                   </div>
                   
                   <div class="action-button">
-                    <a href="mailto:pomoc@worldfoundation.pl" class="button button-white-outline button-ujarak w-100">✉️ Napisz e-mail</a>
+                    <a href="tel:+48605126918" class="button button-white-outline button-ujarak w-100">📞 Zadzwoń teraz</a>
+                  </div>
+                  
+                  <div class="action-button">
+                    <a href="mailto:info@worldfoundation.pl" class="button button-white-outline button-ujarak w-100">✉️ Napisz e-mail</a>
                   </div>
                   
                   <div class="action-button">
@@ -1543,11 +1534,7 @@
                   </div>
                   
                   <div class="action-button">
-                    <a href="#" class="button button-white-outline button-ujarak w-100">📱 Dołącz do grupy WhatsApp</a>
-                  </div>
-                  
-                  <div class="action-button">
-                    <a href="#wsparcie-finansowe" class="button button-white-outline button-ujarak w-100">💰 Wesprzyj program</a>
+                    <a href="#modalWsparcie" class="button button-white-outline button-ujarak w-100" data-toggle="modal">📱 Dołącz do grupy WhatsApp</a>
                   </div>
                 </div>
               </div>
@@ -1953,87 +1940,6 @@
 
           <div class="col-lg-4">
             <!-- Financial Goals -->
-                
-                <div class="accordion-item">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>Usunięte</strong>
-                  </div>
-                  <div class="accordion-content">
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">� Analityk prawny - ekspertyzy i porównania międzynarodowe</li>
-                      <li class="mb-2">⚖️ Prawnik specjalista - opracowanie projektów ustaw</li>
-                      <li class="mb-2">🗣️ Rzecznik organizacji - lobbying i kampanie</li>
-                      <li class="mb-0">📑 Koszty ekspertyz zewnętrznych (115 000 PLN)</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="accordion-item">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>Usunięte</strong>
-                  </div>
-                  <div class="accordion-content">
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">📚 Warsztaty i szkolenia dla rodziców i specjalistów (276 000 PLN)</li>
-                      <li class="mb-2">👶 Terapia i wsparcie dla dzieci (180 000 PLN)</li>
-                      <li class="mb-2">🗳️ Kampanie komunikacyjne i rzecznictwo (200 000 PLN)</li>
-                      <li class="mb-0">📊 Raporty i badania naukowe (84 000 PLN)</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="accordion-item">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>Usunięte</strong>
-                  </div>
-                  <div class="accordion-content">
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">�️ Platforma e-learningowa (120 000 PLN)</li>
-                      <li class="mb-2">🏢 Koszty operacyjne i administracyjne (210 000 PLN)</li>
-                      <li class="mb-0">� Rezerwa na nieprzewidziane wydatki (202 590 PLN)</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-                      <li class="mb-2">Usunięte</li>
-                      <li class="mb-0">Usunięte</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="accordion-item">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>Usunięte</strong>
-                  </div>
-                  <div class="accordion-content">
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">📖 Przewodniki dla rodziców</li>
-                      <li class="mb-2">🎥 Materiały wideo edukacyjne</li>
-                      <li class="mb-2">🎯 Warsztaty i szkolenia</li>
-                      <li class="mb-0">📊 Badania i ewaluacja programu</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="accordion-item">
-                  <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <strong>Usunięte</strong>
-                  </div>
-                  <div class="accordion-content">
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">🔬 Pilotażowe programy</li>
-                      <li class="mb-2">🌍 Ekspansja geograficzna</li>
-                      <li class="mb-2">🤖 Nowe technologie wsparcia</li>
-                      <li class="mb-0">📱 Rozwój aplikacji mobilnych</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <!-- Financial Goals -->
             <div class="stats-container mb-4" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52);">
               <h4 class="mb-4 text-center">🎯 Cele Finansowe 2025</h4>
               <div class="stat-item mb-4">
@@ -2240,16 +2146,17 @@
     </section>
 
     <!-- Footer placeholder -->
-    <footer class="section footer-classic section-sm">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-            <p>&copy; 2024 World Foundation. Wszystkie prawa zastrzeżone.</p>
-            <p><a href="index.html">Powrót do strony głównej</a></p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <div id="footer-placeholder"></div>
+    
+    <script>
+    // Load footer
+    fetch('./footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.log('Error loading footer:', error));
+    </script>
   </div>
 
   <!-- Scripts -->
@@ -2259,6 +2166,17 @@
   <script src="../js/script.js"></script>
   
   <script>
+    // Smooth scroll function
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+
     // Animation for impact numbers and statistics
     document.addEventListener('DOMContentLoaded', function() {
       // Animate counters
@@ -2471,6 +2389,99 @@
     // Make toggleCollapse function globally available
     window.toggleCollapse = toggleCollapse;
   </script>
+
+  <!-- Modal GRUPA WSPARCIA (WhatsForm) -->
+  <div class="modal fade" id="modalWsparcie" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Dołącz do naszych Informacyjnych grup wsparcia</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <b>START 15 września 2025 r.</b><br>
+            <span>Grupy są aktualnie w fazie organizacji<br>będą aktywnie prowadzone od września.</span>
+          </p>
+          <p>
+            <b>Dołączając do grupy otrzymasz.</b><br>
+          
+          <ul>
+            <li>✅ Bieżące informacje o naszych projektch, spotkaniach i działaniach Fundacji</li>
+            <li>✅ Przestrzeń do dzielenia się swoimi historiami i doświadczeniami</li>
+            <li>✅ Wymianę perspektyw z osobami rozumiejącymi Twoje wyzwania</li>
+            <li>✅ Możliwość uzyskania praktycznych wskazówek od tych, którzy przeszli podobną drogę</li>
+            <li>✅ Szansę wsparcia innych swoją wiedzą, gdy zmagają się z sytuacjami, które Ty już znasz</li>
+          </ul>
+          <div>
+            <br></b><b>Dodatkowo w kluczowych sprawach poruszanych na grupie dostępne będą okresowo:</b>
+            <ul>
+              <li>🔹 Konsultacje z Radcami prawnymi i Adwokatami</li>
+              <li>🔹 Q&amp;A ze Specjalistami z wybranych dziedzin dotyczących danej grupy.</li>
+              <li>🔹 Sesje wsparcia z psychologami</li>
+              <li>🔹 Spotkania on line z przedstawicielami instytucji państwowych i świata polityki</li>
+            </ul>
+          </div>
+          <div>
+            <br><b>Dołącz już dziś, aby być gotowym na start!</b>
+          </div>
+          <div>
+            <button id="openWsparcieFormBtn" class="button button-primary button-ujarak">Przejdź do grupy wsparcia</button>
+          </div>
+    <div id="wsparcieFormContainer">
+            <iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0"></iframe>
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              // Zapamiętaj oryginalną treść modal-body
+              var wsparcieModalLink = document.getElementById('openWsparcieModalLink');
+              var modal = document.getElementById('modalWsparcie');
+              var modalBody = modal ? modal.querySelector('.modal-body') : null;
+              var modalBodyInitial = modalBody ? modalBody.innerHTML : null;
+              if (wsparcieModalLink && modal && modalBody && modalBodyInitial) {
+          wsparcieModalLink.addEventListener('click', function() {
+                  // Resetuj modal-body do stanu początkowego
+                  setTimeout(function() {
+                    modalBody.innerHTML = modalBodyInitial;
+            modal.classList.remove('expanded');
+                    setupWsparcieFormBtn();
+                  }, 10);
+                });
+              }
+              // Obsługa przycisku "Przejdź do grupy wsparcia"
+              function setupWsparcieFormBtn() {
+                var openBtn = document.getElementById('openWsparcieFormBtn');
+                var modalBody = document.querySelector('#modalWsparcie .modal-body');
+                if(openBtn && modalBody) {
+                  openBtn.addEventListener('click', function() {
+                    modalBody.innerHTML = '<div id="wsparcieFormContainer">'+
+                      '<iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0"></iframe>'+ 
+                      '</div>';
+                    var modalRoot = document.getElementById('modalWsparcie');
+                    if (modalRoot) {
+                      modalRoot.classList.add('expanded');
+                    }
+                  });
+                }
+              }
+              setupWsparcieFormBtn();
+              // Po każdym odświeżeniu modal-body, ponownie podpinaj obsługę przycisku
+              if (modal) {
+                modal.addEventListener('shown.bs.modal', function() {
+                  setupWsparcieFormBtn();
+                });
+                modal.addEventListener('hidden.bs.modal', function() {
+                  modal.classList.remove('expanded');
+                });
+              }
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <style>
     @keyframes pulse {

@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/modal-wsparcie-pl.css">
+  <link rel="stylesheet" href="../css/modal-donor-wsparcie.css">
   <style>
   .hero-btn-primary {
     box-shadow: 0 4px 15px rgba(255,214,0,0.3);
@@ -1274,8 +1275,7 @@
               
               <!-- Donorbox meter widget -->
               <div class="donation-meter-container text-center mb-4">
-                <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
-                <iframe height="93px" width="100%" src="https://donorbox.org/embed/projekt-spot-przeciwdzialanie-cyfrowym-uzaleznieniom-2?donation_meter_color=%23128aed&only_donation_meter=true&preview=true" style="max-width: 332px; min-width: 250px; min-height: 90px; max-height: none !important;" seamless="seamless" name="donorbox" frameborder="0" scrolling="no"></iframe>
+                <script src="https://donorbox.org/widget.js" paypalExpress="false"></script><iframe height="93px" width="100%" src="https://donorbox.org/embed/projekt-spot-przeciwdzialanie-cyfrowym-uzaleznieniom-2-2?donation_meter_color=%23128aed&only_donation_meter=true&preview=true" style="max-width: 332px; min-width: 250px; min-height: 90px; max-height: none !important;" seamless="seamless" name="donorbox" frameborder="0" scrolling="no"> </iframe>
               </div>
               
               <p class="mb-4 text-center">Pomóż nam wprowadzić program do polskich szkół:</p>
@@ -1291,8 +1291,8 @@
               </ul>
               <div class="mt-4">
                   <div class="d-flex flex-column justify-content-center align-items-center banner-buttons-container">
-                    <a href="#wsparcie" class="button button-primary button-ujarak w-100 pulse-anim" style="box-shadow: 0 0 16px #FF4500;">
-                      � Wesprzyj finansowo
+                    <a href="#" id="openDonorWsparcieModal4" class="button button-primary button-ujarak w-100 pulse-anim" style="box-shadow: 0 0 16px #FF4500;">
+                      💸 Wesprzyj finansowo
                     </a>
                   </div>
               </div>
@@ -1322,7 +1322,7 @@
             
             <!-- Przyciski akcji skopiowane z projekt-spot.html -->
             <div class="d-flex flex-column gap-1 hero-buttons-desktop mt-4">
-              <a href="#wsparcie" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
+              <a href="#" id="openDonorWsparcieModal1" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
                 💰 Wsparcie finansowe
               </a>
               <a href="#detale" class="button button-secondary button-pipaluk btn-details w-100">
@@ -1432,7 +1432,7 @@
             
             <!-- Przyciski akcji dla wersji mobilnej - pod telefonem -->
             <div class="d-flex flex-column gap-1 hero-buttons-mobile mt-4" style="display: none;">
-              <a href="#wsparcie" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
+              <a href="#" id="openDonorWsparcieModal2" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
                 💰 Wsparcie finansowe
               </a>
               <a href="#detale" class="button button-secondary button-pipaluk btn-details w-100">
@@ -1591,25 +1591,25 @@
                 <h4 class="mb-4"><i class="fa fa-hands-helping me-2"></i>Jak możesz pomóc?</h4>
               
               <div class="action-button">
-                <a href="#" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
+                <a href="#" id="openDonorWsparcieModal3" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
                   💰 Wsparcie finansowe
                 </a>
               </div>
               
               <div class="action-button">
-                <a href="#" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
+                <a href="#" id="btnWolontariat" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
                   🤝 Wolontariat
                 </a>
               </div>
               
               <div class="action-button">
-                <a href="#" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
+                <a href="#" id="btnPromocja" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
                   📢 Promocja programu
                 </a>
               </div>
               
               <div class="action-button">
-                <a href="#" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
+                <a href="#" id="btnMentoring" class="button button-secondary button-pipaluk w-100" style="background: rgba(255,255,255,0.2);">
                   🎯 Mentoring zawodowy
                 </a>
               </div>
@@ -1758,7 +1758,7 @@
     </section>
 
     <!-- Contact Form -->
-    <section class="section section-sm bg-gray-1">
+    <section class="section section-sm bg-gray-1" id="kontakt">
       <div class="container">
         <div class="contact-form-project">
           <h3 class="text-center mb-4">Skontaktuj się z nami</h3>
@@ -1790,13 +1790,14 @@
                     <option value="">Wybierz rodzaj zapytania</option>
                     <option value="vet-support">Jestem weteranem - potrzebuję wsparcia</option>
                     <option value="family-support">Rodzina weterana - chcę otrzymać pomoc</option>
-                    <option value="volunteer">Chcę zostać wolontariuszem</option>
+                    <option value="volunteer">Wolontariat</option>
+                    <option value="promotion">Promocja programu</option>
+                    <option value="mentoring">Mentoring zawodowy</option>
                     <option value="specialist">Jestem specjalistą - chcę współpracować</option>
                     <option value="donation">Pytanie o wsparcie finansowe</option>
                     <option value="cooperation">Współpraca instytucjonalna</option>
                     <option value="other">Inne</option>
                   </select>
-                  <label class="form-label" for="contact-type-2">Rodzaj zapytania</label>
                 </div>
               </div>
               <div class="col-12">
@@ -1813,93 +1814,17 @@
     </section>
 
     <!-- Page Footer-->
-    <footer class="section footer-corporate context-dark">
-      <div class="footer-corporate-inset">
-        <div class="container">
-          <div class="row row-40 justify-content-lg-between">
-            <div class="col-sm-6 col-md-12 col-lg-3 col-xl-4">
-              <div class="oh-desktop">
-                <div class="wow slideInRight" data-wow-delay="0s">
-                  <h6 class="text-spacing-100 text-uppercase">Kontakt</h6>
-                  <ul class="footer-contacts d-inline-block d-sm-block">
-                    <li>
-                      <div class="unit">
-                        <div class="unit-left"><span class="icon fa fa-phone"></span></div>
-                        <div class="unit-body"><a class="link-phone" href="tel:#">+48 123 456 789</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="unit">
-                        <div class="unit-left"><span class="icon fa fa-envelope"></span></div>
-                        <div class="unit-body"><a class="link-email" href="mailto:#">weterani@worldfoundation.pl</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="unit">
-                        <div class="unit-left"><span class="icon fa fa-location-arrow"></span></div>
-                        <div class="unit-body"><a class="link-location" href="#">Warszawa, Polska</a></div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
-              <div class="oh-desktop">
-                <div class="wow slideInDown" data-wow-delay="0s">
-                  <h6 class="text-spacing-100 text-uppercase">Popularne Linki</h6>
-                  <ul class="footer-list d-inline-block d-sm-block">
-                    <li><a href="index.html">Strona główna</a></li>
-                    <li><a href="index.html#about">O nas</a></li>
-                    <li><a href="index.html#projects">Projekty</a></li>
-                    <li><a href="index.html#team">Zespół</a></li>
-                    <li><a href="index.html#contact-info">Kontakt</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-11 col-md-7 col-lg-5 col-xl-4">
-              <div class="oh-desktop">
-                <div class="wow slideInLeft" data-wow-delay="0s">
-                  <h6 class="text-spacing-100 text-uppercase">Newsletter</h6>
-                  <form class="rd-form rd-form-variant-2 rd-mailform" data-form-output="form-output-global" data-form-type="subscribe" method="post" action="bat/rd-mailform.php">
-                    <div class="form-wrap">
-                      <input class="form-input" id="subscribe-email" type="email" name="email" data-constraints="@Email @Required">
-                      <label class="form-label" for="subscribe-email">Twój e-mail</label>
-                    </div>
-                    <div class="form-button">
-                      <button class="button button-primary button-ujarak" type="submit">Subskrybuj</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-corporate-bottom-panel">
-        <div class="container">
-          <div class="row justfy-content-xl-space-berween row-10 align-items-md-center2">
-            <div class="col-sm-6 col-md-4 text-sm-right text-md-center">
-              <div>
-                <ul class="list-inline list-inline-sm footer-social-list-2">
-                  <li><a class="icon fa fa-facebook" href="#"></a></li>
-                  <li><a class="icon fa fa-twitter" href="#"></a></li>
-                  <li><a class="icon fa fa-google-plus" href="#"></a></li>
-                  <li><a class="icon fa fa-instagram" href="#"></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 order-sm-first">
-              <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>World Foundation</span>. Wszelkie prawa zastrzeżone.</p>
-            </div>
-            <div class="col-sm-6 col-md-4 text-md-right">
-              <p class="rights"><a href="polityka-prywatnosci.html">Polityka prywatności</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <div id="footer-placeholder"></div>
+    
+    <script>
+    // Load footer
+    fetch('./footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.log('Error loading footer:', error));
+    </script>
   </div>
 
   <!-- Global Mailform Output-->
@@ -1991,6 +1916,108 @@
         header.addEventListener('click', toggleSection);
       });
     });
+  </script>
+
+  <!-- Modal Donorbox Wsparcie -->
+  <div class="modal fade" id="donorWsparcieModal" tabindex="-1" aria-labelledby="donorWsparcieModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="donorWsparcieModalLabel">Wsparcie finansowe projektu</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Zamknij">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="donorbox-widget">
+            <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+            <iframe src="https://donorbox.org/embed/projekt-spot-przeciwdzialanie-cyfrowym-uzaleznieniom-2-2?default_interval=o" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style="max-width: 500px; min-width: 250px; max-height:none!important" allow="payment"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Znajdź wszystkie przyciski wsparcia finansowego
+    var buttons = [
+      document.getElementById('openDonorWsparcieModal1'),
+      document.getElementById('openDonorWsparcieModal2'),
+      document.getElementById('openDonorWsparcieModal3'),
+      document.getElementById('openDonorWsparcieModal4')
+    ];
+    
+    buttons.forEach(function(btn) {
+      if(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var modal = document.getElementById('donorWsparcieModal');
+          if(modal) {
+            var bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+          }
+        });
+      }
+    });
+    
+    // Prosta instrukcja zamykania modala po kliknięciu w przycisk X
+    var closeBtn = document.querySelector('#donorWsparcieModal .close');
+    if(closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        var modal = document.getElementById('donorWsparcieModal');
+        if(modal) {
+          modal.style.display = 'none';
+          modal.classList.remove('show');
+          document.body.classList.remove('modal-open');
+          var backdrop = document.querySelector('.modal-backdrop');
+          if(backdrop) {
+            backdrop.remove();
+          }
+        }
+      });
+    }
+    
+    // Obsługa przycisków z sekcji "Jak możesz pomóc"
+    function scrollToContactAndSelectOption(optionValue) {
+      // Przewiń do sekcji kontaktowej
+      var contactSection = document.querySelector('#kontakt');
+      if(contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      // Po krótkiej pauzie ustaw wartość w selectie
+      setTimeout(function() {
+        var selectElement = document.getElementById('contact-type-2');
+        if(selectElement) {
+          selectElement.value = optionValue;
+        }
+      }, 500);
+    }
+    
+    // Dodaj event listenery do przycisków
+    var btnWolontariat = document.getElementById('btnWolontariat');
+    if(btnWolontariat) {
+      btnWolontariat.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToContactAndSelectOption('volunteer');
+      });
+    }
+    
+    var btnPromocja = document.getElementById('btnPromocja');
+    if(btnPromocja) {
+      btnPromocja.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToContactAndSelectOption('promotion');
+      });
+    }
+    
+    var btnMentoring = document.getElementById('btnMentoring');
+    if(btnMentoring) {
+      btnMentoring.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToContactAndSelectOption('mentoring');
+      });
+    }
+  });
   </script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+/* Modal donor-WSPARCIE */
+#donorWsparcieModal .modal-dialog {
+  max-width: 550px;
+  margin: 30px auto;
+}
+
+#donorWsparcieModal .modal-content {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#donorWsparcieModal .modal-header {
+  background: white;
+  color: #333;
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 10px 10px 0 0;
+}
+
+#donorWsparcieModal .modal-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+#donorWsparcieModal .close {
+  color: #666;
+  opacity: 0.8;
+  font-size: 1.5rem;
+}
+
+#donorWsparcieModal .close:hover {
+  opacity: 1;
+  color: #333;
+}
+
+#donorWsparcieModal .modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Donorbox widget i iframe */
+#donorWsparcieModal .donorbox-widget {
+  width: 100%;
+  max-width: 500px;
+  min-width: 250px;
+  margin: 0 auto;
+}
+
+#donorWsparcieModal iframe {
+  border-radius: 8px;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto;
+  height: 900px;
+  box-sizing: border-box;
+}
+
+/* Mobile and tablet modal positioning adjustments */
+@media (max-width: 768px) {
+  #donorWsparcieModal .modal-dialog {
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  #donorWsparcieModal .modal-dialog {
+    margin-top: 30px !important;
+  }
+}
+
+/* Wstawienie widgetu Donorbox w HTML modala:
+<div class="donorbox-widget">
+  <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+  <iframe src="https://donorbox.org/embed/projekt-spot-przeciwdzialanie-cyfrowym-uzaleznieniom-2-2?default_interval=o" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style="max-width: 500px; min-width: 250px; max-height:none!important" allow="payment"></iframe>
+</div>
+*/

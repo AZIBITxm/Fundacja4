@@ -1674,53 +1674,17 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
         }
       </style>
       <!-- Page Footer (polska, kompletna wersja) -->
-      <footer class="wf-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <h5>O nas</h5>
-              <p class="footer-about">Fundacja WorldFoundation wspiera rodziny i osoby potrzebujące: pomoc psychologiczna, grupy wsparcia, projekty edukacyjne i prawne.</p>
-              <ul class="list-unstyled">
-                <li><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Adres:</strong> ul. Staromiejska 17e, 84-300 Lębork, Polska</li>
-                 <li><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Adres:</strong> Medardstr. 120, 54294 Trier, Niemcy</li>
-                <li><img src="../images/flaga/pl.png" alt="PL"/> <a href="tel:+48519830226">+48 519 830 226</a></li>
-                <li><img src="../images/flaga/de.png" alt="DE"/> <a href="tel:+4915212403091">+49 15212403091</a></li>
-                <li><i class="fa fa-envelope" aria-hidden="true"></i> <strong>Email:</strong> <a href="mailto:info@worldfoundation.eu">info@worldfoundation.eu</a></li>
-              </ul>
-            </div>
-            <div class="col-md-4 footer-quick">
-              <h5>Szybkie linki</h5>
-              <a href="#about">O nas</a>
-              <a href="#projects">Projekty</a>
-              <a href="#services">Usługi</a>
-              <a href="#contact-info">Kontakt</a>
-              <a href="#modalWsparcieCTA" data-toggle="modal">Wesprzyj</a>
-            </div>
-            <div class="col-md-4 footer-legal">
-              <h5>Dokumenty</h5>
-              <a href="polityka-prywatnosci.html">Polityka prywatności</a>
-              <a href="polityka-prywatnosci.html#pliki-cookies">Polityka cookies</a>
-              <a href="regulamin.html">Regulamin</a>
-              <a href="doc/STATUT WorldFoundation aktualny - cyfrowy.pdf" target="_blank" rel="noopener">Statut</a>
-              <a href="#" onclick="if(window.Osano) Osano.cm.showDrawer(); return false;">Ustawienia cookies</a>
-            </div>
-          </div>
-
-          <hr>
-
-          <div class="row align-items-center">
-            <div class="col-md-6 footer-social">
-              <a class="icon fa fa-facebook" href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook"></a>
-              <a class="icon fa fa-twitter" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"></a>
-              <a class="icon fa fa-instagram" href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"></a>
-              <a class="icon fa fa-youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"></a>
-            </div>
-            <div class="col-md-6 text-md-right">
-              <p class="footer-copyright mb-0">&copy; <span class="copyright-year"></span> WorldFoundation | Wszelkie prawa zastrzeżone.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <div id="footer-placeholder"></div>
+      
+      <script>
+      // Ładowanie stopki
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+      </script>
 
       <!-- Modal Jotform usunięty -->
     </div>
