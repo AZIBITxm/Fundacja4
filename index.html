@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Foundation - Choose Language / Wybierz język</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ctext y='96' font-size='96'%3E%F0%9F%8C%8D%3C/text%3E%3C/svg%3E" type="image/svg+xml">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:400,500,600,700">
+    <!-- Font Google zostaje, reszta stylów i skryptów lokalnie w tym pliku -->
     <style>
         * {
             margin: 0;
@@ -15,184 +15,679 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .language-selector {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 90%;
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        .video-background.blurred {
+            filter: blur(8px);
         }
         
-        h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
-        .subtitle {
-            color: #666;
-            margin-bottom: 2.5rem;
-            font-size: 1.1rem;
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 0;
         }
         
-        .language-options {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .dropdown-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            backdrop-filter: blur(4px);
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .language-card {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 15px;
-            padding: 1.5rem;
-            min-width: 120px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #333;
+        .dropdown-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            padding: 2rem;
         }
         
-        .language-card:hover {
-            transform: translateY(-5px);
-            border-color: #667eea;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
-            text-decoration: none;
-            color: #667eea;
+        .flags-container {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2vw;
+            z-index: 2;
+            width: 100vw;
+            max-width: 100vw;
+            min-width: 320px;
+            justify-items: center;
+            align-items: center;
         }
         
-        .flag {
-            width: 40px;
-            height: 30px;
-            border-radius: 5px;
+        .flag-item {
+            width: 12vw;
+            min-width: 100px;
+            max-width: 180px;
+            height: 8vw;
+            min-height: 80px;
+            max-height: 130px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(-30px) scale(0.8);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .flag-item:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .flag-image {
+            width: 75px;
+            height: 50px;
             background-size: cover;
             background-position: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 8px;
         }
         
-        .flag.pl {
+        .flag-label {
+            color: #000;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            background: transparent;
+            padding: 2px 6px;
+            border-radius: 6px;
+            line-height: 1.2;
+        }
+        
+        /* Flag backgrounds - używając dostępnych plików obrazów */
+        .flag-pl .flag-image { 
             background-image: url('images/flaga/pl.png');
         }
+        .flag-pl { animation: slideInFlag 0.8s ease-out 0.5s forwards; }
         
-        .flag.en {
+        .flag-en .flag-image { 
             background-image: url('images/flaga/en.png');
         }
+        .flag-en { animation: slideInFlag 0.8s ease-out 0.8s forwards; }
         
-        .flag.de {
+        .flag-de .flag-image { 
             background-image: url('images/flaga/de.png');
         }
+        .flag-de { animation: slideInFlag 0.8s ease-out 1.1s forwards; }
         
-        .language-name {
-            font-weight: 500;
-            font-size: 1rem;
+        .flag-es .flag-image { 
+            background-image: url('images/flaga/esp.png');
+        }
+        .flag-es { animation: slideInFlag 0.8s ease-out 1.4s forwards; }
+        
+        .flag-fr .flag-image { 
+            background-image: url('images/flaga/fr.png');
+        }
+        .flag-fr { animation: slideInFlag 0.8s ease-out 1.7s forwards; }
+        
+        .flag-cn .flag-image { 
+            background-image: url('images/flaga/cn.png');
+        }
+        .flag-cn { animation: slideInFlag 0.8s ease-out 2.0s forwards; }
+        
+        .flag-ru .flag-image { 
+            background-image: url('images/flaga/ru.png');
+        }
+        .flag-ru { animation: slideInFlag 0.8s ease-out 2.3s forwards; }
+        
+        .flag-sa .flag-image { 
+            background-image: url('images/flaga/sa.png');
+        }
+        .flag-sa { animation: slideInFlag 0.8s ease-out 2.6s forwards; }
+        
+        .flag-ae .flag-image { 
+            background-image: url('images/flaga/emirates.png');
+        }
+        .flag-ae { animation: slideInFlag 0.8s ease-out 2.9s forwards; }
+        
+        .flag-us .flag-image { 
+            background-image: url('images/flaga/us.png');
+        }
+        .flag-us { animation: slideInFlag 0.8s ease-out 3.2s forwards; }
+        
+        .logo-container {
+            position: fixed;
+            top: 57.14%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateY(15px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
         }
         
-        .language-native {
-            font-size: 0.85rem;
-            color: #777;
+        .logo-container.hidden {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.9) translateY(20px);
+            pointer-events: none;
+        }
+        
+        .logo {
+            width: 400px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+            animation: logoFadeIn 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+        
+        .subtitle {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+            opacity: 0;
         }
         
         .footer {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e0e0e0;
-            color: #888;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 1s ease-out 2.5s forwards;
+            opacity: 0;
+        }
+        
+        /* Mobile language selector dropdown */
+        .mobile-language-selector {
+            display: none;
+            position: fixed;
+            top: 33.33%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 320px;
+            max-width: 90vw;
+        }
+        
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+        }
+        
+        .dropdown-selected {
+            width: 100%;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            color: #000;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+        
+        .dropdown-selected:hover {
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+        
+        .dropdown-arrow {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .dropdown-arrow.open {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border-radius: 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 10;
+        }
+        
+        .dropdown-options.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        
+        .dropdown-option {
+            padding: 14px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #000;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInOption 0.3s ease forwards;
+        }
+        
+        .dropdown-option:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-option:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateX(0);
+            color: #000;
+        }
+        
+        .flag-emoji {
+            font-size: 1.5rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .flag-image-small {
+            width: 24px;
+            height: 16px;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .language-name {
+            flex: 1;
+            text-align: left;
+        }
+        
+        /* Staggered animation for dropdown options */
+        .dropdown-option:nth-child(1) { animation-delay: 0.05s; }
+        .dropdown-option:nth-child(2) { animation-delay: 0.1s; }
+        .dropdown-option:nth-child(3) { animation-delay: 0.15s; }
+        .dropdown-option:nth-child(4) { animation-delay: 0.2s; }
+        .dropdown-option:nth-child(5) { animation-delay: 0.25s; }
+        .dropdown-option:nth-child(6) { animation-delay: 0.3s; }
+        .dropdown-option:nth-child(7) { animation-delay: 0.35s; }
+        .dropdown-option:nth-child(8) { animation-delay: 0.4s; }
+        .dropdown-option:nth-child(9) { animation-delay: 0.45s; }
+        .dropdown-option:nth-child(10) { animation-delay: 0.5s; }
+        
+        @media (max-width: 768px) {
+            .flags-container {
+                display: none;
+            }
+            
+            .mobile-language-selector {
+                display: none;
+            }
+
+            .flags-container {
+                display: none;
+            }
+
+            .flags-container-mobile {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                gap: 2vw;
+                width: 90vw;
+                max-width: 400px;
+                margin: 0 auto 24px auto;
+                justify-items: center;
+                align-items: center;
+            }
+
+            .flag-item-mobile {
+                width: 80px;
+                height: 60px;
+                border-radius: 12px;
+                background: rgba(255,255,255,0.15);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 6px;
+            }
+
+            .flag-image-mobile {
+                width: 40px;
+                height: 28px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 4px;
+                margin-bottom: 4px;
+            }
+
+            .flag-label-mobile {
+                font-size: 0.7rem;
+                color: #000;
+                text-align: center;
+            }
+            
+            .dropdown-selected {
+                font-size: 1rem;
+                padding: 14px 18px;
+            }
+            
+            .flag-item {
+                width: 130px;
+                height: 95px;
+                padding: 8px;
+            }
+            
+            .flag-image {
+                width: 65px;
+                height: 43px;
+                margin-bottom: 6px;
+            }
+            
+            .flag-label {
+                font-size: 0.8rem;
+            }
+            
+            .logo {
+                width: 220px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-language-selector {
+                width: 300px;
+                max-width: 95vw;
+            }
+            
+            .dropdown-selected {
+                font-size: 0.95rem;
+                padding: 12px 16px;
+            }
+            
+            .dropdown-option {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+            
+            .flags-container {
+                gap: 0.8rem;
+            }
+            
+            .flag-item {
+                width: 110px;
+                height: 80px;
+                padding: 6px;
+            }
+            
+            .flag-image {
+                width: 55px;
+                height: 36px;
+            }
+            
+            .flag-label {
+                font-size: 0.7rem;
+            }
+            
+            .logo {
+                width: 300px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            #mobile-banner-bottom {
+                display: none !important;
+            }
+            #top-language-label {
+        display: none !important;
+    }
         }
         
         @media (max-width: 768px) {
-            .language-selector {
-                padding: 2rem;
+    #top-language-label div {
+        font-size: 1.2rem !important;
+        text-transform: uppercase !important;
+        font-weight: bold;
+    }
+}
+        
+        @media (max-width: 768px) {
+    #top-language-label div {
+        border-radius: 0 !important;
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        -ms-border-radius: 0 !important;
+        -o-border-radius: 0 !important;
+    }
+}
+        
+        @keyframes slideInOption {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
             }
-            
-            h1 {
-                font-size: 1.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .language-options {
-                gap: 1rem;
-            }
-            
-            .language-card {
-                min-width: 100px;
-                padding: 1rem;
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
         
-        .language-selector {
-            animation: fadeInUp 0.8s ease-out;
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        @keyframes slideInFlag {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes logoFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="language-selector">
-        <div class="logo">🌍</div>
-        <h1>World Foundation</h1>
-        <p class="subtitle">Please choose your language / Wybierz język</p>
-        
-        <div class="language-options">
-            <a href="pl/index.html" class="language-card">
-                <div class="flag pl"></div>
-                <div class="language-name">Polski</div>
-                <div class="language-native">PL</div>
-            </a>
-            
-            <a href="#" class="language-card" onclick="showComingSoon('English')">
-                <div class="flag en"></div>
-                <div class="language-name">English</div>
-                <div class="language-native">EN</div>
-            </a>
-            
-            <a href="#" class="language-card" onclick="showComingSoon('Deutsch')">
-                <div class="flag de"></div>
-                <div class="language-name">Deutsch</div>
-                <div class="language-native">DE</div>
-            </a>
+    <div id="language-hover-label" style="display:none;position:fixed;left:50%;top:75%;transform:translate(-50%,0);z-index:1000;font-size:2rem;font-weight:700;color:white;text-shadow:0 2px 10px rgba(0,0,0,0.7);background:rgba(0,0,0,0.25);padding:16px 32px;border-radius:16px;pointer-events:none;transition:opacity 0.3s;opacity:0;"></div>
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="video/góry.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div class="video-overlay"></div>
+    
+    <!-- Dropdown backdrop for blur effect -->
+    <div class="dropdown-backdrop" id="dropdownBackdrop"></div>
+    
+    <!-- Mobile flags grid -->
+
+    
+    <div class="flags-container">
+        <div class="flag-item flag-pl" onclick="selectLanguage('pl')">
+            <div class="flag-image"></div>
+            <div class="flag-label">Polski</div>
+        </div>
+        <div class="flag-item flag-en" onclick="selectLanguage('en')">
+            <div class="flag-image"></div>
+            <div class="flag-label">English</div>
+        </div>
+        <div class="flag-item flag-de" onclick="selectLanguage('de')">
+            <div class="flag-image"></div>
+            <div class="flag-label">Deutsch</div>
+        </div>
+        <div class="flag-item flag-es" onclick="selectLanguage('es')">
+            <div class="flag-image"></div>
+            <div class="flag-label">Español</div>
+        </div>
+        <div class="flag-item flag-fr" onclick="selectLanguage('fr')">
+            <div class="flag-image"></div>
+            <div class="flag-label">Français</div>
+        </div>
+        <div class="flag-item flag-cn" onclick="selectLanguage('zh')">
+            <div class="flag-image"></div>
+            <div class="flag-label">中文</div>
+        </div>
+        <div class="flag-item flag-ru" onclick="selectLanguage('ru')">
+            <div class="flag-image"></div>
+            <div class="flag-label">Русский</div>
+        </div>
+        <div class="flag-item flag-sa" onclick="selectLanguage('ar')">
+            <div class="flag-image"></div>
+            <div class="flag-label">العربية</div>
+        </div>
+        <div class="flag-item flag-ae" onclick="selectLanguage('ae')">
+            <div class="flag-image"></div>
+            <div class="flag-label">عربي</div>
+        </div>
+        <div class="flag-item flag-us" onclick="selectLanguage('us')">
+            <div class="flag-image"></div>
+            <div class="flag-label">English US</div>
+        </div>
+    </div>
+    
+    <!-- Ukryty kontener z wszystkimi banerami, z-index pod tłem -->
+    <div id="all-mobile-banners" style="display:none; position:fixed; z-index:-2;">
+        <div class="flag-item-mobile flag-pl" data-lang="pl"><div class="flag-image-mobile" style="background-image:url('images/flaga/pl.png')"></div><div class="flag-label-mobile">Polski</div></div>
+        <div class="flag-item-mobile flag-en" data-lang="en"><div class="flag-image-mobile" style="background-image:url('images/flaga/en.png')"></div><div class="flag-label-mobile">English</div></div>
+        <div class="flag-item-mobile flag-de" data-lang="de"><div class="flag-image-mobile" style="background-image:url('images/flaga/de.png')"></div><div class="flag-label-mobile">Deutsch</div></div>
+        <div class="flag-item-mobile flag-es" data-lang="es"><div class="flag-image-mobile" style="background-image:url('images/flaga/esp.png')"></div><div class="flag-label-mobile">Español</div></div>
+        <div class="flag-item-mobile flag-fr" data-lang="fr"><div class="flag-image-mobile" style="background-image:url('images/flaga/fr.png')"></div><div class="flag-label-mobile">Français</div></div>
+        <div class="flag-item-mobile flag-cn" data-lang="cn"><div class="flag-image-mobile" style="background-image:url('images/flaga/cn.png')"></div><div class="flag-label-mobile">中文</div></div>
+        <div class="flag-item-mobile flag-ru" data-lang="ru"><div class="flag-image-mobile" style="background-image:url('images/flaga/ru.png')"></div><div class="flag-label-mobile">Русский</div></div>
+        <div class="flag-item-mobile flag-sa" data-lang="sa"><div class="flag-image-mobile" style="background-image:url('images/flaga/sa.png')"></div><div class="flag-label-mobile">العربية</div></div>
+        <div class="flag-item-mobile flag-ae" data-lang="ae"><div class="flag-image-mobile" style="background-image:url('images/flaga/emirates.png')"></div><div class="flag-label-mobile">عربي</div></div>
+        <div class="flag-item-mobile flag-us" data-lang="us"><div class="flag-image-mobile" style="background-image:url('images/flaga/us.png')"></div><div class="flag-label-mobile">English US</div></div>
+    </div>
+    <!-- Kontener grid 9 banerów -->
+    <div id="mobile-banners-top" style="display:block; position:absolute; left:0; right:0; top:16.666vh; z-index:10; margin:0 auto; width:90vw; max-width:400px;">
+        <div id="mobile-banners-grid" style="display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr); gap:12px; justify-items:center; align-items:center; width:100%;"></div>
+    </div>
+    <!-- Kontener pojedynczego banera -->
+    <div id="mobile-banner-bottom" style="display:block; text-align:center; position:absolute; left:0; right:0; top:66.666vh; z-index:10; width:100vw; max-width:600px; height:180px; margin:0 auto;"></div>
+    <div class="container">
+        <div class="logo-container">
+            <img src="images/logo/logo.png" alt="World Foundation Logo" class="logo">
         </div>
         
         <div class="footer">
@@ -201,26 +696,395 @@
     </div>
 
     <script>
-        function showComingSoon(language) {
-            alert(`${language} version is coming soon! / Wersja w języku ${language === 'English' ? 'angielskim' : 'niemieckim'} już wkrótce!`);
+// Usuwamy całą dynamiczną logikę generowania banerów
+
+// Wywołanie na mobilnych
+function showMobileFlags() {
+    if(window.innerWidth <= 768) {
+        setupMobileBanners();
+        document.querySelectorAll('.flags-container').forEach(e => e.style.display = 'none');
+        if(document.getElementById('mobile-banners-top')) document.getElementById('mobile-banners-top').style.display = 'block';
+        if(document.getElementById('mobile-banner-bottom')) document.getElementById('mobile-banner-bottom').style.display = 'block';
+    } else {
+        document.querySelectorAll('.flags-container').forEach(e => e.style.display = 'grid');
+        if(document.getElementById('mobile-banners-top')) document.getElementById('mobile-banners-top').style.display = 'none';
+        if(document.getElementById('mobile-banner-bottom')) document.getElementById('mobile-banner-bottom').style.display = 'none';
+    }
+}
+window.addEventListener('DOMContentLoaded', showMobileFlags);
+window.addEventListener('resize', showMobileFlags);
+        // Map języków do napisu 'Wybierz język' w danym języku
+        const chooseLanguageTexts = {
+            'pl': 'Wybierz język',
+            'en': 'Choose language',
+            'de': 'Sprache wählen',
+            'es': 'Elegir idioma',
+            'fr': 'Choisir la langue',
+            'zh': '选择语言',
+            'ru': 'Выберите язык',
+            'ar': 'اختر اللغة',
+            'ae': 'اختر اللغة',
+            'us': 'Choose language'
+        };
+
+        // Dodaj obsługę hover na flagach
+        // Poprawiona obsługa hover z usuwaniem timeoutów
+        (function() {
+            const label = document.getElementById('language-hover-label');
+                let bigContainer = document.getElementById('all-mobile-banners');
+            let hideTimeout = null;
+            document.querySelectorAll('.flag-item').forEach(function(flag) {
+                flag.addEventListener('mouseenter', function() {
+                    let lang = null;
+                    if (flag.classList.contains('flag-pl')) lang = 'pl';
+                    else if (flag.classList.contains('flag-en')) lang = 'en';
+                    else if (flag.classList.contains('flag-de')) lang = 'de';
+                    else if (flag.classList.contains('flag-es')) lang = 'es';
+                    else if (flag.classList.contains('flag-fr')) lang = 'fr';
+                    else if (flag.classList.contains('flag-cn')) lang = 'zh';
+                    else if (flag.classList.contains('flag-ru')) lang = 'ru';
+                    else if (flag.classList.contains('flag-sa')) lang = 'ar';
+                    else if (flag.classList.contains('flag-ae')) lang = 'ae';
+                    else if (flag.classList.contains('flag-us')) lang = 'us';
+                    if (lang && chooseLanguageTexts[lang]) {
+                        if (hideTimeout) { clearTimeout(hideTimeout); hideTimeout = null; }
+                        label.textContent = chooseLanguageTexts[lang];
+                        label.style.display = 'block';
+                        showTimeout = setTimeout(() => { label.style.opacity = '1'; }, 10);
+                    }
+                });
+                flag.addEventListener('mouseleave', function() {
+                    if (showTimeout) { clearTimeout(showTimeout); showTimeout = null; }
+                    label.style.opacity = '0';
+                    hideTimeout = setTimeout(() => { label.style.display = 'none'; }, 300);
+                });
+            });
+        })();
+        // Detect browser language and set initial text
+        function getBrowserLanguage() {
+            const lang = navigator.language || navigator.userLanguage;
+            const langCode = lang.substring(0, 2).toLowerCase();
+            
+            const languageTexts = {
+                'pl': 'Wybierz język',
+                'en': 'Choose language',
+                'de': 'Sprache wählen',
+                'es': 'Elegir idioma',
+                'fr': 'Choisir la langue',
+                'zh': '选择语言',
+                'ru': 'Выберите язык',
+                'ar': 'اختر اللغة',
+                'it': 'Scegli lingua',
+                'pt': 'Escolher idioma',
+                'nl': 'Kies taal',
+                'sv': 'Välj språk',
+                'da': 'Vælg sprog',
+                'no': 'Velg språk',
+                'fi': 'Valitse kieli'
+            };
+            
+            return languageTexts[langCode] || languageTexts['en']; // Fallback to English
         }
         
+        // Initialize the dropdown text based on browser language
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedText = document.getElementById('selectedLanguageText');
+            if (selectedText) {
+                selectedText.textContent = getBrowserLanguage();
+            }
+        });
+        
+        function toggleDropdown() {
+            const options = document.getElementById('languageOptions');
+            const arrow = document.querySelector('.dropdown-arrow');
+            const backdrop = document.getElementById('dropdownBackdrop');
+            const videoBackground = document.querySelector('.video-background');
+            const logoContainer = document.querySelector('.logo-container');
+            
+            const isOpen = options.classList.contains('open');
+            
+            if (isOpen) {
+                // Close dropdown
+                options.classList.remove('open');
+                arrow.classList.remove('open');
+                backdrop.classList.remove('active');
+                videoBackground.classList.remove('blurred');
+                logoContainer.classList.remove('hidden');
+            } else {
+                // Open dropdown
+                options.classList.add('open');
+                arrow.classList.add('open');
+                backdrop.classList.add('active');
+                videoBackground.classList.add('blurred');
+                logoContainer.classList.add('hidden');
+            }
+        }
+        
+        function selectLanguageFromDropdown(lang) {
+            const options = document.getElementById('languageOptions');
+            const arrow = document.querySelector('.dropdown-arrow');
+            const selected = document.getElementById('selectedLanguageText');
+            const backdrop = document.getElementById('dropdownBackdrop');
+            const videoBackground = document.querySelector('.video-background');
+            const logoContainer = document.querySelector('.logo-container');
+            
+            // Close dropdown and remove blur
+            options.classList.remove('open');
+            arrow.classList.remove('open');
+            backdrop.classList.remove('active');
+            videoBackground.classList.remove('blurred');
+            logoContainer.classList.remove('hidden');
+            
+            // Update selected text without flag emoji
+            const languages = {
+                'pl': 'Polski',
+                'en': 'English',
+                'de': 'Deutsch',
+                'es': 'Español',
+                'fr': 'Français',
+                'zh': '中文',
+                'ru': 'Русский',
+                'ar': 'العربية',
+                'ae': 'عربي',
+                'us': 'English US'
+            };
+            
+            if (languages[lang]) {
+                selected.textContent = languages[lang];
+            }
+            
+            // Execute language selection
+            selectLanguage(lang);
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.custom-dropdown');
+            const backdrop = document.getElementById('dropdownBackdrop');
+            
+            if (!dropdown.contains(event.target)) {
+                const options = document.getElementById('languageOptions');
+                const arrow = document.querySelector('.dropdown-arrow');
+                const videoBackground = document.querySelector('.video-background');
+                const logoContainer = document.querySelector('.logo-container');
+                
+                options.classList.remove('open');
+                arrow.classList.remove('open');
+                backdrop.classList.remove('active');
+                videoBackground.classList.remove('blurred');
+                logoContainer.classList.remove('hidden');
+            }
+        });
+        
+        // Close dropdown when clicking on backdrop
+        document.getElementById('dropdownBackdrop').addEventListener('click', function() {
+            const options = document.getElementById('languageOptions');
+            const arrow = document.querySelector('.dropdown-arrow');
+            const backdrop = document.getElementById('dropdownBackdrop');
+            const videoBackground = document.querySelector('.video-background');
+            const logoContainer = document.querySelector('.logo-container');
+            
+            options.classList.remove('open');
+            arrow.classList.remove('open');
+            backdrop.classList.remove('active');
+            videoBackground.classList.remove('blurred');
+            logoContainer.classList.remove('hidden');
+        });
+        
+        function selectLanguage(lang) {
+            localStorage.setItem('langSelected', lang);
+            
+            const languages = {
+                'pl': { redirect: 'pl/index.html', name: 'Polski' },
+                'en': { redirect: null, name: 'English' },
+                'de': { redirect: null, name: 'Deutsch' },
+                'es': { redirect: null, name: 'Español' },
+                'fr': { redirect: null, name: 'Français' },
+                'zh': { redirect: null, name: '中文 (Chinese)' },
+                'ru': { redirect: null, name: 'Русский (Russian)' },
+                'ar': { redirect: null, name: 'العربية (Arabic)' },
+                'ae': { redirect: null, name: 'العربية (UAE)' },
+                'us': { redirect: null, name: 'English (US)' }
+            };
+            
+            if (languages[lang] && languages[lang].redirect) {
+                window.location.href = languages[lang].redirect;
+            } else if (languages[lang]) {
+                showComingSoon(languages[lang].name);
+            } else {
+                showComingSoon('Unknown language');
+            }
+        }
+        
+        function showComingSoon(language) {
+            alert(`${language} version is coming soon!\nWersja w języku ${language} już wkrótce!\nVersion ${language} arrive bientôt!`);
+        }
+        
+        // Auto redirect after 20 seconds if no choice made
         setTimeout(function() {
             const userChoice = localStorage.getItem('langSelected');
             if (!userChoice) {
-                if (confirm('No language selected. Redirect to Polish version? / Nie wybrano języka. Przekierować do polskiej wersji?')) {
-                    window.location.href = 'pl/index.html';
+                if (confirm('No language selected. Redirect to Polish version?\nNie wybrano języka. Przekierować do polskiej wersji?')) {
+                    selectLanguage('pl');
                 }
             }
-        }, 10000);
+        }, 20000);
         
-        document.querySelectorAll('.language-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === 'pl/index.html') {
-                    localStorage.setItem('langSelected', 'pl');
-                }
-            });
+        // Preload video for better performance
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            if (video) {
+                video.load();
+            }
         });
+    </script>
+    <script>
+function showMobileBannersByLanguage() {
+    // Pobierz język przeglądarki
+    let browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    let langCode = browserLang.split('-')[0];
+    // Mapowanie na kody flag
+    if (langCode === 'zh') langCode = 'cn';
+    if (langCode === 'ar') langCode = 'sa';
+    if (langCode === 'ae') langCode = 'ae';
+    if (langCode === 'en') langCode = 'us';
+    // Pobierz wszystkie banery z ukrytego kontenera
+    const allBanners = Array.from(document.querySelectorAll('#all-mobile-banners .flag-item-mobile'));
+    // Znajdź baner wybranego języka
+    let selectedBanner = allBanners.find(b => b.getAttribute('data-lang') === langCode);
+    if (!selectedBanner) selectedBanner = allBanners.find(b => b.getAttribute('data-lang') === 'en');
+    // Pozostałe banery
+    const gridBanners = allBanners.filter(b => b !== selectedBanner);
+    // Wyczyść docelowe kontenery
+    const singleContainer = document.getElementById('mobile-banner-bottom');
+    const gridContainer = document.getElementById('mobile-banners-grid');
+    if (singleContainer) singleContainer.innerHTML = '';
+    if (gridContainer) gridContainer.innerHTML = '';
+    // Przenieś wybrany baner do pojedynczego kontenera
+    if (selectedBanner && singleContainer) {
+        // Dodaj nowy kontener na napis u góry ekranu
+        const topLabelContainerId = 'top-language-label';
+        let topLabelContainer = document.getElementById(topLabelContainerId);
+        if (!topLabelContainer) {
+            topLabelContainer = document.createElement('div');
+            topLabelContainer.id = topLabelContainerId;
+            topLabelContainer.style.position = 'absolute';
+            topLabelContainer.style.top = '0';
+            topLabelContainer.style.left = '0';
+            topLabelContainer.style.width = '100vw';
+            topLabelContainer.style.textAlign = 'center';
+            topLabelContainer.style.zIndex = '30';
+            topLabelContainer.style.marginTop = '0';
+            topLabelContainer.style.padding = '0';
+            document.body.appendChild(topLabelContainer);
+        }
+        // Kontener na baner i napis razem
+        const bannerBox = document.createElement('div');
+        bannerBox.style.display = 'flex';
+        bannerBox.style.flexDirection = 'column';
+        bannerBox.style.alignItems = 'center';
+        bannerBox.style.justifyContent = 'center';
+        bannerBox.style.width = '160px';
+        bannerBox.style.margin = '0 auto';
+        // Baner
+        const bigBanner = selectedBanner.cloneNode(true);
+        bigBanner.style.width = '160px';
+        bigBanner.style.height = '120px';
+        bigBanner.style.display = 'flex';
+        bigBanner.style.flexDirection = 'column';
+        bigBanner.style.alignItems = 'center';
+        bigBanner.style.justifyContent = 'center';
+        bigBanner.style.margin = '0 auto';
+        // Zwiększ rozmiar flagi w banerze
+        const img = bigBanner.querySelector('.flag-image-mobile');
+        if (img) {
+            img.style.width = '80px';
+            img.style.height = '56px';
+            img.style.margin = '0 auto';
+        }
+        // Dodaj linkowanie
+        const lang = bigBanner.getAttribute('data-lang');
+        let href = null;
+        let labelText = '';
+        switch(lang) {
+            case 'pl': href = 'pl/index.html'; labelText = 'Wybierz swój język'; break;
+            case 'en': href = null; labelText = 'Choose your language'; break;
+            case 'de': href = null; labelText = 'Wähle deine Sprache'; break;
+            case 'es': href = null; labelText = 'Elige tu idioma'; break;
+            case 'fr': href = null; labelText = 'Choisissez votre langue'; break;
+            case 'cn': href = null; labelText = '选择你的语言'; break;
+            case 'ru': href = null; labelText = 'Выберите свой язык'; break;
+            case 'sa': href = null; labelText = 'اختر لغتك'; break;
+            case 'ae': href = null; labelText = 'اختر لغتك'; break;
+            case 'us': href = null; labelText = 'Choose your language'; break;
+        }
+        // Napis w tym samym kontenerze co baner
+        const labelDiv = document.createElement('div');
+        labelDiv.textContent = labelText;
+        labelDiv.style.marginTop = '8px';
+        labelDiv.style.fontSize = '1rem';
+        labelDiv.style.fontWeight = 'bold';
+        labelDiv.style.textAlign = 'center';
+        labelDiv.style.color = '#fff';
+        labelDiv.style.background = 'rgba(0,0,0,0.25)';
+        labelDiv.style.borderRadius = '8px';
+        labelDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.25)';
+        labelDiv.style.padding = '26px 0';
+        // Przenieś napis do nowego kontenera u góry ekranu
+        topLabelContainer.innerHTML = '';
+        topLabelContainer.appendChild(labelDiv);
+        // Dodaj baner i napis do kontenera
+        if (href) {
+            const link = document.createElement('a');
+            link.href = href;
+            link.style.display = 'block';
+            link.style.width = '100%';
+            link.style.height = '100%';
+            link.appendChild(bigBanner);
+            bannerBox.appendChild(link);
+        } else {
+            bannerBox.appendChild(bigBanner);
+        }
+        singleContainer.innerHTML = '';
+        singleContainer.style.display = 'flex';
+        singleContainer.style.justifyContent = 'center';
+        singleContainer.style.alignItems = 'center';
+        singleContainer.style.margin = '0 auto';
+        singleContainer.appendChild(bannerBox);
+    }
+    // Przenieś pozostałe banery do gridu
+    gridBanners.forEach(b => {
+        const gridBanner = b.cloneNode(true);
+        // Dodaj linkowanie
+        const lang = gridBanner.getAttribute('data-lang');
+        let href = null;
+        switch(lang) {
+            case 'pl': href = 'pl/index.html'; break;
+            case 'en': href = null; break;
+            case 'de': href = null; break;
+            case 'es': href = null; break;
+            case 'fr': href = null; break;
+            case 'cn': href = null; break;
+            case 'ru': href = null; break;
+            case 'sa': href = null; break;
+            case 'ae': href = null; break;
+            case 'us': href = null; break;
+        }
+        if (href) {
+            const link = document.createElement('a');
+            link.href = href;
+            link.style.display = 'block';
+            link.style.width = '100%';
+            link.style.height = '100%';
+            link.appendChild(gridBanner);
+            gridContainer.appendChild(link);
+        } else {
+            gridContainer.appendChild(gridBanner);
+        }
+    });
+}
+window.addEventListener('DOMContentLoaded', showMobileBannersByLanguage);
+window.addEventListener('resize', showMobileBannersByLanguage);
     </script>
 </body>
 </html>
