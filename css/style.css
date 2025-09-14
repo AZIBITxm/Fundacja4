@@ -251,34 +251,134 @@ body.navbar-scrolled .rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
   position: relative;
 }
 
-.rd-navbar-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  min-width: 250px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
+/* NOWOCZESNE Desktop dropdown menu z animacją */
+@media (min-width: 992px) {
+  .rd-navbar-dropdown {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    background: rgba(255, 255, 255, 0.5) !important; /* 50% przezroczystości dla całego menu */
+    backdrop-filter: blur(10px) !important; /* Efekt rozmycia tła */
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08) !important; /* Mocniejszy, elegancki cień */
+    border-radius: 0 !important; /* OSTRE KĄTY */
+    min-width: 280px !important;
+    padding: 8px 0 !important; /* Wewnętrzny odstęp */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-20px) scaleY(0.8) !important;
+    transition: all 0.4s cubic-bezier(.4,0,.2,1) !important;
+    z-index: 10000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Subtelna biaława ramka */
+    will-change: opacity, transform !important;
+    display: block !important;
+    pointer-events: none !important;
+  }
+
+  .rd-nav-item.has-dropdown:hover .rd-navbar-dropdown {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scaleY(1) !important;
+    pointer-events: auto !important;
+    display: block !important;
+    border-radius: 0 !important; /* OSTRE KĄTY */
+    z-index: 10000 !important;
+    transition-delay: 0s !important;
+  }
+
+  /* WYMUSZENIE RESET-U JS STYLI */
+  .rd-nav-item.has-dropdown .rd-navbar-dropdown[style] {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-20px) scaleY(0.8) !important;
+    display: block !important;
+  }
+
+  .rd-nav-item.has-dropdown:hover .rd-navbar-dropdown[style] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scaleY(1) !important;
+    display: block !important;
+  }
+
+  .rd-navbar-dropdown-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important; /* Subtelna linia oddzielająca */
+    opacity: 0 !important;
+    transform: translateX(-20px) !important;
+    transition: all 0.35s cubic-bezier(.4,0,.2,1) !important;
+    background: transparent !important; /* Domyślnie przezroczyste elementy */
+    margin: 0 8px !important; /* Odstępy boczne */
+    border-radius: 0 !important; /* OSTRE KĄTY dla elementów */
+  }
+
+  .rd-navbar-dropdown-item:nth-child(1) {
+    transition-delay: 0.1s !important;
+  }
+
+  .rd-navbar-dropdown-item:nth-child(2) {
+    transition-delay: 0.15s !important;
+  }
+
+  .rd-navbar-dropdown-item:nth-child(3) {
+    transition-delay: 0.2s !important;
+  }
+
+  .rd-navbar-dropdown-item:nth-child(4) {
+    transition-delay: 0.25s !important;
+  }
+
+  .rd-navbar-dropdown-item:nth-child(5) {
+    transition-delay: 0.3s !important;
+  }
+
+  .rd-navbar-dropdown-item:hover {
+    background: transparent !important; /* Kafelek pozostaje przezroczysty - tło ustawia link */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .rd-nav-item.has-dropdown:hover .rd-navbar-dropdown-item {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    background: transparent !important; /* Pozostają przezroczyste */
+  }
+
+  .rd-navbar-dropdown-item:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+  }
+
+  .rd-navbar-dropdown-link {
+    display: block !important;
+    padding: 12px 16px !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    transition: all 0.25s ease !important;
+    font-size: 14px !important;
+    font-weight: 500 !important; /* Trochę grubsza czcionka */
+    letter-spacing: 0.3px !important; /* Lepszy spacing */
+    border-radius: 0 !important; /* OSTRE KĄTY dla linków */
+    position: relative !important; /* Pozycjonowanie względne */
+    z-index: 1 !important; /* Tekst na wierzchu */
+  }
+
+  .rd-navbar-dropdown-link:hover {
+    background: rgba(102, 137, 255, 1) !important; /* NIEBIESKIE TŁO za napisem - nieprzezroczyste */
+    color: #ffffff !important; /* BIAŁY NAPIS na niebieskim tle - lepszy kontrast */
+    text-decoration: none !important;
+    transform: translateX(4px) !important; /* Delikatne przesunięcie na hover */
+    position: relative !important; /* Upewnij się że pozycjonowanie jest względne */
+    z-index: 2 !important; /* Wyższy z-index niż domyślny */
+  }
 }
 
-.rd-nav-item.has-dropdown:hover .rd-navbar-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* Override hover effects on mobile */
+/* Mobile override for hover effects */
 @media (max-width: 991.98px) {
   .rd-nav-item.has-dropdown:hover .rd-navbar-dropdown {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
+    pointer-events: auto !important;
   }
 }
 
@@ -286,14 +386,6 @@ body.navbar-scrolled .rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.rd-navbar-dropdown-item {
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.rd-navbar-dropdown-item:last-child {
-  border-bottom: none;
 }
 
 .rd-navbar-dropdown-link {
@@ -308,7 +400,7 @@ body.navbar-scrolled .rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
 
 .rd-navbar-dropdown-link:hover {
   background: #f8f9fa;
-  color: #6689ff !important;
+  color: #ffffff !important; /* BIAŁY TEKST po hover dla lepszego kontrastu */
   text-decoration: none;
 }
 
@@ -368,8 +460,19 @@ body.navbar-scrolled .rd-navbar.rd-navbar-classic .rd-navbar-nav .rd-nav-link {
   }
   
   .rd-navbar-nav .rd-nav-item.has-dropdown .rd-navbar-dropdown-link:hover {
-    background: transparent !important;
-    color: #6689ff !important;
+    background: rgba(102, 137, 255, 0.8) !important; /* JAŚNIEJSZY NIEBIESKI niż desktop (80% opacity) */
+    color: #ffffff !important; /* BIAŁY TEKST po hover dla lepszego kontrastu */
+    border-radius: 4px !important; /* Lekko zaokrąglone rogi dla mobile */
+    transition: all 0.3s ease !important; /* Płynne przejście */
+  }
+
+  /* Hover effect dla głównych linków menu mobilnego */
+  .rd-navbar-nav .rd-nav-link:hover {
+    background: rgba(102, 137, 255, 0.7) !important; /* JESZCZE JAŚNIEJSZY NIEBIESKI dla głównych linków */
+    color: #ffffff !important; /* BIAŁY TEKST */
+    border-radius: 6px !important; /* Trochę większe zaokrąglenie dla głównych linków */
+    transition: all 0.3s ease !important; /* Płynne przejście */
+    padding: 8px 12px !important; /* Dodatkowy padding dla lepszego wyglądu */
   }
 }
 

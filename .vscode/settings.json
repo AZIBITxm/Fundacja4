@@ -1,0 +1,12 @@
+{
+  // Język odpowiedzi Copilota – polski (jeśli ustawienie jest obsługiwane)
+  "github.copilot.chat.localeOverride": "pl",
+
+  // Preferencje edytora – opcjonalnie dopasuj język UI jeśli masz zainstalowany polski Language Pack
+  // "locale": "pl",
+
+  // VS Code Speech – preferencje wejścia głosowego (jeśli rozszerzenie to obsługuje w ustawieniach Workspace)
+  // Uwaga: część ustawień może działać tylko w Ustawieniach Użytkownika.
+  "vscode-speech.language": "pl-PL",
+  "vscode-speech.autoPunctuation": true
+}

@@ -69,9 +69,16 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var modal = document.getElementById('langModal');
-        // Modal zawsze się pojawia przy ładowaniu strony
-        modal.style.display = 'flex';
-        modal.style.opacity = '1';
+        // Pokazuj modal tylko przy pierwszym uruchomieniu strony
+        var seen = localStorage.getItem('langModalSeen') === 'true';
+        if (!seen) {
+          modal.style.display = 'flex';
+          modal.style.opacity = '1';
+        } else {
+          // Upewnij się, że modal pozostaje ukryty przy kolejnych wejściach
+          modal.style.display = 'none';
+          modal.style.opacity = '0';
+        }
         function fadeOutModal(callback) {
           modal.style.opacity = '0';
           setTimeout(function() {
@@ -81,17 +88,20 @@
         }
         document.getElementById('flagPL').onclick = function() {
           localStorage.setItem('langSelected', 'pl');
+          localStorage.setItem('langModalSeen', 'true');
           fadeOutModal();
           updateLangButton();
         };
         document.getElementById('flagEN').onclick = function() {
           localStorage.setItem('langSelected', 'en');
+          localStorage.setItem('langModalSeen', 'true');
           window.location.href = 'index-en.html';
           // Modal zostanie zamknięty dopiero na stronie index-en.html
           updateLangButton();
         };
         document.getElementById('flagDE').onclick = function() {
-          // na razie nie rób nic
+          // na razie nie rób nic, ale zapamiętaj, że modal był już pokazany
+          localStorage.setItem('langModalSeen', 'true');
         };
         // Dodaj przycisk do menu
         function updateLangButton() {
@@ -173,7 +183,7 @@
                                 <a class="rd-navbar-dropdown-link" href="projekt-spot.html">Projekt SPOT</a>
                               </li>
                               <li class="rd-navbar-dropdown-item">
-                                <a class="rd-navbar-dropdown-link" href="#projects">Rodzicu nie jesteś sam</a>
+                                <a class="rd-navbar-dropdown-link" href="program-rodzic-nie-jestes-sam.html">Rodzicu nie jesteś sam</a>
                               </li>
                               <li class="rd-navbar-dropdown-item">
                                 <a class="rd-navbar-dropdown-link" href="#projects">Technologia dla zdrowia</a>
