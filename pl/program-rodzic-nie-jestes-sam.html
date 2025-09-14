@@ -991,11 +991,11 @@
         <div class="row justify-content-center mb-5">
           <div class="col-lg-8 text-center asymmetric-content">
             <h2 class="mb-4">🎯 Nasza Misja</h2>
-            <p class="text-gray-500 lead">Walczymy z systemem, który krzywdzi dzieci i rodziny</p>
-            <div class="progress-bar-animated mt-4">
-              <div class="progress-fill" data-width="85"></div>
+            <p class="text-gray-500 lead">Walczymy z systemem, który krzywdzi dzieci i rodziny.<br>
+            Każda darowizna może nam pomóc w tej nierównej walce.</p>
+            <div class="mt-4 d-flex justify-content-center">
+              <script src="https://donorbox.org/widget.js" paypalExpress="false"></script><iframe height="93px" width="100%" src="https://donorbox.org/embed/projekt-spot-przeciwdzialanie-cyfrowym-uzaleznieniom-2-3?donation_meter_color=%23128aed&only_donation_meter=true&preview=true" style="max-width: 332px; min-width: 250px; min-height: 90px; max-height: none !important;" seamless="seamless" name="donorbox" frameborder="0" scrolling="no"> </iframe>
             </div>
-            <small class="text-muted">85% rodziców odzyskuje lepszy kontakt z dzieckiem</small>
           </div>
         </div>
 
@@ -1091,7 +1091,7 @@
               
               <div class="mt-4">
                   <div class="d-flex flex-column justify-content-center align-items-center banner-buttons-container">
-                    <a href="#wsparcie-finansowe" class="button button-primary button-ujarak w-100 pulse-anim" style="box-shadow: 0 0 16px #8B7D6B; margin-bottom: -8px;">
+                    <a href="#" class="button button-primary button-ujarak w-100 pulse-anim" style="box-shadow: 0 0 16px #8B7D6B; margin-bottom: -8px;" data-toggle="modal" data-target="#donorSPOTModal">
                       💰 Wesprzyj finansowo
                     </a>
                     <a href="#potrzebujesz-pomocy" class="button button-outline button-ujarak w-100" onclick="scrollToSection('potrzebujesz-pomocy')" style="margin-bottom: -8px;">
@@ -1518,7 +1518,7 @@
                   <p class="mb-4 small text-center">Nie wahaj się skontaktować z nami. Każda sytuacja jest ważna i zasługuje na profesjonalne wsparcie.</p>
                   
                   <div class="action-button">
-                    <a href="#wsparcie-finansowe" class="button button-primary button-ujarak w-100">💰Wesprzyj finansowo</a>
+                    <a href="#" class="button button-primary button-ujarak w-100" data-toggle="modal" data-target="#donorSPOTModal">💰Wesprzyj finansowo</a>
                   </div>
                   
                   <div class="action-button">
@@ -2478,6 +2478,26 @@
               }
             });
           </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Wsparcie Finansowe -->
+  <div class="modal fade" id="donorSPOTModal" tabindex="-1" role="dialog" aria-labelledby="donorSPOTModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="donorSPOTModalLabel">
+            <i class="fa fa-heart me-2"></i>Wesprzyj finansowo program
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+          <iframe src="https://donorbox.org/embed/projekt-spot-przeciwdzialanie-cyfrowym-uzaleznieniom-2-3?" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style="max-width: 500px; min-width: 250px; max-height:none!important" allow="payment"></iframe>
         </div>
       </div>
     </div>
