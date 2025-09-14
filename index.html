@@ -684,7 +684,7 @@
         <div id="mobile-banners-grid" style="display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr); gap:12px; justify-items:center; align-items:center; width:100%;"></div>
     </div>
     <!-- Kontener pojedynczego banera -->
-    <div id="mobile-banner-bottom" style="display:block; text-align:center; position:absolute; left:0; right:0; top:66.666vh; z-index:10; width:100vw; max-width:600px; height:180px; margin:0 auto;"></div>
+    <div id="mobile-banner-bottom" style="display:block; text-align:center; position:absolute; left:0; right:0; top:calc(66.666vh - 30px); z-index:10; width:100vw; max-width:600px; height:180px; margin:0 auto;"></div>
     <div class="container">
         <div class="logo-container">
             <img src="images/logo/logo.png" alt="World Foundation Logo" class="logo">
@@ -1025,14 +1025,23 @@ function showMobileBannersByLanguage() {
         labelDiv.style.fontSize = '1rem';
         labelDiv.style.fontWeight = 'bold';
         labelDiv.style.textAlign = 'center';
-        labelDiv.style.color = '#fff';
-        labelDiv.style.background = 'rgba(0,0,0,0.25)';
-        labelDiv.style.borderRadius = '8px';
-        labelDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.25)';
-        labelDiv.style.padding = '26px 0';
+        labelDiv.style.color = '#000';
+        labelDiv.style.background = 'transparent';
+        labelDiv.style.textShadow = '0 1px 3px rgba(255, 255, 255, 0.8)';
+        labelDiv.style.padding = '26px 0 16px 0';
+        
+        // Dodaj cienką linię jako separator
+        const separator = document.createElement('div');
+        separator.style.width = '60px';
+        separator.style.height = '1px';
+        separator.style.background = '#000';
+        separator.style.margin = '8px auto 0 auto';
+        separator.style.boxShadow = '0 1px 3px rgba(255, 255, 255, 0.8)';
+        
         // Przenieś napis do nowego kontenera u góry ekranu
         topLabelContainer.innerHTML = '';
         topLabelContainer.appendChild(labelDiv);
+        topLabelContainer.appendChild(separator);
         // Dodaj baner i napis do kontenera
         if (href) {
             const link = document.createElement('a');
