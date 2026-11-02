@@ -1320,22 +1320,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 
-		// Obsługa formularza 'GRUPA WSPARCIA' - WhatsApp
-
-  // Blokada submit na formularzu, aby nie odświeżał strony
-  $(document).on('submit', '#supportGroupForm', function(e) {
-	e.preventDefault();
-	var nick = $('#supportGroupForm input[name="wsparcieName"]').val();
-	var phone = $('#supportGroupForm input[name="wsparciePhone"]').val();
-	var message = 'cześć, dodaj mnie do grupy wsparcia. Imię/nick: ' + nick + ', Telefon: ' + phone;
-	var whatsappUrl = 'https://wa.me/+4915219459413?text=' + encodeURIComponent(message);
-	var win = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-	if (!win) {
-	  window.location.href = whatsappUrl;
-	}
-	$('#modalWsparcie').modal('hide');
-	return false;
-  });
 
 		// Custom Toggles
 		if ( plugins.customToggle.length ) {

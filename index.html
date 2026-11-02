@@ -691,7 +691,7 @@
         </div>
         
         <div class="footer">
-            © 2025 World Foundation. All rights reserved.
+            © <span id="footerYear">2025</span> World Foundation. All rights reserved.<script>document.getElementById('footerYear').textContent=new Date().getFullYear();</script>
         </div>
     </div>
 
@@ -701,7 +701,6 @@
 // Wywołanie na mobilnych
 function showMobileFlags() {
     if(window.innerWidth <= 768) {
-        setupMobileBanners();
         document.querySelectorAll('.flags-container').forEach(e => e.style.display = 'none');
         if(document.getElementById('mobile-banners-top')) document.getElementById('mobile-banners-top').style.display = 'block';
         if(document.getElementById('mobile-banner-bottom')) document.getElementById('mobile-banner-bottom').style.display = 'block';

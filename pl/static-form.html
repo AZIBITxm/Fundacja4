@@ -27,7 +27,7 @@
             <button type="submit" class="btn-send">OK</button>
         </div>
         
-        <div id="form-message" class="form-message"></div>
+        <div id="form-status" class="form-message"></div>
     </form>
 
     <script>
@@ -41,7 +41,7 @@
                 form.reset();
             }
             
-            var messageDiv = document.getElementById('form-message');
+            var messageDiv = document.getElementById('form-status');
             if (messageDiv) {
                 messageDiv.textContent = '';
                 messageDiv.className = 'form-message';
@@ -81,7 +81,7 @@
             e.preventDefault();
             
             var form = this;
-            var messageDiv = document.getElementById('form-message');
+            var messageDiv = document.getElementById('form-status');
             var submitBtn = form.querySelector('.btn-send');
             
             // Pokaż stan ładowania

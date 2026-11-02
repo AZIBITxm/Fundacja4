@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="wide wow-animation" lang="en">
+<html class="wide wow-animation" lang="pl">
   <head>
     <style>
       @media (max-width: 1024px) {
@@ -40,7 +40,6 @@
   <link rel="stylesheet" href="../css/modal-wsparcie-pl.css">
   <link rel="stylesheet" href="../css/modal-wsparcie-banner.css">
   <link rel="stylesheet" href="../css/modal-cooperation.css">
-  <!-- <link rel="stylesheet" href="css/modal-jotform-mobile.css"> -->
     
   </head>
   <body>
@@ -92,24 +91,30 @@
           fadeOutModal();
           updateLangButton();
         };
-        document.getElementById('flagEN').onclick = function() {
-          localStorage.setItem('langSelected', 'en');
+        function showLangSoon(text) {
           localStorage.setItem('langModalSeen', 'true');
-          window.location.href = 'index-en.html';
-          // Modal zostanie zamknięty dopiero na stronie index-en.html
-          updateLangButton();
+          var info = document.getElementById('langSoon');
+          if (!info) {
+            info = document.createElement('p');
+            info.id = 'langSoon';
+            info.style.cssText = 'margin-top:16px;font-size:15px;color:#555;text-align:center;';
+            modal.appendChild(info);
+          }
+          info.textContent = text;
+        }
+        document.getElementById('flagEN').onclick = function() {
+          showLangSoon('English version coming soon.');
         };
         document.getElementById('flagDE').onclick = function() {
-          // na razie nie rób nic, ale zapamiętaj, że modal był już pokazany
-          localStorage.setItem('langModalSeen', 'true');
+          showLangSoon('Die deutsche Version ist in Vorbereitung.');
         };
         // Dodaj przycisk do menu
         function updateLangButton() {
-          var lang = localStorage.getItem('langSelected') || 'pl';
+          var lang = 'pl'; // strona polska — zawsze flaga PL
           var flagSrc = {
-            pl: 'images/flaga/pl.png',
-            en: 'images/flaga/en.png',
-            de: 'images/flaga/de.png'
+            pl: '../images/flaga/pl.png',
+            en: '../images/flaga/en.png',
+            de: '../images/flaga/de.png'
           };
           var nav = document.querySelector('.rd-navbar-nav');
           if (!nav) return;
@@ -209,7 +214,7 @@
         <!-- Swiper-->
         <section class="section swiper-container swiper-slider swiper-slider-classic" data-loop="true" data-autoplay="4859" data-simulate-touch="true" data-direction="vertical" data-nav="false">
           <div class="swiper-wrapper text-center">
-            <div class="swiper-slide" data-slide-bg="../images/banery/221.png">
+            <div class="swiper-slide" data-slide-bg="../images/banery/221.webp">
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Wsparcie psychologa</h1>
@@ -217,31 +222,31 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="../images/banery/20.png">
+            <div class="swiper-slide" data-slide-bg="../images/banery/20.webp">
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Budowanie świadomości</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Program cyfrowych uzależnień, oraz inne programy budujące świadomość i mechanizmy obronne dla zafrożeń dzisiajszej cywilizacji.</p><a class="button button-primary button-ujarak" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Program cyfrowych uzależnień oraz inne programy budujące świadomość i mechanizmy obronne dla zagrożeń dzisiejszej cywilizacji.</p><a class="button button-primary button-ujarak" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="../images/banery/22.png">
+            <div class="swiper-slide" data-slide-bg="../images/banery/22.webp">
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Nie jesteś Sam</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wsparcie dla rodziców samotnie wychowujących dzieci, oraz doświadczających alenacji rodzicielskiej</p><a class="button button-primary button-ujarak" id="slider3-btn" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wsparcie dla rodziców samotnie wychowujących dzieci oraz doświadczających alienacji rodzicielskiej</p><a class="button button-primary button-ujarak" id="slider3-btn" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="../images/banery/23.png">
+            <div class="swiper-slide" data-slide-bg="../images/banery/23.webp">
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0"> Dołącz do nas </h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Organizujemy wydarzenia integracyjne, spotkania tematyczne oraz projekty społeczne, które mają na celu budowanie więzi i wzmacnianie lokalnych społeczności.</p><a class="button button-primary button-ujarak" href="#modalCta" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Organizujemy wydarzenia integracyjne, spotkania tematyczne oraz projekty społeczne, które mają na celu budowanie więzi i wzmacnianie lokalnych społeczności.</p><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="../images/banery/24.png">
+            <div class="swiper-slide" data-slide-bg="../images/banery/24.webp">
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Wsparcie dla weteranów</h1>
@@ -316,56 +321,6 @@
                     setTimeout(function() { tab2.click(); }, 400);
                   }
                   return;
-                }
-                // Slider 4 (indeks 3) - wywołanie modala WhatsForm
-                if (btn.id === 'slider4-btn') {
-                  e.preventDefault();
-                  var modal = document.getElementById('modalWsparcie');
-                  if (modal) {
-                    if (typeof window.jQuery === 'function' && window.jQuery(modal).modal) {
-                      window.jQuery(modal).modal('show');
-                    } else {
-                      modal.classList.add('show');
-                      modal.style.display = 'block';
-                      modal.setAttribute('aria-modal', 'true');
-                      modal.removeAttribute('aria-hidden');
-                    }
-                  }
-                  return;
-                }
-                // Slider "Dołącz do nas" (indeks 3) - przewiń do baneru GRUPA WSPARCIA
-                var parentSlide = btn.closest('.swiper-slide');
-                if (parentSlide) {
-                  var h1 = parentSlide.querySelector('h1');
-                  if (h1 && h1.textContent && h1.textContent.trim().toLowerCase().includes('dołącz do nas')) {
-                    e.preventDefault();
-                    var wsparcieBanner = document.getElementById('openWsparcieModalLink');
-                    if (wsparcieBanner) {
-                      var parent = wsparcieBanner.closest('.box-icon-modern');
-                      if (parent) {
-                        var y = parent.getBoundingClientRect().top + window.pageYOffset - 40;
-                        window.scrollTo({ top: y, behavior: 'smooth' });
-                      } else {
-                        var y = wsparcieBanner.getBoundingClientRect().top + window.pageYOffset - 40;
-                        window.scrollTo({ top: y, behavior: 'smooth' });
-                      }
-                      // Po przewinięciu otwórz modal wsparcia
-                      setTimeout(function() {
-                        var modal = document.getElementById('modalWsparcie');
-                        if (modal) {
-                          if (typeof window.jQuery === 'function' && window.jQuery(modal).modal) {
-                            window.jQuery(modal).modal('show');
-                          } else {
-                            modal.classList.add('show');
-                            modal.style.display = 'block';
-                            modal.setAttribute('aria-modal', 'true');
-                            modal.removeAttribute('aria-hidden');
-                          }
-                        }
-                      }, 600);
-                    }
-                    return;
-                  }
                 }
                 var href = btn.getAttribute('href');
                 if (href && href.startsWith('#') && href.length > 1 && !btn.hasAttribute('data-toggle')) {
@@ -600,106 +555,7 @@
                     <p class="box-icon-modern-text">Skorzystaj z naszego formularza kontaktowego.</p>
                   </article>
                 </div>
-                <div class="col-sm-6 wow fadeInRight" data-wow-delay=".3s">
-                  <article class="box-icon-modern box-icon-modern-2">
-                    <div class="box-icon-modern-icon linearicons-users"></div>
-<h5 class="box-icon-modern-title"><a href="#modalWsparcie" data-toggle="modal" id="openWsparcieModalLink">GRUPA<br>WSPARCIA</a></h5>
-<!-- Modal GRUPA WSPARCIA (WhatsForm) -->
-<div class="modal fade" id="modalWsparcie" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Dołącz do naszych Informacyjnych grup wsparcia</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>
-          <b>START 15 września 2025 r.</b><br>
-          <span>Grupy są aktualnie w fazie organizacji<br>będą aktywnie prowadzone od września.</span>
-        </p>
-        <p>
-          <b>Dołączając do grupy otrzymasz.</b><br>
-        
-        <ul>
-          <li>✅ Bieżące informacje o naszych projektch, spotkaniach i działaniach Fundacji</li>
-          <li>✅ Przestrzeń do dzielenia się swoimi historiami i doświadczeniami</li>
-          <li>✅ Wymianę perspektyw z osobami rozumiejącymi Twoje wyzwania</li>
-          <li>✅ Możliwość uzyskania praktycznych wskazówek od tych, którzy przeszli podobną drogę</li>
-          <li>✅ Szansę wsparcia innych swoją wiedzą, gdy zmagają się z sytuacjami, które Ty już znasz</li>
-        </ul>
-        <div>
-          <br></b><b>Dodatkowo w kluczowych sprawach poruszanych na grupie dostępne będą okresowo:</b>
-          <ul>
-            <li>🔹 Konsultacje z Radcami prawnymi i Adwokatami</li>
-            <li>🔹 Q&amp;A ze Specjalistami z wybranych dziedzin dotyczących danej grupy.</li>
-            <li>🔹 Sesje wsparcia z psychologami</li>
-            <li>🔹 Spotkania on line z przedstawicielami instytucji państwowych i świata polityki</li>
-          </ul>
-        </div>
-        <div>
-          <br><b>Dołącz już dziś, aby być gotowym na start!</b>
-        </div>
-        <div>
-          <button id="openWsparcieFormBtn" class="button button-primary button-ujarak">Przejdź do grupy wsparcia</button>
-        </div>
-  <div id="wsparcieFormContainer">
-          <iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0"></iframe>
-        </div>
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            // Zapamiętaj oryginalną treść modal-body
-            var wsparcieModalLink = document.getElementById('openWsparcieModalLink');
-            var modal = document.getElementById('modalWsparcie');
-            var modalBody = modal ? modal.querySelector('.modal-body') : null;
-            var modalBodyInitial = modalBody ? modalBody.innerHTML : null;
-            if (wsparcieModalLink && modal && modalBody && modalBodyInitial) {
-        wsparcieModalLink.addEventListener('click', function() {
-                // Resetuj modal-body do stanu początkowego
-                setTimeout(function() {
-                  modalBody.innerHTML = modalBodyInitial;
-          modal.classList.remove('expanded');
-                  setupWsparcieFormBtn();
-                }, 10);
-              });
-            }
-            // Obsługa przycisku "Przejdź do grupy wsparcia"
-            function setupWsparcieFormBtn() {
-              var openBtn = document.getElementById('openWsparcieFormBtn');
-              var modalBody = document.querySelector('#modalWsparcie .modal-body');
-              if(openBtn && modalBody) {
-                openBtn.addEventListener('click', function() {
-                  modalBody.innerHTML = '<div id="wsparcieFormContainer">'+
-                    '<iframe src="https://whatsform.com/uxqejm" width="100%" height="600" frameborder="0"></iframe>'+ 
-                    '</div>';
-                  var modalRoot = document.getElementById('modalWsparcie');
-                  if (modalRoot) {
-                    modalRoot.classList.add('expanded');
-                  }
-                });
-              }
-            }
-            setupWsparcieFormBtn();
-            // Po każdym odświeżeniu modal-body, ponownie podpinaj obsługę przycisku
-            if (modal) {
-              modal.addEventListener('shown.bs.modal', function() {
-                setupWsparcieFormBtn();
-              });
-              modal.addEventListener('hidden.bs.modal', function() {
-                modal.classList.remove('expanded');
-              });
-            }
-          });
-        </script>
-      </div>
-    </div>
-  </div>
-</div>
-                    <div class="box-icon-modern-decor"></div>
-                    <p class="box-icon-modern-text">Dołącz do naszej Grupy wsparci na whatsapp.</p>
-                  </article>
-                </div>
+
               </div>
             </div>
           </div>
@@ -710,7 +566,7 @@
           <!-- Cta-->
       <section class="section section-fluid bg-default">
       <section class="section section-fluid bg-default" id="about">
-        <div class="parallax-container" data-parallax-img="../images/banery/c2.png">
+        <div class="parallax-container" data-parallax-img="../images/banery/c2.webp">
           <div id="about-frosted-bg"></div>
           <div class="parallax-content section-xl context-dark bg-overlay-68 bg-mobile-overlay">
             <div class="container">
@@ -739,16 +595,13 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
       <span class="fw-300">W odpowiedzi na dramatyczne dane pokazujące, że w Polsce 21,8% uczniów szkół podstawowych znajduje się w grupie wysokiego ryzyka rozwoju uzależnienia od mediów elektronicznych, a 11,9% nastolatków w wieku 12-17 lat wykazuje problematyczne używanie internetu. Szczególnie niepokojące jest to, że wśród problematycznych użytkowników internetu 28,4% praktykowało samookaleczanie, a 9,2% podejmowało próby samobójcze. Europejskie badania WHO/HBSC z 2022 roku pokazują, że problematyczne używanie mediów społecznościowych wzrosło z 7% w 2018 roku do 11% w 2022 roku, przy czym dziewczęta są bardziej narażone (13% vs 9% u chłopców).</span>
     </li>
     <li><span class="bullet-dot">&#9679;</span><b>Program „Rodzicu nie jesteś sam” – Wsparcie w alienacji rodzicielskiej</b><br>
-      <span class="fw-300">Program ten odpowiada na potrzeby rodziców doświadczających alienacji rodzicielskiej oraz samotnie wychowujących dzieci. Oferuje kompleksowe wsparcie prawne, psychologiczne oraz grupy wsparcia na WhatsApp, umożliwiając codzienną pomoc od osób, które przeszły przez podobne doświadczenia.</span>
+      <span class="fw-300">Program ten odpowiada na potrzeby rodziców doświadczających alienacji rodzicielskiej oraz samotnie wychowujących dzieci. Oferuje kompleksowe wsparcie prawne i psychologiczne.</span>
     </li>
     <li><span class="bullet-dot">&#9679;</span><b>Technologia dla zdrowia</b><br>
       <span class="fw-300">Projekt edukacyjny skierowany do szkół w całej Europie, mający na celu promocję technologii wspierających zdrowy rozwój fizyczny i psychiczny uczniów. W trakcie sesji prezentowane są między innymi alternatywy dla popularnych technologii mających destrukcyjny wpływ na różne aspekty życia młodych ludzi.</span>
     </li>
     <li><span class="bullet-dot">&#9679;</span><b>Wsparcie dla weteranów</b><br>
       <span class="fw-300">Program obejmujący tworzenie aplikacji pomocowej dla żołnierzy i weteranów, wspomagającej radzenie sobie ze stresem, budowanie odporności psychicznej i szybsze przywracanie równowagi emocjonalnej.</span>
-    </li>
-    <li><span class="bullet-dot">&#9679;</span><b>Grupy wsparcia na WhatsApp</b><br>
-      <span class="fw-300">Platforma komunikacyjna oferująca natychmiastowe wsparcie dla wszystkich beneficjentów fundacji, działająca 24/7 i zarządzana przez wykwalifikowanych specjalistów.</span>
     </li>
   </ul>
 
@@ -878,7 +731,7 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".1s">
                   <div class="clients-classic">
-                    <span class="clients-caption">Foundrusherów</span>
+                    <span class="clients-caption">Fundraiserów</span>
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".2s">
@@ -928,13 +781,12 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
                     <p>Samotne rodzicielstwo to wyzwanie, ale nie musisz przez to przechodzić sam.<br>
 Nasz program pomaga w budowaniu dobrych relacji z dzieckiem i przełamywaniu toksycznych schematów alienacji.<br>
 Walczymy z systemem, który:<br>
-🛑 Narzuca sztuczne "godziny kontaktów" zamiast naturalnych relacji z dziecka z rodzicem<br>
+🛑 Narzuca sztuczne "godziny kontaktów" zamiast naturalnych relacji dziecka z rodzicem<br>
 🛑 Utrudnia uzyskanie opieki na równych warunkach dla obojga rodziców<br>
 🛑 Pozwala na izolowanie dziecka od kochającego rodzica<br>
 Oferujemy:<br>
 ✅ Pomoc prawną w podważaniu krzywdzących opinii OZSS i walce o sprawiedliwe kontakty<br>
 ✅ Terapię psychologiczną – radzenie sobie z traumą rozstania, nauka komunikacji z drugim rodzicem<br>
-✅ Grupy wsparcia na WhatsApp – codzienna pomoc od rodziców, którzy rozumieją Twoją sytuację<br>
 ✅ Warsztaty wychowawcze – jak budować więź mimo ograniczonego kontaktu<br><br>
 Nie pozwól, by patologiczne mechanizmy okradały Twoje dziecko z prawa do obojga rodziców!</p>
                     <div class="group-sm group-middle">
@@ -970,19 +822,19 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
             <div class="col-lg-6 text-center wow fadeInUp" data-wow-delay=".1s">
               <div class="owl-carousel owl-style-1" id="projects-carousel" data-items="2" data-stage-padding="0" data-loop="true" data-margin="0" data-mouse-drag="true" data-autoplay="true">
                 <a class="box-device" href="#">
-                  <img src="../images/banery/s1.png" alt="" width="313" height="580"/>
+                  <img src="../images/banery/s1.webp" alt="" width="313" height="580"/>
                   <div class="banner-caption">PRZEŁAMUJEMY CYFROWE UZALEŻNIENIA</div>
                 </a>
                 <a class="box-device" href="#">
-                  <img src="../images/banery/s2.png" alt="" width="313" height="580"/>
+                  <img src="../images/banery/s2.webp" alt="" width="313" height="580"/>
                   <div class="banner-caption">RODZICU NIE JESTEŚ SAM</div>
                 </a>
                 <a class="box-device" href="#">
-                  <img src="../images/banery/s4.png" alt="" width="313" height="580"/>
+                  <img src="../images/banery/s4.webp" alt="" width="313" height="580"/>
                   <div class="banner-caption">TECHNOLOGIA DLA ZDROWIA</div>
                 </a>
                 <a class="box-device" href="#">
-                  <img src="../images/banery/s3.png" alt="" width="313" height="580"/>
+                  <img src="../images/banery/s3.webp" alt="" width="313" height="580"/>
                   <div class="banner-caption">Wsparcie dla Weteranów</div>
                 </a>
               </div>
@@ -1024,7 +876,7 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
 
           <!-- Latest Projects-->
       <!-- Sekcja ukryta: Latest Projects (W🌍RLD Market) -->
-  <section class="section section-sm section-fluid bg-default text-center is-hidden" id="projects">
+  <section class="section section-sm section-fluid bg-default text-center is-hidden" id="world-market">
         <div class="container-fluid">
           <h2 class="wow fadeInLeft">W🌍RLD Market</h2>
           <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">Tu każdy zakup to więcej niż transakcja – to inwestycja w ideę.<br><br>
@@ -1046,10 +898,10 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInRight" data-filter="Type 4">
               <!-- Thumbnail Classic-->
               <article class="thumbnail thumbnail-classic thumbnail-md">
-                <div class="thumbnail-classic-figure"><img src="../images/banery/a1.png" alt="FinStep" width="420" height="350"/>
+                <div class="thumbnail-classic-figure"><img src="../images/banery/a1.webp" alt="FinStep" width="420" height="350"/>
                 </div>
                 <div class="thumbnail-classic-caption">
-                  <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60" href="../images/banery/a1.png" data-lightgallery="item"><img src="../images/banery/a1.png" alt="FinStep" width="420" height="350"/></a>
+                  <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60" href="../images/banery/a1.webp" data-lightgallery="item"><img src="../images/banery/a1.webp" alt="FinStep" width="420" height="350"/></a>
                     <h5 class="thumbnail-classic-title"><a href="#">FinStep</a></h5>
                   </div>
                   <p class="thumbnail-classic-text">We work hard on every app to deliver top-notch features with great UI that you won’t find anywhere else.</p>
@@ -1292,7 +1144,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 <div class="box-pricing-body">
                   <h5 class="box-pricing-title">Dowolna kwota</h5>
                   <h3 class="box-pricing-price">____,__ zł</h3>
-                  <div class="box-pricing-time">DZIĘKUEMY ZA WSPARCIE!</div>
+                  <div class="box-pricing-time">DZIĘKUJEMY ZA WSPARCIE!</div>
                   <div class="box-pricing-divider">
                     <div class="divider"></div><span>DOWOLNA</span>
                   </div>
@@ -1304,7 +1156,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                     <li class="active">Na podany adres email dostaniesz potwierdzenie transakcji</li>
                   </ul>
                 </div>
-                <div class="box-pricing-button"><a class="button button-lg button-block button-gray-4" id="getStartedUltimateBtn" href="#">Przejdż do płatności</a></div>
+                <div class="box-pricing-button"><a class="button button-lg button-block button-gray-4" id="getStartedUltimateBtn" href="#">Przejdź do płatności</a></div>
               </div>
             </div>
           </div>
@@ -1366,7 +1218,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
           <div class="row row-sm row-30 justify-content-center">
             <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">
               <!-- Team Classic-->
-              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img class="no-filter" src="../images/Postacie/Adam kopia.png" alt="Adam Zanders" width="420" height="424"/></a>
+              <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img class="no-filter" src="../images/Postacie/Adam kopia.webp" alt="Adam Zanders" width="420" height="424"/></a>
                 <div class="team-classic-caption">
                   <h4 class="team-classic-name"><a href="#">Adam Zanders</a></h4>
                   <p class="team-classic-status">Prezes Fundacji</p>
@@ -1476,7 +1328,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 <div class="box-contacts-body">
                   <div class="box-contacts-icon fl-bigmug-line-cellphone55"></div>
                   <div class="box-contacts-decor"></div>
-                  <p class="box-contacts-link"><img class="flag-icon" src="../images/flaga/pl.png" alt="PL"/><a href="tel:+48519830226">+48 519 830 226</a></p>
+                  <p class="box-contacts-link"><img class="flag-icon" src="../images/flaga/pl.png" alt="PL"/><a href="tel:+48500461563">+48 500 461 563</a></p>
                   <p class="box-contacts-link"><img class="flag-icon" src="../images/flaga/de.png" alt="DE"/><a href="tel:+4915212403091">+49 15212403091</a></p>
                 </div>
               </article>
@@ -1578,59 +1430,6 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
                 });
               </script>
               
-              <!-- Handler dla ukrytego formularza w modalu -->
-              <script>
-                document.getElementById('hiddenStaticForm').addEventListener('submit', async function(e) {
-                  e.preventDefault();
-                  var form = this;
-                  var formData = new FormData(form);
-                  
-                  try {
-                    const response = await fetch(form.action, {
-                      method: 'POST',
-                      body: formData
-                    });
-                    if (response.ok) {
-                      // Sukces - pokaż komunikat i zamknij modal
-                      alert('Dziękujemy! Twoja wiadomość została wysłana.');
-                      
-                      // Resetuj oba formularze
-                      document.getElementById('cooperationForm').reset();
-                      form.reset();
-                      
-                      // Resetuj reCAPTCHA
-                      if (typeof coopRecaptchaWidgetId !== 'undefined' && coopRecaptchaWidgetId !== null) {
-                        grecaptcha.reset(coopRecaptchaWidgetId);
-                      }
-                      
-                      // Zamknij modal
-                      var modal = document.getElementById('modalCta');
-                      if (window.jQuery && window.jQuery(modal).modal) {
-                        window.jQuery(modal).modal('hide');
-                      } else if (modal) {
-                        modal.classList.remove('show');
-                        modal.style.display = 'none';
-                        modal.setAttribute('aria-hidden', 'true');
-                        modal.removeAttribute('aria-modal');
-                        document.body.classList.remove('modal-open');
-                        var backdrop = document.querySelector('.modal-backdrop');
-                        if (backdrop) backdrop.remove();
-                      }
-                    } else {
-                      alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
-                    }
-                  } catch (err) {
-                    alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
-                  }
-                  
-                  // Przywróć przycisk do normalnego stanu
-                  var submitBtn = document.querySelector('#modalCta .button-primary');
-                  if (submitBtn) {
-                    submitBtn.textContent = 'WYŚLIJ ZGŁOSZENIE';
-                    submitBtn.disabled = false;
-                  }
-                });
-              </script>
             </div>
           </div>
           <style>
