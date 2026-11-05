@@ -194,8 +194,13 @@
                                 <a class="rd-navbar-dropdown-link" href="#projects">Technologia dla zdrowia</a>
                               </li>
                               <li class="rd-navbar-dropdown-item">
+                                <a class="rd-navbar-dropdown-link" href="#projects" data-project-tab="4">Wsparcie psychologiczne</a>
+                              </li>
+                              <!-- UKRYTE (2026-11-05): Wsparcie dla weteranów — strona wsparcie-weteranow.html zostaje, link wyłączony
+                              <li class="rd-navbar-dropdown-item">
                                 <a class="rd-navbar-dropdown-link" href="wsparcie-weteranow.html">Wsparcie dla weteranów</a>
                               </li>
+                              -->
                             </ul>
                           </div>
                         </li>
@@ -238,14 +243,20 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="../images/banery/23.webp">
+            <!-- Slajd z filmem AI (2026-11-05): film 6,3 s bez pętli, zatrzymuje się na ostatniej klatce; slajd trwa 8 s; napisy wjeżdżają po ~1,2 s. Tło = pierwsza klatka filmu (bez przeskoku na starcie). Oryginalne zdjęcie: ../images/banery/23.webp -->
+            <div class="swiper-slide has-video" data-slide-bg="../images/banery/23-film.webp" data-swiper-autoplay="8000">
+              <video class="slide-video" muted playsinline preload="auto" poster="../images/banery/23-film.webp" aria-hidden="true">
+                <source src="../video/dolacz-do-nas.webm" type="video/webm">
+                <source src="../video/dolacz-do-nas.mp4" type="video/mp4">
+              </video>
               <div class="swiper-slide-caption section-md">
                 <div class="container">
-                  <h1 data-caption-animate="fadeInLeft" data-caption-delay="0"> Dołącz do nas </h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Organizujemy wydarzenia integracyjne, spotkania tematyczne oraz projekty społeczne, które mają na celu budowanie więzi i wzmacnianie lokalnych społeczności.</p><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <h1 data-caption-animate="fadeInLeft" data-caption-delay="1200"> Dołącz do nas </h1>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="1350">Organizujemy wydarzenia integracyjne, spotkania tematyczne oraz projekty społeczne, które mają na celu budowanie więzi i wzmacnianie lokalnych społeczności.</p><a class="button button-primary button-ujarak" href="#modalCta" data-toggle="modal" data-caption-animate="fadeInUp" data-caption-delay="1500">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
+            <!-- UKRYTE (2026-11-05): slajd „Wsparcie dla weteranów”
             <div class="swiper-slide" data-slide-bg="../images/banery/24.webp">
               <div class="swiper-slide-caption section-md">
                 <div class="container">
@@ -254,6 +265,7 @@
                 </div>
               </div>
             </div>
+            -->
           </div>
           <!-- Swiper Pagination-->
           <div class="swiper-pagination__module">
@@ -600,9 +612,14 @@ Fundacja W🌍rldFoundation powstała w 2022 roku z potrzeby serca i wspólnej p
     <li><span class="bullet-dot">&#9679;</span><b>Technologia dla zdrowia</b><br>
       <span class="fw-300">Projekt edukacyjny skierowany do szkół w całej Europie, mający na celu promocję technologii wspierających zdrowy rozwój fizyczny i psychiczny uczniów. W trakcie sesji prezentowane są między innymi alternatywy dla popularnych technologii mających destrukcyjny wpływ na różne aspekty życia młodych ludzi.</span>
     </li>
+    <li><span class="bullet-dot">&#9679;</span><b>Wsparcie psychologiczne</b><br>
+      <span class="fw-300">Konsultacje indywidualne, terapie grupowe oraz programy wsparcia dedykowane poszczególnym grupom – prowadzone przez psychologów współpracujących z Fundacją.</span>
+    </li>
+    <!-- UKRYTE (2026-11-05): Wsparcie dla weteranów
     <li><span class="bullet-dot">&#9679;</span><b>Wsparcie dla weteranów</b><br>
       <span class="fw-300">Program obejmujący tworzenie aplikacji pomocowej dla żołnierzy i weteranów, wspomagającej radzenie sobie ze stresem, budowanie odporności psychicznej i szybsze przywracanie równowagi emocjonalnej.</span>
     </li>
+    -->
   </ul>
 
 
@@ -803,6 +820,20 @@ Nie pozwól, by patologiczne mechanizmy okradały Twoje dziecko z prawa do obojg
                     </div>
                   </div>
                   <div class="tab-pane fade" id="tabs-6-4">
+                    <h5 class="font-weight-normal">WSPARCIE PSYCHOLOGICZNE</h5>
+                    <p>Prowadzimy konsultacje indywidualne, terapie grupowe oraz programy wsparcia dedykowane poszczególnym grupom.<br>
+Z naszej pomocy mogą skorzystać:<br>
+✅ osoby w kryzysie emocjonalnym i w trudnych sytuacjach życiowych<br>
+✅ rodzice i dzieci przeżywające rozstanie lub konflikt w rodzinie<br>
+✅ młodzież zmagająca się ze stresem, wykluczeniem i cyfrowymi uzależnieniami<br>
+Rozmowa ze specjalistą to pierwszy krok – umów spotkanie z naszym konsultantem.</p>
+                    <div class="group-sm group-middle">
+                      <a class="button button-secondary button-pipaluk" href="#modalSpotkanie" data-toggle="modal">Umów spotkanie</a>
+                      <a class="button button-default-outline button-wapasha" href="#services">Poznaj szczegóły</a>
+                    </div>
+                  </div>
+                  <!-- UKRYTE (2026-11-05): zakładka „Wsparcie dla weteranów”
+                  <div class="tab-pane fade" id="tabs-6-vet">
                     <h5 class="font-weight-normal">WSPARCIE DLA WETERANÓW</h5>
                     <p>Tworzymy aplikację, która pomaga żołnierzom i weteranom:<br>
 ✅lepiej radzić sobie ze stresem<br>
@@ -816,6 +847,7 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
                       <a class="button button-default-outline button-wapasha" href="wsparcie-weteranow.html">Poznaj szczegóły</a>
                     </div>
                   </div>
+                  -->
                 </div>
               </div>
             </div>
@@ -834,9 +866,15 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
                   <div class="banner-caption">TECHNOLOGIA DLA ZDROWIA</div>
                 </a>
                 <a class="box-device" href="#">
+                  <img src="../images/banery/s5.webp" alt="Wsparcie psychologiczne" width="313" height="580"/>
+                  <div class="banner-caption">WSPARCIE PSYCHOLOGICZNE</div>
+                </a>
+                <!-- UKRYTE (2026-11-05): Wsparcie dla Weteranów
+                <a class="box-device" href="#">
                   <img src="../images/banery/s3.webp" alt="" width="313" height="580"/>
                   <div class="banner-caption">Wsparcie dla Weteranów</div>
                 </a>
+                -->
               </div>
               
               <script>
@@ -849,6 +887,13 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
                     'tabs-6-4': 3,
                     'tabs-6-5': 4
                   };
+                  // Link w menu „Projekty” z data-project-tab = przewiń do sekcji i otwórz zakładkę
+                  document.querySelectorAll('[data-project-tab]').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                      var tab = document.querySelector('#tabs-6 .nav-link[href="#tabs-6-' + link.getAttribute('data-project-tab') + '"]');
+                      if (tab) setTimeout(function() { tab.click(); }, 600);
+                    });
+                  });
                   var $carousel = window.jQuery && window.jQuery('#projects-carousel');
                   if ($carousel && $carousel.trigger) {
                     document.querySelectorAll('#tabs-6 .nav-link').forEach(function(link) {
@@ -1040,11 +1085,11 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             <div class="divider divider-35"></div>
             <p class="support-bank">
               <span class="bank-line"><i class="fa fa-university" aria-hidden="true"></i> Przelew tradycyjny:
-                <span class="chip-ghost" aria-label="mBank">
-                  <img src="../images/logo/mbank.jpg" alt="mBank" style="height:18px; width:auto; vertical-align:middle; border-radius:3px;"/>
+                <span class="chip-ghost" aria-label="PKO Bank Polski">
+                  <span style="display:inline-block; background:#003574; color:#fff; font-weight:700; font-size:12px; line-height:18px; padding:0 7px; border-radius:3px; vertical-align:middle; letter-spacing:.3px;">PKO BP</span>
                 </span>
               </span><br>
-              <span class="acct-line"><i class="fa fa-hashtag" aria-hidden="true"></i> Konto:<br class="br-mobile-only"> <span id="fundacja-acct" class="acct-number hl">78 1140 2118 0000 7637 0700 1001</span>
+              <span class="acct-line"><i class="fa fa-hashtag" aria-hidden="true"></i> Konto:<br class="br-mobile-only"> <span id="fundacja-acct" class="acct-number hl">30 1020 2791 0000 7502 0413 2981</span>
                 <button class="copy-acct" type="button" aria-label="Kopiuj numer konta" data-copy-target="#fundacja-acct"><i class="fa fa-copy" aria-hidden="true"></i><span>Kopiuj</span></button>
               </span>
               <br><br>

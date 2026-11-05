@@ -363,7 +363,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			videos = nextSlide.find( "video" );
 			if ( videos.length ) {
-				videos.get( 0 ).play();
+				var v = videos.get( 0 );
+				// Film slajdu zawsze od początku (bez pętli — po końcu zostaje ostatnia klatka)
+				if ( $( v ).hasClass( "slide-video" ) ) {
+					try { v.currentTime = 0; } catch ( e ) {}
+				}
+				var p = v.play();
+				if ( p && p.catch ) { p.catch( function () {} ); }
 			}
 		}
 

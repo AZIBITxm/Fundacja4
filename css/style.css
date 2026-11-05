@@ -21187,3 +21187,14 @@ disabled look for disabled choices in the results dropdown
 		filter: none !important;
 	}
 }
+
+/* Slajd z filmem AI w sliderze (2026-11-05) — film na całe tło, napisy nad nim */
+.swiper-slide.has-video { position: relative; overflow: hidden; }
+.swiper-slide.has-video .slide-video {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0; pointer-events: none;
+}
+.swiper-slide.has-video .swiper-slide-caption { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .swiper-slide.has-video .slide-video { display: none; }
+}
