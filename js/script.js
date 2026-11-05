@@ -1079,15 +1079,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
 							// Slajd z filmem (2026-11-05): przenikanie do następnego slajdu rusza DOKŁADNIE w chwili końca filmu
 							// (zdarzenie „ended”), a nie po stałym czasie; data-swiper-autoplay slajdu = tylko zapas, gdyby film nie ruszył.
+							// data-video-end-early="ms" na <video> = przejście rusza tyle ms PRZED końcem filmu (film gra dalej w trakcie przenikania).
 							$( s ).find( ".slide-video" ).each( function () {
-								var vid = this;
-								vid.addEventListener( "ended", function () {
+								var vid = this,
+									early = parseInt( $( vid ).attr( "data-video-end-early" ), 10 ) || 0,
+									exitTimer;
+								var goNext = function () {
 									var act = swiper.slides[ swiper.activeIndex ];
 									if ( !act || !$.contains( act, vid ) || swiper.animating ) { return; }
 									if ( swiper.autoplayTimeoutId ) { clearTimeout( swiper.autoplayTimeoutId ); swiper.autoplayTimeoutId = undefined; }
 									if ( swiper.params.loop ) { swiper.fixLoop(); }
 									if ( swiper._slideNext ) { swiper._slideNext(); } else { swiper.slideNext(); }
-								} );
+								};
+								vid.addEventListener( "ended", goNext );
+								if ( early > 0 ) {
+									vid.addEventListener( "playing", function () {
+										clearTimeout( exitTimer );
+										if ( !vid.duration || !isFinite( vid.duration ) ) { return; }
+										var left = ( vid.duration - vid.currentTime ) * 1000 / ( vid.playbackRate || 1 ) - early;
+										exitTimer = setTimeout( goNext, Math.max( 0, left ) );
+									} );
+									[ "pause", "waiting", "seeking" ].forEach( function ( ev ) {
+										vid.addEventListener( ev, function () { clearTimeout( exitTimer ); } );
+									} );
+								}
 							} );
 							toggleSwiperCaptionAnimation( swiper );
 
