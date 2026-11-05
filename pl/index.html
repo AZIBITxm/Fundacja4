@@ -243,9 +243,9 @@
                 </div>
               </div>
             </div>
-            <!-- Slajd z filmem AI (2026-11-05): film 6,3 s bez pętli. Przenikanie 2 s; w trakcie wejścia widać 1. klatkę (poster), film i napisy ruszają dopiero PO pełnym przenikaniu; slajd stoi 5,8 s po przejściu, więc przenikanie do następnego zaczyna się ok. 0,5 s przed końcem filmu (bez stopklatki). Tło = pierwsza klatka filmu (bez przeskoku na starcie). Oryginalne zdjęcie: ../images/banery/23.webp -->
-            <div class="swiper-slide has-video" data-slide-bg="../images/banery/23-film.webp" data-swiper-autoplay="5800">
-              <video class="slide-video" muted playsinline preload="auto" poster="../images/banery/23-film.webp" aria-hidden="true">
+            <!-- Slajd z filmem AI (2026-11-05): film 6,3 s bez pętli. Przenikanie 2 s; film rusza 1,5 s po starcie przenikania (data-video-start), napisy po przenikaniu; przenikanie do następnego slajdu uruchamia koniec filmu (zdarzenie „ended” w js/script.js); data-swiper-autoplay 12000 = tylko zapas, gdyby film nie ruszył. Tło = pierwsza klatka filmu (bez przeskoku na starcie). Oryginalne zdjęcie: ../images/banery/23.webp -->
+            <div class="swiper-slide has-video" data-slide-bg="../images/banery/23-film.webp" data-swiper-autoplay="12000">
+              <video class="slide-video" data-video-start="1500" muted playsinline preload="auto" poster="../images/banery/23-film.webp" aria-hidden="true">
                 <source src="../video/dolacz-do-nas.webm" type="video/webm">
                 <source src="../video/dolacz-do-nas.mp4" type="video/mp4">
               </video>
@@ -1660,7 +1660,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       }
     </style>
     <script src="../js/core.min.js"></script>
-    <script src="../js/script.js?v=20261105b"></script>
+    <script src="../js/script.js?v=20261105c"></script>
   <!-- coded by Himic-->
     <!-- Sticky narrow banner at the bottom of the screen -->
     <div id="sticky-narrow-banner">

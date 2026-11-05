@@ -369,13 +369,21 @@ document.addEventListener('DOMContentLoaded', function() {
 				var v = videos.get( 0 );
 				// Film slajdu zawsze od początku (bez pętli — po końcu zostaje ostatnia klatka)
 				if ( $( v ).hasClass( "slide-video" ) ) {
-					// Film slajdu (2026-11-05): przy starcie przenikania tylko ustaw na 1. klatkę i czekaj;
-					// rusza dopiero po pełnym przenikaniu (onTransitionEnd → play=true).
+					// Film slajdu (2026-11-05): przy starcie przenikania ustaw 1. klatkę i uruchom film
+					// po data-video-start ms od startu przenikania (domyślnie 1500 = 0,5 s przed końcem 2-s przenikania).
 					if ( !play ) {
 						v.pause();
 						try { v.currentTime = 0; } catch ( e ) {}
+						clearTimeout( v._startTimer );
+						var startAfter = parseInt( $( v ).attr( "data-video-start" ), 10 );
+						v._startTimer = setTimeout( function () {
+							var pp = v.play();
+							if ( pp && pp.catch ) { pp.catch( function () {} ); }
+						}, isNaN( startAfter ) ? 1500 : startAfter );
 						return;
 					}
+					// Koniec przenikania: film rusza z timera ustawionego na starcie przenikania
+					if ( v._startTimer ) { return; }
 				}
 				var p = v.play();
 				if ( p && p.catch ) { p.catch( function () {} ); }
@@ -1068,6 +1076,19 @@ document.addEventListener('DOMContentLoaded', function() {
 					onInit:                   (function ( s ) {
 						return function ( swiper ) {
 							toggleSwiperInnerVideos( swiper, true );
+
+							// Slajd z filmem (2026-11-05): przenikanie do następnego slajdu rusza DOKŁADNIE w chwili końca filmu
+							// (zdarzenie „ended”), a nie po stałym czasie; data-swiper-autoplay slajdu = tylko zapas, gdyby film nie ruszył.
+							$( s ).find( ".slide-video" ).each( function () {
+								var vid = this;
+								vid.addEventListener( "ended", function () {
+									var act = swiper.slides[ swiper.activeIndex ];
+									if ( !act || !$.contains( act, vid ) || swiper.animating ) { return; }
+									if ( swiper.autoplayTimeoutId ) { clearTimeout( swiper.autoplayTimeoutId ); swiper.autoplayTimeoutId = undefined; }
+									if ( swiper.params.loop ) { swiper.fixLoop(); }
+									if ( swiper._slideNext ) { swiper._slideNext(); } else { swiper.slideNext(); }
+								} );
+							} );
 							toggleSwiperCaptionAnimation( swiper );
 
 							var $swiper = $( s );
