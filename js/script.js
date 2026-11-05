@@ -351,14 +351,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		 * @desc Toggle swiper videos on active slides
 		 * @param {object} swiper - swiper slider
 		 */
-		function toggleSwiperInnerVideos ( swiper ) {
+		function toggleSwiperInnerVideos ( swiper, play ) {
 			var prevSlide = $( swiper.slides[ swiper.previousIndex ] ),
 				nextSlide = $( swiper.slides[ swiper.activeIndex ] ),
 				videos,
 				videoItems = prevSlide.find( "video" );
 
-			for ( var i = 0; i < videoItems.length; i++ ) {
-				videoItems[ i ].pause();
+			// Film wychodzącego slajdu gra dalej w trakcie przenikania; zatrzymujemy go dopiero po jego końcu
+			if ( play && swiper.previousIndex !== swiper.activeIndex ) {
+				for ( var i = 0; i < videoItems.length; i++ ) {
+					videoItems[ i ].pause();
+				}
 			}
 
 			videos = nextSlide.find( "video" );
@@ -366,7 +369,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				var v = videos.get( 0 );
 				// Film slajdu zawsze od początku (bez pętli — po końcu zostaje ostatnia klatka)
 				if ( $( v ).hasClass( "slide-video" ) ) {
-					try { v.currentTime = 0; } catch ( e ) {}
+					// Film slajdu (2026-11-05): przy starcie przenikania tylko ustaw na 1. klatkę i czekaj;
+					// rusza dopiero po pełnym przenikaniu (onTransitionEnd → play=true).
+					if ( !play ) {
+						v.pause();
+						try { v.currentTime = 0; } catch ( e ) {}
+						return;
+					}
 				}
 				var p = v.play();
 				if ( p && p.catch ) { p.catch( function () {} ); }
@@ -1025,7 +1034,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					autoplay:                 s.attr( 'data-autoplay' ) ? s.attr( 'data-autoplay' ) === "false" ? undefined : s.attr( 'data-autoplay' ) : 5000,
 					direction:                s.attr( 'data-direction' ) && isDesktop ? s.attr( 'data-direction' ) : "horizontal",
 					effect:                   s.attr( 'data-slide-effect' ) ? s.attr( 'data-slide-effect' ) : "slide",
-					speed:                    s.attr( 'data-slide-speed' ) ? s.attr( 'data-slide-speed' ) : 600,
+					// Przenikanie (2026-11-05): bez crossFade Swiper 3 nie wysyła końca przejścia → suwak stawał po 1. slajdzie
+					fade:                     { crossFade: true },
+					speed:                    s.attr( 'data-slide-speed' ) ? parseInt( s.attr( 'data-slide-speed' ), 10 ) : 600,
 					keyboardControl:          s.attr( 'data-keyboard' ) === "true",
 					mousewheelControl:        s.attr( 'data-mousewheel' ) === "true",
 					mousewheelReleaseOnEdges: s.attr( 'data-mousewheel-release' ) === "true",
@@ -1048,14 +1059,15 @@ document.addEventListener('DOMContentLoaded', function() {
 					loop:                     isNoviBuilder ? false : s.attr( 'data-loop' ) !== "false",
 					simulateTouch:            s.attr( 'data-simulate-touch' ) && !isNoviBuilder ? s.attr( 'data-simulate-touch' ) === "true" : false,
 					onTransitionStart:        function ( swiper ) {
-						toggleSwiperInnerVideos( swiper );
+						toggleSwiperInnerVideos( swiper, false );
 					},
 					onTransitionEnd:          function ( swiper ) {
+						toggleSwiperInnerVideos( swiper, true );
 						toggleSwiperCaptionAnimation( swiper );
 					},
 					onInit:                   (function ( s ) {
 						return function ( swiper ) {
-							toggleSwiperInnerVideos( swiper );
+							toggleSwiperInnerVideos( swiper, true );
 							toggleSwiperCaptionAnimation( swiper );
 
 							var $swiper = $( s );

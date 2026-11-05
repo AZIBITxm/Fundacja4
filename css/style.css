@@ -21198,3 +21198,9 @@ disabled look for disabled choices in the results dropdown
 @media (prefers-reduced-motion: reduce) {
   .swiper-slide.has-video .slide-video { display: none; }
 }
+
+/* Suwak nagłówka na całą szerokość także na ekranach ≥1600 px (2026-11-05) — szablon robił tu białą ramkę 75 px po bokach */
+@media (min-width: 1600px) {
+  .swiper-slider-classic { max-width: none; padding: 0; }
+  .swiper-slider-classic .swiper-pagination-bullet::before { background: #ffffff; }
+}
