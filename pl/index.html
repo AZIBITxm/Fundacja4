@@ -240,7 +240,12 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="../images/banery/22.webp">
+            <!-- Slajd z filmem AI (2026-11-05): „Nie jesteś sam” (ławka), film 8,2 s bez pętli; mechanizm jak slajd 1: film rusza 1,5 s po starcie przenikania, przejście dalej 1 s przed końcem filmu (data-video-end-early). Film może zostać podmieniony pod tą samą nazwą — wtedy podbić ?v= w adresach source/poster. Oryginalne zdjęcie: ../images/banery/22.webp -->
+            <div class="swiper-slide has-video" data-slide-bg="../images/banery/22-film.webp?v=1" data-swiper-autoplay="12000">
+              <video class="slide-video" data-video-start="1500" data-video-end-early="1000" muted playsinline preload="auto" poster="../images/banery/22-film.webp?v=1" aria-hidden="true">
+                <source src="../video/nie-jestes-sam.webm?v=1" type="video/webm">
+                <source src="../video/nie-jestes-sam.mp4?v=1" type="video/mp4">
+              </video>
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Nie jesteś Sam</h1>
