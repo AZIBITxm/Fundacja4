@@ -1088,8 +1088,12 @@ document.addEventListener('DOMContentLoaded', function() {
 									var act = swiper.slides[ swiper.activeIndex ];
 									if ( !act || !$.contains( act, vid ) || swiper.animating ) { return; }
 									if ( swiper.autoplayTimeoutId ) { clearTimeout( swiper.autoplayTimeoutId ); swiper.autoplayTimeoutId = undefined; }
+									// Bez pętli z kopiami (2026-11-07): po ostatnim slajdzie przenikanie wprost do pierwszego.
+									// Pętla Swipera robiła kopię 1. slajdu; przy wyjściu z kopii fixLoop przeskakiwał na oryginał
+									// z filmem stojącym na 1. klatce → widoczny „przeskok do zdjęcia”.
 									if ( swiper.params.loop ) { swiper.fixLoop(); }
-									if ( swiper._slideNext ) { swiper._slideNext(); } else { swiper.slideNext(); }
+									if ( !swiper.params.loop && swiper.isEnd ) { swiper.slideTo( 0 ); }
+									else if ( swiper._slideNext ) { swiper._slideNext(); } else { swiper.slideNext(); }
 								};
 								vid.addEventListener( "ended", goNext );
 								if ( early > 0 ) {
@@ -1102,6 +1106,8 @@ document.addEventListener('DOMContentLoaded', function() {
 									[ "pause", "waiting", "seeking" ].forEach( function ( ev ) {
 										vid.addEventListener( ev, function () { clearTimeout( exitTimer ); } );
 									} );
+									// Film 1. slajdu z atrybutem autoplay mógł ruszyć, zanim skrypt się podpiął — ustaw timer od razu
+									if ( !vid.paused && vid.currentTime > 0 ) { vid.dispatchEvent( new Event( "playing" ) ); }
 								}
 							} );
 							toggleSwiperCaptionAnimation( swiper );
