@@ -1094,7 +1094,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						// Napisy: stare schodzą od razu, nowe wchodzą po data-caption-start ms od startu przenikania (domyślnie 1000)
 						if ( swiper.previousIndex !== swiper.activeIndex ) { swiperCaptionsOut( swiper.slides[ swiper.previousIndex ] ); }
 						clearTimeout( swiper._captionTimer );
-						var capStart = parseInt( $( swiper.container[ 0 ] || swiper.container ).attr( "data-caption-start" ), 10 );
+						// data-caption-start na slajdzie (ms) ma pierwszeństwo przed wartością suwaka
+						var capStart = parseInt( $( swiper.slides[ swiper.activeIndex ] ).attr( "data-caption-start" ), 10 );
+						if ( isNaN( capStart ) ) { capStart = parseInt( $( swiper.container[ 0 ] || swiper.container ).attr( "data-caption-start" ), 10 ); }
 						swiper._captionTimer = setTimeout( function () { toggleSwiperCaptionAnimation( swiper ); }, isNaN( capStart ) ? 1000 : capStart );
 						if ( swiper._scheduleSlideDuration ) { swiper._scheduleSlideDuration(); }
 					},
@@ -1128,7 +1130,12 @@ document.addEventListener('DOMContentLoaded', function() {
 								swiper._slideDurTimer = setTimeout( function () { goNextFrom( act ); }, dur );
 							};
 							swiper._scheduleSlideDuration();
-							toggleSwiperCaptionAnimation( swiper );
+							// Napisy przy 1. wczytaniu: data-caption-start-init (ms) na 1. slajdzie, domyślnie od razu
+							var capInit = parseInt( $( swiper.slides[ swiper.activeIndex ] ).attr( "data-caption-start-init" ), 10 );
+							if ( capInit > 0 ) {
+								toggleSwiperCaptionAnimation( { container: swiper.container, slides: [] } ); // ukryj napisy do czasu wejścia
+								swiper._captionTimer = setTimeout( function () { toggleSwiperCaptionAnimation( swiper ); }, capInit );
+							} else { toggleSwiperCaptionAnimation( swiper ); }
 
 							var $swiper = $( s );
 
