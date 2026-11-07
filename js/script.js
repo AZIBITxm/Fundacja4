@@ -373,8 +373,13 @@ document.addEventListener('DOMContentLoaded', function() {
 					// po data-video-start ms od startu przenikania (domyślnie 1500 = 0,5 s przed końcem 2-s przenikania).
 					if ( !play ) {
 						v.pause();
-						try { v.currentTime = 0; } catch ( e ) {}
 						clearTimeout( v._startTimer );
+						// Film już raz odtworzony → wczytaj go od nowa (pewny powrót na 1. klatkę we wszystkich przeglądarkach,
+						// zamiast przewijania odtworzonego filmu, które w części przeglądarek zostawiało go na końcu — 2026-11-07)
+						if ( v.ended || v.currentTime > 0 ) {
+							v.removeAttribute( "autoplay" );
+							v.load();
+						}
 						var startAfter = parseInt( $( v ).attr( "data-video-start" ), 10 );
 						v._startTimer = setTimeout( function () {
 							var pp = v.play();
@@ -1100,8 +1105,15 @@ document.addEventListener('DOMContentLoaded', function() {
 									vid.addEventListener( "playing", function () {
 										clearTimeout( exitTimer );
 										if ( !vid.duration || !isFinite( vid.duration ) ) { return; }
-										var left = ( vid.duration - vid.currentTime ) * 1000 / ( vid.playbackRate || 1 ) - early;
-										exitTimer = setTimeout( goNext, Math.max( 0, left ) );
+										var schedule = function () {
+											var left = ( vid.duration - vid.currentTime ) * 1000 / ( vid.playbackRate || 1 ) - early;
+											exitTimer = setTimeout( function () {
+												// zabezpieczenie: przejście tylko, gdy film naprawdę jest blisko końca
+												if ( vid.paused || vid.currentTime < vid.duration - early / 1000 - 0.25 ) { if ( !vid.paused ) { schedule(); } return; }
+												goNext();
+											}, Math.max( 0, left ) );
+										};
+										schedule();
 									} );
 									[ "pause", "waiting", "seeking" ].forEach( function ( ev ) {
 										vid.addEventListener( ev, function () { clearTimeout( exitTimer ); } );
