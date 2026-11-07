@@ -1081,7 +1081,10 @@ document.addEventListener('DOMContentLoaded', function() {
 					},
 					onInit:                   (function ( s ) {
 						return function ( swiper ) {
-							toggleSwiperInnerVideos( swiper, true );
+							// 2026-11-07 (Adam): przy 1. wczytaniu strony film 1. slajdu rusza z takim samym opóźnieniem
+							// (data-video-start) od pokazania suwaka jak przy kolejnych obiegach od startu przenikania —
+							// licznik slajdu i film startują razem, więc pierwsze przejście wygląda jak następne.
+							toggleSwiperInnerVideos( swiper, false );
 
 							// Slajdy z filmem (2026-11-07, decyzja Adama): KAŻDY slajd z data-slide-duration (ms) trwa dokładnie tyle,
 							// licząc od startu przenikania, w którym się pojawia (przy 1. wczytaniu strony — od pokazania strony).
