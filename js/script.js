@@ -1073,6 +1073,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					simulateTouch:            s.attr( 'data-simulate-touch' ) && !isNoviBuilder ? s.attr( 'data-simulate-touch' ) === "true" : false,
 					onTransitionStart:        function ( swiper ) {
 						toggleSwiperInnerVideos( swiper, false );
+						if ( swiper._scheduleSlideDuration ) { swiper._scheduleSlideDuration(); }
 					},
 					onTransitionEnd:          function ( swiper ) {
 						toggleSwiperInnerVideos( swiper, true );
@@ -1082,46 +1083,26 @@ document.addEventListener('DOMContentLoaded', function() {
 						return function ( swiper ) {
 							toggleSwiperInnerVideos( swiper, true );
 
-							// Slajd z filmem (2026-11-05): przenikanie do następnego slajdu rusza DOKŁADNIE w chwili końca filmu
-							// (zdarzenie „ended”), a nie po stałym czasie; data-swiper-autoplay slajdu = tylko zapas, gdyby film nie ruszył.
-							// data-video-end-early="ms" na <video> = przejście rusza tyle ms PRZED końcem filmu (film gra dalej w trakcie przenikania).
-							$( s ).find( ".slide-video" ).each( function () {
-								var vid = this,
-									early = parseInt( $( vid ).attr( "data-video-end-early" ), 10 ) || 0,
-									exitTimer;
-								var goNext = function () {
-									var act = swiper.slides[ swiper.activeIndex ];
-									if ( !act || !$.contains( act, vid ) || swiper.animating ) { return; }
-									if ( swiper.autoplayTimeoutId ) { clearTimeout( swiper.autoplayTimeoutId ); swiper.autoplayTimeoutId = undefined; }
-									// Bez pętli z kopiami (2026-11-07): po ostatnim slajdzie przenikanie wprost do pierwszego.
-									// Pętla Swipera robiła kopię 1. slajdu; przy wyjściu z kopii fixLoop przeskakiwał na oryginał
-									// z filmem stojącym na 1. klatce → widoczny „przeskok do zdjęcia”.
-									if ( swiper.params.loop ) { swiper.fixLoop(); }
-									if ( !swiper.params.loop && swiper.isEnd ) { swiper.slideTo( 0 ); }
-									else if ( swiper._slideNext ) { swiper._slideNext(); } else { swiper.slideNext(); }
-								};
-								vid.addEventListener( "ended", goNext );
-								if ( early > 0 ) {
-									vid.addEventListener( "playing", function () {
-										clearTimeout( exitTimer );
-										if ( !vid.duration || !isFinite( vid.duration ) ) { return; }
-										var schedule = function () {
-											var left = ( vid.duration - vid.currentTime ) * 1000 / ( vid.playbackRate || 1 ) - early;
-											exitTimer = setTimeout( function () {
-												// zabezpieczenie: przejście tylko, gdy film naprawdę jest blisko końca
-												if ( vid.paused || vid.currentTime < vid.duration - early / 1000 - 0.25 ) { if ( !vid.paused ) { schedule(); } return; }
-												goNext();
-											}, Math.max( 0, left ) );
-										};
-										schedule();
-									} );
-									[ "pause", "waiting", "seeking" ].forEach( function ( ev ) {
-										vid.addEventListener( ev, function () { clearTimeout( exitTimer ); } );
-									} );
-									// Film 1. slajdu z atrybutem autoplay mógł ruszyć, zanim skrypt się podpiął — ustaw timer od razu
-									if ( !vid.paused && vid.currentTime > 0 ) { vid.dispatchEvent( new Event( "playing" ) ); }
-								}
-							} );
+							// Slajdy z filmem (2026-11-07, decyzja Adama): KAŻDY slajd z data-slide-duration (ms) trwa dokładnie tyle,
+							// licząc od startu przenikania, w którym się pojawia (przy 1. wczytaniu strony — od pokazania strony).
+							// Film krótszy → zostaje na ostatniej klatce; dłuższy → przenikanie rusza i ucina końcówkę.
+							// Bez pętli z kopiami: po ostatnim slajdzie przenikanie wprost do pierwszego (kopie robiły „przeskok do zdjęcia”).
+							var goNextFrom = function ( slideEl ) {
+								var act = swiper.slides[ swiper.activeIndex ];
+								if ( !act || act !== slideEl || swiper.animating ) { return; }
+								if ( swiper.autoplayTimeoutId ) { clearTimeout( swiper.autoplayTimeoutId ); swiper.autoplayTimeoutId = undefined; }
+								if ( swiper.params.loop ) { swiper.fixLoop(); }
+								if ( !swiper.params.loop && swiper.isEnd ) { swiper.slideTo( 0 ); }
+								else if ( swiper._slideNext ) { swiper._slideNext(); } else { swiper.slideNext(); }
+							};
+							swiper._scheduleSlideDuration = function () {
+								clearTimeout( swiper._slideDurTimer );
+								var act = swiper.slides[ swiper.activeIndex ],
+									dur = act ? parseInt( $( act ).attr( "data-slide-duration" ), 10 ) : NaN;
+								if ( !dur ) { return; }
+								swiper._slideDurTimer = setTimeout( function () { goNextFrom( act ); }, dur );
+							};
+							swiper._scheduleSlideDuration();
 							toggleSwiperCaptionAnimation( swiper );
 
 							var $swiper = $( s );
