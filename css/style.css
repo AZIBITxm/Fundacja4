@@ -21204,3 +21204,11 @@ disabled look for disabled choices in the results dropdown
   .swiper-slider-classic { max-width: none; padding: 0; }
   .swiper-slider-classic .swiper-pagination-bullet::before { background: #ffffff; }
 }
+
+/* Zejście napisów suwaka (2026-11-07) — lustro fadeInLeft/Right/Up, ten sam czas .7s (klasa .animated) */
+@keyframes captionOutLeft { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translate3d(-40px, 0, 0); } }
+@keyframes captionOutRight { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translate3d(40px, 0, 0); } }
+@keyframes captionOutDown { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translate3d(0, 40px, 0); } }
+.caption-out-left { animation-name: captionOutLeft; }
+.caption-out-right { animation-name: captionOutRight; }
+.caption-out-down { animation-name: captionOutDown; }

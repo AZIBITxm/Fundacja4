@@ -399,6 +399,22 @@ document.addEventListener('DOMContentLoaded', function() {
 		 * @desc Toggle swiper animations on active slides
 		 * @param {object} swiper - swiper slider
 		 */
+		/**
+		 * Zejście napisów (2026-11-07, Adam): lustro wejścia — fadeInLeft→w lewo, fadeInRight→w prawo, fadeInUp→w dół,
+		 * te same opóźnienia (data-caption-delay) i czas 0,7 s; startuje razem z przenikaniem, kończy się ~0,9 s,
+		 * zanim nowy slajd przejmie ekran.
+		 */
+		function swiperCaptionsOut ( slide ) {
+			var OUT = { fadeInLeft: "caption-out-left", fadeInRight: "caption-out-right", fadeInUp: "caption-out-down" };
+			$( slide ).find( "[data-caption-animate]" ).each( function () {
+				var el = $( this ), name = OUT[ el.attr( "data-caption-animate" ) ] || "caption-out-down";
+				if ( el.hasClass( "not-animated" ) ) { return; }
+				el.removeClass( el.attr( "data-caption-animate" ) ).removeClass( "animated" )
+					.css( "animation-delay", ( parseInt( el.attr( "data-caption-delay" ), 10 ) || 0 ) + "ms" )
+					.addClass( "animated " + name );
+			} );
+		}
+
 		function toggleSwiperCaptionAnimation ( swiper ) {
 			var prevSlide = $( swiper.container ).find( "[data-caption-animate]" ),
 				nextSlide = $( swiper.slides[ swiper.activeIndex ] ).find( "[data-caption-animate]" ),
@@ -412,6 +428,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				prevSlideItem.removeClass( "animated" )
 					.removeClass( prevSlideItem.attr( "data-caption-animate" ) )
+					.removeClass( "caption-out-left caption-out-right caption-out-down" )
+					.css( "animation-delay", "" )
 					.addClass( "not-animated" );
 			}
 
@@ -1073,11 +1091,15 @@ document.addEventListener('DOMContentLoaded', function() {
 					simulateTouch:            s.attr( 'data-simulate-touch' ) && !isNoviBuilder ? s.attr( 'data-simulate-touch' ) === "true" : false,
 					onTransitionStart:        function ( swiper ) {
 						toggleSwiperInnerVideos( swiper, false );
+						// Napisy: stare schodzą od razu, nowe wchodzą po data-caption-start ms od startu przenikania (domyślnie 1000)
+						if ( swiper.previousIndex !== swiper.activeIndex ) { swiperCaptionsOut( swiper.slides[ swiper.previousIndex ] ); }
+						clearTimeout( swiper._captionTimer );
+						var capStart = parseInt( $( swiper.container[ 0 ] || swiper.container ).attr( "data-caption-start" ), 10 );
+						swiper._captionTimer = setTimeout( function () { toggleSwiperCaptionAnimation( swiper ); }, isNaN( capStart ) ? 1000 : capStart );
 						if ( swiper._scheduleSlideDuration ) { swiper._scheduleSlideDuration(); }
 					},
 					onTransitionEnd:          function ( swiper ) {
 						toggleSwiperInnerVideos( swiper, true );
-						toggleSwiperCaptionAnimation( swiper );
 					},
 					onInit:                   (function ( s ) {
 						return function ( swiper ) {
