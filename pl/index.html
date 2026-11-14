@@ -37,6 +37,7 @@
   <!-- Modals CSS -->
   <link rel="stylesheet" href="../css/modal-lang.css">
   <link rel="stylesheet" href="../css/modal-spotkanie.css">
+  <link rel="stylesheet" href="../css/booking.css?v=20261115f">
   <link rel="stylesheet" href="../css/modal-wsparcie-pl.css">
   <link rel="stylesheet" href="../css/modal-wsparcie-banner.css">
   <link rel="stylesheet" href="../css/modal-cooperation.css">
@@ -177,7 +178,7 @@
                       </div>
                       <ul class="rd-navbar-nav">
                         <li class="rd-nav-item active"><a class="rd-nav-link" href="#home">Home</a></li>
-                        <li class="rd-nav-item"><a class="rd-nav-link" href="#services">Pomoc psychologa</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="#services">Konsultacje</a></li>
                         <li class="rd-nav-item"><a class="rd-nav-link" href="#about">O Nas</a></li>
                         <li class="rd-nav-item"><a class="rd-nav-link" href="#experience">Współpraca</a></li>
                         <li class="rd-nav-item has-dropdown">
@@ -366,24 +367,91 @@
       </div>
       <!-- See all services-->
       <section class="section section-sm section-first bg-default text-center" id="services">
+        <!-- Sekcja „film + bezpłatna rozmowa + kontakt” (przebudowa 2026-11-14, etap 1 planu rozbudowy):
+             duży ekran (≥1200 px) = szeroki, niższy film | szeroki kalendarzyk | wąska kolumna: kwadraciki Zadzwoń + Napisz (same ikonki);
+             768–1199 px = film i kalendarzyk obok siebie, pod nimi dwa cienkie paski kontaktu obok siebie (ikonka + napis w jednej linii);
+             telefon = film, kalendarzyk, pod nim dwa cienkie paski kontaktu jeden pod drugim.
+             Film bez pasków odtwarzacza — tylko okrągły przycisk odtwórz/pauza (js/booking.js, [data-wf-video]). -->
         <div class="container">
-          <div class="row row-30 justify-content-center">
-            <div class="col-md-7 col-lg-5 col-xl-6 text-lg-left wow fadeInUp">
-              <!-- ZAMIANA OBRAZKA NA WIDEO -->
-              <video class="video-responsive video-framed" controls>
-                <source src="../video/1.mp4" type="video/mp4">
-                Twoja przeglądarka nie obsługuje tagu wideo.
-              </video>
+          <!-- Nagłówek sekcji (2026-11-14) — ten sam wzór co „Zarząd”: h2 + decor-bar -->
+          <div class="wf-help-head wow fadeInUp">
+            <h2>Konsultacje</h2>
+            <div class="title-classic-text">
+              <div class="decor-bar"></div>
             </div>
-            <div class="col-lg-7 col-xl-6">
-              <div class="row row-50 banners-row-desktop">
-                <div class="col-sm-6 wow fadeInRight">
-                  <article class="box-icon-modern box-icon-modern-custom">
-                    <div class="box-icon-modern-inner">
-                      
-                      <div id="customCalendar"></div>
-<a class="button button-primary button-ujarak" href="#modalSpotkanie" data-toggle="modal">umów spotkanie</a>
-
+            <p class="wf-help-lead">Posłuchaj, jak działamy, i umów bezpłatną rozmowę — o wybranej godzinie zadzwonimy do Ciebie.</p>
+          </div>
+          <div class="row row-30 wf-help-row">
+            <div class="wf-help-col wf-help-vidcol wow fadeInUp" data-wow-delay=".05s">
+              <div class="wf-vid" data-wf-video>
+                <video class="video-framed" playsinline preload="metadata">
+                  <source src="../video/1.mp4#t=0.1" type="video/mp4">
+                  Twoja przeglądarka nie obsługuje tagu wideo.
+                </video>
+                <button type="button" class="wf-vid-btn" aria-label="Odtwórz film">
+                  <svg class="wf-vid-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+                  <svg class="wf-vid-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="wf-help-col wf-help-calcol wow fadeInUp" data-wow-delay=".2s">
+              <article class="box-icon-modern box-icon-modern-custom wf-help-cal">
+                <div class="box-icon-modern-inner">
+                  <!-- Kalendarzyk wolnych terminów (js/booking.js): „Bezpłatna rozmowa” → przycisk „Umów rozmowę” → kalendarz → najbliższy termin → „Wybierz dzień — zadzwonimy do Ciebie”; klik w wolny dzień otwiera okno rezerwacji na tym dniu -->
+                  <div data-wfb-mini></div>
+                </div>
+              </article>
+            </div>
+            <div class="wf-help-col wf-help-side">
+              <div class="wf-help-tile wow fadeInUp" data-wow-delay=".35s">
+                <article class="box-icon-modern box-icon-modern-2">
+                  <div class="box-icon-modern-icon linearicons-phone-in-out"></div>
+                  <h5 class="box-icon-modern-title"><a href="#contact-info">ZADZWOŃ <br class="wf-br">DO NAS</a></h5>
+                  <div class="box-icon-modern-decor"></div>
+                  <p class="box-icon-modern-text">Porozmawiaj z naszym doradcą. Pomożemy Ci dobrać odpowiedniego specjalistę. </p>
+                </article>
+              </div>
+              <div class="wf-help-tile wow fadeInUp" data-wow-delay=".5s">
+                <article class="box-icon-modern box-icon-modern-2">
+                  <div class="box-icon-modern-icon linearicons-envelope"></div>
+<h5 class="box-icon-modern-title"><a href="#modalCta" id="scrollToContactBtn">NAPISZ <br class="wf-br">DO NAS</a></h5>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var scrollBtn = document.getElementById('scrollToContactBtn');
+    if(scrollBtn) {
+      scrollBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Znajdź ostatnią sekcję z formularzem kontaktowym
+        var sections = document.querySelectorAll('section');
+        var lastSection = null;
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (sections[i].querySelector('form')) {
+            lastSection = sections[i];
+            break;
+          }
+        }
+        if (!lastSection) {
+          // fallback: sekcja z id contact-info
+          lastSection = document.getElementById('contact-info');
+        }
+        if (lastSection) {
+          var y = lastSection.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    }
+  });
+</script>
+                  <div class="box-icon-modern-decor"></div>
+                  <p class="box-icon-modern-text">Skorzystaj z naszego formularza kontaktowego.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Stare okno „Umów spotkanie” (Bootstrap) — nieużywane, przyciski otwiera nowe okno rezerwacji.
+           Do usunięcia w kroku 1F; UWAGA: jego <script> obsługuje też kopiowanie numeru konta w sekcji „Wsparcie”. -->
 <!-- Modal UMÓW SPOTKANIE -->
 <div class="modal fade" id="modalSpotkanie" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -486,109 +554,6 @@
     </div>
   </div>
 </div>
-                      <script>
-                        function renderCalendar(containerId) {
-                          const container = document.getElementById(containerId);
-                          if (!container) return;
-                          const today = new Date();
-                          let year = today.getFullYear();
-                          let month = today.getMonth();
-                          function getMonthName(m) {
-                            return new Date(year, m).toLocaleString('pl-PL', { month: 'long' });
-                          }
-                          function draw() {
-                            let firstDay = new Date(year, month, 1);
-                            let lastDay = new Date(year, month + 1, 0);
-                            let startDay = firstDay.getDay();
-                            if (startDay === 0) startDay = 7; // niedziela na koniec
-                            let daysInMonth = lastDay.getDate();
-                            let html = '<div class="cal-header">'+
-                              '<button id="calPrev" class="cal-nav-btn">&#8592;</button>'+
-                              '<span class="cal-title">'+getMonthName(month)+' '+year+'</span>'+
-                              '<button id="calNext" class="cal-nav-btn">&#8594;</button>'+
-                              '</div>';
-                            html += '<table class="cal-table">';
-                            html += '<thead><tr>';
-                            const days = ['Pn','Wt','Śr','Cz','Pt','Sb','Nd'];
-                            for (let d of days) html += '<th class="cal-th">'+d+'</th>';
-                            html += '</tr></thead><tbody><tr>';
-                            let dayOfWeek = startDay === 1 ? 1 : 1 - (startDay - 1);
-                            for (let i = 0; i < 42; i++, dayOfWeek++) {
-                              let d = new Date(year, month, dayOfWeek);
-                              let isCurrentMonth = d.getMonth() === month;
-                              let classes = ['cal-td'];
-                              let btn = document.querySelector('.button-primary');
-                              let btnColor = btn ? getComputedStyle(btn).backgroundColor : '#0069d9';
-                              document.documentElement.style.setProperty('--cal-offer-bg', btnColor);
-                              if (isCurrentMonth && (d.getDay() === 4 || d.getDay() === 5)) classes.push('offer');
-                              if (!isCurrentMonth) classes.push('out');
-                              html += '<td class="'+classes.join(' ')+'">'+(isCurrentMonth?d.getDate():'')+'</td>';
-                              if ((i+1)%7===0 && i<41) html+='</tr><tr>';
-                            }
-                            html += '</tr></tbody></table>';
-                            container.innerHTML = html;
-                            document.getElementById('calPrev').onclick = function(){ month--; if(month<0){month=11;year--;} draw(); };
-                            document.getElementById('calNext').onclick = function(){ month++; if(month>11){month=0;year++;} draw(); };
-                          }
-                          draw();
-                        }
-                        document.addEventListener('DOMContentLoaded', function(){
-                          renderCalendar('customCalendar');
-                        });
-                      </script>
-                    </div>
-                  </article>
-                </div>
-                <div class="col-sm-6 wow fadeInRight" data-wow-delay=".1s">
-                  <article class="box-icon-modern box-icon-modern-2">
-                    <div class="box-icon-modern-icon linearicons-phone-in-out"></div>
-                    <h5 class="box-icon-modern-title"><a href="#contact-info">ZADZWOŃ<br>DO NAS</a></h5>
-                    <div class="box-icon-modern-decor"></div>
-                    <p class="box-icon-modern-text">Porozmawiaj z naszym doradcą. Pomożemy Ci dobrać odpowiedniego specjalistę. </p>
-                  </article>
-                </div>
-                <div class="col-sm-6 wow fadeInRight" data-wow-delay=".2s">
-                  <article class="box-icon-modern box-icon-modern-2">
-                    <div class="box-icon-modern-icon linearicons-envelope"></div>
-<h5 class="box-icon-modern-title"><a href="#modalCta" id="scrollToContactBtn">NAPISZ<br>DO NAS</a></h5>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var scrollBtn = document.getElementById('scrollToContactBtn');
-    if(scrollBtn) {
-      scrollBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Znajdź ostatnią sekcję z formularzem kontaktowym
-        var sections = document.querySelectorAll('section');
-        var lastSection = null;
-        for (var i = sections.length - 1; i >= 0; i--) {
-          if (sections[i].querySelector('form')) {
-            lastSection = sections[i];
-            break;
-          }
-        }
-        if (!lastSection) {
-          // fallback: sekcja z id contact-info
-          lastSection = document.getElementById('contact-info');
-        }
-        if (lastSection) {
-          var y = lastSection.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      });
-    }
-  });
-</script>
-                    <div class="box-icon-modern-decor"></div>
-                    <p class="box-icon-modern-text">Skorzystaj z naszego formularza kontaktowego.</p>
-                  </article>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </div>
-          </section>
 
           <!-- Cta-->
       <section class="section section-fluid bg-default">
@@ -2212,5 +2177,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       });
     </script>
     
+    <!-- Rezerwacja rozmów (etap 1, 2026-11-14): bez window.WF_BOOKING.api = tryb podglądu -->
+    <script src="../js/booking.js?v=20261115g"></script>
   </body>
 </html>
