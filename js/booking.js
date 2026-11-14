@@ -127,6 +127,8 @@
       '<div class="wfb-panel">' +
         (DEMO ? '<div class="wfb-demo">PODGLĄD<span class="wfb-demo-more"> — przykładowe terminy</span></div>' : '') +
         '<aside class="wfb-aside">' +
+          // górna część (logo, tytuł, opis, 3 pola) — na telefonie w kroku „Twoje dane” zjeżdża w górę
+          '<div class="wfb-aside-top"><div class="wfb-aside-top-in">' +
           '<div class="wfb-logo"><img src="' + CFG.logo + '" alt="World Foundation"></div>' +
           '<h2 id="wfb-title">Umów rozmowę</h2>' +
           '<p class="wfb-lead">Wybierz dogodny termin —&nbsp;o&nbsp;tej godzinie zadzwonimy i&nbsp;porozmawiamy o&nbsp;tym, z&nbsp;czym przychodzisz.</p>' +
@@ -135,12 +137,16 @@
             '<li>' + I.clock + '<span>Trwa do 30 minut</span></li>' +
             '<li>' + I.phone + '<span>Zadzwonimy do Ciebie</span></li>' +
           '</ul>' +
+          '</div></div>' +
+          '<div class="wfb-aside-sep"></div>' +
           '<div class="wfb-summary" data-sumbox>' +
             '<div class="wfb-summary-txt">' +
               '<span class="wfb-summary-label" data-sumlabel>Twój termin</span>' +
               '<span class="wfb-summary-value" data-summary>Wybierz dzień w kalendarzu</span>' +
               '<span class="wfb-summary-time" data-sumtime></span>' +
               '<span class="wfb-summary-who" data-sumwho></span>' +
+              '<span class="wfb-summary-name" data-sumname></span>' +
+              '<button type="button" class="wfb-sum-change" data-change>Zmień</button>' +
             '</div>' +
             '<span class="wfb-summary-photo" data-sumphoto></span>' +
           '</div>' +
@@ -182,7 +188,7 @@
             '<div class="wfb-pane" data-pane="1">' +
               '<h3 class="wfb-pane-title wfb-in" style="--i:0">Twoje dane</h3>' +
               '<p class="wfb-pane-sub wfb-in" style="--i:1">Tylko tyle, ile potrzeba, żeby potwierdzić termin i zadzwonić.</p>' +
-              '<div class="wfb-chosen-card wfb-in" style="--i:2"><span class="wfb-cava" data-cava>' + I.cal + '</span><div><b data-cwhen></b><span data-ctime></span></div><button type="button" data-change>Zmień</button></div>' +
+              
               '<form class="wfb-form" novalidate data-form>' +
                 '<div class="wfb-field wfb-in" style="--i:3"><input id="wfb-name" name="name" autocomplete="given-name" placeholder=" " maxlength="60"><label for="wfb-name">Imię lub pseudonim</label><span class="wfb-err">Podaj imię lub pseudonim (co najmniej 2 znaki).</span></div>' +
                 '<div class="wfb-field wfb-in" style="--i:4"><input id="wfb-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder=" " maxlength="20"><label for="wfb-phone">Telefon</label><span class="wfb-err">Podaj numer telefonu (9 cyfr).</span></div>' +
@@ -217,8 +223,8 @@
     els.prev = q('[data-prev]'); els.next = q('[data-next]'); els.loading = q('[data-loading]');
     els.pick = q('.wfb-pick'); els.tday = q('[data-tday]'); els.tcount = q('[data-tcount]'); els.slots = q('[data-slots]');
     els.hint = q('[data-hint]'); els.back = q('[data-back]'); els.form = q('[data-form]'); els.submit = q('[data-submit]');
-    els.cwhen = q('[data-cwhen]'); els.cava = q('[data-cava]'); els.ctime = q('[data-ctime]'); els.dwhen = q('[data-dwhen]'); els.demail = q('[data-demail]'); els.dphone = q('[data-dphone]'); els.dwho = q('[data-dwho]');
-    els.sumbox = q('[data-sumbox]'); els.sumlabel = q('[data-sumlabel]'); els.sumtime = q('[data-sumtime]'); els.sumwho = q('[data-sumwho]'); els.sumphoto = q('[data-sumphoto]'); els.people = q('[data-people]');
+    els.dwhen = q('[data-dwhen]'); els.demail = q('[data-demail]'); els.dphone = q('[data-dphone]'); els.dwho = q('[data-dwho]');
+    els.sumbox = q('[data-sumbox]'); els.sumlabel = q('[data-sumlabel]'); els.sumtime = q('[data-sumtime]'); els.sumwho = q('[data-sumwho]'); els.sumname = q('[data-sumname]'); els.sumphoto = q('[data-sumphoto]'); els.people = q('[data-people]');
     els.counter = q('[data-counter]'); els.times = q('.wfb-times');
     els.panes = [].slice.call(root.querySelectorAll('[data-pane]'));
     els.steps = [].slice.call(root.querySelectorAll('[data-st]'));
@@ -288,6 +294,8 @@
     els.steps.forEach(function (s, i) { s.classList.toggle('is-active', i === n); s.classList.toggle('is-done', i < n); });
     els.lines.forEach(function (l, i) { l.classList.toggle('is-done', i < n); });
     els.back.setAttribute('aria-hidden', (n === 1) ? 'false' : 'true');
+    root.setAttribute('data-step', String(n));
+    root.classList.toggle('is-compact', n >= 1);
     if (n === 1) {
       fillChosen();
       setTimeout(function () { var i = root.querySelector('#wfb-name'); if (i && !i.value) i.focus({ preventScroll: true }); }, 520);
@@ -308,12 +316,13 @@
   // Twój termin: blado-pomarańczowy do czasu rezerwacji, zielony po rezerwacji
   function setSummary(text, slot, subText) {
     var time = slot ? 'godz. ' + hm(slot.start) + '–' + hm(slot.end) : (subText || '');
-    var who = slot && slot.specialist_name ? 'Zadzwoni:<b>' + esc(slot.specialist_name) + '</b>' : '';
+    var who = slot && slot.specialist_name ? 'Zadzwoni:' : '', name = slot && slot.specialist_name ? slot.specialist_name : '';
     var photo = slot ? avatar(slot, 'wfb-sum-img') : '';
-    if (els.summary.textContent === text && els.sumtime.textContent === time && els.sumwho.innerHTML === who) return;
+    if (els.summary.textContent === text && els.sumtime.textContent === time && els.sumname.textContent === name) return;
     els.summary.textContent = text;
     els.sumtime.textContent = time;
-    els.sumwho.innerHTML = who;
+    els.sumwho.textContent = who;
+    els.sumname.textContent = name;
     els.sumphoto.innerHTML = photo;
     els.sumbox.classList.toggle('has-photo', !!photo);
     els.sumbox.classList.remove('is-swap'); void els.sumbox.offsetWidth; els.sumbox.classList.add('is-swap');
@@ -325,10 +334,8 @@
   function cap(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
   function dayLabel(dayStr) { return cap(fmtDay.format(parseLocal(dayStr))); }
   function fillChosen() {
-    var s = st.slot;
-    els.cwhen.textContent = dayLabel(s.start);
-    els.ctime.textContent = 'godz. ' + hm(s.start) + '–' + hm(s.end) + (s.specialist_name ? ' · zadzwoni ' + s.specialist_name : '');
-    els.cava.innerHTML = s.specialist_name ? avatar(s, 'wfb-ava-l') : I.cal;
+    // okienko z terminem w kroku „Twoje dane” usunięte (Adam 2026-11-14) — termin widać w „Twój termin”
+    if (st.slot) setSummary(dayLabel(st.slot.start), st.slot);
   }
 
   /* ---------- kalendarz ---------- */

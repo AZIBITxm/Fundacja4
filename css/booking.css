@@ -135,13 +135,34 @@
   box-shadow: 0 6px 20px rgba(30, 40, 110, .12);
   transition: border-color .45s;
 }
-.wfb-summary-txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 2px 0 2px 4px; }
+.wfb-summary-txt {
+  flex: 1 1 auto; min-width: 0; padding: 2px 0 2px 4px;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 10px;
+  align-content: center; justify-items: start;
+}
+/* wiersze: 1 etykieta · 2 data · 3 godzina · 4 „Zadzwoni:” · 5 imię i nazwisko; przycisk „Zmień” obok godziny i „Zadzwoni:” */
+.wfb-summary-txt > * { grid-column: 1 / -1; }
+.wfb-summary-label { grid-row: 1; }
+.wfb-summary-value { grid-row: 2; }
+.wfb-summary-txt > .wfb-summary-time { grid-column: 1; grid-row: 3; }
+.wfb-summary-txt > .wfb-summary-who { grid-column: 1; grid-row: 4; }
+.wfb-summary-name { grid-row: 5; max-width: 100%; font-size: 14px; font-weight: 600; color: var(--wfb-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wfb-summary-name:empty { display: none; }
+.wfb-summary-txt > .wfb-sum-change {
+  grid-column: 2; grid-row: 3 / 5; align-self: stretch;
+  display: none; align-items: center; justify-content: center;
+  margin: 2px 0; padding: 0 14px; border: 1px solid #cfd6ee; border-radius: 0;
+  background: #fff; color: var(--wfb-ink); font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.wfb-sum-change:hover { background: var(--wfb-blue); border-color: var(--wfb-blue); color: #fff; }
+.wfb-root[data-step="1"] .wfb-sum-change { display: inline-flex; animation: wfb-swap .45s var(--wfb-ease); }
 .wfb-summary-label { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .12em !important; text-transform: uppercase !important; color: #ff1a3c; transition: color .45s; }
 .wfb-summary-label svg { width: 14px; height: 14px; }
 .wfb-summary-value { display: block; max-width: 100%; margin-top: 4px; font-size: 15.5px; font-weight: 600; color: var(--wfb-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .wfb-summary-time { font-size: 14px; font-weight: 500; color: var(--wfb-ink); white-space: nowrap; }
 .wfb-summary-who { display: block; max-width: 100%; margin-top: 4px; font-size: 13px; font-weight: 600; color: #00c853; }
-.wfb-summary-who b { display: block; font-size: 14px; font-weight: 600; color: var(--wfb-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wfb-summary-who:empty + .wfb-summary-name { margin-top: 0; }
 .wfb-summary-time:empty, .wfb-summary-who:empty { display: none; }
 /* zdjęcie: pełna wysokość kafelka, ten sam margines u góry, u dołu i z prawej (= padding kafelka) */
 .wfb-summary-photo { position: relative; flex: 0 0 auto; display: none; align-self: stretch; aspect-ratio: 4 / 5; min-height: 96px; overflow: hidden; }
@@ -525,7 +546,7 @@ body.wfb-lock { overflow: hidden; }
   .wfb-aside h2 { padding-top: 12px; }
   .wfb-aside p.wfb-lead { font-size: 12.5px; line-height: 1.45; margin: 0 0 10px; }
   /* trzy pola rozdzielone cienkimi liniami (zamiast fasolek) */
-  .wfb-facts { grid-template-columns: repeat(3, 1fr); margin: 0; border-bottom: 1px solid rgba(255, 255, 255, .35); }
+  .wfb-facts { grid-template-columns: repeat(3, 1fr); margin: 0; border-bottom: 0; }
   .wfb-facts li { border-bottom: 0; padding: 8px 6px 8px 0; gap: 7px; font-size: 11.5px; line-height: 1.25; }
   .wfb-facts li + li { border-left: 1px solid rgba(255, 255, 255, .35); padding-left: 9px; }
   .wfb-facts svg { flex: 0 0 16px; width: 16px; height: 16px; }
@@ -534,7 +555,7 @@ body.wfb-lock { overflow: hidden; }
   .wfb-summary-value { margin-top: 2px; font-size: 14px; }
   .wfb-summary-time { font-size: 12.5px; }
   .wfb-summary-who { font-size: 12px; margin-top: 2px; }
-  .wfb-summary-who b { font-size: 13px; }
+  .wfb-summary-name { font-size: 13px; }
   .wfb-summary-photo { min-height: 80px; }
   .wfb-dd { max-width: none; }
   .wfb-demo { bottom: auto; top: 0; right: 0; font-size: 8.5px; padding: 2px 7px; }
@@ -743,3 +764,20 @@ body.wfb-lock { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .wf-vid-btn { animation: none !important; transition: none !important; }
 }
+
+/* ---------- górna część lewej kolumny: zwijana na telefonie w kroku „Twoje dane” ---------- */
+.wfb-aside-top { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .55s cubic-bezier(.22, .8, .24, 1), opacity .35s ease; }
+.wfb-aside-top-in { min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
+.wfb-aside-sep { display: none; }
+@media (max-width: 860px) {
+  .wfb-aside { transition: padding .55s cubic-bezier(.22, .8, .24, 1); }
+  .wfb-aside-sep { display: block; height: 1px; background: rgba(255, 255, 255, .35); transition: opacity .3s; }
+  /* krok „Twoje dane” i „Gotowe”: niebieska część zjeżdża w górę, zostaje tylko „Twój termin” — więcej miejsca nad klawiaturą */
+  .wfb-root.is-compact .wfb-aside-top { grid-template-rows: 0fr; opacity: 0; }
+  .wfb-root.is-compact .wfb-aside { padding-top: 12px; padding-bottom: 12px; }
+  .wfb-root.is-compact .wfb-aside-sep { opacity: 0; height: 0; }
+  .wfb-root.is-compact .wfb-summary { margin-top: 0; }
+  .wfb-root.is-compact .wfb-demo { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .wfb-aside-top, .wfb-aside { transition: none !important; } }
+
