@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Odwołanie rozmowy — World Foundation</title>
+  <link rel="icon" href="../images/logo/logo.png">
+  <!-- Odwołanie rozmowy linkiem z maila z potwierdzeniem (krok 1E/1F, 2026-11-15).
+       ?t=<token> → POST https://meble-crm.vercel.app/api/public/booking/cancel {token}.
+       Najpierw pytamy o potwierdzenie (link mógł otworzyć np. skaner poczty — nie odwołujemy przy samym wejściu). -->
+  <style>
+    :root { --navy: #1b2a5e; --blue: #6689ff; --muted: #5d6480; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px;
+      background: #f4f6fb; font-family: Arial, Helvetica, sans-serif; color: #1e2235; }
+    .card { width: 100%; max-width: 440px; background: #fff; border-radius: 14px; box-shadow: 0 2px 14px rgba(20, 30, 70, .1); overflow: hidden; }
+    .head { background: var(--navy); color: #fff; padding: 16px 22px; display: flex; align-items: center; gap: 10px; font-weight: bold; }
+    .head img { height: 28px; width: auto; }
+    .body { padding: 22px; }
+    h1 { margin: 0 0 10px; font-size: 20px; color: var(--navy); }
+    p { margin: 0 0 12px; line-height: 1.55; color: var(--muted); font-size: 15px; }
+    .when { background: #eef2ff; border: 1px solid rgba(102, 137, 255, .45); border-radius: 10px; padding: 12px 14px; margin: 0 0 16px;
+      color: var(--navy); font-weight: bold; }
+    .btn { display: inline-block; border: 0; border-radius: 8px; padding: 11px 18px; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; }
+    .btn-danger { background: #dc2626; color: #fff; }
+    .btn-ghost { background: transparent; color: #4a63d6; border: 1px solid rgba(102, 137, 255, .6); margin-left: 8px; }
+    .btn[disabled] { opacity: .6; cursor: default; }
+    .ok { color: #15803d; }
+    .err { color: #dc2626; }
+    .hide { display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="head"><img src="../images/logo/logo.png" alt=""> World Foundation</div>
+    <div class="body">
+      <div id="ask">
+        <h1>Odwołać rozmowę?</h1>
+        <p>Termin wróci do puli i nie będziemy do Ciebie dzwonić. Nową rozmowę możesz umówić w każdej chwili na stronie fundacji.</p>
+        <button id="go" class="btn btn-danger" type="button">Tak, odwołuję</button>
+        <a class="btn btn-ghost" href="index.html">Nie, zostawiam</a>
+        <p id="msg" class="err hide" style="margin-top:14px"></p>
+      </div>
+      <div id="done" class="hide">
+        <h1 class="ok">Rozmowa odwołana</h1>
+        <div id="when" class="when hide"></div>
+        <p>Dziękujemy za informację. Jeśli zechcesz porozmawiać w innym terminie, umów się ponownie lub zadzwoń: <b>+48 500 461 563</b>.</p>
+        <a class="btn btn-ghost" style="margin-left:0" href="index.html#rezerwacja">Umów nową rozmowę</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var API = 'https://meble-crm.vercel.app/api/public/booking/cancel';
+      var token = new URLSearchParams(location.search).get('t') || '';
+      var go = document.getElementById('go'), msg = document.getElementById('msg');
+      function show(id) { document.getElementById(id).classList.remove('hide'); }
+      function hide(id) { document.getElementById(id).classList.add('hide'); }
+      function err(t) { msg.textContent = t; msg.classList.remove('hide'); }
+      if (token.length < 20) { go.disabled = true; err('Ten link jest niepełny. Skopiuj go w całości z wiadomości albo zadzwoń: +48 500 461 563.'); return; }
+      go.addEventListener('click', function () {
+        go.disabled = true; go.textContent = 'Odwołuję…'; msg.classList.add('hide');
+        fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: token }) })
+          .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+          .then(function (res) {
+            if (!res.ok) { go.disabled = false; go.textContent = 'Tak, odwołuję'; return err(res.j.error || 'Nie udało się odwołać rozmowy. Zadzwoń: +48 500 461 563.'); }
+            if (res.j.start) {
+              var s = res.j.start, d = new Date(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10));
+              var w = document.getElementById('when');
+              w.textContent = new Intl.DateTimeFormat('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' }).format(d) + ', godz. ' + s.slice(11, 16);
+              w.classList.remove('hide');
+            }
+            hide('ask'); show('done');
+          })
+          .catch(function () { go.disabled = false; go.textContent = 'Tak, odwołuję'; err('Brak połączenia. Spróbuj ponownie albo zadzwoń: +48 500 461 563.'); });
+      });
+    })();
+  </script>
+</body>
+</html>

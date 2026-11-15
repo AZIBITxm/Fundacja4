@@ -37,7 +37,7 @@
   <!-- Modals CSS -->
   <link rel="stylesheet" href="../css/modal-lang.css">
   <link rel="stylesheet" href="../css/modal-spotkanie.css">
-  <link rel="stylesheet" href="../css/booking.css?v=20261115h">
+  <link rel="stylesheet" href="../css/booking.css?v=20261115j">
   <link rel="stylesheet" href="../css/modal-wsparcie-pl.css">
   <link rel="stylesheet" href="../css/modal-wsparcie-banner.css">
   <link rel="stylesheet" href="../css/modal-cooperation.css">
@@ -450,26 +450,8 @@
           </div>
         </div>
       </section>
-      <!-- Stare okno „Umów spotkanie” (Bootstrap) — nieużywane, przyciski otwiera nowe okno rezerwacji.
-           Do usunięcia w kroku 1F; UWAGA: jego <script> obsługuje też kopiowanie numeru konta w sekcji „Wsparcie”. -->
-<!-- Modal UMÓW SPOTKANIE -->
-<div class="modal fade" id="modalSpotkanie" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Dostępność konsultantów</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>W dniach zaznaczonych w kalendarzu kolorem niebieskim nasi konsultanci są do Państwa dyspozycji w godzinach <br> 17:00 - 19:00</p>
-        <h5>Inny termin?</h5>
-        <p>W celu umówienia innej daty prosimy wysłać wiadomość i zaproponować inny termin. Odpowiemy najszybciej jak to możliwe.</p>
-        
-        <div class="spotkanie-actions">
-          <button type="button" class="button button-primary" data-dismiss="modal">OK</button>
-        </div>
+      <!-- Kopiowanie numeru konta / adresu w sekcji „Wsparcie” (przeniesione ze starego okna „Umów spotkanie”,
+           które usunięto w kroku 1F 2026-11-15 — linki href="#modalSpotkanie" otwiera teraz okno rezerwacji z js/booking.js) -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Kopiowanie wartości (konto/adres) w sekcji "Wsparcie"
@@ -514,46 +496,8 @@
         });
       });
 
-    var okBtn = document.querySelector('#modalSpotkanie .button[data-dismiss="modal"]');
-    if (okBtn) {
-      okBtn.addEventListener('click', function() {
-        // Zamknij modal (Bootstrap lub fallback)
-        var modal = document.getElementById('modalSpotkanie');
-        if (window.jQuery && window.jQuery(modal).modal) {
-          window.jQuery(modal).modal('hide');
-        } else {
-          modal.classList.remove('show');
-          modal.style.display = 'none';
-          modal.setAttribute('aria-hidden', 'true');
-          modal.removeAttribute('aria-modal');
-        }
-        // Przewiń do ostatniej sekcji z formularzem kontaktowym
-        var sections = document.querySelectorAll('section');
-        var lastSection = null;
-        for (var i = sections.length - 1; i >= 0; i--) {
-          if (sections[i].querySelector('form')) {
-            lastSection = sections[i];
-            break;
-          }
-        }
-        if (!lastSection) {
-          // fallback: sekcja z id contact-info
-          lastSection = document.getElementById('contact-info');
-        }
-        if (lastSection) {
-          setTimeout(function() {
-            var y = lastSection.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-          }, 350);
-        }
-      });
-    }
   });
 </script>
-      </div>
-    </div>
-  </div>
-</div>
 
           <!-- Cta-->
       <section class="section section-fluid bg-default">
@@ -808,7 +752,7 @@ Z naszej pomocy mogą skorzystać:<br>
 ✅ młodzież zmagająca się ze stresem, wykluczeniem i cyfrowymi uzależnieniami<br>
 Rozmowa ze specjalistą to pierwszy krok – umów spotkanie z naszym konsultantem.</p>
                     <div class="group-sm group-middle">
-                      <a class="button button-secondary button-pipaluk" href="#modalSpotkanie" data-toggle="modal">Umów spotkanie</a>
+                      <a class="button button-secondary button-pipaluk" href="#modalSpotkanie">Umów spotkanie</a>
                       <a class="button button-default-outline button-wapasha" href="#services">Poznaj szczegóły</a>
                     </div>
                   </div>
@@ -2177,7 +2121,9 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
       });
     </script>
     
-    <!-- Rezerwacja rozmów (etap 1, 2026-11-14): bez window.WF_BOOKING.api = tryb podglądu -->
-    <script src="../js/booking.js?v=20261115h"></script>
+    <!-- Rezerwacja rozmów (etap 1): prawdziwe terminy z aplikacji Zanders (krok 1F, 2026-11-15).
+         Usunięcie linii z window.WF_BOOKING = powrót do trybu podglądu. -->
+    <script>window.WF_BOOKING = { api: "https://meble-crm.vercel.app/api/public/booking" };</script>
+    <script src="../js/booking.js?v=20261115k"></script>
   </body>
 </html>

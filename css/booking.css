@@ -149,13 +149,15 @@
 .wfb-summary-name { grid-row: 5; max-width: 100%; font-size: 14px; font-weight: 600; color: var(--wfb-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .wfb-summary-name:empty { display: none; }
 .wfb-summary-txt > .wfb-sum-change {
-  grid-column: 2; grid-row: 3 / 5; align-self: stretch;
+  /* 2026-11-14 (Adam): delikatny niebieski przycisk na wysokości „Zadzwoni:” — lekka przezroczystość, cienka ramka, zaokrąglone rogi */
+  grid-column: 2; grid-row: 4; align-self: center;
   display: none; align-items: center; justify-content: center;
-  margin: 2px 0; padding: 0 14px; border: 1px solid #cfd6ee; border-radius: 0;
-  background: #fff; color: var(--wfb-ink); font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer;
+  margin: -2px 0 -4px; padding: 3px 11px; border: 1px solid rgba(102, 137, 255, .55); border-radius: 6px;
+  background: rgba(102, 137, 255, .1); color: #9aa0b1; font: inherit; font-size: 12px; font-weight: 600; line-height: 1.25;
+  letter-spacing: .02em !important; text-transform: none !important; cursor: pointer;
   transition: background .2s, color .2s, border-color .2s;
 }
-.wfb-sum-change:hover { background: var(--wfb-blue); border-color: var(--wfb-blue); color: #fff; }
+.wfb-sum-change:hover { background: rgba(102, 137, 255, .2); border-color: var(--wfb-blue); color: #7a8196; }
 .wfb-root[data-step="1"] .wfb-sum-change { display: inline-flex; animation: wfb-swap .45s var(--wfb-ease); }
 .wfb-summary-label { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .12em !important; text-transform: uppercase !important; color: #ff1a3c; transition: color .45s; }
 .wfb-summary-label svg { width: 14px; height: 14px; }
