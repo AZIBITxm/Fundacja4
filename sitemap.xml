@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Publiczne strony PL (etap 12, 2026-11-20). Bez: pl/odwolaj.html (noindex), pl/wsparcie-weteranow.html (ukryta), pl/footer.html (fragment). -->
+<!-- Publiczne strony PL (etap 12, 2026-11-20). Bez: pl/odwolaj.html (noindex), pl/wsparcie-weteranow.html (ukryta), pl/projekt-spot.html i pl/program-rodzic-nie-jestes-sam.html (niegotowe — zlecenie 12; dopisać po przeróbce), pl/footer.html (fragment). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://worldfoundation.eu/</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://worldfoundation.eu/pl/index.html</loc><lastmod>2026-11-20</lastmod></url>
-  <url><loc>https://worldfoundation.eu/pl/program-rodzic-nie-jestes-sam.html</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://worldfoundation.eu/pl/program-dla-rodzicow.html</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://worldfoundation.eu/pl/zrodla-programu.html</loc><lastmod>2026-11-20</lastmod></url>
-  <url><loc>https://worldfoundation.eu/pl/projekt-spot.html</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://worldfoundation.eu/pl/dolacz.html</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://worldfoundation.eu/pl/polityka-prywatnosci.html</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://worldfoundation.eu/pl/regulamin.html</loc><lastmod>2026-11-20</lastmod></url>
