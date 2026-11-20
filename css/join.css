@@ -1,109 +1,108 @@
-/* Sekcja „Szukamy psychologów / Dołącz do zespołu” (#join) — etap 4 rozbudowy strony */
-#join { overflow: hidden; }
-#join .join-lead {
-  max-width: 760px;
-  margin: 0 auto;
-  color: #7a7a7a;
-  text-align: center;
-}
-#join .join-who {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 26px;
-}
-#join .join-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border: 1px solid #6689ff;
-  color: #6689ff;
-  font-weight: 500;
-  font-size: 0.95rem;
-  background: rgba(102, 137, 255, 0.06);
-}
-#join .join-chip .fa { font-size: 1rem; }
-
-#join .join-heading {
-  margin-top: 46px;
-  margin-bottom: 0;
-  text-align: center;
-}
-#join .join-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 26px;
-}
-#join .join-card {
-  padding: 28px 24px;
-  background: #fff;
-  border: 1px solid #ececec;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+/* Baner „Jesteś psychologiem? Dołącz do zespołu” (#join) na stronie głównej — etap 4 rozbudowy strony (wersja 2, 2026-11-20).
+   Pełna szerokość, zdjęcie z niebieską nakładką w kolorach strony (#6689ff), duża typografia, subtelny ruch.
+   Szczegóły działu: pl/dolacz.html (css/dolacz.css). */
+.wfj-banner {
   text-align: left;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-#join .join-card:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(102, 137, 255, 0.16); }
-#join .join-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  background: rgba(102, 137, 255, 0.1);
-  color: #6689ff;
-  font-size: 1.4rem;
-}
-#join .join-card h4 { margin-top: 16px; font-size: 1.25rem; }
-#join .join-card p { margin-top: 8px; color: #7a7a7a; }
-
-#join .join-steps {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-  margin: 26px 0 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: joinstep;
-}
-#join .join-step {
   position: relative;
-  padding: 22px 20px 20px;
-  border-top: 3px solid #6689ff;
-  background: #f7f8ff;
-  text-align: left;
-  counter-increment: joinstep;
+  overflow: hidden;
+  padding: 120px 0;
+  color: #fff;
+  isolation: isolate;
+  background: #3a55c9;
 }
-#join .join-step::before {
-  content: "0" counter(joinstep);
-  display: block;
-  font-family: "Teko", Arial, sans-serif;
-  font-size: 2.4rem;
-  line-height: 1;
-  color: #6689ff;
+.wfj-banner__bg {
+  position: absolute;
+  inset: -4%;
+  z-index: -3;
+  background: url("../images/banery/221.webp") center 30% / cover no-repeat;
+  animation: wfjZoom 22s ease-in-out infinite alternate;
+  will-change: transform;
 }
-#join .join-step h5 { margin-top: 8px; font-size: 1.05rem; text-transform: none; letter-spacing: 0; }
-#join .join-step p { margin-top: 6px; color: #7a7a7a; font-size: 0.95rem; }
+.wfj-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(105deg, rgba(36, 54, 150, 0.95) 0%, rgba(58, 85, 201, 0.9) 38%, rgba(102, 137, 255, 0.72) 70%, rgba(102, 137, 255, 0.45) 100%);
+}
+.wfj-banner__glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+  pointer-events: none;
+  animation: wfjFloat 14s ease-in-out infinite alternate;
+}
+.wfj-banner__glow--a { width: 420px; height: 420px; right: -80px; top: -120px; background: #8aa4ff; }
+.wfj-banner__glow--b { width: 320px; height: 320px; left: 35%; bottom: -170px; background: #b9c8ff; animation-duration: 18s; opacity: 0.35; }
 
-#join .join-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.wfj-banner__inner { max-width: 760px; position: relative; }
+.wfj-banner__eyebrow {
+  display: inline-flex;
   align-items: center;
-  gap: 16px;
-  margin-top: 40px;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 7px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
 }
-#join .join-actions .button { margin-top: 0; }
+.wfj-banner__eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25); }
+.wfj-banner__title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+.wfj-banner__title span { display: block; color: #dfe6ff; font-weight: 300; }
+.wfj-banner__text {
+  margin: 24px 0 0;
+  max-width: 620px;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+}
+.wfj-banner__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+  padding: 16px 30px;
+  border-radius: 2px;
+  background: #fff;
+  color: #3a55c9;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 30px rgba(20, 30, 90, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+.wfj-banner__cta:hover, .wfj-banner__cta:focus { color: #243696; transform: translateY(-3px); box-shadow: 0 18px 36px rgba(20, 30, 90, 0.36); }
+.wfj-banner__cta .wfj-arrow { display: inline-block; transition: transform 0.25s ease; }
+.wfj-banner__cta:hover .wfj-arrow { transform: translateX(5px); }
 
-@media (max-width: 991px) {
-  #join .join-grid { grid-template-columns: 1fr; }
-  #join .join-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
+@keyframes wfjZoom { from { transform: scale(1); } to { transform: scale(1.08) translate(-1%, -1%); } }
+@keyframes wfjFloat { from { transform: translate(0, 0); } to { transform: translate(-40px, 30px); } }
+
+@media (max-width: 991px) { .wfj-banner { padding: 90px 0; } }
 @media (max-width: 575px) {
-  #join .join-steps { grid-template-columns: 1fr; }
-  #join .join-card { padding: 22px 18px; }
-  #join .join-actions { flex-direction: column; align-items: stretch; }
-  #join .join-actions .button { width: 100%; text-align: center; }
+  .wfj-banner { padding: 70px 0; }
+  .wfj-banner__bg { background-position: 70% 30%; }
+  .wfj-banner::before { background: linear-gradient(180deg, rgba(36, 54, 150, 0.94) 0%, rgba(58, 85, 201, 0.9) 60%, rgba(80, 112, 230, 0.9) 100%); }
+  .wfj-banner__cta { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wfj-banner__bg, .wfj-banner__glow { animation: none; }
 }
