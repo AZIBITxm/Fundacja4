@@ -7,7 +7,6 @@ html.wf-rebuild #experience,
 html.wf-rebuild #projects,
 html.wf-rebuild #world-market,
 html.wf-rebuild #pricing,
-html.wf-rebuild #team,
 html.wf-rebuild #news,
 html.wf-rebuild #contact-info,
 html.wf-rebuild #contacts,
@@ -19,7 +18,6 @@ html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#about"]
 html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#experience"]),
 html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#projects"]),
 html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#pricing"]),
-html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#team"]),
 html.wf-rebuild .wfr-hidden { display: none !important; }
 
 /* Pasek pod menu */
@@ -67,3 +65,7 @@ html.wf-rebuild a[href*="program-rodzic-nie-jestes-sam.html"],
 html.wf-rebuild a[href*="wsparcie-weteranow.html"],
 html.wf-rebuild #slider3-btn { display: none !important; }
 html:not(.wf-rebuild) .wf-only-rebuild { display: none !important; }
+
+/* Adam 20.11 (15:11): sekcja „Zarząd” wraca do widoku publicznego (pozycja menu „Zarząd”); przycisk na slajdzie
+   „Dołącz do nas” w widoku publicznym nieaktywny (ukryty) — wraca przy ?pelna=1. */
+html.wf-rebuild #slider-dolacz-btn { display: none !important; }

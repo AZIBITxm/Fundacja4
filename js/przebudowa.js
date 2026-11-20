@@ -8,7 +8,7 @@ var WF_PRZEBUDOWA = true;
  *  • Plik ładowany w <head> (bez async/defer) na: pl/index.html, program-rodzic-nie-jestes-sam.html, projekt-spot.html, dolacz.html.
  *    Dodaje klasę `wf-rebuild` na <html> — całe ukrywanie robi css/przebudowa.css (nic nie jest usuwane z HTML).
  *  • Na stronie głównej widoczne zostają: nagłówek z sliderem, rezerwacja rozmów (#services), baner psychologów (#join), stopka.
- *    W menu zostają: Home, Konsultacje, Dołącz, Kontakt. „Kontakt” (i inne linki do ukrytego #contact-info/#contacts)
+ *    W menu zostają: Home, Konsultacje, Program dla rodziców, Zarząd, Dołącz, Kontakt (Zarząd od 20.11, prośba Adama). „Kontakt” (i inne linki do ukrytego #contact-info/#contacts)
  *    przewija do stopki z danymi kontaktowymi.
  *  • Pod menu pasek „Strona w przebudowie — pełna wersja będzie dostępna od wtorku 24 listopada.”
  *  • Podgląd pełnej wersji: dodaj ?pelna=1 do adresu (zapamiętane w sessionStorage na czas karty — kotwice i podstrony
@@ -30,7 +30,7 @@ var WF_PRZEBUDOWA = true;
   root.classList.add('wf-rebuild');
 
   // sekcje strony głównej ukryte w trybie przebudowy (linki do nich znikają z menu i stopki)
-  var HIDDEN = ['about', 'experience', 'projects', 'world-market', 'pricing', 'team', 'news'];
+  var HIDDEN = ['about', 'experience', 'projects', 'world-market', 'pricing', 'news'];
   var CONTACT = ['contact-info', 'contacts'];
 
   function anchorOf(a) {

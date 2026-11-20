@@ -19,3 +19,7 @@
   .rd-navbar-classic.rd-navbar-static .rd-navbar-nav { white-space: nowrap; }
   .rd-navbar-classic.rd-navbar-static .rd-nav-item + .rd-nav-item { margin-left: 32px; }
 }
+
+/* Adam 20.11 (15:11): dolna belka „Jeżeli chcesz wesprzeć naszą fundację… / Wesprzyj” usunięta z widoku (HTML zostaje);
+   zbudujemy ją na nowo, gdy będzie konsultant AI i możliwość wpłat, w stylu reszty strony. */
+#sticky-narrow-banner { display: none !important; }
