@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../css/modal-wsparcie-pl.css">
   <link rel="stylesheet" href="../css/modal-donor-spot.css">
   <link rel="stylesheet" href="../css/modal-cooperation.css">
+  <link rel="stylesheet" href="../css/wf-forms.css?v=20261120a">
   <style>
   /* Kolory banerów dla Szczegółowy Opis Działań */
   .activity-banner-1 { background: #F4F0E8 !important; }
@@ -2105,21 +2106,22 @@
               <h3 class="h4 mb-4 text-center">Skontaktuj się z nami</h3>
               <p class="text-center mb-4">Wypełnij formularz, a nasz zespół skontaktuje się z Tobą w ciągu 24 godzin</p>
               
-              <form>
+              <!-- Formularz → aplikacja Zanders (js/wf-forms.js, etap 8) -->
+              <form data-wf-form="rodzic" novalidate>
                 <div class="row">
                   <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" placeholder="Imię i nazwisko" required>
+                    <input type="text" name="name" class="form-control" placeholder="Imię i nazwisko" autocomplete="name" maxlength="100" required>
                   </div>
                   <div class="col-md-6 mb-3">
-                    <input type="email" class="form-control" placeholder="Adres e-mail" required>
+                    <input type="email" name="email" class="form-control" placeholder="Adres e-mail" autocomplete="email" maxlength="120" required>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6 mb-3">
-                    <input type="tel" class="form-control" placeholder="Numer telefonu">
+                    <input type="tel" name="phone" class="form-control" placeholder="Numer telefonu (opcjonalnie)" autocomplete="tel" maxlength="30">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <select class="form-control" required>
+                    <select name="extra_pomoc" class="form-control" required>
                       <option value="">Rodzaj pomocy</option>
                       <option value="prawna">Pomoc prawna</option>
                       <option value="psychologiczna">Wsparcie psychologiczne</option>
@@ -2130,11 +2132,19 @@
                   </div>
                 </div>
                 <div class="mb-3">
-                  <textarea class="form-control" rows="5" placeholder="Opisz swoją sytuację..." required></textarea>
+                  <textarea name="message" class="form-control" rows="5" placeholder="Opisz swoją sytuację..." maxlength="4000" required></textarea>
                 </div>
+                <div class="wff-hp" aria-hidden="true">
+                  <label>Strona internetowa <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                </div>
+                <label class="wff-consent">
+                  <input type="checkbox" name="consent">
+                  <span>Wyrażam zgodę na przetwarzanie przez Fundację World Foundation moich danych podanych w formularzu — w tym, jeżeli je podam, informacji o zdrowiu moim lub mojego dziecka — w celu odpowiedzi na zgłoszenie i udzielenia pomocy. Zgodę mogę w każdej chwili wycofać. Szczegóły w <a href="polityka-prywatnosci.html#formularze" target="_blank" rel="noopener">polityce prywatności</a>.</span>
+                </label>
                 <div class="text-center">
                   <button type="submit" class="button button-primary button-ujarak">Wyślij wiadomość</button>
                 </div>
+                <p class="wff-status" data-wf-status role="status" aria-live="polite" hidden></p>
               </form>
             </div>
           </div>
@@ -2159,6 +2169,9 @@
   <!-- Scripts -->
   <script src="../js/core.min.js"></script>
   <script src="../js/script.js?v=20261107f"></script>
+  <!-- Formularze → aplikacja Zanders. Adres API jak window.WF_BOOKING w pl/index.html. -->
+  <script>window.WF_FORMS = { api: "https://meble-crm.vercel.app/api/public/wf-form" };</script>
+  <script src="../js/wf-forms.js?v=20261120a"></script>
   
   <script>
     // Smooth scroll function

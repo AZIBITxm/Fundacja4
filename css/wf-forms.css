@@ -1,0 +1,13 @@
+/* Formularze strony → aplikacja Zanders (js/wf-forms.js, etap 8). */
+.wff-hp { position: absolute !important; left: -10000px !important; width: 1px; height: 1px; overflow: hidden; }
+form[data-wf-form] .form-control.wff-error { border-color: #dc3545; box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.15); }
+.wff-consent { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 18px; font-size: 14px; line-height: 1.5; color: #6c757d; text-align: left; cursor: pointer; }
+.wff-consent input { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; accent-color: #b89661; cursor: pointer; }
+.wff-consent a { color: #b89661; text-decoration: underline; }
+.wff-consent.wff-error { color: #dc3545; }
+.wff-status { margin: 18px 0 0; padding: 14px 18px; border-left: 4px solid; font-size: 15px; line-height: 1.5; text-align: left; animation: wffIn .35s ease both; }
+.wff-status.is-ok { border-color: #b89661; background: rgba(212, 165, 116, 0.12); color: #5c4a2e; }
+.wff-status.is-error { border-color: #dc3545; background: rgba(220, 53, 69, 0.08); color: #a4232f; }
+form[data-wf-form].is-sending [type=submit] { opacity: .65; cursor: wait; }
+@keyframes wffIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .wff-status { animation: none; } }
