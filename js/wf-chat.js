@@ -53,7 +53,7 @@
         '<header class="wfa-head">' +
           '<span class="wfa-ava" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 3.58-9 8 0 2.1.92 4.01 2.42 5.44L5 21l4.3-1.91c.86.21 1.77.33 2.7.33 4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="currentColor"/></svg></span>' +
           '<div class="wfa-head-txt"><h2 id="wfa-title">Konsultant AI fundacji</h2>' +
-          '<p>Informuję o fundacji i kieruję. Nie udzielam porad psychologicznych.</p></div>' +
+          '<p>Informuję o działalności fundacji, projektach, spotkaniach i kontakcie. Nie zbieram danych i nie udzielam porad zdrowotnych.</p></div>' +
           '<button type="button" class="wfa-x" data-wfa-close aria-label="Zamknij czat">×</button>' +
         '</header>' +
         '<div class="wfa-list" aria-live="polite"></div>' +
@@ -62,7 +62,7 @@
           '<textarea class="wfa-input" rows="1" maxlength="' + MAX_LEN + '" placeholder="Napisz pytanie…" aria-label="Twoje pytanie"></textarea>' +
           '<button type="submit" class="wfa-send" aria-label="Wyślij"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5l18-8.5L3 3.5l2.5 7L15 12l-9.5 1.5z" fill="currentColor"/></svg></button>' +
         '</form>' +
-        '<p class="wfa-note">Nie podawaj danych osobowych ani informacji o zdrowiu — rozmowa nie jest zapisywana. ' +
+        '<p class="wfa-note">Czat ma charakter wyłącznie informacyjny. Nie podawaj danych osobowych ani informacji o zdrowiu — nie są potrzebne, a rozmowa nie jest zapisywana. ' +
           'W nagłym zagrożeniu dzwoń <a href="tel:112">112</a>, telefon zaufania <a href="tel:116111">116 111</a>. ' +
           '<a href="polityka-prywatnosci.html#konsultant" target="_blank" rel="noopener">Prywatność</a></p>' +
       '</section>';
