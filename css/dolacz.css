@@ -223,11 +223,12 @@
   background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.28); color: #fff; text-decoration: none;
   font: inherit; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   transition: background .25s, transform .25s, box-shadow .25s;
-  opacity: 0; transform: translateX(60px); animation: wfdStripIn .7s cubic-bezier(.2,.8,.2,1) forwards; }
-.wfd-strip:nth-child(1) { animation-delay: .35s; }
-.wfd-strip:nth-child(2) { animation-delay: .55s; }
-.wfd-strip:nth-child(3) { animation-delay: .75s; }
-.wfd-strip:nth-child(4) { animation-delay: .95s; }
+  animation: wfdStripIn1 1.05s cubic-bezier(.2,.8,.2,1); }
+/* Wjazd od prawej, po kolei. Stan spoczynkowy = widoczny (bez opacity:0 w stylu bazowym) — gdyby animacja
+   nie ruszyła (karta w tle, stara przeglądarka), paski i tak są widoczne. Kolejność przez czas „przytrzymania”. */
+.wfd-strip:nth-child(2) { animation-name: wfdStripIn2; animation-duration: 1.25s; }
+.wfd-strip:nth-child(3) { animation-name: wfdStripIn3; animation-duration: 1.45s; }
+.wfd-strip:nth-child(4) { animation-name: wfdStripIn4; animation-duration: 1.65s; }
 .wfd-strip:hover, .wfd-strip:focus-visible { background: rgba(255, 255, 255, 0.24); color: #fff; text-decoration: none; box-shadow: 0 12px 28px rgba(20, 30, 90, .25); }
 .wfd-strip:hover .wfd-strip__go { transform: translateX(4px); }
 .wfd-strip__ico { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--wfd-blue-d); display: grid; place-items: center; }
@@ -238,9 +239,13 @@
 .wfd-strip__txt strong { font-weight: 600; font-size: 1.02rem; line-height: 1.3; color: #fff; }
 .wfd-strip__txt span { font-size: .88rem; line-height: 1.4; color: rgba(255, 255, 255, .85); }
 .wfd-strip__go { flex: 0 0 auto; font-size: 1.2rem; transition: transform .25s; }
-@keyframes wfdStripIn { to { opacity: 1; transform: none; } }
+@keyframes wfdStripIn1 { 0% { opacity: 0; transform: translateX(60px); } 33% { opacity: 0; transform: translateX(60px); } 100% { opacity: 1; transform: none; } }
+@keyframes wfdStripIn2 { 0% { opacity: 0; transform: translateX(60px); } 44% { opacity: 0; transform: translateX(60px); } 100% { opacity: 1; transform: none; } }
+@keyframes wfdStripIn3 { 0% { opacity: 0; transform: translateX(60px); } 52% { opacity: 0; transform: translateX(60px); } 100% { opacity: 1; transform: none; } }
+@keyframes wfdStripIn4 { 0% { opacity: 0; transform: translateX(60px); } 58% { opacity: 0; transform: translateX(60px); } 100% { opacity: 1; transform: none; } }
 @media (max-width: 991px) {
   .wfd-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .wfd-strips { max-width: 520px; }
 }
-@media (prefers-reduced-motion: reduce) { .wfd-strip { animation: none; opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .wfd-strip { animation: none !important; } }
+.wfd-strip__txt .wfd-strip__num { white-space: nowrap; overflow-wrap: normal; font-size: 1.05rem; font-weight: 600; color: #fff; letter-spacing: .01em; }
