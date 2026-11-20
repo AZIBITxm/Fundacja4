@@ -215,3 +215,15 @@
 /* nagłówek „Co oferujemy” pod listą „Kogo szukamy” */
 .wfd-head--offer { margin-top: 80px; margin-bottom: 0; }
 @media (max-width: 575px) { .wfd-head--offer { margin-top: 56px; } }
+
+/* Adam 20.11: inne drogi kontaktu w sekcji końcowej (QR aplikacji, telefon, konsultant AI) */
+.wfd-ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 34px auto 0; max-width: 1000px; text-align: left; }
+.wfd-way { display: flex; gap: 14px; align-items: flex-start; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22); border-radius: 16px; padding: 18px; color: #fff; }
+.wfd-way img { flex: 0 0 auto; background: #fff; border-radius: 10px; padding: 6px; width: 96px; height: 96px; }
+.wfd-way__ico { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; background: #fff; color: var(--wfd-blue-d); display: grid; place-items: center; }
+.wfd-way__ico svg { width: 24px; height: 24px; }
+.wfd-way h3 { margin: 0 0 6px; font-size: 1.05rem; font-weight: 600; color: #fff; }
+.wfd-way p { margin: 0 0 8px; font-size: .93rem; line-height: 1.55; color: rgba(255,255,255,.88); }
+.wfd-way a, .wfd-way__btn { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; font-weight: 600; }
+.wfd-way a:hover, .wfd-way__btn:hover { color: var(--wfd-blue-l); }
+@media (max-width: 1199px) { .wfd-ways { grid-template-columns: minmax(0, 1fr); max-width: 560px; } }
