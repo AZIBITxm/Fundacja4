@@ -43,6 +43,9 @@
   <link rel="stylesheet" href="../css/modal-cooperation.css">
     <link rel="stylesheet" href="../css/join.css?v=20261120b">
   <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
+  <!-- Tryb „strona w przebudowie” (zlecenie 6A) — przełącznik WF_PRZEBUDOWA w js/przebudowa.js -->
+  <link rel="stylesheet" href="../css/przebudowa.css?v=20261120a">
+  <script src="../js/przebudowa.js?v=20261120f"></script>
     
   </head>
   <body>
@@ -245,7 +248,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Budowanie świadomości</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Program cyfrowych uzależnień oraz inne programy budujące świadomość i mechanizmy obronne dla zagrożeń dzisiejszej cywilizacji.</p><a class="button button-primary button-ujarak" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Program cyfrowych uzależnień oraz inne programy budujące świadomość i mechanizmy obronne dla zagrożeń dzisiejszej cywilizacji.</p><a class="button button-primary button-ujarak" href="#projects" data-wfr-href="projekt-spot.html" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -258,7 +261,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Nie jesteś Sam</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wsparcie dla rodziców samotnie wychowujących dzieci oraz doświadczających alienacji rodzicielskiej</p><a class="button button-primary button-ujarak" id="slider3-btn" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wsparcie dla rodziców samotnie wychowujących dzieci oraz doświadczających alienacji rodzicielskiej</p><a class="button button-primary button-ujarak" id="slider3-btn" href="#projects" data-wfr-href="program-rodzic-nie-jestes-sam.html" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -428,14 +431,15 @@
         var sections = document.querySelectorAll('section');
         var lastSection = null;
         for (var i = sections.length - 1; i >= 0; i--) {
-          if (sections[i].querySelector('form')) {
+          if (sections[i].querySelector('form') && sections[i].offsetParent !== null) {
             lastSection = sections[i];
             break;
           }
         }
         if (!lastSection) {
-          // fallback: sekcja z id contact-info
+          // fallback: sekcja z id contact-info; w trybie przebudowy (ukryta) — stopka z danymi kontaktowymi
           lastSection = document.getElementById('contact-info');
+          if (!lastSection || lastSection.offsetParent === null) lastSection = document.getElementById('footer-placeholder');
         }
         if (lastSection) {
           var y = lastSection.getBoundingClientRect().top + window.pageYOffset;

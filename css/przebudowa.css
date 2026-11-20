@@ -1,0 +1,59 @@
+/* TRYB „STRONA W PRZEBUDOWIE” — działa tylko, gdy js/przebudowa.js doda klasę `wf-rebuild` na <html>.
+   Wyłączenie: w js/przebudowa.js ustaw WF_PRZEBUDOWA = false (ten plik może zostać — bez klasy nic nie robi). */
+
+/* Strona główna: ukryte sekcje (zostają nagłówek + slider, #services z rezerwacją, baner #join, stopka) */
+html.wf-rebuild #about,
+html.wf-rebuild #experience,
+html.wf-rebuild #projects,
+html.wf-rebuild #world-market,
+html.wf-rebuild #pricing,
+html.wf-rebuild #team,
+html.wf-rebuild #news,
+html.wf-rebuild #contact-info,
+html.wf-rebuild #contacts,
+html.wf-rebuild .wfr-hide-section { display: none !important; }
+
+/* Menu: zostają Home, Konsultacje, Dołącz, Kontakt (reszta prowadzi do ukrytych sekcji).
+   :has() chowa pozycje od razu (bez mignięcia); klasa .wfr-hidden z JS to zapas dla starszych przeglądarek i stopki. */
+html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#about"]),
+html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#experience"]),
+html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#projects"]),
+html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#pricing"]),
+html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#team"]),
+html.wf-rebuild .wfr-hidden { display: none !important; }
+
+/* Pasek pod menu */
+.wfr-bar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #eef2ff 0%, #e3e9ff 50%, #eef2ff 100%);
+  border-bottom: 1px solid #d5ddff;
+  color: #2f3f8f;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+}
+.wfr-bar strong { font-weight: 600; color: #243696; }
+.wfr-bar__dot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6689ff;
+  box-shadow: 0 0 0 0 rgba(102, 137, 255, 0.5);
+  animation: wfrPulse 2.4s ease-out infinite;
+}
+@keyframes wfrPulse {
+  0% { box-shadow: 0 0 0 0 rgba(102, 137, 255, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(102, 137, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(102, 137, 255, 0); }
+}
+@media (max-width: 575px) {
+  .wfr-bar { font-size: 13px; padding: 9px 14px; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { .wfr-bar__dot { animation: none; } }
