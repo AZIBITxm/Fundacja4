@@ -94,3 +94,65 @@ a.wfp-cyt:hover, a.wfp-cyt:focus { background: var(--wfd-blue); color: #fff; }
   .wfp-hero { padding: 90px 0 60px; }
 }
 @media (prefers-reduced-motion: reduce) { .wfp-flash { animation: none; outline: 3px solid #ffc400; } }
+
+/* ---------- Landing programu (wersja zachęcająca, 2026-11-20 wieczór) ---------- */
+.wfl-hero { position: relative; overflow: hidden; isolation: isolate; padding: 120px 0 100px; color: #fff; background: var(--wfd-blue-dd); }
+.wfl-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.wfl-hero__shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, rgba(36, 54, 150, .94) 0%, rgba(58, 85, 201, .82) 48%, rgba(102, 137, 255, .45) 100%); }
+.wfl-hero h1 { margin: 0; color: #fff; font-size: clamp(1.9rem, 4.2vw, 3.1rem); line-height: 1.12; font-weight: 500; text-transform: none; }
+.wfl-hero h1 span { display: block; margin-top: 14px; color: #dfe6ff; font-weight: 300; font-size: .52em; line-height: 1.4; }
+.wfl-toc ol { margin-bottom: 14px; }
+.wfl-toc__cta { display: inline-flex; padding: 9px 16px; border-radius: 999px; background: var(--wfd-blue-d); color: #fff; font-weight: 600; font-size: 14px; }
+.wfl-toc__cta:hover, .wfl-toc__cta:focus { background: var(--wfd-blue-dd); color: #fff; }
+.wfl-sec { scroll-margin-top: 110px; }
+.wfl-sec + .wfl-sec { margin-top: 70px; }
+.wfl-text h2 { display: block; }
+.wfl-lead { font-size: 1.08em; color: var(--wfd-ink); }
+.wfl-split { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px; align-items: center; margin-bottom: 18px; }
+.wfl-split--rev { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.wfl-figure { margin: 0; }
+.wfl-figure img { width: 100%; border-radius: 18px; box-shadow: 0 18px 40px rgba(31, 42, 68, .14); display: block; }
+.wfl-facts { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+.wfl-facts li { padding: 12px 14px; border-radius: 12px; background: var(--wfd-blue-l); line-height: 1.5; }
+.wfl-facts strong { display: block; color: var(--wfd-blue-dd); }
+.wfl-blok { position: relative; margin-top: 26px; padding: 26px 28px 22px; border: 1px solid #e3e8f5; border-radius: 18px; background: #fff; box-shadow: 0 12px 30px rgba(31, 42, 68, .06); scroll-margin-top: 110px; }
+.wfl-blok__no { margin: 0 0 4px; font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--wfd-blue); }
+.wfl-blok h3 { margin: 0 0 12px; font-size: clamp(1.25rem, 2vw, 1.55rem); font-weight: 600; color: var(--wfd-ink); text-transform: none; letter-spacing: -.01em; }
+.wfl-blok ul { margin: 0; padding-left: 22px; }
+.wfl-blok li { margin-bottom: 8px; }
+.wfl-blok li::marker { color: var(--wfd-blue); }
+.wfl-fact { margin-top: 18px; padding: 16px 18px; border-radius: 14px; background: linear-gradient(135deg, #fff8dd, #fff); border: 1px solid #f3e2a6; }
+.wfl-fact__lbl { margin: 0 0 8px !important; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8a6400; }
+.wfl-fact p { margin: 0 0 8px; }
+.wfl-fact p:last-child { margin-bottom: 0; }
+.wfl-closing { margin-top: 26px; padding: 18px 20px; border-radius: 14px; background: #f1f8f4; }
+.wfl-closing p { margin: 0; }
+.wfl-glossary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.wfl-glossary div { padding: 14px 16px; border-radius: 12px; background: #f6f8ff; border: 1px solid #e6ebfb; }
+.wfl-glossary dt { margin-bottom: 4px; font-weight: 600; color: var(--wfd-blue-dd); }
+.wfl-glossary dd { margin: 0; font-size: 15px; line-height: 1.6; }
+.wfl-form-sec { padding: 28px; border-radius: 20px; background: linear-gradient(160deg, var(--wfd-blue-l), #fff 70%); border: 1px solid #dfe6ff; }
+.wfl-form { display: grid; gap: 14px; margin-top: 10px; }
+.wfl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.wfl-field { display: flex; flex-direction: column; gap: 6px; }
+.wfl-field label { font-size: 14px; font-weight: 600; color: var(--wfd-ink); }
+.wfl-field input, .wfl-field select, .wfl-field textarea { width: 100%; padding: 11px 13px; border: 1px solid #ccd5ee; border-radius: 10px; background: #fff; font-size: 15px; color: var(--wfd-ink); }
+.wfl-field input:focus, .wfl-field select:focus, .wfl-field textarea:focus { outline: 2px solid var(--wfd-blue); outline-offset: 1px; border-color: var(--wfd-blue); }
+.wfl-field .wff-error, .wfl-field [aria-invalid="true"] { border-color: #d6455d; }
+.wfl-form .wff-consent { font-size: 13.5px; line-height: 1.55; }
+.wfl-form button[type=submit] { justify-self: start; border: 0; cursor: pointer; }
+@media (max-width: 991px) {
+  .wfl-toc { position: sticky; top: 56px; z-index: 6; background: #fff; border-radius: 0; padding: 8px 0; margin: 0 -15px; box-shadow: 0 6px 14px rgba(31, 42, 68, .06); }
+  .wfl-toc > p, .wfl-toc__cta { display: none; }
+  .wfl-toc ol { display: flex; gap: 6px; overflow-x: auto; margin: 0; padding: 0 15px; scrollbar-width: none; }
+  .wfl-toc ol::-webkit-scrollbar { display: none; }
+  .wfl-toc li a, .wfl-toc li.lv3 a { white-space: nowrap; padding: 7px 12px; border: 1px solid #e3e8f5; border-radius: 999px; font-size: 13px; color: var(--wfd-ink); }
+  .wfl-split, .wfl-split--rev, .wfl-glossary, .wfl-row { grid-template-columns: minmax(0, 1fr); }
+  .wfl-blok { padding: 20px 18px; }
+  .wfl-form-sec { padding: 20px 16px; }
+  .wfl-hero { padding: 90px 0 60px; }
+}
+/* .wfd-page ma overflow-x:hidden (dolacz.css), co wyłącza position:sticky — clip ucina tak samo, ale nie tworzy kontenera przewijania */
+.wfd-page.wfp-page { overflow-x: clip; }
+/* motyw: .page { overflow: hidden } też blokuje sticky — na stronach programu tylko obcinamy poziomo */
+.page { overflow-x: clip; overflow-y: visible; }

@@ -2,10 +2,10 @@
 <html class="wide wow-animation" lang="pl">
 <head>
   <title>Program dla rodziców „Technoferencja w rodzinie a zdrowie psychiczne dziecka” | World Foundation</title>
-  <meta name="description" content="Bezpłatny program Fundacji WorldFoundation dla rodziców uczniów szkół podstawowych: telefon i dopamina, czas wolny, rozmowa z dzieckiem, samoocena rodzica, wartości, zdrowie i samodzielność dziecka. Pełna treść z odwołaniami do badań.">
+  <meta name="description" content="Bezpłatne spotkanie dla rodziców uczniów szkół podstawowych: dlaczego dziecku trudno odłożyć telefon, po co mu nuda i czas wolny, jak rozmawiać i jak obecność rodzica chroni dziecko. Zaproś Fundację WorldFoundation do swojej szkoły.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Program dla rodziców: Technoferencja w rodzinie a zdrowie psychiczne dziecka">
-  <meta property="og:description" content="Bezpłatny program Fundacji WorldFoundation dla rodziców uczniów szkół podstawowych: telefon i dopamina, czas wolny, rozmowa z dzieckiem, samoocena rodzica, wartości, zdrowie i samodzielność dziecka. Pełna treść z odwołaniami do badań.">
+  <meta property="og:description" content="Bezpłatne spotkanie dla rodziców uczniów szkół podstawowych: dlaczego dziecku trudno odłożyć telefon, po co mu nuda i czas wolny, jak rozmawiać i jak obecność rodzica chroni dziecko. Zaproś Fundację WorldFoundation do swojej szkoły.">
   <meta property="og:url" content="https://worldfoundation.eu/pl/program-dla-rodzicow.html">
   <meta property="og:image" content="https://worldfoundation.eu/images/og-worldfoundation.jpg">
   <meta property="og:image:width" content="1200">
@@ -25,10 +25,12 @@
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/style.css?v=20261107e">
   <link rel="stylesheet" href="../css/porzadki.css?v=20261120d">
-  <link rel="stylesheet" href="../css/dolacz.css?v=20261120a">
-  <link rel="stylesheet" href="../css/program.css?v=20261120a">
+  <link rel="stylesheet" href="../css/dolacz.css?v=20261120b">
+  <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
+  <link rel="stylesheet" href="../css/program.css?v=20261120d">
   <!-- Zgoda na cookies (zlecenie 6B): własny baner, skrypty statystyk i media zewnętrzne blokowane do zgody -->
   <link rel="stylesheet" href="../css/wf-cookies.css?v=20261120a">
+  <link rel="stylesheet" href="../css/wf-chat.css?v=20261120a">
   <script src="../js/wf-cookies.js?v=20261120a" defer></script>
 </head>
 
@@ -85,341 +87,240 @@
       </div>
     </header>
 
-    <main class="wfd-page wfp-page">
-      <section class="wfd-hero wfp-hero" aria-labelledby="wfp-title">
-        <div class="wfd-hero__bg" aria-hidden="true"></div>
-        <span class="wfd-hero__glow wfd-hero__glow--a" aria-hidden="true"></span>
+    <main class="wfd-page wfp-page wfl-page">
+      <section class="wfl-hero" aria-labelledby="wfp-title">
+        <video class="wfl-hero__video" autoplay muted loop playsinline preload="metadata" poster="../images/banery/20-film.webp?v=2" aria-hidden="true">
+          <source src="../video/budowanie-swiadomosci.webm?v=2" type="video/webm">
+          <source src="../video/budowanie-swiadomosci.mp4?v=3" type="video/mp4">
+        </video>
+        <div class="wfl-hero__shade" aria-hidden="true"></div>
         <div class="container">
           <div class="wfd-hero__inner">
             <p class="wfd-eyebrow">Program dla rodziców · Fundacja WorldFoundation</p>
-            <h1 id="wfp-title">Technoferencja w rodzinie a zdrowie psychiczne dziecka<span>Rola rodzica w przeciwdziałaniu samotności i stanom depresyjnym oraz wpływ jego obecności na rozwój, motywację i samodzielność dziecka</span></h1>
-            <p class="wfd-hero__lead">Jednorazowe spotkanie w szkole dla rodziców i opiekunów uczniów szkół podstawowych (60–90 minut, bezpłatnie). Poniżej pełna treść programu — z odwołaniami do badań naukowych, na których się opiera.</p>
+            <h1 id="wfp-title">Technoferencja w rodzinie a zdrowie psychiczne dziecka<span>Spotkanie dla rodziców o tym, co dzieje się z dzieckiem przed ekranem — i o tym, jak naprawdę możemy mu pomóc</span></h1>
+            <p class="wfd-hero__lead">Telefon, gry i krótkie filmy zmieniają codzienność naszych dzieci. Na spotkaniu pokazujemy, jakie mechanizmy stoją za tym, że tak trudno odłożyć telefon, dlaczego czas wolny i nuda są dziecku potrzebne i jak obecność rodzica — jego uwaga, rozmowa i przykład — chroni dziecko przed samotnością i przygnębieniem.</p>
             <div class="wfd-actions">
-              <a class="wfd-btn wfd-btn--light" href="#r7">Treść spotkania <span aria-hidden="true">→</span></a>
-              <a class="wfd-btn wfd-btn--ghost" href="zrodla-programu.html">Źródła naukowe</a>
+              <a class="wfd-btn wfd-btn--light" href="#zgloszenie">Zaproś nas do szkoły <span aria-hidden="true">→</span></a>
+              <a class="wfd-btn wfd-btn--ghost" href="#o-czym">O czym porozmawiamy</a>
             </div>
           </div>
         </div>
       </section>
+
       <div class="container wfp-wrap">
-        <nav class="wfp-toc" aria-label="Spis treści"><p>Spis treści</p><ol><li class="lv2"><a href="#r1">1. Metryczka programu</a></li><li class="lv2"><a href="#r2">2. Uzasadnienie</a></li><li class="lv2"><a href="#r3">3. Cele programu</a></li><li class="lv2"><a href="#r4">4. Założenia i zasady prowadzenia</a></li><li class="lv2"><a href="#r5">5. Plan spotkania (60–90 minut)</a></li><li class="lv2"><a href="#r6">6. Metody i formy pracy</a></li><li class="lv2"><a href="#r7">7. Treść spotkania</a></li><li class="lv3"><a href="#otwarcie">Otwarcie</a></li><li class="lv3"><a href="#blok-1">Blok 1. Dzieci i telefony</a></li><li class="lv3"><a href="#blok-2">Blok 2. Czas wolny i kreatywność</a></li><li class="lv3"><a href="#blok-3">Blok 3. Rozmowa i słuchanie — czy znamy swoje dzieci</a></li><li class="lv3"><a href="#blok-4">Blok 4. Rodzic jako punkt wyjścia — samoocena i technoferencja</a></li><li class="lv3"><a href="#blok-5">Blok 5. Wartości jako podstawa zasad</a></li><li class="lv3"><a href="#blok-6">Blok 6. Silne, zdrowe i odważne dziecko</a></li><li class="lv3"><a href="#blok-7">Blok 7. Samodzielność dziecka a ingerencja rodziców</a></li><li class="lv3"><a href="#zamkniecie">Zamknięcie</a></li><li class="lv2"><a href="#r8">8. Oczekiwane rezultaty</a></li><li class="lv2"><a href="#r9">9. Ewaluacja</a></li><li class="lv2"><a href="#r10">10. Zasady uczestnictwa i ochrona danych</a></li><li class="lv2"><a href="#r11">11. Wykaz źródeł naukowych</a></li></ol></nav>
-        <article class="wfp-text">
-<h2 id="r1"><span class="wfp-num">1</span>Metryczka programu</h2>
-<p><strong>Tytuł:</strong> <strong>Technoferencja w rodzinie a zdrowie psychiczne dziecka</strong></p>
-<p>Rola rodzica w przeciwdziałaniu samotności i stanom depresyjnym oraz wpływ jego obecności na rozwój, motywację i samodzielność dziecka</p>
-<p><strong>Podmiot realizujący:</strong> Fundacja „WorldFoundation”, ul. Staromiejska 17E, 84-300 Lębork, KRS 0001033312, NIP 8411740955, REGON 540674737; tel. +48 500 461 563, info@worldfoundation.eu, www.worldfoundation.eu.</p>
-<p><strong>Koordynator programu:</strong> Adam Zanders, Prezes Zarządu Fundacji „WorldFoundation”.</p>
-<p><strong>Współpraca:</strong> psycholog i terapeuta Anna Zychowicz oraz rodzice, którzy konsultowali treść programu i dzielili się swoimi doświadczeniami.( dopisanie poradni )</p>
-<p><strong>Prowadzący:</strong> osoba wskazana przez Fundację, znająca problematykę programu, współpracująca przy jego opracowaniu i mająca doświadczenie w wystąpieniach publicznych.</p>
-<p><strong>Adresaci:</strong> rodzice i opiekunowie prawni uczniów szkół podstawowych; wariant M — klasy 1–5, wariant S — klasy 6–8. Struktura spotkania jest w obu wariantach jednakowa; warianty różnią się doborem przykładów i zaleceń, dostosowanych do wieku dziecka.</p>
-<p><strong>Forma:</strong> jednorazowe spotkanie w szkole — wykład połączony z elementami ćwiczeń i dyskusji.</p>
-<p><strong>Rodzaj programu:</strong> promocja zdrowia psychicznego i profilaktyka uniwersalna — program skierowany do wszystkich rodziców, bez kryteriów kwalifikacji.</p>
-<p><strong>Czas trwania:</strong> od 60 do 90 minut.</p>
-<p><strong>Liczba uczestników:</strong> program nie określa maksymalnej liczby uczestników. Zaleca się grupę liczącą do około 60 osób, co ułatwia zadawanie pytań i udział w ćwiczeniach.</p>
-<p><strong>Wymagania organizacyjne:</strong> sala dostosowana do liczby uczestników. Prezentacja multimedialna jest wyświetlana na bieżąco w telefonach uczestników: po zeskanowaniu kodu QR rodzic łączy się ze stroną internetową lub aplikacją Fundacji, a kolejne slajdy zmieniają się w jego telefonie równocześnie z przebiegiem wystąpienia. Zaleca się, aby uczestnicy mieli ze sobą telefon komórkowy, najlepiej smartfon z dostępem do internetu. Uczestnicy otrzymują również materiały drukowane — broszurę z najważniejszymi treściami spotkania, propozycjami dla rodziców i kodem QR umożliwiającym pobranie aplikacji Fundacji lub otwarcie strony z materiałami. Rzutnik multimedialny i ekran nie są wymagane; mogą zostać wykorzystane pomocniczo.</p>
-<p><strong>Odpłatność:</strong> program jest realizowany bezpłatnie w ramach nieodpłatnej działalności pożytku publicznego Fundacji.</p>
-<p><strong>Podstawa statutowa:</strong> § 4 ust. 2 Statutu Fundacji — działalność na rzecz dzieci i młodzieży w wieku szkolnym, działalność na rzecz rozwoju edukacji oraz działalność informacyjna w zakresie promowania zdrowia fizycznego i psychicznego.</p>
-<h2 id="r2"><span class="wfp-num">2</span>Uzasadnienie</h2>
-<p>Dzieci w wieku szkolnym przeznaczają coraz większą część czasu wolnego na korzystanie ze smartfonów, zwłaszcza na oglądanie krótkich materiałów wideo. Treści te dostarczają szybko zmieniających się bodźców nagradzających. Metaanaliza 71 badań obejmujących łącznie 98 299 osób wykazała związek intensywnego korzystania z krótkich form wideo z osłabieniem uwagi oraz kontroli inhibicyjnej, czyli zdolności powstrzymywania automatycznych lub nieadekwatnych reakcji (Nguyen i in., 2025 <a class="wfp-cyt" id="cyt-B1-11-1" href="zrodla-programu.html?z=cyt-B1-11-1#B1-11" data-src="B1-11">[B1.11]</a>).</p>
-<p>Jednocześnie od kilkudziesięciu lat zmniejsza się zakres swobodnej, samodzielnej aktywności dzieci, a wśród młodzieży wzrasta częstość zaburzeń lękowych i depresyjnych (Gray, Lancy i Bjorklund, 2023 <a class="wfp-cyt" id="cyt-B7-2-1" href="zrodla-programu.html?z=cyt-B7-2-1#B7-2" data-src="B7-2">[B7.2]</a>).</p>
-<p>Jednym ze zjawisk omawianych w programie jest technoferencja, czyli zakłócanie interakcji rodzica z dzieckiem przez korzystanie z urządzeń cyfrowych. Rodzic pozostaje fizycznie obecny, lecz jego uwaga koncentruje się na urządzeniu. Dziecko może wówczas odbierać rodzica jako emocjonalnie niedostępnego. Częste występowanie takich sytuacji wiąże się z nasileniem trudności emocjonalnych i problemów z zachowaniem u dzieci (McDaniel i Radesky, 2018 <a class="wfp-cyt" id="cyt-B1-8-1" href="zrodla-programu.html?z=cyt-B1-8-1#B1-8" data-src="B1-8">[B1.8]</a>).</p>
-<p>Rodzicom często trudno rozpoznać mechanizmy, które utrudniają dziecku samodzielne ograniczenie korzystania z telefonu. W odpowiedzi stosują zakazy, które mogą być skuteczne głównie wtedy, gdy dorosły na bieżąco nadzoruje ich przestrzeganie.</p>
-<p>Program opiera się na założeniu, że trwała zmiana zaczyna się od rodzica: od zrozumienia tych mechanizmów, jakości wspólnie spędzanego czasu, sposobu prowadzenia rozmowy oraz wartości, które dziecko przyjmuje jako własne.</p>
-<p>Spotkanie ma przede wszystkim zwiększyć świadomość rodziców w zakresie zagrożeń i mechanizmów wpływających na dziecko oraz dostarczyć im wiedzy opartej na wynikach badań. Rodzic, oceniwszy sytuację we własnej rodzinie, może następnie zastosować wybrane sposoby budowania relacji z dzieckiem i przekazywania mu wartości.</p>
-<p>Program może być realizowany jako element szkolnego programu wychowawczo-profilaktycznego. Przed spotkaniem prowadzący ustala z dyrekcją lub pedagogiem szkolnym potrzeby i oczekiwania rodziców danej szkoły.</p>
-<h2 id="r3"><span class="wfp-num">3</span>Cele programu</h2>
-<p><strong>Cel ogólny:</strong> wzmocnienie kompetencji wychowawczych rodziców w zakresie korzystania przez dziecko z urządzeń cyfrowych, własnego korzystania z telefonu w obecności dziecka, organizacji czasu wolnego, komunikacji z dzieckiem oraz wychowania opartego na wartościach.</p>
-<p><strong>Po spotkaniu uczestnik:</strong></p>
-<ol class="wfp-ol">
-<li value="1">rozumie działanie układu dopaminergicznego, w tym różnicę między tonicznym uwalnianiem dopaminy, związanym ze względnie stałym poziomem podstawowym, a krótkotrwałym, fazowym uwalnianiem wywoływanym bodźcami; wie także, w jaki sposób częste bodźce nagradzające mogą wiązać się z obniżeniem motywacji dziecka;</li>
-<li value="2">odróżnia formy korzystania z urządzeń cyfrowych szczególnie obciążające — krótkie formy wideo oraz gry oparte na natychmiastowej gratyfikacji — od form wspierających rozwój;</li>
-<li value="3">rozumie znaczenie czasu wolnego od ekranu dla kreatywności i regeneracji dziecka, w tym rolę nudy oraz kontaktu z przyrodą;</li>
-<li value="4">zna zasady aktywnego słuchania dziecka i rozumie, że dla relacji z dzieckiem istotna jest przede wszystkim jakość wspólnie spędzanego czasu, nie zaś wyłącznie jego ilość;</li>
-<li value="5">rozumie pojęcie technoferencji i dokonuje refleksji nad własnym korzystaniem z telefonu w obecności dziecka;</li>
-<li value="6">zastanawia się nad własną rolą rodzica i dokonuje refleksji nad swoją samooceną rodzicielską; dostrzega, że sposób, w jaki ocenia swoje dziecko, może wiązać się z tym, jak ocenia samego siebie jako rodzica;</li>
-<li value="7">odróżnia wychowanie oparte na zakazach od wychowania wspierającego internalizację wartości;</li>
-<li value="8">zna wpływ odżywiania i aktywności fizycznej na samopoczucie, motywację i koncentrację dziecka;</li>
-<li value="9">rozumie skutki nadmiernej ingerencji rodzica w relacje rówieśnicze dziecka;</li>
-<li value="10">otrzymuje zestaw konkretnych propozycji działań i zachowań, spośród których — po ocenie sytuacji we własnej rodzinie — może wybrać te, które chce wprowadzić w relacjach z dzieckiem i z innymi domownikami oraz w codziennym funkcjonowaniu rodziny, np. w sposobie spędzania wspólnego czasu, prowadzenia rozmów, korzystania z telefonu czy ustalania zasad domowych.</li>
-</ol>
-<h2 id="r4"><span class="wfp-num">4</span>Założenia i zasady prowadzenia</h2>
-<ol class="wfp-ol">
-<li value="1"><strong>Wartości jako podstawa wychowania.</strong> Spotkanie nie stanowi zbioru zakazów i nakazów. Pokazuje, w jaki sposób rodzic może przekazywać dziecku wartości, tak aby dziecko stosowało zasady samodzielnie — dlatego, że rozumie ich sens i uznaje je za własne, a nie wyłącznie dlatego, że za ich nieprzestrzeganie grozi kara.</li>
-<li value="2"><strong>Wiedza i praktyka.</strong> Każdy blok tematyczny zawiera sposoby postępowania możliwe do zastosowania w domu.</li>
-<li value="3"><strong>Rzetelność naukowa.</strong> Program opiera się na opublikowanych badaniach naukowych, a przy tezach opartych na badaniach wskazano ich źródła. Prowadzący odróżnia wyniki badań od wyprowadzanych z nich wniosków i informuje uczestników o ograniczeniach przywoływanych badań.</li>
-<li value="4"><strong>Szacunek dla rodzica.</strong> Program nie ocenia rodziców; zachęca do refleksji i pracy nad sobą.</li>
-<li value="5"><strong>Uniwersalny charakter programu.</strong> Program jest skierowany do wszystkich rodziców i ma charakter uniwersalny. Nie wszystkie omawiane zagadnienia dotyczą każdej rodziny i każdego dziecka, a nie każde dziecko spełnia wszystkie opisane kryteria. Celem spotkania nie jest skłonienie rodziców do natychmiastowej zmiany ani sugerowanie, że w każdej rodzinie występują trudności. Spotkanie ma zwiększyć świadomość zagrożeń i mechanizmów ich działania. Rodzic, dysponując tą wiedzą, sam ocenia sytuację we własnym domu i wybiera z programu te treści i propozycje, które odpowiadają potrzebom i wiekowi jego dziecka.</li>
-<li value="6"><strong>Bezpieczeństwo.</strong> Spotkanie nie ma charakteru terapii ani diagnozy. Treści dotyczące zdrowia, w tym ADHD, mają charakter informacyjny i nie zastępują konsultacji lekarskiej. W razie potrzeby konsultacji właściwym miejscem jest poradnia psychologiczno-pedagogiczna lub gabinet lekarski. Na spotkaniu prowadzący przekazuje uczestnikom dane kontaktowe Fundacji „WorldFoundation” (tel. +48 500 461 563, info@worldfoundation.eu). Fundacja współpracuje z psychologami i terapeutami i pomaga w doborze właściwej formy pomocy. Prowadzący przekazuje także informacje o formach wsparcia oraz dane kontaktowe instytucji i organizacji pomocowych działających w danej miejscowości. W sytuacjach nagłych prowadzący wskazuje również całodobowe telefony wsparcia: 116 111 (dla dzieci i młodzieży) oraz 800 70 2222 (dla dorosłych w kryzysie psychicznym).</li>
-</ol>
-<h2 id="r5"><span class="wfp-num">5</span>Plan spotkania (60–90 minut)</h2>
-<ol class="wfp-ol">
-<li value="1">Otwarcie: cel spotkania i myśl przewodnia (ok. 5 min).</li>
-<li value="2">Blok 1. Dzieci i telefony — układ dopaminergiczny a motywacja (ok. 15 min).</li>
-<li value="3">Blok 2. Czas wolny i kreatywność (ok. 10 min).</li>
-<li value="4">Blok 3. Rozmowa i słuchanie — czy znamy swoje dzieci (ok. 10 min).</li>
-<li value="5">Blok 4. Rodzic jako punkt wyjścia — samoocena i technoferencja (ok. 12 min).</li>
-<li value="6">Blok 5. Wartości jako podstawa zasad (ok. 10 min).</li>
-<li value="7">Blok 6. Silne, zdrowe i odważne dziecko (ok. 8 min).</li>
-<li value="8">Blok 7. Samodzielność dziecka a ingerencja rodziców (ok. 8 min).</li>
-<li value="9">Zamknięcie: propozycje działań, kontakt do instytucji wsparcia, pytania uczestników (ok. 12 min).</li>
-</ol>
-<p>Podany czas dotyczy wariantu 90-minutowego. W wariancie 60-minutowym prowadzący proporcjonalnie skraca poszczególne części, w szczególności bloki 2, 6 i 7 oraz czas przeznaczony na pytania.</p>
-<h2 id="r6"><span class="wfp-num">6</span>Metody i formy pracy</h2>
-<p>Spotkanie obejmuje wykład z prezentacją multimedialną wyświetlaną na bieżąco w telefonach uczestników (dostęp przez kod QR do strony internetowej lub aplikacji Fundacji), omówienie wyników badań i przykładów z życia rodzinnego, pytania kierowane do uczestników, krótką anonimową ankietę wypełnianą w telefonie w dwóch częściach — na początku spotkania i w bloku 4, omówienie wariantów rozwiązań możliwych do zastosowania w rodzinie oraz dyskusję.</p>
-<p>Prowadzący odpowiada także na pytania uczestników. Uczestnicy otrzymują materiały drukowane (broszurę) z najważniejszymi treściami i propozycjami dla rodziców. Sposób prowadzenia spotkania — z wykorzystaniem telefonów — sam pokazuje, że urządzenie cyfrowe może służyć rozwojowi, jeżeli korzysta się z niego świadomie. Wykaz źródeł jest dostępny na stronie internetowej Fundacji.</p>
-<h2 id="r7"><span class="wfp-num">7</span>Treść spotkania</h2>
-<h3 id="otwarcie" class="wfp-blok"><span>Część</span>Otwarcie</h3>
-<p><strong>Treści.</strong> Celem spotkania jest przedstawienie mechanizmów, wartości i sposobów wspierania dziecka, a nie przedstawienie gotowego zbioru zakazów i nakazów. Myśl przewodnia: dziecko potrzebuje przede wszystkim zaangażowanej obecności i uwagi rodzica. Żadne przedmioty, nagrody ani treści cyfrowe — nawet atrakcyjne czy wartościowe — nie zastąpią dziecku relacji z zaangażowanym rodzicem. Program ma charakter ogólny: nie wszystkie omawiane zagadnienia dotyczą każdej rodziny, a każdy uczestnik może wybrać z niego to, co odpowiada sytuacji jego dziecka.</p>
-<p><strong>Opis.</strong> Prowadzący wita uczestników i przedstawia siebie oraz Fundację. Następnie wyjaśnia, że celem spotkania jest zrozumienie mechanizmów wpływających na zachowanie dziecka i poznanie konkretnych sposobów jego wspierania. Zapowiada omówienie procesów zachodzących w mózgu dziecka podczas korzystania z telefonu, znaczenia czasu wolnego, sposobów rozmowy z dzieckiem oraz roli rodzica w zmianach zachodzących w rodzinie. Podkreśla, że dziecko potrzebuje przede wszystkim zaangażowanej obecności i uwagi rodzica, a żadne przedmioty, nagrody ani treści cyfrowe nie zastąpią mu relacji z zaangażowanym rodzicem. Informuje również, że omawiane treści opierają się na wynikach badań, a wykaz źródeł jest dostępny dla uczestników.</p>
-<p>Prowadzący wyjaśnia także, że program jest skierowany do wszystkich rodziców i ma charakter ogólny. Nie wszystkie omawiane sprawy będą dotyczyły każdego z uczestników i ich dzieci, a nie każde dziecko spełnia wszystkie opisane kryteria lub doświadcza opisanych trudności. Spotkanie nie zakłada, że w każdej rodzinie występują problemy, i nie ma na celu skłaniania rodziców do natychmiastowych zmian. Jego celem jest zwrócenie uwagi na zjawiska i mechanizmy, które mogą wpływać na dziecko. Każdy rodzic, mając tę wiedzę, może ocenić, jak wygląda sytuacja w jego domu, i wybrać z programu to, co uzna za przydatne dla siebie i swojego dziecka.</p>
-<p>Prowadzący informuje również, że prezentacja jest wyświetlana w telefonach uczestników: urządzenie, o którego zagrożeniach będzie mowa, posłuży w czasie spotkania jako narzędzie zdobywania wiedzy. Na początku spotkania prowadzący zaprasza uczestników do wypełnienia w telefonie pierwszej części krótkiej anonimowej ankiety; jej druga część pojawi się w dalszej części spotkania.</p>
-<h3 id="blok-1" class="wfp-blok"><span>Blok 1</span>Dzieci i telefony</h3>
-<h4 class="wfp-label">Treści</h4>
-<ol class="wfp-ol">
-<li value="1"><strong>Korzystanie ze smartfona a rozwój dziecka.</strong> Urządzenie dostarcza bodźców nagradzających z dużą częstotliwością. Może to utrudniać dziecku samodzielne przerwanie tej aktywności. Kora przedczołowa, zaangażowana m.in. w kontrolę impulsów, dojrzewa jeszcze po okresie dojrzewania (Sowell i in., 1999 <a class="wfp-cyt" id="cyt-B1-9-1" href="zrodla-programu.html?z=cyt-B1-9-1#B1-9" data-src="B1-9">[B1.9]</a>).</li>
-<li value="2"><strong>Dopamina a motywacja i przyjemność.</strong> Układ dopaminergiczny uczestniczy w procesach motywacyjnych, m.in. w dążeniu do nagrody („chceniu”). Odczuwanie przyjemności wiąże się także z aktywnością innych struktur mózgu (Berridge i Robinson, 2016 <a class="wfp-cyt" id="cyt-B1-10-1" href="zrodla-programu.html?z=cyt-B1-10-1#B1-10" data-src="B1-10">[B1.10]</a>).</li>
-<li value="3"><strong>Toniczne i fazowe uwalnianie dopaminy.</strong> Uwalnianie toniczne wiąże się z utrzymywaniem podstawowego poziomu dopaminy i gotowością do działania. Uwalnianie fazowe obejmuje krótkotrwałe wzrosty stężenia dopaminy wywołane bodźcem; mogą one sygnalizować mózgowi, że dane zdarzenie warto powtórzyć (Grace, 1991 <a class="wfp-cyt" id="cyt-B1-1-1" href="zrodla-programu.html?z=cyt-B1-1-1#B1-1" data-src="B1-1">[B1.1]</a>). Nagroda nieprzewidywalna wywołuje szczególnie silną odpowiedź fazową (Schultz, Dayan i Montague, 1997 <a class="wfp-cyt" id="cyt-B1-13-1" href="zrodla-programu.html?z=cyt-B1-13-1#B1-13" data-src="B1-13">[B1.13]</a>). Gra wideo wiąże się z uwalnianiem dopaminy w prążkowiu (Koepp i in., 1998 <a class="wfp-cyt" id="cyt-B1-12-1" href="zrodla-programu.html?z=cyt-B1-12-1#B1-12" data-src="B1-12">[B1.12]</a>). U osób uzależnionych od substancji psychoaktywnych i od internetu obserwowano zmniejszoną liczbę receptorów dopaminowych D2 oraz zmiany w poziomie dopaminy tonicznej (Volkow i in., 2009 <a class="wfp-cyt" id="cyt-B1-2-1" href="zrodla-programu.html?z=cyt-B1-2-1#B1-2" data-src="B1-2">[B1.2]</a>; Kim i in., 2011 <a class="wfp-cyt" id="cyt-B1-3-1" href="zrodla-programu.html?z=cyt-B1-3-1#B1-3" data-src="B1-3">[B1.3]</a>).</li>
-<li value="4"><strong>Nagroda poprzedzona wysiłkiem a nagroda uzyskana bez wysiłku.</strong> Wysiłek może zwiększać subiektywną wartość nagrody (Inzlicht, Shenhav i Olivola, 2018 <a class="wfp-cyt" id="cyt-B1-14-1" href="zrodla-programu.html?z=cyt-B1-14-1#B1-14" data-src="B1-14">[B1.14]</a>).</li>
-<li value="5"><strong>Nagroda bez wysiłku i potrzeba coraz silniejszych bodźców.</strong> Częste, silne nagrody fazowe, które nie wymagają wysiłku, mogą stopniowo tracić siłę oddziaływania: dziecko potrzebuje wtedy coraz silniejszych bodźców, a zwykłe czynności przestają je angażować. Przy częstych, gwałtownych skokach dopaminy fazowej mózg, chroniąc się przed nadmiernym pobudzeniem, może obniżać jej stały, toniczny poziom; z czasem dziecko może odczuwać znużenie i brak motywacji do codziennych zajęć. U osób uzależnionych obserwowano zmniejszoną liczbę receptorów D2 i słabszą reakcję na codzienne nagrody (Volkow i in., 2009 <a class="wfp-cyt" id="cyt-B1-2-2" href="zrodla-programu.html?z=cyt-B1-2-2#B1-2" data-src="B1-2">[B1.2]</a>; Kim i in., 2011 <a class="wfp-cyt" id="cyt-B1-3-2" href="zrodla-programu.html?z=cyt-B1-3-2#B1-3" data-src="B1-3">[B1.3]</a>).</li>
-<li value="6"><strong>Krótkie formy wideo jako szczególnie obciążający rodzaj treści.</strong> Są przekazem jednokierunkowym i nie wymagają interakcji (Nguyen i in., 2025 <a class="wfp-cyt" id="cyt-B1-11-2" href="zrodla-programu.html?z=cyt-B1-11-2#B1-11" data-src="B1-11">[B1.11]</a>). Badanie Kuhl, Tsao i Liu (2003 <a class="wfp-cyt" id="cyt-B1-4-1" href="zrodla-programu.html?z=cyt-B1-4-1#B1-4" data-src="B1-4">[B1.4]</a>) wskazuje na znaczenie kontaktu z drugim człowiekiem w uczeniu się języka we wczesnym dzieciństwie.</li>
-<li value="7"><strong>Korzystanie z telefonu przez rodzica.</strong> Rodzice nie zawsze znają cyfrowy świat dziecka. Korzystanie z telefonu przez rodzica w obecności dziecka wiąże się z większą liczbą problemów z zachowaniem dziecka (McDaniel i Radesky, 2018 <a class="wfp-cyt" id="cyt-B1-8-2" href="zrodla-programu.html?z=cyt-B1-8-2#B1-8" data-src="B1-8">[B1.8]</a>).</li>
-<li value="8"><strong>Ocena gier zależnie od ich konstrukcji.</strong> Gry o krótkich rundach i natychmiastowej gratyfikacji działają podobnie do krótkich form wideo, natomiast gry strategiczne i fabularne wymagają planowania.</li>
-<li value="9"><strong>Gry wymagające i gry zawierające przemoc.</strong> Gry wymagające mogą rozwijać określone umiejętności (Kühn i in., 2014 <a class="wfp-cyt" id="cyt-B1-5-1" href="zrodla-programu.html?z=cyt-B1-5-1#B1-5" data-src="B1-5">[B1.5]</a>). Przywołane badania nie potwierdzają, by gry zawierające przemoc zwiększały agresję (Kühn i in., 2019 <a class="wfp-cyt" id="cyt-B1-6-1" href="zrodla-programu.html?z=cyt-B1-6-1#B1-6" data-src="B1-6">[B1.6]</a>; stanowisko APA, 2020 <a class="wfp-cyt" id="cyt-B1-7-1" href="zrodla-programu.html?z=cyt-B1-7-1#B1-7" data-src="B1-7">[B1.7]</a>).</li>
-<li value="10"><strong>Obecność rodzica w cyfrowym świecie dziecka.</strong> Znajomość gier i treści, z których korzysta dziecko, oraz wspólne granie mogą stać się płaszczyzną porozumienia i budowania wzajemnego zaufania (S. R. Covey, „7 nawyków skutecznego działania” — konto emocjonalne <a class="wfp-cyt" id="cyt-B3-1-1" href="zrodla-programu.html?z=cyt-B3-1-1#B3-1" data-src="B3-1">[B3.1]</a>).</li>
-<li value="11"><strong>Gry jako jedna z wielu form spędzania czasu.</strong> Gra nie powinna być jedyną formą rozrywki dziecka; czas gry warto ustalać wspólnie z dzieckiem, np. jako tygodniową pulę zamiast sztywnego limitu dziennego.</li>
-</ol>
-<p><strong>Opis.</strong> Prowadzący wyjaśnia, że smartfon dostarcza dziecku silnych i często zmieniających się <strong>bodźców nagradzających</strong> (zdarzenia lub treści, które mózg rozpoznaje jako warte powtórzenia, np. powiadomienia, polubienia czy kolejne zaskakujące filmy). Zwraca uwagę, że <strong>kora przedczołowa</strong> (przednia część mózgu odpowiedzialna m.in. za planowanie, kontrolę impulsów i przewidywanie skutków własnych działań), która uczestniczy m.in. w kontroli impulsów, dojrzewa jeszcze po okresie dojrzewania (Sowell i in., 1999 <a class="wfp-cyt" id="cyt-B1-9-2" href="zrodla-programu.html?z=cyt-B1-9-2#B1-9" data-src="B1-9">[B1.9]</a>). Dziecku może więc być trudno samodzielnie zakończyć korzystanie z telefonu, dlatego potrzebuje wsparcia rodzica w ustalaniu granic.</p>
-<p>Następnie prowadzący porządkuje powszechne przekonania o dopaminie: nie jest ona „hormonem szczęścia”, lecz <strong>neuroprzekaźnikiem</strong> (substancją, za pomocą której komórki nerwowe przekazują sobie sygnały) uczestniczącym w procesach motywacyjnych i dążeniu do bodźca. Odczuwanie przyjemności wiąże się również z aktywnością innych struktur mózgu (Berridge i Robinson, 2016 <a class="wfp-cyt" id="cyt-B1-10-2" href="zrodla-programu.html?z=cyt-B1-10-2#B1-10" data-src="B1-10">[B1.10]</a>).</p>
-<p>Prowadzący omawia dwa wzorce uwalniania dopaminy: <strong>toniczny</strong>, związany z poziomem podstawowym, oraz <strong>fazowy</strong>, obejmujący krótkotrwałe wzrosty stężenia tego neuroprzekaźnika (Grace, 1991 <a class="wfp-cyt" id="cyt-B1-1-2" href="zrodla-programu.html?z=cyt-B1-1-2#B1-1" data-src="B1-1">[B1.1]</a>). Nagroda nieprzewidywalna może wywołać szczególnie silną odpowiedź fazową (Schultz, Dayan i Montague, 1997 <a class="wfp-cyt" id="cyt-B1-13-2" href="zrodla-programu.html?z=cyt-B1-13-2#B1-13" data-src="B1-13">[B1.13]</a>). Strumień krótkich filmów jest skonstruowany tak, że odbiorca nie wie, co zobaczy za chwilę. Gra wideo wiąże się z uwalnianiem dopaminy w <strong>prążkowiu</strong> (strukturze położonej głęboko w mózgu, należącej do układu nagrody) (Koepp i in., 1998 <a class="wfp-cyt" id="cyt-B1-12-2" href="zrodla-programu.html?z=cyt-B1-12-2#B1-12" data-src="B1-12">[B1.12]</a>). U osób uzależnionych od substancji psychoaktywnych i od internetu obserwowano zmniejszoną liczbę <strong>receptorów D2</strong> (jednego z rodzajów „odbiorników” na komórkach nerwowych, na które działa dopamina) oraz zmiany w poziomie dopaminy tonicznej (Volkow i in., 2009 <a class="wfp-cyt" id="cyt-B1-2-3" href="zrodla-programu.html?z=cyt-B1-2-3#B1-2" data-src="B1-2">[B1.2]</a>; Kim i in., 2011 <a class="wfp-cyt" id="cyt-B1-3-3" href="zrodla-programu.html?z=cyt-B1-3-3#B1-3" data-src="B1-3">[B1.3]</a>).</p>
-<p>Prowadzący zaznacza, że wyniki te odnoszą się do osób uzależnionych, a nie do dzieci korzystających z telefonu w zwykłym zakresie. Zwraca również uwagę, że mózg dziecka nadal się rozwija.</p>
-<p>Na zakończenie omawia różnice między grami: gry o krótkich rundach i <strong>natychmiastowej gratyfikacji</strong> (nagrody otrzymywanej od razu, bez czekania i bez wysiłku) działają podobnie do krótkich form wideo, gry wymagające planowania mogą rozwijać określone umiejętności, a przywołane badania nie potwierdzają, by gry zawierające przemoc zwiększały agresję.</p>
-<p>Prowadzący wyjaśnia, że gdy dziecko otrzymuje bardzo częste i silne nagrody fazowe, zwykłe czynności, takie jak nauka czy czytanie, mogą wydawać mu się mniej atrakcyjne.</p>
-<p><strong>Nagroda bez wysiłku. </strong>Prowadzący szczególnie mocno podkreśla zjawisko nagrody otrzymywanej bez wysiłku. Smartfon dostarcza dziecku silnych nagród fazowych natychmiast, bez pracy i bez czekania. Z czasem te same bodźce mogą przestawać wystarczać. Mózg działa w tym zakresie podobnie do układu, który chroni się przed przegrzaniem: gdy krótkotrwałe, gwałtowne wyrzuty dopaminy (uwalnianie fazowe) powtarzają się bardzo często, może bronić się przed nadmiarem pobudzenia, zmniejszając wrażliwość układu nagrody, w tym liczbę receptorów D2, i obniżając stały, podstawowy poziom dopaminy (uwalnianie toniczne).</p>
-<p>Skutkiem jest stan, w którym zwykłe czynności przestają dawać satysfakcję, a dziecko odczuwa znużenie, brak energii i motywacji. Do uzyskania podobnego efektu potrzebne są wówczas bodźce coraz silniejsze i częstsze.</p>
-<p>Mechanizm ten opisano u osób uzależnionych, u których obserwowano zmniejszoną liczbę receptorów D2 i obniżony poziom dopaminy tonicznej (Volkow i in., 2009 <a class="wfp-cyt" id="cyt-B1-2-4" href="zrodla-programu.html?z=cyt-B1-2-4#B1-2" data-src="B1-2">[B1.2]</a>; Kim i in., 2011 <a class="wfp-cyt" id="cyt-B1-3-4" href="zrodla-programu.html?z=cyt-B1-3-4#B1-3" data-src="B1-3">[B1.3]</a>). U dziecka przyzwyczajonego do takich nagród może się to przejawiać ospałością, brakiem energii i zainteresowania otoczeniem, słabszym kontaktem z innymi oraz niechęcią do zwykłych zajęć, które nie dają natychmiastowej satysfakcji. Część dzieci i młodzieży zaczyna wówczas poszukiwać coraz mocniejszych wrażeń, co może prowadzić do zachowań ryzykownych, a w skrajnych przypadkach także do zachowań autoagresywnych. Dziecko nie ma bowiem wypracowanego doświadczenia, że satysfakcja może być efektem własnej pracy, i oczekuje nagrody od razu. Dlatego tak ważne jest, aby doświadczało nagród zarobionych — satysfakcji z ukończonego zadania, treningu czy przeczytanej książki — które narastają wolniej, lecz utrzymują się dłużej (Inzlicht, Shenhav i Olivola, 2018 <a class="wfp-cyt" id="cyt-B1-14-2" href="zrodla-programu.html?z=cyt-B1-14-2#B1-14" data-src="B1-14">[B1.14]</a>).</p>
-<p>Prowadzący zwraca uwagę, że rodzic nie powinien pozostawać poza cyfrowym światem dziecka. Jeżeli dziecko gra, warto wiedzieć, w co gra, jak gra, z kim i co go w tej grze pociąga. Przez ten świat można do dziecka dotrzeć i wiele się o nim dowiedzieć. Wspólne granie — na przykład w grę sieciową Brawl Stars, którą wybrało dziecko, albo w grę fabularną typu RPG — sprawia, że rodzic wchodzi do świata dziecka i nawiązuje z nim interakcję. Znajdując się we wspólnej przestrzeni, rodzic i dziecko mogą wymieniać poglądy, a w trakcie gry rodzic ma okazję przekazać dziecku treści i wartości, których w zwykłej rozmowie mogłoby ono nie przyjąć. Nawet gra, którą rodzic ocenia krytycznie, może stać się okazją do rozmowy o tym, dlaczego wciąga i jak korzystać z niej z umiarem.</p>
-<p>Prowadzący przypomina, że szczególną wartość rozwojową mogą mieć gry wymagające planowania, takie jak <strong>gry fabularne (RPG) i strategiczne</strong> (gry, w których gracz prowadzi postać przez rozbudowaną historię albo planuje działania w dłuższej perspektywie), a przywołane badania nie potwierdzają, by występująca w grach przemoc zwiększała agresję w świecie rzeczywistym (Kühn i in., 2019 <a class="wfp-cyt" id="cyt-B1-6-2" href="zrodla-programu.html?z=cyt-B1-6-2#B1-6" data-src="B1-6">[B1.6]</a>; stanowisko APA, 2020 <a class="wfp-cyt" id="cyt-B1-7-2" href="zrodla-programu.html?z=cyt-B1-7-2#B1-7" data-src="B1-7">[B1.7]</a>).</p>
-<p>Prowadzący zaznacza jednocześnie, że znaczenie ma także ilość czasu spędzanego przy grach. Gra nie powinna być jedyną formą rozrywki dziecka ani jedynym miejscem, w którym czuje się ono swobodnie i docenione. Dziecko nie powinno też być w ten świat wpychane jako sposób na zajęcie mu czasu. Jeżeli całe dni upływają mu przy grze, warto przyjrzeć się temu, czego brakuje mu poza nią: kontaktu z rówieśnikami, ruchu, własnych zainteresowań lub uwagi rodzica.</p>
-<p>Prowadzący proponuje, aby czas gry ustalać wspólnie z dzieckiem nie jako sztywny limit dzienny, lecz jako tygodniową pulę godzin. Gry fabularne i strategiczne często wymagają dłuższych, nieprzerwanych rozgrywek, dlatego zamiast codziennej godziny lepiej sprawdza się niekiedy jedna dłuższa sesja, na przykład w weekend, po wykonaniu obowiązków i o ustalonej porze, a najlepiej z udziałem rodzica. Pula tygodniowa uczy dziecko planowania i samodzielnego gospodarowania czasem, a gra pozostaje jedną z wielu aktywności, a nie ich zamiennikiem.</p>
-<p>Prowadzący odwołuje się do metafory konta emocjonalnego Stephena R. Coveya („7 nawyków skutecznego działania”). Każde zaangażowanie rodzica w to, co interesuje dziecko, jest wpłatą na <strong>konto wzajemnego zaufania</strong> (każde zachowanie budujące zaufanie jest „wpłatą”, a lekceważenie czy niekonstruktywna krytyka — „wypłatą”). Rodzic, który nie odtrąca zainteresowań dziecka, nie uznaje ich za głupie i bezsensowne, lecz się w nie angażuje, buduje z dzieckiem wspólną płaszczyznę porozumienia. Dziecko, które ma do rodzica zaufanie, chętniej rozmawia z nim również o trudnych sprawach i łatwiej przyjmuje jego zdanie, także wtedy, gdy rodzic ustala granice korzystania z telefonu. Ta sama zasada dotyczy innych wspólnych aktywności, o których mowa w blokach 2, 3 i 6.</p>
-<p class="wfp-ex"><strong>Przykład.</strong> Dziecko od kilku tygodni każdą wolną chwilę poświęca jednej grze, a rodzic reaguje wyłącznie zakazami i komentarzem, że to strata czasu; rozmowy kończą się kłótnią. Inny rodzic prosi dziecko, by pokazało mu grę, rozgrywa z nim kilka partii i pyta, co mu się w niej podoba. Po kilku takich wspólnych chwilach dziecko samo zaczyna opowiadać o grze, a ustalenie zasad korzystania z telefonu staje się rozmową, a nie konfliktem.</p>
-<h4 class="wfp-label wfp-label--prop">Propozycje dla rodziców</h4>
-<ul class="wfp-ul">
-<li>Wyznaczyć w domu wspólne miejsce korzystania z telefonu, np. salon zamiast pokoju dziecka.</li>
-<li>Pobierać materiały do nauki z wyprzedzeniem i korzystać w tym celu z urządzenia bez dostępu do internetu.</li>
-<li>Zainstalować aplikację do pomiaru czasu korzystania z telefonu (np. StayFree) na urządzeniu dziecka i rodzica.</li>
-<li>Odkładać telefon na noc poza sypialnią dziecka (Carter i in., 2016 <a class="wfp-cyt" id="cyt-B2-6-1" href="zrodla-programu.html?z=cyt-B2-6-1#B2-6" data-src="B2-6">[B2.6]</a>).</li>
-<li>Poznać gry i treści, z których korzysta dziecko: poprosić, by je pokazało, i od czasu do czasu zagrać razem z nim.</li>
-<li>Nie lekceważyć zainteresowań dziecka; traktować je jako okazję do rozmowy i budowania wzajemnego zaufania.</li>
-<li>Ustalić z dzieckiem tygodniową pulę czasu na gry zamiast sztywnego limitu dziennego i od czasu do czasu pozwolić na dłuższą rozgrywkę, np. w weekend — zwłaszcza w przypadku gier fabularnych i strategicznych.</li>
-<li>Dbać o to, aby gra nie była jedyną formą spędzania wolnego czasu: obok niej powinno być miejsce na ruch, spotkania z rówieśnikami i inne zainteresowania.</li>
-</ul>
-<h3 id="blok-2" class="wfp-blok"><span>Blok 2</span>Czas wolny i kreatywność</h3>
-<h4 class="wfp-label">Treści</h4>
-<ol class="wfp-ol">
-<li value="1"><strong>Czas wolny a kreatywność.</strong> Dziecko rozwija twórcze myślenie, gdy samo wymyśla sobie zajęcie.</li>
-<li value="2">Czas <strong>wolny, energia a telefon.</strong> Czas wolny i energia dziecka są ograniczonymi zasobami. Zanim pojawiły się telefony, dziecko wykorzystywało wolny czas na myślenie twórcze i kreatywne zajęcia. Obecnie w chwili, gdy mogłoby z niego w ten sposób skorzystać, wkracza telefon: zamiast myślenia, zastanawiania się i procesu twórczego pojawia się porównywanie się z innymi, obniżanie samooceny oraz izolowanie się od otoczenia. Bierny odbiór krótkich form wideo przynosi z czasu i energii niewielki pożytek.</li>
-<li value="3"><strong>Człowiek nie jest stworzony do bezczynności.</strong> Telefon, telewizor czy komputer pełnią rolę „zapychaczy czasu”; gdy ich zabraknie, człowiek — dziecko i dorosły — zaczyna rozmawiać, wychodzić z domu, działać i tworzyć.</li>
-<li value="4"><strong>Rodzic a zajęcia dziecka.</strong> Rodzic nie odpowiada za wymyślanie dziecku zajęć w jego czasie wolnym; ważne jest natomiast, by przyjmował twórcze propozycje dziecka.</li>
-<li value="5"><strong>Oczekiwanie na telefon.</strong> Świadomość, że za jakiś czas będzie można sięgnąć po telefon, może odciągać uwagę dziecka od bieżącego zadania.</li>
-<li value="6"><strong>Wspólny czas zależnie od wieku dziecka.</strong> Z młodszym dzieckiem przestrzenią rozmowy jest przede wszystkim wspólna zabawa, z nastolatkiem — spacer, wolny od bodźców rozpraszających.</li>
-<li value="7"><strong>Telefon jako narzędzie nauki.</strong> Celowe wykorzystanie urządzeń mobilnych w nauczaniu może wspierać wyniki nauki (Sung, Chang i Liu, 2016 <a class="wfp-cyt" id="cyt-B2-8-1" href="zrodla-programu.html?z=cyt-B2-8-1#B2-8" data-src="B2-8">[B2.8]</a>), a samo powiadomienie, nawet nieodczytane, pogarsza skupienie (Stothart, Mitchum i Yehnert, 2015 <a class="wfp-cyt" id="cyt-B2-9-1" href="zrodla-programu.html?z=cyt-B2-9-1#B2-9" data-src="B2-9">[B2.9]</a>). Aplikacje blokujące media społecznościowe pozwalają korzystać z telefonu wyłącznie do nauki.</li>
-<li value="8"><strong>Okres bez bodźców a praca mózgu.</strong> Sieć stanu spoczynkowego (ang. default mode network) jest zaangażowana w twórcze myślenie (Bartoli i in., zespół B. Shofty’ego, 2024 <a class="wfp-cyt" id="cyt-B2-1-1" href="zrodla-programu.html?z=cyt-B2-1-1#B2-1" data-src="B2-1">[B2.1]</a>).</li>
-<li value="9">Nuda może poprzedzać kreatywność (Mann i Cadman, 2014 <a class="wfp-cyt" id="cyt-B2-2-1" href="zrodla-programu.html?z=cyt-B2-2-1#B2-2" data-src="B2-2">[B2.2]</a>).</li>
-<li value="10">Ekran angażuje uwagę kierowaną, czyli wymagającą świadomego skupienia, a kontakt z przyrodą może wspierać jej odnowę (Kaplan, 1995 <a class="wfp-cyt" id="cyt-B2-3-1" href="zrodla-programu.html?z=cyt-B2-3-1#B2-3" data-src="B2-3">[B2.3]</a>; Berman, Jonides i Kaplan, 2008).</li>
-<li value="11">Ograniczenie bodźców może przywracać wrażliwość układu dopaminergicznego (mechanizm omówiony w bloku 1).</li>
-<li value="12">Opór przed rozpoczęciem zadania bywa największy na początku; odkładanie zadań może służyć doraźnej poprawie nastroju (Sirois i Pychyl, 2013 <a class="wfp-cyt" id="cyt-B2-5-1" href="zrodla-programu.html?z=cyt-B2-5-1#B2-5" data-src="B2-5">[B2.5]</a>).</li>
-<li value="13">Korzystanie z telefonu przed snem obniża jakość snu i poziom energii następnego dnia (Carter i in., 2016 <a class="wfp-cyt" id="cyt-B2-6-2" href="zrodla-programu.html?z=cyt-B2-6-2#B2-6" data-src="B2-6">[B2.6]</a>).</li>
-<li value="14">Wiele sięgnięć po telefon ma charakter nawykowy: dorośli sprawdzają telefon średnio 186 razy dziennie (Reviews.org, 2026 <a class="wfp-cyt" id="cyt-B2-4-1" href="zrodla-programu.html?z=cyt-B2-4-1#B2-4" data-src="B2-4">[B2.4]</a>).</li>
-<li value="15"><strong>Przedmioty nie zastąpią czasu.</strong> Wychowanie oparte na nagrodach rzeczowych wiąże się z większym <strong>materializmem</strong> (przywiązywaniem dużej wagi do posiadania rzeczy jako źródła szczęścia i poczucia własnej wartości) w dorosłości (Richins i Chaplin, 2015 <a class="wfp-cyt" id="cyt-B2-7-1" href="zrodla-programu.html?z=cyt-B2-7-1#B2-7" data-src="B2-7">[B2.7]</a>).</li>
-</ol>
-<p><strong>Opis.</strong> Prowadzący wyjaśnia, że czas wolny nie jest czasem straconym i może sprzyjać kreatywności. Dziecko rozwija twórcze myślenie, gdy samo wymyśla sobie zajęcie, zamiast jedynie reagować na gotowe bodźce. Czas i energia dziecka są ograniczone, a bierny odbiór krótkich form wideo przynosi z nich niewielki pożytek. Brak bodźców nie oznacza, że mózg przestaje pracować. W takich okresach aktywna jest m.in. <strong>sieć stanu spoczynkowego</strong>, czyli zespół obszarów mózgu działający wtedy, gdy człowiek nie skupia się na zadaniu zewnętrznym, lecz odpoczywa, rozmyśla lub „buja w obłokach”. Sieć ta uczestniczy w porządkowaniu wiedzy, przetwarzaniu emocji i łączeniu odległych skojarzeń. W badaniu z 2024 roku czasowe wyciszenie tej sieci wiązało się z mniejszą oryginalnością generowanych pomysłów (Bartoli i in., zespół B. Shofty’ego, 2024 <a class="wfp-cyt" id="cyt-B2-1-2" href="zrodla-programu.html?z=cyt-B2-1-2#B2-1" data-src="B2-1">[B2.1]</a>).</p>
-<p>Prowadzący przywołuje również badania, w których nuda poprzedzała kreatywność: osoby wykonujące wcześniej monotonne zadanie proponowały następnie więcej rozwiązań (Mann i Cadman, 2014 <a class="wfp-cyt" id="cyt-B2-2-2" href="zrodla-programu.html?z=cyt-B2-2-2#B2-2" data-src="B2-2">[B2.2]</a>).</p>
-<p>Ekran stale angażuje <strong>uwagę kierowaną</strong> (uwagę świadomie skupianą na wybranym zadaniu), która może się męczyć. Kontakt z przyrodą, na przykład spacer w parku, sprzyja jej odnowie (Kaplan, 1995 <a class="wfp-cyt" id="cyt-B2-3-2" href="zrodla-programu.html?z=cyt-B2-3-2#B2-3" data-src="B2-3">[B2.3]</a>; Berman, Jonides i Kaplan, 2008).</p>
-<p>Prowadzący zwraca uwagę, że opór przed rozpoczęciem zadania bywa największy w pierwszych minutach, a sięgnięcie po telefon pozwala go szybko odsunąć. Dziecko, które za każdym razem odwraca uwagę od zadania, może nie doświadczyć tego, że po kilku minutach pracy motywacja wzrasta (Sirois i Pychyl, 2013 <a class="wfp-cyt" id="cyt-B2-5-2" href="zrodla-programu.html?z=cyt-B2-5-2#B2-5" data-src="B2-5">[B2.5]</a>).</p>
-<p>Prowadzący wskazuje również, że przedmiot materialny przynosi krótkotrwałą satysfakcję. Gdy przedmioty regularnie zastępują dziecku czas spędzany z rodzicem, może ono zacząć łączyć poczucie bycia kochanym i dobry nastrój z otrzymywaniem rzeczy (Richins i Chaplin, 2015 <a class="wfp-cyt" id="cyt-B2-7-2" href="zrodla-programu.html?z=cyt-B2-7-2#B2-7" data-src="B2-7">[B2.7]</a>).</p>
-<p>Prowadzący podkreśla, że czas wolny i energia dziecka są zasobami, które można spożytkować twórczo albo stracić. Kiedy nie było jeszcze telefonów, dziecko, które miało czas wolny i zapas energii, wykorzystywało je na myślenie twórcze, wymyślanie zabaw i kreatywność. Obecnie w momencie, w którym dziecko ma wolny czas i mogłoby go w ten sposób wykorzystać, wkracza telefon. Nie zostaje wtedy miejsca na myślenie, zastanawianie się i proces twórczy. Pojawia się za to czas na porównywanie się z innymi, obniżanie samooceny oraz izolowanie się od otoczenia. Dlatego tak ważne jest, aby czas wolny dziecka był wykorzystywany w sposób rozwijający.</p>
-<p>Prowadzący zwraca uwagę, że człowiek nie jest przystosowany do długotrwałej bezczynności. Zarówno dzieci, jak i dorośli rzadko pozostają zupełnie bezczynni — najczęściej wypełniają wolny czas telefonem, telewizorem lub komputerem. Wielu dorosłych po powrocie do domu odruchowo włącza telewizor albo sięga po telefon. Program określa takie czynności mianem <strong>„zapychaczy czasu”</strong>: wypełniają one czas, nie angażując aktywnego myślenia. Gdy ich zabraknie, potrzeba działania kieruje człowieka ku rozmowie, wyjściu z domu, aktywności i twórczości. Dlatego o dziecku, które spędza czas w telefonie, nie można powiedzieć, że „nic nie robi”: wykonuje ono czynność, która wypełnia mu czas, lecz zajmuje miejsce aktywności rozwijających.</p>
-<p>Prowadzący odnosi się również do przekonania wielu rodziców, że to oni są odpowiedzialni za wymyślanie dziecku zajęć. Gdy dziecko mówi, że się nudzi, rodzic często czuje się zobowiązany, by natychmiast zaproponować mu atrakcję.</p>
-<p>Tymczasem żaden rodzic nie jest odpowiedzialny za wymyślanie dziecku zajęć w jego wolnym czasie, a wyręczanie dziecka w tym zakresie może osłabiać jego kreatywność. Właściwą odpowiedzią na komunikat „nudzę się” jest zachęta, by dziecko samo znalazło sobie zajęcie. Jeżeli natomiast dziecko wyjdzie do rodzica z własną, twórczą propozycją wspólnego działania, nie należy jej odrzucać — warto ją przyjąć, bo jest ona owocem nudy i samodzielnego myślenia.</p>
-<p>Prowadzący wskazuje także na zjawisko oczekiwania na telefon. Jeżeli dziecko wie, że za godzinę lub dwie będzie mogło sięgnąć po telefon, często nie skupia się na tym, co ma do zrobienia teraz, lecz na tym, kiedy wreszcie weźmie telefon do ręki. Gdy czas korzystania z telefonu przypada na przykład na wieczór, dziecko w ciągu dnia może uczyć się mniej efektywnie, bo część jego uwagi pozostaje przy oczekiwanej nagrodzie.</p>
-<p>Prowadzący omawia sposoby ograniczania tego zjawiska: w czasie nauki i zajęć telefon pozostaje poza zasięgiem wzroku dziecka; pora korzystania z niego jest stała i przewidywalna, a nie jest nagrodą „za naukę”, którą trzeba odliczać; plan dnia rodzic ustala wspólnie z dzieckiem tak, by obok obowiązków i telefonu było w nim miejsce na ruch, spotkania z rówieśnikami i własne zainteresowania. Im więcej w dniu dziecka angażujących zajęć, tym mniejsze znaczenie może mieć oczekiwanie na telefon.</p>
-<p>Prowadzący zwraca uwagę, że telefon i inne urządzenia są dziś także narzędziem nauki: dzieci korzystają z nich, aby sprawdzić zadanie domowe, obejrzeć materiał wskazany przez nauczyciela czy powtórzyć słówka. Metaanaliza 110 badań wykazała umiarkowanie korzystny wpływ celowego wykorzystania urządzeń mobilnych w nauczaniu (Sung, Chang i Liu, 2016 <a class="wfp-cyt" id="cyt-B2-8-2" href="zrodla-programu.html?z=cyt-B2-8-2#B2-8" data-src="B2-8">[B2.8]</a>).</p>
-<p>Jednocześnie samo otrzymanie powiadomienia — nawet bez sięgania po telefon — pogarszało wykonanie zadania wymagającego uwagi (Stothart, Mitchum i Yehnert, 2015 <a class="wfp-cyt" id="cyt-B2-9-2" href="zrodla-programu.html?z=cyt-B2-9-2#B2-9" data-src="B2-9">[B2.9]</a>). Nie chodzi więc o to, by odbierać dziecku telefon potrzebny do nauki, lecz o to, by w czasie nauki służył on wyłącznie nauce. Pomocne są <strong>aplikacje ograniczające dostęp</strong> (programy, które mierzą czas korzystania z aplikacji i pozwalają blokować wybrane aplikacje lub strony) do wybranych aplikacji i stron internetowych, takie jak StayFree, Google Family Link czy funkcja „Czas przed ekranem” w telefonach iPhone. Pozwalają one zablokować media społecznościowe i serwisy z krótkimi filmami na czas nauki albo na stałe, a niektóre z nich umożliwiają również dopuszczenie wybranych adresów — na przykład konkretnego filmu, który dziecko ma obejrzeć w ramach zadania — przy zablokowanym dostępie do pozostałych treści serwisu. Telefon może wówczas pozostać przy dziecku jako narzędzie nauki. Instrukcja instalacji i konfiguracji takich aplikacji jest dostępna na stronie internetowej Fundacji.</p>
-<p>Prowadzący zwraca uwagę, że sposób spędzania wspólnego czasu zależy od wieku dziecka. </p>
-<p class="wfp-var"><strong>Młodsze dzieci (wariant M). </strong>Z młodszym dzieckiem (wariant M) przestrzenią rozmowy jest zwykle wspólna zabawa — na placu zabaw, na podwórku czy w domu — bez telefonu w ręce rodzica. </p>
-<p class="wfp-var"><strong>Nastolatki (wariant S). </strong>Z nastolatkiem (wariant S) szczególnie dobrze sprawdza się wspólny spacer. Podczas spaceru w pobliżu nie ma bodźców rozpraszających: w domu rozmowę utrudniają telewizor i telefon, a sam dom nastolatek kojarzy z korzystaniem z tych urządzeń. Na spacerze rodzic i nastolatek znajdują się w zupełnie innym otoczeniu, co może ułatwiać rozmowę również o trudnych sprawach. Kontakt z przyrodą sprzyja przy tym odnowie uwagi (Kaplan, 1995 <a class="wfp-cyt" id="cyt-B2-3-3" href="zrodla-programu.html?z=cyt-B2-3-3#B2-3" data-src="B2-3">[B2.3]</a>; Berman, Jonides i Kaplan, 2008). Wspólny spacer staje się w ten sposób jedną z najprostszych okazji do rozmowy, w której nastolatek może podzielić się tym, czym naprawdę żyje (zob. blok 3).</p>
-<p class="wfp-ex"><strong>Przykład (młodsze dzieci).</strong> Dziecko wraca ze szkoły i oznajmia, że się nudzi. Rodzic nie proponuje mu od razu filmu ani gotowego zajęcia, lecz spokojnie odpowiada: „Na pewno coś wymyślisz”. Po kwadransie marudzenia dziecko buduje w pokoju bazę z kartonów i koców, a później prosi rodzica, by pomógł mu zrobić do niej drzwi. Rodzic przyjmuje tę propozycję i poświęca dziecku kilkanaście minut. Dziecko doświadcza, że z nudy może zrodzić się coś, co wymyśliło samo.</p>
-<p class="wfp-ex"><strong>Przykład (nastolatki).</strong> Nastolatek po powrocie ze szkoły od razu sięga po telefon i do wieczora przegląda media społecznościowe i krótkie filmy albo włącza kolejny odcinek serialu, bo — jak mówi — nie ma dokąd wyjść. Sam zakaz zwykle kończy się konfliktem. Rodzic może natomiast zapytać, czym nastolatek interesuje się poza telefonem, i zaproponować mu zajęcie, w którym komputer lub telefon staje się narzędziem tworzenia, a nie tylko odbioru: naukę programowania, zbudowanie prostej aplikacji lub strony internetowej, montaż własnego filmu czy nagranie muzyki. Może też poprosić nastolatka, by nauczył go czegoś, co sam potrafi zrobić na komputerze. Role się wtedy odwracają: to nastolatek jest ekspertem, a wspólny czas przy komputerze staje się okazją do rozmowy i budowania wzajemnego zaufania. Godzina dobrej gry nie stanowi problemu; problemem jest wielogodzinne, bierne przewijanie treści, które wypełnia cały wolny czas.</p>
-<h4 class="wfp-label wfp-label--prop">Propozycje dla rodziców</h4>
-<ul class="wfp-ul">
-<li>Zapewnić dziecku codziennie trochę czasu wolnego od ekranu i od zajęć zaplanowanych przez dorosłych. W tym czasie dziecko samo decyduje, czym się zajmie — zabawą, rysowaniem, budowaniem, czytaniem czy wyjściem na podwórko — a rodzic niczego mu nie organizuje, choć pozostaje dostępny.</li>
-<li>Po powrocie do domu odkładać telefony — swój i dziecka — w jedno stałe miejsce, np. do koszyka lub na domową „stację ładowania” w przedpokoju, tak aby podczas wspólnego czasu nie były w zasięgu ręki.</li>
-<li>Spożywać posiłki bez ekranów: telefony zostają poza stołem, a telewizor jest wyłączony.</li>
-<li>Wybierać się z nastolatkiem na wspólne spacery bez telefonów i wykorzystywać je jako okazję do spokojnej rozmowy.</li>
-<li>Z młodszym dzieckiem wychodzić na plac zabaw lub podwórko i bawić się razem z nim, bez telefonu w ręce.</li>
-<li>Ograniczyć korzystanie z telefonu przed snem: ustalić porę, o której telefony całej rodziny trafiają do ładowania poza sypialniami.</li>
-<li>Na komunikat „nudzę się” odpowiadać zachętą do samodzielnego znalezienia zajęcia, a twórcze propozycje dziecka przyjmować.</li>
-<li>W czasie nauki, która nie wymaga telefonu, odkładać go poza zasięg wzroku dziecka. Jeżeli telefon jest potrzebny do nauki, zablokować na ten czas media społecznościowe i serwisy z krótkimi filmami za pomocą aplikacji (np. StayFree, Google Family Link, „Czas przed ekranem” w iPhonie), dopuszczając tylko materiały potrzebne do nauki. Instrukcja jest dostępna na stronie Fundacji.</li>
-<li>Ustalić stałą, przewidywalną porę korzystania z telefonu, która nie jest nagrodą „za naukę”.</li>
-<li>Zaproponować nastolatkowi twórcze wykorzystanie komputera lub telefonu — naukę programowania, tworzenie aplikacji, montaż filmów — albo poprosić go, by nauczył rodzica czegoś, co sam potrafi.</li>
-<li>Ograniczać własne „zapychacze czasu” po powrocie do domu — dorosły jest dla dziecka wzorem.</li>
-</ul>
-<h3 id="blok-3" class="wfp-blok"><span>Blok 3</span>Rozmowa i słuchanie — czy znamy swoje dzieci</h3>
-<h4 class="wfp-label">Treści</h4>
-<ol class="wfp-ol">
-<li value="1">Rodzicom często umyka to, czym naprawdę żyje ich dziecko.</li>
-<li value="2">Wysłuchanie dziecka powinno poprzedzać ocenę i udzielanie rady (S. R. Covey, „7 nawyków skutecznego działania”, nawyk 5 — słuchanie empatyczne <a class="wfp-cyt" id="cyt-B3-1-2" href="zrodla-programu.html?z=cyt-B3-1-2#B3-1" data-src="B3-1">[B3.1]</a>).</li>
-<li value="3">O znaczeniu wspólnie spędzanego czasu decyduje nie tylko jego ilość, lecz także jakość. U dzieci w wieku 3–11 lat sama ilość czasu spędzanego z matką nie wiązała się z wynikami rozwojowymi, natomiast u nastolatków znaczenie miał <strong>czas zaangażowany</strong> (czas, w którym rodzic jest rzeczywiście skupiony na dziecku: rozmawia z nim, słucha go lub wspólnie z nim coś robi) (Milkie, Nomaguchi i Denny, 2015 <a class="wfp-cyt" id="cyt-B3-3-1" href="zrodla-programu.html?z=cyt-B3-3-1#B3-3" data-src="B3-3">[B3.3]</a>).</li>
-<li value="4">Akceptowanie dziecka takim, jakie jest, zamiast oczekiwania, że będzie takie, jakim rodzic chciałby je widzieć. Sposób, w jaki rodzic ocenia dziecko, może wiązać się z tym, jak ocenia samego siebie jako rodzica (zob. blok 4).</li>
-<li value="5">Kierowanie dziecka do nauki, gdy zabiega o uwagę rodzica, może osłabiać jego motywację. Motywacja wewnętrzna wiąże się z zaspokojeniem potrzeb autonomii, kompetencji i więzi (Deci i Ryan, 2000 <a class="wfp-cyt" id="cyt-B3-5-1" href="zrodla-programu.html?z=cyt-B3-5-1#B3-5" data-src="B3-5">[B3.5]</a>; Grolnick i Ryan, 1989 <a class="wfp-cyt" id="cyt-B3-4-1" href="zrodla-programu.html?z=cyt-B3-4-1#B3-4" data-src="B3-4">[B3.4]</a>).</li>
-<li value="6">Rozstanie rodziców wiąże się dla dziecka z koniecznością przystosowania się do nowej sytuacji rodzinnej; rozwód rodziców wiąże się z gorszym funkcjonowaniem dzieci (Amato, 2001 <a class="wfp-cyt" id="cyt-B3-6-1" href="zrodla-programu.html?z=cyt-B3-6-1#B3-6" data-src="B3-6">[B3.6]</a>).</li>
-<li value="7">W rodzinach po rozstaniu znaczenie ma jakość wspólnie spędzanego czasu, a nie tylko jego ilość. Większa ilość czasu nie zawsze przekłada się na większy wpływ na dziecko; jeden weekend pełnej, zaangażowanej obecności może dać mu więcej niż wiele dni spędzonych obok siebie.</li>
-</ol>
-<p><strong>Opis.</strong> Prowadzący zwraca uwagę, że rodzicom nie zawsze wiadomo, czym naprawdę żyje ich dziecko. Wypowiedź dotycząca pozornie błahej sprawy może wyrażać głębszą potrzebę. Natychmiastowa ocena, rada lub skierowanie rozmowy na obowiązki szkolne może utrudnić dziecku dalsze dzielenie się swoimi przeżyciami. Dlatego warto najpierw wysłuchać dziecka, a dopiero później oceniać sytuację lub udzielać rady.</p>
-<p>Prowadzący odwołuje się do nawyku piątego Stephena R. Coveya z książki „7 nawyków skutecznego działania”: <strong>słuchania empatycznego</strong>, czyli słuchania z zamiarem zrozumienia. Podkreśla również znaczenie akceptowania dziecka takim, jakie jest, zamiast oczekiwania, że będzie takie, jakim rodzic chciałby je widzieć. Prowadzący zwraca przy tym uwagę, że sposób, w jaki rodzic ocenia dziecko, może wiązać się z tym, jak ocenia samego siebie jako rodzica (temat ten rozwija blok 4).</p>
-<p>Dla rozwoju dziecka znaczenie ma nie tylko liczba godzin spędzonych pod wspólnym dachem, lecz także jakość tego czasu: to, czy rodzic jest obecny, rozmawia z dzieckiem, wspólnie coś z nim robi i go słucha (Milkie, Nomaguchi i Denny, 2015 <a class="wfp-cyt" id="cyt-B3-3-2" href="zrodla-programu.html?z=cyt-B3-3-2#B3-3" data-src="B3-3">[B3.3]</a>).</p>
-<p>Ma to szczególne znaczenie w rodzinach po rozstaniu. Rodzic, który widuje dziecko rzadziej, może obawiać się, że poświęca mu za mało czasu. Fundacja w swojej działalności spotyka się z sytuacjami, w których rodzic po rozstaniu czuje się pokrzywdzony małą ilością kontaktu z dzieckiem i obawia się, że w tak krótkim czasie nie zdoła przekazać mu tylu wartości, ile by chciał.</p>
-<p>Prowadzący uspokaja, że o wpływie na dziecko nie decyduje wyłącznie ilość wspólnego czasu, lecz przede wszystkim jego jakość. Zdarza się, że dziecko przebywa niemal cały czas u jednego z rodziców, ale ten czas jest w dużej mierze marnowany: domownicy mijają się, każdy zajmuje się swoim urządzeniem, a rzeczywistej interakcji jest niewiele.</p>
-<p>Tymczasem jeden weekend spędzony z drugim rodzicem — wypełniony rozmową, wspólnymi zajęciami i uważnym słuchaniem — może dać dziecku więcej dobrego niż cały tydzień spędzony pod jednym dachem, w którym zaangażowany kontakt nie zajął nawet niewielkiej części czasu. Nie zawsze więc większa ilość czasu spędzonego z dzieckiem ma znaczący wpływ na jego rozwój; znaczenie ma przede wszystkim to, jak ten czas zostanie wykorzystany. Warto zadbać, aby wspólnie spędzane chwile nie upływały wyłącznie na korzystaniu z telefonu. </p>
-<p>Z jakością wspólnego czasu wiąże się także sposób reagowania na dziecko, które zabiega o uwagę rodzica. Zdarza się, że w takiej chwili dziecko słyszy: „A nie masz czegoś do nauki?”. Rodzic chce dobrze, lecz dziecko może odebrać taką odpowiedź jako odrzucenie, a nauka zaczyna mu się kojarzyć z karą za szukanie kontaktu.</p>
-<p>Prowadzący wyjaśnia, że <strong>motywacja wewnętrzna</strong> (chęć działania wynikająca z zainteresowania samą czynnością, a nie z nagrody czy obawy przed karą) wiąże się z zaspokojeniem potrzeb <strong>autonomii, kompetencji i więzi</strong> (decydowania o sobie, poczucia, że się coś potrafi, oraz bliskich relacji z innymi) (Deci i Ryan, 2000 <a class="wfp-cyt" id="cyt-B3-5-2" href="zrodla-programu.html?z=cyt-B3-5-2#B3-5" data-src="B3-5">[B3.5]</a>), a dzieci rodziców wspierających ich samodzielność lepiej radzą sobie w szkole (Grolnick i Ryan, 1989 <a class="wfp-cyt" id="cyt-B3-4-2" href="zrodla-programu.html?z=cyt-B3-4-2#B3-4" data-src="B3-4">[B3.4]</a>). Dlatego w chwili, gdy dziecko szuka kontaktu, warto najpierw mu go dać, a do nauki wrócić później.</p>
-<p class="wfp-ex"><strong>Przykład (nastolatki).</strong> [S. R. Covey w rozdziale o nawyku piątym opisuje rozmowę ojca z synem. Syn wraca do domu i oznajmia, że szkoła nie ma sensu i niczego go nie uczy. Ojciec reaguje tak, jak zrobiłaby to większość rodziców: wypytuje, przekonuje, że sam w jego wieku myślał podobnie, i radzi, żeby się bardziej przyłożył. Każda kolejna odpowiedź zamyka rozmowę. W drugiej wersji tej samej sytuacji ojciec nie ocenia i nie doradza, lecz własnymi słowami oddaje to, co słyszy, i nazywa uczucia syna, np. „Jesteś naprawdę zniechęcony szkołą”. Syn czuje się wysłuchany, zaczyna mówić więcej i w końcu ujawnia prawdziwy powód swojego zniechęcenia — obawę, że nie radzi sobie z nauką. Dopiero wtedy ojciec może mu realnie pomóc.<strong>] [Do uzupełnienia: przykład zostanie uzupełniony oryginalnym fragmentem rozmowy z książki S. R. Coveya „7 nawyków skutecznego działania” (nawyk 5) i dołączony w załączniku jako cytat odczytywany na spotkaniu.]</strong></p>
-<h4 class="wfp-label wfp-label--prop">Propozycje dla rodziców</h4>
-<ul class="wfp-ul">
-<li>Codziennie znaleźć kilka minut na rozmowę z dzieckiem, podczas której zarówno rodzic, jak i dziecko odkładają telefony — np. przy kolacji, w drodze do szkoły lub przed snem — i w tym czasie przede wszystkim słuchać dziecka.</li>
-<li>Zaproponować wspólne zajęcie, zamiast ograniczać się do przebywania w tym samym miejscu.</li>
-<li>Nie odsyłać dziecka do obowiązków, gdy zabiega o uwagę rodzica.</li>
-<li>Zanim oceni się zachowanie dziecka lub udzieli rady, zapytać o jego przeżycia i wysłuchać odpowiedzi do końca.</li>
-<li>Rodzicom widującym dziecko rzadziej: planować wspólny czas tak, aby był wypełniony rozmową i wspólnym działaniem, a nie korzystaniem z urządzeń.</li>
-</ul>
-<h3 id="blok-4" class="wfp-blok"><span>Blok 4</span>Rodzic jako punkt wyjścia — samoocena i technoferencja</h3>
-<h4 class="wfp-label">Treści</h4>
-<ol class="wfp-ol">
-<li value="1">Rodzice często oczekują od dzieci więcej, niż sami dają z siebie.</li>
-<li value="2">Samoocena rodzica a sposób postrzegania dziecka — główna teza programu. Podstawa teoretyczna: teoria rozbieżności Ja (Higgins, 1987 <a class="wfp-cyt" id="cyt-B4-1-1" href="zrodla-programu.html?z=cyt-B4-1-1#B4-1" data-src="B4-1">[B4.1]</a>) oraz badania nad poczuciem kompetencji rodzicielskich (Johnston i Mash, 1989 <a class="wfp-cyt" id="cyt-B4-3-1" href="zrodla-programu.html?z=cyt-B4-3-1#B4-3" data-src="B4-3">[B4.3]</a>; Jones i Prinz, 2005 <a class="wfp-cyt" id="cyt-B4-2-1" href="zrodla-programu.html?z=cyt-B4-2-1#B4-2" data-src="B4-2">[B4.2]</a>). Ankieta wypełniana przez uczestników składa się z dwóch części oddzielonych w czasie. Na początku spotkania uczestnicy odpowiadają w telefonie m.in. na pytanie, w ilu procentach ich dziecko jest takie, jakim chcieliby je widzieć. Pytanie o to, w ilu procentach oni sami są takimi rodzicami, jakimi chcieliby być, pojawia się dopiero w tym bloku, po kilkudziesięciu minutach; zestawienie obu odpowiedzi pozwala dostrzec, czy są one zbieżne. Odpowiedzi są anonimowe; Fundacja może je przeanalizować zbiorczo, a uczestnicy nie muszą dzielić się nimi z innymi. Pełna treść ankiety stanowi odrębny załącznik do programu.</li>
-<li value="3">Praca nad sobą zamiast koncentrowania się wyłącznie na wymaganiach wobec dziecka: zmiana zachowania rodzica może prowadzić do zmiany zachowania dziecka (Sanders, 1999 <a class="wfp-cyt" id="cyt-B4-4-1" href="zrodla-programu.html?z=cyt-B4-4-1#B4-4" data-src="B4-4">[B4.4]</a>).</li>
-<li value="4">Znaczenie rzeczywistego przekonania o własnej wartości, a nie samego deklarowania jej.</li>
-<li value="5"><strong>Technoferencja.</strong> Korzystanie przez rodzica z telefonu w obecności dziecka może zakłócać ich kontakt. Im częściej urządzenia przerywają rodzicom interakcje z dzieckiem, tym więcej u dzieci obserwuje się wybuchów złości, nadpobudliwości i wycofania (McDaniel i Radesky, 2018 <a class="wfp-cyt" id="cyt-B1-8-3" href="zrodla-programu.html?z=cyt-B1-8-3#B1-8" data-src="B1-8">[B1.8]</a>). Praca rodzica nad sobą obejmuje również refleksję nad własnym korzystaniem z telefonu.</li>
-<li value="6"><strong>Uczenie się przez obserwację.</strong> Dziecko uczy się w dużej mierze przez obserwację i naśladowanie zachowań dorosłych (Bandura, Ross i Ross, 1961 <a class="wfp-cyt" id="cyt-B4-5-1" href="zrodla-programu.html?z=cyt-B4-5-1#B4-5" data-src="B4-5">[B4.5]</a>; Bandura, 1977). Większe znaczenie niż pouczenia ma codzienne postępowanie rodzica, głównie wtedy, gdy nikt go nie obserwuje.</li>
-</ol>
-<p><strong>Opis.</strong> Prowadzący przedstawia główną tezę programu: zmiana zaczyna się od rodzica, ponieważ dorośli często oczekują od dzieci więcej, niż sami dają z siebie. Omawia związek między <strong>samooceną rodzica</strong> (tym, jak rodzic ocenia samego siebie w roli rodzica) a sposobem postrzegania dziecka. Odwołuje się do <strong>teorii rozbieżności Ja</strong>, zgodnie z którą napięcie emocjonalne może wynikać z różnicy między tym, jacy jesteśmy, a tym, jacy chcielibyśmy być (Higgins, 1987 <a class="wfp-cyt" id="cyt-B4-1-2" href="zrodla-programu.html?z=cyt-B4-1-2#B4-1" data-src="B4-1">[B4.1]</a>), oraz do badań nad <strong>poczuciem kompetencji rodzicielskich</strong> (przekonaniem rodzica, że potrafi skutecznie wychowywać dziecko) (Johnston i Mash, 1989 <a class="wfp-cyt" id="cyt-B4-3-2" href="zrodla-programu.html?z=cyt-B4-3-2#B4-3" data-src="B4-3">[B4.3]</a>; Jones i Prinz, 2005 <a class="wfp-cyt" id="cyt-B4-2-2" href="zrodla-programu.html?z=cyt-B4-2-2#B4-2" data-src="B4-2">[B4.2]</a>). Wyjaśnia, że realne poczucie sprawczości może ułatwiać rodzicowi spokojne i konsekwentne wychowywanie dziecka. Nie chodzi o samo deklarowanie własnej wartości, lecz o rzeczywiste przekonanie o swoich możliwościach i rzetelną ocenę punktu wyjścia.</p>
-<p>Prowadzący nawiązuje do anonimowej ankiety, którą uczestnicy rozpoczęli w telefonach na początku spotkania. Odpowiadali wtedy m.in. na pytanie, w ilu procentach ich dziecko jest takie, jakim chcieliby je widzieć. Teraz, po kilkudziesięciu minutach, w telefonach pojawia się pytanie, w ilu procentach oni sami są takimi rodzicami, jakimi chcieliby być dla swoich dzieci, albo takimi, jakimi chcieliby, żeby byli ich właśni rodzice. Rozdzielenie obu pytań w czasie sprawia, że druga odpowiedź nie jest dopasowywana do pierwszej. Następnie obie oceny zostają zestawione.</p>
-<p>Prowadzący zwraca uwagę, że mogą okazać się bardzo zbliżone: rodzic, który ocenia dziecko na przykład na 50 procent tego, jakim chciałby je widzieć, nierzadko ocenia również siebie jako rodzica na około 50 procent. Skłania to do refleksji, że sposób, w jaki rodzic postrzega dziecko, może wiązać się z tym, jak ocenia samego siebie jako rodzica. Odpowiedzi są anonimowe: Fundacja może je zobaczyć w zestawieniu zbiorczym, lecz nie wie, kto ich udzielił, a uczestnicy nie muszą dzielić się nimi z innymi osobami. Teza ta stanowi oś programu.</p>
-<p>Praca rodzica nad sobą obejmuje również sposób korzystania z telefonu. Prowadzący wyjaśnia pojęcie <strong>technoferencji</strong> — zakłócania kontaktu rodzica z dzieckiem przez korzystanie z urządzeń cyfrowych podczas rozmowy, wspólnych zajęć lub posiłków. Rodzic pozostaje fizycznie obecny, lecz jego uwaga koncentruje się na urządzeniu, co może ograniczać zaangażowanie i zainteresowanie dzieckiem. W badaniu obejmującym 170 rodzin częstsze przerywanie kontaktu rodziców z dziećmi przez urządzenia wiązało się z większą liczbą obserwowanych u dzieci wybuchów złości, objawów nadpobudliwości i wycofania (McDaniel i Radesky, 2018 <a class="wfp-cyt" id="cyt-B1-8-4" href="zrodla-programu.html?z=cyt-B1-8-4#B1-8" data-src="B1-8">[B1.8]</a>).</p>
-<p>Prowadzący podkreśla, że praca rodzica nad sobą obejmuje także wspieranie samodzielności dziecka, aby mogło ono funkcjonować również wtedy, gdy rodzica przy nim nie ma. Blok zamyka myśl: „Jeżeli chcesz złapać motyla, nie goń za nim. Zbuduj ogród.”</p>
-<p>Prowadzący podkreśla, że dziecko uczy się przede wszystkim przez obserwację. W klasycznym badaniu Alberta Bandury dzieci, które oglądały dorosłego zachowującego się agresywnie wobec dużej lalki, częściej naśladowały to zachowanie w swojej zabawie niż dzieci, które takiego wzorca nie widziały (Bandura, Ross i Ross, 1961 <a class="wfp-cyt" id="cyt-B4-5-2" href="zrodla-programu.html?z=cyt-B4-5-2#B4-5" data-src="B4-5">[B4.5]</a>). Na tej podstawie Bandura sformułował <strong>teorię społecznego uczenia się</strong>, zgodnie z którą znaczna część ludzkich zachowań powstaje przez obserwację i naśladowanie innych (Bandura, 1977 <a class="wfp-cyt" id="cyt-B4-5-3" href="zrodla-programu.html?z=cyt-B4-5-3#B4-5" data-src="B4-5">[B4.5]</a>).</p>
-<p>W praktyce rodzinnej oznacza to, że dziecko rzadko uczy się z tłumaczenia, a znacznie częściej z tego, jak rodzic postępuje. Można powiedzieć, że dziecko odtwarza to, czego na pierwszy rzut oka u rodzica nie widać. Przejmuje przy tym nie te zachowania, które rodzic pokazuje „na pokaz”, lecz te, które przejawia na co dzień, gdy nikt go nie obserwuje: sposób mówienia o innych, reagowania na trudności i korzystania z telefonu. Dlatego praca rodzica nad sobą jest jednocześnie jedną z najskuteczniejszych form wychowania (zob. także blok 5).</p>
-<p class="wfp-ex"><strong>Przykład.</strong> Rodzic po powrocie z pracy oczekuje, że dziecko odłoży telefon i usiądzie do lekcji, sam zaś przez cały wieczór przegląda wiadomości przy stole. Gdy dziecko odpowiada: „Ty też ciągle siedzisz w telefonie”, rodzic odbiera to jako bezczelność. Jeżeli jednak przez kilka wieczorów odłoży telefon poza zasięg ręki i zajmie się wspólnym posiłkiem i rozmową, dziecko otrzymuje czytelny przykład, a prośba o odłożenie telefonu przestaje być wymaganiem, którego sam rodzic nie spełnia.</p>
-<h3 id="blok-5" class="wfp-blok"><span>Blok 5</span>Wartości jako podstawa zasad</h3>
-<h4 class="wfp-label">Treści</h4>
-<ol class="wfp-ol">
-<li value="1"><strong>Zasady i wartości.</strong> Zasady określają, co wolno, a czego nie wolno; wartości wyjaśniają, dlaczego tak jest. Zasady są potrzebne, lecz najtrwalsze są te, które dziecko rozumie i które wynikają z przyjętych przez nie wartości.</li>
-<li value="2">Wychowanie oparte wyłącznie na zakazach nie uczy dziecka samodzielnego wyznaczania granic.</li>
-<li value="3">Przestrzeganie zasad może zależeć od nadzoru; posłuszeństwo wynikające z przekonania lepiej pozwala przewidzieć ich przestrzeganie pod nieobecność dorosłego (Kochanska, 1995 <a class="wfp-cyt" id="cyt-B5-5-1" href="zrodla-programu.html?z=cyt-B5-5-1#B5-5" data-src="B5-5">[B5.5]</a>).</li>
-<li value="4">Już małe dzieci odróżniają normy moralne od konwencjonalnych (Turiel, 1983 <a class="wfp-cyt" id="cyt-B5-6-1" href="zrodla-programu.html?z=cyt-B5-6-1#B5-6" data-src="B5-6">[B5.6]</a>; Nucci, Turiel i Encarnacion-Gawrych, 1983).</li>
-<li value="5">Samo posłuszeństwo nie zawsze chroni przed krzywdzeniem innych: 65% dorosłych uczestników badania wykonało polecenie, które miało skrzywdzić drugiego człowieka (<a class="wfp-cyt" id="cyt-MIL-1" href="zrodla-programu.html?z=cyt-MIL-1#MIL" data-src="MIL">Milgram, 1963</a>).</li>
-<li value="6"><strong>Konsekwencje, a nie tylko zakazy.</strong> Dziecko powinno znać konsekwencje swoich czynów — przede wszystkim ich skutki dla innych ludzi — a nie wyłącznie zasady i grożące za ich złamanie kary.</li>
-<li value="7"><strong>Wychowanie dobrego człowieka.</strong> Celem wychowania jest dziecko świadome, co znaczy być dobrym człowiekiem, a nie jedynie wiedzące, czego mu nie wolno.</li>
-<li value="8"><strong>Bezpieczeństwo i odpowiedzialność w sieci.</strong> Treści opublikowane w internecie — zdjęcia, nagrania, komentarze — mogą pozostać w nim na lata i być rozpowszechniane bez wiedzy autora. Dziecko powinno rozumieć, jakie konsekwencje może to mieć za kilka lat dla niego samego i dla innych, oraz wiedzieć, jak chronić swoją prywatność.</li>
-</ol>
-<p><strong>Opis.</strong> Prowadzący wyjaśnia różnicę między wychowaniem opartym wyłącznie <strong>na zasadach</strong> (regułach określających, co wolno, a czego nie wolno, ustalanych i egzekwowanych przez dorosłych) a wychowaniem opartym <strong>na wartościach</strong> (trwałych przekonaniach o tym, co jest dobre i ważne — takich jak uczciwość, życzliwość, szacunek i odpowiedzialność — które dziecko rozumie i przyjmuje jako własne). Same zakazy działają przede wszystkim pod nadzorem i nie zawsze uczą dziecko samodzielnego wyznaczania granic. Posłuszeństwo wynikające z przekonania lepiej pozwala przewidzieć przestrzeganie zasad pod nieobecność dorosłego (Kochanska, 1995 <a class="wfp-cyt" id="cyt-B5-5-2" href="zrodla-programu.html?z=cyt-B5-5-2#B5-5" data-src="B5-5">[B5.5]</a>).</p>
-<p>Prowadzący przypomina, że już małe dzieci odróżniają <strong>normy moralne od konwencjonalnych</strong> (normy dotyczące krzywdy i sprawiedliwości od umownych reguł danej grupy) (Turiel, 1983 <a class="wfp-cyt" id="cyt-B5-6-2" href="zrodla-programu.html?z=cyt-B5-6-2#B5-6" data-src="B5-6">[B5.6]</a>; Nucci, Turiel i Encarnacion-Gawrych, 1983). Dlatego ważne jest nie tylko to, aby dziecko wiedziało, czego nie wolno, lecz także rozumiało, dlaczego dane zachowanie rani, niszczy zaufanie lub krzywdzi słabszego.</p>
-<p>Prowadzący podkreśla, że program nie podważa znaczenia zasad obowiązujących w domu i w szkole. Zasada przyswojona bez zrozumienia stojącej za nią wartości działa jednak głównie wtedy, gdy ktoś pilnuje jej przestrzegania. Gdy zabraknie osoby egzekwującej zasady i nie grozi kara, dziecko wychowane wyłącznie na zasadach może przestać się hamować albo postępować tak, aby nikt się o tym nie dowiedział. Dziecko, które przyjęło wartości jako własne, nadal się nimi kieruje: samo wie, co jest właściwe, i rozpoznaje, kiedy krzywdzi drugiego człowieka. Dlatego celem wychowania jest dziecko świadome, co znaczy być dobrym człowiekiem, i znające skutki swoich czynów dla innych, a nie jedynie wiedzące, czego mu nie wolno i jaka grozi za to kara.</p>
-<p>Prowadzący omawia, w jaki sposób rodzic może wspierać przyjmowanie wartości przez dziecko, czyli wychowywać je na dobrego człowieka, a nie jedynie uczyć, czego nie wolno, bo poniesie za to karę. Najważniejszy jest własny przykład dorosłego — także w sytuacjach, w których „nikt nie widzi”. Ważne jest wyjaśnianie zamiast samego zakazywania: rozmowa o tym, jak może czuć się osoba skrzywdzona, co dane zachowanie zmienia w relacjach i dlaczego coś jest dobre lub złe. Wspierające jest również dostrzeganie i docenianie dobrych wyborów dziecka, a nie wyłącznie reagowanie na przewinienia, a także rozmowa o sytuacjach z codzienności, filmów, książek czy gier, w których bohaterowie stają przed wyborem moralnym. Gdy dziecko wyrządzi komuś krzywdę, celem jest nie tylko kara, lecz także naprawienie szkody i zrozumienie jej skutków. Ustalając zasady domowe, rodzic może za każdym razem wyjaśniać, jakiej wartości one służą.</p>
-<p>Ilustracją jest eksperyment Stanleya Milgrama z 1963 roku. Na Uniwersytet Yale zaproszono czterdziestu mężczyzn do udziału w rzekomym badaniu pamięci. Mieli karać drugą osobę coraz silniejszymi wstrząsami elektrycznymi za błędne odpowiedzi. W rzeczywistości wstrząsy były pozorowane, o czym badani nie wiedzieli. Przy napięciu 300 woltów osoba odgrywająca rolę ucznia uderzała w ścianę, a następnie milkła.</p>
-<p>Prowadzący badanie spokojnie polecał kontynuować. Przewidywano, że do końca dojdzie około jednego procenta badanych; polecenie wykonało sześćdziesiąt pięć procent. Prowadzący zwraca uwagę, że uczestnicy znali zasadę „nie krzywdź”, lecz nie mieli jej <strong>uwewnętrznionej</strong> (przyjętej jako własna, kierującej postępowaniem z przekonania, a nie z obawy przed karą) jako wartości silniejszej niż polecenie autorytetu. Na tej podstawie program formułuje wniosek wychowawczy: dziecko uczone wyłącznie posłuszeństwa może nie rozpoznać sytuacji, w której ktoś zamierza je wykorzystać, natomiast wychowanie oparte na wartościach pomaga dziecku rozpoznać szkodliwe polecenie i stanąć w obronie słabszego.</p>
-<p><strong>Bezpieczeństwo w sieci. </strong>Prowadzący szczególnie mocno podkreśla znaczenie rozmowy z dzieckiem, a zwłaszcza z nastolatkiem, o bezpieczeństwie i odpowiedzialności w sieci. Dzieci i młodzież często nie zdają sobie sprawy, że wszystko, co trafi do internetu — zdjęcie, nagranie, komentarz czy wiadomość — może pozostać w nim na lata, być kopiowane, zapisywane w postaci zrzutów ekranu i rozsyłane dalej bez wiedzy autora. Film, który dziś wydaje się zabawny, albo zdjęcie zrobione w nieprzemyślanej sytuacji mogą po kilku latach zaszkodzić młodemu człowiekowi w szkole, w rekrutacji na studia lub do pracy oraz w relacjach z innymi.</p>
-<p>Rodzic powinien więc tłumaczyć dziecku, aby nie pozwalało innym na robienie sobie zdjęć i nagrań w sytuacjach, które mogą je ośmieszyć lub naruszyć jego prywatność, aby nie publikowało kompromitujących materiałów — ani własnych, ani cudzych — i nigdy nikomu nie wysyłało zdjęć intymnych, także osobie, której ufa. Warto też wyjaśnić, że rozpowszechnianie cudzego wizerunku co do zasady wymaga zgody osoby na nim przedstawionej, a ośmieszanie innych w sieci jest formą przemocy.</p>
-<p>Rozmowa ta wynika bezpośrednio z wychowania opartego na wartościach: dziecko, które rozumie skutki swoich działań dla siebie i dla innych, samo zastanowi się, zanim coś opublikuje.</p>
-<p class="wfp-ex"><strong>Przykład (młodsze dzieci).</strong> W domu obowiązuje zasada, że nie wolno brać cudzych rzeczy bez pytania. Dziecko, które zna tylko tę zasadę i karę za jej złamanie, może w szkole zabrać koledze kolorowe naklejki, jeśli jest pewne, że nikt tego nie zauważy. Dziecko, z którym rodzic rozmawiał o tym, jak czuje się osoba, której coś zabrano, i dlaczego zaufanie łatwo stracić, zastanowi się nad uczuciami kolegi — także wtedy, gdy nikt nie patrzy.</p>
-<p class="wfp-ex"><strong>Przykład (nastolatki).</strong> W klasowej grupie na komunikatorze ktoś udostępnia ośmieszające zdjęcie koleżanki z klasy. Nastolatek, który zna jedynie zasadę „nie wolno publikować cudzych zdjęć”, może przesłać je dalej, skoro „wszyscy to robią” i nikt nie dowie się, od kogo trafiło dalej. Nastolatek, który przyjął jako własną wartość szacunek dla drugiego człowieka, rozumie, że koleżanka może czuć się upokorzona i że takie zdjęcie zostaje w sieci na długo. Nie przesyła go dalej, a w miarę możliwości reaguje: zwraca uwagę autorowi, wspiera koleżankę lub informuje dorosłego. Postępuje tak, choć nikt go nie kontroluje i nie grozi mu żadna kara.</p>
-<h4 class="wfp-label wfp-label--prop">Propozycje dla rodziców</h4>
-<ul class="wfp-ul">
-<li>Wyjaśniać dziecku, w jaki sposób jego zachowanie wpływa na innych, zamiast poprzestawać na zakazie.</li>
-<li>Zapytać: „Gdyby takiej zasady nie było, czy takie zachowanie byłoby w porządku?”.</li>
-<li>Rozmawiać z dzieckiem o tym, jak może czuć się osoba skrzywdzona, i wspólnie zastanawiać się, jak naprawić wyrządzoną szkodę.</li>
-<li>Dawać własny przykład, także w sytuacjach, w których dziecko mogłoby uznać, że „nikt nie widzi”.</li>
-<li>Dostrzegać i nazywać dobre wybory dziecka, a nie tylko reagować na przewinienia.</li>
-<li>Wykorzystywać filmy, książki i gry jako okazję do rozmowy o wyborach bohaterów i o tym, co znaczy być dobrym człowiekiem.</li>
-<li>Ustalając zasady domowe, wyjaśniać dziecku, jakiej wartości służą.</li>
-<li>Rozmawiać z dzieckiem, a szczególnie z nastolatkiem, o bezpieczeństwie w sieci: tłumaczyć, że nie należy pozwalać innym na robienie sobie zdjęć i nagrań w ośmieszających sytuacjach ani publikować kompromitujących materiałów — własnych i cudzych — bo wszystko, co trafi do internetu, może tam pozostać na lata i zaszkodzić w przyszłości. Omawiać, jak zareagować, gdy ktoś udostępnia ośmieszające treści lub prosi o intymne zdjęcia.</li>
-</ul>
-<h3 id="blok-6" class="wfp-blok"><span>Blok 6</span>Silne, zdrowe i odważne dziecko</h3>
-<h4 class="wfp-label">Treści</h4>
-<ol class="wfp-ol">
-<li value="1"><strong>Odżywianie a zdrowie.</strong> Oś jelito–mózg (Cryan i Dinan, 2012 <a class="wfp-cyt" id="cyt-B6-1-1" href="zrodla-programu.html?z=cyt-B6-1-1#B6-1" data-src="B6-1">[B6.1]</a>); dieta wysokoprzetworzona zwiększa przepuszczalność bariery jelitowej i nasila stan zapalny (Cani i in., 2007 <a class="wfp-cyt" id="cyt-B6-7-1" href="zrodla-programu.html?z=cyt-B6-7-1#B6-7" data-src="B6-7">[B6.7]</a>), a stan zapalny obniża motywację (Felger i Treadway, 2017 <a class="wfp-cyt" id="cyt-B6-6-1" href="zrodla-programu.html?z=cyt-B6-6-1#B6-6" data-src="B6-6">[B6.6]</a>). Dopamina wytwarzana w przewodzie pokarmowym, stanowiąca blisko połowę dopaminy w organizmie (Eisenhofer i in., 1997 <a class="wfp-cyt" id="cyt-B6-3-1" href="zrodla-programu.html?z=cyt-B6-3-1#B6-3" data-src="B6-3">[B6.3]</a>), nie przenika do mózgu.</li>
-<li value="2"><strong>Aktywność fizyczna, koncentracja i ADHD.</strong> Regularny wysiłek poprawia <strong>funkcje wykonawcze</strong> (umiejętności planowania, skupiania uwagi i kontrolowania impulsów) dzieci z ADHD (Liang i in., 2021 <a class="wfp-cyt" id="cyt-B6-4-1" href="zrodla-programu.html?z=cyt-B6-4-1#B6-4" data-src="B6-4">[B6.4]</a>). Farmakoterapia pozostaje najskuteczniejszą formą leczenia (Cortese i in., 2018 <a class="wfp-cyt" id="cyt-B6-8-1" href="zrodla-programu.html?z=cyt-B6-8-1#B6-8" data-src="B6-8">[B6.8]</a>), a aktywność fizyczna stanowi jej uzupełnienie, nie zamiennik.</li>
-<li value="3"><strong>Wspólna aktywność fizyczna rodzica i dziecka.</strong> Wspólne uprawianie sportu jest „wpłatą na konto wzajemnego zaufania” (zob. blok 1): daje rodzicowi i dziecku płaszczyznę do rozmowy i pozwala przekazać dziecku wiele spraw bez pouczania.</li>
-<li value="4">Siła i odwaga jako efekt systematycznej pracy nad sobą.</li>
-<li value="5"><strong>Odwaga cywilna i odpowiedzialność za innych.</strong> Siła wewnętrzna nie oznacza przewagi nad innymi ani stosowania przemocy, lecz odwagę cywilną: gotowość stanięcia w obronie osoby krzywdzonej i nieuciekania od trudnych sytuacji<strong>.</strong> Dzieci empatyczne i przekonane o własnej skuteczności częściej stają w obronie ofiar przemocy rówieśniczej (Ma i in., 2019 <a class="wfp-cyt" id="cyt-B6-5-1" href="zrodla-programu.html?z=cyt-B6-5-1#B6-5" data-src="B6-5">[B6.5]</a>).</li>
-<li value="6">Dzieci jako przyszłość wspólnoty. Dziecko silne wewnętrznie chętnie pomaga innym i nie pozostaje bierne wobec krzywdy drugiego człowieka.</li>
-<li value="7"><strong>Powrót do punktu wyjścia.</strong> Dziecko prawidłowo odżywione i regularnie aktywne fizycznie rzadziej poszukuje pobudzenia w telefonie.</li>
-</ol>
-<p><strong>Opis.</strong> Prowadzący omawia zagadnienia w następującej kolejności: odżywianie, aktywność fizyczna, a następnie siła, odwaga i gotowość niesienia pomocy innym. Wyjaśnia, że <strong>oś jelito–mózg</strong> oznacza dwukierunkową komunikację między przewodem pokarmowym a mózgiem, przebiegającą m.in. drogą nerwową i immunologiczną (Cryan i Dinan, 2012 <a class="wfp-cyt" id="cyt-B6-1-2" href="zrodla-programu.html?z=cyt-B6-1-2#B6-1" data-src="B6-1">[B6.1]</a>). <strong>Dieta wysokoprzetworzona</strong> (oparta na produktach przetworzonych przemysłowo, z dużą ilością cukru, tłuszczu i dodatków) zwiększa przepuszczalność bariery jelitowej i nasila <strong>stan zapalny</strong> (reakcja układu odpornościowego, która utrzymując się długo, może wpływać na pracę mózgu) (Cani i in., 2007 <a class="wfp-cyt" id="cyt-B6-7-2" href="zrodla-programu.html?z=cyt-B6-7-2#B6-7" data-src="B6-7">[B6.7]</a>), a stan zapalny obniża motywację (Felger i Treadway, 2017 <a class="wfp-cyt" id="cyt-B6-6-2" href="zrodla-programu.html?z=cyt-B6-6-2#B6-6" data-src="B6-6">[B6.6]</a>).</p>
-<p>Prowadzący doprecyzowuje, że dopamina wytwarzana w przewodzie pokarmowym, stanowiąca blisko połowę dopaminy w organizmie, nie przenika do mózgu (Eisenhofer i in., 1997 <a class="wfp-cyt" id="cyt-B6-3-2" href="zrodla-programu.html?z=cyt-B6-3-2#B6-3" data-src="B6-3">[B6.3]</a>).</p>
-<p>Regularna, odpowiednio dobrana aktywność fizyczna może wspierać koncentrację i kontrolę impulsów, również u dzieci z ADHD (Liang i in., 2021 <a class="wfp-cyt" id="cyt-B6-4-2" href="zrodla-programu.html?z=cyt-B6-4-2#B6-4" data-src="B6-4">[B6.4]</a>). Prowadzący wyraźnie zaznacza, że farmakoterapia pozostaje najskuteczniejszą formą leczenia ADHD (Cortese i in., 2018 <a class="wfp-cyt" id="cyt-B6-8-2" href="zrodla-programu.html?z=cyt-B6-8-2#B6-8" data-src="B6-8">[B6.8]</a>), a aktywność fizyczna jest uzupełnieniem leczenia ustalonego z lekarzem, nie jego zamiennikiem.</p>
-<p>Prowadzący zwraca również uwagę na wspólną aktywność fizyczną rodzica i dziecka, na przykład wspólne uprawianie sportu. Jest ona kolejną „wpłatą na konto wzajemnego zaufania”: rodzic i dziecko znajdują płaszczyznę, na której się komunikują, a wspólny wysiłek, sukcesy i porażki stają się naturalną okazją do rozmowy. W takich chwilach rodzic może wytłumaczyć dziecku wiele spraw, które w innej sytuacji mogłyby zostać odebrane jako pouczanie.</p>
-<p>Na zakończenie bloku prowadzący wyjaśnia, w jakim znaczeniu program mówi o sile i odwadze dziecka. Nie chodzi o to, by dziecko było silniejsze od innych, dominowało nad słabszymi lub stosowało wobec kogokolwiek przemoc. Chodzi o siłę wewnętrzną i <strong>odwagę cywilną</strong> (gotowość stanięcia w obronie osoby krzywdzonej i sprzeciwu wobec niewłaściwego zachowania): dziecko pewne siebie, empatyczne i przekonane o własnej skuteczności częściej staje w obronie ofiar przemocy rówieśniczej, chętniej pomaga innym i nie pozostaje bierne wobec krzywdy drugiego człowieka (Ma i in., 2019 <a class="wfp-cyt" id="cyt-B6-5-2" href="zrodla-programu.html?z=cyt-B6-5-2#B6-5" data-src="B6-5">[B6.5]</a>). Takie dziecko nie ucieka od trudnych sytuacji, lecz potrafi w nich zareagować — sprzeciwić się, wezwać pomoc dorosłego lub wesprzeć osobę pokrzywdzoną. Systematyczna aktywność fizyczna i praca nad sobą budują poczucie, że dziecko jest w stanie sprostać wyzwaniom, co może przenosić się na jego postawę wobec innych.</p>
-<p class="wfp-ex"><strong>Przykład (młodsze dzieci).</strong> Zamiast zakazywać słodyczy, rodzic zmienia to, co jest dostępne w domu: w miejscu słodzonych napojów stoi woda z owocami, a na podwieczorek zamiast batonika dziecko dostaje jogurt naturalny z owocami albo kanapkę z pełnoziarnistego pieczywa. Słodycze nie są zakazane, ale przestają być codziennym, stale dostępnym elementem diety. Raz w tygodniu rodzic i dziecko wspólnie przygotowują deser, który dziecko samo wybiera.</p>
-<p class="wfp-ex"><strong>Przykład (nastolatki).</strong> Rodzic i nastolatek postanawiają wspólnie przygotować się do biegu na 5 km organizowanego w ich mieście. Trzy razy w tygodniu biegają razem, a w trakcie treningów rozmawiają o szkole, kolegach i planach. Wspólny cel i wysiłek sprawiają, że nastolatek chętniej dzieli się z rodzicem swoimi sprawami, a samo przygotowanie uczy go systematyczności i pokazuje, że postęp jest efektem pracy.</p>
-<h4 class="wfp-label wfp-label--prop">Propozycje dla rodziców</h4>
-<ul class="wfp-ul">
-<li>Ograniczać w diecie dziecka żywność wysokoprzetworzoną i cukier.</li>
-<li>Zapewniać dziecku regularną, dostosowaną do jego możliwości aktywność sportową, w tym dyscypliny złożone, takie jak sztuki walki i gry zespołowe.</li>
-<li>Uprawiać z dzieckiem wspólną aktywność fizyczną, np. jazdę na rowerze, bieganie, pływanie lub wspólny trening, traktując ją także jako okazję do rozmowy.</li>
-<li>Rozmawiać z dzieckiem o sytuacjach, w których ktoś był krzywdzony, i o tym, jak można bezpiecznie zareagować: sprzeciwić się, wesprzeć poszkodowanego lub wezwać dorosłego.</li>
-</ul>
-<h3 id="blok-7" class="wfp-blok"><span>Blok 7</span>Samodzielność dziecka a ingerencja rodziców</h3>
-<h4 class="wfp-label">Treści</h4>
-<ol class="wfp-ol">
-<li value="1">Stała obecność rodzica może ograniczać dziecku możliwość ćwiczenia umiejętności społecznych. Nadmierna kontrola rodzicielska w wieku 2 lat wiązała się ze słabszą samoregulacją i gorszym przystosowaniem w wieku 10 lat (Perry i in., 2018 <a class="wfp-cyt" id="cyt-B7-3-1" href="zrodla-programu.html?z=cyt-B7-3-1#B7-3" data-src="B7-3">[B7.3]</a>).</li>
-<li value="2">Grupa rówieśnicza uczy ponoszenia konsekwencji, a swobodna, samodzielna aktywność może wspierać odporność psychiczną (Gray, Lancy i Bjorklund, 2023 <a class="wfp-cyt" id="cyt-B7-2-2" href="zrodla-programu.html?z=cyt-B7-2-2#B7-2" data-src="B7-2">[B7.2]</a>).</li>
-<li value="3">Indywidualność dziecka jest wartością, lecz nie zastępuje umiejętności społecznych.</li>
-<li value="4">Ochrona dziecka przed każdą reakcją otoczenia może utrwalać nieprawidłowe zachowania; nadopiekuńczość wiąże się z <strong>postawą roszczeniową</strong> (przekonaniem, że należy się szczególne traktowanie bez względu na własne zachowanie) (Segrin i in., 2012 <a class="wfp-cyt" id="cyt-B7-4-1" href="zrodla-programu.html?z=cyt-B7-4-1#B7-4" data-src="B7-4">[B7.4]</a>).</li>
-<li value="5"><strong>Skutki w dorosłości.</strong> Nadmierna kontrola rodzicielska wiąże się z nasileniem objawów depresyjnych u studentów (Schiffrin i in., 2014 <a class="wfp-cyt" id="cyt-B7-1-1" href="zrodla-programu.html?z=cyt-B7-1-1#B7-1" data-src="B7-1">[B7.1]</a>).</li>
-</ol>
-<p><strong>Opis.</strong> Prowadzący zwraca uwagę, że stała obecność dorosłego może ograniczać dziecku możliwość ćwiczenia umiejętności społecznych. Doświadczając reakcji grupy rówieśniczej, dziecko uczy się ponoszenia konsekwencji własnego zachowania. Swobodna, samodzielna aktywność może wspierać <strong>odporność psychiczną</strong> (zdolność radzenia sobie z trudnościami i powracania do równowagi po niepowodzeniach) (Gray, Lancy i Bjorklund, 2023 <a class="wfp-cyt" id="cyt-B7-2-3" href="zrodla-programu.html?z=cyt-B7-2-3#B7-2" data-src="B7-2">[B7.2]</a>), natomiast <strong>nadmierna kontrola rodzicielska</strong> (ingerowanie rodzica w sprawy dziecka w stopniu większym, niż wymaga tego jego wiek i bezpieczeństwo) w wieku 2 lat wiązała się ze słabszą <strong>samoregulacją</strong> (zdolnością samodzielnego kierowania emocjami, uwagą i zachowaniem) i gorszym przystosowaniem w wieku 10 lat (Perry i in., 2018 <a class="wfp-cyt" id="cyt-B7-3-2" href="zrodla-programu.html?z=cyt-B7-3-2#B7-3" data-src="B7-3">[B7.3]</a>). Prowadzący podkreśla, że indywidualność dziecka jest wartością, lecz nie zastępuje umiejętności społecznych.</p>
-<p>Zdarza się, że rodzic domaga się od grupy rówieśniczej lub nauczyciela określonego sposobu traktowania dziecka, nie biorąc pod uwagę, czy jego zachowanie może wpływać na reakcje otoczenia. Dziecko może wówczas nie dowiedzieć się, że jego postępowanie zniechęca innych, i utrwalać to zachowanie (Segrin i in., 2012 <a class="wfp-cyt" id="cyt-B7-4-2" href="zrodla-programu.html?z=cyt-B7-4-2#B7-4" data-src="B7-4">[B7.4]</a>). Doraźnie taka interwencja może ułatwić mu sytuację, lecz w dorosłym życiu nie zawsze będzie mogło liczyć na interwencję rodzica.</p>
-<p>Prowadzący przywołuje badania, w których nadmierna kontrola rodzicielska wiązała się z gorszym samopoczuciem i objawami depresyjnymi u studentów (Schiffrin i in., 2014 <a class="wfp-cyt" id="cyt-B7-1-2" href="zrodla-programu.html?z=cyt-B7-1-2#B7-1" data-src="B7-1">[B7.1]</a>).</p>
-<p class="wfp-ex"><strong>Przykład (młodsze dzieci).</strong> Dziecko podczas zabawy na podwórku popycha i bije inne dzieci, które w końcu przestają się z nim bawić. Rodzic wkracza i domaga się od pozostałych dzieci, by jednak włączyły jego dziecko do zabawy, bo „teraz czuje się samotne”. Doraźnie dziecko wraca do grupy, ale nie dowiaduje się, że to jego zachowanie zniechęciło rówieśników. Rodzic, który zamiast interweniować porozmawia z dzieckiem o tym, dlaczego koledzy odeszli i co mogłoby zrobić inaczej, daje mu szansę na zmianę zachowania i samodzielne odbudowanie relacji.</p>
-<p class="wfp-ex"><strong>Przykład (nastolatki).</strong> Nastolatek skarży się, że koledzy z klasy przestali zapraszać go na wspólne wyjścia. Rodzic od razu chce napisać do wychowawcy lub do rodziców innych uczniów. Taka interwencja może doraźnie coś zmienić, ale nastolatek nie dowie się, co sam mógłby zrobić inaczej, a w oczach rówieśników może zostać uznany za kogoś, za kogo sprawy załatwiają rodzice. Rodzic, który najpierw spokojnie wysłucha nastolatka, pomoże mu zastanowić się nad przyczynami i wspólnie z nim poszuka rozwiązania, wzmacnia jego samodzielność. Interwencja dorosłych jest natomiast konieczna, gdy dziecko doświadcza przemocy lub nękania.</p>
-<h4 class="wfp-label wfp-label--prop">Propozycje dla rodziców</h4>
-<ul class="wfp-ul">
-<li>Nie interweniować automatycznie w relacje dziecka z grupą rówieśniczą.</li>
-<li>Pozwolić dziecku doświadczyć reakcji otoczenia, a następnie porozmawiać z nim o tym, jak jego zachowanie wpływa na innych.</li>
-</ul>
-<h3 id="zamkniecie" class="wfp-blok"><span>Część</span>Zamknięcie</h3>
-<p><strong>Treści.</strong> Praca nad sobą zamiast pracy nad dzieckiem. Przedstawienie wariantów rozwiązań i propozycji działań, z których rodzic może wybrać te odpowiednie dla swojej rodziny. Mądre korzystanie z telefonu: telefon nie jest narzędziem złym samym w sobie — rodzice korzystali z niego w trakcie spotkania do zdobywania wiedzy, a dziecko może wykorzystywać go do nauki i rozwijania zainteresowań, jeżeli rodzic pokaże mu, jak to robić. Program uczy korzystania z telefonu w oparciu o wartości, a nie wyłącznie o zakazy. Kontakt do Fundacji oraz instytucji i organizacji wsparcia. Pytania uczestników.</p>
-<p><strong>Opis.</strong> Na zakończenie prowadzący wraca do myśli przewodniej spotkania: skuteczna zmiana nie polega wyłącznie na pracy nad zachowaniem dziecka. Jej punktem wyjścia jest również postawa dorosłego — jakość czasu poświęcanego dziecku, sposób słuchania, własne korzystanie z telefonu i wartości okazywane na co dzień.</p>
-<p>Prowadzący nie oczekuje od uczestników natychmiastowej deklaracji zmiany. Przedstawia natomiast warianty rozwiązań — zestaw propozycji dotyczących jakości wspólnego czasu, rozmowy, korzystania z telefonu, czasu wolnego, wartości, zdrowia i samodzielności dziecka — zebrane również w broszurze i w materiałach dostępnych w telefonie. Zachęca rodziców, aby po spotkaniu, mając pełną świadomość omówionych mechanizmów, ocenili, jak wygląda sytuacja w ich domu, i wybrali te sposoby budowania relacji i przekazywania wartości, które odpowiadają potrzebom ich dziecka.</p>
-<p>Prowadzący podsumowuje też, że celem spotkania nie było przedstawienie telefonu jako czegoś złego i groźnego. Świat, w którym dorastają dzieci, funkcjonuje z udziałem urządzeń cyfrowych, dlatego zadaniem rodzica nie jest odcięcie dziecka od telefonu, lecz nauczenie go mądrego korzystania z niego. Przykładem jest samo spotkanie: uczestnicy korzystali w jego trakcie z telefonów, które posłużyły do zdobywania wiedzy. Ostatnia część spotkania jest przeznaczona na pytania uczestników. Na koniec prowadzący podaje kontakt do Fundacji oraz do instytucji i organizacji, które pomagają rodzicom w uzyskaniu dalszego wsparcia specjalistów (zob. rozdz. 4 pkt 6). Uczestnicy mogą również otrzymać bezpośrednie dane kontaktowe instytucji współpracujących przy opracowaniu programu — poradni psychologiczno-pedagogicznej, prawników oraz innych instytucji wsparcia.</p>
-<h2 id="r8"><span class="wfp-num">8</span>Oczekiwane rezultaty</h2>
-<p>Po spotkaniu uczestnik:</p>
-<ul class="wfp-ul">
-<li>rozumie, jak działa układ dopaminergiczny i dlaczego krótkie formy wideo oraz gry oparte na natychmiastowej gratyfikacji mogą utrudniać dziecku samodzielne odłożenie telefonu;</li>
-<li>odróżnia formy korzystania z urządzeń cyfrowych szczególnie obciążające od form wspierających rozwój i potrafi pokazać dziecku, jak wykorzystywać telefon do nauki;</li>
-<li>potrafi ustalić z dzieckiem zasady korzystania z telefonu i czasu gry w sposób oparty na rozmowie i wartościach, a nie wyłącznie na zakazach;</li>
-<li>dostrzega przejawy technoferencji we własnym zachowaniu i potrafi ograniczyć korzystanie z telefonu w czasie przeznaczonym dla dziecka;</li>
-<li>potrafi słuchać dziecka w sposób empatyczny — najpierw wysłuchać, a dopiero potem oceniać lub doradzać;</li>
-<li>potrafi zaplanować wspólny czas z dzieckiem tak, aby był czasem zaangażowanym: rozmową, spacerem, zabawą lub wspólną aktywnością fizyczną;</li>
-<li>wie, jak reagować na komunikat „nudzę się”, i rozumie znaczenie czasu wolnego od ekranu dla kreatywności dziecka;</li>
-<li>rozumie związek między własną samooceną rodzicielską a sposobem postrzegania dziecka;</li>
-<li>wie, że dziecko uczy się przede wszystkim przez obserwację zachowań rodzica, i dostrzega znaczenie własnego przykładu;</li>
-<li>potrafi wspierać przyjmowanie przez dziecko wartości: wyjaśniać, rozmawiać o skutkach zachowania dla innych i dostrzegać dobre wybory dziecka;</li>
-<li>zna wpływ odżywiania i aktywności fizycznej na samopoczucie, motywację i koncentrację dziecka;</li>
-<li>potrafi powstrzymać się od nadmiernej ingerencji w relacje rówieśnicze dziecka i wspierać jego samodzielność;</li>
-<li>wie, gdzie szukać dalszego wsparcia, potrafi ocenić sytuację we własnej rodzinie i wybrać propozycje działań odpowiednie dla swojego dziecka.</li>
-</ul>
-<h2 id="r9"><span class="wfp-num">9</span>Ewaluacja</h2>
-<p>Ewaluacja obejmuje przebieg i odbiór spotkania (ewaluacja procesu). Jej wskaźnikami są: liczba uczestników, liczba pytań zadanych przez uczestników, liczba rodziców, którzy w krótkim pytaniu końcowym (np. przez podniesienie ręki) wskazali, że spotkanie pomogło im dostrzec zjawiska lub mechanizmy, na które wcześniej nie zwracali uwagi, oraz opinie uczestników, dyrekcji szkoły i wychowawców. Po spotkaniu prowadzący zbiera ustne opinie uczestników, dyrekcji szkoły i wychowawców. Uczestnicy mogą również przesłać uwagi na adres info@worldfoundation.eu. Zebrane opinie służą doskonaleniu programu.</p>
-<h2 id="r10"><span class="wfp-num">10</span>Zasady uczestnictwa i ochrona danych</h2>
-<p>Udział rodziców w spotkaniu jest dobrowolny i nie wymaga podawania danych osobowych. Ankieta wypełniana w trakcie spotkania jest anonimowa i nie zawiera pytań pozwalających zidentyfikować uczestnika. Spotkanie nie jest rejestrowane bez zgody uczestników i dyrekcji szkoły. Program nie obejmuje zajęć z uczniami.</p>
-<h2 id="r11"><span class="wfp-num">11</span>Wykaz źródeł naukowych</h2>
-<div class="wfp-srcbox"><p>Program opiera się na 52 źródłach naukowych. Każde odwołanie w tekście (np. <span class="wfp-cyt wfp-cyt--demo">[B1.3]</span>) prowadzi do opisu badania: kto je przeprowadził, jak przebiegało, co wykazało i czego nie dowodzi. Z opisu wrócisz do tego samego miejsca w tekście.</p><a class="wfd-btn wfd-btn--primary" href="zrodla-programu.html">Zobacz wszystkie źródła <span aria-hidden="true">→</span></a></div>
+        <nav class="wfp-toc wfl-toc" aria-label="Spis treści">
+          <p>Na tej stronie</p>
+          <ol>
+            <li><a href="#dla-kogo">Dla kogo i jak</a></li>
+            <li><a href="#o-czym">O czym porozmawiamy</a></li>
+            <li class="lv3"><a href="#blok-1">1. Dzieci i telefony</a></li>
+            <li class="lv3"><a href="#blok-2">2. Czas wolny i kreatywność</a></li>
+            <li class="lv3"><a href="#blok-3">3. Rozmowa i słuchanie</a></li>
+            <li class="lv3"><a href="#blok-4">4. Rodzic jako punkt wyjścia</a></li>
+            <li class="lv3"><a href="#blok-5">5. Wartości jako podstawa zasad</a></li>
+            <li class="lv3"><a href="#blok-6">6. Silne, zdrowe i odważne dziecko</a></li>
+            <li class="lv3"><a href="#blok-7">7. Samodzielność dziecka</a></li>
+            <li><a href="#pojecia">Pojęcia</a></li>
+            <li><a href="#zrodla">Badania naukowe</a></li>
+            <li><a href="#dokumentacja">Pełna dokumentacja</a></li>
+            <li><a href="#zgloszenie">Zgłoszenie</a></li>
+          </ol>
+          <a class="wfl-toc__cta" href="#zgloszenie">Zaproś nas →</a>
+        </nav>
+
+        <article class="wfp-text wfl-text">
+
+          <section id="dla-kogo" class="wfl-sec">
+            <h2>Dla kogo i jak</h2>
+            <div class="wfl-split">
+              <div>
+                <p class="wfl-lead">Program jest skierowany do rodziców i opiekunów uczniów szkół podstawowych. Prowadzimy go w szkołach — na zebraniach i spotkaniach z rodzicami — oraz podczas spotkań organizowanych przez inne instytucje pracujące z rodzinami i młodzieżą.</p>
+                <ul class="wfl-facts">
+                  <li><strong>60–90 minut</strong> jedno spotkanie — wykład z elementami ćwiczeń i rozmowy</li>
+                  <li><strong>Bezpłatnie</strong> — w ramach działalności pożytku publicznego Fundacji</li>
+                  <li><strong>Dwa warianty</strong> — dla rodziców młodszych dzieci (klasy 1–5) i nastolatków (klasy 6–8)</li>
+                  <li><strong>Bez podawania danych</strong> — udział rodziców jest dobrowolny</li>
+                </ul>
+              </div>
+              <figure class="wfl-figure"><img src="../images/Postacie/spotkanie.webp" alt="Spotkanie z rodzicami przy stole" loading="lazy"></figure>
+            </div>
+            <p>Prezentację uczestnicy oglądają na własnych telefonach. Już sam sposób prowadzenia spotkania pokazuje, że telefon może służyć rozwojowi, jeśli korzystamy z niego świadomie. Spotkanie nie jest terapią ani diagnozą i nikogo nie ocenia — daje wiedzę i zestaw konkretnych propozycji, spośród których każdy rodzic wybiera to, co pasuje do jego rodziny.</p>
+          </section>
+
+          <section id="o-czym" class="wfl-sec">
+            <h2>O czym porozmawiamy</h2>
+            <p class="wfl-lead">Siedem krótkich części. Każda łączy wyniki badań z codziennymi sytuacjami w domu i kończy się propozycjami, które można wypróbować od razu.</p>
+
+            <div class="wfl-blok" id="blok-1">
+              <p class="wfl-blok__no">Część 1</p>
+              <h3>Dzieci i telefony</h3>
+              <ul>
+                <li>Dlaczego dziecku tak trudno samo przerwać przewijanie filmów — i co ma z tym wspólnego dojrzewający mózg.</li>
+                <li>Dopamina bez mitów: to nie „hormon szczęścia”, tylko paliwo dla chęci i dążenia do nagrody.</li>
+                <li>Nagroda zdobyta wysiłkiem a nagroda bez wysiłku — skąd bierze się zniechęcenie do zwykłych zajęć.</li>
+                <li>Gry: które rozwijają, które męczą — i jak wejść w cyfrowy świat dziecka zamiast z nim walczyć.</li>
+              </ul>
+              <div class="wfl-fact">
+                <p class="wfl-fact__lbl">Ciekawostka z badań</p>
+                <p>Zestawienie 71 badań z udziałem prawie 100 tysięcy osób pokazało: im więcej krótkich filmów, tym słabsza uwaga i trudniej powstrzymać automatyczną reakcję. <a class="wfp-cyt" id="cyt-B1-11-1" href="zrodla-programu.html?z=cyt-B1-11-1#B1-11" data-src="B1-11">[B1.11]</a></p>
+                <p>Dziewięciomiesięczne niemowlęta uczyły się rozróżniać dźwięki obcego języka od żywego lektora, ale z tego samego materiału na nagraniu — wcale. <a class="wfp-cyt" id="cyt-B1-4-1" href="zrodla-programu.html?z=cyt-B1-4-1#B1-4" data-src="B1-4">[B1.4]</a></p>
+              </div>
+            </div>
+
+            <div class="wfl-blok" id="blok-2">
+              <p class="wfl-blok__no">Część 2</p>
+              <h3>Czas wolny i kreatywność</h3>
+              <ul>
+                <li>Nuda nie jest wrogiem — to często pierwszy krok do własnego pomysłu dziecka.</li>
+                <li>Rodzic nie musi wymyślać dziecku zajęć. Co zamiast tego?</li>
+                <li>Telefon jako narzędzie nauki — i jak sprawić, żeby nim pozostał.</li>
+                <li>Spacer, przyroda, posiłek bez ekranu: proste sposoby na wspólny czas z młodszym dzieckiem i z nastolatkiem.</li>
+              </ul>
+              <div class="wfl-fact">
+                <p class="wfl-fact__lbl">Ciekawostka z badań</p>
+                <p>Już sam telefon w sypialni dziecka — nawet nieużywany — wiązał się z krótszym i gorszym snem. <a class="wfp-cyt" id="cyt-B2-6-1" href="zrodla-programu.html?z=cyt-B2-6-1#B2-6" data-src="B2-6">[B2.6]</a></p>
+                <p>Samo powiadomienie, którego nie odczytamy, rozpraszało prawie tak mocno jak rozmowa przez telefon. <a class="wfp-cyt" id="cyt-B2-9-1" href="zrodla-programu.html?z=cyt-B2-9-1#B2-9" data-src="B2-9">[B2.9]</a></p>
+                <p>Osoby, które najpierw się nudziły, wymyślały potem więcej pomysłów. <a class="wfp-cyt" id="cyt-B2-2-1" href="zrodla-programu.html?z=cyt-B2-2-1#B2-2" data-src="B2-2">[B2.2]</a></p>
+              </div>
+            </div>
+
+            <div class="wfl-blok" id="blok-3">
+              <p class="wfl-blok__no">Część 3</p>
+              <h3>Rozmowa i słuchanie — czy znamy swoje dzieci?</h3>
+              <ul>
+                <li>Czym naprawdę żyje nasze dziecko — i dlaczego tak łatwo to przeoczyć.</li>
+                <li>Najpierw wysłuchać, potem radzić: jak rozmawiać, żeby dziecko chciało mówić. <a class="wfp-cyt" id="cyt-B3-1-1" href="zrodla-programu.html?z=cyt-B3-1-1#B3-1" data-src="B3-1">[B3.1]</a></li>
+                <li>Liczy się nie tylko ilość czasu, ale przede wszystkim czas naprawdę wspólny. <a class="wfp-cyt" id="cyt-B3-3-1" href="zrodla-programu.html?z=cyt-B3-3-1#B3-3" data-src="B3-3">[B3.3]</a></li>
+                <li>Rodziny po rozstaniu: jak sprawić, by rzadsze spotkania były pełne.</li>
+              </ul>
+            </div>
+
+            <div class="wfl-blok" id="blok-4">
+              <p class="wfl-blok__no">Część 4</p>
+              <h3>Rodzic jako punkt wyjścia</h3>
+              <ul>
+                <li>Zmiana zaczyna się od nas: jak to, co myślimy o sobie jako rodzicach, wpływa na to, jak widzimy dziecko.</li>
+                <li>Technoferencja — gdy telefon rodzica przerywa kontakt z dzieckiem. <a class="wfp-cyt" id="cyt-B1-8-1" href="zrodla-programu.html?z=cyt-B1-8-1#B1-8" data-src="B1-8">[B1.8]</a></li>
+                <li>Dzieci uczą się przede wszystkim, patrząc na nas. <a class="wfp-cyt" id="cyt-B4-5-1" href="zrodla-programu.html?z=cyt-B4-5-1#B4-5" data-src="B4-5">[B4.5]</a></li>
+                <li>Krótka, anonimowa refleksja w telefonie: w jakim stopniu jestem rodzicem, którym chcę być?</li>
+              </ul>
+            </div>
+
+            <div class="wfl-blok" id="blok-5">
+              <p class="wfl-blok__no">Część 5</p>
+              <h3>Wartości jako podstawa zasad</h3>
+              <ul>
+                <li>Zasady mówią, co wolno, wartości — dlaczego. Jak tłumaczyć zasady, by dziecko przyjęło je za swoje. <a class="wfp-cyt" id="cyt-B5-5-1" href="zrodla-programu.html?z=cyt-B5-5-1#B5-5" data-src="B5-5">[B5.5]</a></li>
+                <li>Już małe dzieci odróżniają krzywdę od umowy — jak z tego korzystać w rozmowie. <a class="wfp-cyt" id="cyt-B5-6-1" href="zrodla-programu.html?z=cyt-B5-6-1#B5-6" data-src="B5-6">[B5.6]</a></li>
+                <li>Bezpieczeństwo i odpowiedzialność w sieci: o czym rozmawiać szczególnie z nastolatkiem.</li>
+              </ul>
+            </div>
+
+            <div class="wfl-blok" id="blok-6">
+              <p class="wfl-blok__no">Część 6</p>
+              <h3>Silne, zdrowe i odważne dziecko</h3>
+              <ul>
+                <li>Jelita a samopoczucie i motywacja — co mówi nauka, a co jest mitem. <a class="wfp-cyt" id="cyt-B6-1-1" href="zrodla-programu.html?z=cyt-B6-1-1#B6-1" data-src="B6-1">[B6.1]</a></li>
+                <li>Ruch, który pomaga w skupieniu i panowaniu nad sobą, także przy ADHD. <a class="wfp-cyt" id="cyt-B6-4-1" href="zrodla-programu.html?z=cyt-B6-4-1#B6-4" data-src="B6-4">[B6.4]</a></li>
+                <li>Wspólny sport rodzica i dziecka.</li>
+                <li>Siła wewnętrzna i odwaga cywilna: stanąć w obronie krzywdzonego. <a class="wfp-cyt" id="cyt-B6-5-1" href="zrodla-programu.html?z=cyt-B6-5-1#B6-5" data-src="B6-5">[B6.5]</a></li>
+              </ul>
+            </div>
+
+            <div class="wfl-blok" id="blok-7">
+              <p class="wfl-blok__no">Część 7</p>
+              <h3>Samodzielność dziecka a ingerencja rodziców</h3>
+              <ul>
+                <li>Dlaczego dziecko potrzebuje czasu z rówieśnikami bez stałej obecności dorosłych. <a class="wfp-cyt" id="cyt-B7-2-1" href="zrodla-programu.html?z=cyt-B7-2-1#B7-2" data-src="B7-2">[B7.2]</a></li>
+                <li>Kiedy pomoc rodzica przestaje pomagać — i jak wyręczanie wpływa na samodzielność. <a class="wfp-cyt" id="cyt-B7-3-1" href="zrodla-programu.html?z=cyt-B7-3-1#B7-3" data-src="B7-3">[B7.3]</a></li>
+                <li>Jak reagować, gdy dziecko ma kłopoty w grupie, zamiast od razu interweniować.</li>
+              </ul>
+            </div>
+
+            <div class="wfl-closing">
+              <p><strong>Na zakończenie</strong> rodzice dostają zestaw propozycji do wyboru, broszurę z najważniejszymi treściami oraz informację, gdzie szukać dalszego wsparcia. Nie oczekujemy deklaracji ani natychmiastowej zmiany — chodzi o świadomość i pierwszy krok.</p>
+            </div>
+          </section>
+
+          <section id="pojecia" class="wfl-sec">
+            <h2>Pojęcia, o których mówimy</h2>
+            <dl class="wfl-glossary">
+              <div><dt>Technoferencja</dt><dd>Zakłócanie kontaktu rodzica z dzieckiem przez korzystanie z urządzeń cyfrowych — rodzic jest obok, ale jego uwaga jest w telefonie.</dd></div>
+              <div><dt>Dopamina</dt><dd>Neuroprzekaźnik, czyli substancja, za pomocą której komórki nerwowe przekazują sobie sygnały. Uczestniczy w motywacji i dążeniu do nagrody — „chceniu”, a nie samej przyjemności.</dd></div>
+              <div><dt>Uwalnianie toniczne i fazowe</dt><dd>Toniczne — stały, podstawowy poziom dopaminy i gotowość do działania. Fazowe — krótkie, silne wzrosty wywołane bodźcem, np. powiadomieniem czy zaskakującym filmem.</dd></div>
+              <div><dt>Receptory D2</dt><dd>Miejsca w mózgu, które odbierają sygnał dopaminy. U osób uzależnionych obserwowano ich mniej — mózg „przycisza” odbiór nadmiaru nagród.</dd></div>
+              <div><dt>Kora przedczołowa</dt><dd>Część mózgu odpowiedzialna m.in. za planowanie i hamowanie impulsów. Dojrzewa jeszcze długo po okresie dojrzewania.</dd></div>
+              <div><dt>Sieć stanu spoczynkowego</dt><dd>Układ obszarów mózgu aktywny, gdy nie skupiamy się na zadaniu z zewnątrz — gdy błądzimy myślami. Uczestniczy w twórczym myśleniu.</dd></div>
+              <div><dt>Uwaga kierowana</dt><dd>Uwaga świadomie skupiana na wybranym zadaniu. Męczy się — a kontakt z przyrodą sprzyja jej odnowie.</dd></div>
+              <div><dt>Motywacja wewnętrzna</dt><dd>Chęć działania wynikająca z zainteresowania samą czynnością, a nie z nagrody czy obawy przed karą.</dd></div>
+              <div><dt>Konto emocjonalne</dt><dd>Metafora zaufania w relacji: wysłuchanie, dotrzymane słowo i wspólny czas to „wpłaty”, lekceważenie i krytyka — „wypłaty”.</dd></div>
+              <div><dt>Normy moralne i konwencjonalne</dt><dd>Moralne dotyczą krzywdy i sprawiedliwości, konwencjonalne — umownych reguł danej grupy. Już małe dzieci je odróżniają.</dd></div>
+              <div><dt>Oś jelito–mózg</dt><dd>Dwukierunkowa komunikacja między przewodem pokarmowym a mózgiem — przez nerwy, hormony i układ odpornościowy.</dd></div>
+              <div><dt>Funkcje wykonawcze</dt><dd>Umiejętności planowania, skupiania uwagi i kontrolowania impulsów.</dd></div>
+              <div><dt>Odwaga cywilna</dt><dd>Gotowość stanięcia w obronie osoby krzywdzonej i nieuciekania od trudnych sytuacji.</dd></div>
+              <div><dt>Postawa roszczeniowa</dt><dd>Przekonanie, że należy się szczególne traktowanie bez względu na własne zachowanie.</dd></div>
+            </dl>
+          </section>
+
+          <section id="zrodla" class="wfl-sec">
+            <h2>Badania naukowe</h2>
+            <div class="wfp-srcbox">
+              <p>Program opiera się na 52 badaniach i publikacjach naukowych. Każde odwołanie na tej stronie (np. <a class="wfp-cyt" id="cyt-B1-11-2" href="zrodla-programu.html?z=cyt-B1-11-2#B1-11" data-src="B1-11">[B1.11]</a>) prowadzi do opisu badania: kto je przeprowadził, jak przebiegało, co wykazało i czego nie dowodzi. Z opisu wrócisz do tego samego miejsca.</p>
+              <a class="wfd-btn wfd-btn--primary" href="zrodla-programu.html">Zobacz wszystkie badania <span aria-hidden="true">→</span></a>
+            </div>
+          </section>
+
+          <section id="dokumentacja" class="wfl-sec">
+            <h2>Pełna dokumentacja programu</h2>
+            <div class="wfl-split wfl-split--rev">
+              <figure class="wfl-figure"><img src="../images/Postacie/materiay.webp" alt="Zespół pracujący nad programem" loading="lazy"></figure>
+              <div>
+                <p>Na tej stronie przedstawiamy program w skrócie. Pełną dokumentację — cele, plan spotkania, szczegółową treść wszystkich części, sposób ewaluacji i wykaz źródeł — przekazujemy szkołom, poradniom i osobom zainteresowanym prowadzeniem programu.</p>
+                <p>Program opracowano przy udziale psychologa i terapeuty oraz rodziców, którzy konsultowali jego treść.</p>
+                <a class="wfd-btn wfd-btn--primary" href="#zgloszenie">Poproś o dokumentację <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section id="zgloszenie" class="wfl-sec wfl-form-sec">
+            <h2>Zapraszamy do udziału</h2>
+            <p class="wfl-lead">Chcesz zorganizować spotkanie w swojej szkole albo otrzymać pełną dokumentację programu? Zostaw kontakt — odpowiemy w ciągu 2 dni roboczych.</p>
+            <form class="wfl-form" data-wf-form="wspolpraca" novalidate>
+              <div class="wff-hp" aria-hidden="true"><label>Strona internetowa <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+              <input type="hidden" name="extra_rodzaj" value="Program dla rodziców">
+              <div class="wfl-field">
+                <label for="wfl-kto">Kim jesteś? *</label>
+                <select id="wfl-kto" name="extra_kto" required>
+                  <option value="">Wybierz…</option>
+                  <option>Szkoła</option>
+                  <option>Rodzic</option>
+                  <option>Inna instytucja</option>
+                  <option>Osoba zainteresowana prowadzeniem programu</option>
+                </select>
+              </div>
+              <div class="wfl-field">
+                <label for="wfl-inst">Nazwa szkoły lub instytucji</label>
+                <input id="wfl-inst" type="text" name="extra_instytucja" maxlength="150" autocomplete="organization">
+              </div>
+              <div class="wfl-row">
+                <div class="wfl-field"><label for="wfl-name">Imię i nazwisko *</label><input id="wfl-name" type="text" name="name" maxlength="100" autocomplete="name" required></div>
+                <div class="wfl-field"><label for="wfl-email">Adres e-mail *</label><input id="wfl-email" type="email" name="email" maxlength="120" autocomplete="email" required></div>
+              </div>
+              <div class="wfl-field"><label for="wfl-phone">Telefon</label><input id="wfl-phone" type="tel" name="phone" maxlength="30" autocomplete="tel"></div>
+              <div class="wfl-field"><label for="wfl-msg">Wiadomość</label><textarea id="wfl-msg" name="message" rows="4" maxlength="4000" placeholder="Np. proponowany termin, liczba rodziców, prośba o dokumentację…"></textarea></div>
+              <label class="wff-consent">
+                <input type="checkbox" name="consent">
+                <span>Wyrażam zgodę na przetwarzanie przez Fundację World Foundation moich danych podanych w formularzu w celu odpowiedzi na zgłoszenie dotyczące programu dla rodziców. Zgodę mogę w każdej chwili wycofać. Szczegóły w <a href="polityka-prywatnosci.html#formularze" target="_blank" rel="noopener">polityce prywatności</a>.</span>
+              </label>
+              <button type="submit" class="wfd-btn wfd-btn--primary">Wyślij zgłoszenie</button>
+              <p class="wff-status" data-wf-status role="status" aria-live="polite" hidden></p>
+            </form>
+          </section>
+
         </article>
       </div>
     </main>
+
 
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
@@ -440,6 +341,9 @@
   <!-- Javascript-->
   <script src="../js/core.min.js"></script>
   <script src="../js/script.js?v=20261120a"></script>
+  <script src="../js/wf-chat.js?v=20261120b"></script>
+<script>window.WF_FORMS = { api: "https://meble-crm.vercel.app/api/public/wf-form" };</script>
+<script src="../js/wf-forms.js?v=20261120b"></script>
 <script>
 // Program dla rodziców ⇄ źródła naukowe (2026-11-20): odwołania w tekście prowadzą do karty źródła,
 // karta ma „← Wróć do tekstu programu” dokładnie do klikniętego odwołania; po przejściu krótkie podświetlenie.
@@ -503,6 +407,19 @@
       empty.hidden = n > 0;
     });
   }
+
+
+  // --- formularz zgłoszenia: serwer przyjmuje z dodatkowych pól tylko „rodzaj”, więc składamy w nim
+  //     „Program dla rodziców — <kim jesteś> · <nazwa szkoły/instytucji>” (faza przechwytywania = przed js/wf-forms.js)
+  document.addEventListener('submit', function (ev) {
+    var f = ev.target;
+    if (!f || !f.classList || !f.classList.contains('wfl-form')) return;
+    var kto = f.elements.extra_kto, inst = f.elements.extra_instytucja, r = f.elements.extra_rodzaj;
+    var t = 'Program dla rodziców';
+    if (kto && kto.value) t += ' — ' + kto.value;
+    if (inst && inst.value.trim()) t += ' · ' + inst.value.trim();
+    if (r) r.value = t;
+  }, true);
 
   function init() { setupBack(); setupSearch(); go(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
