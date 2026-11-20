@@ -1,0 +1,21 @@
+/* Etap 10 (porządki, 2026-11-20) — poprawki wspólne dla stron z menu motywu. */
+
+/* Ikona „udostępnij” w menu: same linki href="#" (profile społecznościowe jeszcze nie istnieją) — ukryta.
+   Przywrócić, gdy będą prawdziwe adresy profili (pl/footer.html ma je w komentarzu). */
+.rd-navbar-share { display: none !important; }
+
+/* Menu w jednym rzędzie od progu hamburgera (992 px) do 1399 px: mniejsze odstępy między pozycjami,
+   w zakresie 992–1199 px także nieco mniejsza czcionka. Pozycji menu nie ubywa. */
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  .rd-navbar-classic.rd-navbar-static .rd-navbar-nav { white-space: nowrap; }
+  .rd-navbar-classic.rd-navbar-static .rd-nav-item + .rd-nav-item { margin-left: 26px; }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .rd-navbar-classic.rd-navbar-static .rd-nav-item + .rd-nav-item { margin-left: 14px; }
+  .rd-navbar-classic.rd-navbar-static .rd-nav-link { font-size: 14px; letter-spacing: 0; }
+  .rd-navbar-classic.rd-navbar-static .rd-navbar-nav { padding-left: 22px; } /* odstęp od logo */
+}
+@media (min-width: 1400px) and (max-width: 1599.98px) {
+  .rd-navbar-classic.rd-navbar-static .rd-navbar-nav { white-space: nowrap; }
+  .rd-navbar-classic.rd-navbar-static .rd-nav-item + .rd-nav-item { margin-left: 32px; }
+}

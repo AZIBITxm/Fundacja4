@@ -11,60 +11,8 @@ $(function() {
   toggleNavbarScrolled();
 });
 
-// Cooperation Form Handler
-document.addEventListener('DOMContentLoaded', function() {
-  var cooperationForm = document.getElementById('cooperationForm');
-  if (cooperationForm) {
-    cooperationForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      var email = document.getElementById('coop-email').value;
-      var phone = document.getElementById('coop-phone').value;
-      var cooperationType = document.getElementById('coop-type').value;
-      var message = document.getElementById('coop-message').value;
-      
-      if (!email || !cooperationType) {
-        alert('Proszę wypełnić wymagane pola (email i rodzaj współpracy).');
-        return;
-      }
-      
-      // Prepare message content
-      var emailSubject = 'Zgłoszenie współpracy: ' + cooperationType;
-      var emailContent = 'ZGŁOSZENIE WSPÓŁPRACY\n\n';
-      emailContent += 'Rodzaj współpracy: ' + cooperationType + '\n\n';
-      emailContent += 'DANE KONTAKTOWE:\n';
-      emailContent += 'Email: ' + email + '\n';
-      if (phone) {
-        emailContent += 'Telefon: ' + phone + '\n';
-      }
-      emailContent += '\nDODATKOWE INFORMACJE:\n';
-      emailContent += message || 'Brak dodatkowych informacji.';
-      
-      // Find main contact form and populate it
-      var mainForm = document.querySelector('form.rd-form');
-      if (mainForm) {
-        var nameField = mainForm.querySelector('input[name="name"]');
-        var emailField = mainForm.querySelector('input[name="email"]');
-        var messageField = mainForm.querySelector('textarea[name="message"]');
-        
-        if (nameField) nameField.value = 'Współpraca - ' + cooperationType;
-        if (emailField) emailField.value = email;
-        if (messageField) messageField.value = emailContent;
-        
-        // Close cooperation modal
-        $('#modalCta').modal('hide');
-        
-        // Scroll to contact form and highlight it
-        document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });
-        
-        // Show success message
-        setTimeout(function() {
-          alert('Formularz został wypełniony danymi ze zgłoszenia współpracy. Możesz go teraz przejrzeć i wysłać.');
-        }, 1000);
-      }
-    });
-  }
-});
+// (2026-11-20, etap 10) usunięta martwa obsługa starego formularza „Współpraca” (#cooperationForm) — formularz
+// działa teraz przez js/wf-forms.js (id wfCoopForm).
 
 "use strict";
 (function () {

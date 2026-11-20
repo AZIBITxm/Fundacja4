@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="pl">
 <head>
-  <title>Projekt SPOT - Przeciwdziałanie Cyfrowym Uzależnieniom | World Foundation</title>
+  <title>Projekt SPOT — przeciwdziałanie cyfrowym uzależnieniom | World Foundation</title>
+  <!-- Opisy dla Google i podgląd linku (etap 12, 2026-11-20) -->
+  <meta name="description" content="Projekt SPOT Fundacji WorldFoundation: kompleksowy program neuroedukacyjny dla uczniów, rodziców i nauczycieli, przeciwdziałający cyfrowym uzależnieniom i wykluczeniu społecznemu.">
+  <link rel="canonical" href="https://worldfoundation.eu/pl/projekt-spot.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="World Foundation">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:title" content="Projekt SPOT — przeciwdziałanie cyfrowym uzależnieniom | World Foundation">
+  <meta property="og:description" content="Projekt SPOT Fundacji WorldFoundation: kompleksowy program neuroedukacyjny dla uczniów, rodziców i nauczycieli, przeciwdziałający cyfrowym uzależnieniom i wykluczeniu społecznemu.">
+  <meta property="og:url" content="https://worldfoundation.eu/pl/projekt-spot.html">
+  <meta property="og:image" content="https://worldfoundation.eu/images/og-worldfoundation.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +25,7 @@
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/style.css?v=20261107e">
+  <link rel="stylesheet" href="../css/porzadki.css?v=20261120c">
   <link rel="stylesheet" href="../css/modal-wsparcie-pl.css">
   <link rel="stylesheet" href="../css/modal-donor-spot.css">
   <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
@@ -831,22 +845,25 @@
                           🤝 Dołącz do projektu
                       </a>
                     </div>
-                    <div class="action-button">
+                    <!-- etap 10: brak celu (href="#") — ukryte do czasu przygotowania -->
+                    <div class="action-button" hidden>
                       <a href="#" class="button button-default-outline button-wapasha w-100">
                         📋 Pobierz materiały
                       </a>
                     </div>
                     <div class="action-button">
-                      <a href="#" class="button button-default-outline button-wapasha w-100">
+                      <a href="https://worldfoundation.eu/pl/projekt-spot.html" class="button button-default-outline button-wapasha w-100" data-share-page>
                         📱 Udostępnij projekt
                       </a>
                     </div>
-                    <div class="action-button">
+                    <!-- etap 10: brak celu (href="#") — ukryte do czasu przygotowania -->
+                    <div class="action-button" hidden>
                       <a href="#" class="button button-default-outline button-wapasha w-100">
                         📧 Newsletter + bonusy
                       </a>
                     </div>
-                    <div class="action-button">
+                    <!-- etap 10: brak celu (href="#") — ukryte do czasu przygotowania -->
+                    <div class="action-button" hidden>
                       <a href="#" class="button button-default-outline button-wapasha w-100">
                         🌐 Strona partnerów
                       </a>
@@ -1264,10 +1281,23 @@
   
   <!-- Javascript-->
   <script src="../js/core.min.js"></script>
-  <script src="../js/script.js?v=20261107f"></script>
+  <script src="../js/script.js?v=20261120a"></script>
   <!-- Formularz kontaktowy SPOT → aplikacja Zanders (etap 8). Adres API jak window.WF_BOOKING w pl/index.html. -->
   <script>window.WF_FORMS = { api: "https://meble-crm.vercel.app/api/public/wf-form" };</script>
   <script src="../js/wf-forms.js?v=20261120b"></script>
+  <script>
+  // „Udostępnij projekt” (etap 10): systemowe udostępnianie w telefonie, na komputerze kopiowanie adresu strony
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-share-page]');
+    if (!a) return;
+    e.preventDefault();
+    var url = a.getAttribute('href'), title = document.title;
+    if (navigator.share) { navigator.share({ title: title, url: url }).catch(function () {}); return; }
+    var done = function () { var t = a.innerHTML; a.textContent = '✅ Skopiowano link'; setTimeout(function () { a.innerHTML = t; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { window.prompt('Skopiuj adres strony:', url); });
+    else window.prompt('Skopiuj adres strony:', url);
+  });
+  </script>
   
   <!-- Smooth scrolling script -->
   <script>
