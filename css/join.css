@@ -1,0 +1,109 @@
+/* Sekcja „Szukamy psychologów / Dołącz do zespołu” (#join) — etap 4 rozbudowy strony */
+#join { overflow: hidden; }
+#join .join-lead {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #7a7a7a;
+  text-align: center;
+}
+#join .join-who {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+#join .join-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid #6689ff;
+  color: #6689ff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: rgba(102, 137, 255, 0.06);
+}
+#join .join-chip .fa { font-size: 1rem; }
+
+#join .join-heading {
+  margin-top: 46px;
+  margin-bottom: 0;
+  text-align: center;
+}
+#join .join-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 26px;
+}
+#join .join-card {
+  padding: 28px 24px;
+  background: #fff;
+  border: 1px solid #ececec;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+#join .join-card:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(102, 137, 255, 0.16); }
+#join .join-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: rgba(102, 137, 255, 0.1);
+  color: #6689ff;
+  font-size: 1.4rem;
+}
+#join .join-card h4 { margin-top: 16px; font-size: 1.25rem; }
+#join .join-card p { margin-top: 8px; color: #7a7a7a; }
+
+#join .join-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: joinstep;
+}
+#join .join-step {
+  position: relative;
+  padding: 22px 20px 20px;
+  border-top: 3px solid #6689ff;
+  background: #f7f8ff;
+  text-align: left;
+  counter-increment: joinstep;
+}
+#join .join-step::before {
+  content: "0" counter(joinstep);
+  display: block;
+  font-family: "Teko", Arial, sans-serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: #6689ff;
+}
+#join .join-step h5 { margin-top: 8px; font-size: 1.05rem; text-transform: none; letter-spacing: 0; }
+#join .join-step p { margin-top: 6px; color: #7a7a7a; font-size: 0.95rem; }
+
+#join .join-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+#join .join-actions .button { margin-top: 0; }
+
+@media (max-width: 991px) {
+  #join .join-grid { grid-template-columns: 1fr; }
+  #join .join-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 575px) {
+  #join .join-steps { grid-template-columns: 1fr; }
+  #join .join-card { padding: 22px 18px; }
+  #join .join-actions { flex-direction: column; align-items: stretch; }
+  #join .join-actions .button { width: 100%; text-align: center; }
+}
