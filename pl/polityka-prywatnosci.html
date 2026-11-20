@@ -65,7 +65,15 @@
         li {
             margin-bottom: 10px;
         }
+        .cookie-table-wrap { overflow-x: auto; margin: 10px 0 15px; }
+        .cookie-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .cookie-table th, .cookie-table td { border: 1px solid #d9dce3; padding: 8px 10px; text-align: left; vertical-align: top; }
+        .cookie-table th { background: #eef2ff; }
+        .cookie-table code { font-size: 13px; }
     </style>
+  <!-- Zgoda na cookies (zlecenie 6B): własny baner, skrypty statystyk i media zewnętrzne blokowane do zgody -->
+  <link rel="stylesheet" href="../css/wf-cookies.css?v=20261120a">
+  <script src="../js/wf-cookies.js?v=20261120a" defer></script>
 </head>
 <body>
     <div class="button-container">
@@ -198,34 +206,39 @@
         <li>Niniejsza Polityka Prywatności jest zgodna z przepisami wynikającymi z art. 13 ust. 1 i ust. 2 rozporządzenia RODO.</li>
     </ol>
 
+    <!-- Rozdział VIII przepisany 2026-11-20 wg faktycznie używanych plików cookies (zlecenie 6B) — DO OPINII PRAWNIKA -->
     <h2 id="pliki-cookies">VIII. PLIKI COOKIES</h2>
     <ol>
-        <li>Strona internetowa używa plików cookies (ciasteczka) lub podobną technologię (dalej łącznie nazywane: „cookies") do zbierania informacji o dostępie Użytkownika do strony internetowej (np. za pomocą komputera lub smartfona) oraz jego preferencjach. Są one wykorzystywane m.in. w celach reklamowych i statystycznych oraz w celu dostosowania strony internetowej do indywidualnych potrzeb Użytkownika.</li>
-        <li>Pliki cookies to fragmenty informacji, które zawierają unikalny kod referencyjny, który strona internetowa przesyła na urządzenie Użytkownika, w celu przechowywania, a czasem śledzenia informacji dotyczących używanego urządzenia. Zwykle nie pozwalają one na zidentyfikowanie osoby Użytkownika. Ich głównym zadaniem jest lepsze dopasowanie strony internetowej do Użytkownika.</li>
-        <li>Niektóre z plików cookies, występujące na stronie internetowej, są dostępne tylko przez czas trwania danej sesji internetowej i wygasają po zamknięciu przeglądarki. Inne pliki cookies służą do zapamiętywania Użytkownika, który po powrocie na stronę internetową, jest na niej rozpoznawany - są one wówczas zachowywane przez dłuższy czas.</li>
-        <li>Pliki cookies używane na niniejszej stronie internetowej to:
+        <li>Strona internetowa używa plików cookies (ciasteczek) oraz podobnych technologii — pamięci przeglądarki (localStorage i sessionStorage) — dalej łącznie: „cookies”. Są to niewielkie informacje zapisywane na urządzeniu Użytkownika (komputerze, telefonie), które strona lub dostawcy usług wykorzystywanych na stronie mogą odczytać przy kolejnych wizytach.</li>
+        <li>Cookies dzielimy na trzy kategorie:
             <ul>
-                <li>Funkcjonalne cookies: Custom language cookie (np. preferred_language, stale, 1 rok), zapamiętują preferencje użytkownika, np. język strony.</li>
-                <li>Analityczne cookies: _ga (2 lata), _gid (24 godziny), _gat (1 minuta), używane przez Google Analytics do analizy ruchu na stronie.</li>
-                <li>Cookies czatu online: tidio_state_* (stale, do 1 roku), używane przez Tidio do obsługi czatu na żywo; tidio_visitorData (zmienny czas).</li>
-                <li>Cookies płatności: __stripe_mid (1 rok), __stripe_sid (30 minut), używane przez Stripe do bezpiecznego przetwarzania płatności.</li>
+                <li><strong>Niezbędne</strong> — konieczne do działania strony (np. zapamiętanie wyboru dotyczącego cookies i wersji językowej). Stosujemy je bez zgody Użytkownika, zgodnie z art. 399 ust. 3 ustawy z dnia 12 lipca 2024 r. — Prawo komunikacji elektronicznej.</li>
+                <li><strong>Statystyczne</strong> — pozwalają nam poznać, jak Użytkownicy korzystają ze strony (Google Analytics 4). Włączamy je wyłącznie po wyrażeniu zgody.</li>
+                <li><strong>Media zewnętrzne</strong> — osadzony na stronach projektów formularz wpłat i licznik zbiórki serwisu Donorbox (z płatnościami Stripe / PayPal). Wyświetlamy je wyłącznie po wyrażeniu zgody — do tego czasu w ich miejscu widoczny jest przycisk „Pokaż”.</li>
             </ul>
         </li>
-        <li>Wszystkie pliki cookies, występujące na stronie internetowej, są ustawiane przez administratora.</li>
-        <li>Wszystkie pliki cookies, używane przez niniejszą stronę internetową, są zgodne z obowiązującym prawem Unii Europejskiej.</li>
-        <li>Większość Użytkowników i niektórych przeglądarek mobilnych automatycznie akceptuje pliki cookies. Jeżeli Użytkownik nie zmieni ustawień, pliki cookies zostaną zapisane w pamięci urządzenia.</li>
-        <li>Użytkownik może zmienić preferencje, dotyczące akceptacji plików cookies lub zmienić przeglądarkę, aby móc otrzymać za każdym razem stosowne powiadomienie, gdy funkcja cookies jest używana. Aby zmienić ustawienia akceptacji cookies, należy dostosować ustawienia w przeglądarce.</li>
-        <li>Warto pamiętać, że blokowanie lub usuwanie plików cookies może uniemożliwić pełne korzystanie ze strony internetowej.</li>
-        <li>Pliki cookies będą wykorzystywane do niezbędnego zarządzania sesją, w tym:
-            <ol type="a">
-                <li>Tworzenia specjalnej sesji logowania dla Użytkownika strony internetowej, aby strona zapamiętała, że Użytkownik jest zalogowany, a jego żądania były dostarczane w sposób skuteczny, bezpieczny i spójny;</li>
-                <li>Rozpoznawania Użytkownika, który już wcześniej odwiedził stronę internetową, co pozwala na identyfikację liczby unikalnych użytkowników, którzy skorzystali z serwisu i pozwala upewnić się co do wystarczającej pojemności serwisu dla liczby nowych użytkowników;</li>
-                <li>Rozpoznawania, czy osoba odwiedzająca stronę internetową jest zarejestrowana na stronie internetowej;</li>
-                <li>Rejestrowania informacji z urządzenia Użytkownika, w tym: pliki cookies, adres IP i informacje o używanej przeglądarce, w celu możliwości diagnozowania problemów, administrowania i śledzenia użytkowania witryny;</li>
-                <li>Dostosowywania elementów układu szaty graficznej lub zawartości strony internetowej;</li>
-                <li>Zbierania informacji statystycznych o tym, jak Użytkownik korzysta ze strony, w celu możliwości ulepszania witryny i stwierdzenia, które zakresy strony internetowej są najbardziej popularne dla Użytkowników.</li>
-            </ol>
+        <li>Przy pierwszej wizycie strona wyświetla baner, w którym Użytkownik może zaakceptować wszystkie kategorie, odrzucić cookies inne niż niezbędne albo wybrać kategorie w „Ustawieniach”. Do czasu wyrażenia zgody skrypty statystyczne i media zewnętrzne nie są ładowane. Strona nie używa plików cookies w celach reklamowych.</li>
+        <li>Wykaz cookies używanych na stronie:
+            <div class="cookie-table-wrap">
+            <table class="cookie-table">
+            <thead><tr><th>Nazwa</th><th>Dostawca</th><th>Cel</th><th>Okres przechowywania</th><th>Kategoria</th></tr></thead>
+            <tbody>
+            <tr><td><code>wf_consent</code></td><td>World Foundation (ta strona)</td><td>Zapamiętanie wyboru dotyczącego plików cookies (które kategorie są włączone).</td><td>12 miesięcy</td><td>Niezbędne</td></tr>
+            <tr><td><code>langSelected, langModalSeen (pamięć przeglądarki — localStorage)</code></td><td>World Foundation (ta strona)</td><td>Zapamiętanie wybranej wersji językowej i tego, że okno wyboru języka zostało już wyświetlone.</td><td>do czasu usunięcia danych strony w przeglądarce</td><td>Niezbędne</td></tr>
+            <tr><td><code>wf-pelna (pamięć sesji — sessionStorage)</code></td><td>World Foundation (ta strona)</td><td>Tymczasowy podgląd pełnej wersji strony w okresie jej przebudowy.</td><td>do zamknięcia karty przeglądarki</td><td>Niezbędne</td></tr>
+            <tr><td><code>_ga</code></td><td>Google Ireland Limited (Google Analytics 4)</td><td>Rozróżnianie odwiedzających na potrzeby statystyk odwiedzin.</td><td>do 2 lat</td><td>Statystyczne</td></tr>
+            <tr><td><code>_ga_R8MRQMWWVJ</code></td><td>Google Ireland Limited (Google Analytics 4)</td><td>Utrzymanie stanu sesji na potrzeby statystyk odwiedzin.</td><td>do 2 lat</td><td>Statystyczne</td></tr>
+            <tr><td><code>_cfuvid</code></td><td>Donorbox, Inc. (zabezpieczenia Cloudflare)</td><td>Ochrona formularza wpłat przed nadużyciami i ruchem automatycznym.</td><td>do zamknięcia przeglądarki</td><td>Media zewnętrzne</td></tr>
+            <tr><td><code>cf_clearance</code></td><td>Donorbox, Inc. (zabezpieczenia Cloudflare)</td><td>Potwierdzenie przejścia weryfikacji bezpieczeństwa formularza wpłat.</td><td>do 1 roku</td><td>Media zewnętrzne</td></tr>
+            <tr><td><code>__stripe_mid, __stripe_sid (tylko przy korzystaniu z formularza wpłat)</code></td><td>Stripe Payments Europe Ltd. (w formularzu Donorbox)</td><td>Bezpieczne przeprowadzenie płatności i zapobieganie oszustwom.</td><td>1 rok / 30 minut</td><td>Media zewnętrzne</td></tr>
+            </tbody>
+            </table>
+            </div>
         </li>
+        <li>Strona korzysta ponadto z zasobów zewnętrznych, które nie zapisują plików cookies, ale przy ich pobieraniu do dostawcy trafia adres IP urządzenia: czcionek Google Fonts (Google Ireland Limited) oraz serwera aplikacji obsługującej rezerwacje rozmów i formularze (Vercel Inc.). Szczegóły przetwarzania danych z formularzy opisują punkty IX i X.</li>
+        <li>Dane zbierane przez Google Analytics mogą być przekazywane do Google LLC w Stanach Zjednoczonych na podstawie decyzji Komisji Europejskiej o odpowiednim stopniu ochrony (EU-U.S. Data Privacy Framework); dotyczy to także dostawców Donorbox i Stripe w zakresie, w jakim przetwarzają dane poza Europejskim Obszarem Gospodarczym.</li>
+        <li>Zgodę można w każdej chwili zmienić lub wycofać, klikając w stopce strony <strong>„Ustawienia cookies”</strong> — po wycofaniu zgody na statystyki usuwamy z urządzenia pliki cookies Google Analytics. Wycofanie zgody nie wpływa na zgodność z prawem działań wykonanych przed jej wycofaniem.</li>
+        <li>Użytkownik może także zarządzać cookies w ustawieniach przeglądarki (np. zablokować je lub usunąć). Zablokowanie cookies niezbędnych może utrudnić korzystanie ze strony — np. baner zgody będzie wyświetlany przy każdej wizycie.</li>
     </ol>
 
     <h2 id="rezerwacja">IX. REZERWACJA BEZPŁATNEJ ROZMOWY</h2>
