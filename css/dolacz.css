@@ -252,7 +252,17 @@
 @keyframes wfdStripIn4 { 0% { opacity: 0; transform: translateX(60px); } 58% { opacity: 0; transform: translateX(60px); } 100% { opacity: 1; transform: none; } }
 @media (max-width: 991px) {
   .wfd-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .wfd-strips { margin-right: calc((100% - 100vw) / 2); margin-left: 10%; }
+  /* Telefon/tablet: jak wcześniej — paski na środku, zaokrąglone z obu stron, wjeżdżają po kolei od góry */
+  .wfd-strips { max-width: 520px; margin: 0 auto; width: 100%; }
+  .wfd-strip { border-radius: 16px; border-right: 1px solid rgba(255, 255, 255, 0.28) !important; padding: 14px 18px;
+    animation-name: wfdStripDown1; }
+  .wfd-strip:nth-child(2) { animation-name: wfdStripDown2; }
+  .wfd-strip:nth-child(3) { animation-name: wfdStripDown3; }
+  .wfd-strip:nth-child(4) { animation-name: wfdStripDown4; }
 }
 @media (prefers-reduced-motion: reduce) { .wfd-strip { animation: none !important; } }
 .wfd-strip__txt .wfd-strip__num { white-space: nowrap; overflow-wrap: normal; font-size: 1.05rem; font-weight: 600; color: #fff; letter-spacing: .01em; }
+@keyframes wfdStripDown1 { 0% { opacity: 0; transform: translateY(-24px); } 33% { opacity: 0; transform: translateY(-24px); } 100% { opacity: 1; transform: none; } }
+@keyframes wfdStripDown2 { 0% { opacity: 0; transform: translateY(-24px); } 44% { opacity: 0; transform: translateY(-24px); } 100% { opacity: 1; transform: none; } }
+@keyframes wfdStripDown3 { 0% { opacity: 0; transform: translateY(-24px); } 52% { opacity: 0; transform: translateY(-24px); } 100% { opacity: 1; transform: none; } }
+@keyframes wfdStripDown4 { 0% { opacity: 0; transform: translateY(-24px); } 58% { opacity: 0; transform: translateY(-24px); } 100% { opacity: 1; transform: none; } }
