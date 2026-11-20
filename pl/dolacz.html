@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/style.css?v=20261107e">
   <link rel="stylesheet" href="../css/porzadki.css?v=20261120d">
-  <link rel="stylesheet" href="../css/dolacz.css?v=20261120b">
+  <link rel="stylesheet" href="../css/dolacz.css?v=20261120d">
   <!-- Tryb „strona w przebudowie” (zlecenie 6A) — przełącznik WF_PRZEBUDOWA w js/przebudowa.js -->
   <link rel="stylesheet" href="../css/przebudowa.css?v=20261120c">
   <script src="../js/przebudowa.js?v=20261120g"></script>
@@ -94,15 +94,34 @@
         <div class="wfd-hero__bg" aria-hidden="true"></div>
         <span class="wfd-hero__glow wfd-hero__glow--a" aria-hidden="true"></span>
         <span class="wfd-hero__glow wfd-hero__glow--b" aria-hidden="true"></span>
-        <div class="container">
+        <div class="container wfd-hero__grid">
           <div class="wfd-hero__inner">
             <p class="wfd-eyebrow wow fadeInUp">Dołącz do zespołu</p>
             <h1 class="wow fadeInUp" id="wfd-title" data-wow-delay=".1s">Jesteś psychologiem?<span>Dołącz do zespołu WorldFoundation</span></h1>
             <p class="wfd-hero__lead wow fadeInUp" data-wow-delay=".2s">Fundacja się rozwija i&nbsp;zaprasza do zespołu psychologów, dla których wartości są równie ważne jak kwalifikacje. Szukamy także innych specjalistów oraz wolontariuszy, którzy chcą współtworzyć system pomocy.</p>
-            <div class="wfd-actions wow fadeInUp" data-wow-delay=".3s">
-              <a class="wfd-btn wfd-btn--light" href="https://meble-crm.vercel.app/?psycholog=1" target="_blank" rel="noopener">Zgłoś się do współpracy <span aria-hidden="true">→</span></a>
-              <a class="wfd-btn wfd-btn--ghost" href="https://meble-crm.vercel.app/?psycholog=1" target="_blank" rel="noopener">Mam konto — zaloguj się</a>
-            </div>
+          </div>
+          <!-- Adam 20.11 (23:00): cztery drogi od razu w nagłówku — paski wjeżdżające od prawej (na telefonie pod tekstem) -->
+          <div class="wfd-strips" aria-label="Jak do nas dołączyć">
+            <a class="wfd-strip" href="https://meble-crm.vercel.app/?psycholog=1" target="_blank" rel="noopener">
+              <span class="wfd-strip__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5z" fill="currentColor"/></svg></span>
+              <span class="wfd-strip__txt"><strong>Zgłoś się w aplikacji</strong><span>Masz konto? Tu też się zalogujesz</span></span>
+              <span class="wfd-strip__go" aria-hidden="true">→</span>
+            </a>
+            <a class="wfd-strip wfd-strip--qr" href="https://meble-crm.vercel.app/instrukcja.html" target="_blank" rel="noopener">
+              <img class="wfd-strip__qr" src="../images/qr-aplikacja.svg" width="64" height="64" alt="Kod QR — instalacja aplikacji">
+              <span class="wfd-strip__txt"><strong>Zainstaluj aplikację</strong><span>Zeskanuj kod telefonem albo kliknij instrukcję</span></span>
+              <span class="wfd-strip__go" aria-hidden="true">→</span>
+            </a>
+            <a class="wfd-strip" href="tel:+48500461563">
+              <span class="wfd-strip__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg></span>
+              <span class="wfd-strip__txt"><strong>Zadzwoń: +48 500 461 563</strong><span>Porozmawiaj z nami i dowiedz się więcej</span></span>
+              <span class="wfd-strip__go" aria-hidden="true">→</span>
+            </a>
+            <button type="button" class="wfd-strip" data-wf-chat>
+              <span class="wfd-strip__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 3.58-9 8 0 2.1.92 4.01 2.42 5.44L5 21l4.3-1.91c.86.21 1.77.33 2.7.33 4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="currentColor"/></svg></span>
+              <span class="wfd-strip__txt"><strong>Zapytaj konsultanta AI</strong><span>Wyjaśni krok po kroku, jak się zarejestrować</span></span>
+              <span class="wfd-strip__go" aria-hidden="true">→</span>
+            </button>
           </div>
         </div>
       </section>
@@ -268,23 +287,6 @@
             <a class="wfd-btn wfd-btn--light" href="https://meble-crm.vercel.app/?psycholog=1" target="_blank" rel="noopener">Zgłoś się do współpracy <span aria-hidden="true">→</span></a>
             <a class="wfd-btn wfd-btn--ghost" href="https://meble-crm.vercel.app/?psycholog=1" target="_blank" rel="noopener">Mam konto — zaloguj się</a>
           </div>
-          <!-- Adam 20.11 (22:50): inne drogi kontaktu od razu w tej sekcji — QR do aplikacji, telefon, konsultant AI -->
-          <div class="wfd-ways wow fadeInUp" data-wow-delay=".3s">
-            <div class="wfd-way">
-              <img src="../images/qr-aplikacja.svg" width="96" height="96" alt="Kod QR — instalacja aplikacji Zanders">
-              <div><h3>Zainstaluj aplikację</h3><p>Zeskanuj kod telefonem, zainstaluj aplikację i&nbsp;zarejestruj się jako psycholog.</p>
-              <a href="https://meble-crm.vercel.app/instrukcja.html" target="_blank" rel="noopener">Instrukcja instalacji →</a></div>
-            </div>
-            <div class="wfd-way">
-              <span class="wfd-way__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg></span>
-              <div><h3>Zadzwoń do nas</h3><p>Wolisz porozmawiać? Zadzwoń i&nbsp;dowiedz się więcej o&nbsp;współpracy.</p>
-              <a href="tel:+48500461563">+48 500 461 563</a></div>
-            </div>
-            <div class="wfd-way">
-              <span class="wfd-way__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 3.58-9 8 0 2.1.92 4.01 2.42 5.44L5 21l4.3-1.91c.86.21 1.77.33 2.7.33 4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="currentColor"/></svg></span>
-              <div><h3>Zapytaj konsultanta AI</h3><p>Konsultant wyjaśni krok po kroku, jak założyć konto i&nbsp;złożyć zgłoszenie.</p>
-              <button type="button" class="wfd-way__btn" data-wf-chat>Otwórz czat →</button></div>
-            </div>
           </div>
         </div>
       </section>
