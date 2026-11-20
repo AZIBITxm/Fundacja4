@@ -1,6 +1,7 @@
 /* Formularze strony → aplikacja Zanders (js/wf-forms.js, etap 8). */
 .wff-hp { position: absolute !important; left: -10000px !important; width: 1px; height: 1px; overflow: hidden; }
-form[data-wf-form] .form-control.wff-error { border-color: #dc3545; box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.15); }
+form[data-wf-form] .form-control.wff-error,
+form[data-wf-form] .form-input.wff-error { border-color: #dc3545 !important; box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.15) !important; }
 .wff-consent { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 18px; font-size: 14px; line-height: 1.5; color: #6c757d; text-align: left; cursor: pointer; }
 .wff-consent input { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; accent-color: #b89661; cursor: pointer; }
 .wff-consent a { color: #b89661; text-decoration: underline; }
@@ -11,3 +12,13 @@ form[data-wf-form] .form-control.wff-error { border-color: #dc3545; box-shadow: 
 form[data-wf-form].is-sending [type=submit] { opacity: .65; cursor: wait; }
 @keyframes wffIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .wff-status { animation: none; } }
+
+/* Bootstrap-owe rzędy pól w formularzu: motyw dokłada „* + .row { margin-top: 60px }” → duża przerwa między rzędami. */
+form[data-wf-form] .row + .row { margin-top: 0; }
+/* Lista wyboru jak pola obok: motyw daje padding 17 px przy wysokości 38 px (bootstrap) → tekst opcji był ucięty/niewidoczny. */
+form[data-wf-form] select.form-control,
+form[data-wf-form] select.form-control:not([size]):not([multiple]) { height: 55px; padding-top: 0; padding-bottom: 0; line-height: normal; }
+form[data-wf-form] select.form-control:invalid { color: #9b9b9b; }
+form[data-wf-form] select.form-control option { color: #495057; }
+/* Komunikat w oknie modalnym / w formularzach z pływającymi etykietami */
+.modal form[data-wf-form] .wff-status { margin-top: 14px; }

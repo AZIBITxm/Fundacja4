@@ -84,6 +84,11 @@
         .then(function (res) {
           if (res && res.ok) {
             form.reset();
+            // pływające etykiety motywu (RDInputLabel) wracają na miejsce dopiero po zdarzeniu na polu
+            Array.prototype.forEach.call(form.elements, function (el) {
+              if (!el.name || el.type === 'checkbox' || el.name === 'website') return;
+              try { el.dispatchEvent(new Event('change', { bubbles: true })); el.dispatchEvent(new Event('blur')); } catch (x) { /* stare przeglądarki */ }
+            });
             form.classList.add('is-sent');
             status(form, 'ok', res.message || 'Dziękujemy! Wiadomość dotarła do fundacji.');
           } else status(form, 'error', (res && res.message) || FALLBACK_ERR);

@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="../css/modal-wsparcie-banner.css">
   <link rel="stylesheet" href="../css/modal-cooperation.css">
     <link rel="stylesheet" href="../css/join.css?v=20261120a">
+  <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
     
   </head>
   <body>
@@ -1399,68 +1400,30 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
           </article>
           <div class="form-scroll-mobile">
             <div class="form-scroll-inner">
-              <form id="staticForm" action="https://api.staticforms.xyz/submit" method="POST">
-                <input type="hidden" name="apiKey" value="sf_87f1agn5ja1l48f0l8kd1l10">
-                <input type="hidden" name="replyTo" value="@">
-                <input type="text" name="honeypot" class="hidden-control" tabindex="-1" autocomplete="off">
+              <!-- Formularz → aplikacja Zanders (js/wf-forms.js, etap 8; dawniej StaticForms + reCAPTCHA) -->
+              <form id="staticForm" data-wf-form="kontakt" novalidate>
+                <div class="wff-hp" aria-hidden="true">
+                  <label>Strona internetowa <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                </div>
                 <div class="form-group">
                   <label for="name">Imię:</label>
-                  <input type="text" id="name" name="name" class="form-control" required>
+                  <input type="text" id="name" name="name" class="form-control" autocomplete="name" maxlength="100" required>
                 </div>
                 <div class="form-group">
                   <label for="email">Email:</label>
-                  <input type="email" id="email" name="email" class="form-control" required>
+                  <input type="email" id="email" name="email" class="form-control" autocomplete="email" maxlength="120" required>
                 </div>
                 <div class="form-group">
                   <label for="message">Wiadomość:</label>
-                  <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+                  <textarea id="message" name="message" class="form-control" rows="4" maxlength="4000" required></textarea>
                 </div>
-                <div id="staticFormMsg"></div>
-                <div class="form-group">
-                  <div class="g-recaptcha"></div>
-                </div>
+                <label class="wff-consent">
+                  <input type="checkbox" name="consent">
+                  <span>Wyrażam zgodę na przetwarzanie przez Fundację World Foundation moich danych podanych w formularzu — w tym, jeżeli je podam, informacji o zdrowiu moim lub mojego dziecka — w celu odpowiedzi na wiadomość. Zgodę mogę w każdej chwili wycofać. Szczegóły w <a href="polityka-prywatnosci.html#formularze" target="_blank" rel="noopener">polityce prywatności</a>.</span>
+                </label>
                 <button type="submit" class="button button-primary button-ujarak">Wyślij</button>
-                <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
-                <script>
-                  function onRecaptchaLoad() {
-                    // Renderuj reCAPTCHA w formularzu kontaktowym (głównym)
-                    var mainRecaptcha = document.querySelector('#contacts .g-recaptcha');
-                    if (mainRecaptcha) {
-                      grecaptcha.render(mainRecaptcha, {
-                        'sitekey': '6LdFAZYrAAAAAL3ipEibh3H2UUxcslWKwXt8OF23'
-                      });
-                    }
-                  }
-                </script>
+                <p class="wff-status" data-wf-status role="status" aria-live="polite" hidden></p>
               </form>
-              <script>
-                document.getElementById('staticForm').addEventListener('submit', async function(e) {
-                  e.preventDefault();
-                  var form = this;
-                  var msg = document.getElementById('staticFormMsg');
-                  msg.style.display = 'none';
-                  msg.textContent = '';
-                  var formData = new FormData(form);
-                  try {
-                    const response = await fetch(form.action, {
-                      method: 'POST',
-                      body: formData
-                    });
-                    if (response.ok) {
-                      msg.textContent = 'Wiadomość została wysłana!';
-                      msg.style.color = '#388e3c';
-                      form.reset();
-                    } else {
-                      msg.textContent = 'Wystąpił błąd podczas wysyłania.';
-                      msg.style.color = '#b71c1c';
-                    }
-                  } catch (err) {
-                    msg.textContent = 'Wystąpił błąd podczas wysyłania.';
-                    msg.style.color = '#b71c1c';
-                  }
-                  msg.style.display = 'block';
-                });
-              </script>
               
             </div>
           </div>
@@ -1698,9 +1661,14 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
           <div class="modal-body">
             <p>Dziękujemy za zainteresowanie współpracą z naszą fundacją. Wybierz rodzaj współpracy, a następnie wypełnij formularz.</p>
             
-            <form id="cooperationForm">
+            <!-- Formularz → aplikacja Zanders (js/wf-forms.js, etap 8; dawniej okno z iframe static-form.html → StaticForms).
+                 id inny niż dawne „cooperationForm”, żeby stara obsługa w js/script.js (przepisywanie do formularza kontaktowego) się nie włączała. -->
+            <form id="wfCoopForm" data-wf-form="wspolpraca" novalidate>
+              <div class="wff-hp" aria-hidden="true">
+                <label>Strona internetowa <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+              </div>
               <div class="form-wrap">
-                <select id="coop-type" class="form-control" name="cooperation_type" required>
+                <select id="coop-type" class="form-control" name="extra_rodzaj" required>
                   <option value="">Wybierz rodzaj współpracy</option>
                   <option value="patroni">Patroni</option>
                   <option value="fundraising">Fundraising</option>
@@ -1720,52 +1688,40 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
               </div>
               
               <div class="form-wrap">
-                <input class="form-input" id="coop-name" type="text" name="name" required>
+                <input class="form-input" id="coop-name" type="text" name="name" autocomplete="name" maxlength="100" required>
                 <label class="form-label" for="coop-name">Imię / Nazwa organizacji *</label>
               </div>
               
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-wrap">
-                    <input class="form-input" id="coop-email" type="email" name="email" required>
+                    <input class="form-input" id="coop-email" type="email" name="email" autocomplete="email" maxlength="120" required>
                     <label class="form-label" for="coop-email">Adres email *</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-wrap">
-                    <input class="form-input" id="coop-phone" type="tel" name="phone">
+                    <input class="form-input" id="coop-phone" type="tel" name="phone" autocomplete="tel" maxlength="30">
                     <label class="form-label" for="coop-phone">Numer telefonu</label>
                   </div>
                 </div>
               </div>
               
               <div class="form-wrap">
-                <textarea class="form-input" id="coop-message" name="message" rows="4" placeholder="Opisz swoją propozycję współpracy, doświadczenie lub pytania..."></textarea>
+                <textarea class="form-input" id="coop-message" name="message" rows="4" maxlength="4000" placeholder="Opisz swoją propozycję współpracy, doświadczenie lub pytania..."></textarea>
                 <label class="form-label" for="coop-message">Dodatkowe informacje</label>
               </div>
               
+              <label class="wff-consent">
+                <input type="checkbox" name="consent">
+                <span>Wyrażam zgodę na przetwarzanie przez Fundację World Foundation moich danych podanych w formularzu w celu odpowiedzi na zgłoszenie współpracy. Zgodę mogę w każdej chwili wycofać. Szczegóły w <a href="polityka-prywatnosci.html#formularze" target="_blank" rel="noopener">polityce prywatności</a>.</span>
+              </label>
+
               <div class="cooperation-actions">
                 <button type="submit" class="button button-primary button-ujarak">WYŚLIJ ZGŁOSZENIE</button>
               </div>
+              <p class="wff-status" data-wf-status role="status" aria-live="polite" hidden></p>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal: Formularz wysyłania (iframe StaticForms) -->
-    <div class="modal fade" id="modalSendForm" tabindex="-1" role="dialog" aria-hidden="true" lang="pl">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Finalizacja zgłoszenia</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Potwierdź, że nie jesteś robotem i wyślij zgłoszenie.</p>
-            <iframe id="staticFormIframe" src="static-form.html" width="100%" height="300" frameborder="0"></iframe>
           </div>
         </div>
       </div>
@@ -1773,25 +1729,6 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Obsługa zamykania modala z formularzem - resetuj iframe
-        var sendModal = document.getElementById('modalSendForm');
-        if (sendModal) {
-          // Event listener dla przycisku zamknij (X)
-          var closeBtn = sendModal.querySelector('.close');
-          if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-              resetIframe();
-            });
-          }
-          
-          // Event listener dla Bootstrap modal hide
-          if (window.jQuery) {
-            window.jQuery(sendModal).on('hidden.bs.modal', function() {
-              resetIframe();
-            });
-          }
-        }
-        
         // Obsługa zamykania modala współpracy - resetuj formularz
         var cooperationModal = document.getElementById('modalCta');
         if (cooperationModal) {
@@ -1845,9 +1782,13 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
         
         function resetCooperationModal() {
           // Resetuj formularz współpracy
-          var cooperationForm = document.getElementById('cooperationForm');
+          var cooperationForm = document.getElementById('wfCoopForm');
           if (cooperationForm) {
             cooperationForm.reset();
+            cooperationForm.classList.remove('is-sent');
+            var wfStatus = cooperationForm.querySelector('[data-wf-status]');
+            if (wfStatus) { wfStatus.hidden = true; wfStatus.textContent = ''; }
+            cooperationForm.querySelectorAll('.wff-error').forEach(function(el) { el.classList.remove('wff-error'); });
             
             // Ukryj opis współpracy
             var cooperationDescription = document.getElementById('cooperation-description');
@@ -1865,7 +1806,7 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
             // Wyczyść wszystkie pola input i textarea
             var inputs = cooperationForm.querySelectorAll('input, textarea, select');
             inputs.forEach(function(input) {
-              if (input.type !== 'submit' && input.type !== 'button') {
+              if (input.type !== 'submit' && input.type !== 'button' && input.type !== 'checkbox') {
                 input.value = '';
                 input.blur(); // Usuń focus
                 
@@ -1903,162 +1844,6 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
           }
         }
         
-        function resetIframe() {
-          var iframe = document.getElementById('staticFormIframe');
-          if (iframe) {
-            // Wyczyść dane współpracy
-            window.cooperationData = null;
-            
-            // Odśwież iframe
-            var currentSrc = iframe.src;
-            iframe.src = '';
-            setTimeout(function() {
-              iframe.src = currentSrc;
-            }, 100);
-          }
-        }
-        
-        // Cooperation form handler
-        var cooperationForm = document.getElementById('cooperationForm');
-        if (cooperationForm) {
-          cooperationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Pobierz wartości z formularza
-            var cooperationType = document.getElementById('coop-type').value;
-            var name = document.getElementById('coop-name').value;
-            var email = document.getElementById('coop-email').value;
-            var phone = document.getElementById('coop-phone').value;
-            var message = document.getElementById('coop-message').value;
-            
-            // Sprawdź czy wszystkie wymagane pola są wypełnione
-            if (!cooperationType || !name || !email) {
-              alert('Proszę wypełnić wszystkie wymagane pola oznaczone gwiazdką (*)');
-              return;
-            }
-            
-            // Wygeneruj tytuł wiadomości
-            var subject = cooperationType + ' - ' + name;
-            
-            // Wygeneruj treść wiadomości
-            var contactInfo = 'Dane kontaktowe:\n';
-            contactInfo += 'Imię i nazwisko / Nazwa organizacji: ' + name + '\n';
-            contactInfo += 'Email: ' + email + '\n';
-            if (phone) {
-              contactInfo += 'Telefon: ' + phone + '\n';
-            }
-            contactInfo += 'Rodzaj współpracy: ' + cooperationType + '\n\n';
-            
-            var messageContent = contactInfo;
-            if (message) {
-              messageContent += 'Wiadomość od użytkownika:\n' + message;
-            }
-            
-            // Zapisz dane do window dla iframe
-            window.cooperationData = {
-              name: subject,
-              email: email,
-              message: messageContent
-            };
-            
-            // Zamknij modal współpracy
-            var cooperationModal = document.getElementById('modalCta');
-            if (window.jQuery && window.jQuery(cooperationModal).modal) {
-              window.jQuery(cooperationModal).modal('hide');
-            } else if (cooperationModal) {
-              cooperationModal.classList.remove('show');
-              cooperationModal.style.display = 'none';
-              cooperationModal.setAttribute('aria-hidden', 'true');
-              cooperationModal.removeAttribute('aria-modal');
-              document.body.classList.remove('modal-open');
-              var backdrop = document.querySelector('.modal-backdrop');
-              if (backdrop) backdrop.remove();
-            }
-            
-            // Otwórz modal z formularzem wysyłania po krótkiej chwili
-            setTimeout(function() {
-              // Odśwież iframe przed otwarciem modala
-              var iframe = document.getElementById('staticFormIframe');
-              if (iframe) {
-                var currentSrc = iframe.src;
-                iframe.src = ''; // Wyczyść src
-                setTimeout(function() {
-                  iframe.src = currentSrc; // Przywróć src - to spowoduje odświeżenie
-                }, 100);
-              }
-              
-              var sendModal = document.getElementById('modalSendForm');
-              if (window.jQuery && window.jQuery(sendModal).modal) {
-                window.jQuery(sendModal).modal('show');
-              } else if (sendModal) {
-                sendModal.classList.add('show');
-                sendModal.style.display = 'block';
-                sendModal.setAttribute('aria-modal', 'true');
-                sendModal.removeAttribute('aria-hidden');
-                document.body.classList.add('modal-open');
-                
-                // Dodaj backdrop
-                var backdrop = document.createElement('div');
-                backdrop.className = 'modal-backdrop fade show';
-                document.body.appendChild(backdrop);
-              }
-              
-              // Wyślij dane do iframe po załadowaniu (dłuższy timeout bo iframe się odświeża)
-              setTimeout(function() {
-                var iframe = document.getElementById('staticFormIframe');
-                if (iframe && iframe.contentWindow && window.cooperationData) {
-                  iframe.contentWindow.postMessage({
-                    type: 'fillForm',
-                    name: window.cooperationData.name,
-                    email: window.cooperationData.email,
-                    message: window.cooperationData.message
-                  }, '*');
-                }
-              }, 2000); // Zwiększony timeout żeby iframe zdążył się załadować
-            }, 500);
-          });
-        }
-        
-        // Handler dla wiadomości z iframe
-        window.addEventListener('message', function(event) {
-          if (event.data.type === 'formSuccess') {
-            // Reset formularza współpracy
-            document.getElementById('cooperationForm').reset();
-          } else if (event.data.type === 'closeModal') {
-            // Zamknij modal wysyłania
-            var sendModal = document.getElementById('modalSendForm');
-            if (window.jQuery && window.jQuery(sendModal).modal) {
-              window.jQuery(sendModal).modal('hide');
-            } else if (sendModal) {
-              sendModal.classList.remove('show');
-              sendModal.style.display = 'none';
-              sendModal.setAttribute('aria-hidden', 'true');
-              sendModal.removeAttribute('aria-modal');
-              document.body.classList.remove('modal-open');
-              var backdrop = document.querySelector('.modal-backdrop');
-              if (backdrop) backdrop.remove();
-            }
-          }
-        });
-        
-        // Dodatkowa obsługa iframe - nasłuchuj załadowania iframe
-        var iframe = document.getElementById('staticFormIframe');
-        if (iframe) {
-          iframe.addEventListener('load', function() {
-            // Wyślij dane do iframe po jego załadowaniu
-            setTimeout(function() {
-              if (iframe.contentWindow && window.cooperationData) {
-                iframe.contentWindow.postMessage({
-                  type: 'fillForm',
-                  name: window.cooperationData.name,
-                  email: window.cooperationData.email,
-                  message: window.cooperationData.message
-                }, '*');
-              }
-            }, 500);
-          });
-        }
-
         // Wesprzyj button: enable idle animation and restart it on click
         var ctaBtn = document.querySelector('#sticky-narrow-banner .banner-cta-btn');
         if (ctaBtn) {
@@ -2188,5 +1973,8 @@ Otwieramy też przestrzeń dla twórców, którzy chcą razem z nami budować sw
          Usunięcie linii z window.WF_BOOKING = powrót do trybu podglądu. -->
     <script>window.WF_BOOKING = { api: "https://meble-crm.vercel.app/api/public/booking" };</script>
     <script src="../js/booking.js?v=20261115k"></script>
+    <!-- Formularze „Napisz do nas” i „Współpraca” → aplikacja Zanders (etap 8). Adres API jak window.WF_BOOKING. -->
+    <script>window.WF_FORMS = { api: "https://meble-crm.vercel.app/api/public/wf-form" };</script>
+    <script src="../js/wf-forms.js?v=20261120b"></script>
   </body>
 </html>

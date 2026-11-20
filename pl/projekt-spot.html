@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../css/style.css?v=20261107e">
   <link rel="stylesheet" href="../css/modal-wsparcie-pl.css">
   <link rel="stylesheet" href="../css/modal-donor-spot.css">
+  <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
   <style>
   /* Kolory banerów dla Szczegółowy Opis Działań */
   .activity-banner-1 { background: #e3f2fd !important; }
@@ -1178,29 +1179,33 @@
                 Masz pytania o projekt? Chcesz się zaangażować? Napisz do nas!
               </p>
               
-              <form class="rd-form rd-form-variant-2" id="spotContactForm" data-form-output="form-output-global" data-form-type="contact">
+              <!-- Formularz → aplikacja Zanders (js/wf-forms.js, etap 8; dawniej okno z iframe static-form.html → StaticForms) -->
+              <form class="rd-form rd-form-variant-2" id="spotContactForm" data-wf-form="spot" novalidate>
+                <div class="wff-hp" aria-hidden="true">
+                  <label>Strona internetowa <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                </div>
                 <div class="row row-14 gutters-14">
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-your-name-2" type="text" name="name" required>
+                      <input class="form-input" id="contact-your-name-2" type="text" name="name" autocomplete="name" maxlength="100" required>
                       <label class="form-label" for="contact-your-name-2">Imię i nazwisko</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-email-2" type="email" name="email" required>
+                      <input class="form-input" id="contact-email-2" type="email" name="email" autocomplete="email" maxlength="120" required>
                       <label class="form-label" for="contact-email-2">E-mail</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <input class="form-input" id="contact-phone-2" type="text" name="phone">
+                      <input class="form-input" id="contact-phone-2" type="tel" name="phone" autocomplete="tel" maxlength="30">
                       <label class="form-label" for="contact-phone-2">Telefon</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-wrap">
-                      <select class="form-input" id="contact-temat-2" name="temat" required>
+                      <select class="form-input" id="contact-temat-2" name="extra_temat" required>
                         <option value="" disabled selected>Wybierz temat</option>
                         <option value="Wsparcie finansowe - Projekt SPOT">Wsparcie finansowe</option>
                         <option value="Abonament miesięczny - Projekt SPOT">Abonament miesięczny + bonusy</option>
@@ -1215,38 +1220,24 @@
                   </div>
                   <div class="col-12">
                     <div class="form-wrap">
-                      <textarea class="form-input textarea-lg" id="contact-message-2" name="message" required></textarea>
+                      <textarea class="form-input textarea-lg" id="contact-message-2" name="message" maxlength="4000" required></textarea>
                       <label class="form-label" for="contact-message-2">Wiadomość</label>
                     </div>
                   </div>
                 </div>
                 
-                <!-- Button to prepare and show captcha -->
+                <label class="wff-consent">
+                  <input type="checkbox" name="consent">
+                  <span>Wyrażam zgodę na przetwarzanie przez Fundację World Foundation moich danych podanych w formularzu w celu odpowiedzi na wiadomość w sprawie Projektu SPOT. Zgodę mogę w każdej chwili wycofać. Szczegóły w <a href="polityka-prywatnosci.html#formularze" target="_blank" rel="noopener">polityce prywatności</a>.</span>
+                </label>
                 <button type="submit" class="button button-primary button-pipaluk">WYŚLIJ ZGŁOSZENIE</button>
+                <p class="wff-status" data-wf-status role="status" aria-live="polite" hidden></p>
               </form>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Modal: Formularz wysyłania (iframe StaticForms) dla SPOT -->
-    <div class="modal fade" id="modalSendFormSpot" tabindex="-1" role="dialog" aria-hidden="true" lang="pl">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Finalizacja zgłoszenia - Projekt SPOT</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Potwierdź, że nie jesteś robotem i wyślij zgłoszenie w sprawie Projektu SPOT.</p>
-            <iframe id="staticFormIframeSpot" src="static-form.html" width="100%" height="300" frameborder="0"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
@@ -1268,6 +1259,9 @@
   <!-- Javascript-->
   <script src="../js/core.min.js"></script>
   <script src="../js/script.js?v=20261107f"></script>
+  <!-- Formularz kontaktowy SPOT → aplikacja Zanders (etap 8). Adres API jak window.WF_BOOKING w pl/index.html. -->
+  <script>window.WF_FORMS = { api: "https://meble-crm.vercel.app/api/public/wf-form" };</script>
+  <script src="../js/wf-forms.js?v=20261120b"></script>
   
   <!-- Smooth scrolling script -->
   <script>
@@ -1587,144 +1581,6 @@ function setupHeroAnimations() {
   });
 }
 
-// SPOT Contact Form with StaticForms
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('spotContactForm');
-  
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Pobierz wartości z formularza
-      const name = document.getElementById('contact-your-name-2').value;
-      const email = document.getElementById('contact-email-2').value;
-      const phone = document.getElementById('contact-phone-2').value;
-      const temat = document.getElementById('contact-temat-2').value;
-      const message = document.getElementById('contact-message-2').value;
-      
-      // Sprawdź czy wszystkie wymagane pola są wypełnione
-      if (!name || !email || !temat || !message) {
-        alert('Proszę wypełnić wszystkie wymagane pola.');
-        return;
-      }
-      
-      // Wygeneruj tytuł wiadomości
-      const subject = 'Projekt SPOT - ' + temat + ' - ' + name;
-      
-      // Wygeneruj treść wiadomości
-      let contactInfo = 'Formularz kontaktowy - Projekt SPOT\n\n';
-      contactInfo += 'Dane kontaktowe:\n';
-      contactInfo += 'Imię i nazwisko: ' + name + '\n';
-      contactInfo += 'Email: ' + email + '\n';
-      if (phone) {
-        contactInfo += 'Telefon: ' + phone + '\n';
-      }
-      contactInfo += 'Temat: ' + temat + '\n\n';
-      
-      const messageContent = contactInfo + 'Wiadomość:\n' + message + '\n\n---\nWysłano ze strony: ' + window.location.href + '\nData: ' + new Date().toLocaleString('pl-PL');
-      
-      // Zapisz dane do window dla iframe
-      window.spotContactData = {
-        name: subject,
-        email: email,
-        message: messageContent
-      };
-      
-      // Otwórz modal z formularzem wysyłania
-      const sendModal = document.getElementById('modalSendFormSpot');
-      if (window.jQuery && window.jQuery(sendModal).modal) {
-        window.jQuery(sendModal).modal('show');
-      } else if (sendModal) {
-        sendModal.classList.add('show');
-        sendModal.style.display = 'block';
-        sendModal.setAttribute('aria-modal', 'true');
-        sendModal.removeAttribute('aria-hidden');
-        document.body.classList.add('modal-open');
-        
-        // Dodaj backdrop
-        const backdrop = document.createElement('div');
-        backdrop.className = 'modal-backdrop fade show';
-        document.body.appendChild(backdrop);
-      }
-      
-      // Odśwież iframe
-      const iframe = document.getElementById('staticFormIframeSpot');
-      if (iframe) {
-        const currentSrc = iframe.src;
-        iframe.src = '';
-        setTimeout(function() {
-          iframe.src = currentSrc;
-        }, 100);
-      }
-      
-      // Wyślij dane do iframe po załadowaniu
-      setTimeout(function() {
-        const iframe = document.getElementById('staticFormIframeSpot');
-        if (iframe && iframe.contentWindow && window.spotContactData) {
-          iframe.contentWindow.postMessage({
-            type: 'fillForm',
-            name: window.spotContactData.name,
-            email: window.spotContactData.email,
-            message: window.spotContactData.message
-          }, '*');
-        }
-      }, 2000);
-    });
-  }
-  
-  // Handler dla wiadomości z iframe
-  window.addEventListener('message', function(event) {
-    if (event.data.type === 'formSuccess') {
-      // Formularz został wysłany pomyślnie
-      console.log('Formularz SPOT wysłany pomyślnie');
-    } else if (event.data.type === 'closeModal') {
-      // Zamknij modal i zresetuj formularz
-      const sendModal = document.getElementById('modalSendFormSpot');
-      if (window.jQuery && window.jQuery(sendModal).modal) {
-        window.jQuery(sendModal).modal('hide');
-      } else if (sendModal) {
-        sendModal.classList.remove('show');
-        sendModal.style.display = 'none';
-        sendModal.setAttribute('aria-hidden', 'true');
-        sendModal.removeAttribute('aria-modal');
-        document.body.classList.remove('modal-open');
-        const backdrop = document.querySelector('.modal-backdrop');
-        if (backdrop) backdrop.remove();
-      }
-      
-      // Resetuj formularz główny
-      const form = document.getElementById('spotContactForm');
-      if (form) {
-        form.reset();
-        // Usuń klasy active z form-wrap jeśli istnieją
-        const formWraps = form.querySelectorAll('.form-wrap');
-        formWraps.forEach(wrap => wrap.classList.remove('form-wrap-validation'));
-      }
-      
-      // Pokaż komunikat sukcesu
-      const successMessage = document.createElement('div');
-      successMessage.className = 'alert alert-success';
-      successMessage.innerHTML = `
-        <h5><i class="fa fa-check-circle"></i> Wiadomość wysłana pomyślnie!</h5>
-        <p>Dziękujemy za kontakt w sprawie Projektu SPOT. Odpowiemy na Twoją wiadomość w ciągu 24 godzin.</p>
-      `;
-      
-      const contactSection = document.querySelector('#kontakt .contact-form-project');
-      if (contactSection) {
-        contactSection.appendChild(successMessage);
-        successMessage.scrollIntoView({ behavior: 'smooth' });
-        
-        // Usuń komunikat po 5 sekundach
-        setTimeout(() => {
-          if (successMessage.parentNode) {
-            successMessage.remove();
-          }
-        }, 5000);
-      }
-    }
-  });
-});
-
 document.addEventListener('DOMContentLoaded', function() {
   var donorModalBtns = Array.from(document.querySelectorAll('a.button, button.button')).filter(function(btn) {
     return btn.textContent.includes('Wesprzyj finansowo');
@@ -1750,8 +1606,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- reCAPTCHA API -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <!-- Automatyczne przewijanie po kliknięciu w hero-btn-primary -->
 <script>
