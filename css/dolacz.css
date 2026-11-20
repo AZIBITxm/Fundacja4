@@ -218,8 +218,15 @@
 
 /* Adam 20.11 (23:00): cztery drogi w nagłówku — paski wjeżdżające od prawej, jeden pod drugim */
 .wfd-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 48px; align-items: center; }
+/* Paski przylegają do prawej krawędzi strony: z lewej zaokrąglone, z prawej „wchodzą” pod krawędź okna.
+   Na komputerze siatka nagłówka wychodzi poza .container w prawo (lewa krawędź tekstu jak w .container). */
+@media (min-width: 992px) {
+  .wfd-hero__grid { max-width: none; width: 100%; margin: 0; padding-right: 0;
+    padding-left: calc((100vw - 960px) / 2 + 15px); grid-template-columns: minmax(0, 1fr) min(480px, 44vw); gap: 40px; }
+}
+@media (min-width: 1200px) { .wfd-hero__grid { padding-left: calc((100vw - 1200px) / 2 + 15px); } }
 .wfd-strips { display: flex; flex-direction: column; gap: 12px; }
-.wfd-strip { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 14px 18px; border-radius: 16px;
+.wfd-strip { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 14px 28px 14px 18px; border-radius: 16px 0 0 16px; border-right: 0 !important;
   background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.28); color: #fff; text-decoration: none;
   font: inherit; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   transition: background .25s, transform .25s, box-shadow .25s;
@@ -245,7 +252,7 @@
 @keyframes wfdStripIn4 { 0% { opacity: 0; transform: translateX(60px); } 58% { opacity: 0; transform: translateX(60px); } 100% { opacity: 1; transform: none; } }
 @media (max-width: 991px) {
   .wfd-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .wfd-strips { max-width: 520px; }
+  .wfd-strips { margin-right: calc((100% - 100vw) / 2); margin-left: 10%; }
 }
 @media (prefers-reduced-motion: reduce) { .wfd-strip { animation: none !important; } }
 .wfd-strip__txt .wfd-strip__num { white-space: nowrap; overflow-wrap: normal; font-size: 1.05rem; font-weight: 600; color: #fff; letter-spacing: .01em; }
