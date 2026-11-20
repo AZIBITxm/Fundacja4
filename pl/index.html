@@ -118,6 +118,7 @@
   <link rel="stylesheet" href="../css/modal-cooperation.css">
     <link rel="stylesheet" href="../css/join.css?v=20261120b">
   <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
+  <link rel="stylesheet" href="../css/wf-chat.css?v=20261120a">
   <!-- Tryb „strona w przebudowie” (zlecenie 6A) — przełącznik WF_PRZEBUDOWA w js/przebudowa.js -->
   <link rel="stylesheet" href="../css/przebudowa.css?v=20261120c">
   <script src="../js/przebudowa.js?v=20261120g"></script>
@@ -535,6 +536,14 @@
                   <p class="box-icon-modern-text">Skorzystaj z naszego formularza kontaktowego.</p>
                 </article>
               </div>
+            </div>
+          </div>
+          <!-- Konsultant AI fundacji (etap 2, 2026-11-20): wezwanie pod filmem — czat (js/wf-chat.js) albo kalendarz rezerwacji -->
+          <div class="wfa-cta wow fadeInUp">
+            <p class="wfa-cta__text"><strong>Masz więcej pytań?</strong> Zapytaj naszego konsultanta AI albo umów rozmowę.</p>
+            <div class="wfa-cta__btns">
+              <button type="button" class="button button-primary button-ujarak" data-wf-chat><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4.97 0-9 3.58-9 8 0 2.1.92 4.01 2.42 5.44L5 21l4.3-1.91c.86.21 1.77.33 2.7.33 4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="currentColor"/></svg>Zapytaj konsultanta AI</button>
+              <a class="button button-default-outline button-wapasha" href="#rezerwacja" data-wf-booking>Umów rozmowę</a>
             </div>
           </div>
         </div>
@@ -1833,6 +1842,9 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
          Usunięcie linii z window.WF_BOOKING = powrót do trybu podglądu. -->
     <script>window.WF_BOOKING = { api: "https://meble-crm.vercel.app/api/public/booking" };</script>
     <script src="../js/booking.js?v=20261115k"></script>
+    <!-- Konsultant AI fundacji (etap 2): czat → aplikacja Zanders (/api/public/wf-consultant). Bez cookies i bez skryptów z zewnątrz. -->
+    <script>window.WF_CHAT = { api: "https://meble-crm.vercel.app/api/public/wf-consultant" };</script>
+    <script src="../js/wf-chat.js?v=20261120a"></script>
     <!-- Formularze „Napisz do nas” i „Współpraca” → aplikacja Zanders (etap 8). Adres API jak window.WF_BOOKING. -->
     <script>window.WF_FORMS = { api: "https://meble-crm.vercel.app/api/public/wf-form" };</script>
     <script src="../js/wf-forms.js?v=20261120b"></script>
