@@ -19,7 +19,7 @@
   var MAX_LEN = 1000;
   var SCRIPT = document.currentScript && document.currentScript.src;
   var AVATAR = (function () {
-    try { return new URL('../images/konsultant/globus-240.webp', SCRIPT || location.href).href; } catch (e) { return '../images/konsultant/globus-240.webp'; }
+    try { return new URL('../images/konsultant/konsultantka-240.webp', SCRIPT || location.href).href; } catch (e) { return '../images/konsultant/konsultantka-240.webp'; }
   })();
   var PAGE = /program-dla-rodzicow\.html/.test(location.pathname) ? 'program'
     : /dolacz\.html/.test(location.pathname) ? 'dolacz'
