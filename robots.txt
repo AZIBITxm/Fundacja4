@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /pl/program-rodzic-nie-jestes-sam.html
+Disallow: /pl/projekt-spot.html
+Disallow: /pl/wsparcie-weteranow.html
 
 Sitemap: https://worldfoundation.eu/sitemap.xml
