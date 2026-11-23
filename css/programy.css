@@ -1,0 +1,77 @@
+/* Sekcja „Nasze programy” na stronie głównej (pl/index.html) — 2026-11-23.
+   Pokaz 3 kafelków 3D (wzór: katalog materiałów zandersatelier.com). Środek = program aktywny, boki = programy w przygotowaniu.
+   Logika: js/programy.js (zmienne --d = odległość od aktywnego, --ad = |d|). */
+.wfp3 { padding: 80px 0 70px; background: #fff; text-align: center; overflow: hidden; }
+.wfp3 h2 { margin: 0; }
+.wfp3__lead { max-width: 640px; margin: 18px auto 0; color: #6b7280; font-size: 17px; line-height: 1.6; }
+.wfp3__stage { position: relative; max-width: 1100px; margin: 34px auto 0; }
+.wfp3__flow {
+  --cw: 360px; --shift: 74%; --tilt: 38deg;
+  position: relative; height: calc(var(--cw) * 0.75 + 150px); margin: 0 auto;
+  perspective: 1100px; perspective-origin: 50% 40%; touch-action: pan-y; outline: none;
+}
+.wfp3__card {
+  position: absolute; top: 14px; left: 50%; width: var(--cw); margin-left: calc(var(--cw) / -2);
+  display: block; color: #1f2a44; text-decoration: none; transform-style: preserve-3d; cursor: pointer;
+  transform: translateX(calc(var(--d, 0) * var(--shift))) translateZ(calc(var(--ad, 0) * -170px)) rotateY(calc(var(--d, 0) * var(--tilt) * -1));
+  z-index: calc(10 - var(--ad, 0));
+  transition: transform .6s cubic-bezier(.2, .75, .2, 1), filter .6s ease;
+  filter: brightness(calc(1 - var(--ad, 0) * .08)) saturate(calc(1 - var(--ad, 0) * .25));
+  -webkit-tap-highlight-color: transparent;
+}
+.wfp3__card:hover, .wfp3__card:focus { color: #1f2a44; text-decoration: none; }
+.wfp3__in { display: flex; flex-direction: column; background: #fff; border: 1px solid #e3e8f5; border-radius: 18px; overflow: hidden;
+  box-shadow: 0 14px 30px rgba(31, 42, 68, .14); transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+.wfp3__img { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #eef2ff; }
+.wfp3__img img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.wfp3__badge { position: absolute; left: 12px; top: 12px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.wfp3__badge--on { background: #3a55c9; color: #fff; }
+.wfp3__badge--soon { background: rgba(255, 255, 255, .92); color: #6b7280; }
+.wfp3__text { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px 16px; border-top: 3px solid transparent; text-align: left; }
+.wfp3__name { font-size: 1.3rem; font-weight: 600; line-height: 1.2; }
+.wfp3__hint { font-size: .95rem; color: #6b7280; }
+.wfp3__go { margin-top: 6px; font-size: .82rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #3a55c9; opacity: 0; transition: opacity .4s ease; }
+.wfp3__card.is-active .wfp3__in { border-color: #6689ff; box-shadow: 0 0 0 2px #6689ff, 0 22px 44px rgba(31, 42, 68, .2); }
+.wfp3__card.is-active .wfp3__text { border-top-color: #6689ff; }
+.wfp3__card.is-active .wfp3__go { opacity: 1; }
+.wfp3__card.is-soon .wfp3__go { color: #6b7280; }
+@media (hover: hover) {
+  .wfp3__card.is-active:hover .wfp3__in { transform: translateY(-6px); }
+  .wfp3__card.is-active:hover .wfp3__img img { transform: scale(1.05); }
+}
+.wfp3__card:focus-visible { outline: none; }
+.wfp3__card:focus-visible .wfp3__in { outline: 2px solid #6689ff; outline-offset: 3px; }
+
+/* wjazd przy przewinięciu do sekcji */
+.wfp3__flow .wfp3__in { opacity: 0; transform: translateY(40px) scale(.96); }
+.wfp3__flow.is-in .wfp3__in { opacity: 1; transform: none;
+  transition: transform .9s cubic-bezier(.16, .8, .24, 1) calc(var(--i) * .15s), opacity .7s ease calc(var(--i) * .15s), box-shadow .35s ease, border-color .35s ease; }
+.wfp3__flow.is-in.is-ready .wfp3__in { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+
+.wfp3__arrow { position: absolute; top: calc(14px + var(--cw, 360px) * .375); z-index: 20; width: 46px; height: 46px; margin-top: -23px; border: 0; border-radius: 50%;
+  background: #fff; color: #3a55c9; font-size: 20px; box-shadow: 0 6px 18px rgba(31, 42, 68, .15); cursor: pointer; transition: background .2s, color .2s; }
+.wfp3__arrow:hover { background: #3a55c9; color: #fff; }
+.wfp3__arrow--prev { left: 6px; }
+.wfp3__arrow--next { right: 6px; }
+.wfp3__dots { display: flex; justify-content: center; gap: 10px; margin: 2px 0 22px; }
+.wfp3__dot { width: 26px; height: 4px; border: 0; padding: 0; border-radius: 2px; background: #dfe5f5; cursor: pointer; transition: background .3s; }
+.wfp3__dot.is-active { background: #6689ff; }
+.wfp3__desc { max-width: 760px; margin: 0 auto; padding: 0 16px; min-height: 150px; }
+.wfp3__desc h3 { margin: 0 0 10px; font-size: 1.5rem; font-weight: 600; color: #1f2a44; text-transform: none; }
+.wfp3__desc p { margin: 0 0 18px; color: #3d4659; font-size: 16.5px; line-height: 1.65; }
+.wfp3__desc .is-in { animation: wfp3In .45s ease; }
+@keyframes wfp3In { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.wfp3__btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 28px; border-radius: 2px; background: #3a55c9; color: #fff;
+  font-weight: 600; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 12px 26px rgba(58, 85, 201, .3); transition: transform .25s, background .25s; }
+.wfp3__btn:hover, .wfp3__btn:focus { transform: translateY(-3px); background: #243696; color: #fff; }
+.wfp3__soon { display: inline-block; padding: 10px 20px; border-radius: 999px; background: #f3f5fb; color: #6b7280; font-size: 14px; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .wfp3 { padding: 60px 0 50px; }
+  .wfp3__flow { --cw: min(66vw, 300px); --shift: 56%; --tilt: 44deg; height: calc(var(--cw) * 0.75 + 140px); perspective: 800px; }
+  .wfp3__name { font-size: 1.05rem; }
+  .wfp3__hint { font-size: .8rem; }
+  .wfp3__text { padding: 10px 12px 12px; }
+  .wfp3__arrow { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .wfp3__card, .wfp3__in { transition: none !important; } }
