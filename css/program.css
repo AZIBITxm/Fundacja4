@@ -138,7 +138,7 @@ a.wfp-cyt:hover, a.wfp-cyt:focus { background: var(--wfd-blue); color: #fff; }
 .wfl-closing { margin-top: 26px; padding: 18px 20px; border-radius: 14px; background: #f1f8f4; }
 .wfl-closing p { margin: 0; }
 .wfl-more { margin-top: 4px; }
-.wfl-more summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 18px; border-radius: 999px; border: 1px solid #d6def7; background: #f6f8ff; font-weight: 600; color: var(--wfd-blue-dd); list-style: none; }
+.wfl-more summary { cursor: pointer; list-style: none; gap: 10px; }
 .wfl-more summary::-webkit-details-marker { display: none; }
 .wfl-more summary::after { content: "▾"; transition: transform .2s; }
 .wfl-more[open] summary::after { transform: rotate(180deg); }
