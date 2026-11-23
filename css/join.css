@@ -106,3 +106,17 @@
 @media (prefers-reduced-motion: reduce) {
   .wfj-banner__bg, .wfj-banner__glow { animation: none; }
 }
+
+/* 2026-11-24 (Adam): baner jako wąski, poziomy „przerywnik” — tytuł z lewej, przycisk z prawej, bez opisu. */
+.wfj-banner { padding: 44px 0; }
+.wfj-banner__inner { max-width: none; display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
+.wfj-banner__title { font-size: clamp(1.5rem, 2.8vw, 2.2rem); }
+.wfj-banner__title span { display: inline; }
+.wfj-banner__title span::before { content: " "; }
+.wfj-banner__cta { margin-top: 0; flex: none; }
+@media (max-width: 991px) { .wfj-banner { padding: 40px 0; } }
+@media (max-width: 575px) {
+  .wfj-banner { padding: 34px 0; }
+  .wfj-banner__title span { display: block; }
+  .wfj-banner__title span::before { content: none; }
+}

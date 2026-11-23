@@ -1,6 +1,6 @@
 /* TRYB „STRONA W PRZEBUDOWIE” (zlecenie 6A, 2026-11-20; plan zaakceptowany przez Adama).
  *
- * ▶ WYŁĄCZENIE PO 24.11: zmień w linii niżej  true  →  false  (jedna linia, działa na wszystkich stronach).
+ * ▶ WYŁĄCZENIE PO 26.11: zmień w linii niżej  true  →  false  (jedna linia, działa na wszystkich stronach).
  */
 var WF_PRZEBUDOWA = true;
 /*
@@ -10,7 +10,7 @@ var WF_PRZEBUDOWA = true;
  *  • Na stronie głównej widoczne zostają: nagłówek z sliderem, rezerwacja rozmów (#services), baner psychologów (#join), stopka.
  *    W menu zostają: Home, Konsultacje, Program dla rodziców, Zarząd, Dołącz, Kontakt (Zarząd od 20.11, prośba Adama). „Kontakt” (i inne linki do ukrytego #contact-info/#contacts)
  *    przewija do stopki z danymi kontaktowymi.
- *  • Pod menu pasek „Strona w przebudowie — pełna wersja będzie dostępna od wtorku 24 listopada.”
+ *  • Pod menu pasek „Strona w przebudowie — pełna wersja będzie dostępna od czwartku 26 listopada.”
  *  • Podgląd pełnej wersji: dodaj ?pelna=1 do adresu (zapamiętane w sessionStorage na czas karty — kotwice i podstrony
  *    też pokazują pełną wersję). ?pelna=0 wraca do trybu przebudowy.
  */
@@ -88,7 +88,7 @@ var WF_PRZEBUDOWA = true;
     bar.className = 'wfr-bar';
     bar.setAttribute('role', 'status');
     bar.innerHTML = '<span class="wfr-bar__dot" aria-hidden="true"></span>' +
-      '<span><strong>Strona w przebudowie</strong> — pełna wersja będzie dostępna od wtorku 24&nbsp;listopada.</span>';
+      '<span><strong>Strona w przebudowie</strong> — pełna wersja będzie dostępna od czwartku 26&nbsp;listopada.</span>';
     // wewnątrz nagłówka, zaraz pod menu (na stronie głównej nagłówek leży nad sliderem — pasek też)
     var header = document.querySelector('header.page-header');
     if (header) header.appendChild(bar);

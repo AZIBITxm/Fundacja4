@@ -28,3 +28,23 @@
   .wfq-promo__btn { width: 100%; justify-content: center; }
   .wfq-promo p { font-size: 16px; }
 }
+
+/* 2026-11-24: animacje — zmieniający się opis pod tytułem i podświetlanie kafelków po kolei (js/programy.js) */
+.wfq-promo__rot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-height: 2.9em; margin: -2px 0 16px !important; font-size: 18px !important; color: #fff !important; }
+.wfq-promo__rotlbl { font-weight: 600; white-space: nowrap; }
+.wfq-promo__rotlbl::after { content: " —"; font-weight: 300; opacity: .7; }
+.wfq-promo__rottxt { opacity: .9; }
+.wfq-promo__rot.is-swap .wfq-promo__rotlbl, .wfq-promo__rot.is-swap .wfq-promo__rottxt { animation: wfqRot .6s ease both; }
+.wfq-promo__rot.is-swap .wfq-promo__rottxt { animation-delay: .08s; }
+@keyframes wfqRot { from { opacity: 0; transform: translateY(10px); filter: blur(3px); } to { opacity: 1; transform: none; filter: none; } }
+.wfq-promo__list a { transition: background .4s, transform .4s, box-shadow .4s, border-color .4s; }
+.wfq-promo__list a.is-hl { background: rgba(255, 255, 255, .26); border-color: rgba(255, 255, 255, .6); transform: translateX(-6px) scale(1.02); box-shadow: 0 14px 30px rgba(20, 30, 90, .28); }
+.wfq-promo__list a.is-hl .wfq-promo__ic { animation: wfqPop .6s ease; }
+@keyframes wfqPop { 0% { transform: scale(1); } 40% { transform: scale(1.18) rotate(-6deg); } 100% { transform: scale(1); } }
+.wfq-promo__list li { opacity: 0; transform: translateX(60px); }
+.wfq-promo.is-in .wfq-promo__list li { opacity: 1; transform: none; transition: transform .8s cubic-bezier(.16, .8, .24, 1), opacity .6s ease; }
+.wfq-promo.is-in .wfq-promo__list li:nth-child(2) { transition-delay: .15s; }
+.wfq-promo.is-in .wfq-promo__list li:nth-child(3) { transition-delay: .3s; }
+.wfq-promo::before { animation: wfqGlow 9s ease-in-out infinite alternate; }
+@keyframes wfqGlow { from { transform: translate(0, 0); } to { transform: translate(-60px, 40px); } }
+@media (prefers-reduced-motion: reduce) { .wfq-promo__list li { opacity: 1; transform: none; } .wfq-promo::before { animation: none; } }
