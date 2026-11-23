@@ -98,6 +98,16 @@ a.wfp-cyt:hover, a.wfp-cyt:focus { background: var(--wfd-blue); color: #fff; }
 /* ---------- Landing programu (wersja zachęcająca, 2026-11-20 wieczór) ---------- */
 .wfl-hero { position: relative; overflow: hidden; isolation: isolate; padding: 120px 0 100px; color: #fff; background: var(--wfd-blue-dd); }
 .wfl-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+/* Nagłówek (js/wf-hero-slides.js): pod filmem grafit (jak ściana przy projektorze), granatowy filtr zostaje zawsze na wierzchu */
+.wfl-hero { background: #2e2c30; }
+.wfl-hero .wfl-hero__video { transition: opacity 1.3s ease-in-out; }
+.wfl-hero .wfl-hero__video.wfh-off { opacity: 0; }
+.wfh-sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.wfh-box { position: relative; max-width: 640px; margin-top: 24px; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.wfh-block { position: absolute; top: 0; left: 0; right: 0; margin: 0; font-size: clamp(1.02rem, 1.6vw, 1.22rem); line-height: 1.62; color: rgba(255, 255, 255, .96); text-align: left; transition: opacity .8s ease, transform .8s ease; }
+.wfh-w { display: inline-block; opacity: 0; transform: translateY(.6em); filter: blur(3px); transition: opacity .7s ease, transform .7s cubic-bezier(.25, .7, .3, 1), filter .7s ease; }
+.wfh-block.is-in .wfh-w { opacity: 1; transform: none; filter: none; }
+.wfh-block.is-out .wfh-w { opacity: 0; transform: translateY(-.5em); filter: blur(3px); }
 .wfl-hero__shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(105deg, rgba(36, 54, 150, .94) 0%, rgba(58, 85, 201, .82) 48%, rgba(102, 137, 255, .45) 100%); }
 .wfl-hero h1 { margin: 0; color: #fff; font-size: clamp(1.9rem, 4.2vw, 3.1rem); line-height: 1.12; font-weight: 500; text-transform: none; }
 .wfl-hero h1 span { display: block; margin-top: 14px; color: #dfe6ff; font-weight: 300; font-size: .52em; line-height: 1.4; }
@@ -127,6 +137,12 @@ a.wfp-cyt:hover, a.wfp-cyt:focus { background: var(--wfd-blue); color: #fff; }
 .wfl-fact p:last-child { margin-bottom: 0; }
 .wfl-closing { margin-top: 26px; padding: 18px 20px; border-radius: 14px; background: #f1f8f4; }
 .wfl-closing p { margin: 0; }
+.wfl-more { margin-top: 4px; }
+.wfl-more summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 18px; border-radius: 999px; border: 1px solid #d6def7; background: #f6f8ff; font-weight: 600; color: var(--wfd-blue-dd); list-style: none; }
+.wfl-more summary::-webkit-details-marker { display: none; }
+.wfl-more summary::after { content: "▾"; transition: transform .2s; }
+.wfl-more[open] summary::after { transform: rotate(180deg); }
+.wfl-more[open] summary { margin-bottom: 16px; }
 .wfl-glossary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; }
 .wfl-glossary div { padding: 14px 16px; border-radius: 12px; background: #f6f8ff; border: 1px solid #e6ebfb; }
 .wfl-glossary dt { margin-bottom: 4px; font-weight: 600; color: var(--wfd-blue-dd); }
