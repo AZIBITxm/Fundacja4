@@ -112,6 +112,8 @@ a.wfp-cyt:hover, a.wfp-cyt:focus { background: var(--wfd-blue); color: #fff; }
 .wfl-hero h1 { margin: 0; color: #fff; font-size: clamp(1.9rem, 4.2vw, 3.1rem); line-height: 1.12; font-weight: 500; text-transform: none; }
 .wfl-hero h1 span { display: block; margin-top: 14px; color: #dfe6ff; font-weight: 300; font-size: .52em; line-height: 1.4; }
 .wfl-toc ol { margin-bottom: 14px; }
+.wfl-toc__arrow { display: none; }
+.wfl-toc li a.is-active { background: var(--wfd-blue-l); color: var(--wfd-blue-d); font-weight: 600; }
 .wfl-toc__cta { display: inline-flex; padding: 9px 16px; border-radius: 999px; background: var(--wfd-blue-d); color: #fff; font-weight: 600; font-size: 14px; }
 .wfl-toc__cta:hover, .wfl-toc__cta:focus { background: var(--wfd-blue-dd); color: #fff; }
 .wfl-sec { scroll-margin-top: 110px; }
@@ -162,6 +164,12 @@ a.wfp-cyt:hover, a.wfp-cyt:focus { background: var(--wfd-blue); color: #fff; }
   .wfl-toc > p, .wfl-toc__cta { display: none; }
   .wfl-toc ol { display: flex; gap: 6px; overflow-x: auto; margin: 0; padding: 0 15px; scrollbar-width: none; }
   .wfl-toc ol::-webkit-scrollbar { display: none; }
+  .wfl-toc ol { position: relative; scroll-padding: 0 44px; }
+  .wfl-toc__arrow { display: flex; position: absolute; top: 0; bottom: 0; z-index: 2; width: 44px; align-items: center; border: 0; padding: 0; font-size: 26px; line-height: 1; color: var(--wfd-blue-d); cursor: pointer; transition: opacity .25s; }
+  .wfl-toc__arrow--prev { left: 0; justify-content: flex-start; padding-left: 10px; background: linear-gradient(90deg, #fff 55%, rgba(255, 255, 255, 0)); }
+  .wfl-toc__arrow--next { right: 0; justify-content: flex-end; padding-right: 10px; background: linear-gradient(270deg, #fff 55%, rgba(255, 255, 255, 0)); }
+  .wfl-toc__arrow.is-hidden { opacity: 0; pointer-events: none; }
+  .wfl-toc li a.is-active, .wfl-toc li.lv3 a.is-active { background: var(--wfd-blue-d); border-color: var(--wfd-blue-d); color: #fff; }
   .wfl-toc li a, .wfl-toc li.lv3 a { white-space: nowrap; padding: 7px 12px; border: 1px solid #e3e8f5; border-radius: 999px; font-size: 13px; color: var(--wfd-ink); }
   .wfl-split, .wfl-split--rev, .wfl-glossary, .wfl-row { grid-template-columns: minmax(0, 1fr); }
   .wfl-blok { padding: 20px 18px; }
