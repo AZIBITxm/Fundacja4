@@ -119,6 +119,7 @@
     <link rel="stylesheet" href="../css/join.css?v=20261120b">
   <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
   <link rel="stylesheet" href="../css/wf-chat.css?v=20261121a">
+  <link rel="stylesheet" href="../css/ankieta-promo.css?v=20261123a">
   <!-- Tryb „strona w przebudowie” (zlecenie 6A) — przełącznik WF_PRZEBUDOWA w js/przebudowa.js -->
   <link rel="stylesheet" href="../css/przebudowa.css?v=20261120c">
   <script src="../js/przebudowa.js?v=20261120g"></script>
@@ -538,12 +539,21 @@
               </div>
             </div>
           </div>
-          <!-- Konsultant AI fundacji (etap 2, 2026-11-20): wezwanie pod filmem — czat (js/wf-chat.js) albo kalendarz rezerwacji -->
-          <div class="wfa-cta wow fadeInUp">
-            <p class="wfa-cta__text"><strong>Masz więcej pytań?</strong> Zapytaj naszego konsultanta AI albo umów rozmowę.</p>
-            <div class="wfa-cta__btns">
-              <button type="button" class="button button-primary button-ujarak" data-wf-chat><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4.97 0-9 3.58-9 8 0 2.1.92 4.01 2.42 5.44L5 21l4.3-1.91c.86.21 1.77.33 2.7.33 4.97 0 9-3.58 9-8s-4.03-8-9-8z" fill="currentColor"/></svg>Zapytaj konsultanta AI</button>
-              <a class="button button-default-outline button-wapasha" href="#rezerwacja" data-wf-booking>Umów rozmowę</a>
+          <!-- „Poznaj siebie” — ankiety samooceny (2026-11-23, prośba Adama: zamiast wezwania „Zapytaj konsultanta AI”; konsultant zostaje jako pływające kółeczko). Style: css/ankieta-promo.css -->
+          <div class="wfq-promo wow fadeInUp" id="poznaj-siebie">
+            <div class="wfq-promo__grid">
+              <div>
+                <p class="wfq-promo__eye">Nowość · bezpłatnie i anonimowo</p>
+                <h2>Poznaj siebie</h2>
+                <p>Sprawdź swój charakter i kolor, samoocenę oraz etap rozwoju. Krótkie ankiety oparte na badaniach naukowych — jedno pytanie na ekranie, wynik od razu.</p>
+                <a class="wfq-promo__btn" href="poznaj-siebie.html">Zrób ankietę <span aria-hidden="true">→</span></a>
+                <p class="wfq-promo__note">🔒 Bez imienia i e-maila — odpowiedzi zostają na Twoim urządzeniu.</p>
+              </div>
+              <ul class="wfq-promo__list">
+                <li><a href="poznaj-siebie.html"><span class="wfq-promo__ic" aria-hidden="true">🧭</span><span><b>Mój charakter</b><small>5 cech osobowości i Twój kolor · 4 min</small></span><i aria-hidden="true">›</i></a></li>
+                <li><a href="poznaj-siebie.html"><span class="wfq-promo__ic" aria-hidden="true">💪</span><span><b>Moja samoocena</b><small>Jak oceniasz siebie i swoje możliwości · 4 min</small></span><i aria-hidden="true">›</i></a></li>
+                <li><a href="poznaj-siebie.html"><span class="wfq-promo__ic" aria-hidden="true">🌱</span><span><b>Mój etap rozwoju</b><small>Sens, relacje, zadowolenie z życia · 3 min</small></span><i aria-hidden="true">›</i></a></li>
+              </ul>
             </div>
           </div>
         </div>

@@ -1,0 +1,30 @@
+/* Sekcja „Poznaj siebie” na stronie głównej (pl/index.html, pod Konsultacjami) — 2026-11-23.
+   Zastąpiła wezwanie „Zapytaj konsultanta AI” (konsultant zostaje jako pływające kółeczko). Prowadzi do pl/poznaj-siebie.html. */
+.wfq-promo { position: relative; overflow: hidden; isolation: isolate; margin-top: 50px; padding: 44px 44px 40px; border-radius: 26px; text-align: left; color: #fff;
+  background: linear-gradient(120deg, #243696 0%, #3a55c9 52%, #6689ff 100%); box-shadow: 0 24px 50px rgba(36, 54, 150, .25); }
+.wfq-promo::before, .wfq-promo::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; filter: blur(50px); pointer-events: none; }
+.wfq-promo::before { width: 320px; height: 320px; right: -80px; top: -120px; background: #8aa4ff; opacity: .55; }
+.wfq-promo::after { width: 240px; height: 240px; left: 30%; bottom: -150px; background: #c3d0ff; opacity: .3; }
+.wfq-promo__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.wfq-promo__eye { display: inline-block; margin: 0 0 14px; padding: 6px 14px; border: 1px solid rgba(255, 255, 255, .45); border-radius: 999px; background: rgba(255, 255, 255, .1);
+  font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
+.wfq-promo h2 { margin: 0 0 12px; color: #fff; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.15; font-weight: 600; text-transform: none; letter-spacing: -.01em; }
+.wfq-promo p { margin: 0 0 22px; color: rgba(255, 255, 255, .92); font-size: 17px; line-height: 1.6; max-width: 520px; }
+.wfq-promo__btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; border-radius: 2px; background: #fff; color: #3a55c9;
+  font-weight: 600; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 14px 30px rgba(20, 30, 90, .28); transition: transform .25s ease; }
+.wfq-promo__btn:hover, .wfq-promo__btn:focus { transform: translateY(-3px); color: #243696; }
+.wfq-promo__note { margin: 14px 0 0 !important; font-size: 14px !important; color: rgba(255, 255, 255, .8) !important; }
+.wfq-promo__list { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.wfq-promo__list a { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 16px; background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .22); color: #fff; transition: background .2s, transform .2s; }
+.wfq-promo__list a:hover, .wfq-promo__list a:focus { background: rgba(255, 255, 255, .2); transform: translateX(4px); color: #fff; }
+.wfq-promo__ic { flex: none; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: #fff; font-size: 24px; }
+.wfq-promo__list b { display: block; font-size: 17px; font-weight: 600; }
+.wfq-promo__list small { display: block; font-size: 14px; opacity: .85; }
+.wfq-promo__list i { margin-left: auto; font-style: normal; font-size: 20px; opacity: .8; }
+@media (max-width: 991px) { .wfq-promo__grid { grid-template-columns: 1fr; gap: 26px; } }
+@media (max-width: 575px) {
+  .wfq-promo { margin-top: 36px; padding: 30px 20px 24px; border-radius: 20px; }
+  .wfq-promo__btn { width: 100%; justify-content: center; }
+  .wfq-promo p { font-size: 16px; }
+}
