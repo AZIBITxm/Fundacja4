@@ -76,7 +76,7 @@
     var h = esc(text), kept = [];
     var keep = function (html) { kept.push(html); return '\u0001' + (kept.length - 1) + '\u0002'; };
     h = h.replace(/\b([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})\b/gi, function (m) { return keep('<a href="mailto:' + m + '">' + m + '</a>'); });
-    h = h.replace(/\b((?:https?:\/\/)?(?:www\.)?(?:worldfoundation\.eu|meble-crm\.vercel\.app)(?:\/[^\s<,)\u0001]*[^\s<.,)\u0001])?)/g, function (m) {
+    h = h.replace(/\b((?:https?:\/\/)?(?:www\.)?(?:worldfoundation\.eu|worldfoundation\.vercel\.app|meble-crm\.vercel\.app)(?:\/[^\s<,)\u0001]*[^\s<.,)\u0001])?)/g, function (m) {
       var url = /^https?:/.test(m) ? m : 'https://' + m;
       return keep('<a href="' + url + '" target="_blank" rel="noopener">' + m + '</a>');
     });
