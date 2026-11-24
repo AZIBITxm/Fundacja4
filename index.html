@@ -559,6 +559,10 @@
         #mobile-banners-grid .flag-item-mobile,
         #mobile-banner-bottom .flag-item-mobile { animation: slideInFlag 0.6s ease-out both; }
         #top-language-label { animation: fadeIn 0.6s ease-out both; }
+        /* Tablet (wersja „telefonowa” 481–768 px): flaga na dole niżej, żeby nie stała zaraz pod logo */
+        @media (min-width: 481px) and (max-width: 768px) {
+            #mobile-banner-bottom { top: calc(73vh - 30px) !important; }
+        }
         @keyframes slideInOption {
             from {
                 opacity: 0;
