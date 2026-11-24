@@ -555,6 +555,10 @@
     }
 }
         
+        /* Telefon: flagi wchodzą po kolei raz (opóźnienie ustawia skrypt), flaga języka przeglądarki na końcu */
+        #mobile-banners-grid .flag-item-mobile,
+        #mobile-banner-bottom .flag-item-mobile { animation: slideInFlag 0.6s ease-out both; }
+        #top-language-label { animation: fadeIn 0.6s ease-out both; }
         @keyframes slideInOption {
             from {
                 opacity: 0;
@@ -877,6 +881,7 @@ window.addEventListener('resize', showMobileFlags);
             const dropdown = document.querySelector('.custom-dropdown');
             const backdrop = document.getElementById('dropdownBackdrop');
             
+            if (!dropdown) return; // listy rozwijanej języków już nie ma na stronie
             if (!dropdown.contains(event.target)) {
                 const options = document.getElementById('languageOptions');
                 const arrow = document.querySelector('.dropdown-arrow');
@@ -963,6 +968,10 @@ function showMobileBannersByLanguage() {
     if (langCode === 'ar') langCode = 'sa';
     if (langCode === 'ae') langCode = 'ae';
     if (langCode === 'en') langCode = 'us';
+    // NA RAZIE na dole zawsze Polska (działa tylko wersja polska). Gdy powstaną inne wersje językowe,
+    // ustawić WF_BOTTOM_FIXED = null — wtedy na dole pokaże się flaga języka przeglądarki.
+    const WF_BOTTOM_FIXED = 'pl';
+    if (WF_BOTTOM_FIXED) langCode = WF_BOTTOM_FIXED;
     // Pobierz wszystkie banery z ukrytego kontenera
     const allBanners = Array.from(document.querySelectorAll('#all-mobile-banners .flag-item-mobile'));
     // Znajdź baner wybranego języka
@@ -1003,6 +1012,8 @@ function showMobileBannersByLanguage() {
         bannerBox.style.margin = '0 auto';
         // Baner
         const bigBanner = selectedBanner.cloneNode(true);
+        const lastDelay = 0.3 + gridBanners.length * 0.15 + 0.2;
+        bigBanner.style.animationDelay = lastDelay + 's';
         bigBanner.style.width = '160px';
         bigBanner.style.height = '120px';
         bigBanner.style.display = 'flex';
@@ -1055,8 +1066,8 @@ function showMobileBannersByLanguage() {
         
         // Przenieś napis do nowego kontenera u góry ekranu
         topLabelContainer.innerHTML = '';
-        topLabelContainer.appendChild(labelDiv);
-        topLabelContainer.appendChild(separator);
+        topLabelContainer.style.animationDelay = (lastDelay + 0.3) + 's';
+        // Napis „Wybierz swój język” usunięty (decyzja Adama 2026-11-24)
         // Dodaj baner i napis do kontenera
         if (href) {
             const link = document.createElement('a');
@@ -1077,8 +1088,9 @@ function showMobileBannersByLanguage() {
         singleContainer.appendChild(bannerBox);
     }
     // Przenieś pozostałe banery do gridu
-    gridBanners.forEach(b => {
+    gridBanners.forEach((b, i) => {
         const gridBanner = b.cloneNode(true);
+        gridBanner.style.animationDelay = (0.3 + i * 0.15) + 's';
         // Dodaj linkowanie
         const lang = gridBanner.getAttribute('data-lang');
         let href = null;
@@ -1107,8 +1119,10 @@ function showMobileBannersByLanguage() {
         }
     });
 }
-window.addEventListener('DOMContentLoaded', showMobileBannersByLanguage);
-window.addEventListener('resize', showMobileBannersByLanguage);
+let wfLastW = 0;
+function wfBuildOnce() { wfLastW = window.innerWidth; showMobileBannersByLanguage(); }
+window.addEventListener('DOMContentLoaded', wfBuildOnce);
+window.addEventListener('resize', function () { if (window.innerWidth !== wfLastW) wfBuildOnce(); });
     </script>
 </body>
 </html>
