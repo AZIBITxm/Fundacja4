@@ -115,6 +115,15 @@
     if (!reduce) setInterval(function () { if (desk.matches && visible && !hover && !document.hidden) show(i + 1); }, 3800);
   }
 
-  function init() { initPrograms(); initPromo(); }
+  // ---------- Baner „Jesteś psychologiem?” — na telefonie zdjęcie ma wysokość tytułu ----------
+  function initJoin() {
+    var b = document.getElementById('join'); if (!b) return;
+    var t = b.querySelector('.wfj-banner__title'); if (!t) return;
+    function fit() { b.style.setProperty('--wfj-th', t.offsetHeight + 'px'); }
+    fit(); window.addEventListener('resize', fit); window.addEventListener('load', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  }
+
+  function init() { initPrograms(); initPromo(); initJoin(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

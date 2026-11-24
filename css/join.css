@@ -131,3 +131,21 @@
   .wfj-banner__cta { width: 100%; justify-content: center; }
 }
 @media (max-width: 575px) { .wfj-banner__inner { padding-right: 0; } .wfj-banner__title { padding-right: 92px; } }
+
+/* 2026-11-24 (3): zdjęcie zawsze prostokątne. Tablet: od górnej krawędzi tytułu do dolnej krawędzi przycisku.
+   Telefon: wysokość tytułu, przycisk pod spodem na całą szerokość. Druga linia tytułu mniejsza. */
+.wfj-banner__title span { font-size: .78em; }
+.wfj-banner__photo { object-position: 50% 0; }
+@media (max-width: 991px) {
+  .wfj-banner__inner { display: block; position: relative; padding-right: 0; }
+  .wfj-banner__title { padding-right: 170px; margin-bottom: 18px; }
+  .wfj-banner__title span { display: block; }
+  .wfj-banner__title span::before { content: none; }
+  .wfj-banner__cta { width: auto; }
+  .wfj-banner__photo { position: absolute; right: 0; top: 0; bottom: auto; width: auto; height: 100%; aspect-ratio: 1 / 1; border-radius: 18px; border-width: 3px; }
+}
+@media (max-width: 575px) {
+  .wfj-banner__title { padding-right: 104px; font-size: 1.45rem; }
+  .wfj-banner__cta { width: 100%; justify-content: center; }
+  .wfj-banner__photo { bottom: auto; height: var(--wfj-th, 90px); border-radius: 14px; }
+}
