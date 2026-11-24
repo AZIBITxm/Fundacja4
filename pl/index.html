@@ -2,6 +2,23 @@
 <html class="wide wow-animation" lang="pl">
   <head>
     <meta charset="utf-8">
+  <!-- 2026-11-24 (Adam): pierwsze wejście bez wybranego języka (z zewnątrz) → strona wyboru języka ze zdjęciem i flagami (../),
+       a nie okienko z 3 flagami. Wejście z innej podstrony fundacji, ?pelna i roboty wyszukiwarek — bez przekierowania. -->
+  <script>
+    (function () {
+      try {
+        var ok = localStorage.getItem('langSelected') || localStorage.getItem('langModalSeen') === 'true';
+        if (ok) return;
+        var r = document.referrer || '', same = r.indexOf(location.origin) === 0;
+        if (!same && !/[?&]pelna=/.test(location.search) && !/bot|crawl|spider|slurp|google|bing|yandex|facebookexternalhit/i.test(navigator.userAgent)) {
+          location.replace('../?next=' + encodeURIComponent('pl/index.html' + location.search + location.hash));
+          return;
+        }
+        localStorage.setItem('langSelected', 'pl'); localStorage.setItem('langModalSeen', 'true');
+      } catch (e) {}
+    })();
+  </script>
+
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
@@ -156,7 +173,7 @@
       document.addEventListener('DOMContentLoaded', function() {
         var modal = document.getElementById('langModal');
         // Pokazuj modal tylko przy pierwszym uruchomieniu strony
-        var seen = localStorage.getItem('langModalSeen') === 'true';
+        var seen = true; // 2026-11-24: okienko z 3 flagami wyłączone — wybór języka na stronie startowej (../)
         if (!seen) {
           modal.style.display = 'flex';
           modal.style.opacity = '1';
