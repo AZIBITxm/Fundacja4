@@ -72,6 +72,6 @@
   .wfq-promo__list small { font-size: 13px; }
 }
 
-/* 2026-11-24 (Adam): okno sekcji kanciaste jak reszta strony — bez zaokrągleń (kafelki ankiet w środku zostają zaokrąglone) */
-.wfq-promo, .wfq-promo.wfq-promo { border-radius: 0; }
-@media (max-width: 575px) { .wfq-promo { border-radius: 0; } }
+/* 2026-11-24 (Adam): okno sekcji zaokrąglone jak było; kanciaste są kafelki ankiet w środku */
+.wfq-promo__list a { border-radius: 0; }
+@media (max-width: 575px) { .wfq-promo__list a { border-radius: 0; } }
