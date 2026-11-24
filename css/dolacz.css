@@ -272,3 +272,10 @@
 .wfd-join-note p { margin: 0 0 12px; color: #2b3445; font-size: 17px; line-height: 1.7; }
 .wfd-join-note p:last-child { margin-bottom: 0; }
 @media (max-width: 575px) { .wfd-join-note { margin-top: 40px; padding: 22px 18px; } .wfd-join-note p { font-size: 16px; } }
+/* 2026-11-24 (Adam): ten tekst na niebieskim tle, biała czcionka — ważna informacja dla psychologów */
+.wfd-join-note { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(120deg, #243696 0%, #3a55c9 52%, #6689ff 100%); border: 0; box-shadow: 0 20px 44px rgba(36, 54, 150, .25); padding: 34px 38px; border-radius: 22px; }
+.wfd-join-note::before { content: ""; position: absolute; z-index: -1; width: 300px; height: 300px; right: -90px; top: -130px; border-radius: 50%; background: #8aa4ff; opacity: .5; filter: blur(50px); }
+.wfd-join-note p { color: #fff; font-size: 18px; }
+.wfd-join-note p:first-child { font-weight: 500; }
+.wfd-join-note p:last-child { color: rgba(255, 255, 255, .9); }
+@media (max-width: 575px) { .wfd-join-note { padding: 24px 20px; } .wfd-join-note p { font-size: 16.5px; } }
