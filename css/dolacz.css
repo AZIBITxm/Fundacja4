@@ -266,3 +266,9 @@
 @keyframes wfdStripDown2 { 0% { opacity: 0; transform: translateY(-24px); } 44% { opacity: 0; transform: translateY(-24px); } 100% { opacity: 1; transform: none; } }
 @keyframes wfdStripDown3 { 0% { opacity: 0; transform: translateY(-24px); } 52% { opacity: 0; transform: translateY(-24px); } 100% { opacity: 1; transform: none; } }
 @keyframes wfdStripDown4 { 0% { opacity: 0; transform: translateY(-24px); } 58% { opacity: 0; transform: translateY(-24px); } 100% { opacity: 1; transform: none; } }
+
+/* 2026-11-24: tekst pod „Kogo szukamy” (zamiast kafelków „Co oferujemy”) */
+.wfd-join-note { max-width: 760px; margin: 56px auto 0; padding: 28px 32px; border-radius: 18px; background: var(--wfd-blue-l); border: 1px solid #dfe6ff; text-align: center; }
+.wfd-join-note p { margin: 0 0 12px; color: #2b3445; font-size: 17px; line-height: 1.7; }
+.wfd-join-note p:last-child { margin-bottom: 0; }
+@media (max-width: 575px) { .wfd-join-note { margin-top: 40px; padding: 22px 18px; } .wfd-join-note p { font-size: 16px; } }
