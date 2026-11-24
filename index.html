@@ -169,52 +169,52 @@
         .flag-pl .flag-image { 
             background-image: url('images/flaga/pl.png');
         }
-        .flag-pl { animation: slideInFlag 0.8s ease-out 0.5s forwards; }
+        .flag-pl { animation: slideInFlag 0.8s ease-out 2.85s forwards; }
         
         .flag-en .flag-image { 
             background-image: url('images/flaga/en.png');
         }
-        .flag-en { animation: slideInFlag 0.8s ease-out 0.8s forwards; }
+        .flag-en { animation: slideInFlag 0.8s ease-out 2.70s forwards; }
         
         .flag-de .flag-image { 
             background-image: url('images/flaga/de.png');
         }
-        .flag-de { animation: slideInFlag 0.8s ease-out 1.1s forwards; }
+        .flag-de { animation: slideInFlag 0.8s ease-out 2.55s forwards; }
         
         .flag-es .flag-image { 
             background-image: url('images/flaga/esp.png');
         }
-        .flag-es { animation: slideInFlag 0.8s ease-out 1.4s forwards; }
+        .flag-es { animation: slideInFlag 0.8s ease-out 2.40s forwards; }
         
         .flag-fr .flag-image { 
             background-image: url('images/flaga/fr.png');
         }
-        .flag-fr { animation: slideInFlag 0.8s ease-out 1.7s forwards; }
+        .flag-fr { animation: slideInFlag 0.8s ease-out 2.25s forwards; }
         
         .flag-cn .flag-image { 
             background-image: url('images/flaga/cn.png');
         }
-        .flag-cn { animation: slideInFlag 0.8s ease-out 2.0s forwards; }
+        .flag-cn { animation: slideInFlag 0.8s ease-out 2.10s forwards; }
         
         .flag-ru .flag-image { 
             background-image: url('images/flaga/ru.png');
         }
-        .flag-ru { animation: slideInFlag 0.8s ease-out 2.3s forwards; }
+        .flag-ru { animation: slideInFlag 0.8s ease-out 1.95s forwards; }
         
         .flag-sa .flag-image { 
             background-image: url('images/flaga/sa.png');
         }
-        .flag-sa { animation: slideInFlag 0.8s ease-out 2.6s forwards; }
+        .flag-sa { animation: slideInFlag 0.8s ease-out 1.80s forwards; }
         
         .flag-ae .flag-image { 
             background-image: url('images/flaga/emirates.png');
         }
-        .flag-ae { animation: slideInFlag 0.8s ease-out 2.9s forwards; }
+        .flag-ae { animation: slideInFlag 0.8s ease-out 1.65s forwards; }
         
         .flag-us .flag-image { 
             background-image: url('images/flaga/us.png');
         }
-        .flag-us { animation: slideInFlag 0.8s ease-out 3.2s forwards; }
+        .flag-us { animation: slideInFlag 0.8s ease-out 1.50s forwards; }
         
         .logo-container {
             position: fixed;
@@ -1012,7 +1012,7 @@ function showMobileBannersByLanguage() {
         bannerBox.style.margin = '0 auto';
         // Baner
         const bigBanner = selectedBanner.cloneNode(true);
-        const lastDelay = 0.3 + gridBanners.length * 0.15 + 0.2;
+        const lastDelay = 1.5; // po logo (logo wchodzi 0,3–1,3 s)
         bigBanner.style.animationDelay = lastDelay + 's';
         bigBanner.style.width = '160px';
         bigBanner.style.height = '120px';
@@ -1090,7 +1090,8 @@ function showMobileBannersByLanguage() {
     // Przenieś pozostałe banery do gridu
     gridBanners.forEach((b, i) => {
         const gridBanner = b.cloneNode(true);
-        gridBanner.style.animationDelay = (0.3 + i * 0.15) + 's';
+        // od dołu do góry: ostatnia flaga siatki wchodzi pierwsza, zaraz po fladze na dole
+        gridBanner.style.animationDelay = (2.1 + (gridBanners.length - 1 - i) * 0.15) + 's';
         // Dodaj linkowanie
         const lang = gridBanner.getAttribute('data-lang');
         let href = null;
