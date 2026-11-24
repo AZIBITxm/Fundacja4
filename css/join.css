@@ -120,3 +120,14 @@
   .wfj-banner__title span { display: block; }
   .wfj-banner__title span::before { content: none; }
 }
+
+/* 2026-11-24 (2): zdjęcie psychologa z prawej (wygenerowane, białe tło) */
+.wfj-banner__title { flex: 1 1 320px; }
+.wfj-banner__photo { flex: none; width: 140px; height: 140px; object-fit: cover; object-position: 50% 10%; border-radius: 22px; border: 4px solid #fff;
+  background: #fff; box-shadow: 0 16px 34px rgba(20, 30, 90, .32); }
+@media (max-width: 767px) {
+  .wfj-banner__inner { padding-right: 96px; }
+  .wfj-banner__photo { position: absolute; right: 0; top: 0; width: 82px; height: 82px; border-radius: 50%; border-width: 3px; }
+  .wfj-banner__cta { width: 100%; justify-content: center; }
+}
+@media (max-width: 575px) { .wfj-banner__inner { padding-right: 0; } .wfj-banner__title { padding-right: 92px; } }

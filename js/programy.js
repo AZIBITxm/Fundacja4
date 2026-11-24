@@ -1,7 +1,7 @@
 /* Strona główna — animacje sekcji „Poznaj siebie” (#poznaj-siebie) i „Nasze programy” (#programy). 2026-11-23/24.
  *
  * „Nasze programy”: pokaz 3 kafelków 3D. Klik w boczny kafelek = na środek; klik w środkowy aktywny program = przejście.
- *   Strzałki, kropki, palec, klawisze ← →. Sam się przełącza: środek → lewy → środek → prawy → … (co 4,5 s, tylko gdy
+ *   Strzałki, kropki, palec, klawisze ← →. Obieg w kółko (zawsze kafelek z obu stron). Sam się przełącza: 3 kroki w jedną stronę, 3 w drugą (co 4,5 s, tylko gdy
  *   sekcja jest widoczna; po ręcznym ruchu pauza 12 s). Wysokość sceny = najwyższy kafelek, żeby opis i kreski
  *   nie wchodziły pod kafelek (na telefonie).
  * „Poznaj siebie”: kafelki ankiet wjeżdżają z prawej, potem po kolei się podświetlają, a pod tytułem zmienia się opis. */
@@ -29,9 +29,16 @@
       if (h) flow.style.height = (h + 46) + 'px';
     }
     function set(i, anim) {
-      a = (i + cards.length) % cards.length;
+      var n = cards.length;
+      a = (i % n + n) % n;
       cards.forEach(function (c, k) {
-        var d = k - a; c.style.setProperty('--d', d); c.style.setProperty('--ad', Math.abs(d));
+        var d = ((k - a) % n + n) % n; if (d > n / 2) d -= n;          // obieg w kółko: zawsze -1 / 0 / +1
+        var prev = c._d === undefined ? d : c._d; c._d = d;
+        if (Math.abs(d - prev) > 1) {                                   // kafelek „przeskakuje” na drugą stronę — bez przelotu przez środek
+          c.classList.add('is-wrap');
+          requestAnimationFrame(function () { requestAnimationFrame(function () { c.classList.remove('is-wrap'); }); });
+        }
+        c.style.setProperty('--d', d); c.style.setProperty('--ad', Math.abs(d));
         c.classList.toggle('is-active', d === 0); c.setAttribute('aria-current', d === 0 ? 'true' : 'false');
       });
       dots.forEach(function (d, k) { d.classList.toggle('is-active', k === a); });
@@ -70,12 +77,13 @@
       visible = v;
       if (v && !shown) { shown = true; flow.classList.add('is-in'); setTimeout(function () { flow.classList.add('is-ready'); fitHeight(); }, 1300); }
     });
-    // samoczynne przełączanie: środek → lewy → środek → prawy → …
-    if (!reduce && cards.length === 3) {
-      var seq = [start - 1, start, start + 1, start];
+    // samoczynne przełączanie w kółko: 3 kroki w jedną stronę, potem 3 w drugą
+    if (!reduce && cards.length >= 3) {
+      var dir = 1;
       setInterval(function () {
         if (!visible || Date.now() < pausedUntil || document.hidden) return;
-        set(seq[step % seq.length], true); step++;
+        set(a + dir, true); step++;
+        if (step % cards.length === 0) dir = -dir;
       }, 4500);
     }
   }
@@ -102,7 +110,9 @@
     });
     show(0);
     onView(box, function (v) { visible = v; if (v) box.classList.add('is-in'); }, .2);
-    if (!reduce) setInterval(function () { if (visible && !hover && !document.hidden) show(i + 1); }, 3800);
+    // animacje tylko na komputerze (≥ 992 px); telefon i tablet — statyczny układ (Adam 24.11)
+    var desk = window.matchMedia('(min-width: 992px)');
+    if (!reduce) setInterval(function () { if (desk.matches && visible && !hover && !document.hidden) show(i + 1); }, 3800);
   }
 
   function init() { initPrograms(); initPromo(); }

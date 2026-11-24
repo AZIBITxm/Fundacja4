@@ -75,3 +75,7 @@
   .wfp3__arrow { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .wfp3__card, .wfp3__in { transition: none !important; } }
+
+/* 2026-11-24: obieg w kółko — kafelek przeskakujący na drugą stronę pojawia się bez przelotu (js/programy.js) */
+.wfp3__card { transition: transform .6s cubic-bezier(.2, .75, .2, 1), filter .6s ease, opacity .45s ease; }
+.wfp3__card.is-wrap { transition: none; opacity: 0; }
