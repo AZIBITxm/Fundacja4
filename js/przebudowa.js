@@ -30,7 +30,7 @@ var WF_PRZEBUDOWA = true;
   root.classList.add('wf-rebuild');
 
   // sekcje strony głównej ukryte w trybie przebudowy (linki do nich znikają z menu i stopki)
-  var HIDDEN = ['about', 'experience', 'projects', 'world-market', 'pricing', 'news'];
+  var HIDDEN = ['experience', 'projects', 'world-market', 'pricing', 'news'];
   var CONTACT = ['contact-info', 'contacts'];
 
   function anchorOf(a) {

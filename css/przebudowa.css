@@ -2,7 +2,6 @@
    Wyłączenie: w js/przebudowa.js ustaw WF_PRZEBUDOWA = false (ten plik może zostać — bez klasy nic nie robi). */
 
 /* Strona główna: ukryte sekcje (zostają nagłówek + slider, #services z rezerwacją, baner #join, stopka) */
-html.wf-rebuild #about,
 html.wf-rebuild #experience,
 html.wf-rebuild #projects,
 html.wf-rebuild #world-market,
@@ -14,7 +13,6 @@ html.wf-rebuild .wfr-hide-section { display: none !important; }
 
 /* Menu: zostają Home, Konsultacje, Dołącz, Kontakt (reszta prowadzi do ukrytych sekcji).
    :has() chowa pozycje od razu (bez mignięcia); klasa .wfr-hidden z JS to zapas dla starszych przeglądarek i stopki. */
-html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#about"]),
 html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#experience"]),
 html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#projects"]),
 html.wf-rebuild .rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#pricing"]),

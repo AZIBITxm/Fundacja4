@@ -80,7 +80,7 @@
       var url = /^https?:/.test(m) ? m : 'https://' + m;
       return keep('<a href="' + url + '" target="_blank" rel="noopener">' + m + '</a>');
     });
-    h = h.replace(/(\+48 ?500 ?461 ?563|\+49 ?15212403091|\b116 ?111\b|\b800 ?12 ?12 ?12\b|\b112\b)/g, function (m) {
+    h = h.replace(/(\+48 ?500 ?461 ?563|\b116 ?111\b|\b800 ?12 ?12 ?12\b|\b112\b)/g, function (m) {
       return keep('<a href="tel:' + m.replace(/\s/g, '') + '">' + m + '</a>');
     });
     h = h.replace(/\u0001(\d+)\u0002/g, function (_, i) { return kept[+i]; });
