@@ -23,3 +23,8 @@
 /* Adam 20.11 (15:11): dolna belka „Jeżeli chcesz wesprzeć naszą fundację… / Wesprzyj” usunięta z widoku (HTML zostaje);
    zbudujemy ją na nowo, gdy będzie konsultant AI i możliwość wpłat, w stylu reszty strony. */
 #sticky-narrow-banner { display: none !important; }
+
+/* „O nas” (2026-11-26, Adam): sekcja ukryta do czasu nowego tekstu — razem z pozycją w menu na wszystkich stronach.
+   Przywrócić: usunąć ten blok. */
+#about,
+.rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#about"]) { display: none !important; }

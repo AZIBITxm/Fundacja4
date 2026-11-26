@@ -116,6 +116,17 @@
       margin-bottom: 20px;
     }
   }
+  /* Sprawozdania w stopce (2026-11-26): rozwijana lista lat */
+  .wf-footer .wf-spr { margin: 0 0 6px; }
+  .wf-footer .wf-spr summary { cursor: pointer; list-style: none; color: rgba(255,255,255,0.7); padding: 4px 0; transition: color 0.3s ease; }
+  .wf-footer .wf-spr summary::-webkit-details-marker { display: none; }
+  .wf-footer .wf-spr summary::after { content: " ▾"; font-size: 11px; }
+  .wf-footer .wf-spr[open] summary::after { content: " ▴"; }
+  .wf-footer .wf-spr summary:hover { color: #6689ff; }
+  .wf-footer .wf-spr ul { list-style: none; margin: 8px 0 4px; padding: 10px 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); display: inline-block; text-align: left; }
+  .wf-footer .wf-spr li { display: flex; gap: 14px; align-items: baseline; padding: 3px 0; font-size: 14px; }
+  .wf-footer .wf-spr li span { color: #fff; min-width: 38px; }
+  .wf-footer .footer-legal .wf-spr li a { display: inline; margin: 0; }
 </style>
 
 <footer class="wf-footer">
@@ -132,7 +143,7 @@
       </div>
       <div class="col-md-4 footer-quick">
         <h5>Szybkie linki</h5>
-        <a href="index.html#about">O nas</a>
+        <!-- UKRYTE (2026-11-26) do czasu nowego tekstu „O nas”: <a href="index.html#about">O nas</a> -->
         <a href="index.html#projects">Projekty</a>
         <a href="index.html#services">Usługi</a>
         <a href="program-dla-rodzicow.html">Program dla rodziców</a>
@@ -144,8 +155,15 @@
         <a href="polityka-prywatnosci.html">Polityka prywatności</a>
         <a href="polityka-prywatnosci.html#pliki-cookies">Polityka cookies</a>
         <a href="regulamin.html">Regulamin</a>
-        <a href="../doc/STATUT WorldFoundation aktualny - cyfrowy.pdf" target="_blank" rel="noopener">Statut</a>
-        <a href="index.html#sprawozdania">Sprawozdania</a>
+        <a href="../doc/statut-worldfoundation.pdf" target="_blank" rel="noopener">Statut</a>
+        <details class="wf-spr">
+          <summary>Sprawozdania</summary>
+          <ul>
+            <li><span>2025</span><a href="../doc/sprawozdania/sprawozdanie-merytoryczne-2025.pdf" target="_blank" rel="noopener">merytoryczne</a><a href="../doc/sprawozdania/sprawozdanie-finansowe-2025.pdf" target="_blank" rel="noopener">finansowe</a></li>
+            <li><span>2024</span><a href="../doc/sprawozdania/sprawozdanie-merytoryczne-2024.pdf" target="_blank" rel="noopener">merytoryczne</a><a href="../doc/sprawozdania/sprawozdanie-finansowe-2024.pdf" target="_blank" rel="noopener">finansowe</a></li>
+            <li><span>2023</span><a href="../doc/sprawozdania/sprawozdanie-merytoryczne-2023.pdf" target="_blank" rel="noopener">merytoryczne</a><a href="../doc/sprawozdania/sprawozdanie-finansowe-2023.pdf" target="_blank" rel="noopener">finansowe</a></li>
+          </ul>
+        </details>
         <a href="#" data-wfc-open onclick="if(window.WFCookies) return WFCookies.open(); return false;">Ustawienia cookies</a>
       </div>
     </div>
