@@ -55,9 +55,6 @@
   background-attachment: scroll !important;
   border-top: 1px solid #e6eaf2; border-bottom: 1px solid #e6eaf2;
 }
-@media (min-width: 768px) {
-  #about .parallax-container.about-light { background-image: linear-gradient(rgba(245,247,252,.45), rgba(245,247,252,.6)), url("../images/banery/c2-jasna.webp") !important; }
-}
 @media (max-width: 767px) {
   #about .parallax-container.about-light { background-size: auto, 230% auto !important; background-position: 0 0, 45% 30px !important; }
 }
@@ -82,6 +79,15 @@
   opacity: 0; transition: opacity .9s ease, background-size 1.2s cubic-bezier(.4,0,.2,1); }
 /* po „Pokaż więcej” mapa powiększa się na Europę i Afrykę (~2/3 wysokości ekranu) i dalej jedzie z ekranem */
 #about.about-open .about-map { opacity: .45; background-size: auto 80vh; }
-@media (max-width: 767px) { #about.about-open .about-map { opacity: .7; } }
+/* telefon (2026-11-26, Adam): bez powiększania – jak wcześniej: stała skala, mapa jedzie z ekranem */
+@media (max-width: 767px) {
+  #about .about-map, #about.about-open .about-map { background-size: 230% auto; background-position: 45% 45%; transition: opacity .9s ease; }
+  #about.about-open .about-map { opacity: 1; }
+}
+/* tablet/komputer: ta sama przezroczystość mapy na stałe (zwinięte i rozwinięte) = 45% */
+@media (min-width: 768px) {
+  #about .parallax-container.about-light { background-image: linear-gradient(rgba(245,247,252,.55), rgba(245,247,252,.55)), url("../images/banery/c2-jasna.webp") !important; }
+  #about .about-light #about-frosted-bg { background: transparent !important; }
+}
 #about.about-open .parallax-container.about-light { background-image: none !important; }
 #about .about-light #about-frosted-bg { z-index: 1; background: rgba(255,255,255,.3); backdrop-filter: none; }
