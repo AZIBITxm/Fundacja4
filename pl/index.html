@@ -1229,6 +1229,15 @@ WorldFoundation to fundacja powołana 1 września 2022 roku z inicjatywy Adama Z
                             frosted.style.opacity = '1';
                           }
                         }else{
+                          // 2026-11-26 (Adam): przy zwijaniu ekran podąża za przyciskiem – co klatkę animacji
+                          // przewijamy stronę tak, by przycisk został w tym samym miejscu ekranu.
+                          var startTop = btn.getBoundingClientRect().top;
+                          var until = performance.now() + 1400; // animacja max-height trwa 1,2 s
+                          (function follow(){
+                            var d = btn.getBoundingClientRect().top - startTop;
+                            if (Math.abs(d) > 0.5) window.scrollTo({ top: window.pageYOffset + d, behavior: 'instant' });
+                            if (performance.now() < until) requestAnimationFrame(follow);
+                          })();
                           extra.style.maxHeight = '0';
                           extra.style.paddingTop = '0';
                           btn.textContent = 'Pokaż więcej';
