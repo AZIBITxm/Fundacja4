@@ -24,7 +24,21 @@
    zbudujemy ją na nowo, gdy będzie konsultant AI i możliwość wpłat, w stylu reszty strony. */
 #sticky-narrow-banner { display: none !important; }
 
-/* „O nas” (2026-11-26, Adam): sekcja ukryta do czasu nowego tekstu — razem z pozycją w menu na wszystkich stronach.
-   Przywrócić: usunąć ten blok. */
-#about,
-.rd-navbar-nav > .rd-nav-item:has(> .rd-nav-link[href$="#about"]) { display: none !important; }
+
+/* „O nas” (2026-11-26, Adam): czytelniejszy tekst – akapity z odstępem i wcięciem, jednakowe tytuły programów */
+#about-extra-text .about-sec { margin: 0 0 30px; }
+#about-extra-text .about-subtitle { display: block; margin: 0 0 12px; text-transform: none; letter-spacing: .01em; font-family: inherit; color: #fff; font-size: 1.3em; font-weight: 700; line-height: 1.3;
+  padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,.22); }
+#about-extra-text .about-par { margin: 0 0 .85em; text-indent: 1.6em; }
+#about-extra-text .about-sec > .about-par:first-of-type,
+#about-extra-text .about-prog .about-par { text-indent: 0; }
+#about-extra-text .about-prog { margin: 0 0 20px; padding-left: 16px; border-left: 3px solid #6689ff; }
+#about-extra-text .about-prog-title { display: block; margin: 0 0 6px; color: #8fb0ff !important; font-size: 1.18em; font-weight: 700; line-height: 1.35; text-decoration: none; }
+#about-extra-text a.about-prog-title:hover .about-prog-text,
+#about-extra-text a.about-prog-title:hover { color: #c3d4ff !important; }
+#about-extra-text .about-prog-more { display: inline-block; margin-left: 10px; padding: 1px 9px; border: 1px solid rgba(143,176,255,.6); border-radius: 999px;
+  font-size: .72em; font-weight: 600; vertical-align: middle; transition: background .2s, color .2s; }
+#about-extra-text a.about-prog-title:hover .about-prog-more { background: #6689ff; border-color: #6689ff; color: #fff; }
+#about-extra-text .about-link { color: #8fb0ff !important; text-decoration: underline; text-underline-offset: 3px; }
+#about-extra-text .about-link:hover { color: #c3d4ff !important; }
+@media (max-width: 575px) { #about-extra-text .about-par { text-indent: 1.1em; } #about-extra-text .about-prog-more { display: table; margin: 6px 0 0; } }
