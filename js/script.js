@@ -261,6 +261,19 @@ $(function() {
 					windowReady = true;
 				}
 			} );
+
+			// 2026-11-26: powrót przyciskiem „Wstecz” — przeglądarka przywraca stronę z pamięci (bfcache)
+			// w stanie sprzed wyjścia: ekran ładowania włączony, treść wygaszona (fadeOut). Przywracamy widok.
+			window.addEventListener( 'pageshow', function ( event ) {
+				if ( !event.persisted ) return;
+				var page = document.querySelector( '.page' );
+				if ( page ) {
+					page.classList.remove( 'fadeOut' );
+					page.classList.add( 'fadeIn' );
+				}
+				plugins.preloader.addClass( 'loaded' );
+				windowReady = true;
+			} );
 		}
 
 		/**
