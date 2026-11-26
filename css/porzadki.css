@@ -42,3 +42,44 @@
 #about-extra-text .about-link { color: #8fb0ff !important; text-decoration: underline; text-underline-offset: 3px; }
 #about-extra-text .about-link:hover { color: #c3d4ff !important; }
 @media (max-width: 575px) { #about-extra-text .about-par { text-indent: 1.1em; } #about-extra-text .about-prog-more { display: table; margin: 6px 0 0; } }
+
+/* „O nas” – JASNA wersja (2026-11-26, Adam): białe tło z tą samą mapą z kropek co w stopce (tu niebieskie kropki
+   na jasnym tle, images/banery/c2-jasna.webp), ciemny tekst. Stopka zostaje ciemna. */
+#about .parallax-container.about-light {
+  /* !important: skrypt paralaksy motywu wstawia na telefonach własne tło inline */
+  background-color: #f5f7fc !important;
+  background-image: linear-gradient(rgba(255,255,255,.25), rgba(255,255,255,.45)), url("../images/banery/c2-jasna.webp") !important;
+  background-size: auto, max(100%, 1100px) auto !important;
+  background-position: 0 0, center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  border-top: 1px solid #e6eaf2; border-bottom: 1px solid #e6eaf2;
+}
+@media (max-width: 767px) {
+  #about .parallax-container.about-light { background-size: auto, 230% auto !important; background-position: 0 0, 45% 30px !important; }
+}
+#about .about-light #about-frosted-bg { background: rgba(255,255,255,.55); backdrop-filter: blur(6px); }
+#about .about-light h3 { color: #151b2e; }
+#about .about-light #about-main-text,
+#about .about-light #about-extra-text { color: #2b3245; font-weight: 400; }
+#about .about-light #about-extra-text .about-subtitle { color: #151b2e; border-bottom-color: rgba(21,27,46,.14); }
+#about .about-light #about-extra-text .about-prog { border-left-color: #1f5fd6; }
+#about .about-light #about-extra-text .about-prog-title { color: #1f5fd6 !important; }
+#about .about-light #about-extra-text a.about-prog-title:hover { color: #1546a8 !important; }
+#about .about-light #about-extra-text .about-prog-more { border-color: rgba(31,95,214,.45); color: #1f5fd6; }
+#about .about-light #about-extra-text a.about-prog-title:hover .about-prog-more { background: #1f5fd6; border-color: #1f5fd6; color: #fff; }
+#about .about-light #about-extra-text .about-link { color: #1f5fd6 !important; }
+#about .about-light #about-extra-text .about-link:hover { color: #1546a8 !important; }
+
+/* „O nas” rozwinięte (2026-11-26): mapa w tej samej skali „jedzie” z ekranem i zostaje za tekstem podczas czytania
+   (position: sticky). #about ma overflow: clip – overflow: hidden blokowałby sticky. */
+#about, #about .parallax-container.about-light, .page { overflow: clip; }  /* clip = to samo przycinanie co hidden, ale nie blokuje sticky */
+#about .about-map { position: sticky; top: 0; height: 100vh; margin-bottom: -100vh; z-index: 0; pointer-events: none;
+  background: url("../images/banery/c2-jasna.webp") center 58% / max(100%, 1100px) auto no-repeat;
+  opacity: 0; transition: opacity .8s ease; }
+#about.about-open .about-map { opacity: 1; }
+#about.about-open .parallax-container.about-light { background-image: none !important; }
+#about .about-light #about-frosted-bg { z-index: 1; background: rgba(255,255,255,.3); backdrop-filter: none; }
+@media (max-width: 767px) {
+  #about .about-map { background-size: 230% auto; background-position: 45% 45%; }
+}

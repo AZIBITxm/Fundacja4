@@ -96,7 +96,7 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css?v=20261107e">
-    <link rel="stylesheet" href="../css/porzadki.css?v=20261126b">
+    <link rel="stylesheet" href="../css/porzadki.css?v=20261126c">
   <!-- Modals CSS -->
   <link rel="stylesheet" href="../css/modal-lang.css">
   <link rel="stylesheet" href="../css/modal-spotkanie.css">
@@ -1138,9 +1138,10 @@ Bo inwestycja w zdrowie psychiczne to inwestycja w siłę – Twoją i całego z
 
       <!-- O nas (2026-11-26): przeniesione pod Zarząd; nowy tekst od Adama 26.11.2026 -->
       <section class="section section-fluid bg-default" id="about">
-        <div class="parallax-container" data-parallax-img="../images/banery/c2.webp">
+        <div class="parallax-container about-light">
+          <div class="about-map" aria-hidden="true"></div>
           <div id="about-frosted-bg"></div>
-          <div class="parallax-content section-xl context-dark bg-overlay-68 bg-mobile-overlay">
+          <div class="parallax-content section-xl">
             <div class="container">
               <div class="row row-30 justify-content-end text-right">
                 <div class="col-sm-7" id="about-text-col">
@@ -1200,7 +1201,7 @@ WorldFoundation to fundacja powołana 1 września 2022 roku z inicjatywy Adama Z
 </div>
                   </div>
                   <div class="group-sm group-middle group justify-content-end">
-                    <a class="button button-white-outline button-ujarak" href="#" id="about-learn-more-btn">Pokaż więcej</a>
+                    <a class="button button-default-outline button-ujarak" href="#" id="about-learn-more-btn">Pokaż więcej</a>
                   </div>
                   <script>
                     (function(){
@@ -1216,6 +1217,7 @@ WorldFoundation to fundacja powołana 1 września 2022 roku z inicjatywy Adama Z
                           extra.style.maxHeight = extra.scrollHeight + 80 + 'px';
                           extra.style.paddingTop = '12px';
                           btn.textContent = 'Pokaż mniej';
+                          document.getElementById('about').classList.add('about-open');
                           // Rozszerz pole tekstowe na desktopie
                           if(window.innerWidth >= 992 && col){
                             col.classList.remove('col-sm-7');
@@ -1241,6 +1243,7 @@ WorldFoundation to fundacja powołana 1 września 2022 roku z inicjatywy Adama Z
                           extra.style.maxHeight = '0';
                           extra.style.paddingTop = '0';
                           btn.textContent = 'Pokaż więcej';
+                          document.getElementById('about').classList.remove('about-open');
                           // Przywróć pierwotną szerokość na desktopie
                           if(window.innerWidth >= 992 && col){
                             col.classList.remove('col-12','col-lg-11');
