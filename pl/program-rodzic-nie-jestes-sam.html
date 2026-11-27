@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../css/dolacz.css?v=20261120b">
   <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
   <link rel="stylesheet" href="../css/program.css?v=20261123g">
-  <link rel="stylesheet" href="../css/rodzic.css?v=20261127j">
+  <link rel="stylesheet" href="../css/rodzic.css?v=20261127k">
   <!-- Tryb „strona w przebudowie” (zlecenie 6A) — przełącznik WF_PRZEBUDOWA w js/przebudowa.js -->
   <link rel="stylesheet" href="../css/przebudowa.css?v=20261127a">
   <script src="../js/przebudowa.js?v=20261124a"></script>
@@ -144,33 +144,39 @@
             <p class="wfr-kicker" data-reveal>Każda rodzina może znaleźć się w trudnej sytuacji</p>
             <p class="wfl-lead">Problemy rodzinne mają różne przyczyny i przebieg. Czasami zaczynają się od narastających nieporozumień, innym razem od rozstania, rozwodu lub konfliktu, który z czasem obejmuje również dzieci.</p>
             <p>Program kierujemy do rodziców, którzy potrzebują wsparcia w budowaniu relacji z dzieckiem, przechodzą przez trudny okres w życiu rodzinnym lub zmagają się z problemami wymagającymi pomocy psychologicznej i prawnej.</p>
-            <div class="wfr-who">
-              <figure class="wfr-who__item wfr-who__photo" data-reveal><picture><source media="(min-width: 1200px)" srcset="../images/nie-jestes-sam/tata-na-barana-szeroki.webp" width="1500" height="1000"><source media="(min-width: 992px)" srcset="../images/nie-jestes-sam/tata-na-barana-sredni.webp" width="1000" height="1000"><source media="(min-width: 768px)" srcset="../images/nie-jestes-sam/tata-na-barana-szeroki.webp" width="1500" height="1000"><img src="../images/nie-jestes-sam/tata-na-barana.webp" width="750" height="1000" loading="lazy" decoding="async" alt="Tata niosący synka na barana"></picture></figure>
-              <div class="wfr-who__item" data-reveal>
+            <!-- Karuzela (Adam 27.11.2026): zdjęcie na środku, kafelki po bokach; przesuwanie, strzałki, klik = na środek. Logika: js/rodzic.js -->
+            <div class="wfr-cf" data-reveal>
+              <button class="wfr-cf__arrow wfr-cf__arrow--prev" type="button" aria-label="Poprzedni"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+              <div class="wfr-cf__flow wfr-who" tabindex="0" aria-roledescription="karuzela" aria-label="Dla kogo jest program">
+              <figure class="wfr-who__item wfr-who__photo wfr-cf__card"><picture><source media="(min-width: 1200px)" srcset="../images/nie-jestes-sam/tata-na-barana-szeroki.webp" width="1500" height="1000"><source media="(min-width: 992px)" srcset="../images/nie-jestes-sam/tata-na-barana-sredni.webp" width="1000" height="1000"><source media="(min-width: 768px)" srcset="../images/nie-jestes-sam/tata-na-barana-szeroki.webp" width="1500" height="1000"><img src="../images/nie-jestes-sam/tata-na-barana.webp" width="750" height="1000" loading="lazy" decoding="async" alt="Tata niosący synka na barana"></picture></figure>
+              <div class="wfr-who__item wfr-cf__card">
                 <span class="wfr-ico" aria-hidden="true"><i class="fa fa-user-o"></i></span>
                 <h3>Rodzice wychowujący dzieci samodzielnie</h3>
                 <p>Codzienna odpowiedzialność za wychowanie dziecka, podejmowanie decyzji i godzenie obowiązków zawodowych z rodzicielstwem może być dużym obciążeniem. Pomagamy szukać sposobów na radzenie sobie z trudnościami i budowanie stabilnego środowiska dla dziecka.</p>
               </div>
-              <div class="wfr-who__item" data-reveal>
+              <div class="wfr-who__item wfr-cf__card">
                 <span class="wfr-ico" aria-hidden="true"><i class="fa fa-random"></i></span>
                 <h3>Rodzice w separacji i w trakcie rozwodu</h3>
                 <p>Rozstanie rodziców nie musi oznaczać rozpadu więzi rodzinnych. Wspieramy rodziców w przechodzeniu przez ten trudny okres, porządkowaniu emocji i szukaniu sposobów na ograniczenie konfliktu, który może negatywnie wpływać na dziecko.</p>
               </div>
-              <div class="wfr-who__item" data-reveal>
+              <div class="wfr-who__item wfr-cf__card">
                 <span class="wfr-ico" aria-hidden="true"><i class="fa fa-comments-o"></i></span>
                 <h3>Rodzice pozostający w konflikcie rodzicielskim</h3>
                 <p>Długotrwałe spory, problemy komunikacyjne i brak porozumienia w sprawach dotyczących dziecka mogą utrudniać codzienne funkcjonowanie całej rodziny. Pomagamy spojrzeć na sytuację z perspektywy potrzeb dziecka i szukać rozwiązań ograniczających napięcia.</p>
               </div>
-              <div class="wfr-who__item" data-reveal>
+              <div class="wfr-who__item wfr-cf__card">
                 <span class="wfr-ico" aria-hidden="true"><i class="fa fa-chain-broken"></i></span>
                 <h3>Rodzice doświadczający utrudniania kontaktów z dzieckiem</h3>
                 <p>Ograniczanie kontaktów, osłabianie więzi i wciąganie dziecka w konflikt między dorosłymi to sytuacje wymagające szczególnej uwagi. Wspieramy rodziców w rozpoznawaniu problemów, rozumieniu ich konsekwencji i poszukiwaniu odpowiednich form pomocy.</p>
               </div>
-              <div class="wfr-who__item" data-reveal>
+              <div class="wfr-who__item wfr-cf__card">
                 <span class="wfr-ico" aria-hidden="true"><i class="fa fa-balance-scale"></i></span>
                 <h3>Rodzice uczestniczący w postępowaniach sądowych</h3>
                 <p>Sprawy dotyczące kontaktów, opieki nad dzieckiem, alimentów czy władzy rodzicielskiej wiążą się często z dużym stresem i poczuciem niepewności. Pomagamy lepiej zrozumieć procedury i dostępne możliwości prawne.</p>
               </div>
+              </div>
+              <button class="wfr-cf__arrow wfr-cf__arrow--next" type="button" aria-label="Następny"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+              <div class="wfr-cf__dots" aria-hidden="true"></div>
             </div>
           </section>
 
@@ -189,375 +195,387 @@
               <a class="wfr-chip" style="--c:var(--wfr-c5)" href="#obszar-5"><i class="fa fa-users" aria-hidden="true"></i>Grupy wsparcia</a>
             </nav>
 
-            <!-- OBSZAR 1 -->
-            <div class="wfr-area" id="obszar-1" style="--c:var(--wfr-c1);--cl:var(--wfr-c1l)" data-reveal>
-              <div class="wfr-area__head">
-                <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-heart-o"></i></span>
-                <div>
-                  <p class="wfr-area__no">Obszar 1</p>
-                  <h3>Wsparcie psychologiczne w budowaniu relacji z dzieckiem</h3>
+            <!-- Półka (Adam 27.11.2026): otwarty jeden obszar, pozostałe jako grzbiety książek (komputer) / cienkie paski (telefon).
+                 Same się zmieniają co 8 s; po kliknięciu, strzałce lub przesunięciu zostaje wybrany obszar. Logika: js/rodzic.js -->
+            <div class="wfr-shelf" data-reveal>
+              <div class="wfr-shelf__bar">
+                <button class="wfr-shelf__arrow" type="button" data-dir="-1" aria-label="Poprzedni obszar"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                <span class="wfr-shelf__count" aria-live="polite">Obszar <b>1</b> z 5</span>
+                <button class="wfr-shelf__arrow" type="button" data-dir="1" aria-label="Następny obszar"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                <span class="wfr-shelf__hint">przesuń palcem lub dotknij paska z boku</span>
+              </div>
+              <div class="wfr-shelf__books">
+              <!-- OBSZAR 1 -->
+              <div class="wfr-area" id="obszar-1" style="--c:var(--wfr-c1);--cl:var(--wfr-c1l)">
+                <div class="wfr-area__head">
+                  <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-heart-o"></i></span>
+                  <div>
+                    <p class="wfr-area__no">Obszar 1</p>
+                    <h3>Wsparcie psychologiczne w budowaniu relacji z dzieckiem</h3>
+                  </div>
+                </div>
+                <p class="wfr-area__motto">Dobra relacja nie kończy się na codziennej obecności. Zaczyna się od wzajemnego zrozumienia.</p>
+                <p>Rodzicielstwo to nie tylko troska o bezpieczeństwo i zaspokajanie codziennych potrzeb dziecka. To również budowanie więzi, umiejętność rozmowy, dostrzeganie emocji i tworzenie przestrzeni, w której dziecko czuje się ważne i akceptowane.</p>
+                <p>Wspieramy rodziców w rozwijaniu kompetencji wychowawczych, rozumieniu zachowań dzieci i budowaniu relacji opartej na zaufaniu. Pokazujemy, jak codzienne postawy dorosłych wpływają na rozwój emocjonalny dziecka i jego poczucie bezpieczeństwa.</p>
+                <div class="wfr-accs">
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">1.1</span>Rozmowa i komunikacja z dzieckiem</summary>
+                    <div class="wfr-acc__body">
+                      <p>Dziecko potrzebuje rodzica, który nie tylko mówi, ale przede wszystkim potrafi słuchać. Pokazujemy, jak rozmawiać o emocjach, trudnościach i codziennych sprawach, aby dziecko czuło się wysłuchane i traktowane poważnie.</p>
+                      <p class="wfr-lbl">Poruszamy zagadnienia:</p>
+                      <ul>
+                        <li>jak rozmawiać z dzieckiem na różnych etapach rozwoju;</li>
+                        <li>jak słuchać, aby dziecko chciało dzielić się swoimi przeżyciami;</li>
+                        <li>jak reagować na złość, smutek i wycofanie;</li>
+                        <li>jak rozwiązywać nieporozumienia bez niepotrzebnej eskalacji;</li>
+                        <li>jak odbudowywać zaufanie po trudnych doświadczeniach.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">1.2</span>Budowanie więzi i poczucia bezpieczeństwa</summary>
+                    <div class="wfr-acc__body">
+                      <p>Silna więź rodzica z dzieckiem powstaje w codziennych sytuacjach. Nie wymaga wyjątkowych okoliczności, lecz uważności, przewidywalności i zainteresowania światem dziecka.</p>
+                      <p class="wfr-lbl">Pomagamy rodzicom zrozumieć:</p>
+                      <ul>
+                        <li>jak budować bliskość i wzajemne zaufanie;</li>
+                        <li>dlaczego regularny, wartościowy wspólny czas jest tak ważny;</li>
+                        <li>jak wzmacniać poczucie własnej wartości dziecka;</li>
+                        <li>jak reagować na potrzeby emocjonalne;</li>
+                        <li>jak zapewniać dziecku stabilność w zmieniających się okolicznościach.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">1.3</span>Trudności wychowawcze i emocje dziecka</summary>
+                    <div class="wfr-acc__body">
+                      <p>Problemy z zachowaniem często są sygnałem, że dziecko przeżywa coś, z czym nie potrafi sobie poradzić. Zamiast koncentrować się wyłącznie na samym zachowaniu, warto zrozumieć jego przyczyny.</p>
+                      <p class="wfr-lbl">Omawiamy między innymi:</p>
+                      <ul>
+                        <li>trudności z przestrzeganiem zasad;</li>
+                        <li>wybuchy złości i zachowania impulsywne;</li>
+                        <li>wycofanie i problemy w relacjach z rówieśnikami;</li>
+                        <li>lęk, niepewność i obniżone poczucie własnej wartości;</li>
+                        <li>sposoby wspierania dziecka w trudnych sytuacjach.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">1.4</span>Rodzic również potrzebuje wsparcia</summary>
+                    <div class="wfr-acc__body">
+                      <p>Zmęczenie, stres i poczucie przeciążenia mogą wpływać na sposób, w jaki reagujemy na potrzeby dziecka. Dbanie o własną równowagę emocjonalną nie jest przejawem egoizmu. Jest ważnym elementem odpowiedzialnego rodzicielstwa.</p>
+                      <p>Pomagamy rodzicom lepiej rozumieć własne emocje, rozpoznawać przeciążenie i szukać sposobów na odzyskanie równowagi.</p>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">1.5</span>Edukacja i rozwijanie kompetencji rodzicielskich</summary>
+                    <div class="wfr-acc__body">
+                      <p>Wiedza pomaga lepiej rozumieć dziecko i podejmować bardziej świadome decyzje wychowawcze.</p>
+                      <p>W ramach programu rozwijamy również działania edukacyjne, w tym szkolenia i spotkania online poświęcone relacjom rodzinnym, rozwojowi dzieci i wyzwaniom współczesnego rodzicielstwa.</p>
+                    </div>
+                  </details>
                 </div>
               </div>
-              <p class="wfr-area__motto">Dobra relacja nie kończy się na codziennej obecności. Zaczyna się od wzajemnego zrozumienia.</p>
-              <p>Rodzicielstwo to nie tylko troska o bezpieczeństwo i zaspokajanie codziennych potrzeb dziecka. To również budowanie więzi, umiejętność rozmowy, dostrzeganie emocji i tworzenie przestrzeni, w której dziecko czuje się ważne i akceptowane.</p>
-              <p>Wspieramy rodziców w rozwijaniu kompetencji wychowawczych, rozumieniu zachowań dzieci i budowaniu relacji opartej na zaufaniu. Pokazujemy, jak codzienne postawy dorosłych wpływają na rozwój emocjonalny dziecka i jego poczucie bezpieczeństwa.</p>
-              <div class="wfr-accs">
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">1.1</span>Rozmowa i komunikacja z dzieckiem</summary>
-                  <div class="wfr-acc__body">
-                    <p>Dziecko potrzebuje rodzica, który nie tylko mówi, ale przede wszystkim potrafi słuchać. Pokazujemy, jak rozmawiać o emocjach, trudnościach i codziennych sprawach, aby dziecko czuło się wysłuchane i traktowane poważnie.</p>
-                    <p class="wfr-lbl">Poruszamy zagadnienia:</p>
-                    <ul>
-                      <li>jak rozmawiać z dzieckiem na różnych etapach rozwoju;</li>
-                      <li>jak słuchać, aby dziecko chciało dzielić się swoimi przeżyciami;</li>
-                      <li>jak reagować na złość, smutek i wycofanie;</li>
-                      <li>jak rozwiązywać nieporozumienia bez niepotrzebnej eskalacji;</li>
-                      <li>jak odbudowywać zaufanie po trudnych doświadczeniach.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">1.2</span>Budowanie więzi i poczucia bezpieczeństwa</summary>
-                  <div class="wfr-acc__body">
-                    <p>Silna więź rodzica z dzieckiem powstaje w codziennych sytuacjach. Nie wymaga wyjątkowych okoliczności, lecz uważności, przewidywalności i zainteresowania światem dziecka.</p>
-                    <p class="wfr-lbl">Pomagamy rodzicom zrozumieć:</p>
-                    <ul>
-                      <li>jak budować bliskość i wzajemne zaufanie;</li>
-                      <li>dlaczego regularny, wartościowy wspólny czas jest tak ważny;</li>
-                      <li>jak wzmacniać poczucie własnej wartości dziecka;</li>
-                      <li>jak reagować na potrzeby emocjonalne;</li>
-                      <li>jak zapewniać dziecku stabilność w zmieniających się okolicznościach.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">1.3</span>Trudności wychowawcze i emocje dziecka</summary>
-                  <div class="wfr-acc__body">
-                    <p>Problemy z zachowaniem często są sygnałem, że dziecko przeżywa coś, z czym nie potrafi sobie poradzić. Zamiast koncentrować się wyłącznie na samym zachowaniu, warto zrozumieć jego przyczyny.</p>
-                    <p class="wfr-lbl">Omawiamy między innymi:</p>
-                    <ul>
-                      <li>trudności z przestrzeganiem zasad;</li>
-                      <li>wybuchy złości i zachowania impulsywne;</li>
-                      <li>wycofanie i problemy w relacjach z rówieśnikami;</li>
-                      <li>lęk, niepewność i obniżone poczucie własnej wartości;</li>
-                      <li>sposoby wspierania dziecka w trudnych sytuacjach.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">1.4</span>Rodzic również potrzebuje wsparcia</summary>
-                  <div class="wfr-acc__body">
-                    <p>Zmęczenie, stres i poczucie przeciążenia mogą wpływać na sposób, w jaki reagujemy na potrzeby dziecka. Dbanie o własną równowagę emocjonalną nie jest przejawem egoizmu. Jest ważnym elementem odpowiedzialnego rodzicielstwa.</p>
-                    <p>Pomagamy rodzicom lepiej rozumieć własne emocje, rozpoznawać przeciążenie i szukać sposobów na odzyskanie równowagi.</p>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">1.5</span>Edukacja i rozwijanie kompetencji rodzicielskich</summary>
-                  <div class="wfr-acc__body">
-                    <p>Wiedza pomaga lepiej rozumieć dziecko i podejmować bardziej świadome decyzje wychowawcze.</p>
-                    <p>W ramach programu rozwijamy również działania edukacyjne, w tym szkolenia i spotkania online poświęcone relacjom rodzinnym, rozwojowi dzieci i wyzwaniom współczesnego rodzicielstwa.</p>
-                  </div>
-                </details>
-              </div>
-            </div>
 
-            <!-- OBSZAR 2 -->
-            <div class="wfr-area" id="obszar-2" style="--c:var(--wfr-c2);--cl:var(--wfr-c2l)" data-reveal>
-              <div class="wfr-area__head">
-                <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-random"></i></span>
-                <div>
-                  <p class="wfr-area__no">Obszar 2</p>
-                  <h3>Wsparcie psychologiczne w sytuacji rozstania i konfliktu rodzicielskiego</h3>
+              <!-- OBSZAR 2 -->
+              <div class="wfr-area" id="obszar-2" style="--c:var(--wfr-c2);--cl:var(--wfr-c2l)">
+                <div class="wfr-area__head">
+                  <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-random"></i></span>
+                  <div>
+                    <p class="wfr-area__no">Obszar 2</p>
+                    <h3>Wsparcie psychologiczne w sytuacji rozstania i konfliktu rodzicielskiego</h3>
+                  </div>
+                </div>
+                <p class="wfr-area__motto">Rozstanie rodziców nie powinno oznaczać rozpadu świata dziecka.</p>
+                <p>Separacja, rozwód i długotrwałe konflikty między rodzicami należą do najtrudniejszych doświadczeń, z jakimi może mierzyć się rodzina. W takich sytuacjach emocje często utrudniają spokojną ocenę sytuacji, a dziecko może znaleźć się w centrum sporu, którego nie powinno być uczestnikiem.</p>
+                <p>Wspieramy rodziców w zrozumieniu psychologicznych konsekwencji konfliktu, rozpoznawaniu potrzeb dziecka i poszukiwaniu sposobów na ograniczenie jego negatywnego wpływu na życie rodzinne.</p>
+                <div class="wfr-accs">
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">2.1</span>Rozstanie i rozwód – jak przejść przez trudny okres?</summary>
+                    <div class="wfr-acc__body">
+                      <p>Rozpad związku oznacza konieczność zmierzenia się z wieloma zmianami. Rodzice muszą odnaleźć się w nowej rzeczywistości, jednocześnie zapewniając dziecku poczucie stabilności.</p>
+                      <p class="wfr-lbl">Poruszamy zagadnienia:</p>
+                      <ul>
+                        <li>jak radzić sobie z emocjami po rozstaniu;</li>
+                        <li>jak rozmawiać z dzieckiem o rozwodzie;</li>
+                        <li>jak przygotować dziecko na zmiany w codziennym życiu;</li>
+                        <li>jak oddzielić konflikt partnerski od odpowiedzialności rodzicielskiej;</li>
+                        <li>jak budować nowe zasady współpracy po rozstaniu.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">2.2</span>Konflikt między rodzicami a dobro dziecka</summary>
+                    <div class="wfr-acc__body">
+                      <p>Długotrwały konflikt może sprawić, że dziecko zaczyna odczuwać presję opowiedzenia się po jednej ze stron. Może mieć poczucie winy, lęk przed odrzuceniem lub przekonanie, że odpowiada za sytuację dorosłych.</p>
+                      <p class="wfr-lbl">Pomagamy rodzicom zrozumieć:</p>
+                      <ul>
+                        <li>czym jest konflikt lojalnościowy;</li>
+                        <li>jak nie angażować dziecka w spory dorosłych;</li>
+                        <li>dlaczego negatywne wypowiedzi o drugim rodzicu mogą szkodzić dziecku;</li>
+                        <li>jak unikać wykorzystywania dziecka jako pośrednika;</li>
+                        <li>jak chronić jego poczucie bezpieczeństwa.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">2.3</span>Komunikacja między rodzicami po rozstaniu</summary>
+                    <div class="wfr-acc__body">
+                      <p>Zakończenie związku nie kończy odpowiedzialności za wspólne rodzicielstwo. Nawet jeśli relacje między dorosłymi są trudne, dziecko nadal potrzebuje ich zaangażowania.</p>
+                      <p class="wfr-lbl">Omawiamy:</p>
+                      <ul>
+                        <li>jak rozmawiać z drugim rodzicem w sytuacji konfliktu;</li>
+                        <li>jak ustalać zasady dotyczące dziecka;</li>
+                        <li>jak ograniczać niepotrzebne spory;</li>
+                        <li>jak prowadzić komunikację w sposób spokojny i rzeczowy;</li>
+                        <li>jak oddzielać osobiste urazy od spraw związanych z wychowaniem.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">2.4</span>Ograniczanie kontaktów i osłabianie więzi z dzieckiem</summary>
+                    <div class="wfr-acc__body">
+                      <p>Utrudnianie kontaktów z jednym z rodziców może prowadzić do stopniowego osłabiania więzi rodzinnych. Szczególnie trudna jest sytuacja, w której dziecko zaczyna odczuwać presję emocjonalną związaną z relacją z drugim rodzicem.</p>
+                      <p>Pomagamy rodzicom rozpoznawać niepokojące sytuacje, rozumieć możliwe mechanizmy psychologiczne i szukać sposobów ochrony relacji z dzieckiem.</p>
+                      <p class="wfr-lbl">Poruszamy między innymi:</p>
+                      <ul>
+                        <li>mechanizmy konfliktu lojalnościowego;</li>
+                        <li>zachowania mogące osłabiać więź dziecka z rodzicem;</li>
+                        <li>emocjonalne konsekwencje ograniczania kontaktów;</li>
+                        <li>znaczenie bezpiecznej i przewidywalnej relacji;</li>
+                        <li>możliwości uzyskania dalszej pomocy psychologicznej i prawnej.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">2.5</span>Odbudowywanie relacji z dzieckiem</summary>
+                    <div class="wfr-acc__body">
+                      <p>Utrata bliskości nie zawsze oznacza, że więź została bezpowrotnie zerwana. Odbudowa relacji wymaga jednak czasu, cierpliwości i uwzględnienia emocjonalnych potrzeb dziecka.</p>
+                      <p class="wfr-lbl">Wspieramy rodziców w poszukiwaniu sposobów na:</p>
+                      <ul>
+                        <li>stopniowe odbudowywanie zaufania;</li>
+                        <li>nawiązywanie kontaktu bez wywierania presji;</li>
+                        <li>rozumienie emocji i zachowań dziecka;</li>
+                        <li>tworzenie bezpiecznej przestrzeni do rozmowy;</li>
+                        <li>wzmacnianie relacji w codziennych sytuacjach.</li>
+                      </ul>
+                    </div>
+                  </details>
                 </div>
               </div>
-              <p class="wfr-area__motto">Rozstanie rodziców nie powinno oznaczać rozpadu świata dziecka.</p>
-              <p>Separacja, rozwód i długotrwałe konflikty między rodzicami należą do najtrudniejszych doświadczeń, z jakimi może mierzyć się rodzina. W takich sytuacjach emocje często utrudniają spokojną ocenę sytuacji, a dziecko może znaleźć się w centrum sporu, którego nie powinno być uczestnikiem.</p>
-              <p>Wspieramy rodziców w zrozumieniu psychologicznych konsekwencji konfliktu, rozpoznawaniu potrzeb dziecka i poszukiwaniu sposobów na ograniczenie jego negatywnego wpływu na życie rodzinne.</p>
-              <div class="wfr-accs">
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">2.1</span>Rozstanie i rozwód – jak przejść przez trudny okres?</summary>
-                  <div class="wfr-acc__body">
-                    <p>Rozpad związku oznacza konieczność zmierzenia się z wieloma zmianami. Rodzice muszą odnaleźć się w nowej rzeczywistości, jednocześnie zapewniając dziecku poczucie stabilności.</p>
-                    <p class="wfr-lbl">Poruszamy zagadnienia:</p>
-                    <ul>
-                      <li>jak radzić sobie z emocjami po rozstaniu;</li>
-                      <li>jak rozmawiać z dzieckiem o rozwodzie;</li>
-                      <li>jak przygotować dziecko na zmiany w codziennym życiu;</li>
-                      <li>jak oddzielić konflikt partnerski od odpowiedzialności rodzicielskiej;</li>
-                      <li>jak budować nowe zasady współpracy po rozstaniu.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">2.2</span>Konflikt między rodzicami a dobro dziecka</summary>
-                  <div class="wfr-acc__body">
-                    <p>Długotrwały konflikt może sprawić, że dziecko zaczyna odczuwać presję opowiedzenia się po jednej ze stron. Może mieć poczucie winy, lęk przed odrzuceniem lub przekonanie, że odpowiada za sytuację dorosłych.</p>
-                    <p class="wfr-lbl">Pomagamy rodzicom zrozumieć:</p>
-                    <ul>
-                      <li>czym jest konflikt lojalnościowy;</li>
-                      <li>jak nie angażować dziecka w spory dorosłych;</li>
-                      <li>dlaczego negatywne wypowiedzi o drugim rodzicu mogą szkodzić dziecku;</li>
-                      <li>jak unikać wykorzystywania dziecka jako pośrednika;</li>
-                      <li>jak chronić jego poczucie bezpieczeństwa.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">2.3</span>Komunikacja między rodzicami po rozstaniu</summary>
-                  <div class="wfr-acc__body">
-                    <p>Zakończenie związku nie kończy odpowiedzialności za wspólne rodzicielstwo. Nawet jeśli relacje między dorosłymi są trudne, dziecko nadal potrzebuje ich zaangażowania.</p>
-                    <p class="wfr-lbl">Omawiamy:</p>
-                    <ul>
-                      <li>jak rozmawiać z drugim rodzicem w sytuacji konfliktu;</li>
-                      <li>jak ustalać zasady dotyczące dziecka;</li>
-                      <li>jak ograniczać niepotrzebne spory;</li>
-                      <li>jak prowadzić komunikację w sposób spokojny i rzeczowy;</li>
-                      <li>jak oddzielać osobiste urazy od spraw związanych z wychowaniem.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">2.4</span>Ograniczanie kontaktów i osłabianie więzi z dzieckiem</summary>
-                  <div class="wfr-acc__body">
-                    <p>Utrudnianie kontaktów z jednym z rodziców może prowadzić do stopniowego osłabiania więzi rodzinnych. Szczególnie trudna jest sytuacja, w której dziecko zaczyna odczuwać presję emocjonalną związaną z relacją z drugim rodzicem.</p>
-                    <p>Pomagamy rodzicom rozpoznawać niepokojące sytuacje, rozumieć możliwe mechanizmy psychologiczne i szukać sposobów ochrony relacji z dzieckiem.</p>
-                    <p class="wfr-lbl">Poruszamy między innymi:</p>
-                    <ul>
-                      <li>mechanizmy konfliktu lojalnościowego;</li>
-                      <li>zachowania mogące osłabiać więź dziecka z rodzicem;</li>
-                      <li>emocjonalne konsekwencje ograniczania kontaktów;</li>
-                      <li>znaczenie bezpiecznej i przewidywalnej relacji;</li>
-                      <li>możliwości uzyskania dalszej pomocy psychologicznej i prawnej.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">2.5</span>Odbudowywanie relacji z dzieckiem</summary>
-                  <div class="wfr-acc__body">
-                    <p>Utrata bliskości nie zawsze oznacza, że więź została bezpowrotnie zerwana. Odbudowa relacji wymaga jednak czasu, cierpliwości i uwzględnienia emocjonalnych potrzeb dziecka.</p>
-                    <p class="wfr-lbl">Wspieramy rodziców w poszukiwaniu sposobów na:</p>
-                    <ul>
-                      <li>stopniowe odbudowywanie zaufania;</li>
-                      <li>nawiązywanie kontaktu bez wywierania presji;</li>
-                      <li>rozumienie emocji i zachowań dziecka;</li>
-                      <li>tworzenie bezpiecznej przestrzeni do rozmowy;</li>
-                      <li>wzmacnianie relacji w codziennych sytuacjach.</li>
-                    </ul>
-                  </div>
-                </details>
-              </div>
-            </div>
 
-            <!-- OBSZAR 3 -->
-            <div class="wfr-area" id="obszar-3" style="--c:var(--wfr-c3);--cl:var(--wfr-c3l)" data-reveal>
-              <div class="wfr-area__head">
-                <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-balance-scale"></i></span>
-                <div>
-                  <p class="wfr-area__no">Obszar 3</p>
-                  <h3>Pomoc prawna w sprawach rodzinnych</h3>
+              <!-- OBSZAR 3 -->
+              <div class="wfr-area" id="obszar-3" style="--c:var(--wfr-c3);--cl:var(--wfr-c3l)">
+                <div class="wfr-area__head">
+                  <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-balance-scale"></i></span>
+                  <div>
+                    <p class="wfr-area__no">Obszar 3</p>
+                    <h3>Pomoc prawna w sprawach rodzinnych</h3>
+                  </div>
+                </div>
+                <p class="wfr-area__motto">Znajomość swoich praw pomaga podejmować świadome decyzje.</p>
+                <p>Sprawy rodzinne dotyczące dzieci bywają skomplikowane i długotrwałe. Rodzice często nie wiedzą, jakie mają możliwości prawne, jak przygotować się do postępowania sądowego ani jak ocenić otrzymane dokumenty.</p>
+                <p>W ramach programu rozwijamy dostęp do informacji i konsultacji prawnych dotyczących najważniejszych zagadnień prawa rodzinnego. Pomagamy rodzicom lepiej rozumieć procedury, dokumentację i dostępne rozwiązania.</p>
+                <div class="wfr-accs">
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">3.1</span>Analiza opinii OZSS</summary>
+                    <div class="wfr-acc__body">
+                      <p>Opinie Opiniodawczych Zespołów Sądowych Specjalistów mogą odgrywać istotną rolę w sprawach dotyczących dzieci i wykonywania władzy rodzicielskiej.</p>
+                      <p>Pomagamy rodzicom zrozumieć znaczenie tych dokumentów oraz zwrócić uwagę na kwestie wymagające szczególnej analizy.</p>
+                      <p class="wfr-lbl">W ramach tego obszaru przewidujemy:</p>
+                      <ul>
+                        <li>omówienie struktury i treści opinii;</li>
+                        <li>wyjaśnienie zastosowanych metod diagnostycznych;</li>
+                        <li>analizę sposobu przedstawienia sytuacji rodzinnej;</li>
+                        <li>identyfikację ewentualnych niejasności i niespójności;</li>
+                        <li>wskazanie zagadnień, które mogą wymagać konsultacji ze specjalistą;</li>
+                        <li>omówienie możliwych dalszych działań prawnych.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">3.2</span>Kontakty z dzieckiem</summary>
+                    <div class="wfr-acc__body">
+                      <p>Prawo do utrzymywania kontaktów z dzieckiem jest niezależne od władzy rodzicielskiej. Problemy w realizacji kontaktów mogą jednak prowadzić do długotrwałych sporów i pogłębiania konfliktu.</p>
+                      <p class="wfr-lbl">Wyjaśniamy:</p>
+                      <ul>
+                        <li>jak uregulować kontakty z dzieckiem;</li>
+                        <li>jak wygląda postępowanie dotyczące ustalenia kontaktów;</li>
+                        <li>jakie znaczenie mają orzeczenia sądowe;</li>
+                        <li>jak postępować w przypadku utrudniania kontaktów;</li>
+                        <li>jakie możliwości prawne istnieją w przypadku niewykonywania orzeczeń.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">3.3</span>Władza rodzicielska i opieka nad dzieckiem</summary>
+                    <div class="wfr-acc__body">
+                      <p>Rozstanie rodziców nie oznacza automatycznej utraty władzy rodzicielskiej przez któregokolwiek z nich. W praktyce jednak ustalenie sposobu wykonywania opieki może prowadzić do wielu nieporozumień.</p>
+                      <p class="wfr-lbl">Omawiamy:</p>
+                      <ul>
+                        <li>czym jest władza rodzicielska;</li>
+                        <li>czym różni się władza rodzicielska od kontaktów z dzieckiem;</li>
+                        <li>jakie są możliwości uregulowania opieki;</li>
+                        <li>na czym polega opieka naprzemienna;</li>
+                        <li>jakie okoliczności sąd bierze pod uwagę przy podejmowaniu decyzji.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">3.4</span>Alimenty i obowiązek utrzymania dziecka</summary>
+                    <div class="wfr-acc__body">
+                      <p>Ustalanie wysokości alimentów i podział kosztów utrzymania dziecka to częste źródło konfliktów między rodzicami.</p>
+                      <p class="wfr-lbl">Przybliżamy:</p>
+                      <ul>
+                        <li>zasady ustalania wysokości alimentów;</li>
+                        <li>znaczenie usprawiedliwionych potrzeb dziecka;</li>
+                        <li>możliwości finansowe rodziców;</li>
+                        <li>zasady zmiany wysokości alimentów;</li>
+                        <li>wpływ sposobu sprawowania opieki na kwestie utrzymania dziecka.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">3.5</span>Przygotowanie do postępowania sądowego</summary>
+                    <div class="wfr-acc__body">
+                      <p>Postępowanie sądowe jest dla wielu rodziców źródłem dużego stresu. Brak znajomości procedur może dodatkowo potęgować poczucie bezradności.</p>
+                      <p class="wfr-lbl">Pomagamy zrozumieć:</p>
+                      <ul>
+                        <li>jak przygotować dokumentację;</li>
+                        <li>jakie znaczenie mają dowody w sprawach rodzinnych;</li>
+                        <li>jak wygląda przebieg postępowania;</li>
+                        <li>jakie prawa i obowiązki mają uczestnicy postępowania;</li>
+                        <li>kiedy warto skorzystać z pomocy adwokata lub radcy prawnego.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">3.6</span>Konsultacje prawne</summary>
+                    <div class="wfr-acc__body">
+                      <p>Rodzice mogą potrzebować indywidualnego omówienia swojej sytuacji. Dlatego rozwijamy możliwość konsultacji z osobami posiadającymi odpowiednie przygotowanie prawnicze.</p>
+                      <p>Zakres konsultacji obejmuje zagadnienia związane z prawem rodzinnym i opiekuńczym, w szczególności sprawy dotyczące dzieci, kontaktów, opieki i alimentów.</p>
+                    </div>
+                  </details>
                 </div>
               </div>
-              <p class="wfr-area__motto">Znajomość swoich praw pomaga podejmować świadome decyzje.</p>
-              <p>Sprawy rodzinne dotyczące dzieci bywają skomplikowane i długotrwałe. Rodzice często nie wiedzą, jakie mają możliwości prawne, jak przygotować się do postępowania sądowego ani jak ocenić otrzymane dokumenty.</p>
-              <p>W ramach programu rozwijamy dostęp do informacji i konsultacji prawnych dotyczących najważniejszych zagadnień prawa rodzinnego. Pomagamy rodzicom lepiej rozumieć procedury, dokumentację i dostępne rozwiązania.</p>
-              <div class="wfr-accs">
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">3.1</span>Analiza opinii OZSS</summary>
-                  <div class="wfr-acc__body">
-                    <p>Opinie Opiniodawczych Zespołów Sądowych Specjalistów mogą odgrywać istotną rolę w sprawach dotyczących dzieci i wykonywania władzy rodzicielskiej.</p>
-                    <p>Pomagamy rodzicom zrozumieć znaczenie tych dokumentów oraz zwrócić uwagę na kwestie wymagające szczególnej analizy.</p>
-                    <p class="wfr-lbl">W ramach tego obszaru przewidujemy:</p>
-                    <ul>
-                      <li>omówienie struktury i treści opinii;</li>
-                      <li>wyjaśnienie zastosowanych metod diagnostycznych;</li>
-                      <li>analizę sposobu przedstawienia sytuacji rodzinnej;</li>
-                      <li>identyfikację ewentualnych niejasności i niespójności;</li>
-                      <li>wskazanie zagadnień, które mogą wymagać konsultacji ze specjalistą;</li>
-                      <li>omówienie możliwych dalszych działań prawnych.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">3.2</span>Kontakty z dzieckiem</summary>
-                  <div class="wfr-acc__body">
-                    <p>Prawo do utrzymywania kontaktów z dzieckiem jest niezależne od władzy rodzicielskiej. Problemy w realizacji kontaktów mogą jednak prowadzić do długotrwałych sporów i pogłębiania konfliktu.</p>
-                    <p class="wfr-lbl">Wyjaśniamy:</p>
-                    <ul>
-                      <li>jak uregulować kontakty z dzieckiem;</li>
-                      <li>jak wygląda postępowanie dotyczące ustalenia kontaktów;</li>
-                      <li>jakie znaczenie mają orzeczenia sądowe;</li>
-                      <li>jak postępować w przypadku utrudniania kontaktów;</li>
-                      <li>jakie możliwości prawne istnieją w przypadku niewykonywania orzeczeń.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">3.3</span>Władza rodzicielska i opieka nad dzieckiem</summary>
-                  <div class="wfr-acc__body">
-                    <p>Rozstanie rodziców nie oznacza automatycznej utraty władzy rodzicielskiej przez któregokolwiek z nich. W praktyce jednak ustalenie sposobu wykonywania opieki może prowadzić do wielu nieporozumień.</p>
-                    <p class="wfr-lbl">Omawiamy:</p>
-                    <ul>
-                      <li>czym jest władza rodzicielska;</li>
-                      <li>czym różni się władza rodzicielska od kontaktów z dzieckiem;</li>
-                      <li>jakie są możliwości uregulowania opieki;</li>
-                      <li>na czym polega opieka naprzemienna;</li>
-                      <li>jakie okoliczności sąd bierze pod uwagę przy podejmowaniu decyzji.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">3.4</span>Alimenty i obowiązek utrzymania dziecka</summary>
-                  <div class="wfr-acc__body">
-                    <p>Ustalanie wysokości alimentów i podział kosztów utrzymania dziecka to częste źródło konfliktów między rodzicami.</p>
-                    <p class="wfr-lbl">Przybliżamy:</p>
-                    <ul>
-                      <li>zasady ustalania wysokości alimentów;</li>
-                      <li>znaczenie usprawiedliwionych potrzeb dziecka;</li>
-                      <li>możliwości finansowe rodziców;</li>
-                      <li>zasady zmiany wysokości alimentów;</li>
-                      <li>wpływ sposobu sprawowania opieki na kwestie utrzymania dziecka.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">3.5</span>Przygotowanie do postępowania sądowego</summary>
-                  <div class="wfr-acc__body">
-                    <p>Postępowanie sądowe jest dla wielu rodziców źródłem dużego stresu. Brak znajomości procedur może dodatkowo potęgować poczucie bezradności.</p>
-                    <p class="wfr-lbl">Pomagamy zrozumieć:</p>
-                    <ul>
-                      <li>jak przygotować dokumentację;</li>
-                      <li>jakie znaczenie mają dowody w sprawach rodzinnych;</li>
-                      <li>jak wygląda przebieg postępowania;</li>
-                      <li>jakie prawa i obowiązki mają uczestnicy postępowania;</li>
-                      <li>kiedy warto skorzystać z pomocy adwokata lub radcy prawnego.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">3.6</span>Konsultacje prawne</summary>
-                  <div class="wfr-acc__body">
-                    <p>Rodzice mogą potrzebować indywidualnego omówienia swojej sytuacji. Dlatego rozwijamy możliwość konsultacji z osobami posiadającymi odpowiednie przygotowanie prawnicze.</p>
-                    <p>Zakres konsultacji obejmuje zagadnienia związane z prawem rodzinnym i opiekuńczym, w szczególności sprawy dotyczące dzieci, kontaktów, opieki i alimentów.</p>
-                  </div>
-                </details>
-              </div>
-            </div>
 
-            <!-- OBSZAR 4 -->
-            <div class="wfr-area" id="obszar-4" style="--c:var(--wfr-c4);--cl:var(--wfr-c4l)" data-reveal>
-              <div class="wfr-area__head">
-                <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-book"></i></span>
-                <div>
-                  <p class="wfr-area__no">Obszar 4</p>
-                  <h3>Wiedza i materiały edukacyjne dla rodziców</h3>
+              <!-- OBSZAR 4 -->
+              <div class="wfr-area" id="obszar-4" style="--c:var(--wfr-c4);--cl:var(--wfr-c4l)">
+                <div class="wfr-area__head">
+                  <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-book"></i></span>
+                  <div>
+                    <p class="wfr-area__no">Obszar 4</p>
+                    <h3>Wiedza i materiały edukacyjne dla rodziców</h3>
+                  </div>
+                </div>
+                <p class="wfr-area__motto">Zrozumienie problemu to pierwszy krok do znalezienia rozwiązania.</p>
+                <p>W trudnych sytuacjach rodzinnych rodzice często poszukują informacji w wielu miejscach. Nie zawsze jednak wiedzą, które materiały są wiarygodne, jak interpretować przepisy i gdzie znaleźć rzetelną wiedzę psychologiczną.</p>
+                <p>Pracujemy nad przygotowaniem materiałów edukacyjnych, które pomogą rodzicom lepiej rozumieć problemy rodzinne, potrzeby dzieci oraz możliwości uzyskania pomocy. Opracowujemy poradniki, materiały informacyjne i treści poświęcone zagadnieniom psychologicznym oraz prawnym. Chcemy, aby były one rzetelnym i praktycznym źródłem wiedzy, przydatnym w codziennych wyzwaniach rodzicielskich. Jeśli potrzebujesz materiałów dotyczących konkretnego problemu lub zagadnienia, <a href="#zgloszenie">skontaktuj się z nami</a>. Postaramy się wskazać dostępne możliwości uzyskania informacji i pomocy.</p>
+                <div class="wfr-accs">
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">4.1</span>Poradniki dla rodziców</summary>
+                    <div class="wfr-acc__body">
+                      <p>Przygotowujemy opracowania poświęcone najważniejszym zagadnieniom związanym z rodzicielstwem, rozstaniem i konfliktami rodzinnymi.</p>
+                      <p class="wfr-lbl">Materiały dotyczą między innymi:</p>
+                      <ul>
+                        <li>budowania relacji z dzieckiem;</li>
+                        <li>komunikacji w rodzinie;</li>
+                        <li>rozwiązywania konfliktów rodzicielskich;</li>
+                        <li>emocjonalnych konsekwencji rozwodu;</li>
+                        <li>ochrony dziecka przed konfliktem lojalnościowym;</li>
+                        <li>utrzymywania więzi z dzieckiem po rozstaniu.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">4.2</span>Wiedza psychologiczna w praktyce</summary>
+                    <div class="wfr-acc__body">
+                      <p>Przedstawiamy zagadnienia psychologiczne w sposób zrozumiały i odnoszący się do codziennych sytuacji rodzinnych.</p>
+                      <p>Wyjaśniamy mechanizmy emocjonalne, zachowania dzieci i dorosłych oraz znaczenie relacji rodzinnych dla rozwoju dziecka.</p>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">4.3</span>Informacje prawne i praktyczne wskazówki</summary>
+                    <div class="wfr-acc__body">
+                      <p>Przygotowujemy materiały pomagające zrozumieć podstawowe zagadnienia prawa rodzinnego i procedur sądowych.</p>
+                      <p>Rodzice znajdą tu informacje dotyczące kontaktów z dzieckiem, władzy rodzicielskiej, opieki, alimentów i postępowań sądowych.</p>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">4.4</span>Filmy, webinary i szkolenia online</summary>
+                    <div class="wfr-acc__body">
+                      <p>Rozwijamy edukacyjne formy przekazywania wiedzy, które pozwalają rodzicom korzystać z materiałów niezależnie od miejsca zamieszkania i dostępnego czasu.</p>
+                      <p class="wfr-lbl">W ramach programu przewidujemy:</p>
+                      <ul>
+                        <li>webinary z udziałem specjalistów;</li>
+                        <li>nagrania edukacyjne;</li>
+                        <li>szkolenia tematyczne;</li>
+                        <li>rozmowy z psychologami i prawnikami;</li>
+                        <li>materiały odpowiadające na najczęstsze pytania rodziców.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">4.5</span>Badania naukowe i wiedza oparta na dowodach</summary>
+                    <div class="wfr-acc__body">
+                      <p>Ważną częścią programu jest upowszechnianie wiedzy wynikającej z badań naukowych.</p>
+                      <p>Przedstawiamy wyniki badań dotyczących rozwoju dziecka, relacji rodzinnych, konsekwencji konfliktów rodzicielskich i znaczenia więzi z obojgiem rodziców.</p>
+                      <p>Zależy nam, aby informacje przekazywane rodzicom były rzetelne, zrozumiałe i możliwe do odniesienia do rzeczywistych problemów rodzinnych.</p>
+                    </div>
+                  </details>
                 </div>
               </div>
-              <p class="wfr-area__motto">Zrozumienie problemu to pierwszy krok do znalezienia rozwiązania.</p>
-              <p>W trudnych sytuacjach rodzinnych rodzice często poszukują informacji w wielu miejscach. Nie zawsze jednak wiedzą, które materiały są wiarygodne, jak interpretować przepisy i gdzie znaleźć rzetelną wiedzę psychologiczną.</p>
-              <p>Pracujemy nad przygotowaniem materiałów edukacyjnych, które pomogą rodzicom lepiej rozumieć problemy rodzinne, potrzeby dzieci oraz możliwości uzyskania pomocy. Opracowujemy poradniki, materiały informacyjne i treści poświęcone zagadnieniom psychologicznym oraz prawnym. Chcemy, aby były one rzetelnym i praktycznym źródłem wiedzy, przydatnym w codziennych wyzwaniach rodzicielskich. Jeśli potrzebujesz materiałów dotyczących konkretnego problemu lub zagadnienia, <a href="#zgloszenie">skontaktuj się z nami</a>. Postaramy się wskazać dostępne możliwości uzyskania informacji i pomocy.</p>
-              <div class="wfr-accs">
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">4.1</span>Poradniki dla rodziców</summary>
-                  <div class="wfr-acc__body">
-                    <p>Przygotowujemy opracowania poświęcone najważniejszym zagadnieniom związanym z rodzicielstwem, rozstaniem i konfliktami rodzinnymi.</p>
-                    <p class="wfr-lbl">Materiały dotyczą między innymi:</p>
-                    <ul>
-                      <li>budowania relacji z dzieckiem;</li>
-                      <li>komunikacji w rodzinie;</li>
-                      <li>rozwiązywania konfliktów rodzicielskich;</li>
-                      <li>emocjonalnych konsekwencji rozwodu;</li>
-                      <li>ochrony dziecka przed konfliktem lojalnościowym;</li>
-                      <li>utrzymywania więzi z dzieckiem po rozstaniu.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">4.2</span>Wiedza psychologiczna w praktyce</summary>
-                  <div class="wfr-acc__body">
-                    <p>Przedstawiamy zagadnienia psychologiczne w sposób zrozumiały i odnoszący się do codziennych sytuacji rodzinnych.</p>
-                    <p>Wyjaśniamy mechanizmy emocjonalne, zachowania dzieci i dorosłych oraz znaczenie relacji rodzinnych dla rozwoju dziecka.</p>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">4.3</span>Informacje prawne i praktyczne wskazówki</summary>
-                  <div class="wfr-acc__body">
-                    <p>Przygotowujemy materiały pomagające zrozumieć podstawowe zagadnienia prawa rodzinnego i procedur sądowych.</p>
-                    <p>Rodzice znajdą tu informacje dotyczące kontaktów z dzieckiem, władzy rodzicielskiej, opieki, alimentów i postępowań sądowych.</p>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">4.4</span>Filmy, webinary i szkolenia online</summary>
-                  <div class="wfr-acc__body">
-                    <p>Rozwijamy edukacyjne formy przekazywania wiedzy, które pozwalają rodzicom korzystać z materiałów niezależnie od miejsca zamieszkania i dostępnego czasu.</p>
-                    <p class="wfr-lbl">W ramach programu przewidujemy:</p>
-                    <ul>
-                      <li>webinary z udziałem specjalistów;</li>
-                      <li>nagrania edukacyjne;</li>
-                      <li>szkolenia tematyczne;</li>
-                      <li>rozmowy z psychologami i prawnikami;</li>
-                      <li>materiały odpowiadające na najczęstsze pytania rodziców.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">4.5</span>Badania naukowe i wiedza oparta na dowodach</summary>
-                  <div class="wfr-acc__body">
-                    <p>Ważną częścią programu jest upowszechnianie wiedzy wynikającej z badań naukowych.</p>
-                    <p>Przedstawiamy wyniki badań dotyczących rozwoju dziecka, relacji rodzinnych, konsekwencji konfliktów rodzicielskich i znaczenia więzi z obojgiem rodziców.</p>
-                    <p>Zależy nam, aby informacje przekazywane rodzicom były rzetelne, zrozumiałe i możliwe do odniesienia do rzeczywistych problemów rodzinnych.</p>
-                  </div>
-                </details>
-              </div>
-            </div>
 
-            <!-- OBSZAR 5 -->
-            <div class="wfr-area" id="obszar-5" style="--c:var(--wfr-c5);--cl:var(--wfr-c5l)" data-reveal>
-              <div class="wfr-area__head">
-                <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-users"></i></span>
-                <div>
-                  <p class="wfr-area__no">Obszar 5</p>
-                  <h3>Grupy wsparcia dla rodziców</h3>
+              <!-- OBSZAR 5 -->
+              <div class="wfr-area" id="obszar-5" style="--c:var(--wfr-c5);--cl:var(--wfr-c5l)">
+                <div class="wfr-area__head">
+                  <span class="wfr-area__ico" aria-hidden="true"><i class="fa fa-users"></i></span>
+                  <div>
+                    <p class="wfr-area__no">Obszar 5</p>
+                    <h3>Grupy wsparcia dla rodziców</h3>
+                  </div>
+                </div>
+                <p class="wfr-area__motto">Nie musisz przechodzić przez trudne doświadczenia w samotności.</p>
+                <p>Problemy rodzinne często prowadzą do poczucia osamotnienia. Rodzice mogą mieć wrażenie, że nikt nie rozumie ich sytuacji, a rozmowa z osobami, które nie doświadczyły podobnych trudności, nie przynosi oczekiwanego wsparcia.</p>
+                <p>Przygotowujemy inicjatywę grup wsparcia, które stworzą przestrzeń do rozmowy z osobami znajdującymi się w podobnych sytuacjach życiowych. Równolegle pracujemy nad specjalną aplikacją, która będzie wspierać rozwój tej inicjatywy i ułatwiać rodzicom nawiązywanie kontaktów, wymianę doświadczeń oraz wzajemne wsparcie. Naszym celem jest stworzenie społeczności, w której rodzice będą mogli znaleźć zrozumienie, podzielić się swoimi doświadczeniami i przekonać się, że nie muszą mierzyć się z trudnościami w pojedynkę.</p>
+                <div class="wfr-accs">
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">5.1</span>Spotkania rodziców w podobnej sytuacji</summary>
+                    <div class="wfr-acc__body">
+                      <p>Organizujemy przestrzeń do rozmów, w których uczestnicy mogą swobodnie opowiedzieć o swoich doświadczeniach, problemach i obawach.</p>
+                      <p>Spotkania służą wzajemnemu wsparciu i budowaniu poczucia, że w trudnej sytuacji nie jest się samemu.</p>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">5.2</span>Wymiana doświadczeń i praktycznych rozwiązań</summary>
+                    <div class="wfr-acc__body">
+                      <p>Doświadczenia innych rodziców mogą pomóc spojrzeć na własną sytuację z innej perspektywy.</p>
+                      <p class="wfr-lbl">Uczestnicy mają możliwość:</p>
+                      <ul>
+                        <li>dzielenia się doświadczeniami;</li>
+                        <li>poznawania sposobów radzenia sobie z trudnościami;</li>
+                        <li>wymiany praktycznych informacji;</li>
+                        <li>uzyskania emocjonalnego wsparcia;</li>
+                        <li>budowania relacji z osobami o podobnych doświadczeniach.</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">5.3</span>Spotkania tematyczne ze specjalistami</summary>
+                    <div class="wfr-acc__body">
+                      <p>Przewidujemy możliwość organizowania spotkań poświęconych konkretnym problemom rodzinnym z udziałem psychologów i specjalistów z zakresu prawa rodzinnego.</p>
+                      <p>Dzięki temu uczestnicy będą mogli lepiej zrozumieć wybrane zagadnienia i uzyskać odpowiedzi na nurtujące ich pytania.</p>
+                    </div>
+                  </details>
+                  <details class="wfr-acc">
+                    <summary><span class="wfr-acc__no">5.4</span>Społeczność wzajemnego wsparcia</summary>
+                    <div class="wfr-acc__body">
+                      <p>Chcemy rozwijać środowisko rodziców, którzy mogą wspierać się również poza spotkaniami.</p>
+                      <p>Budowanie takiej społeczności pomaga przełamywać izolację, wzmacnia poczucie przynależności i daje możliwość korzystania z doświadczeń innych osób.</p>
+                    </div>
+                  </details>
                 </div>
               </div>
-              <p class="wfr-area__motto">Nie musisz przechodzić przez trudne doświadczenia w samotności.</p>
-              <p>Problemy rodzinne często prowadzą do poczucia osamotnienia. Rodzice mogą mieć wrażenie, że nikt nie rozumie ich sytuacji, a rozmowa z osobami, które nie doświadczyły podobnych trudności, nie przynosi oczekiwanego wsparcia.</p>
-              <p>Przygotowujemy inicjatywę grup wsparcia, które stworzą przestrzeń do rozmowy z osobami znajdującymi się w podobnych sytuacjach życiowych. Równolegle pracujemy nad specjalną aplikacją, która będzie wspierać rozwój tej inicjatywy i ułatwiać rodzicom nawiązywanie kontaktów, wymianę doświadczeń oraz wzajemne wsparcie. Naszym celem jest stworzenie społeczności, w której rodzice będą mogli znaleźć zrozumienie, podzielić się swoimi doświadczeniami i przekonać się, że nie muszą mierzyć się z trudnościami w pojedynkę.</p>
-              <div class="wfr-accs">
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">5.1</span>Spotkania rodziców w podobnej sytuacji</summary>
-                  <div class="wfr-acc__body">
-                    <p>Organizujemy przestrzeń do rozmów, w których uczestnicy mogą swobodnie opowiedzieć o swoich doświadczeniach, problemach i obawach.</p>
-                    <p>Spotkania służą wzajemnemu wsparciu i budowaniu poczucia, że w trudnej sytuacji nie jest się samemu.</p>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">5.2</span>Wymiana doświadczeń i praktycznych rozwiązań</summary>
-                  <div class="wfr-acc__body">
-                    <p>Doświadczenia innych rodziców mogą pomóc spojrzeć na własną sytuację z innej perspektywy.</p>
-                    <p class="wfr-lbl">Uczestnicy mają możliwość:</p>
-                    <ul>
-                      <li>dzielenia się doświadczeniami;</li>
-                      <li>poznawania sposobów radzenia sobie z trudnościami;</li>
-                      <li>wymiany praktycznych informacji;</li>
-                      <li>uzyskania emocjonalnego wsparcia;</li>
-                      <li>budowania relacji z osobami o podobnych doświadczeniach.</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">5.3</span>Spotkania tematyczne ze specjalistami</summary>
-                  <div class="wfr-acc__body">
-                    <p>Przewidujemy możliwość organizowania spotkań poświęconych konkretnym problemom rodzinnym z udziałem psychologów i specjalistów z zakresu prawa rodzinnego.</p>
-                    <p>Dzięki temu uczestnicy będą mogli lepiej zrozumieć wybrane zagadnienia i uzyskać odpowiedzi na nurtujące ich pytania.</p>
-                  </div>
-                </details>
-                <details class="wfr-acc">
-                  <summary><span class="wfr-acc__no">5.4</span>Społeczność wzajemnego wsparcia</summary>
-                  <div class="wfr-acc__body">
-                    <p>Chcemy rozwijać środowisko rodziców, którzy mogą wspierać się również poza spotkaniami.</p>
-                    <p>Budowanie takiej społeczności pomaga przełamywać izolację, wzmacnia poczucie przynależności i daje możliwość korzystania z doświadczeń innych osób.</p>
-                  </div>
-                </details>
               </div>
             </div>
           </section>
@@ -766,7 +784,7 @@
   <script src="../js/wf-chat.js?v=20261121b"></script>
   <script src="../js/wf-hero-slides.js?v=20261123d"></script>
   <script src="../js/wf-toc.js?v=20261123a"></script>
-  <script src="../js/rodzic.js?v=20261127a"></script>
+  <script src="../js/rodzic.js?v=20261127b"></script>
   <script>window.WF_FORMS = { api: "https://meble-crm.vercel.app/api/public/wf-form" };</script>
   <script src="../js/wf-forms.js?v=20261120b"></script>
 </body>

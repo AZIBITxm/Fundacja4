@@ -147,3 +147,67 @@
 /* tablet: kafelki w jednej kolumnie, zdjęcie szerokie 16:9 z dalszej perspektywy */
 @media (min-width: 768px) and (max-width: 991px) { .wfr-who__photo { aspect-ratio: 16 / 9; min-height: 0; } .wfr-who__photo img { object-position: 18% 45%; } }
 @media (max-width: 767px) { .wfr-who__photo { aspect-ratio: 4 / 5; min-height: 0; } }
+
+/* ===== „Dla kogo” jako karuzela (Adam 27.11.2026) — zdjęcie na środku, kafelki po bokach; js/rodzic.js ustawia --d (odległość od środka) ===== */
+.wfr-cf { position: relative; margin: 22px 0 6px; overflow: hidden; padding: 0 0 4px; }
+.wfr-cf__flow.wfr-who { display: block; position: relative; margin: 0; height: 380px; touch-action: pan-y; outline: none; overflow: visible; }
+.wfr-cf__card { --cw: 270px; position: absolute; top: 10px; left: 50%; width: var(--cw); margin: 0 0 0 calc(var(--cw) / -2);
+  transform: translateX(calc(var(--d, 0) * 74%)) scale(calc(1 - var(--ad, 0) * .1));
+  z-index: calc(10 - var(--ad, 0)); opacity: 1; filter: brightness(calc(1 - var(--ad, 0) * .04));
+  transition: transform .55s cubic-bezier(.2, .75, .2, 1), opacity .45s ease, box-shadow .3s ease; cursor: pointer; }
+.wfr-cf__card.is-far { opacity: 0; pointer-events: none; }
+.wfr-cf__card.is-side2 { opacity: .55; }
+.wfr-cf__card.is-active { cursor: default; box-shadow: 0 0 0 2px #6689ff, 0 22px 44px rgba(31, 42, 68, .16); }
+.wfr-cf__card:not(.is-active) > * { pointer-events: none; }
+.wfr-cf__card.is-wrap { transition: none; opacity: 0; }
+.wfr-cf .wfr-who__item:hover { transform: translateX(calc(var(--d, 0) * 74%)) scale(calc(1 - var(--ad, 0) * .1)); }
+.wfr-cf .wfr-who__photo { min-height: 0; aspect-ratio: auto; }
+.wfr-cf__arrow { position: absolute; top: 50%; z-index: 20; width: 46px; height: 46px; margin-top: -32px; border: 0; border-radius: 50%; background: #fff; color: #3a55c9;
+  font-size: 22px; box-shadow: 0 6px 18px rgba(31, 42, 68, .15); cursor: pointer; transition: background .2s, color .2s; }
+.wfr-cf__arrow:hover { background: #3a55c9; color: #fff; }
+.wfr-cf__arrow--prev { left: 4px; }
+.wfr-cf__arrow--next { right: 4px; }
+.wfr-cf__dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.wfr-cf__dots button { width: 24px; height: 4px; padding: 0; border: 0; border-radius: 2px; background: #dfe5f5; cursor: pointer; transition: background .3s; }
+.wfr-cf__dots button.is-active { background: #6689ff; }
+@media (max-width: 767px) {
+  .wfr-cf__card { --cw: min(80vw, 320px); transform: translateX(calc(var(--d, 0) * 92%)) scale(calc(1 - var(--ad, 0) * .08)); }
+  .wfr-cf .wfr-who__item:hover { transform: translateX(calc(var(--d, 0) * 92%)) scale(calc(1 - var(--ad, 0) * .08)); }
+  .wfr-cf__arrow { display: none; }
+}
+
+/* ===== „Jak pomagamy” jako półka z książkami (Adam 27.11.2026) — jeden obszar otwarty, reszta to grzbiety; js/rodzic.js ===== */
+.wfr-shelf { margin-top: 18px; }
+.wfr-shelf__bar { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; flex-wrap: wrap; }
+.wfr-shelf__arrow { width: 38px; height: 38px; border: 1px solid #dfe5f5; border-radius: 50%; background: #fff; color: #3a55c9; font-size: 20px; line-height: 1; cursor: pointer; transition: background .2s, color .2s; }
+.wfr-shelf__arrow:hover { background: #3a55c9; color: #fff; }
+.wfr-shelf__count { font-size: 14px; color: #6b7280; }
+.wfr-shelf__count b { color: #1f2a44; }
+.wfr-shelf__hint { display: none; font-size: 13px; color: #8a93a6; }
+.wfr-shelf__books { display: flex; align-items: stretch; gap: 8px; touch-action: pan-y; }
+.wfr-shelf .wfr-area { margin-top: 0; flex: 1 1 auto; min-width: 0; scroll-margin-top: 110px; }
+/* pasek postępu automatycznego pokazu */
+.wfr-shelf .wfr-area.is-open::after { content: ""; position: absolute; left: 0; top: 0; height: 4px; width: 0; background: var(--c); opacity: .85; }
+.wfr-shelf.is-auto .wfr-area.is-open::after { animation: wfrShelfProg var(--wfr-shelf-t, 8s) linear forwards; }
+@keyframes wfrShelfProg { to { width: 100%; } }
+/* grzbiet zamkniętej książki */
+.wfr-spine { display: none; }
+.wfr-shelf .wfr-area.is-shut { flex: 0 0 54px; padding: 0; cursor: pointer; background: var(--c); border-color: transparent; box-shadow: inset -6px 0 10px rgba(0, 0, 0, .12), 0 8px 18px rgba(31, 42, 68, .1); transition: flex-basis .45s ease, filter .2s; }
+.wfr-shelf .wfr-area.is-shut:hover { filter: brightness(1.08); }
+.wfr-shelf .wfr-area.is-shut::before { display: none; }
+.wfr-shelf .wfr-area.is-shut > :not(.wfr-spine) { display: none; }
+.wfr-shelf .wfr-area.is-shut > .wfr-spine { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; height: 100%; min-height: 300px; padding: 16px 0;
+  border: 0; background: transparent; color: #fff; cursor: pointer; }
+.wfr-spine__ico { font-size: 18px; }
+.wfr-spine__txt { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 14px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 520px; text-align: left; }
+.wfr-spine__txt b { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 11.5px; opacity: .85; }
+.wfr-shelf .wfr-area.is-open { animation: wfrBookIn .45s ease; }
+@keyframes wfrBookIn { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+@media (max-width: 767px) {
+  .wfr-shelf__hint { display: block; width: 100%; }
+  .wfr-shelf__books { gap: 5px; }
+  .wfr-shelf .wfr-area.is-shut { flex-basis: 14px; border-radius: 8px; }
+  .wfr-shelf .wfr-area.is-shut > .wfr-spine { padding: 0; min-height: 200px; }
+  .wfr-shelf .wfr-area.is-shut .wfr-spine__ico, .wfr-shelf .wfr-area.is-shut .wfr-spine__txt { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .wfr-cf__card, .wfr-shelf .wfr-area { transition: none !important; animation: none !important; } }
