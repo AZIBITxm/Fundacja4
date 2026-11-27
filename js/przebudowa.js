@@ -127,7 +127,8 @@ var WF_PRZEBUDOWA = true;
   }
 
   function init() {
-    addBar();
+    // Adam 27.11.2026: pasek „Strona w przebudowie” zdjęty (ukryte sekcje zostają ukryte do pełnego wyłączenia trybu)
+    // addBar();
     // motyw przełącza menu w tryb „fixed” dopiero po swoim starcie — przeliczamy po załadowaniu i przy zmianie rozmiaru
     window.addEventListener('load', place);
     window.addEventListener('resize', place);

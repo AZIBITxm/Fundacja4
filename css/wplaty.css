@@ -1,0 +1,23 @@
+/* Pasek wpłat pod sliderem strony głównej (Adam 27.11.2026) */
+.wfw-bar {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(90deg, #0b3d7a 0%, #1257a8 50%, #0b3d7a 100%);
+  color: #fff;
+  padding: 18px 16px;
+  text-align: center;
+}
+.wfw-bar__inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 22px; }
+.wfw-bar__text { margin: 0; font-size: 16px; line-height: 1.45; color: #fff; }
+.wfw-bar__text strong { color: #fff; font-weight: 700; }
+.wfw-bar__acct { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin: 0; }
+.wfw-bar__bank { background: #fff; color: #003574; font-weight: 700; font-size: 12px; line-height: 20px; padding: 0 8px; border-radius: 3px; letter-spacing: .3px; }
+.wfw-bar__num { font-size: 18px; font-weight: 700; letter-spacing: .05em; font-variant-numeric: tabular-nums; color: #fff; white-space: nowrap; }
+.wfw-bar__copy { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,.7); background: rgba(255,255,255,.12); color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 13px; cursor: pointer; transition: background .15s ease; }
+.wfw-bar__copy:hover, .wfw-bar__copy:focus { background: rgba(255,255,255,.25); outline: none; }
+.wfw-bar__meta { flex-basis: 100%; margin: 0; font-size: 13px; color: rgba(255,255,255,.85); }
+@media (max-width: 575px) {
+  .wfw-bar { padding: 16px 12px; }
+  .wfw-bar__text { font-size: 15px; }
+  .wfw-bar__num { font-size: 16px; }
+}

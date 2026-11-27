@@ -111,7 +111,8 @@
   <link rel="stylesheet" href="../css/programy.css?v=20261124b">
   <!-- Tryb „strona w przebudowie” (zlecenie 6A) — przełącznik WF_PRZEBUDOWA w js/przebudowa.js -->
   <link rel="stylesheet" href="../css/przebudowa.css?v=20261120c">
-  <script src="../js/przebudowa.js?v=20261124a"></script>
+  <link rel="stylesheet" href="../css/wplaty.css?v=20261127a">
+  <script src="../js/przebudowa.js?v=20261127a"></script>
     
     <!-- Zgoda na cookies (zlecenie 6B): własny baner, skrypty statystyk i media zewnętrzne blokowane do zgody -->
   <link rel="stylesheet" href="../css/wf-cookies.css?v=20261120a">
@@ -444,6 +445,30 @@
         </script>
 
       </div>
+      <!-- Pasek wpłat (Adam 27.11.2026): numer rachunku pod sliderem, widoczny także w trybie przebudowy -->
+      <section class="wfw-bar" id="wplaty" aria-label="Wpłaty na rzecz fundacji">
+        <div class="wfw-bar__inner">
+          <p class="wfw-bar__text"><strong>Chcesz nas wesprzeć?</strong> Możesz przekazać darowiznę przelewem na konto fundacji.</p>
+          <div class="wfw-bar__acct">
+            <span class="wfw-bar__bank">PKO BP</span>
+            <span class="wfw-bar__num" id="wfw-acct">30 1020 2791 0000 7502 0413 2981</span>
+            <button type="button" class="wfw-bar__copy" data-wfw-copy="#wfw-acct" aria-label="Kopiuj numer konta"><i class="fa fa-copy" aria-hidden="true"></i><span>Kopiuj</span></button>
+          </div>
+          <p class="wfw-bar__meta">Odbiorca: Fundacja WorldFoundation, ul. Kaszubska 16A lok. 10, 75-036 Koszalin &middot; Tytuł: Darowizna na cele statutowe</p>
+        </div>
+        <script>
+          (function () {
+            var b = document.querySelector('[data-wfw-copy]');
+            if (!b) return;
+            b.addEventListener('click', function () {
+              var t = document.querySelector(b.getAttribute('data-wfw-copy')).textContent.replace(/\s+/g, ' ').trim();
+              var done = function () { var s = b.querySelector('span'); s.textContent = 'Skopiowano'; setTimeout(function () { s.textContent = 'Kopiuj'; }, 2000); };
+              if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(done, function () {});
+              else { var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); done(); } catch (e) {} a.remove(); }
+            });
+          })();
+        </script>
+      </section>
       <!-- See all services-->
       <section class="section section-sm section-first bg-default text-center" id="services">
         <!-- Sekcja „film + bezpłatna rozmowa + kontakt” (przebudowa 2026-11-14, etap 1 planu rozbudowy):
