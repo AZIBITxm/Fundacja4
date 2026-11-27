@@ -1,4 +1,4 @@
-/* Program „Rodzicu, nie jesteś sam” (2026-11-27): pojawianie się elementów przy przewijaniu,
+/* Program „Nie jesteś sam” (2026-11-27): pojawianie się elementów przy przewijaniu,
    płynne rozwijanie podpunktów i pytań, w pytaniach otwarte tylko jedno naraz, oś kroków rysuje się przy przewijaniu.
    Bez JS i przy „ogranicz animacje” wszystko jest widoczne i działa jak zwykłe <details>. */
 (function () {

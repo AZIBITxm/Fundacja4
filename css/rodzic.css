@@ -1,4 +1,4 @@
-/* Program „Rodzicu, nie jesteś sam” (pl/program-rodzic-nie-jestes-sam.html) — 2026-11-27.
+/* Program „Nie jesteś sam” (pl/program-rodzic-nie-jestes-sam.html) — 2026-11-27.
    Bazuje na css/program.css (układ jak program dla rodziców). Tu: kafelki „dla kogo”, kolorowe karty 5 obszarów
    z rozwijanymi podpunktami, oś kroków, zasady, cele, pytania, baner końcowy i pojawianie się przy przewijaniu. */
 .wfr-page {
@@ -129,3 +129,8 @@
 .wfr-soon__tag { flex: none; padding: 3px 10px; border-radius: 999px; background: var(--c, var(--wfd-blue)); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .wfr-soon p { flex: 1 1 260px; margin: 0; font-size: 15px; }
 .wfr-soon a { color: var(--c, var(--wfd-blue-d)); font-weight: 600; text-decoration: underline; }
+/* dłuższy podtytuł w nagłówku (2026-11-27) */
+.wfl-hero h1 .wfr-sub { max-width: 760px; font-size: clamp(1rem, 1.5vw, 1.22rem); line-height: 1.55; }
+.wfr-area > .wfr-soon { margin: 4px 0 14px; }
+.wfr-soon { display: block; }
+.wfr-soon__tag { display: inline-block; margin-bottom: 8px; }

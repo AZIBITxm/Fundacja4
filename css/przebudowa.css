@@ -55,7 +55,7 @@ html.wf-rebuild .wfr-hidden { display: none !important; }
 @media (prefers-reduced-motion: reduce) { .wfr-bar__dot { animation: none; } }
 
 /* Zlecenie 12 (2026-11-20, pilne od Adama): w widoku publicznym znikają wszystkie odnośniki do stron jeszcze niegotowych
-   (Projekt SPOT, „Rodzicu, nie jesteś sam”, weterani) — po ?pelna=1 wracają. Przycisk „PRZEJDŹ” na slajdzie „Nie jesteś Sam”
+   (Projekt SPOT, „Nie jesteś sam”, weterani) — po ?pelna=1 wracają. Przycisk „PRZEJDŹ” na slajdzie „Nie jesteś Sam”
    jest w tym trybie ukryty (strona będzie przerabiana). Pozycja menu „Program dla rodziców” jest widoczna tylko w tym trybie
    (w pełnej wersji program jest w rozwijanym menu „Projekty”, żeby menu zostało w jednym rzędzie). */
 html.wf-rebuild a[href*="projekt-spot.html"],
