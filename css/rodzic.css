@@ -1,0 +1,131 @@
+/* Program „Rodzicu, nie jesteś sam” (pl/program-rodzic-nie-jestes-sam.html) — 2026-11-27.
+   Bazuje na css/program.css (układ jak program dla rodziców). Tu: kafelki „dla kogo”, kolorowe karty 5 obszarów
+   z rozwijanymi podpunktami, oś kroków, zasady, cele, pytania, baner końcowy i pojawianie się przy przewijaniu. */
+.wfr-page {
+  --wfr-c1: #d9577a; --wfr-c1l: #fdf0f3;   /* relacja z dzieckiem — róż */
+  --wfr-c2: #7b5ce6; --wfr-c2l: #f4f0fe;   /* rozstanie i konflikt — fiolet */
+  --wfr-c3: #3a55c9; --wfr-c3l: #eef2ff;   /* pomoc prawna — granat fundacji */
+  --wfr-c4: #14937f; --wfr-c4l: #e9f7f4;   /* wiedza — morski */
+  --wfr-c5: #d98a1c; --wfr-c5l: #fdf5e8;   /* grupy wsparcia — bursztyn */
+}
+
+/* podtytuł pod nagłówkiem sekcji */
+.wfr-kicker { margin: -6px 0 18px; font-size: clamp(1.1rem, 1.8vw, 1.32rem); font-weight: 500; line-height: 1.4; color: var(--wfd-blue-d); }
+
+/* wspólna ikonka w kółku */
+.wfr-ico { display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 14px; background: var(--wfd-blue-l); color: var(--wfd-blue-d); font-size: 20px; }
+
+/* ---------- 1. Dla kogo ---------- */
+.wfr-who { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.wfr-who__item { padding: 20px 20px 16px; border-radius: 16px; background: #fff; border: 1px solid #e3e8f5; box-shadow: 0 10px 26px rgba(31, 42, 68, .05); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.wfr-who__item:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(31, 42, 68, .1); border-color: #cdd7f6; }
+.wfr-who__item h3 { margin: 12px 0 8px; font-size: 1.08rem; line-height: 1.35; font-weight: 600; color: var(--wfd-ink); text-transform: none; letter-spacing: 0; }
+.wfr-who__item p { margin: 0; font-size: 15px; line-height: 1.6; }
+.wfr-who__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* ---------- 2. Obszary ---------- */
+.wfr-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 8px; }
+.wfr-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid color-mix(in srgb, var(--c) 35%, #fff); color: var(--c); font-size: 14px; font-weight: 600; transition: background .2s, color .2s, transform .2s; }
+.wfr-chip:hover, .wfr-chip:focus { background: var(--c); color: #fff; transform: translateY(-1px); }
+
+.wfr-area { position: relative; margin-top: 30px; padding: 28px 30px 24px; border-radius: 22px; background: linear-gradient(180deg, var(--cl) 0, #fff 220px); border: 1px solid color-mix(in srgb, var(--c) 22%, #fff); box-shadow: 0 14px 34px rgba(31, 42, 68, .06); scroll-margin-top: 110px; overflow: hidden; }
+.wfr-area::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
+.wfr-area__head { display: flex; gap: 16px; align-items: center; margin-bottom: 14px; }
+.wfr-area__ico { display: grid; place-items: center; flex: none; width: 56px; height: 56px; border-radius: 16px; background: var(--c); color: #fff; font-size: 24px; box-shadow: 0 10px 22px color-mix(in srgb, var(--c) 35%, transparent); }
+.wfr-area__no { margin: 0 0 2px; font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+.wfr-area h3 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.3; font-weight: 600; color: var(--wfd-ink); text-transform: none; letter-spacing: -.01em; }
+.wfr-area__motto { margin: 0 0 14px; padding-left: 14px; border-left: 3px solid var(--c); font-size: 1.08em; font-style: italic; color: color-mix(in srgb, var(--c) 70%, #1f2a44); }
+
+/* rozwijane podpunkty (też pytania) */
+.wfr-accs { margin-top: 18px; display: grid; gap: 8px; }
+.wfr-acc { border-radius: 14px; background: #fff; border: 1px solid #e6eaf4; transition: border-color .2s, box-shadow .2s; }
+.wfr-acc[open] { border-color: color-mix(in srgb, var(--c, var(--wfd-blue)) 40%, #fff); box-shadow: 0 8px 22px rgba(31, 42, 68, .07); }
+.wfr-acc summary { position: relative; display: flex; align-items: center; gap: 12px; padding: 14px 52px 14px 16px; cursor: pointer; list-style: none; font-weight: 600; line-height: 1.4; color: var(--wfd-ink); border-radius: 14px; }
+.wfr-acc summary::-webkit-details-marker { display: none; }
+.wfr-acc summary:hover { background: color-mix(in srgb, var(--c, var(--wfd-blue)) 6%, #fff); }
+.wfr-acc summary:focus-visible { outline: 2px solid var(--c, var(--wfd-blue)); outline-offset: 2px; }
+.wfr-acc summary::after { content: ""; position: absolute; right: 18px; top: 50%; width: 22px; height: 22px; margin-top: -11px; border-radius: 50%; background: color-mix(in srgb, var(--c, var(--wfd-blue)) 12%, #fff) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f2a44' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center / 13px no-repeat; transition: transform .3s ease; }
+.wfr-acc[open] summary::after { transform: rotate(45deg); }
+.wfr-acc__no { flex: none; display: inline-grid; place-items: center; min-width: 38px; height: 26px; padding: 0 6px; border-radius: 8px; background: color-mix(in srgb, var(--c, var(--wfd-blue)) 14%, #fff); color: var(--c, var(--wfd-blue-d)); font-size: 13px; font-weight: 700; }
+.wfr-acc__body { padding: 0 18px 16px 18px; }
+.wfr-acc__body > :first-child { margin-top: 2px; }
+.wfr-acc__body p { margin: 0 0 10px; }
+.wfr-acc__body ul { margin: 0; padding-left: 22px; }
+.wfr-acc__body li { margin-bottom: 6px; }
+.wfr-acc__body li::marker { color: var(--c, var(--wfd-blue)); }
+.wfr-lbl { font-weight: 600; color: var(--wfd-ink); }
+
+/* ---------- 3. Kroki ---------- */
+.wfr-steps { position: relative; list-style: none; margin: 26px 0 0; padding: 0 0 0 64px; counter-reset: none; }
+.wfr-steps::before { content: ""; position: absolute; left: 21px; top: 8px; bottom: 30px; width: 3px; border-radius: 3px; background: #e3e8f5; }
+.wfr-steps::after { content: ""; position: absolute; left: 21px; top: 8px; bottom: 30px; width: 3px; border-radius: 3px; background: linear-gradient(180deg, var(--wfd-blue), var(--wfr-c2)); transform-origin: top; transform: scaleY(var(--wfr-p, 1)); transition: transform .15s linear; }
+.wfr-step { position: relative; margin-bottom: 18px; padding: 18px 20px; border-radius: 16px; background: #fff; border: 1px solid #e3e8f5; box-shadow: 0 10px 26px rgba(31, 42, 68, .05); }
+.wfr-step__no { position: absolute; left: -64px; top: 14px; z-index: 1; display: grid; place-items: center; width: 45px; height: 45px; border-radius: 50%; background: #fff; border: 3px solid var(--wfd-blue); color: var(--wfd-blue-d); font-weight: 700; font-size: 18px; transition: background .4s, color .4s; }
+.wfr-step.is-in .wfr-step__no { background: var(--wfd-blue-d); border-color: var(--wfd-blue-d); color: #fff; }
+.wfr-step__lbl { margin: 0 0 2px; font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--wfd-blue); }
+.wfr-step h3 { margin: 0 0 6px; font-size: 1.15rem; font-weight: 600; color: var(--wfd-ink); text-transform: none; letter-spacing: 0; }
+.wfr-step p:last-child { margin: 0; }
+.wfr-note { margin-top: 10px; padding: 16px 18px; border-radius: 14px; background: linear-gradient(135deg, #fff8dd, #fff); border: 1px solid #f3e2a6; }
+.wfr-note p { margin: 0; font-size: 15px; }
+
+/* ---------- 4. Podejście ---------- */
+.wfr-quote { position: relative; margin: 4px 0 20px; padding: 22px 26px 22px 64px; border: 0; border-radius: 18px; background: linear-gradient(120deg, var(--wfd-blue-dd), var(--wfd-blue-d) 55%, var(--wfr-c2)); color: #fff; font-size: clamp(1.2rem, 2.2vw, 1.55rem); font-weight: 500; line-height: 1.4; box-shadow: 0 16px 36px rgba(36, 54, 150, .25); }
+.wfr-quote::before { content: "\201E"; position: absolute; left: 20px; top: -4px; font-size: 76px; line-height: 1; font-family: Georgia, serif; color: rgba(255, 255, 255, .45); }
+.wfr-rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.wfr-rule { padding: 20px; border-radius: 16px; background: #f7f9ff; border: 1px solid #e3e8f5; transition: transform .25s ease, box-shadow .25s ease; }
+.wfr-rule:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(31, 42, 68, .08); }
+.wfr-rule .wfr-ico { background: #fff; box-shadow: 0 6px 14px rgba(31, 42, 68, .08); }
+.wfr-rule h3 { margin: 12px 0 8px; font-size: 1.05rem; line-height: 1.35; font-weight: 600; color: var(--wfd-ink); text-transform: none; letter-spacing: 0; }
+.wfr-rule p { margin: 0; font-size: 15px; line-height: 1.6; }
+
+/* ---------- 5. O programie ---------- */
+.wfr-about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.wfr-accent { padding: 14px 16px; border-radius: 14px; background: #f1f8f4; color: #1d4d39; font-weight: 500; }
+.wfr-goals { padding: 22px 22px 14px; border-radius: 18px; background: #fff; border: 1px solid #e3e8f5; box-shadow: 0 14px 32px rgba(31, 42, 68, .07); }
+.wfr-goals h3 { margin: 0 0 12px; font-size: 1.15rem; font-weight: 600; color: var(--wfd-ink); text-transform: none; letter-spacing: 0; }
+.wfr-goals ul { list-style: none; margin: 0; padding: 0; }
+.wfr-goals li { position: relative; margin-bottom: 12px; padding-left: 32px; font-size: 15px; line-height: 1.55; }
+.wfr-goals li::before { content: ""; position: absolute; left: 0; top: 1px; width: 22px; height: 22px; border-radius: 50%; background: #e3f4ec url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23178a5b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 13px no-repeat; }
+
+/* ---------- 6. Pytania ---------- */
+.wfr-faq { display: grid; gap: 8px; }
+.wfr-faq summary { padding-left: 18px; }
+
+/* ---------- 8. Baner końcowy ---------- */
+.wfr-banner { position: relative; overflow: hidden; margin-top: 70px; padding: 40px 36px; border-radius: 24px; color: #fff; background: radial-gradient(120% 140% at 100% 0, rgba(123, 92, 230, .9) 0, rgba(123, 92, 230, 0) 55%), linear-gradient(135deg, var(--wfd-blue-dd), var(--wfd-blue-d)); box-shadow: 0 20px 44px rgba(36, 54, 150, .28); }
+.wfr-banner::after { content: ""; position: absolute; right: -60px; bottom: -80px; width: 260px; height: 260px; border-radius: 50%; background: rgba(255, 255, 255, .07); }
+.wfr-banner h2 { margin: 0 0 14px; color: #fff; font-size: clamp(1.45rem, 2.8vw, 2rem); line-height: 1.25; font-weight: 600; text-transform: none; }
+.wfr-banner h2::after { display: none; }
+.wfr-banner p { position: relative; z-index: 1; margin: 0 0 10px; color: rgba(255, 255, 255, .92); max-width: 640px; }
+.wfr-banner__strong { font-weight: 600; color: #fff !important; }
+.wfr-banner .wfd-btn { position: relative; z-index: 1; margin-top: 12px; }
+.wfr-banner + .wfl-sec { margin-top: 40px; }
+
+/* ---------- Pojawianie się przy przewijaniu (tylko z JS; bez JS wszystko widoczne) ---------- */
+.wfr-js [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .3, 1); transition-delay: var(--wfr-d, 0ms); }
+.wfr-js [data-reveal].is-in { opacity: 1; transform: none; }
+
+@media (max-width: 991px) {
+  .wfr-who, .wfr-rules, .wfr-about { grid-template-columns: minmax(0, 1fr); }
+  .wfr-area { padding: 22px 18px 18px; border-radius: 18px; }
+  .wfr-area__ico { width: 46px; height: 46px; font-size: 20px; border-radius: 14px; }
+  .wfr-acc summary { padding: 13px 46px 13px 12px; gap: 10px; }
+  .wfr-acc summary::after { right: 12px; }
+  .wfr-acc__body { padding: 0 14px 14px; }
+  .wfr-steps { padding-left: 54px; }
+  .wfr-steps::before, .wfr-steps::after { left: 17px; }
+  .wfr-step__no { left: -54px; width: 38px; height: 38px; font-size: 16px; }
+  .wfr-banner { padding: 28px 20px; border-radius: 18px; }
+  .wfr-quote { padding: 18px 18px 18px 52px; }
+  .wfr-quote::before { left: 14px; font-size: 60px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wfr-js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .wfr-who__item, .wfr-rule, .wfr-chip, .wfr-acc summary::after, .wfr-steps::after { transition: none; }
+}
+
+/* „W przygotowaniu” (materiały, aplikacja) — 2026-11-27 */
+.wfr-soon { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 14px; padding: 12px 16px; border-radius: 14px; background: #fff; border: 1px dashed color-mix(in srgb, var(--c, var(--wfd-blue)) 55%, #fff); }
+.wfr-soon__tag { flex: none; padding: 3px 10px; border-radius: 999px; background: var(--c, var(--wfd-blue)); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.wfr-soon p { flex: 1 1 260px; margin: 0; font-size: 15px; }
+.wfr-soon a { color: var(--c, var(--wfd-blue-d)); font-weight: 600; text-decoration: underline; }
