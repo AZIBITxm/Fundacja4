@@ -157,23 +157,72 @@
       sp.addEventListener('click', function () { user(k); });
       b.insertBefore(sp, b.firstChild);
     });
-    function open(i) {
-      a = (i % n + n) % n;
+    // Telefon (< 768 px): cieniutkie kreski — wcześniejsze obszary z lewej, późniejsze z prawej.
+    // Komputer: otwarta książka pierwsza, potem grzbiety w obiegu (zamknięta wraca na koniec, z prawej).
+    var mob = window.matchMedia('(max-width: 767px)');
+    var box0 = shelf.querySelector('.wfr-shelf__books');
+    var busy = false, first = true;
+    function layout() {
       books.forEach(function (b, k) {
         var on = k === a;
         b.classList.toggle('is-open', on); b.classList.toggle('is-shut', !on);
-        b.style.order = ((k - a) % n + n) % n;          // otwarta pierwsza, potem kolejne w obiegu
+        b.style.order = mob.matches ? (k < a ? k : k === a ? n : n + k) : ((k - a) % n + n) % n;
       });
-      if (count) count.textContent = a + 1;
-      restart();
     }
+    function open(i) {
+      var to = (i % n + n) % n;
+      if (to === a && !first) { restart(); return; }
+      if (first || reduce || !box0.animate) { first = false; a = to; layout(); if (count) count.textContent = a + 1; restart(); return; }
+      if (busy) return;
+      busy = true;
+      var old = books[a];
+      var fwd = mob.matches ? to > a : true;
+      // 1) otwarta karta zjeżdża (w lewo przy „dalej”, w prawo przy „wstecz” na telefonie)
+      var out = old.animate([{ transform: 'none', opacity: 1 }, { transform: 'translateX(' + (fwd ? -40 : 40) + 'px)', opacity: 0 }],
+        { duration: 220, easing: 'ease-in', fill: 'forwards' });
+      out.onfinish = function () {
+        // zapamiętaj położenie zamkniętych grzbietów (do płynnego przesunięcia)
+        var before = {};
+        books.forEach(function (b) { before[b.id] = b.getBoundingClientRect().left; });
+        a = to; layout(); out.cancel();
+        if (count) count.textContent = a + 1;
+        var nb = books[a];
+        // 2) nowa karta rozwija się z miejsca, gdzie stał jej grzbiet
+        nb.animate([{ clipPath: fwd ? 'inset(0 0 0 calc(100% - 54px) round 22px)' : 'inset(0 calc(100% - 54px) 0 0 round 22px)', opacity: .6 },
+                    { clipPath: 'inset(0 0 0 0 round 22px)', opacity: 1 }], { duration: 480, easing: 'cubic-bezier(.2,.75,.2,1)' });
+        // 3) grzbiety przesuwają się płynnie; zamknięta karta wjeżdża na koniec
+        books.forEach(function (b) {
+          if (b === nb) return;
+          var dx = before[b.id] - b.getBoundingClientRect().left;
+          if (b === old) b.animate([{ transform: 'translateX(' + (fwd ? 40 : -40) + 'px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 420, delay: 120, easing: 'ease-out', fill: 'backwards' });
+          else if (Math.abs(dx) > 1) b.animate([{ transform: 'translateX(' + dx + 'px)' }, { transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.75,.2,1)' });
+        });
+        setTimeout(function () { busy = false; }, 480);
+        restart();
+      };
+    }
+    mob.addEventListener ? mob.addEventListener('change', layout) : mob.addListener(layout);
+    // telefon: strzałki ‹ › jadą w połowie ekranu wzdłuż całej półki
+    var fl = document.createElement('div');
+    fl.className = 'wfr-shelf__float';
+    fl.innerHTML = '<div class="wfr-shelf__float-in"><button type="button" data-dir="-1" aria-label="Poprzedni obszar"><i class="fa fa-angle-left" aria-hidden="true"></i></button>' +
+      '<button type="button" data-dir="1" aria-label="Następny obszar"><i class="fa fa-angle-right" aria-hidden="true"></i></button></div>';
+    box0.appendChild(fl);
+    [].forEach.call(fl.querySelectorAll('button'), function (b) {
+      b.addEventListener('click', function () { user(a + (+b.getAttribute('data-dir'))); });
+    });
     function restart() { // pasek postępu i odliczanie od nowa
       clearTimeout(timer);
       shelf.classList.remove('is-auto'); void shelf.offsetWidth;
       if (auto && visible && !hover && !document.hidden) { shelf.classList.add('is-auto'); timer = setTimeout(function () { open(a + 1); }, T); }
     }
     function stop() { auto = false; clearTimeout(timer); shelf.classList.remove('is-auto'); }
-    function user(i) { stop(); open(i); }
+    function user(i) {
+      stop(); open(i);
+      // przełączenie w połowie czytania — podjedź na początek półki, żeby nowy obszar czytać od góry
+      var top = box0.getBoundingClientRect().top;
+      if (top < 0) window.scrollTo({ top: window.pageYOffset + top - 120, behavior: reduce ? 'auto' : 'smooth' });
+    }
     [].forEach.call(shelf.querySelectorAll('.wfr-shelf__arrow'), function (b) {
       b.addEventListener('click', function () { user(a + (+b.getAttribute('data-dir'))); });
     });
