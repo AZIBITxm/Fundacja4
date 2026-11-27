@@ -141,4 +141,9 @@
 /* Tata na barana jako pierwszy kafelek w „Dla kogo” (Adam 27.11.2026): ta sama wielkość co kafelki obok, zwykłe zdjęcie */
 .wfr-who__photo { position: relative; margin: 0; padding: 0; overflow: hidden; min-height: 240px; pointer-events: none; }
 .wfr-who__photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 30% 35%; }
+/* komputer: całe, oddalone zdjęcie; tablet: kadr pośredni; telefon: bliski kadr z dzieckiem */
+@media (min-width: 1200px) { .wfr-who__photo img { object-position: 18% 45%; } }
+@media (min-width: 992px) and (max-width: 1199px) { .wfr-who__photo img { object-position: 25% 40%; } }
+/* tablet: kafelki w jednej kolumnie, zdjęcie szerokie 16:9 z dalszej perspektywy */
+@media (min-width: 768px) and (max-width: 991px) { .wfr-who__photo { aspect-ratio: 16 / 9; min-height: 0; } .wfr-who__photo img { object-position: 18% 45%; } }
 @media (max-width: 767px) { .wfr-who__photo { aspect-ratio: 4 / 5; min-height: 0; } }
