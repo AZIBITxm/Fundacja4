@@ -157,8 +157,7 @@
       sp.addEventListener('click', function () { user(k); });
       b.insertBefore(sp, b.firstChild);
     });
-    // Telefon (< 768 px): cieniutkie kreski — wcześniejsze obszary z lewej, późniejsze z prawej.
-    // Komputer: otwarta książka pierwsza, potem grzbiety w obiegu (zamknięta wraca na koniec, z prawej).
+    // Telefon i komputer: otwarta książka pierwsza, potem grzbiety (komputer) / cieniutkie kreski (telefon) w obiegu — zamknięta wraca na koniec, z prawej.
     var mob = window.matchMedia('(max-width: 767px)');
     var box0 = shelf.querySelector('.wfr-shelf__books');
     var busy = false, first = true;
@@ -166,7 +165,7 @@
       books.forEach(function (b, k) {
         var on = k === a;
         b.classList.toggle('is-open', on); b.classList.toggle('is-shut', !on);
-        b.style.order = mob.matches ? (k < a ? k : k === a ? n : n + k) : ((k - a) % n + n) % n;
+        b.style.order = ((k - a) % n + n) % n;          // otwarta pierwsza, potem kolejne w obiegu (telefon i komputer tak samo)
       });
     }
     function open(i) {
@@ -176,7 +175,7 @@
       if (busy) return;
       busy = true;
       var old = books[a];
-      var fwd = mob.matches ? to > a : true;
+      var fwd = true;                                   // zawsze w jedną stronę: karta zjeżdża w lewo, wraca na koniec z prawej
       // 1) otwarta karta zjeżdża (w lewo przy „dalej”, w prawo przy „wstecz” na telefonie)
       var out = old.animate([{ transform: 'none', opacity: 1 }, { transform: 'translateX(' + (fwd ? -40 : 40) + 'px)', opacity: 0 }],
         { duration: 220, easing: 'ease-in', fill: 'forwards' });

@@ -207,10 +207,10 @@
 @media (max-width: 767px) {
   .wfr-shelf__hint { display: block; width: 100%; }
   .wfr-shelf__bar .wfr-shelf__arrow { display: none; }
-  /* cieniutkie kreski jedna przy drugiej: wcześniejsze obszary z lewej, późniejsze z prawej */
+  /* cieniutkie kreski jedna przy drugiej, wszystkie z prawej (jak grzbiety na komputerze) */
   .wfr-shelf__books { gap: 3px; }
   .wfr-shelf .wfr-area.is-shut { flex-basis: 4px; border-radius: 3px; box-shadow: none; }
-  .wfr-shelf .wfr-area.is-open { margin: 0 5px; }
+  .wfr-shelf .wfr-area.is-open { margin-right: 5px; }
   .wfr-shelf .wfr-area.is-shut > .wfr-spine { padding: 0; min-height: 200px; }
   .wfr-shelf .wfr-area.is-shut .wfr-spine__ico, .wfr-shelf .wfr-area.is-shut .wfr-spine__txt { display: none; }
   /* strzałki ‹ › jadą w połowie ekranu wzdłuż całej półki */
