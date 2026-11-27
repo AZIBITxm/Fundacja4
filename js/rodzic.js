@@ -160,7 +160,7 @@
     // Telefon i komputer: otwarta książka pierwsza, potem grzbiety (komputer) / cieniutkie kreski (telefon) w obiegu — zamknięta wraca na koniec, z prawej.
     var mob = window.matchMedia('(max-width: 767px)');
     var box0 = shelf.querySelector('.wfr-shelf__books');
-    var busy = false, first = true;
+    var busy = false, first = true, pending = null;
     function layout() {
       books.forEach(function (b, k) {
         var on = k === a;
@@ -172,10 +172,10 @@
       var to = (i % n + n) % n;
       if (to === a && !first) { restart(); return; }
       if (first || reduce || !box0.animate) { first = false; a = to; layout(); if (count) count.textContent = a + 1; restart(); return; }
-      if (busy) return;
+      if (busy) { pending = (to - a + n) % n; return; } // klik w trakcie animacji — o tyle kroków dalej, zaraz po niej
       busy = true;
       var old = books[a];
-      var fwd = true;                                   // zawsze w jedną stronę: karta zjeżdża w lewo, wraca na koniec z prawej
+      var fwd = ((to - a + n) % n) <= n / 2;            // dalej: karta zjeżdża w lewo i wraca na koniec z prawej; wstecz — odwrotnie
       // 1) otwarta karta zjeżdża (w lewo przy „dalej”, w prawo przy „wstecz” na telefonie)
       var out = old.animate([{ transform: 'none', opacity: 1 }, { transform: 'translateX(' + (fwd ? -40 : 40) + 'px)', opacity: 0 }],
         { duration: 220, easing: 'ease-in', fill: 'forwards' });
@@ -196,7 +196,7 @@
           if (b === old) b.animate([{ transform: 'translateX(' + (fwd ? 40 : -40) + 'px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 420, delay: 120, easing: 'ease-out', fill: 'backwards' });
           else if (Math.abs(dx) > 1) b.animate([{ transform: 'translateX(' + dx + 'px)' }, { transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.75,.2,1)' });
         });
-        setTimeout(function () { busy = false; }, 480);
+        setTimeout(function () { busy = false; if (pending !== null) { var p = pending; pending = null; open(a + p); } }, 480);
         restart();
       };
     }
@@ -204,8 +204,9 @@
     // telefon: strzałki ‹ › jadą w połowie ekranu wzdłuż całej półki
     var fl = document.createElement('div');
     fl.className = 'wfr-shelf__float';
-    fl.innerHTML = '<div class="wfr-shelf__float-in"><button type="button" data-dir="-1" aria-label="Poprzedni obszar"><i class="fa fa-angle-left" aria-hidden="true"></i></button>' +
-      '<button type="button" data-dir="1" aria-label="Następny obszar"><i class="fa fa-angle-right" aria-hidden="true"></i></button></div>';
+    // ‹ przesuwa karty w lewo = następny obszar (zjechana karta wraca na koniec z prawej); › cofa
+    fl.innerHTML = '<div class="wfr-shelf__float-in"><button type="button" data-dir="1" aria-label="Następny obszar"><i class="fa fa-angle-left" aria-hidden="true"></i></button>' +
+      '<button type="button" data-dir="-1" aria-label="Poprzedni obszar"><i class="fa fa-angle-right" aria-hidden="true"></i></button></div>';
     box0.appendChild(fl);
     [].forEach.call(fl.querySelectorAll('button'), function (b) {
       b.addEventListener('click', function () { user(a + (+b.getAttribute('data-dir'))); });
