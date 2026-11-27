@@ -110,7 +110,7 @@
   <link rel="stylesheet" href="../css/ankieta-promo.css?v=20261124d">
   <link rel="stylesheet" href="../css/programy.css?v=20261124b">
   <!-- Tryb „strona w przebudowie” (zlecenie 6A) — przełącznik WF_PRZEBUDOWA w js/przebudowa.js -->
-  <link rel="stylesheet" href="../css/przebudowa.css?v=20261120c">
+  <link rel="stylesheet" href="../css/przebudowa.css?v=20261127a">
   <link rel="stylesheet" href="../css/wplaty.css?v=20261127c">
   <script src="../js/przebudowa.js?v=20261127a"></script>
     
@@ -335,7 +335,7 @@
               <div class="swiper-slide-caption section-md">
                 <div class="container">
                   <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Nie jesteś Sam</h1>
-                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wsparcie dla rodziców samotnie wychowujących dzieci oraz doświadczających alienacji rodzicielskiej</p><a class="button button-primary button-ujarak" id="slider3-btn" href="#projects" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
+                  <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Wsparcie dla rodziców samotnie wychowujących dzieci oraz doświadczających alienacji rodzicielskiej</p><a class="button button-primary button-ujarak" id="slider3-btn" href="program-rodzic-nie-jestes-sam.html" data-caption-animate="fadeInUp" data-caption-delay="200">PRZEJDŹ</a>
                 </div>
               </div>
             </div>
@@ -376,6 +376,9 @@
             var sliderBtns = document.querySelectorAll('.swiper-slide .button-ujarak');
             sliderBtns.forEach(function(btn, idx) {
               btn.addEventListener('click', function(e) {
+                // Przyciski prowadzące do podstron (np. programy) działają jak zwykłe linki
+                var rawHref = btn.getAttribute('href') || '';
+                if (rawHref.charAt(0) !== '#') return;
                 // Prevent default for all buttons
                 e.preventDefault();
                 
@@ -415,21 +418,7 @@
                   return; // Przerywamy dalsze wykonywanie
                 }
 
-                // Slider 3 (indeks 2) - specjalna obsługa
-                if (btn.id === 'slider3-btn') {
-                  e.preventDefault();
-                  var target = document.getElementById('projects');
-                  if (target) {
-                    var y = target.getBoundingClientRect().top + window.pageYOffset;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                  }
-                  // Wybierz zakładkę 2
-                  var tab2 = document.querySelector('#tabs-6 .nav-link[href="#tabs-6-2"]');
-                  if (tab2) {
-                    setTimeout(function() { tab2.click(); }, 400);
-                  }
-                  return;
-                }
+                // Slider 3 („Nie jesteś sam”) — od 27.11.2026 zwykły link do podstrony programu (bez specjalnej obsługi)
                 var href = btn.getAttribute('href');
                 if (href && href.startsWith('#') && href.length > 1 && !btn.hasAttribute('data-toggle')) {
                   var target = document.getElementById(href.substring(1));

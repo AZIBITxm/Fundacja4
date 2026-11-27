@@ -59,8 +59,7 @@ html.wf-rebuild .wfr-hidden { display: none !important; }
    jest w tym trybie ukryty (strona będzie przerabiana). Pozycja menu „Program dla rodziców” jest widoczna tylko w tym trybie
    (w pełnej wersji program jest w rozwijanym menu „Projekty”, żeby menu zostało w jednym rzędzie). */
 html.wf-rebuild a[href*="projekt-spot.html"],
-html.wf-rebuild a[href*="wsparcie-weteranow.html"],
-html.wf-rebuild #slider3-btn { display: none !important; }
+html.wf-rebuild a[href*="wsparcie-weteranow.html"] { display: none !important; }
 html:not(.wf-rebuild) .wf-only-rebuild { display: none !important; }
 
 /* Adam 20.11 (15:11): sekcja „Zarząd” wraca do widoku publicznego (pozycja menu „Zarząd”); przycisk na slajdzie
