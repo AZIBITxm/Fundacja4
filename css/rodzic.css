@@ -215,7 +215,7 @@
   .wfr-shelf .wfr-area.is-shut .wfr-spine__ico, .wfr-shelf .wfr-area.is-shut .wfr-spine__txt { display: none; }
   /* strzałki ‹ › jadą w połowie ekranu wzdłuż całej półki */
   .wfr-shelf__float { display: block; position: absolute; inset: 0; z-index: 6; pointer-events: none; }
-  .wfr-shelf__float-in { position: sticky; top: calc(50vh - 20px); display: flex; justify-content: space-between; margin: 0 -6px; height: 40px; }
+  .wfr-shelf__float-in { position: sticky; top: calc(50vh - 20px); display: flex; justify-content: flex-start; margin: 0 -6px; height: 40px; }
   .wfr-shelf__float button { pointer-events: auto; width: 34px; height: 40px; border: 0; border-radius: 20px; background: rgba(255, 255, 255, .92); color: #3a55c9;
     font-size: 22px; line-height: 1; box-shadow: 0 4px 14px rgba(31, 42, 68, .18); cursor: pointer; }
   .wfr-shelf__float button:active { background: #3a55c9; color: #fff; }

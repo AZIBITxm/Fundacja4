@@ -204,9 +204,8 @@
     // telefon: strzałki ‹ › jadą w połowie ekranu wzdłuż całej półki
     var fl = document.createElement('div');
     fl.className = 'wfr-shelf__float';
-    // ‹ przesuwa karty w lewo = następny obszar (zjechana karta wraca na koniec z prawej); › cofa
-    fl.innerHTML = '<div class="wfr-shelf__float-in"><button type="button" data-dir="1" aria-label="Następny obszar"><i class="fa fa-angle-left" aria-hidden="true"></i></button>' +
-      '<button type="button" data-dir="-1" aria-label="Poprzedni obszar"><i class="fa fa-angle-right" aria-hidden="true"></i></button></div>';
+    // tylko w jedną stronę: ‹ przesuwa karty w lewo = następny obszar (zjechana karta wraca na koniec z prawej)
+    fl.innerHTML = '<div class="wfr-shelf__float-in"><button type="button" data-dir="1" aria-label="Następny obszar"><i class="fa fa-angle-left" aria-hidden="true"></i></button></div>';
     box0.appendChild(fl);
     [].forEach.call(fl.querySelectorAll('button'), function (b) {
       b.addEventListener('click', function () { user(a + (+b.getAttribute('data-dir'))); });
@@ -234,7 +233,7 @@
     box.addEventListener('touchend', function (e) {
       if (sx === null) return;
       var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) user(a + (dx < 0 ? 1 : -1));
+      if (dx < -50 && Math.abs(dx) > Math.abs(dy) * 1.3) user(a + 1);   // tylko w jedną stronę: palec w lewo = dalej
       else stop();
     }, { passive: true });
     // linki do obszarów (#obszar-3 — kolorowe przyciski, menu „Na tej stronie”) otwierają właściwą książkę
