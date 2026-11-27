@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../css/dolacz.css?v=20261120b">
   <link rel="stylesheet" href="../css/wf-forms.css?v=20261120d">
   <link rel="stylesheet" href="../css/program.css?v=20261123g">
-  <link rel="stylesheet" href="../css/rodzic.css?v=20261127f">
+  <link rel="stylesheet" href="../css/rodzic.css?v=20261127g">
   <!-- Tryb „strona w przebudowie” (zlecenie 6A) — przełącznik WF_PRZEBUDOWA w js/przebudowa.js -->
   <link rel="stylesheet" href="../css/przebudowa.css?v=20261127a">
   <script src="../js/przebudowa.js?v=20261124a"></script>
@@ -138,10 +138,13 @@
           <!-- SEKCJA 1 -->
           <section id="dla-kogo" class="wfl-sec">
             <h2>Dla kogo jest ten program?</h2>
+            <!-- Zdjęcia (Adam 27.11.2026): prawdziwe fotografie z Unsplash (licencja Unsplash):
+                 Ricardo Maruri https://unsplash.com/photos/Vizt8IsvrI8 · Kelli McClintock https://unsplash.com/photos/wBgAVAGjzFg ·
+                 https://unsplash.com/photos/MRWHSKimBJk -->
+            <figure class="wfr-photo" data-reveal><img src="../images/nie-jestes-sam/rodzina-na-kocu.webp" width="1200" height="675" loading="lazy" decoding="async" style="object-position:50% 50%" alt="Rodzice z małym dzieckiem na kocu na łące"></figure>
             <p class="wfr-kicker" data-reveal>Każda rodzina może znaleźć się w trudnej sytuacji</p>
             <p class="wfl-lead">Problemy rodzinne mają różne przyczyny i przebieg. Czasami zaczynają się od narastających nieporozumień, innym razem od rozstania, rozwodu lub konfliktu, który z czasem obejmuje również dzieci.</p>
             <p>Program kierujemy do rodziców, którzy potrzebują wsparcia w budowaniu relacji z dzieckiem, przechodzą przez trudny okres w życiu rodzinnym lub zmagają się z problemami wymagającymi pomocy psychologicznej i prawnej.</p>
-            <figure class="wfr-photo" data-reveal><img src="../images/nie-jestes-sam/mama-z-synkiem.webp" width="900" height="675" loading="lazy" decoding="async" style="object-position:50% 35%" alt="Mama przytulająca synka na plaży"></figure>
             <div class="wfr-who">
               <div class="wfr-who__item" data-reveal>
                 <span class="wfr-ico" aria-hidden="true"><i class="fa fa-user-o"></i></span>
@@ -176,6 +179,7 @@
             <h2>Jak pomagamy?</h2>
             <p class="wfr-kicker" data-reveal>Pięć obszarów wsparcia. Jeden wspólny cel – dobro dziecka i rodziny.</p>
             <p class="wfl-lead">Każda sytuacja rodzinna jest inna. Dlatego nie ograniczamy pomocy do jednego rodzaju działania. Program obejmuje pięć obszarów, które odpowiadają na najważniejsze potrzeby rodziców znajdujących się w trudnej sytuacji.</p>
+            <figure class="wfr-photo" data-reveal><img src="../images/nie-jestes-sam/mama-z-synkiem.webp" width="900" height="675" loading="lazy" decoding="async" style="object-position:50% 35%" alt="Mama przytulająca synka na plaży"></figure>
             <nav class="wfr-chips" aria-label="Obszary wsparcia">
               <a class="wfr-chip" style="--c:var(--wfr-c1)" href="#obszar-1"><i class="fa fa-heart-o" aria-hidden="true"></i>Relacja z dzieckiem</a>
               <a class="wfr-chip" style="--c:var(--wfr-c2)" href="#obszar-2"><i class="fa fa-random" aria-hidden="true"></i>Rozstanie i konflikt</a>
@@ -596,12 +600,14 @@
           <!-- SEKCJA 4 -->
           <section id="podejscie" class="wfl-sec">
             <h2>Nasze podejście</h2>
-            <blockquote class="wfr-quote" data-reveal>W centrum każdej sprawy rodzinnej powinno znajdować się dziecko.</blockquote>
-            <p class="wfl-lead">W sytuacjach konfliktowych łatwo skupić się na wzajemnych pretensjach, sporach i udowadnianiu swoich racji. Tymczasem dziecko nie powinno ponosić emocjonalnych konsekwencji konfliktu dorosłych.</p>
-            <p>W programie „Nie jesteś sam” szczególną uwagę poświęcamy potrzebom dziecka i znaczeniu jego relacji z rodzicami.</p>
-            <!-- Zdjęcia (Adam 27.11.2026): prawdziwe fotografie z Unsplash (licencja Unsplash), rozłożone między działy:
-                 https://unsplash.com/photos/MRWHSKimBJk · https://unsplash.com/photos/ovgmNFYgShI · https://unsplash.com/photos/M0M-FR2iedk -->
-            <figure class="wfr-photo" data-reveal><img src="../images/nie-jestes-sam/tata-z-synkiem.webp" width="900" height="675" loading="lazy" decoding="async" style="object-position:50% 30%" alt="Uśmiechnięty tata obejmujący synka"></figure>
+            <div class="wfr-split">
+              <figure class="wfr-photo wfr-photo--tall" data-reveal><img src="../images/nie-jestes-sam/tata-na-barana.webp" width="750" height="1000" loading="lazy" decoding="async" alt="Tata niosący synka na barana"></figure>
+              <div class="wfr-split__txt">
+              <blockquote class="wfr-quote" data-reveal>W centrum każdej sprawy rodzinnej powinno znajdować się dziecko.</blockquote>
+              <p class="wfl-lead">W sytuacjach konfliktowych łatwo skupić się na wzajemnych pretensjach, sporach i udowadnianiu swoich racji. Tymczasem dziecko nie powinno ponosić emocjonalnych konsekwencji konfliktu dorosłych.</p>
+              <p>W programie „Nie jesteś sam” szczególną uwagę poświęcamy potrzebom dziecka i znaczeniu jego relacji z rodzicami.</p>
+              </div>
+            </div>
             <div class="wfr-rules">
               <div class="wfr-rule" data-reveal>
                 <span class="wfr-ico" aria-hidden="true"><i class="fa fa-child"></i></span>
@@ -630,7 +636,6 @@
           <section id="o-programie" class="wfl-sec">
             <h2>O programie</h2>
             <p class="wfr-kicker" data-reveal>Pomagamy rodzicom, chroniąc to, co najważniejsze – relacje rodzinne.</p>
-            <figure class="wfr-photo" data-reveal><img src="../images/nie-jestes-sam/rodzice-razem.webp" width="900" height="675" loading="lazy" decoding="async" style="object-position:50% 60%" alt="Rodzice prowadzący dziecko za ręce"></figure>
             <div class="wfr-about">
               <div>
                 <p class="wfl-lead">Program „Nie jesteś sam” jest inicjatywą naszej Fundacji, której celem jest zwiększanie dostępności wsparcia dla rodziców i dzieci znajdujących się w trudnych sytuacjach rodzinnych.</p>
