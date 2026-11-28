@@ -474,3 +474,32 @@ html.wft-lock, html.wft-lock body { overflow: hidden; }
   .wft-dcard h3 { font-size: 1.5rem; }
   .wft-dcard__open { margin-top: auto; }
 }
+/* scena zamian: dwie poświaty płyną po tle z przewijaniem + snop światła (28.11.2026) */
+.wft-scene__glow { transform: translate(var(--gx, 0), var(--gy, 0)) scale(var(--gs, 1)); opacity: .42; transition: background .8s ease; will-change: transform; }
+.wft-scene__sticky::before { content: ""; position: absolute; left: 50%; top: 50%; width: 60vmin; height: 60vmin; margin: -30vmin 0 0 -30vmin; border-radius: 50%; pointer-events: none;
+  background: var(--sc2, #9b5cff); filter: blur(100px); opacity: .3; transform: translate(calc(var(--gx, 0) * -1), calc(var(--gy, 0) * -1)) scale(calc(2.2 - var(--gs, 1))); transition: background .8s ease; will-change: transform; }
+.wft-scene__sticky::after { content: ""; position: absolute; inset: -30%; pointer-events: none; opacity: .5;
+  background: conic-gradient(from var(--gr, 0deg) at 50% 50%, transparent 0deg, rgba(255, 255, 255, .06) 30deg, transparent 70deg, transparent 180deg, rgba(139, 227, 255, .06) 220deg, transparent 260deg); }
+.wft-scene__stage, .wft-scene .wft-eyebrow, .wft-scene__foot { position: relative; z-index: 2; }
+.wft-scene .wft-eyebrow { position: absolute; }
+/* talia płyt: przycisk „Otwórz moduł” przypięty do dołu panelu, długie teksty skracane (moduły 6 i 7 na telefonie) */
+@media (max-width: 767px) {
+  .wft-dcard__txt { position: relative; padding-bottom: 78px !important; justify-content: flex-start; }
+  .wft-dcard__open { position: absolute; left: 18px; bottom: 16px; margin: 0 !important; }
+  .wft-dcard h3 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 1.4rem; }
+  .wft-dcard__motto { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: .95rem; }
+  .wft-dcard .wft-mod__swap { font-size: 13.5px; }
+  .wft-dcard__main { grid-template-rows: 30% 1fr; }
+}
+@media (max-width: 767px) and (max-height: 700px) { .wft-dcard__motto { display: none; } }
+.wft-dcard__txt, .wft-dcard__txt * { white-space: normal; }
+.wft-dcard__txt { text-align: left; }
+@media (max-width: 767px) {
+  .wft-dcard__chips { display: flex; }
+  .wft-dcard__chips span:nth-child(n+4) { display: none; }
+  .wft-dcard__chips span { font-size: 12.5px; padding: 5px 10px; }
+}
+@media (max-width: 767px) and (max-height: 700px) { .wft-dcard__chips { display: none; } }
+.wft-dcard__bar, .wft-dcard__bar * { white-space: nowrap !important; }
+.wft-dcard__bar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; text-align: left; }
+.wft-dcard__bar b { flex: none; }

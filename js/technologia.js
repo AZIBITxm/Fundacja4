@@ -204,6 +204,13 @@
     });
     scene.style.setProperty('--sp', prog.toFixed(4));
     scene.style.setProperty('--sc', byId[PAIRS[act][0]].color);
+    scene.style.setProperty('--sc2', byId[PAIRS[Math.min(act + 1, n - 1)][0]].color);
+    // poświaty płyną po tle razem z przewijaniem (widać, że całość się „kręci”), mocniej przy zmianie napisu
+    var fr = f - Math.floor(f), pulse = Math.sin(Math.PI * clamp(fr, 0, 1));
+    scene.style.setProperty('--gx', (Math.sin(f * 1.9) * 26).toFixed(2) + 'vw');
+    scene.style.setProperty('--gy', (Math.cos(f * 1.3) * 16).toFixed(2) + 'vh');
+    scene.style.setProperty('--gs', (1 + pulse * 0.35).toFixed(3));
+    scene.style.setProperty('--gr', (f * 40).toFixed(1) + 'deg');
     if (countEl) countEl.textContent = (act + 1) + ' / ' + n;
   }
 
@@ -227,12 +234,15 @@
      W scenie zamian i w talii płyt jeden ruch kółkiem / palcem / klawiszem = zawsze jedna pełna, płynna animacja
      do następnego (albo poprzedniego) kroku. Nie da się zatrzymać w połowie ani przeskoczyć kilku naraz.
      Na pierwszym kroku ruch w górę i na ostatnim ruch w dół wypuszczają dalej, zwykłym przewijaniem strony. */
-  var animating = false;
-  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  // Szybkie przewijanie (Adam 28.11.2026): kolejny ruch w trakcie animacji od razu startuje następny krok
+  // (animacja przejmuje się z bieżącego miejsca), więc „bum, bum, bum” przelatuje dalej bez czekania.
+  var animating = false, animTok = 0;
+  function ease(t) { return 1 - Math.pow(1 - t, 3); }   // szybki start, łagodny koniec — dobrze się łączy przy szybkich ruchach
   function animScroll(to, dur, done) {
-    var from = window.pageYOffset, t0 = performance.now();
+    var from = window.pageYOffset, t0 = performance.now(), tok = ++animTok;
     animating = true;
     (function f(now) {
+      if (tok !== animTok) return;                          // przejęta przez nowszy krok
       var t = Math.min(1, (now - t0) / dur);
       window.scrollTo({ top: from + (to - from) * ease(t), behavior: 'instant' });
       if (t < 1) requestAnimationFrame(f); else { animating = false; if (done) done(); }
@@ -252,21 +262,23 @@
       return best;
     };
     S.before = function () { return window.pageYOffset < S.pos(0) - 3; };   // między początkiem sekcji a pierwszym krokiem
-    S.step = function (dir) { S.go(S.before() ? Math.min(1, S.last) : S.idx + dir); };
+    S.step = function (dir) { S.go(!S.busy && S.before() ? (dir > 0 ? Math.min(1, S.last) : 0) : S.idx + dir); };
     S.go = function (i, d) {
       S.idx = clamp(i, 0, S.last); S.busy = true;
-      animScroll(S.pos(S.idx), d || dur, function () { setTimeout(function () { S.busy = false; }, 80); });
+      animScroll(S.pos(S.idx), d || dur, function () { S.busy = false; });
     };
     return S;
   }
   var steppers = [];
   if (!reduce && stage && pairEls.length) {
-    var ps = [0.1 / pairEls.length].concat(pairEls.map(function (_, i) { return (i + 0.7) / pairEls.length; }));
-    steppers.push(makeStepper(scene, ps, 1100));
+    // dwa kroki na zamianę (Adam 28.11.2026): 1. ruch = „zamiast …”, 2. ruch = „wybierz …”, potem następna zamiana
+    var ps = [];
+    pairEls.forEach(function (_, i) { ps.push((i + 0.12) / pairEls.length, (i + 0.7) / pairEls.length); });
+    steppers.push(makeStepper(scene, ps, 820));
   }
   var deckStep = null;
   if (!reduce && deck && cards.length > 1) {
-    deckStep = makeStepper(deckTrack(), cards.map(function (_, i) { return i / (cards.length - 1); }), 750);
+    deckStep = makeStepper(deckTrack(), cards.map(function (_, i) { return i / (cards.length - 1); }), 650);
     steppers.push(deckStep);
   }
   function activeStepper() { if (html.classList.contains('wft-lock')) return null; for (var i = 0; i < steppers.length; i++) if (steppers[i].inRange()) return steppers[i]; return null; }
@@ -282,24 +294,25 @@
         var i = lastY < s.pos(0) - 3 ? 0 : (lastY > s.pos(s.last) + 3 ? s.last : s.nearest());
         html.style.overflow = 'hidden';                       // zatrzymuje rozpęd (telefon)
         s.idx = i; s.busy = true;
-        animScroll(s.pos(i), 320, function () { html.style.overflow = ''; setTimeout(function () { s.busy = false; }, 80); });
+        animScroll(s.pos(i), 320, function () { html.style.overflow = ''; s.busy = false; });
       }
     }
     lastY = y;
   }, { passive: true });
 
   // kółko myszy / gładzik: jeden gest (razem z bezwładnością) = jeden krok
-  var wLast = 0, wUsed = false;
+  var wLast = 0, wUsed = false, wAbs = 0, wAt = 0, wDir = 0;
   window.addEventListener('wheel', function (e) {
     var s = activeStepper(); if (!s) return;
     var dir = e.deltaY > 0 ? 1 : (e.deltaY < 0 ? -1 : 0); if (!dir) return;
-    var now = Date.now();
-    if (now - wLast > 220) wUsed = false;
-    wLast = now;
-    if (!s.busy && !wUsed && atExit(s, dir)) return;          // wyjście z sekcji zwykłym przewijaniem
+    var now = Date.now(), a = Math.abs(e.deltaY);
+    // nowy gest: przerwa w zdarzeniach, zmiana kierunku albo wyraźny nowy „pych” w trakcie wygasającej bezwładności
+    if (now - wLast > 140 || dir !== wDir || (a > wAbs * 1.8 && a > 20 && now - wAt > 180)) wUsed = false;
+    wLast = now; wAbs = a; wDir = dir;
+    if (!wUsed && atExit(s, dir) && !s.busy) return;           // wyjście z sekcji zwykłym przewijaniem
     e.preventDefault();
-    if (s.busy || wUsed || Math.abs(e.deltaY) < 3) return;
-    wUsed = true; s.step(dir);
+    if (wUsed || a < 3 || atExit(s, dir)) return;
+    wUsed = true; wAt = now; s.step(dir);
   }, { passive: false });
 
   // palec: jedno przesunięcie (wolne czy szybkie) = jeden krok
@@ -309,11 +322,11 @@
     if (tY === null || tFree) return;
     var s = activeStepper(); if (!s) return;
     var dy = tY - e.touches[0].clientY, dir = dy > 0 ? 1 : -1;
-    if (!tUsed && !s.busy && Math.abs(dy) < 6) return;
+    if (!tUsed && Math.abs(dy) < 6) return;
     if (!tUsed && !s.busy && atExit(s, dir)) { tFree = true; return; }
     e.preventDefault();
-    if (tUsed || s.busy) return;
-    if (Math.abs(dy) > 28) { tUsed = true; s.step(dir); }
+    if (tUsed || atExit(s, dir)) return;
+    if (Math.abs(dy) > 24) { tUsed = true; s.step(dir); }       // każdy „pych” palcem = następny krok, także w trakcie animacji
   }, { passive: false });
   window.addEventListener('touchend', function () { tY = null; }, { passive: true });
 
@@ -322,7 +335,7 @@
     var k = e.key, dir = (k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !e.shiftKey)) ? 1 : ((k === 'ArrowUp' || k === 'PageUp' || (k === ' ' && e.shiftKey)) ? -1 : 0);
     if (!dir || /INPUT|TEXTAREA|SELECT/.test((e.target || {}).tagName || '')) return;
     var s = activeStepper(); if (!s || atExit(s, dir)) return;
-    e.preventDefault(); if (!s.busy) s.step(dir);
+    e.preventDefault(); s.step(dir);
   });
 
   window.addEventListener('resize', onScroll);
