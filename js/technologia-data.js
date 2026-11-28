@@ -467,11 +467,28 @@ window.WFT_DATA = (function () {
             link: 'https://www.microcar.fr'
           },
           {
-            id: 'chatenet-ch46', type: 'urzadzenie', group: 'Pojazdy na kat. AM', icon: 'fa-car',
-            title: 'Chatenet CH46', sub: 'Diesel · 45 km/h · 2 miejsca · Francja',
-            specs: [['Uprawnienia', 'kat. AM od 14 lat (wersja L6e)'], ['Napęd', 'diesel 2-cylindrowy ok. 478 cm³, ok. 6 kW, automat'], ['Norma spalin', 'Euro 5'], ['Prędkość maks.', '45 km/h'], ['Miejsca', '2']],
-            body: '<p>Sportowo stylizowany model francuskiej marki Chatenet (odmiany m.in. Erre Erre i Sport R). W teście Euro NCAP z 2016 r. inny model tej marki, CH30 w wersji ciężkiej, uzyskał najlepszy wynik w tamtej serii: 2 gwiazdki.</p>',
-            link: 'https://www.chatenet.com'
+            id: 'chatenet-ch46', type: 'urzadzenie', group: 'Pojazdy na kat. AM', icon: 'fa-car', photo: auto('chatenet-ch46.webp'),
+            credit: 'Zdjęcie: materiały sprzedawcy (Volt & Go) – Chatenet CH46 e-Spring',
+            title: 'Chatenet CH46', sub: 'Diesel lub elektryczny · 45 km/h · 2 miejsca · Francja',
+            specs: [['Uprawnienia', 'kat. AM od 14 lat (wersja L6e)'], ['Napęd', 'diesel 2-cylindrowy ok. 478 cm³ (ok. 6 kW, automat) albo wersja elektryczna e-Spring'], ['Norma spalin (diesel)', 'Euro 5'], ['Wymiary', 'ok. 2,98 × 1,49 m'], ['Prędkość maks.', '45 km/h'], ['Miejsca', '2']],
+            body: '<p>Najwyżej pozycjonowany model francuskiej marki Chatenet, sportowo stylizowany, dostępny w odmianach m.in. SL, Sport R i Barooder, z silnikiem diesla lub jako elektryczny CH46 e-Spring (na zdjęciu).</p><h3>Na co zwrócić uwagę?</h3><ul><li>Upewnij się, że kupujesz wersję <strong>L6e</strong> (dowód rejestracyjny).</li><li>Dane techniczne wersji elektrycznej (bateria, zasięg) sprawdź u sprzedawcy.</li></ul><p>W teście Euro NCAP z 2016 r. inny model tej marki, CH30 w wersji ciężkiej, uzyskał najlepszy wynik w tamtej serii: 2 gwiazdki.</p>',
+            link: 'https://voltandgo.com/p/chatenet-ch46-e-spring-9938/'
+          },
+          {
+            id: 'citroen-ami', type: 'urzadzenie', group: 'Pojazdy na kat. AM', icon: 'fa-car', photo: auto('citroen-ami.webp'), photoCover: true, photoPos: '50% 60%',
+            credit: 'Zdjęcie: Stellantis Media (materiały prasowe Citroën)',
+            title: 'Citroën Ami', sub: 'Elektryczny · 45 km/h · 2 miejsca · Francja',
+            specs: [['Uprawnienia', 'kat. AM od 14 lat (L6e)'], ['Napęd', 'elektryczny, 6 kW'], ['Akumulator / zasięg', 'ok. 5,4 kWh, do ok. 75 km (WLTP)'], ['Ładowanie', 'ok. 4 h, także ze zwykłego gniazdka'], ['Prędkość maks.', '45 km/h'], ['Miejsca', '2']],
+            body: '<p class="wft-lead">Jeden z najpopularniejszych mikrosamochodów w Europie: bardzo mały, w pełni elektryczny, ładowany z domowego gniazdka.</p><h3>Co go wyróżnia?</h3><ul><li>Prosta konstrukcja i niewielkie wymiary, dzięki czemu łatwo nim manewrować i parkować w mieście.</li><li>Wersja odświeżona w 2025 r. Jest też odmiana Buggy z otwartym nadwoziem.</li></ul><h3>Na co zwrócić uwagę?</h3><ul><li>Bardzo podstawowe wyposażenie i komfort, bo to pojazd do krótkich, miejskich tras.</li><li>Zimą zasięg będzie wyraźnie krótszy niż katalogowe 75 km.</li><li>Tak jak w każdym czterokołowcu lekkim ochrona w razie wypadku jest mniejsza niż w samochodzie osobowym (zob. „Bezpieczeństwo młodych kierowców”).</li></ul>',
+            link: 'https://www.media.stellantis.com/em-en/citroen/press/all-new-ami-opens-up-its-order-book-and-adds-a-new-buggy-version-to-its-range'
+          },
+          {
+            id: 'fiat-topolino', type: 'urzadzenie', group: 'Pojazdy na kat. AM', icon: 'fa-car', photo: auto('fiat-topolino.webp'), photoCover: true, photoPos: '50% 62%',
+            credit: 'Zdjęcie: Stellantis Media (materiały prasowe Fiat)',
+            title: 'Fiat Topolino', sub: 'Elektryczny · 45 km/h · 2 miejsca · Włochy',
+            specs: [['Uprawnienia', 'kat. AM od 14 lat (L6e)'], ['Napęd', 'elektryczny, 6 kW'], ['Akumulator / zasięg', 'ok. 5,4 kWh, do ok. 75 km (WLTP)'], ['Ładowanie', 'ok. 4 h (do 2,3 kW)'], ['Prędkość maks.', '45 km/h'], ['Miejsca', '2']],
+            body: '<p class="wft-lead">Elektryczny mikrosamochód Fiata w stylu retro. Technicznie to bliźniak Citroëna Ami, ale z włoskim wyglądem. Za wzornictwo otrzymał nagrodę Compasso d’Oro ADI.</p><h3>Co go wyróżnia?</h3><ul><li>Charakterystyczny design i wersja Dolcevita z otwartym nadwoziem.</li><li>Ładowanie w ok. 4 godziny, bez potrzeby specjalnej ładowarki.</li></ul><h3>Na co zwrócić uwagę?</h3><ul><li>Krótki zasięg, zwłaszcza zimą, bo to pojazd do miasta.</li><li>Wersja z otwartym nadwoziem nie chroni przed deszczem i zimnem.</li><li>Ochrona w razie wypadku mniejsza niż w samochodzie osobowym (zob. „Bezpieczeństwo młodych kierowców”).</li></ul>',
+            link: 'https://www.fiat.co.uk/models/topolino'
           }
         ]
       }

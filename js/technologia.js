@@ -447,7 +447,8 @@
     var body = '<div class="wft-wbody"><div class="wft-intro">' + m.intro.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' + (m.introExtra || '') +
       groupsOf(m).map(function (g) {
         return '<p class="wft-group">' + esc(g.name) + '</p><div class="wft-items' + (g.dev ? ' wft-items--feat' + (g.items.length > 4 ? ' wft-items--many' : '') : '') + '">' + g.items.map(function (it) {
-          var vis = it.pic ? '<span class="wft-item__vis wft-item__vis--pic"><i class="wft-item__img" style="' + picStyle(it.pic) + '" role="img" aria-label="' + esc(it.pic.alt || it.title) + '"></i></span>'
+          var pc = it.pic || (it.photoCover && it.photo ? { src: it.photo, pos: it.photoPos, alt: it.title } : null);
+          var vis = pc ? '<span class="wft-item__vis wft-item__vis--pic"><i class="wft-item__img" style="' + picStyle(pc) + '" role="img" aria-label="' + esc(pc.alt || it.title) + '"></i></span>'
             : it.photo ? '<span class="wft-item__vis wft-item__vis--photo"><i class="wft-item__img" style="background-image:url(\'' + it.photo + '\')"></i></span>'
             : '<span class="wft-item__vis">' + (it.visual ? '<i class="wft-item__img" style="' + bg(it.visual) + 'opacity:.6"></i>' : '') + '<b><i class="fa ' + (it.icon || m.icon) + '" aria-hidden="true"></i></b></span>';
           return '<a class="wft-item" href="#t/' + m.id + '/' + it.id + '" style="--i:' + (k++) + '">' + vis +
@@ -464,7 +465,7 @@
 
   function renderItem(m, it) {
     var head;
-    if (it.pic) head = '<header class="wft-whead wft-whead--pic"><i class="wft-whead__img" style="' + picStyle(it.pic) + '"></i>';
+    if (it.pic || (it.photoCover && it.photo)) head = '<header class="wft-whead wft-whead--pic"><i class="wft-whead__img" style="' + picStyle(it.pic || { src: it.photo, pos: it.photoPos }) + '"></i>';
     else if (it.photo) head = '<header class="wft-whead wft-whead--photo"><i class="wft-whead__img" style="background-image:url(\'' + it.photo + '\')"></i>';
     else if (it.visual) head = '<header class="wft-whead"><i class="wft-whead__img" style="' + bg(it.visual) + '"></i>';
     else head = '<header class="wft-whead wft-whead--orb"><span class="wft-mod__orb"><i class="fa ' + (it.icon || m.icon) + '"></i></span>';
