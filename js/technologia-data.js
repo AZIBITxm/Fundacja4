@@ -263,6 +263,7 @@ window.WFT_DATA = (function () {
           },
           {
             id: 'dzbanek', type: 'urzadzenie', group: 'Rodzaje filtrów', icon: 'fa-filter', visual: crop.jug,
+            photo: '../images/technologia/producenci/dafi/dafi-crystal-dzbanek.webp', credit: 'Zdjęcie: materiały producenta (Dafi, dzbanek Crystal LED)', link: 'https://dafi.pl/szklany-dzbanek-filtrujacy-dafi-crystal-led-czarny-6-wkladow-unimax.html',
             title: 'Dzbanek filtrujący', sub: 'Najprostszy start: poprawia smak i ogranicza chlor oraz kamień.',
             body: '<h3>Jak działa?</h3><p>Woda przepływa przez wkład z <strong>węglem aktywnym</strong> (wyłapuje chlor i związki pogarszające smak i zapach) i zwykle <strong>żywicą jonowymienną</strong> (ogranicza kamień i część metali, np. miedź, ołów; zależnie od wkładu).</p><h3>Co daje, a czego nie?</h3><ul><li>✔ lepszy smak i zapach, mniej kamienia w czajniku,</li><li>✖ nie usuwa bakterii i wirusów,</li><li>✖ zwykle nie usuwa skutecznie azotanów.</li></ul><h3>Dla kogo?</h3><p>Mieszkanie z wodą wodociągową, mała rodzina, start bez montażu.</p><h3>Eksploatacja</h3><p>Wkład wymieniaj według zaleceń (zwykle co ok. 4 tygodnie). Dzbanek myj i trzymaj w chłodzie, przefiltrowaną wodę zużyj w ciągu doby.</p>'
           },
@@ -283,6 +284,7 @@ window.WFT_DATA = (function () {
           },
           {
             id: 'osmoza', type: 'urzadzenie', group: 'Rodzaje filtrów', icon: 'fa-th',
+            photo: '../images/technologia/producenci/aquaphor/aquaphor-osmo-pro-50.webp', credit: 'Zdjęcie: materiały producenta (Aquaphor, system OSMO Pro 50)', link: 'https://aquaphor.com/pl-pl/reverse-osmosis/osmo-pro-50',
             title: 'Odwrócona osmoza', sub: 'Najdokładniejsza filtracja domowa: membrana o bardzo drobnych porach.',
             body: '<h3>Jak działa?</h3><p>Po wstępnych filtrach woda jest przeciskana przez <strong>membranę osmotyczną</strong>, która zatrzymuje większość rozpuszczonych substancji. Czysta woda trafia do zbiornika, a koncentrat zanieczyszczeń do kanalizacji.</p><h3>Co daje?</h3><ul><li>Usuwa większość metali, azotanów, wiele mikrozanieczyszczeń i drobin (także mikroplastik).</li><li>Daje stałą jakość niezależnie od wahań wody w sieci.</li></ul><h3>Na co uważać?</h3><ul><li>Usuwa też minerały, dlatego często stosuje się <strong>mineralizator</strong>.</li><li>Część wody idzie do ścieku, potrzebne miejsce na zbiornik i serwis.</li><li>Szukaj certyfikatu skuteczności (np. NSF/ANSI 58).</li></ul>'
           },
