@@ -464,3 +464,13 @@ html.wft-lock, html.wft-lock body { overflow: hidden; }
 @media (max-width: 767px) { .wft-whead--pic { min-height: 280px; } }
 .wft-whead--pic::after { background: linear-gradient(180deg, rgba(9, 13, 36, .1) 0%, rgba(9, 13, 36, 0) 35%, rgba(9, 13, 36, .92) 88%), linear-gradient(110deg, color-mix(in srgb, var(--c) 25%, transparent), transparent 50%); }
 @media (max-width: 767px) { .wft-whead--pic { min-height: 420px; } }
+/* talia płyt na telefonie: wyższe panele, przycisk „Otwórz moduł” zawsze widoczny (Adam 28.11.2026) */
+@media (max-width: 767px) {
+  .wft-deck__stage { height: calc(100vh - 130px); height: calc(100dvh - 130px); margin-top: 56px; }
+  .wft-dcard { height: calc(100% - 86px); }
+  .wft-dcard__main { grid-template-rows: 34% 1fr; }
+  .wft-dcard__txt { gap: 8px; padding: 12px 18px 18px; overflow: hidden; }
+  .wft-dcard__chips { display: none; }
+  .wft-dcard h3 { font-size: 1.5rem; }
+  .wft-dcard__open { margin-top: auto; }
+}

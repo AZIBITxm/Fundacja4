@@ -91,6 +91,7 @@
       el.style.filter = br < 1 ? 'brightness(' + br.toFixed(3) + ') blur(' + (Math.min(-d, 2) * 1.2).toFixed(2) + 'px)' : 'none';
       el.style.opacity = op;
       el.style.visibility = op ? 'visible' : 'hidden';
+      el.style.zIndex = (d > 0.001 && d < 0.999) ? 300 : Math.round(200 - Math.abs(d) * 10);
     });
     deckAct = clamp(Math.round(f), 0, n - 1);
     cards.forEach(function (el, i) { el.classList.toggle('is-act', i === deckAct); el.setAttribute('tabindex', i === deckAct ? '0' : '-1'); });
@@ -100,6 +101,7 @@
   }
   function deckGo(i) {   // klik w pasek czekającej płyty → przewiń tak, żeby wjechała na wierzch
     var tr = deckTrack(), top = tr.getBoundingClientRect().top + window.pageYOffset, total = tr.offsetHeight - window.innerHeight;
+    if (deckStep) { deckStep.go(i); return; }
     window.scrollTo({ top: top + total * (i / (cards.length - 1)) + 2, behavior: reduce ? 'auto' : 'smooth' });
   }
 
@@ -221,6 +223,108 @@
   var ticking = false;
   function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; drawScene(); drawDeck(); drawFill(); root.style.setProperty('--sy', window.pageYOffset | 0); }); }
   window.addEventListener('scroll', onScroll, { passive: true });
+  /* ---------- 3b. przewijanie „po jednym” (Adam 28.11.2026) ----------
+     W scenie zamian i w talii płyt jeden ruch kółkiem / palcem / klawiszem = zawsze jedna pełna, płynna animacja
+     do następnego (albo poprzedniego) kroku. Nie da się zatrzymać w połowie ani przeskoczyć kilku naraz.
+     Na pierwszym kroku ruch w górę i na ostatnim ruch w dół wypuszczają dalej, zwykłym przewijaniem strony. */
+  var animating = false;
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function animScroll(to, dur, done) {
+    var from = window.pageYOffset, t0 = performance.now();
+    animating = true;
+    (function f(now) {
+      var t = Math.min(1, (now - t0) / dur);
+      window.scrollTo({ top: from + (to - from) * ease(t), behavior: 'instant' });
+      if (t < 1) requestAnimationFrame(f); else { animating = false; if (done) done(); }
+    })(t0);
+  }
+  function makeStepper(track, stops, dur) {
+    var S = { idx: 0, busy: false, last: stops.length - 1 };
+    function geo() { var r = track.getBoundingClientRect(); return { top: r.top + window.pageYOffset, total: Math.max(1, track.offsetHeight - window.innerHeight) }; }
+    S.pos = function (i) { var g = geo(); return Math.round(g.top + g.total * stops[i]); };
+    S.inRange = function () {
+      var r = track.getBoundingClientRect(), y = window.pageYOffset;
+      return r.top <= 2 && r.bottom >= window.innerHeight - 2 && y <= S.pos(S.last) + 3;
+    };
+    S.nearest = function () {
+      var y = window.pageYOffset, best = 0;
+      for (var k = 1; k <= S.last; k++) if (Math.abs(S.pos(k) - y) < Math.abs(S.pos(best) - y)) best = k;
+      return best;
+    };
+    S.before = function () { return window.pageYOffset < S.pos(0) - 3; };   // między początkiem sekcji a pierwszym krokiem
+    S.step = function (dir) { S.go(S.before() ? Math.min(1, S.last) : S.idx + dir); };
+    S.go = function (i, d) {
+      S.idx = clamp(i, 0, S.last); S.busy = true;
+      animScroll(S.pos(S.idx), d || dur, function () { setTimeout(function () { S.busy = false; }, 80); });
+    };
+    return S;
+  }
+  var steppers = [];
+  if (!reduce && stage && pairEls.length) {
+    var ps = [0.1 / pairEls.length].concat(pairEls.map(function (_, i) { return (i + 0.7) / pairEls.length; }));
+    steppers.push(makeStepper(scene, ps, 1100));
+  }
+  var deckStep = null;
+  if (!reduce && deck && cards.length > 1) {
+    deckStep = makeStepper(deckTrack(), cards.map(function (_, i) { return i / (cards.length - 1); }), 750);
+    steppers.push(deckStep);
+  }
+  function activeStepper() { if (html.classList.contains('wft-lock')) return null; for (var i = 0; i < steppers.length; i++) if (steppers[i].inRange()) return steppers[i]; return null; }
+  function atExit(s, dir) { return (dir < 0 && (s.idx === 0 || s.before())) || (dir > 0 && s.idx === s.last && !s.before()); }
+
+  // wjazd do sekcji rozpędem / przeciągnięciem paska → zatrzymaj i ustaw na kroku od strony wejścia
+  var lastY = window.pageYOffset;
+  window.addEventListener('scroll', function () {
+    var y = window.pageYOffset;
+    if (!animating) {
+      var s = activeStepper();
+      if (s && !s.busy && !s.before() && Math.abs(y - s.pos(s.idx)) > 3) {
+        var i = lastY < s.pos(0) - 3 ? 0 : (lastY > s.pos(s.last) + 3 ? s.last : s.nearest());
+        html.style.overflow = 'hidden';                       // zatrzymuje rozpęd (telefon)
+        s.idx = i; s.busy = true;
+        animScroll(s.pos(i), 320, function () { html.style.overflow = ''; setTimeout(function () { s.busy = false; }, 80); });
+      }
+    }
+    lastY = y;
+  }, { passive: true });
+
+  // kółko myszy / gładzik: jeden gest (razem z bezwładnością) = jeden krok
+  var wLast = 0, wUsed = false;
+  window.addEventListener('wheel', function (e) {
+    var s = activeStepper(); if (!s) return;
+    var dir = e.deltaY > 0 ? 1 : (e.deltaY < 0 ? -1 : 0); if (!dir) return;
+    var now = Date.now();
+    if (now - wLast > 220) wUsed = false;
+    wLast = now;
+    if (!s.busy && !wUsed && atExit(s, dir)) return;          // wyjście z sekcji zwykłym przewijaniem
+    e.preventDefault();
+    if (s.busy || wUsed || Math.abs(e.deltaY) < 3) return;
+    wUsed = true; s.step(dir);
+  }, { passive: false });
+
+  // palec: jedno przesunięcie (wolne czy szybkie) = jeden krok
+  var tY = null, tUsed = false, tFree = false;
+  window.addEventListener('touchstart', function (e) { tY = e.touches[0].clientY; tUsed = false; tFree = false; }, { passive: true });
+  window.addEventListener('touchmove', function (e) {
+    if (tY === null || tFree) return;
+    var s = activeStepper(); if (!s) return;
+    var dy = tY - e.touches[0].clientY, dir = dy > 0 ? 1 : -1;
+    if (!tUsed && !s.busy && Math.abs(dy) < 6) return;
+    if (!tUsed && !s.busy && atExit(s, dir)) { tFree = true; return; }
+    e.preventDefault();
+    if (tUsed || s.busy) return;
+    if (Math.abs(dy) > 28) { tUsed = true; s.step(dir); }
+  }, { passive: false });
+  window.addEventListener('touchend', function () { tY = null; }, { passive: true });
+
+  // klawiatura
+  window.addEventListener('keydown', function (e) {
+    var k = e.key, dir = (k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !e.shiftKey)) ? 1 : ((k === 'ArrowUp' || k === 'PageUp' || (k === ' ' && e.shiftKey)) ? -1 : 0);
+    if (!dir || /INPUT|TEXTAREA|SELECT/.test((e.target || {}).tagName || '')) return;
+    var s = activeStepper(); if (!s || atExit(s, dir)) return;
+    e.preventDefault(); if (!s.busy) s.step(dir);
+  });
+
   window.addEventListener('resize', onScroll);
   drawScene(); drawDeck(); drawFill();
   window.addEventListener('load', drawDeck);
