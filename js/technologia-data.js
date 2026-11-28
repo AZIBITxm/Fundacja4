@@ -202,6 +202,42 @@ window.WFT_DATA = (function () {
               '<h3>Na co uważać?</h3><ul><li>Telefon jest oficjalnie sprzedawany głównie w Chinach: w Polsce kupuje się go przez importerów, bez lokalnego serwisu producenta.</li><li>Starszy system Android 11.</li><li>E Ink nie nadaje się do oglądania filmów (to zaleta lub wada, zależnie od celu).</li></ul>'
           },
           {
+            id: 'nokia-3210-4g', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/hmd/nokia-3210-4g.webp',
+            title: 'Nokia 3210 4G', sub: 'Klasyczny telefon z klawiaturą: rozmowy, SMS-y, aparat, radio i Snake. Bateria na kilka dni.',
+            specs: [['Ekran', '2,4″ kolorowy (QVGA)'], ['System', 'S30+ (bez sklepu z aplikacjami)'], ['Łączność', '4G, Bluetooth 5.0, gniazdo słuchawkowe 3,5 mm'], ['Aparat', '2 MP z lampą LED'], ['Bateria', '1450 mAh, wymienna, ładowanie USB-C'], ['Cena orientacyjna', 'ok. 80 € (wg zapowiedzi producenta)']],
+            body:
+              '<p class="wft-lead">Odświeżona wersja kultowego telefonu z 1999 r. Ma to, co potrzebne do kontaktu, i prawie nic, co wciąga.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dobry <strong>pierwszy telefon</strong> dla dziecka w wieku szkolnym albo telefon „na wyjazd” i na czas nauki.</li><li>Fizyczna klawiatura, głośny dzwonek, mocne wibracje, radio FM i latarka.</li><li>Bateria wystarcza zwykle na kilka dni, a gdy się zużyje, łatwo ją wymienić.</li><li>Niska cena: zgubienie lub zniszczenie nie jest dramatem.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Zależnie od wersji w menu mogą być proste usługi internetowe (np. pogoda, wiadomości, krótkie filmy). Warto przejrzeć menu razem z dzieckiem.</li><li>Brak komunikatorów (np. WhatsApp), aplikacji szkolnych i biletów: sprawdź, czy dziecku nie są potrzebne.</li><li>Słaby aparat i mały ekran. Użytkownicy narzekają też na niewyłączalne dźwięki klawiszy.</li></ul>',
+            link: 'https://www.hmd.com/pl_pl/nokia-3210',
+            credit: 'Zdjęcie: materiały producenta (HMD)'
+          },
+          {
+            id: 'light-phone-iii', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/light/light-phone-iii.webp',
+            title: 'Light Phone III', sub: 'Minimalistyczny telefon z czarno-białym interfejsem: rozmowy, wiadomości, mapy, aparat i kilka narzędzi, bez aplikacji społecznościowych.',
+            specs: [['Ekran', '3,92″ matowy OLED, interfejs czarno-biały'], ['System', 'LightOS (bez sklepu z aplikacjami, bez przeglądarki)'], ['Narzędzia', 'budzik, kalendarz, notatki, mapy, muzyka, podcasty, pogoda, hotspot, 2FA'], ['Aparat', '50 MP z tyłu (zdjęcia 12 MP), 8 MP z przodu'], ['Łączność', '5G, GPS, Bluetooth, NFC, czytnik linii papilarnych'], ['Bateria', '1800 mAh, wymienna'], ['Cena', 'ok. 899 USD (sprzedaż ze Stanów Zjednoczonych)']],
+            body:
+              '<p class="wft-lead">Telefon dla osób, które chcą być w kontakcie i mieć pod ręką kilka przydatnych narzędzi, ale świadomie rezygnują z mediów społecznościowych, przeglądarki i gier.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla starszej młodzieży i dorosłych, którzy chcą <strong>ograniczyć smartfon</strong>, a nie zrezygnować z map, muzyki i aparatu.</li><li>Prosty, spokojny ekran: same nazwy narzędzi, bez ikon i powiadomień z aplikacji.</li><li>Producent stawia na naprawialność: wymienna bateria, łatwiejsza wymiana ekranu i portu USB.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Wysoka cena, a do tego koszty wysyłki z USA, cło i VAT.</li><li>Brak komunikatorów (np. WhatsApp), bankowości i aplikacji szkolnych.</li><li>Przed zakupem sprawdź, czy działa z Twoim operatorem i czy obsługuje polskie znaki.</li><li>W recenzjach chwalony za wygląd, krytykowany za ograniczenia i krótszą pracę na baterii niż w prostych telefonach.</li></ul>',
+            link: 'https://www.thelightphone.com/lightiii',
+            credit: 'Zdjęcie: materiały producenta (Light)'
+          },
+          {
+            id: 'xplora-x6play', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/xplora/xplora-x6play.webp',
+            title: 'Xplora X6Play', sub: 'Zegarek z funkcją telefonu dla młodszych dzieci: rozmowy z zaufanymi osobami, lokalizacja GPS i tryb szkolny.',
+            specs: [['Ekran', '1,52″ dotykowy'], ['Funkcje', 'rozmowy i wiadomości tylko z zatwierdzonymi kontaktami, GPS, przycisk SOS, krokomierz, aparat 5 MP'], ['Łączność', '4G, karta nano-SIM (w niektórych wersjach eSIM)'], ['Odporność', 'IP68'], ['Bateria', 'ok. 900 mAh, do 72 h czuwania (wg producenta)'], ['Producent', 'Xplora, Norwegia']],
+            body:
+              '<p class="wft-lead">Zamiast pierwszego smartfona: dziecko może zadzwonić do rodziców, a rodzice wiedzą, gdzie ono jest. Bez internetu, sklepu z aplikacjami i nieznajomych kontaktów.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla dzieci mniej więcej w wieku <strong>6–10 lat</strong>, które zaczynają same chodzić do szkoły lub na zajęcia.</li><li>Kontakty dodaje wyłącznie rodzic w aplikacji Xplora, a połączenia od nieznanych numerów są blokowane.</li><li><strong>Tryb szkolny</strong> wyłącza większość funkcji w czasie lekcji.</li><li>Krokomierz nagradza ruch.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Do działania potrzebna jest karta SIM z abonamentem lub pakietem danych. Część funkcji wymaga płatnej subskrypcji Xplora, więc sprawdź warunki u sprzedawcy.</li><li>Lokalizacja nie jest idealnie dokładna, zwłaszcza w budynkach.</li><li>Śledzenie dziecka to decyzja rodzinna. Warto rozmawiać z dzieckiem, kiedy i po co sprawdzamy lokalizację, i stopniowo dawać mu więcej samodzielności.</li><li>Przed zabraniem zegarka do szkoły sprawdź jej regulamin.</li></ul>',
+            link: 'https://www.xplora.com/',
+            credit: 'Zdjęcie: materiały producenta (Xplora)'
+          },
+          {
             id: 'telefon-e-ink', type: 'urzadzenie', group: 'Urządzenia', icon: 'fa-mobile', visual: crop.phone, todo: true,
             title: 'Telefon E Ink', was: 'klasycznego smartfona',
             sub: 'Alternatywa z ekranem przypominającym papier.',
@@ -216,10 +252,21 @@ window.WFT_DATA = (function () {
             body: '<p>Nie trzeba od razu zmieniać telefonu. Już w zwykłym smartfonie można sporo zrobić:</p><ul><li><strong>Skala szarości</strong> (tryb czarno-biały w ustawieniach dostępności): ekran przestaje być tak kuszący.</li><li><strong>Wyłączenie powiadomień</strong> z aplikacji, które nie są potrzebne do komunikacji.</li><li><strong>Tryb skupienia / nie przeszkadzać</strong> na czas nauki i snu.</li><li><strong>Prosty ekran główny</strong>: tylko potrzebne aplikacje, reszta w folderze lub odinstalowana.</li><li>Telefon <strong>poza pokojem</strong> w nocy (zob. moduł „Sen i odpoczynek”).</li></ul>'
           },
           {
-            id: 'telefon-do-komunikacji', type: 'urzadzenie', group: 'Urządzenia', icon: 'fa-phone', todo: true,
+            id: 'telefon-do-komunikacji', type: 'urzadzenie', group: 'Urządzenia', icon: 'fa-phone',
             title: 'Telefon do komunikacji', was: 'niekończącej się rozrywki',
-            sub: 'Urządzenia skoncentrowane na podstawowych funkcjach.',
-            body: '<p>Proste telefony, czyli rozmowy, SMS-y, czasem aparat i nawigacja, to dobry „pierwszy telefon”. Dziecko ma kontakt z rodzicami, a nie ma dostępu do mediów społecznościowych i gier. Opiszemy dostępne rodzaje: telefony klasyczne, minimalistyczne i zegarki z funkcją telefonu dla młodszych dzieci.</p>'
+            sub: 'Proste telefony, telefony minimalistyczne i zegarki z funkcją telefonu: jak wybrać pierwszy telefon dla dziecka.',
+            body:
+              '<p class="wft-lead">Pierwszy telefon nie musi być smartfonem. Dziecko potrzebuje przede wszystkim kontaktu z rodzicami, a dopiero później dostępu do aplikacji.</p>' +
+              '<h3><span>1</span>Problem</h3><p>Smartfon daje dziecku jednocześnie kontakt z rodziną i dostęp do mediów społecznościowych, gier i niekończących się filmików. Rodzice często kupują go „dla bezpieczeństwa”, a w praktyce dziecko dostaje urządzenie zaprojektowane tak, by przyciągać uwagę.</p>' +
+              '<h3><span>2</span>Rodzaje urządzeń</h3><ul>' +
+              '<li><strong>Zegarek z funkcją telefonu</strong> (dla młodszych dzieci): rozmowy tylko z zatwierdzonymi osobami, lokalizacja, przycisk SOS. Np. Xplora X6Play.</li>' +
+              '<li><strong>Klasyczny telefon z klawiaturą</strong>: rozmowy, SMS-y, prosty aparat, bateria na kilka dni. Np. Nokia 3210 4G.</li>' +
+              '<li><strong>Telefon minimalistyczny</strong> (dla nastolatków): wybrane narzędzia, takie jak mapy, muzyka czy aparat, bez mediów społecznościowych. Np. Mudita Kompakt, Light Phone III.</li>' +
+              '<li><strong>Smartfon z kontrolą rodzicielską</strong>: pełny telefon z ograniczeniami ustawianymi przez rodzica. Pojawiają się modele z ograniczeniami wbudowanymi w system, ale nie wszystkie są sprzedawane w Polsce.</li></ul>' +
+              '<h3><span>3</span>Jak dobrać do wieku?</h3><ul><li><strong>Młodsze dzieci (ok. 6–10 lat)</strong>: zegarek z funkcją telefonu albo prosty telefon, który zostaje w plecaku.</li><li><strong>Starsze dzieci (ok. 10–13 lat)</strong>: telefon klasyczny lub minimalistyczny, a gdy pojawiają się potrzeby szkolne (dziennik, bilety), rozważ telefon E Ink.</li><li><strong>Nastolatki</strong>: telefon minimalistyczny, telefon E Ink albo smartfon z rozsądnymi ustawieniami i zasadami rodzinnymi.</li></ul><p>Granice wieku są orientacyjne. Ważniejsze od wieku jest to, czy dziecko jest gotowe, i to, czego naprawdę potrzebuje.</p>' +
+              '<h3><span>4</span>Co daje taki wybór?</h3><ul><li>Kontakt z rodzicami bez stałego dostępu do mediów społecznościowych i gier.</li><li>Mniej rozpraszania w czasie nauki i snu.</li><li>Długie działanie na baterii i często niższa cena.</li><li>Czas, by dziecko spokojnie dojrzało do smartfona.</li></ul>' +
+              '<h3><span>5</span>Na co zwrócić uwagę przed zakupem?</h3><ul><li><strong>Potrzeby szkolne</strong>: czy dziecku nie jest potrzebny dziennik elektroniczny, komunikator klasowy albo bilet w aplikacji?</li><li><strong>Relacje z rówieśnikami</strong>: jeśli cała klasa umawia się w komunikatorze, porozmawiaj z dzieckiem i innymi rodzicami o wspólnych zasadach.</li><li><strong>Karta SIM i abonament</strong>: zegarki wymagają karty z pakietem danych, a część funkcji bywa płatna.</li><li><strong>Prywatność</strong>: kto ma dostęp do lokalizacji i rozmów dziecka i gdzie są przechowywane dane.</li><li><strong>Zasady szkoły</strong>: wiele szkół ogranicza korzystanie z telefonów i zegarków w czasie lekcji.</li></ul>' +
+              '<h3><span>6</span>Rozmowa ważniejsza niż urządzenie</h3><p>Żaden telefon nie zastąpi rozmowy. Warto wspólnie ustalić, kiedy i po co dziecko korzysta z telefonu, gdzie telefon „śpi” w nocy i kiedy przyjdzie czas na kolejny krok. Przy zegarkach z lokalizacją dobrze jest od początku tłumaczyć, że to narzędzie bezpieczeństwa, a nie stałej kontroli.</p>'
           },
           {
             id: 'media-spolecznosciowe', type: 'artykul', group: 'Poradniki', icon: 'fa-commenting-o', todo: true,
@@ -605,6 +652,27 @@ window.WFT_MEDIA = {
     videos: [
       { yt: '6NRT8E5-reM', t: 'Jak działa E Ink: technologia elektronicznego papieru', lang: 'EN' },
       { yt: 'Oqu1--AzM7U', t: 'How E Ink Works', lang: 'EN' }
+    ]
+  },
+  'telefony/nokia-3210-4g': {
+    videos: [
+      { yt: 'oNYDT9tfouc', t: 'Nokia 3210, czyli telefon bez social mediów', lang: 'PL' },
+      { yt: 'hbJONKnpinI', t: 'Nokia 3210 4G – recenzja (Dumbphone Reviews)', lang: 'EN' },
+      { yt: 'Co_iDiaQJO0', t: 'Nokia 3210 – test (ShortCircuit)', lang: 'EN' }
+    ]
+  },
+  'telefony/light-phone-iii': {
+    videos: [
+      { yt: 'fRRNSEb1DAQ', t: 'Dwa tygodnie bez smartfona – recenzja Light Phone III (MrMobile)', lang: 'EN' },
+      { yt: 'HdTCDxX-UnQ', t: 'Light Phone III – opinia (Marques Brownlee)', lang: 'EN' },
+      { yt: 'ebWLvXdDwNY', t: 'Czy Light Phone III zastąpi iPhone’a? (CNET)', lang: 'EN' }
+    ]
+  },
+  'telefony/xplora-x6play': {
+    videos: [
+      { yt: 'QIV40HFatzM', t: 'Xplora X6Play – recenzja długoterminowa', lang: 'EN' },
+      { yt: 'FfktpTSOvYQ', t: 'Xplora X6Play – krótka recenzja', lang: 'EN' },
+      { yt: '5_zdpj1ZHAc', t: 'Xplora X6Play czy XGO3 – który wybrać?', lang: 'EN' }
     ]
   },
   'telefony/mudita-kompakt': {
