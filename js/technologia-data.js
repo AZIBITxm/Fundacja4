@@ -307,9 +307,30 @@ window.WFT_DATA = (function () {
             body: '<h3>Jak działa?</h3><p>Woda przepływa obok lampy emitującej promieniowanie UV-C, które uszkadza materiał genetyczny mikroorganizmów.</p><h3>Co daje, a czego nie?</h3><ul><li>✔ ochrona przed bakteriami i wirusami (np. przy studni),</li><li>✖ nie usuwa związków chemicznych, metali ani zawiesiny; przed lampą potrzebny filtr mechaniczny.</li></ul><h3>Eksploatacja</h3><p>Lampę wymienia się zwykle raz w roku, nawet jeśli nadal świeci.</p>'
           },
           {
-            id: 'dystrybutory', type: 'urzadzenie', group: 'Rodzaje filtrów', icon: 'fa-building-o', todo: true,
-            title: 'Systemy dla szkół i firm', sub: 'Dystrybutory podłączone do sieci i poidełka z filtracją.',
-            body: '<p>Dystrybutory podłączone bezpośrednio do wodociągu filtrują (a często chłodzą) wodę na miejscu, więc nie trzeba wymieniać galonów ani kupować butelek. W szkołach mogą to być poidełka i punkty napełniania bidonów. Opiszemy rozwiązania i to, jak szkoła może je wprowadzić.</p>'
+            id: 'dystrybutory', type: 'urzadzenie', group: 'Rodzaje filtrów', icon: 'fa-building-o',
+            title: 'Systemy dla szkół i firm', sub: 'Poidełka, zdroje do napełniania bidonów i dystrybutory podłączone do sieci.',
+            body:
+              '<p class="wft-lead">Woda z wodociągu podana prosto w szkole: dzieci piją, kiedy chcą, napełniają własne bidony, a szkoła nie kupuje butelek ani galonów.</p>' +
+              '<h3><span>1</span>Problem</h3><p>W wielu szkołach jedynym źródłem wody jest umywalka w łazience albo woda kupowana w butelkach. Dzieci piją za mało, a w plecakach lądują kolejne plastikowe butelki i słodzone napoje.</p>' +
+              '<h3><span>2</span>Rodzaje rozwiązań</h3><ul>' +
+              '<li><strong>Poidełko (pitnik, źródełko)</strong>: strumień wody do picia bezpośrednio z urządzenia, często uruchamiany przyciskiem lub bezdotykowo.</li>' +
+              '<li><strong>Zdrój do napełniania butelek i bidonów</strong>: dzieci nalewają wodę do własnych butelek wielokrotnego użytku. To najbardziej higieniczne rozwiązanie i najlepszy nawyk.</li>' +
+              '<li><strong>Dystrybutor podłączony do sieci</strong> (zamiast galonów): urządzenie z filtracją, a często także z chłodzeniem, zasilane bezpośrednio z wodociągu.</li></ul>' +
+              '<h3><span>3</span>Jak to działa?</h3><p>Urządzenie podłącza się do instalacji wodociągowej. Zależnie od jakości wody w budynku stosuje się filtr (np. węglowy), a w niektórych modelach także lampę UV. Woda płynie świeża, bez magazynowania w butelkach.</p>' +
+              '<h3><span>4</span>Korzyści dla dzieci i szkoły</h3><ul><li>Łatwy dostęp do wody przez cały dzień, a dobrze nawodnione dziecko łatwiej się koncentruje.</li><li>Mniej butelek plastikowych i mniej słodzonych napojów.</li><li>Dobry nawyk: własny bidon zamiast butelki jednorazowej.</li><li>Brak kosztów zakupu i przechowywania galonów.</li></ul>' +
+              '<h3><span>5</span>Jak szkoła może to wprowadzić?</h3><ol class="wft-steps">' +
+              '<li><b>Sprawdź, czy w Twoim mieście działa program wodociągów.</b> Np. w Krakowie Wodociągi Miasta Krakowa razem z miastem montują w szkołach pitniki (szkoła dostosowuje instalację, urządzenie przekazywane jest w darowiźnie), we Wrocławiu od 2019 r. działa program „Wrocławska Kranówka” ze zdrojami do napełniania bidonów, a w Warszawie i Szczecinie także są źródełka w budynkach publicznych.</li>' +
+              '<li><b>Zbadaj wodę w budynku</b> (w szczególności przy starej instalacji) i ustal z administratorem miejsce montażu.</li>' +
+              '<li><b>Wybierz rozwiązanie</b>: zdrój do bidonów, poidełko albo dystrybutor sieciowy, najlepiej bezdotykowy.</li>' +
+              '<li><b>Ustal obsługę</b>: kto czyści urządzenie, jak często wymienia się filtry i kto robi okresowe badania wody.</li>' +
+              '<li><b>Finansowanie</b>: budżet szkoły, rada rodziców, program miejski lub sponsor.</li></ol>' +
+              '<h3><span>6</span>Na co zwrócić uwagę?</h3><ul><li><strong>Higiena</strong>: regularne mycie i dezynfekcja, bezdotykowe uruchamianie, osłona dyszy.</li><li><strong>Serwis</strong>: wymiana filtrów według zaleceń producenta, bo zaniedbany filtr pogarsza wodę.</li><li><strong>Zalecenia sanitarne</strong>: Państwowa Inspekcja Sanitarna opracowała zasady udostępniania wody wodociągowej dzieciom w placówkach szkolno-wychowawczych. Warto je przeczytać przed montażem.</li><li>Uwaga prawna: przepisy nie określają wprost, w jakiej formie szkoła ma zapewniać wodę pitną (projekt takiego zapisu z 2019 r. nie wszedł w życie), ale dostęp do wody jest powszechnie uznawany za standard higieny w szkole.</li></ul>' +
+              '<div class="wft-src"><p>Źródła</p><ol>' +
+              '<li><a href="https://krakow.pl/aktualnosci/209843,34,komunikat,dobra_woda_pitna_z_kranu_w_szkolach.html" target="_blank" rel="noopener">Kraków: dobra woda pitna z kranu w szkołach</a></li>' +
+              '<li><a href="https://www.wroclaw.pl/wroclawska-kranowka-w-szkolach-podstawowych-i-liceum" target="_blank" rel="noopener">Wrocław: Wrocławska Kranówka w szkołach</a></li>' +
+              '<li><a href="https://warszawa19115.pl/pl/-/zrodelka-z-warszawska-kranowka-w-instytucjach" target="_blank" rel="noopener">Warszawa: źródełka z warszawską kranówką</a></li>' +
+              '<li><a href="https://www.gov.pl/attachment/fce8237b-29a7-429d-bf4d-ef221ceb4a20" target="_blank" rel="noopener">Zasady udostępniania wody wodociągowej dzieciom w placówkach szkolno-wychowawczych (gov.pl)</a></li>' +
+              '</ol></div>'
           },
           {
             id: 'oczyszczacz', type: 'urzadzenie', group: 'Powietrze i materiały', icon: 'fa-leaf', visual: crop.air,
