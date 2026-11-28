@@ -187,42 +187,68 @@
     if (reduce) scene.classList.add('is-static');
   }
   var countEl = scene && scene.querySelector('.wft-scene__count');
+  /* Scena zamian (Adam 28.11.2026, notatka „Korekta… jak przewijamy”): obraz sceny nie jest „przewijanym filmem”, tylko stanem
+     (zamiana p, faza 0 = „zamiast…”, 1 = „wybierz…”). Krok = animacja do przodu: w obrębie zamiany zawsze „zamiast” → „wybierz”,
+     a przy zmianie zamiany stara odlatuje, nowa wchodzi od „zamiast”. W dół: 1, 2, 3…; w górę: 8, 7, 6… — ale każda od „zamiast”. */
+  var SDUR = 820, sv = { from: 0, to: 0, t0: 0, run: false };
+  function sceneTarget() {
+    if (!sceneStep) return 0;
+    if (!sceneStep.busy && sceneStep.before()) { sceneStep.idx = 0; sceneStep.lastDir = 1; }   // wejście od góry = zawsze 1. zamiana od „zamiast”
+    return sceneStep.idx;
+  }
   function drawScene() {
     if (!stage || reduce) return;
-    var r = scene.getBoundingClientRect(), total = Math.max(1, r.height - window.innerHeight);
-    var prog = clamp(-r.top / total, 0, 1), n = pairEls.length, f = prog * n;
-    var act = clamp(Math.floor(f), 0, n - 1);
-    pairEls.forEach(function (el, i) {
-      var p = f - i;
-      var e = i === 0 ? 1 : smooth(-0.12, 0.08, p);
-      var x = i === n - 1 ? 0 : smooth(0.86, 1.04, p);
-      var m = smooth(0.22, 0.52, p);
-      var op = e * (1 - x);
-      if (op <= 0.001) { if (el._vis !== false) { el.style.opacity = 0; el.style.visibility = 'hidden'; el._vis = false; } return; }
-      el._vis = true; el.style.visibility = 'visible';
-      el.style.opacity = op.toFixed(3);
-      el.style.transform = 'scale(' + ((0.82 + 0.18 * e) * (1 + 0.55 * x)).toFixed(4) + ')';
-      el.style.filter = 'blur(' + ((1 - e) * 12 + x * 16).toFixed(1) + 'px)';
-      var o = el.children[0], nw = el.children[1];
-      o.style.opacity = (1 - m).toFixed(3);
-      o.style.transform = 'translateY(calc(-50% - ' + (m * 40).toFixed(1) + 'px)) scale(' + (1 - 0.18 * m).toFixed(3) + ')';
-      o.style.filter = 'blur(' + (m * 10).toFixed(1) + 'px)';
-      nw.style.opacity = m.toFixed(3);
-      nw.style.transform = 'translateY(-50%) scale(' + (0.82 + 0.18 * m).toFixed(3) + ')';
-      nw.style.filter = 'blur(' + ((1 - m) * 10).toFixed(1) + 'px)';
-      el.style.pointerEvents = (m > 0.7 && x < 0.3) ? 'auto' : 'none';
-    });
-    scene.style.setProperty('--sp', prog.toFixed(4));
-    scene.style.setProperty('--sc', byId[PAIRS[act][0]].color);
-    scene.style.setProperty('--sc2', byId[PAIRS[Math.min(act + 1, n - 1)][0]].color);
-    // poświaty płyną po tle razem z przewijaniem (widać, że całość się „kręci”), mocniej przy zmianie napisu
-    var fr = f - Math.floor(f), pulse = Math.sin(Math.PI * clamp(fr, 0, 1));
-    scene.style.setProperty('--gx', (Math.sin(f * 1.9) * 26).toFixed(2) + 'vw');
-    scene.style.setProperty('--gy', (Math.cos(f * 1.3) * 16).toFixed(2) + 'vh');
-    scene.style.setProperty('--gs', (1 + pulse * 0.35).toFixed(3));
-    scene.style.setProperty('--gr', (f * 40).toFixed(1) + 'deg');
-    if (countEl) countEl.textContent = (act + 1) + ' / ' + n;
+    var tgt = sceneTarget();
+    if (tgt !== sv.to) {
+      sv.from = sv.to; sv.to = tgt; sv.t0 = performance.now();
+      if (!sv.run) { sv.run = true; requestAnimationFrame(sceneLoop); }
+    }
+    renderScene();
   }
+  function sceneLoop() {
+    renderScene();
+    if (performance.now() - sv.t0 < SDUR) requestAnimationFrame(sceneLoop); else { sv.run = false; renderScene(); }
+  }
+  function pairStyle(el, op, sc, bl, m) {
+    if (op <= 0.001) { if (el._vis !== false) { el.style.opacity = 0; el.style.visibility = 'hidden'; el.style.pointerEvents = 'none'; el._vis = false; } return; }
+    el._vis = true; el.style.visibility = 'visible';
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = 'scale(' + sc.toFixed(4) + ')';
+    el.style.filter = 'blur(' + bl.toFixed(1) + 'px)';
+    var o = el.children[0], nw = el.children[1];
+    o.style.opacity = (1 - m).toFixed(3);
+    o.style.transform = 'translateY(calc(-50% - ' + (m * 40).toFixed(1) + 'px)) scale(' + (1 - 0.18 * m).toFixed(3) + ')';
+    o.style.filter = 'blur(' + (m * 10).toFixed(1) + 'px)';
+    nw.style.opacity = m.toFixed(3);
+    nw.style.transform = 'translateY(-50%) scale(' + (0.82 + 0.18 * m).toFixed(3) + ')';
+    nw.style.filter = 'blur(' + ((1 - m) * 10).toFixed(1) + 'px)';
+    el.style.pointerEvents = (m > 0.7 && op > 0.7) ? 'auto' : 'none';
+  }
+  function renderScene() {
+    var n = pairEls.length, t = clamp((performance.now() - sv.t0) / SDUR, 0, 1);
+    var A = { p: sv.from >> 1, ph: sv.from & 1 }, B = { p: sv.to >> 1, ph: sv.to & 1 };
+    pairEls.forEach(function (el, i) {
+      if (A.p === B.p) {                                   // ta sama zamiana: „zamiast” ⇄ „wybierz”
+        if (i === B.p) pairStyle(el, 1, 1, 0, A.ph + (B.ph - A.ph) * smooth(0, 1, t)); else pairStyle(el, 0, 1, 0, 0);
+      } else if (i === A.p) {                              // poprzednia zamiana odlatuje (powiększa się i rozmywa)
+        var x = smooth(0, 0.6, t); pairStyle(el, 1 - x, 1 + 0.55 * x, 16 * x, A.ph);
+      } else if (i === B.p) {                              // nowa zamiana wchodzi od „zamiast” (lub od stanu docelowego)
+        var e = smooth(0.3, 1, t); pairStyle(el, e, 0.82 + 0.18 * e, (1 - e) * 12, B.ph);
+      } else pairStyle(el, 0, 1, 0, 0);
+    });
+    var last = Math.max(1, n * 2 - 1);
+    scene.style.setProperty('--sp', (sv.to / last).toFixed(4));
+    scene.style.setProperty('--sc', byId[PAIRS[B.p][0]].color);
+    scene.style.setProperty('--sc2', byId[PAIRS[Math.min(B.p + 1, n - 1)][0]].color);
+    // poświaty płyną po tle przy każdym kroku (mocniej w trakcie zmiany)
+    var ga = A.p + A.ph * 0.6, gb = B.p + B.ph * 0.6, g = ga + (gb - ga) * smooth(0, 1, t), pulse = Math.sin(Math.PI * t);
+    scene.style.setProperty('--gx', (Math.sin(g * 1.9) * 26).toFixed(2) + 'vw');
+    scene.style.setProperty('--gy', (Math.cos(g * 1.3) * 16).toFixed(2) + 'vh');
+    scene.style.setProperty('--gs', (1 + pulse * 0.35).toFixed(3));
+    scene.style.setProperty('--gr', (g * 40).toFixed(1) + 'deg');
+    if (countEl) countEl.textContent = (B.p + 1) + ' / ' + n;
+  }
+
 
   /* ---------- 3. pojawianie się + tło ---------- */
   if (!reduce && 'IntersectionObserver' in window) {
@@ -283,12 +309,22 @@
     S.sticky = track.querySelector('.wft-scene__sticky, .wft-deck__sticky');
     return S;
   }
-  var steppers = [];
+  var steppers = [], sceneStep = null;
   if (!reduce && stage && pairEls.length) {
     // dwa kroki na zamianę (Adam 28.11.2026): 1. ruch = „zamiast …”, 2. ruch = „wybierz …”, potem następna zamiana
     var ps = [];
     pairEls.forEach(function (_, i) { ps.push((i + 0.12) / pairEls.length, (i + 0.7) / pairEls.length); });
-    steppers.push(makeStepper(scene, ps, 820));
+    sceneStep = makeStepper(scene, ps, 820);
+    // kroki sceny: w dół zawsze +1 (zamiast → wybierz → następna zamiast…); w górę: poprzednia zamiana od „zamiast”, potem „wybierz”
+    sceneStep.step = function (dir) {
+      var st = sceneStep;
+      if (!st.busy && st.before()) { st.lastDir = dir; st.go(dir > 0 ? 1 : 0); return; }
+      var pp = st.idx >> 1, ph = st.idx & 1, nx;
+      if (dir > 0) nx = st.idx + 1;
+      else nx = (ph === 0 && st.lastDir < 0) ? st.idx + 1 : (pp - 1) * 2;
+      st.lastDir = dir; st.go(nx);
+    };
+    steppers.push(sceneStep);
   }
   var deckStep = null;
   if (!reduce && deck && cards.length > 1) {
@@ -296,7 +332,10 @@
     steppers.push(deckStep);
   }
   function activeStepper() { if (html.classList.contains('wft-lock')) return null; for (var i = 0; i < steppers.length; i++) if (steppers[i].inRange()) return steppers[i]; return null; }
-  function atExit(s, dir) { return (dir < 0 && (s.idx === 0 || s.before())) || (dir > 0 && s.idx === s.last && !s.before()); }
+  function atExit(s, dir) {
+    if (s === sceneStep && dir < 0) return (s.idx >> 1) === 0 || s.before();   // w górę z pierwszej zamiany = wyjście
+    return (dir < 0 && (s.idx === 0 || s.before())) || (dir > 0 && s.idx === s.last && !s.before());
+  }
 
   // wjazd do sekcji rozpędem / przeciągnięciem paska → zatrzymaj i ustaw na kroku od strony wejścia
   var lastY = window.pageYOffset;
