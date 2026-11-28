@@ -67,6 +67,54 @@ window.WFT_DATA = (function () {
             credit: 'Zdjęcie: materiały producenta (BOOX)'
           },
           {
+            id: 'remarkable-paper-pro', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/remarkable/remarkable-paper-pro.webp',
+            title: 'reMarkable Paper Pro', sub: 'Duży kolorowy notatnik E Ink z Norwegii, zaprojektowany tylko do pisania, czytania i porządkowania notatek.',
+            specs: [['Ekran', '11,8″ kolorowy Canvas Color (E Ink Gallery 3), regulowane podświetlenie'], ['System', 'zamknięty reMarkable OS, bez sklepu z aplikacjami'], ['Pamięć', '64 GB'], ['Waga', 'ok. 525 g'], ['Bateria', 'do ok. 2 tygodni (wg producenta)']],
+            body:
+              '<p class="wft-lead">Notatnik dla osób, które chcą pisać odręcznie i czytać dokumenty bez rozpraszaczy: nie ma tu przeglądarki z mediami społecznościowymi ani sklepu z aplikacjami.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla uczniów starszych klas i studentów, którzy dużo <strong>notują i dopisują uwagi do PDF-ów</strong>.</li><li>Duży ekran wygodny do materiałów w formacie A4.</li><li>Kolor do zakreśleń i schematów, podświetlenie do pracy wieczorem.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Część funkcji chmurowych wymaga płatnej subskrypcji Connect.</li><li>Brak gniazda karty pamięci i aplikacji (zaleta dla skupienia, wada, gdy potrzebny jest np. e-podręcznik w aplikacji).</li><li>Recenzenci zwracają uwagę, że ekran kolorowy odświeża się wolniej przy otwieraniu dokumentów i przewracaniu stron.</li></ul>',
+            link: 'https://remarkable.com/products/remarkable-paper/pro',
+            credit: 'Zdjęcie: materiały producenta (reMarkable)'
+          },
+          {
+            id: 'supernote-manta', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/supernote/supernote-manta.webp',
+            title: 'Supernote Manta', sub: 'Czarno-biały notatnik E Ink nastawiony na samo pisanie, ceniony za odczucie pisania podobne do papieru.',
+            specs: [['Ekran', '10,7″ czarno-biały E Ink Carta 1300, 300 PPI, bez podświetlenia'], ['System', 'zamknięty Supernote OS, bez sklepu z aplikacjami'], ['Waga', 'ok. 375 g'], ['Bateria', '3600 mAh, wymienna (konstrukcja modułowa)']],
+            body:
+              '<p class="wft-lead">Prosty, skupiony notatnik: piszesz, porządkujesz notatki i czytasz dokumenty. Bez aplikacji, które odciągają od nauki.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla osób, które chcą zastąpić zeszyty i kołonotatniki jednym lekkim urządzeniem.</li><li>Ostry tekst czarno-białego ekranu, dobry do czytania PDF-ów.</li><li>Producent udostępnia instrukcje naprawy, a baterię można wymienić, więc urządzenie może służyć dłużej.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Brak podświetlenia: potrzebne jest dobre światło w pokoju (tak jak przy zeszycie).</li><li>Rysik kupuje się osobno.</li><li>Brak koloru i aplikacji.</li></ul>',
+            link: 'https://supernote.com/products/supernote-manta',
+            credit: 'Zdjęcie: materiały producenta (Supernote)'
+          },
+          {
+            id: 'pocketbook-inkpad-eo2', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/pocketbook/pocketbook-inkpad-eo-2.webp',
+            title: 'PocketBook InkPad Eo 2', sub: 'Kolorowy notatnik E Ink 10,3″ z Androidem 14, rysikiem w zestawie i rozpoznawaniem pisma odręcznego.',
+            specs: [['Ekran', '10,3″ kolorowy E Ink Kaleido 3 (300 DPI czarno-białe, 150 DPI kolor)'], ['System', 'Android 14 z Google Play'], ['Pamięć', '4 GB RAM, 64 GB + karta microSD'], ['Rysik', 'PocketBook Stylus 2 w zestawie'], ['Bateria / waga', '4900 mAh / 470 g']],
+            body:
+              '<p class="wft-lead">Najnowszy notatnik szwajcarskiej marki PocketBook: duży kolorowy ekran, aktywny rysik i rozpoznawanie pisma, które zamienia odręczne notatki na tekst.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla uczniów i studentów, którzy chcą <strong>notować i czytać</strong> na jednym urządzeniu oraz korzystać z aplikacji do nauki.</li><li>Rysik w zestawie, karta microSD na materiały, czytanie na głos (text-to-speech).</li><li>Regulacja jasności i barwy podświetlenia (SMARTlight).</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Android to także dostęp do rozpraszających aplikacji, więc przyda się prosty ekran główny albo kontrola rodzicielska.</li><li>Kolorowy E Ink jest mniej kontrastowy niż czarno-biały.</li><li>Na razie mało niezależnych, szczegółowych recenzji.</li></ul>',
+            link: 'https://pocketbook.ch/en-ch/catalog/e-notes/pocketbook-inkpad-eo-2-ch',
+            credit: 'Zdjęcie: materiały producenta (PocketBook)'
+          },
+          {
+            id: 'kobo-libra-colour', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/kobo/kobo-libra-colour.webp',
+            title: 'Kobo Libra Colour', sub: 'Poręczny, wodoodporny czytnik 7″ z kolorowym ekranem, przyciskami do zmiany stron i opcją notatek rysikiem.',
+            specs: [['Ekran', '7″ kolorowy E Ink Kaleido 3 (300 PPI czarno-białe, 150 PPI kolor)'], ['Wodoodporność', 'IPX8 (do 2 m przez 60 min)'], ['Pamięć', '32 GB'], ['Rysik', 'Kobo Stylus 2, sprzedawany osobno']],
+            body:
+              '<p class="wft-lead">Przede wszystkim czytnik książek: lekki, do torby i do czytania lektur, z możliwością robienia notatek i zakreśleń.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla dzieci i młodzieży, które dużo <strong>czytają</strong>: lektury, książki, komiksy w kolorze.</li><li>Fizyczne przyciski do przewracania stron i odporność na wodę (czytanie w wannie czy na plaży).</li><li>Zamknięty system bez gier i mediów społecznościowych.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Ekran 7″ jest za mały do wygodnej pracy z podręcznikami PDF w formacie A4.</li><li>Rysik trzeba dokupić.</li><li>Część użytkowników zgłasza, że baterię trzeba ładować co tydzień–dwa.</li></ul>',
+            link: 'https://ereader.kobo.com/pl-pl/products/kobo-libra-colour',
+            credit: 'Zdjęcie: materiały producenta (Kobo)'
+          },
+          {
             id: 'e-ink', type: 'artykul', group: 'Poradniki', icon: 'fa-file-text-o',
             title: 'Elektroniczny papier zamiast klasycznego ekranu', was: 'klasycznego ekranu',
             sub: 'Czym różni się E Ink od LCD i OLED i dlaczego jest interesującą alternatywą do czytania.',
@@ -403,6 +451,33 @@ window.WFT_MEDIA = {
       { yt: 'YTzxbjojrDw', t: 'Boox Go 10.3 (Gen 2) Lumi – recenzja: „prawie idealny tablet E Ink”', lang: 'EN' },
       { yt: 'x7vK_uYboWs', t: 'BOOX Go 10.3 (Gen II) – wreszcie prawdziwa zmiana', lang: 'EN' },
       { yt: 'pxWfX3Di9Gw', t: 'Boox Go 10.3 Gen II – recenzja', lang: 'EN' }
+    ]
+  },
+  'nauka/remarkable-paper-pro': {
+    videos: [
+      { yt: 'f5mND1I7Bf8', t: 'reMarkable Paper Pro – recenzja po 6 miesiącach', lang: 'EN' },
+      { yt: '45gmAtA8QZ4', t: 'reMarkable Paper Pro – długi test: „myślałem, że zmienię, a ciągle wracam”', lang: 'EN' },
+      { yt: 'Q2sEWfGkRj0', t: 'reMarkable Paper Pro – recenzja', lang: 'EN' }
+    ]
+  },
+  'nauka/supernote-manta': {
+    videos: [
+      { yt: 'GwrF5Ibevf8', t: 'Supernote A5 X2 Manta – recenzja: lepszy niż reMarkable?', lang: 'EN' },
+      { yt: 'soi2WvH1uGo', t: 'Supernote Manta po roku – mieszane uczucia', lang: 'EN' },
+      { yt: 'N18W_4Xi_Ck', t: 'Supernote Manta – szczegółowy przewodnik', lang: 'EN' }
+    ]
+  },
+  'nauka/pocketbook-inkpad-eo2': {
+    videos: [
+      { yt: 'w2szNwsIK88', t: 'PocketBook InkPad Eo 2 – recenzja', lang: 'EN' },
+      { yt: 'OOEa-o2uj_Q', t: 'PocketBook Eo 2 – najnowsze urządzenie PocketBook', lang: 'EN' }
+    ]
+  },
+  'nauka/kobo-libra-colour': {
+    videos: [
+      { yt: 'QVUatQQDQmQ', t: 'Kobo Libra Colour – recenzja: kolorowy E Ink, przyciski, pokaz', lang: 'EN' },
+      { yt: 'eqbR6fLvMVk', t: 'Kobo Libra Colour po roku (przesiadka z Kindle)', lang: 'EN' },
+      { yt: 'T3ftUUb-2q8', t: 'Kobo Libra Colour – szczera recenzja po 6 miesiącach', lang: 'EN' }
     ]
   },
   'nauka/tablet-e-ink': {
