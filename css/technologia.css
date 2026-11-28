@@ -565,3 +565,22 @@ html.wft-lock, html.wft-lock body { overflow: hidden; }
 .wft-video__play, .wft-item__vis > b, .wft-area__ico, .wft-step3 > i, .wft-mod__no i, .wft-art h3 > span,
 .wft-band__ico, .wft-steps li::before { border-radius: 4px !important; }
 .wft-win__x:hover, .wft-win__x:focus-visible { transform: none; }
+/* ===== 28.11.2026 (ostatnie poprawki Adama) ===== */
+/* „Pomiń”: węższy, przeszklony, zaokrąglony — przenika z tym, co pod spodem */
+.wft-skip { padding: 8px 16px !important; font-size: 13.5px !important; font-weight: 600 !important; letter-spacing: .02em; gap: 6px;
+  border-radius: 999px !important; color: #fff !important;
+  background: rgba(255, 255, 255, .12) !important; border: 1px solid rgba(255, 255, 255, .32) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%); backdrop-filter: blur(12px) saturate(140%);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .25) !important; }
+.wft-skip span { font-size: 14px !important; }
+.wft-skip:hover, .wft-skip:focus-visible { background: rgba(139, 227, 255, .26) !important; color: #fff !important; }
+@keyframes wftSkipPulse { 0%, 100% { box-shadow: 0 8px 22px rgba(0, 0, 0, .25), 0 0 0 0 rgba(139, 227, 255, .35); } 50% { box-shadow: 0 8px 22px rgba(0, 0, 0, .25), 0 0 0 6px rgba(139, 227, 255, 0); } }
+@media (max-width: 767px) { .wft-skip { padding: 7px 14px !important; font-size: 13px !important; } }
+
+/* „Otwórz moduł”: ramka i tekst w kolorze modułu (jak „Masz pytanie? Napisz do nas”), ostre kąty */
+.wft-dcard__open { background: transparent !important; color: var(--c) !important; border: 1px solid var(--c); border-radius: 2px !important;
+  box-shadow: none !important; padding: 13px 24px; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.wft-dcard:hover .wft-dcard__open, .wft-dcard:focus-visible .wft-dcard__open { background: color-mix(in srgb, var(--c) 18%, transparent) !important; }
+
+/* hasła w pasku i znaczniki (nie przyciski) z powrotem delikatnie zaokrąglone */
+.wft-ticker span, .wft-dcard__chips span, .wft-item__was, .wft-item__soon, .wft-item__vids, .wft-badge, .wft-hero .wfd-eyebrow { border-radius: 999px !important; }
