@@ -557,3 +557,11 @@ html.wft-lock, html.wft-lock body { overflow: hidden; }
 /* talia: „Pomiń” na pasach leżących płyt (pod i nad aktualną), żeby nie zasłaniał „Otwórz moduł” */
 .wft-deck__sticky .wft-skip--down { bottom: max(22px, 3.5vh); }
 .wft-deck__sticky .wft-skip--up { top: max(74px, 9vh); }
+/* ===== 28.11.2026: przyciski i znaczniki z ostrymi kątami (jak na reszcie strony, .wfd-btn = 2px); karty i płyty zostają zaokrąglone ===== */
+.wft-pair__go, .wft-mod__open, .wft-dcard__open, .wft-band__btn, .wft-link, .wft-skip,
+.wft-win__x, .wft-win__back,
+.wft-ticker span, .wft-dcard__chips span, .wft-item__was, .wft-item__soon, .wft-item__vids, .wft-badge,
+.wft-hero .wfd-eyebrow, .wft-scene__bar, .wft-deck__side i { border-radius: 2px !important; }
+.wft-video__play, .wft-item__vis > b, .wft-area__ico, .wft-step3 > i, .wft-mod__no i, .wft-art h3 > span,
+.wft-band__ico, .wft-steps li::before { border-radius: 4px !important; }
+.wft-win__x:hover, .wft-win__x:focus-visible { transform: none; }
