@@ -352,3 +352,86 @@ window.WFT_DATA = (function () {
     ]
   };
 })();
+
+/* Zdjęcia urządzeń i filmy (2026-11-28). Klucz: "modul/pozycja".
+   pic: zdjęcie z wolną licencją (autor + licencja + link są pokazywane pod zdjęciem — wymóg CC BY-SA).
+   videos: filmy na YouTube (zewnętrzni twórcy; src:"producent" = materiał producenta/dystrybutora). Bez miniaturek
+   z YouTube — strona nie łączy się z serwerami YouTube, dopóki ktoś nie kliknie. */
+window.WFT_MEDIA = {
+  'nauka/tablet-e-ink': {
+    pic: { src: '../images/technologia/urzadzenia/remarkable-tablet.webp', pos: '50% 40%', author: 'Sauer202', license: 'CC BY-SA 4.0', file: 'https://commons.wikimedia.org/wiki/File:ReMarkable_tablet_and_pen.jpg', alt: 'Tablet reMarkable z rysikiem i notatkami na ekranie' },
+    videos: [
+      { yt: 'qKOHEft5WbI', t: 'reMarkable, Kindle Scribe, Supernote czy Boox? Jak wybrać tablet E Ink', lang: 'EN' },
+      { yt: 'I42YavA0gNU', t: 'Porównanie notowania na tabletach E Ink', lang: 'EN' },
+      { yt: 'xqR9tI9p1CE', t: 'Porównanie czytania na tabletach E Ink', lang: 'EN' },
+      { yt: 'PpTlDZ_6laY', t: 'Kolorowy E Ink: Kindle, reMarkable i BOOX w porównaniu', lang: 'EN' }
+    ]
+  },
+  'nauka/e-podreczniki': {
+    pic: { src: '../images/technologia/urzadzenia/kobo-clara-hd.webp', pos: '50% 50%', author: 'DYVER', license: 'CC BY-SA 4.0', file: 'https://commons.wikimedia.org/wiki/File:Kobo_Clara_HD.jpg', alt: 'Czytnik e-booków Kobo' },
+    videos: [{ yt: 'xqR9tI9p1CE', t: 'Porównanie czytania na urządzeniach E Ink', lang: 'EN' }]
+  },
+  'nauka/e-ink': {
+    videos: [
+      { yt: '6NRT8E5-reM', t: 'Jak działa E Ink: technologia elektronicznego papieru', lang: 'EN' },
+      { yt: 'Oqu1--AzM7U', t: 'How E Ink Works', lang: 'EN' }
+    ]
+  },
+  'telefony/telefon-e-ink': {
+    pic: { src: '../images/technologia/urzadzenia/hisense-a9.webp', pos: '50% 45%', author: 'Bzxfdg', license: 'CC0 1.0', file: 'https://commons.wikimedia.org/wiki/File:Hisense_A9.jpg', alt: 'Telefon Hisense A9 z ekranem E Ink' },
+    videos: [
+      { yt: 'XeVhnfzo9v8', t: 'Mudita Kompakt – recenzja', lang: 'EN' },
+      { yt: '9-6DzUFUO-E', t: 'Telefon, który chce, żebyś używał go mniej – Mudita Kompakt', lang: 'EN' },
+      { yt: 'fF-pBZivyVQ', t: 'Rok z Mudita Kompakt jako głównym telefonem', lang: 'EN' }
+    ]
+  },
+  'woda/osmoza': {
+    videos: [
+      { yt: 'SsOhoDpxS9A', t: 'Jak działa odwrócona osmoza?', lang: 'PL' },
+      { yt: 'em_hs0mLFRM', t: 'Jak filtr odwróconej osmozy oczyszcza wodę?', lang: 'PL' },
+      { yt: 'uMpGVfk7jXc', t: 'Wymiana wkładów w systemie odwróconej osmozy – instrukcja', lang: 'PL' }
+    ]
+  },
+  'woda/dzbanek': {
+    videos: [
+      { yt: 'm1BD-V7NksA', t: 'Wielki test filtrów do wody', lang: 'PL' },
+      { yt: '9FlIrDfoZmE', t: 'Czy dzbanki filtrujące usuwają wszystkie zanieczyszczenia?', lang: 'PL' }
+    ]
+  },
+  'woda/oczyszczacz': {
+    videos: [
+      { yt: 'mWpCnjkElfA', t: '8 rzeczy, które musisz wiedzieć przed zakupem oczyszczacza powietrza', lang: 'PL' },
+      { yt: 'vNDbEFffQU8', t: 'Oczyszczacz powietrza bez tajemnic – przewodnik od A do Z', lang: 'PL' }
+    ]
+  },
+  'otoczenie/wilgotnosc': {
+    videos: [
+      { yt: 'tNjuGbeBLRo', t: 'Jak wybrać nawilżacz powietrza?', lang: 'PL' },
+      { yt: 'q9lJ4hO8r2Q', t: 'Jaki nawilżacz wybrać?', lang: 'PL' }
+    ]
+  },
+  'zabawa/roboty': {
+    videos: [
+      { yt: 't-yo2M_zt4Y', t: 'Robot edukacyjny Photon', lang: 'PL', src: 'producent' },
+      { yt: 'QWLGmvfKeto', t: 'Photon w przedszkolu', lang: 'PL', src: 'producent' }
+    ]
+  },
+  'mobilnosc/prawo-jazdy-am': {
+    videos: [
+      { yt: 'avXrOTj6z-I', t: 'Omówienie zadań egzaminacyjnych na placu: kat. AM, A1, A2, A', lang: 'PL' },
+      { yt: '3aisol_fUeY', t: '„Ósemka” – jak zdać egzamin (AM, A1, A2, A)', lang: 'PL' }
+    ]
+  },
+  'mobilnosc/bezpieczenstwo': {
+    videos: [
+      { yt: 'Efamvs2oBoY', t: 'Euro NCAP 2016 – testy zderzeniowe czterokołowców', lang: 'EN' },
+      { yt: 'Zet4qF4cE3Q', t: 'Euro NCAP – testy zderzeniowe czterokołowców ciężkich (2014)', lang: 'EN' }
+    ]
+  },
+  'mobilnosc/aixam-city': {
+    videos: [{ yt: 'n5cTna_Czes', t: 'Aixam – samochody od 14 roku życia', lang: 'PL', src: 'producent' }]
+  },
+  'mobilnosc/microcar-mgo': {
+    videos: [{ yt: '-GmS3cgGaUE', t: 'Microcar M.GO – prezentacja', lang: 'DE', src: 'producent' }]
+  }
+};

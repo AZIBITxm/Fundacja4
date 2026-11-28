@@ -12,6 +12,11 @@
   var html = document.documentElement;
   var mods = D.modules, byId = {};
   mods.forEach(function (m) { byId[m.id] = m; m.items.forEach(function (it) { it.mod = m; }); });
+  var MEDIA = window.WFT_MEDIA || {};
+  mods.forEach(function (m) { m.items.forEach(function (it) { var x = it.id && MEDIA[m.id + '/' + it.id]; if (x) { if (x.pic) it.pic = x.pic; if (x.videos) it.videos = x.videos; } }); });
+  function picStyle(pc) { return 'background-image:url(\'' + pc.src + '\');--bs:cover;--bp:' + (pc.pos || '50% 50%') + ';'; }
+  function credit(pc) { return '<p class="wft-credit">Zdjęcie: <a href="' + pc.file + '" target="_blank" rel="noopener">' + esc(pc.author) + '</a>, ' + esc(pc.license) + ', Wikimedia Commons</p>'; }
+  function vidCount(n) { return n + (n === 1 ? ' film' : (n < 5 ? ' filmy' : ' filmów')); }
   function item(m, id) { for (var i = 0; i < m.items.length; i++) if (m.items[i].id === id) return m.items[i]; return null; }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
@@ -235,13 +240,14 @@
     var body = '<div class="wft-wbody"><div class="wft-intro">' + m.intro.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' + (m.introExtra || '') +
       groupsOf(m).map(function (g) {
         return '<p class="wft-group">' + esc(g.name) + '</p><div class="wft-items' + (g.dev ? ' wft-items--feat' + (g.items.length > 4 ? ' wft-items--many' : '') : '') + '">' + g.items.map(function (it) {
-          var vis = it.photo ? '<span class="wft-item__vis wft-item__vis--photo"><i class="wft-item__img" style="background-image:url(\'' + it.photo + '\')"></i></span>'
+          var vis = it.pic ? '<span class="wft-item__vis wft-item__vis--pic"><i class="wft-item__img" style="' + picStyle(it.pic) + '" role="img" aria-label="' + esc(it.pic.alt || it.title) + '"></i></span>'
+            : it.photo ? '<span class="wft-item__vis wft-item__vis--photo"><i class="wft-item__img" style="background-image:url(\'' + it.photo + '\')"></i></span>'
             : '<span class="wft-item__vis">' + (it.visual ? '<i class="wft-item__img" style="' + bg(it.visual) + 'opacity:.6"></i>' : '') + '<b><i class="fa ' + (it.icon || m.icon) + '" aria-hidden="true"></i></b></span>';
           return '<a class="wft-item" href="#t/' + m.id + '/' + it.id + '" style="--i:' + (k++) + '">' + vis +
             (it.todo ? '<span class="wft-item__soon">wkrótce pełny opis</span>' : '') +
             '<span class="wft-item__body"><span class="wft-item__type">' + typeName(it) + '</span><h4>' + esc(it.title) + '</h4>' +
             (it.was ? '<span class="wft-item__was"><b>zamiast</b> ' + esc(it.was) + '</span>' : '') +
-            '<p>' + esc(it.sub) + '</p>' + (g.dev ? '<span class="wft-item__more">' + (it.brands ? 'Opis i producenci' : 'Zobacz opis') + ' <span aria-hidden="true">→</span></span>' : '') + '</span></a>';
+            '<p>' + esc(it.sub) + '</p>' + (it.videos ? '<span class="wft-item__vids"><i class="fa fa-youtube-play" aria-hidden="true"></i>' + vidCount(it.videos.length) + '</span>' : '') + (g.dev ? '<span class="wft-item__more">' + (it.brands ? 'Opis i producenci' : 'Zobacz opis') + ' <span aria-hidden="true">→</span></span>' : '') + '</span></a>';
         }).join('') + '</div>';
       }).join('') +
       '<div class="wft-ask"><p>Masz pytanie o ten moduł albo chcesz, żebyśmy opisali konkretne rozwiązanie?</p><a class="wfd-btn wfd-btn--light" href="#zgloszenie" data-temat="' + m.id + '">Napisz do nas →</a></div></div>';
@@ -250,12 +256,14 @@
 
   function renderItem(m, it) {
     var head;
-    if (it.photo) head = '<header class="wft-whead wft-whead--photo"><i class="wft-whead__img" style="background-image:url(\'' + it.photo + '\')"></i>';
+    if (it.pic) head = '<header class="wft-whead wft-whead--pic"><i class="wft-whead__img" style="' + picStyle(it.pic) + '"></i>';
+    else if (it.photo) head = '<header class="wft-whead wft-whead--photo"><i class="wft-whead__img" style="background-image:url(\'' + it.photo + '\')"></i>';
     else if (it.visual) head = '<header class="wft-whead"><i class="wft-whead__img" style="' + bg(it.visual) + '"></i>';
     else head = '<header class="wft-whead wft-whead--orb"><span class="wft-mod__orb"><i class="fa ' + (it.icon || m.icon) + '"></i></span>';
     head += '<div class="wft-whead__txt"><p class="wft-whead__no">' + typeName(it) + ' · ' + esc(m.short || m.name) + '</p><h2 id="wft-wt-' + m.id + '-' + it.id + '">' + esc(it.title) + '</h2>' +
       (it.sub ? '<p class="wft-whead__motto">' + esc(it.sub) + '</p>' : '') + '</div></header>';
     var b = '<div class="wft-wbody">';
+    if (it.pic) b += credit(it.pic);
     if (it.was) b += '<p class="wft-item__was" style="margin-top:6px!important"><b>zamiast</b> ' + esc(it.was) + '</p>';
     if (it.specs) b += '<div class="wft-specs">' + it.specs.map(function (s, i) { return '<div class="wft-spec" style="--i:' + i + '"><span>' + esc(s[0]) + '</span><b>' + esc(s[1]) + '</b></div>'; }).join('') + '</div>';
     b += '<div class="wft-art">' + (it.body || '') + '</div>';
@@ -266,6 +274,11 @@
         return '<div class="wft-brand' + (x.country === 'Polska' ? ' is-pl' : '') + '"><b>' + esc(x.name) + '</b><span>' + esc(x.country) + '</span></div>';
       }).join('') + '</div><p class="wft-brands-note">Kolejność alfabetyczna, bez rankingu. Nie jesteśmy sklepem i nie pobieramy prowizji.</p>';
     }
+    if (it.videos) b += '<p class="wft-group">Filmy i recenzje</p><div class="wft-videos">' + it.videos.map(function (v, i) {
+      return '<a class="wft-video" style="--i:' + i + '" href="https://www.youtube.com/watch?v=' + encodeURIComponent(v.yt) + '" target="_blank" rel="noopener">' +
+        '<span class="wft-video__play" aria-hidden="true"><i class="fa fa-play"></i></span><span class="wft-video__txt"><b>' + esc(v.t) + '</b>' +
+        '<em>YouTube · ' + esc(v.lang) + (v.src === 'producent' ? ' · materiał producenta' : '') + '</em></span><span class="wft-video__go" aria-hidden="true">↗</span></a>';
+    }).join('') + '</div><p class="wft-brands-note">Filmy niezależnych twórców i producentów; otwierają się w serwisie YouTube. Nie odpowiadamy za ich treść.</p>';
     if (it.link) b += '<a class="wft-link" href="' + it.link + '" target="_blank" rel="noopener">Strona producenta <span aria-hidden="true">↗</span></a>';
     if (it.todo) b += '<div class="wft-soonbox"><p><strong>W przygotowaniu:</strong> pełny opis z badaniami, parametrami i producentami. Jeśli ten temat jest dla Ciebie ważny, napisz do nas, a damy mu pierwszeństwo.</p></div>';
     b += '<div class="wft-ask"><p>Masz pytanie o to rozwiązanie?</p><a class="wfd-btn wfd-btn--light" href="#zgloszenie" data-temat="' + m.id + '">Napisz do nas →</a></div></div>';
