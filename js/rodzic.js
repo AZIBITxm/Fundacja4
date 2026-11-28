@@ -160,7 +160,7 @@
     // Telefon i komputer: otwarta książka pierwsza, potem grzbiety (komputer) / cieniutkie kreski (telefon) w obiegu — zamknięta wraca na koniec, z prawej.
     var mob = window.matchMedia('(max-width: 767px)');
     var box0 = shelf.querySelector('.wfr-shelf__books');
-    var busy = false, first = true, pending = null;
+    var busy = false, first = true, pending = null, target = 0; // target = obszar, do którego właśnie jedziemy
     function layout() {
       books.forEach(function (b, k) {
         var on = k === a;
@@ -171,6 +171,7 @@
     function open(i) {
       var to = (i % n + n) % n;
       if (to === a && !first) { restart(); return; }
+      if (!busy) target = to;
       if (first || reduce || !box0.animate) { first = false; a = to; layout(); if (count) count.textContent = a + 1; restart(); return; }
       if (busy) { pending = (to - a + n) % n; return; } // klik w trakcie animacji — o tyle kroków dalej, zaraz po niej
       busy = true;
@@ -239,7 +240,8 @@
     // linki do obszarów (#obszar-3 — kolorowe przyciski, menu „Na tej stronie”) otwierają właściwą książkę
     function fromHash() {
       var m = /^#obszar-(\d)$/.exec(location.hash || '');
-      if (m) { var k = books.indexOf(document.getElementById('obszar-' + m[1])); if (k >= 0) user(k); }
+      // klik w link już otworzył obszar (handler niżej) — zmiana adresu nie może go otwierać drugi raz (wtedy przeskakiwało o tyle samo dalej)
+      if (m) { var k = books.indexOf(document.getElementById('obszar-' + m[1])); if (k >= 0 && k !== target) user(k); }
     }
     document.addEventListener('click', function (e) {
       var l = e.target.closest && e.target.closest('a[href*="#obszar-"]');
