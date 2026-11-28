@@ -75,22 +75,32 @@
     if (!deck || reduce || !cards.length) return;
     var tr = deckTrack(), r = tr.getBoundingClientRect(), total = Math.max(1, r.height - window.innerHeight);
     var prog = clamp(-r.top / total, 0, 1), n = cards.length, f = prog * (n - 1);
-    var H = deck.clientHeight, C = cards[0].offsetHeight, STEP = 36;
+    // Efekt 3D (Adam 28.11.2026): czekające płyty leżą płasko „na podłodze”, aktualna stoi pionowo,
+    // przewinięte kładą się płasko „pod sufitem”. Przy kroku kolejna podnosi się z podłogi, a poprzednia kładzie u góry.
+    var H = deck.clientHeight, C = cards[0].offsetHeight, TOP = window.innerWidth < 768 ? 34 : 46;
+    var FLAT = 74, GAP = 12, DEPTH = 90, PERS = window.innerWidth < 768 ? 900 : 1400;
     cards.forEach(function (el, i) {
-      var d = i - f, y, sc = 1, br = 1, op = 1;
-      if (d > 0) {
-        y = d <= 1 ? (C + 10) * d : C + 10 + (d - 1) * STEP;   // wjeżdża z dołu do góry; dalsze płyty czekają jako paski
-        sc = d >= 1 ? 1 - (d - 1) * 0.025 : 1;
-        if (y > H + 4) op = 0;
-      } else {
-        y = Math.max(d, -2.2) * 28;                              // przykryte płyty cofają się w głąb
-        sc = 1 + Math.max(d, -3) * 0.05; br = 1 + Math.max(d, -3) * 0.22;
-        if (d < -2.6) op = 0;
+      var d = i - f, y, rx = 0, z = 0, br = 1, op = 1, origin;
+      if (d >= 0) {                                        // aktualna i czekające (podłoga)
+        var t = Math.min(d, 1), far = Math.max(0, d - 1);
+        var yFloor = H - C - far * GAP;                    // zawias przy dolnej krawędzi sceny
+        y = TOP + (yFloor - TOP) * t;
+        rx = FLAT * t; z = -far * DEPTH; origin = '50% 100%';
+        br = 1 - Math.min(d, 1) * 0.35 - far * 0.08;
+        if (far > 3.5) op = 0;
+      } else {                                             // przewinięte (sufit)
+        var u = Math.min(-d, 1), farU = Math.max(0, -d - 1);
+        y = TOP - TOP * u + farU * GAP;                    // zawias przy górnej krawędzi sceny
+        rx = -FLAT * u; z = -farU * DEPTH; origin = '50% 0%';
+        br = 1 - u * 0.4 - farU * 0.08;
+        if (farU > 2.5) op = 0;
       }
-      el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
-      el.style.setProperty('--dim', (1 - br).toFixed(3));   // przyciemnienie nakładką zamiast filtra (lżejsze dla telefonu)
+      el.style.transformOrigin = origin;
+      el.style.transform = 'perspective(' + PERS + 'px) translate3d(0,' + y.toFixed(1) + 'px,' + z.toFixed(1) + 'px) rotateX(' + rx.toFixed(2) + 'deg)';
+      el.style.setProperty('--dim', Math.max(0, 1 - br).toFixed(3));   // przyciemnienie nakładką zamiast filtra (lżejsze dla telefonu)
       el.style.opacity = op;
       el.style.visibility = op ? 'visible' : 'hidden';
+      // aktualna na wierzchu; wjeżdżająca nad wszystkimi; leżące — bliższa nad dalszą
       el.style.zIndex = (d > 0.001 && d < 0.999) ? 300 : Math.round(200 - Math.abs(d) * 10);
     });
     deckAct = clamp(Math.round(f), 0, n - 1);

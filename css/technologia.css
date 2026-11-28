@@ -533,3 +533,27 @@ html.wft-lock, html.wft-lock body { overflow: hidden; }
 .wft-skip-on[data-dir="down"] .wft-skip--down, .wft-skip-on[data-dir="up"] .wft-skip--up { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
 .wft-scene__foot { bottom: max(76px, 11vh); }
 @media (max-width: 767px) { .wft-skip--up { top: 72px; } .wft-skip { padding: 9px 18px; font-size: 13.5px; } }
+/* ===== 28.11.2026: płyty w 3D (podłoga / sufit) ===== */
+.wft-dcard { height: calc(100% - 150px); backface-visibility: hidden; }
+@media (max-width: 767px) { .wft-dcard { height: calc(100% - 130px); } }
+.wft-deck__stage { margin-top: 30px; }
+
+/* ===== przycisk „Pomiń”: większy, kolorowy, bliżej środka ekranu ===== */
+.wft-skip { padding: 14px 28px; font-size: 16px; font-weight: 700; letter-spacing: .03em; border: 0; color: #06101e;
+  background: linear-gradient(120deg, #8be3ff, #6c8cff 55%, #c084fc); box-shadow: 0 14px 34px rgba(108, 140, 255, .5), 0 0 0 4px rgba(139, 227, 255, .16); }
+.wft-skip:hover, .wft-skip:focus-visible { background: linear-gradient(120deg, #b8f0ff, #8ea6ff 55%, #d4a5ff); color: #06101e; }
+.wft-skip span { font-size: 18px; }
+.wft-skip--down { bottom: max(96px, 15vh); }
+.wft-skip--up { top: max(130px, 19vh); }
+.wft-skip-on[data-dir="down"] .wft-skip--down, .wft-skip-on[data-dir="up"] .wft-skip--up { animation: wftSkipPulse 2.2s ease-in-out .4s infinite; }
+@keyframes wftSkipPulse { 0%, 100% { box-shadow: 0 14px 34px rgba(108, 140, 255, .5), 0 0 0 4px rgba(139, 227, 255, .16); } 50% { box-shadow: 0 14px 34px rgba(108, 140, 255, .6), 0 0 0 10px rgba(139, 227, 255, .08); } }
+.wft-scene__foot { bottom: max(36px, 6vh); }
+@media (max-width: 767px) {
+  .wft-skip { padding: 13px 24px; font-size: 15.5px; }
+  .wft-skip--down { bottom: max(84px, 13vh); }
+  .wft-skip--up { top: max(110px, 16vh); }
+}
+@media (prefers-reduced-motion: reduce) { .wft-skip { animation: none !important; } }
+/* talia: „Pomiń” na pasach leżących płyt (pod i nad aktualną), żeby nie zasłaniał „Otwórz moduł” */
+.wft-deck__sticky .wft-skip--down { bottom: max(22px, 3.5vh); }
+.wft-deck__sticky .wft-skip--up { top: max(74px, 9vh); }
