@@ -169,6 +169,39 @@ window.WFT_DATA = (function () {
         ],
         items: [
           {
+            id: 'mudita-kompakt', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/mudita/mudita-kompakt.webp',
+            title: 'Mudita Kompakt', sub: 'Minimalistyczny telefon E Ink polskiej firmy Mudita: rozmowy, wiadomości, mapy i podstawowe narzędzia bez mediów społecznościowych.',
+            specs: [['Ekran', '4,3″ czarno-biały E Ink (800×480)'], ['System', 'MuditaOS K (bez usług Google), aplikacje z katalogu InkApps'], ['Bateria', '3300 mAh, do 6 dni (wg producenta), ładowanie bezprzewodowe'], ['Offline+', 'przełącznik odcinający sieć komórkową i mikrofony'], ['Waga', 'ok. 164 g']],
+            body:
+              '<p class="wft-lead">Telefon zaprojektowany w Polsce z myślą o spokoju i prywatności. Ma to, co potrzebne na co dzień, a resztę dodaje się tylko wtedy, gdy naprawdę jest potrzebna.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla nastolatków i dorosłych, którzy chcą <strong>zostać w kontakcie</strong>, ale ograniczyć czas przed ekranem.</li><li>Matowy ekran E Ink czytelny w pełnym słońcu, możliwość czytania e-booków.</li><li>Przełącznik <strong>Offline+</strong> na boku: jednym ruchem odcina sieć komórkową i mikrofony, np. na czas nauki lub snu.</li><li>Prosty ekran z wyborem aplikacji, foldery chronione kodem PIN.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Brak sklepu Google Play: przed zakupem sprawdź, czy działają aplikacje potrzebne dziecku (np. dziennik elektroniczny, bilety, bank).</li><li>Mały, czarno-biały ekran i prosty aparat nie zastąpią smartfona do zdjęć.</li></ul>',
+            link: 'https://mudita.com/pl/products/phones/mudita-kompakt/',
+            credit: 'Zdjęcie: materiały producenta (Mudita)'
+          },
+          {
+            id: 'bigme-hibreak-pro-color', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/bigme/bigme-hibreak-pro-color.webp',
+            title: 'Bigme HiBreak Pro Color', sub: 'Pełny smartfon z Androidem 14 i kolorowym ekranem E Ink: wszystkie aplikacje, ale ekran, który nie zachęca do przewijania.',
+            specs: [['Ekran', '6,13″ kolorowy E Ink Kaleido 3 (300 PPI czarno-białe, 150 PPI kolor)'], ['System', 'Android 14, instalacja dowolnych aplikacji'], ['Pamięć', '8 GB RAM, 256 GB'], ['Bateria', '4500 mAh, ładowanie 18 W'], ['Łączność', '5G, dwie karty SIM, NFC']],
+            body:
+              '<p class="wft-lead">Dla osób, które potrzebują pełnego smartfona (bankowość, bilety, komunikatory, nawigacja), ale chcą ekranu przypominającego papier.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla starszej młodzieży i dorosłych, którym aplikacje są niezbędne do szkoły i pracy.</li><li>Ekran E Ink: filmy i gry tracą atrakcyjność, a czytanie, wiadomości i mapy działają.</li><li>Wydajny procesor i duża pamięć, aparat 20 MP ze skanowaniem dokumentów.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Pełny Android oznacza też dostęp do mediów społecznościowych: sam ekran nie zastąpi ustawień i zasad korzystania.</li><li>Producent nie zadeklarował, jak długo będzie wydawał aktualizacje systemu.</li><li>Sprzedaż głównie przez sklep internetowy producenta: przed zakupem sprawdź warunki gwarancji i serwisu.</li></ul>',
+            link: 'https://bigmestore.com/products/android-14-hibreak-pro-color-6-e-ink-eye-friendly-smartphone-with-4g-5g-connection',
+            credit: 'Zdjęcie: materiały producenta (Bigme)'
+          },
+          {
+            id: 'hisense-a9', type: 'urzadzenie', group: 'Urządzenia',
+            title: 'Hisense A9', sub: 'Jeden z najbardziej znanych smartfonów E Ink: duży czarno-biały ekran z podświetleniem i Android.',
+            specs: [['Ekran', '6,1″ czarno-biały E Ink Carta 1200 (824×1648, 300 PPI), podświetlenie'], ['System', 'Android 11'], ['Procesor', 'Snapdragon 662']],
+            body:
+              '<p class="wft-lead">Smartfon z ekranem E Ink, ceniony za ostry tekst i długie działanie na baterii. Dobrze sprawdza się do wiadomości, czytania i map.</p>' +
+              '<h3>Dla kogo / co daje?</h3><ul><li>Dla osób, które chcą smartfona z aplikacjami, ale z ekranem przyjaznym do czytania.</li><li>Czarno-biały ekran ma ostrzejszy tekst niż ekrany kolorowe E Ink.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Telefon jest oficjalnie sprzedawany głównie w Chinach: w Polsce kupuje się go przez importerów, bez lokalnego serwisu producenta.</li><li>Starszy system Android 11.</li><li>E Ink nie nadaje się do oglądania filmów (to zaleta lub wada, zależnie od celu).</li></ul>'
+          },
+          {
             id: 'telefon-e-ink', type: 'urzadzenie', group: 'Urządzenia', icon: 'fa-mobile', visual: crop.phone, todo: true,
             title: 'Telefon E Ink', was: 'klasycznego smartfona',
             sub: 'Alternatywa z ekranem przypominającym papier.',
@@ -497,6 +530,27 @@ window.WFT_MEDIA = {
     videos: [
       { yt: '6NRT8E5-reM', t: 'Jak działa E Ink: technologia elektronicznego papieru', lang: 'EN' },
       { yt: 'Oqu1--AzM7U', t: 'How E Ink Works', lang: 'EN' }
+    ]
+  },
+  'telefony/mudita-kompakt': {
+    videos: [
+      { yt: 'Oe6h1ehtuAg', t: 'Polski antysmartfon – Mudita Kompakt', lang: 'PL' },
+      { yt: 'XeVhnfzo9v8', t: 'Mudita Kompakt – recenzja', lang: 'EN' },
+      { yt: '2cyF8CrEcI8', t: 'Mudita Kompakt – czas przed ekranem po sześciu miesiącach', lang: 'EN' }
+    ]
+  },
+  'telefony/bigme-hibreak-pro-color': {
+    videos: [
+      { yt: 'C1WnFk0EiLQ', t: 'Bigme HiBreak Pro Color – recenzja', lang: 'EN' },
+      { yt: 'cM7cHPARdjY', t: 'Bigme HiBreak Pro Color – wydajny telefon E Ink z jedną poważną wadą', lang: 'EN' },
+      { yt: 'gqX8HfYCaP0', t: 'Bigme HiBreak Pro Color jako telefon i czytnik', lang: 'EN' }
+    ]
+  },
+  'telefony/hisense-a9': {
+    pic: { src: '../images/technologia/urzadzenia/hisense-a9.webp', pos: '50% 45%', author: 'Bzxfdg', license: 'CC0 1.0', file: 'https://commons.wikimedia.org/wiki/File:Hisense_A9.jpg', alt: 'Telefon Hisense A9 z ekranem E Ink' },
+    videos: [
+      { yt: 'iZROIjvbICA', t: 'Hisense A9 – recenzja', lang: 'EN' },
+      { yt: 'zSYfeSxIcww', t: 'Hisense A9 z systemem LineageOS', lang: 'EN' }
     ]
   },
   'telefony/telefon-e-ink': {
