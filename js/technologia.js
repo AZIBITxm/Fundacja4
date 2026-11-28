@@ -265,8 +265,12 @@
     S.step = function (dir) { S.go(!S.busy && S.before() ? (dir > 0 ? Math.min(1, S.last) : 0) : S.idx + dir); };
     S.go = function (i, d) {
       S.idx = clamp(i, 0, S.last); S.busy = true;
+      html.style.overflow = '';                              // nigdy nie zostawiamy zablokowanej strony
+      clearTimeout(S._t); S._t = setTimeout(function () { S.busy = false; }, (d || dur) + 150);   // zapas, gdy animację przejmie inna
       animScroll(S.pos(S.idx), d || dur, function () { S.busy = false; });
     };
+    S.track = track;
+    S.sticky = track.querySelector('.wft-scene__sticky, .wft-deck__sticky');
     return S;
   }
   var steppers = [];
@@ -292,13 +296,50 @@
       var s = activeStepper();
       if (s && !s.busy && !s.before() && Math.abs(y - s.pos(s.idx)) > 3) {
         var i = lastY < s.pos(0) - 3 ? 0 : (lastY > s.pos(s.last) + 3 ? s.last : s.nearest());
-        html.style.overflow = 'hidden';                       // zatrzymuje rozpęd (telefon)
+        // krótka blokada wyhamowuje rozpęd na telefonie; zdejmowana zawsze po czasie (wcześniej mogła zostać → strona „stała”)
+        html.style.overflow = 'hidden';
+        setTimeout(function () { html.style.overflow = ''; }, 340);
         s.idx = i; s.busy = true;
+        clearTimeout(s._t); s._t = setTimeout(function () { s.busy = false; }, 480);
         animScroll(s.pos(i), 320, function () { html.style.overflow = ''; s.busy = false; });
       }
     }
+    if (y !== lastY) scrollDir = y > lastY ? 1 : -1;
     lastY = y;
+    updateSkip();
   }, { passive: true });
+
+  /* Przycisk „Pomiń” (Adam 28.11.2026): przy przewijaniu w dół pojawia się na dole („Pomiń ↓” → za sekcję),
+     przy przewijaniu w górę — u góry („Pomiń ↑” → przed sekcję). Działa w scenie zamian i w talii modułów. */
+  var scrollDir = 1;
+  steppers.forEach(function (s) {
+    if (!s.sticky) return;
+    ['down', 'up'].forEach(function (d) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'wft-skip wft-skip--' + d;
+      b.innerHTML = d === 'down' ? 'Pomiń <span aria-hidden="true">↓</span>' : 'Pomiń <span aria-hidden="true">↑</span>';
+      b.setAttribute('aria-label', d === 'down' ? 'Pomiń tę część i przewiń dalej' : 'Pomiń tę część i wróć wyżej');
+      b.addEventListener('click', function () { skip(s, d === 'down' ? 1 : -1); });
+      s.sticky.appendChild(b);
+    });
+  });
+  function skip(s, dir) {
+    var r = s.track.getBoundingClientRect(), top = r.top + window.pageYOffset;
+    var to = dir > 0 ? top + s.track.offsetHeight - window.innerHeight + Math.round(window.innerHeight * 0.35) : Math.max(0, top - Math.round(window.innerHeight * 0.55));
+    html.style.overflow = '';
+    s.idx = dir > 0 ? s.last : 0; s.busy = true;
+    clearTimeout(s._t); s._t = setTimeout(function () { s.busy = false; }, 800);
+    animScroll(to, 650, function () { s.busy = false; updateSkip(); });
+  }
+  function updateSkip() {
+    steppers.forEach(function (s) {
+      if (!s.sticky) return;
+      var r = s.track.getBoundingClientRect(), on = r.top <= 2 && r.bottom >= window.innerHeight - 2 && !html.classList.contains('wft-lock');
+      s.sticky.classList.toggle('wft-skip-on', on);
+      s.sticky.setAttribute('data-dir', scrollDir > 0 ? 'down' : 'up');
+    });
+  }
+  updateSkip();
 
   // kółko myszy / gładzik: jeden gest (razem z bezwładnością) = jeden krok
   var wLast = 0, wUsed = false, wAbs = 0, wAt = 0, wDir = 0;

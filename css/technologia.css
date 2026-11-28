@@ -522,3 +522,14 @@ html.wft-lock, html.wft-lock body { overflow: hidden; }
   .wft-whead--photo .wft-whead__img { inset: 64px 10% auto 10%; height: 220px; }
   .wft-whead--photo::after { background: linear-gradient(180deg, rgba(9, 13, 36, 0) 0, rgba(9, 13, 36, 0) 280px, rgba(9, 13, 36, .96) 300px); }
 }
+/* przycisk „Pomiń” w scenie zamian i talii modułów: na dole przy przewijaniu w dół, u góry przy przewijaniu w górę */
+.wft-skip { position: absolute; left: 50%; z-index: 400; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .25); background: rgba(10, 14, 40, .6); color: #fff; font-size: 14px; font-weight: 600; letter-spacing: .02em; cursor: pointer;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  opacity: 0; pointer-events: none; transform: translate(-50%, 12px); transition: opacity .3s ease, transform .3s ease, background .2s; }
+.wft-skip:hover, .wft-skip:focus-visible { background: rgba(108, 140, 255, .55); outline: none; }
+.wft-skip--down { bottom: max(16px, 2.5vh); }
+.wft-skip--up { top: 84px; transform: translate(-50%, -12px); }
+.wft-skip-on[data-dir="down"] .wft-skip--down, .wft-skip-on[data-dir="up"] .wft-skip--up { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.wft-scene__foot { bottom: max(76px, 11vh); }
+@media (max-width: 767px) { .wft-skip--up { top: 72px; } .wft-skip { padding: 9px 18px; font-size: 13.5px; } }
