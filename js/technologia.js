@@ -23,7 +23,7 @@
   function smooth(a, b, x) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
   function bg(v) { return v ? 'background-image:url(\'' + v.img + '\');--bp:' + v.pos + ';' + (v.size ? '--bs:' + v.size + ';' : '') : ''; }
   var TYPE = { artykul: 'Poradnik', urzadzenie: 'Urządzenie' };
-  function typeName(it) { return it.photo || it.group === 'Pojazdy na kat. AM' ? 'Pojazd' : (it.group === 'Rodzaje filtrów' ? 'Rodzaj filtra' : TYPE[it.type] || ''); }
+  function typeName(it) { return it.group === 'Pojazdy na kat. AM' ? 'Pojazd' : (it.group === 'Rodzaje filtrów' ? 'Rodzaj filtra' : TYPE[it.type] || ''); }
 
   // pozycje „ref” (ten sam opis w dwóch modułach, np. tablet E Ink także w Telefonach)
   mods.forEach(function (m) {
@@ -88,7 +88,7 @@
         if (d < -2.6) op = 0;
       }
       el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
-      el.style.filter = br < 1 ? 'brightness(' + br.toFixed(3) + ') blur(' + (Math.min(-d, 2) * 1.2).toFixed(2) + 'px)' : 'none';
+      el.style.setProperty('--dim', (1 - br).toFixed(3));   // przyciemnienie nakładką zamiast filtra (lżejsze dla telefonu)
       el.style.opacity = op;
       el.style.visibility = op ? 'visible' : 'hidden';
       el.style.zIndex = (d > 0.001 && d < 0.999) ? 300 : Math.round(200 - Math.abs(d) * 10);
@@ -362,6 +362,7 @@
             : '<span class="wft-item__vis">' + (it.visual ? '<i class="wft-item__img" style="' + bg(it.visual) + 'opacity:.6"></i>' : '') + '<b><i class="fa ' + (it.icon || m.icon) + '" aria-hidden="true"></i></b></span>';
           return '<a class="wft-item" href="#t/' + m.id + '/' + it.id + '" style="--i:' + (k++) + '">' + vis +
             (it.todo ? '<span class="wft-item__soon">wkrótce pełny opis</span>' : '') +
+            (it.badge ? '<span class="wft-badge"><i class="fa fa-star" aria-hidden="true"></i>' + esc(it.badge) + '</span>' : '') +
             '<span class="wft-item__body"><span class="wft-item__type">' + typeName(it) + '</span><h4>' + esc(it.title) + '</h4>' +
             (it.was ? '<span class="wft-item__was"><b>zamiast</b> ' + esc(it.was) + '</span>' : '') +
             '<p>' + esc(it.sub) + '</p>' + (it.videos ? '<span class="wft-item__vids"><i class="fa fa-youtube-play" aria-hidden="true"></i>' + vidCount(it.videos.length) + '</span>' : '') + (g.dev ? '<span class="wft-item__more">' + (it.brands ? 'Opis i producenci' : 'Zobacz opis') + ' <span aria-hidden="true">→</span></span>' : '') + '</span></a>';
@@ -377,10 +378,11 @@
     else if (it.photo) head = '<header class="wft-whead wft-whead--photo"><i class="wft-whead__img" style="background-image:url(\'' + it.photo + '\')"></i>';
     else if (it.visual) head = '<header class="wft-whead"><i class="wft-whead__img" style="' + bg(it.visual) + '"></i>';
     else head = '<header class="wft-whead wft-whead--orb"><span class="wft-mod__orb"><i class="fa ' + (it.icon || m.icon) + '"></i></span>';
-    head += '<div class="wft-whead__txt"><p class="wft-whead__no">' + typeName(it) + ' · ' + esc(m.short || m.name) + '</p><h2 id="wft-wt-' + m.id + '-' + it.id + '">' + esc(it.title) + '</h2>' +
+    head += '<div class="wft-whead__txt">' + (it.badge ? '<span class="wft-badge wft-badge--head"><i class="fa fa-star" aria-hidden="true"></i>' + esc(it.badge) + '</span>' : '') + '<p class="wft-whead__no">' + typeName(it) + ' · ' + esc(m.short || m.name) + '</p><h2 id="wft-wt-' + m.id + '-' + it.id + '">' + esc(it.title) + '</h2>' +
       (it.sub ? '<p class="wft-whead__motto">' + esc(it.sub) + '</p>' : '') + '</div></header>';
     var b = '<div class="wft-wbody">';
     if (it.pic) b += credit(it.pic);
+    else if (it.credit) b += '<p class="wft-credit">' + esc(it.credit) + '</p>';
     if (it.was) b += '<p class="wft-item__was" style="margin-top:6px!important"><b>zamiast</b> ' + esc(it.was) + '</p>';
     if (it.specs) b += '<div class="wft-specs">' + it.specs.map(function (s, i) { return '<div class="wft-spec" style="--i:' + i + '"><span>' + esc(s[0]) + '</span><b>' + esc(s[1]) + '</b></div>'; }).join('') + '</div>';
     b += '<div class="wft-art">' + (it.body || '') + '</div>';

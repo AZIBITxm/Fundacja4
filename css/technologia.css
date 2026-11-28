@@ -503,3 +503,22 @@ html.wft-lock, html.wft-lock body { overflow: hidden; }
 .wft-dcard__bar, .wft-dcard__bar * { white-space: nowrap !important; }
 .wft-dcard__bar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; text-align: left; }
 .wft-dcard__bar b { flex: none; }
+/* wydajność (28.11.2026): przyciemnienie przykrytych płyt nakładką zamiast filtra; pasek haseł bez rozmycia tła; lżejsze plamy na telefonie */
+.wft-dcard::after { content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none; border-radius: inherit; background: rgb(4, 6, 20); opacity: var(--dim, 0); }
+.wft-ticker span { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+.wft-ticker__row { contain: layout paint; }
+@media (max-width: 767px) {
+  .wft-blob { filter: blur(50px); opacity: .25; animation: none; }
+  .wft-blob--3 { display: none; }
+  .wft-hero__panel { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+}
+/* odznaka wyróżnionego modelu, np. „Polecamy dla studentów” (28.11.2026) */
+.wft-badge { position: absolute; left: 12px; top: 12px; z-index: 3; display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px;
+  background: linear-gradient(120deg, #fbbf24, #f59e0b); color: #1a1205; font-size: 12px; font-weight: 700; letter-spacing: .02em; box-shadow: 0 8px 22px rgba(251, 191, 36, .4); }
+.wft-badge--head { position: static; margin-bottom: 12px; }
+/* telefon: w oknie ze zdjęciem produktu zdjęcie u góry, tekst pod nim (bez nachodzenia) */
+@media (max-width: 767px) {
+  .wft-whead--photo { min-height: 0; padding-top: 300px; }
+  .wft-whead--photo .wft-whead__img { inset: 64px 10% auto 10%; height: 220px; }
+  .wft-whead--photo::after { background: linear-gradient(180deg, rgba(9, 13, 36, 0) 0, rgba(9, 13, 36, 0) 280px, rgba(9, 13, 36, .96) 300px); }
+}

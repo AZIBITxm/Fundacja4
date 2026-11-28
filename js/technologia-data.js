@@ -7,7 +7,7 @@ window.WFT_DATA = (function () {
   'use strict';
   var IMG = '../images/banery/technologia-zdrowie.webp?v=3';
   // Zdjęcia aut (images/technologia/auta) to zdjęcia producentów — włączyć (true) dopiero po uzyskaniu zgody / press kit.
-  var AUTA_ZGODA = false;
+  var AUTA_ZGODA = true;   // Adam 28.11.2026: używamy zdjęć producentów (promocja produktów); usuniemy na prośbę producenta
   function auto(f) { return AUTA_ZGODA ? '../images/technologia/auta/' + f : null; }
   // kadry z jednej grafiki (background-position przy background-size 300%)
   var crop = {
@@ -34,6 +34,38 @@ window.WFT_DATA = (function () {
           'Szczególnie interesującą technologią jest elektroniczny papier E Ink, który pozwala korzystać z cyfrowych materiałów w sposób przypominający czytanie tradycyjnej książki.'
         ],
         items: [
+          {
+            // Wyróżniony model (Adam 28.11.2026): najnowszy BOOX — tablet E Ink z Androidem, polecany studentom
+            id: 'boox-note-air6c', type: 'urzadzenie', group: 'Urządzenia', badge: 'Polecamy dla studentów',
+            photo: '../images/technologia/producenci/boox/boox-note-air6c.webp',
+            title: 'BOOX Note Air6 C', sub: 'Kolorowy tablet E Ink 10,3″ z Androidem 16 i sklepem Google Play: notatki, PDF-y, podręczniki i aplikacje do nauki w jednym.',
+            specs: [['Ekran', '10,3″ kolorowy E Ink (Kaleido 3)'], ['System', 'Android 16 z Google Play'], ['Procesor', '8-rdzeniowy, 4 nm, do 2,9 GHz'], ['Pamięć', '6 GB RAM, 64 GB + karta microSD (do 2 TB)'], ['Bateria', '3150 mAh'], ['Rysik', 'technologia EMR (bez baterii)'], ['Premiera', 'wrzesień 2026']],
+            body:
+              '<p class="wft-lead">Najnowszy notatnik E Ink firmy Onyx (BOOX). Łączy ekran przypominający papier z pełnym Androidem, dlatego jest jednym z najwszechstronniejszych tabletów E Ink dla uczniów szkół średnich i studentów.</p>' +
+              '<h3>Dlaczego go wyróżniamy?</h3><ul>' +
+              '<li><strong>Android i Google Play</strong>: można zainstalować aplikacje potrzebne do nauki, np. czytniki PDF, Dysk Google, słowniki, fiszki, aplikacje uczelni i e-podręczniki. Zamknięte notatniki E Ink tego nie potrafią.</li>' +
+              '<li><strong>Odręczne notatki rysikiem EMR</strong>: pisze się jak w zeszycie, z dopiskami bezpośrednio na PDF-ach.</li>' +
+              '<li><strong>Kolor</strong>: wykresy, schematy i zakreślenia w kolorze, co przydaje się w biologii, chemii czy geografii.</li>' +
+              '<li><strong>Karta microSD</strong>: cała biblioteka materiałów na jednym urządzeniu.</li>' +
+              '<li>Opcjonalna <strong>klawiatura w etui</strong> do pisania dłuższych tekstów.</li></ul>' +
+              '<h3>Uczciwie: na co uważać?</h3><ul>' +
+              '<li>Android to też dostęp do rozpraszaczy (media społecznościowe, filmy). Dla młodszych dzieci lepszy jest system zamknięty albo kontrola rodzicielska, a dla studentów wystarczy samodyscyplina i prosty ekran główny.</li>' +
+              '<li>Kolorowy E Ink jest ciemniejszy od czarno-białego, a kolory są przygaszone. Recenzenci radzą zwiększać jasność w pomieszczeniach. Do samego czytania tekstu ostrzejszy będzie model czarno-biały (zob. Go 10.3 Gen II).</li></ul>',
+            link: 'https://shop.boox.com/products/noteair6c',
+            credit: 'Zdjęcie: materiały producenta (BOOX)'
+          },
+          {
+            id: 'boox-go103', type: 'urzadzenie', group: 'Urządzenia',
+            photo: '../images/technologia/producenci/boox/boox-go103-gen2.webp',
+            title: 'BOOX Go 10.3 (Gen II)', sub: 'Lekki, cienki, czarno-biały tablet E Ink z Androidem 15: najostrzejszy tekst do czytania i notatek.',
+            specs: [['Ekran', '10,3″ czarno-biały E Ink'], ['System', 'Android 15 z Google Play'], ['Pamięć', '4 GB RAM, 64 GB'], ['Wersje', 'Lumi z podświetleniem (regulowana barwa) i Standard bez podświetlenia'], ['Rysik', 'pojemnościowy'], ['Premiera', 'marzec 2026']],
+            body:
+              '<p class="wft-lead">Czarno-biała alternatywa dla Note Air6 C: bardzo cienka i lekka, z ostrzejszym tekstem niż ekrany kolorowe.</p>' +
+              '<h3>Dla kogo?</h3><ul><li>Dla osób, które głównie <strong>czytają i notują</strong> i nie potrzebują koloru.</li><li>Wersja <strong>Standard bez podświetlenia</strong> działa jak kartka papieru i korzysta tylko ze światła w pokoju. Wersja <strong>Lumi</strong> ma podświetlenie z ciepłą barwą na wieczór.</li></ul>' +
+              '<h3>Na co uważać?</h3><ul><li>Tak jak w każdym tablecie z Androidem: warto ograniczyć aplikacje rozpraszające.</li></ul>',
+            link: 'https://shop.boox.com/products/go103gen2',
+            credit: 'Zdjęcie: materiały producenta (BOOX)'
+          },
           {
             id: 'e-ink', type: 'artykul', group: 'Poradniki', icon: 'fa-file-text-o',
             title: 'Elektroniczny papier zamiast klasycznego ekranu', was: 'klasycznego ekranu',
@@ -358,6 +390,21 @@ window.WFT_DATA = (function () {
    videos: filmy na YouTube (zewnętrzni twórcy; src:"producent" = materiał producenta/dystrybutora). Bez miniaturek
    z YouTube — strona nie łączy się z serwerami YouTube, dopóki ktoś nie kliknie. */
 window.WFT_MEDIA = {
+  'nauka/boox-note-air6c': {
+    videos: [
+      { yt: 'bXNAcfgQ4jw', t: 'BOOX Note Air6 C – recenzja: kolorowy E Ink, Android 16', lang: 'EN' },
+      { yt: 'lX0SaVslJMA', t: 'BOOX Note Air6 C – „na ten czekałem”', lang: 'EN' },
+      { yt: 'lD8QXxQYznk', t: 'BOOX Note Air6 C po dwóch tygodniach pracy (porównanie z Supernote)', lang: 'EN' },
+      { yt: 'MU3GtlkRy3A', t: 'Note Air 6C – rozpakowanie i pierwsze wrażenia', lang: 'EN' }
+    ]
+  },
+  'nauka/boox-go103': {
+    videos: [
+      { yt: 'YTzxbjojrDw', t: 'Boox Go 10.3 (Gen 2) Lumi – recenzja: „prawie idealny tablet E Ink”', lang: 'EN' },
+      { yt: 'x7vK_uYboWs', t: 'BOOX Go 10.3 (Gen II) – wreszcie prawdziwa zmiana', lang: 'EN' },
+      { yt: 'pxWfX3Di9Gw', t: 'Boox Go 10.3 Gen II – recenzja', lang: 'EN' }
+    ]
+  },
   'nauka/tablet-e-ink': {
     pic: { src: '../images/technologia/urzadzenia/remarkable-tablet.webp', pos: '50% 40%', author: 'Sauer202', license: 'CC BY-SA 4.0', file: 'https://commons.wikimedia.org/wiki/File:ReMarkable_tablet_and_pen.jpg', alt: 'Tablet reMarkable z rysikiem i notatkami na ekranie' },
     videos: [
