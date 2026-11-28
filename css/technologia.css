@@ -584,3 +584,6 @@ html.wft-lock, html.wft-lock body { overflow: hidden; }
 
 /* hasła w pasku i znaczniki (nie przyciski) z powrotem delikatnie zaokrąglone */
 .wft-ticker span, .wft-dcard__chips span, .wft-item__was, .wft-item__soon, .wft-item__vids, .wft-badge, .wft-hero .wfd-eyebrow { border-radius: 999px !important; }
+/* talia: dolny „Pomiń” odrobinę wyżej; scena zamian: „Zobacz, jak to działa” znów zaokrąglony (jak w poprzedniej wersji) */
+.wft-deck__sticky .wft-skip--down { bottom: max(42px, 6vh); }
+.wft-pair__go { border-radius: 999px !important; }
